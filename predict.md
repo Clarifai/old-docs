@@ -8,7 +8,7 @@ The API will return a list of concepts with corresponding probabilities of how l
 
 When you make a prediction through the API, you tell it what model to use. This can be one Clarifai's pre-built models or a custom one trained by you. A model contains a group of concepts. A model will only 'see' the concepts it contains. You can also specify more parameters for predictions.
 
-We recommend specifying the `version id` parameter in your predict calls. If no `version id` is specified, predictions will occur on the most recent version of the model. More information can be found in the [Advanced Predictions section](/developer/guide/predictions#by-model-version-id).
+We recommend specifying the `version id` parameter in your predict calls. If no `version id` is specified, predictions will occur on the most recent version of the model. More information can be found in the [Advanced Predictions section](/guide/predictions#by-model-version-id).
 
 #### Images
 
@@ -18,7 +18,7 @@ To get predictions for an input, you need to supply an image and the model you'd
 
 Below is an example of how you would send image URLs and receive back predictions from the `general` model.
 
-You can learn all about the different [public models](/developer/guide/public-models#public-models) available later in the guide.
+You can learn all about the different [public models](/guide/public-models#public-models) available later in the guide.
 
 ```javascript
 app.models.initModel({id: Clarifai.GENERAL_MODEL, version: "aa7f35c01e0642fda5cf400f543e7c40"})

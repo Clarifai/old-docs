@@ -9,13 +9,13 @@ has a unique API Key. These are used for authentication. You can
 
 #### Create an Application
 
-To create an application, head on over to the <a href="/apps" target="_self">applications page</a>
+To create an application, head on over to the <a href="https://portal.clarifai.com/apps" target="_self">applications page</a>
 and press the 'Create a New Application' button.
 
 At a minimum, you'll need to provide an application name and a public model to choose as your Base Workflow. You
-may also set the <a href="/developer/guide/languages#default-language">default language</a>. If you plan on using a language other than English, you must use
+may also set the <a href="/guide/languages#default-language">default language</a>. If you plan on using a language other than English, you must use
 the General model. You can learn more about models and languages in the
-<a href="/developer/guide/public-models#public-models">public model guide</a> above.
+<a href="/guide/public-models#public-models">public model guide</a> above.
 
 ![image showing the edit app button on the Manage Application page](/images/create-new-app-new.png)
 

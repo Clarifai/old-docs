@@ -11,7 +11,7 @@ You will still be charged for the same operation if it were separate calls to th
 
 ### Workflow Setup
 To set up a workflow, you will need to head over to the
-<a href="/apps" target="_self">Applications page</a> through your account.
+<a href="https://portal.clarifai.com/apps" target="_self">Applications page</a> through your account.
 From there, you will need to select which application you want to create the
 workflow under.
 
@@ -28,7 +28,7 @@ After that, the page will reveal a new workflow form to fill out. Fill out the
 Workflow ID field, this will be used to make the API call, so make sure to
 give it something URL friendly! Included there, you will also a list that consists of a model
 field and a version associated with it. For the public models, you will be mandated
-to use the latest version. For your custom models, you will be able to <a href="/developer/guide/models#list-model-versions">
+to use the latest version. For your custom models, you will be able to <a href="/guide/models#list-model-versions">
 select the version of your model</a>. To add another model, you will just click underneath your
 latest addition on the "Add Model". The max limit of models associated with any given workflow
 is 5 models. If you would like to remove a model, there is a

@@ -775,7 +775,7 @@ curl -X PATCH \
 ### Get Models
 
 To get a list of all models including models you've created as well as
-<a href="/developer/guide/public-models#public-models">public models</a>:
+<a href="/guide/public-models#public-models">public models</a>:
 
 
 

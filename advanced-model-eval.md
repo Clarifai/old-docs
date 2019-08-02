@@ -15,7 +15,7 @@ In the cross validation process, it will:
 4. Compare the predictions against the test set’s actual labels, and
 5. Repeat steps 1) through 4) across K splits to average out the evaluation results
  
-For a refresher on custom training, please refer to our [training documentation](https://clarifai.com/developer/guide/train#train).
+For a refresher on custom training, please refer to our [training documentation](/guide/train#train).
 
 ### Requirements
 To run the evaluation on your custom model, it will need the meet the following criteria:
@@ -39,4 +39,4 @@ The evaluation may take up to 30 minutes. Once it is complete, the Evaluate butt
 
 Note that the evaluation may result in an error if the model version doesn’t satisfy the requirements above.
 
-For more information on how to interpret the evaluation results and to improve your model, check out the [Evaluation](/developer/guide/evaluation#evaluation) corner under the “Advanced” section below.
+For more information on how to interpret the evaluation results and to improve your model, check out the [Evaluation](/guide/evaluation#evaluation) corner under the “Advanced” section below.

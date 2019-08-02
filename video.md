@@ -7,7 +7,7 @@ frame per second. This means you will receive a list of concepts for every secon
 
 You can run Predict on your video using a select number of <a href="https://clarifai.com/models" target="_self">Public Models</a>. The models
 that are currently supported are: Apparel, Food, General, NSFW, Travel, and Wedding. You make an API call
-by providing the `ModelId` parameter as outlined in the <a href="https://clarifai.com/developer/guide/predict" target="_self">Predict API</a>.
+by providing the `ModelId` parameter as outlined in the <a href="/guide/predict" target="_self">Predict API</a>.
 
 ### Input by URL
 

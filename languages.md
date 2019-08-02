@@ -1,7 +1,7 @@
 ### Languages
 
 The Clarifai API supports many languages in addition to English. When making a
-<a href="/developer/guide/predict#predict">predict api request</a>, you can pass in the language you would like the
+<a href="/guide/predict#predict">predict api request</a>, you can pass in the language you would like the
 concepts returned in.
 
 #### Supported Languages

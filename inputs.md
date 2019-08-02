@@ -566,7 +566,7 @@ curl -X POST \
 ### Add Inputs With Custom Metadata
 
 In addition to adding an input with concepts, you can also add an input with custom metadata. This
-metadata will then be <a href="/developer/guide/searches#by-custom-metadata">searchable</a>. Metadata can be any
+metadata will then be <a href="/guide/searches#by-custom-metadata">searchable</a>. Metadata can be any
 arbitrary JSON.
 
 
