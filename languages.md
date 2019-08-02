@@ -20,7 +20,7 @@ When you create a new Application, you must specify a default language. This wil
 concepts are returned in when you do not explicitly set a language in an API request. You cannot change the
 default language. You can however change languages per request.
 
-![create new app](/developer/static/images/create-new-app-new.png)
+![create new app](/images/create-new-app-new.png)
 
 #### Example Predict API Request
 

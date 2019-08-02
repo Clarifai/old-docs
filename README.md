@@ -8,7 +8,7 @@ The API is built around a simple idea. You send inputs \(an image or video\) to 
 
 The type of prediction is based on what model you run the input through. For example, if you run your input through the 'food' model, the predictions it returns will contain concepts that the 'food' model knows about. If you run your input through the 'color' model, it will return predictions about the dominant colors in your image.
 
-![inputs outputs](/developer/static/images/inputs-outputs.png)
+![inputs outputs](/images/inputs-outputs.png)
 
 Before you get started, if you haven't created an account and received your free API key, [please do so](/signup) before proceeding with this guide. You can begin making API calls for free, a credit card is not required.
 

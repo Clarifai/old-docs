@@ -9,7 +9,7 @@ see how you would like it to see, you can then use that model to make prediction
 
 You do not need many images to get started. We recommend starting with 10 and adding more as needed. Before you train your first model you will have needed to <a href="/developer/guide/applications#create-an-application">create an application</a>. From there you will be able to change your <a href="/developer/guide/applications#base-workflow">Base Workflow</a> to optimize custom training using the knowledge base from select public models.
 
-![inputs outputs](/developer/static/images/illustration-training.png)  
+![inputs outputs](/images/illustration-training.png)  
 
 ### Add Images With Concepts
 

@@ -7,7 +7,7 @@ This evaluate operation is asynchronous and is currently available on the <a hre
 
 ### How It Works
 Model Evaluation performs a K-split cross validation on data you used to train your custom model. 
-![cross validation](/developer/static/images/eval-metrics-1.0@2x.png)
+![cross validation](/images/eval-metrics-1.0@2x.png)
 In the cross validation process, it will:
 1. Set aside a random 1/K subset of the training data and designate as a test set,
 2. Train a new model with the remaining training data, 
@@ -30,12 +30,12 @@ To run the evaluation on your custom model, it will need the meet the following 
 You can run the evaluation on a specific model version of your custom model in the <a href="https://clarifai.com/apps" target="_blank">
   Portal<span class="icon icon-link-out"></span></a>. Go to your Application, click on your model of interest, and select the Versions tab. Simply click on the Evaluate button for the specific model version. 
 
-![model-eval-versions](/developer/static/images/previewui-versions-new.png)
-![model eval](/developer/static/images/preview-evaluate-new.png)
+![model-eval-versions](/images/previewui-versions-new.png)
+![model eval](/images/preview-evaluate-new.png)
 
 The evaluation may take up to 30 minutes. Once it is complete, the Evaluate button will become View button. Click on the View button to see the evaluation results.
 
-![model eval results](/developer/static/images/preview-view-new.png)
+![model eval results](/images/preview-view-new.png)
 
 Note that the evaluation may result in an error if the model version doesn’t satisfy the requirements above.
 

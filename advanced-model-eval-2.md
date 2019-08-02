@@ -1,7 +1,7 @@
 ## Evaluation
 
 ### Interpreting Results
-![model eval results](/developer/static/images/eval-results-new.png)
+![model eval results](/images/eval-results-new.png)
 Once the Model Evaluation is complete, you’ll be able to view the evaluation results in the <a href="https://clarifai.com/apps" target="_blank">
   Portal here <span class="icon icon-link-out"></span>
 </a>
@@ -13,7 +13,7 @@ Generally, you’ll be looking at results that represent either a) the average a
 
 #### Model Analysis
 ##### Model Accuracy Score
-![model eval results](/developer/static/images/model-score-new.png) 
+![model eval results](/images/model-score-new.png) 
 Model Accuracy Score is the highest level metric for your model’s prediction performance. It is defined as the macro average of the areas under the receiver operating characteristic curve for every concept. This metric does not depend on the Prediction Threshold. This metric is an average across K splits. 
  
 A score of 1 represents a perfect model; a score of .5 represents a worthless model. As a general rule of thumb, a score above .9 is considered good. 
@@ -22,13 +22,13 @@ Note that we discourage users from making a final assessment of the model accura
 
 #### Concept Analysis
 ##### Prediction Threshold
-![prediction threshold](/developer/static/images/prediction-threshold-new.png)
+![prediction threshold](/images/prediction-threshold-new.png)
 Probability threshold determines the model’s predictions. The default threshold is .5. The input is predicted as (i.e. “counts” as) as a concept, such as “dog”, only if the prediction probability for “dog” is higher than the set threshold, for example, 0.5. You can adjust the threshold depending on how ‘strict’ you want your classification to be. 
  
 All prediction binary metrics, such as True Positives, False Negatives, and False Positives, and Total Predicted, Recall Rate, Precision Rate, depend on this threshold. 
 
 ##### Evaluation Summary
-![model eval summary](/developer/static/images/eval-summary-table.png)
+![model eval summary](/images/eval-summary-table.png)
 This table summarizes the numerical evaluation results for every concept. For every concept, it calculates:
 
 **K-Split Average**
@@ -53,7 +53,7 @@ In general, the matrix is meant to be read by fixing each row. Each row represen
 Concepts that co-occur, or are similar, may form a visual cluster on the matrix. On the other hand, exclusive or dissimilar concepts should not form a cluster.
 
 **Counts (1-Split)**
-![concept by concept results](/developer/static/images/cxc-result.png)
+![concept by concept results](/images/cxc-result.png)
 Each row represents the subset of the test set that were actually labeled as a concept, e.g. “dog”. As you go across the row, each cell shows the number of times those images were predicted as each concept, noted by the column name. 
  
 The diagonal cells represent True Positives, i.e. correctly predicted inputs. You’d want this number to be as close to the Total Labeled as possible. 
@@ -67,7 +67,7 @@ Few things to note:
 4. This represents the test set data of a single split.
  
 **Probabilities (K-Split Average)**
-![concept by concept five split results](/developer/static/images/cxc-5split.png)
+![concept by concept five split results](/images/cxc-5split.png)
 Each row represents the subset of the test set that were actually labeled as a concept, e.g. “dog”. As you go across the row, each cell shows the average prediction probability for each concept, noted by the column name, for all inputs in this subset. In short, the cell shows the average prediction probability for a concept given the images labeled as a concept.
  
 Few things to note:
@@ -78,13 +78,13 @@ Few things to note:
 #### Input Analysis
 
 ##### Selection Details
-![not expanded](/developer/static/images/not-expanded-new.png)
+![not expanded](/images/not-expanded-new.png)
 This Selection Details table shows the input-level details of the selection you made on the Summary Table or Concept by Concept Results. It shows the image input and prediction probabilities for a specific concept. 
  
 Note: the prediction probabilities on this table may seem different from your actual model’s probabilities. The reason is that all the evaluation results are based on the new model that was built for evaluation purposes during the cross validation process.  
 
 ##### Expanded Selection Details
-![expanded](/developer/static/images/expanded-new.png)
+![expanded](/images/expanded-new.png)
 You can click on the expand button to view the prediction probabilities for every concept for each image. The blue dot denotes the concept(s) the input was actually labeled, i.e. true positives. The red dot denotes the concept(s) that the input was not labeled. 
 
 

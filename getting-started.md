@@ -10,7 +10,7 @@ through the 'food' model, the predictions it returns will contain concepts that 
 model knows about. If you run your input through the 'color' model, it will return predictions about the
 dominant colors in your image.
 
-![inputs outputs](/developer/static/images/inputs-outputs.png)
+![inputs outputs](/images/inputs-outputs.png)
 
 Before you get started, if you haven't created an account and received your free API key,
 <a href="/signup" target="_self">please do so</a> before proceeding with this guide. You can begin making API calls

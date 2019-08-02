@@ -217,7 +217,7 @@ Note that the `event_type` should be set to `annotation`.
 
 
 ```js
-app.models.feedback(Clarifai.LOGO_MODEL, 'https://clarifai.com/developer/static/images/model-samples/logo-002.jpg', {
+app.models.feedback(Clarifai.LOGO_MODEL, 'https://clarifai.com/images/model-samples/logo-002.jpg', {
   id: '{input_id}',
   data: {
     'regions': [
@@ -262,7 +262,7 @@ model = app.models.get('logo')
 
 model.send_region_feedback(
     input_id='{input_id}',
-    url='https://clarifai.com/developer/static/images/model-samples/logo-002.jpg',
+    url='https://clarifai.com/images/model-samples/logo-002.jpg',
     regions=[Region(
         region_info=RegionInfo(
             bbox=BoundingBox(top_row=0.3, left_col=0.2, bottom_row=0.7, right_col=0.8),
@@ -278,7 +278,7 @@ model.send_region_feedback(
 ModelFeedbackRequest request =
     client.modelFeedback(client.getDefaultModels().logoModel().id())
         .withInputId("{input_id}")
-        .withImageUrl("https://clarifai.com/developer/static/images/model-samples/logo-002.jpg")
+        .withImageUrl("https://clarifai.com/images/model-samples/logo-002.jpg")
         .withRegions(
             RegionFeedback.make(
                 Crop.create().top(0.3f).left(0.2f).bottom(0.7f).right(0.8f),
@@ -385,7 +385,7 @@ curl -X POST \
       "id": "{input_id}",
       "data": {
         "image": {
-          "url": "https://clarifai.com/developer/static/images/model-samples/logo-002.jpg"
+          "url": "https://clarifai.com/images/model-samples/logo-002.jpg"
         },
         "regions":
         [

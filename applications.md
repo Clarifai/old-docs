@@ -17,7 +17,7 @@ may also set the <a href="/developer/guide/languages#default-language">default l
 the General model. You can learn more about models and languages in the
 <a href="/developer/guide/public-models#public-models">public model guide</a> above.
 
-![image showing the edit app button on the Manage Application page](/developer/static/images/create-new-app-new.png)
+![image showing the edit app button on the Manage Application page](/images/create-new-app-new.png)
 
 #### Base Workflow
 
@@ -31,7 +31,7 @@ Check out our <a href="/models" target="_self">model gallery</a> for a descripti
 
 If at any point you'd like to change the application name, add/remove API Keys, and modify Workflow management for Predict, you may do so by visiting the application page and changing the values.
 
-![Image showing the edit application screen where you can change the name, add api keys, or delete the application](/developer/static/images/edit-app-new.png)
+![Image showing the edit application screen where you can change the name, add api keys, or delete the application](/images/edit-app-new.png)
 
 #### Delete an Application
 

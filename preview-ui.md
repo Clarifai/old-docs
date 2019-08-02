@@ -4,7 +4,7 @@ In addition to the API, Clarifai offers a web site that allows you to preview yo
 applications. You can view all the inputs you have added, perform searches and train new models. 
 
 <a href="https://clarifai.com/apps" target="_blank">
-  ![inputs outputs](/developer/static/images/preview-ui-new.png)
+  ![inputs outputs](/images/preview-ui-new.png)
 </a>
 
 You can access the 

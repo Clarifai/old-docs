@@ -6,7 +6,7 @@ A common case for using Clarifai is to get the concepts predicted in an image an
 
 The Search API allows you to send images \(url or bytes\) to the service and have them indexed by 'general' model concepts and their visual representations. Once indexed, you can search for images by concept or by image.
 
-![Image illustrating how to search by images using Clarifai&apos;s concepts](/developer/static/images/illustration-search.png)
+![Image illustrating how to search by images using Clarifai&apos;s concepts](/images/illustration-search.png)
 
 #### Add Images to Search Index
 

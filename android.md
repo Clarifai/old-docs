@@ -5,7 +5,7 @@ requirement of internet connectivity and extensive computing power. It makes it 
 image and video recognition on device and in real-time.
 
 <a href="https://www.clarifai.com/get-sdk" target="_blank">
-  ![Android SDK](/developer/static/images/Andorid-iOs-Clarifai-Available.png)
+  ![Android SDK](/images/Andorid-iOs-Clarifai-Available.png)
 </a>
 
 The Android SDK is currently available. You can get more information on

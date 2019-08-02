@@ -24,7 +24,7 @@ Use this field to create a descriptive name for your API Key. As you start to cr
 
 You will see a list of scopes that you can add on to your API Key for the app that was selected. We recommend generating different keys for very specific purposes - this is the best approach to keep your app secure from malicious attacks. Do **NOT** share your API Key with other users. Here's a list of scopes that your key can have:
 
-![scope](/developer/static/images/keys.png)
+![scope](/images/keys.png)
 
 Note: API Keys do not expire. In case your API Key gets compromised, you should delete that key, and create a new one with the same scopes.
 
