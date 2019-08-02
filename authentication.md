@@ -10,7 +10,7 @@ Authentication to the API is handled through API Keys. You can limit the scope o
 
 To create an API Key, you can head over to the [Application details page](/apps), and specify what scopes you want the key to have.
 
-![api keys](/developer/static/images/apikey-screen.png)
+![api keys](/images/apikey-screen.png)
 
 **Authorize Applications**
 
