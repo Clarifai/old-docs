@@ -20,6 +20,8 @@ Below is an example of how you would send image URLs and receive back prediction
 
 You can learn all about the different [public models](public-models.md) available later in the guide.
 
+{% code-tabs %}
+{% code-tabs-item title="javascript" %}
 ```javascript
 app.models.initModel({id: Clarifai.GENERAL_MODEL, version: "aa7f35c01e0642fda5cf400f543e7c40"})
       .then(generalModel => {
@@ -29,7 +31,9 @@ app.models.initModel({id: Clarifai.GENERAL_MODEL, version: "aa7f35c01e0642fda5cf
         var concepts = response['outputs'][0]['data']['concepts']
       })
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 
@@ -37,7 +41,9 @@ app = ClarifaiApp(api_key='YOUR_API_KEY')
 model = app.public_models.general_model
 response = model.predict_by_url('@@sampleTrain')
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="java" %}
 ```java
 ConceptModel model = client.getDefaultModels().generalModel();
     ModelVersion modelVersion = model.getVersionByID("the-version").executeSync().get();
@@ -47,7 +53,9 @@ ConceptModel model = client.getDefaultModels().generalModel();
         .withVersion("aa7f35c01e0642fda5cf400f543e7c40")
         .executeSync();
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="csharp" %}
 ```csharp
 using System.Threading.Tasks;
 using Clarifai.API;
@@ -74,7 +82,9 @@ namespace YourNamespace
     }
 }
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="objectivec" %}
 ```objectivec
 ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"@@sampleTrain"];
 [_app getModelByName:@"general-v1.3" completion:^(ClarifaiModel *model, NSError *error) {
@@ -84,7 +94,9 @@ ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"@@sampleTrain"];
                 }];
 }];
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="php" %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Inputs\ClarifaiURLImage;
@@ -116,7 +128,9 @@ if ($response->isSuccessful()) {
     echo "Status code: " . $response->status()->statusCode();
 }
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="bash" %}
 ```bash
 curl -X POST
     -H 'Authorization: Key YOUR_API_KEY'
@@ -135,6 +149,8 @@ curl -X POST
     }'
     https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/versions/aa7f35c01e0642fda5cf400f543e7c40/outputs
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 ```javascript
 {
@@ -309,10 +325,14 @@ curl -X POST
 
 Below is an example of how you would send the bytes of an image and receive back predictions from the `general` model.
 
+{% code-tabs %}
+{% code-tabs-item title="text" %}
 ```text
 
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="javascript" %}
 ```javascript
 app.models.predict(Clarifai.GENERAL_MODEL, {base64: "G7p3m95uAl..."}).then(
   function(response) {
@@ -323,7 +343,9 @@ app.models.predict(Clarifai.GENERAL_MODEL, {base64: "G7p3m95uAl..."}).then(
   }
 );
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 
@@ -333,13 +355,17 @@ model = app.public_models.general_model
 response = model.predict_by_filename('/home/user/image.jpeg')
 # You could also use model.predict_by_bytes or model.predict_by_base64
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="java" %}
 ```java
 client.getDefaultModels().generalModel().predict()
     .withInputs(ClarifaiInput.forImage(new File("/home/user/image.jpeg")))
     .executeSync();
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="csharp" %}
 ```csharp
 using System.IO;
 using System.Threading.Tasks;
@@ -361,7 +387,9 @@ namespace YourNamespace
     }
 }
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="text" %}
 ```text
 UIImage *image = [UIImage imageNamed:@"dress.jpg"];
 ClarifaiImage *clarifaiImage = [[ClarifaiImage alloc] initWithImage:image];
@@ -372,7 +400,9 @@ ClarifaiImage *clarifaiImage = [[ClarifaiImage alloc] initWithImage:image];
                 }];
 }];
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="php" %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Inputs\ClarifaiFileImage;
@@ -401,7 +431,9 @@ if ($response->isSuccessful()) {
     echo "Status code: " . $response->status()->statusCode();
 }
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="text" %}
 ```text
 // Smaller files (195 KB or less)
 
@@ -441,12 +473,16 @@ curl -X POST \
   }
 FILEIN
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="text" %}
 ```text
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-```text
+```javascript
 {
   "status": {
     "code": 10000,
@@ -631,10 +667,14 @@ If your video exceeds the limits, please follow our [tutorial](https://docs.goog
 
 Below is an example of how you would send video URLs and receive back predictions from the `general` model.
 
+{% code-tabs %}
+{% code-tabs-item title="text" %}
 ```text
 
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="javascript" %}
 ```javascript
 const Clarifai = require('clarifai');
 
@@ -662,7 +702,9 @@ app.models.predict(
     }
   });
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.errors import ApiError
 from clarifai.rest import ClarifaiApp
@@ -688,7 +730,9 @@ for frame in frames:
     for concept in frame['data']['concepts']:
         print(' %s %f' % (concept['name'], concept['value']))
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="java" %}
 ```java
 import clarifai2.api.ClarifaiBuilder;
 import clarifai2.api.ClarifaiClient;
@@ -732,7 +776,9 @@ public class YourClassName {
     }
 }
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="csharp" %}
 ```csharp
 using System;
 using System.Collections.Generic;
@@ -786,11 +832,15 @@ namespace YourPackageName
     }
 }
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="text" %}
 ```text
 Objective-C client details coming soon
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="php" %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Inputs\ClarifaiURLVideo;
@@ -830,7 +880,9 @@ if ($response->isSuccessful()) {
     }
 }
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="text" %}
 ```text
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
@@ -856,12 +908,17 @@ curl -X POST \
   }'\
   https://api.clarifai.com/v2/models/@@generalModelId/outputs
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="text" %}
 ```text
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-```text
+
+```javascript
 {
   "status": {
     "code": 10000,
@@ -2085,10 +2142,14 @@ curl -X POST \
 
 Below is an example of how you would send the bytes of a video and receive back predictions from the general model.
 
+{% code-tabs %}
+{% code-tabs-item title="text" %}
 ```text
 
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="javascript" %}
 ```javascript
 const Clarifai = require('clarifai');
 
@@ -2115,7 +2176,9 @@ app.models.predict(
     }
   });
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.errors import ApiError
 from clarifai.rest import ClarifaiApp
@@ -2142,7 +2205,9 @@ for frame in frames:
     for concept in frame['data']['concepts']:
         print(' %s %f' % (concept['name'], concept['value']))
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="java" %}
 ```java
 import clarifai2.api.ClarifaiBuilder;
 import clarifai2.api.ClarifaiClient;
@@ -2187,7 +2252,9 @@ public class YourClassName {
     }
 }
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="csharp" %}
 ```csharp
 using System;
 using System.Collections.Generic;
@@ -2242,11 +2309,15 @@ namespace YourPackageName
     }
 }
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="text" %}
 ```text
 Objective-C client details coming soon
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="php" %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Inputs\ClarifaiFileVideo;
@@ -2286,7 +2357,9 @@ if ($response->isSuccessful()) {
     }
 }
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="text" %}
 ```text
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
@@ -2312,11 +2385,15 @@ curl -X POST \
   }'\
   https://api.clarifai.com/v2/models/@@generalModelId/outputs
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="text" %}
 ```text
 
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="text" %}
 ```text
 {
     "status": {
@@ -2497,4 +2574,6 @@ curl -X POST \
     ]
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
