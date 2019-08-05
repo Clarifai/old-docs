@@ -8,7 +8,29 @@ concepts returned in.
 
 Language | Code
 --- | ---
-Aravic (ar) | ar
+Arabic (ar) | ar
+Bengali (bn) | bn
+Danish (da) | da
+German (de) | de
+English (en) | en
+Spanish (es) | es
+Finnish (fi) | fi
+French (fr) | fr
+Hindi (hi) | hi
+Hungarian (hu) | hu
+Italian (it) | it
+Japanese (ja) | ja
+Korean (ko) | ko
+Dutch (nl) | nl
+Norwegian (no) | no
+Punjabi (pa) | pa
+Polish (pl) | pl
+Portuguese (pt) | pt
+Russian (ru) | ru
+Swedish (sv) | sv
+Turkish (tr) | tr
+Chinese Simplified (zh) | zh
+Chinese Traditional (zh-TW) | zh-TW
 
 #### Supported Models
 
