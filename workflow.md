@@ -28,8 +28,8 @@ After that, the page will reveal a new workflow form to fill out. Fill out the
 Workflow ID field, this will be used to make the API call, so make sure to
 give it something URL friendly! Included there, you will also a list that consists of a model
 field and a version associated with it. For the public models, you will be mandated
-to use the latest version. For your custom models, you will be able to <a href="/guide/models#list-model-versions">
-select the version of your model</a>. To add another model, you will just click underneath your
+to use the latest version. For your custom models, you will be able to 
+[select the version of your model](models.md#list-model-versions)</a>. To add another model, you will just click underneath your
 latest addition on the "Add Model". The max limit of models associated with any given workflow
 is 5 models. If you would like to remove a model, there is a
 large X that will allow you to remove a model. Once you have finished adding everything,

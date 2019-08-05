@@ -6,7 +6,9 @@ concepts returned in.
 
 #### Supported Languages
 
-{{languagestable }}
+Language | Code
+--- | ---
+Aravic (ar) | ar
 
 #### Supported Models
 
