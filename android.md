@@ -15,7 +15,7 @@ The Android SDK is currently available. You can get more information on
 
 
 ### Getting Started On Android
-In order to run the SDK, you will need a Clarifai account. Please <a href="/signup" target="_blank">create one here</a> before proceeding with this guide.
+In order to run the SDK, you will need a Clarifai account. Please [create one here](https://portal.clarifai.com/signup) before proceeding with this guide.
 
 Clarifai Android SDK supports applications running on Android API 21 (Version 5.0 “Lollipop”), or later.
 

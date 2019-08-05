@@ -13,7 +13,7 @@ dominant colors in your image.
 ![inputs outputs](/images/inputs-outputs.png)
 
 Before you get started, if you haven't created an account and received your free API key,
-<a href="/signup" target="_self">please do so</a> before proceeding with this guide. You can begin making API calls
+[please do so](https://portal.clarifai.com/signup) before proceeding with this guide. You can begin making API calls
 for free, a credit card is not required.
 
 Please note that your account will be limited to 100 API calls until you verify your email address.

@@ -1,7 +1,7 @@
 ### API Clients
 
 We recommend using a client library to access the API. We offer official clients in various languages.
-<a href="{{url 'reference' }}">View our API Clients</a>.
+[View our API Clients](https://www.clarifai.com/developer/reference).
 
 For REST documentation please see the cURL examples.
 

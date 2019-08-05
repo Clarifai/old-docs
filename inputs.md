@@ -404,8 +404,8 @@ curl -X POST \
 
 If you would like to add an input with concepts, you can do so like this. Concepts play an important role in
 creating your own models using your own concepts. You can learn more about
-<a href="{{url 'guide-train' }}">creating your own models</a> above. Concepts also help you search for inputs.
-You can <a href="{{url 'guide-search' }}">learn more about search</a> here.
+[creating your own models](train.md) above. Concepts also help you search for inputs.
+You can [learn more about search](search.md) here.
 
 When you add a concept to an input, you need to indicate whether the concept is present in the image or if it
 is not present.
@@ -566,7 +566,7 @@ curl -X POST \
 ### Add Inputs With Custom Metadata
 
 In addition to adding an input with concepts, you can also add an input with custom metadata. This
-metadata will then be <a href="/guide/searches#by-custom-metadata">searchable</a>. Metadata can be any
+metadata will then be [searchable](advanced-searches.md#by-custom-metadata). Metadata can be any
 arbitrary JSON.
 
 
@@ -833,7 +833,7 @@ curl -X POST \
 ### Get Inputs
 
 You can list all the inputs (images) you have previously added either for
-<a href="{{url 'guide-search' }}">search</a> or <a href="{{url 'guide-train' }}">train</a>.
+[search](advanced-searches.md) or [train](train.md).
 
 If you added inputs with concepts, they will be returned in the response as well.
 

@@ -1,7 +1,7 @@
 ### Languages
 
 The Clarifai API supports many languages in addition to English. When making a
-<a href="/guide/predict#predict">predict api request</a>, you can pass in the language you would like the
+[predict api request](predict.md), you can pass in the language you would like the
 concepts returned in.
 
 #### Supported Languages
@@ -11,7 +11,7 @@ concepts returned in.
 #### Supported Models
 
 The only public model which supports languages other than English is the
-<a href="/models/general-image-recognition-model-aaa03c23b3724a16a56b629203edc62c">General model</a>. If you make a predict request using a language other
+[General model](https://www.clarifai.com/models/general-image-recognition-model-aaa03c23b3724a16a56b629203edc62c). If you make a predict request using a language other
 than English on a public model other than General, you will receive an error.
 
 #### Default Language

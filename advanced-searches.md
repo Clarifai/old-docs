@@ -199,7 +199,7 @@ curl -X POST \
 
 ### By Custom Concepts
 
-After you have <a href="/guide/inputs#add-inputs-with-concepts">added inputs with concepts</a>, you can
+After you have [added inputs with concepts](inputs.md#add-inputs-with-concepts), you can
 search by those concepts.
 
 
@@ -877,7 +877,7 @@ https://api.clarifai.com/v2/searches
 
 ### By Custom Metadata
 
-After you have <a href="/guide/#add-inputs-with-custom-metadata">added inputs with custom metadata</a>,
+After you have [added inputs with custom metadata](inputs.md#add-inputs-with-custom-metadata),
 you can search by that metadata.
 
 Below is an example of searching over custom metadata. You can exact match any `key`: `value` pair no matter

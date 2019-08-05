@@ -4,7 +4,7 @@ You can set additional parameters to gain flexibility in the predict operation.
 ### Select Concepts
 By putting this additional parameter on your predict calls, you can receive predict value(s) for **only** the concepts that you want to. You can specify particular concepts by either their id and/or their name. The concept names and ids are case sensitive, and so, these must be exact matches.
 
-To retrieve an entire list of concepts from a given model use the `GET /v2/models/{model_id}/output_info` endpoint. Check out the <a href="/guide/models#get-model-output-info-by-id">Advanced Models</a> section for how to use with any of the API clients!
+To retrieve an entire list of concepts from a given model use the `GET /v2/models/{model_id}/output_info` endpoint. Check out the [Advanced Models](models.md#get-model-output-info-by-id) section for how to use with any of the API clients!
 
 If you submit a request with not an exact match of the concept id or name, you will receive an invalid model argument error. However, if one or more matches while one or more do not, the API will respond with a Mixed Success.
 
@@ -200,7 +200,7 @@ https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs
 
 ### Maximum Concepts
 
-Setting the max concepts parameter will customize how many concepts and their corresponding probability scores the predict endpoint will return. If not specified, the predict endpoint will return the top 20 concepts. You can currently set the max concepts parameter to any number in the range: [1-200]. If your use case requires more concepts, please contact <a href="mailto:support@clarifai.com">Support</a>.
+Setting the max concepts parameter will customize how many concepts and their corresponding probability scores the predict endpoint will return. If not specified, the predict endpoint will return the top 20 concepts. You can currently set the max concepts parameter to any number in the range: [1-200]. If your use case requires more concepts, please contact [Support](mailto:support@clarifai.com).
 
 
 
