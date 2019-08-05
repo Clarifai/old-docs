@@ -5,7 +5,7 @@ The *Video API* analyzes video and predicts what's inside of it.
 The Video API will return a list of predicted concepts for every frame of video. Video is processed at 1
 frame per second. This means you will receive a list of concepts for every second of your video.
 
-You can run Predict on your video using a select number of <a href="https://clarifai.com/models" target="_self">Public Models</a>. The models
+You can run Predict on your video using a select number of [Public Models](https://clarifai.com/models). The models
 that are currently supported are: Apparel, Food, General, NSFW, Travel, and Wedding. You make an API call
 by providing the `ModelId` parameter as outlined in the [Predict API](predict.md).
 
@@ -129,14 +129,14 @@ The Video API currently accepts videos in the following formats: .avi, .mp4, .wm
 
 There are certain limits imposed on you when using the Video API. Some of these are technical in nature,
 and others are based on your plan. If you need to increase your limits, you may do so by
-<a href="https://clarifai.com/developer/support/" target="_self">contacting support</a>. Please familiarize yourself with the limits below.
+[contacting support](https://clarifai.com/developer/support/). Please familiarize yourself with the limits below.
 
 #### Data Limits
 
 The Video API currently supports videos of up to 80MB in size or 10min in length (whichever comes first) if you are uploading through URL, and videos of up to 10MB in size, if you are uploading through video bytes (base 64).
 If the video input exceeds the limits, the processing will time out and you will receive a response error.
 
-If your video exceeds the above limits, please follow our <a href="http://help.clarifai.com/videos/how-to-split-video-files-into-smaller-pieces" target="_self">tutorial</a> on how to break up a large
+If your video exceeds the above limits, please follow our [tutorial](http://help.clarifai.com/videos/how-to-split-video-files-into-smaller-pieces) on how to break up a large
 video into smaller components, and send those components into the Video API.
 
 ```response

@@ -11,7 +11,7 @@ You will still be charged for the same operation if it were separate calls to th
 
 ### Workflow Setup
 To set up a workflow, you will need to head over to the
-<a href="https://portal.clarifai.com/apps" target="_self">Applications page</a> through your account.
+[Applications page](https://portal.clarifai.com/apps) through your account.
 From there, you will need to select which application you want to create the
 workflow under.
 
