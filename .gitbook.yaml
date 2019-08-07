@@ -1,2 +1,3 @@
 redirects:
   developer/guide: ./README.md
+  developer/guide/: ./README.md
