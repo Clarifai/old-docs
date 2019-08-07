@@ -10,7 +10,7 @@ The type of prediction is based on what model you run the input through. For exa
 
 ![inputs outputs](/images/inputs-outputs.png)
 
-Before you get started, if you haven't created an account and received your free API key, [please do so](/signup) before proceeding with this guide. You can begin making API calls for free, a credit card is not required.
+Before you get started, if you haven't created an account and received your free API key, [please do so](https://portal.clarifai.com/signup) before proceeding with this guide. You can begin making API calls for free, a credit card is not required.
 
 Please note that your account will be limited to 100 API calls until you verify your email address. After verification, you will receive the full amount of API calls under your plan.
 
