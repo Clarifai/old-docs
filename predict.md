@@ -655,7 +655,7 @@ FILEIN
 
 With a video input, the Predict API response will return a list of predicted concepts for every frame of a video. Video is processed at 1 frame per second. This means you will receive a list of concepts for every second of your video.
 
-You can run Predict on your video using a select number of [public models](/models). The models that are currently supported are: Apparel, Food, General, NSFW, Travel, and Wedding. You make an API call by providing the `{model-id}` parameter and your data parameter is `video` instead of `image`.
+You can run Predict on your video using a select number of [public models](https://www.clarifai.com/models). The models that are currently supported are: Apparel, Food, General, NSFW, Travel, and Wedding. You make an API call by providing the `{model-id}` parameter and your data parameter is `video` instead of `image`.
 
 **Video Limits**
 
