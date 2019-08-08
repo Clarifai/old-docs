@@ -10,7 +10,8 @@ For REST documentation please see the cURL examples.
 ##### Client Installation Instructions
 
 
-
+{% code-tabs %}
+{% code-tabs-item title="javascript" %}
 ```js
 
 // The JavaScript client works in both Node.js and the browser.
@@ -34,7 +35,9 @@ const app = new Clarifai.App({
 
 <script type="text/javascript" src="https://sdk.clarifai.com/js/clarifai-latest.js"></script>
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="python" %}
 ```python
 
 # Pip install the client:
@@ -47,13 +50,15 @@ from clarifai.rest import ClarifaiApp
 
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 
-# You can also create an environment variable called `CLARIFAI_API_KEY` 
+# You can also create an environment variable called `CLARIFAI_API_KEY`
 # and set its value to your API key.
 # In this case, the construction of the object requires no `api_key` argument.
 
 app = ClarifaiApp()
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="java" %}
 ```java
 
 // Our API client is hosted on jCenter, Maven Central, and JitPack.
@@ -94,7 +99,9 @@ new ClarifaiBuilder("YOUR_API_KEY")
     .buildSync(); // or use .build() to get a Future<ClarifaiClient>
 
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 // Within Visual Studio IDE:
@@ -126,7 +133,9 @@ namespace YourNamespace
 // Set `<LangVersion>7.1</LangVersion>` in your .csproj under `<PropertyGroup/>`
 
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="objectivec" %}
 ```objective-c
 
 // Installation via CocoaPods - https://cocoapods.org
@@ -154,15 +163,19 @@ namespace YourNamespace
   import Clarifai
 
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="php" %}
 ```php
 composer require clarifai/clarifai-php
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title="bash" %}
 ```cURL
 
 // Install cURL: https://curl.haxx.se/download.html
 
 ```
-
-
+{% endcode-tabs-item %}
+{% endcode-tabs %}
