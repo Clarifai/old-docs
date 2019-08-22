@@ -1,20 +1,24 @@
-# Getting Started
+# Welcome
 
-### Getting Started
+## Welcome to Clarifai
 
 The Clarifai API offers image and video recognition as a service. Whether you have one image or billions, you are only steps away from using artificial intelligence to recognize your visual content.
 
-The API is built around a simple idea. You send inputs \(an image or video\) to the service and it returns predictions.
+This repository is a collection of our public documentation for our APIs and SDKs. The markdown here gets rendered over at [docs.clarifai.com](https://docs.clarifai.com). We welcome you to improve our docs!
 
-The type of prediction is based on what model you run the input through. For example, if you run your input through the 'food' model, the predictions it returns will contain concepts that the 'food' model knows about. If you run your input through the 'color' model, it will return predictions about the dominant colors in your image.
+## Contributing to our Docs
 
-![inputs outputs](/images/inputs-outputs.png)
+In order to contribute simply follow these steps:
+* [fork](https://help.github.com/en/articles/fork-a-repo) this repository to your account on github
+* make your changes there in a branch
+* create a pull request back for us to review
 
-Before you get started, if you haven't created an account and received your free API key, [please do so](https://portal.clarifai.com/signup) before proceeding with this guide. You can begin making API calls for free, a credit card is not required.
+As soon as the pull request gets reviewed and merged, your contributions will automatically show up at [docs.clarifai.com](https://docs.clarifai.com) within seconds. 
 
-Please note that your account will be limited to 100 API calls until you verify your email address. After verification, you will receive the full amount of API calls under your plan.
+## Other Resources
 
-All API access is over HTTPS, and accessed via the `https://api.clarifai.com` domain. The relative path prefix `/v2/` indicates that we are currently using version 2 of the API.
+If you have landed here by mistake, here are a few other helpful resources for Clarifai: 
 
-In the below examples, we use single brackets `{variable}` to indicate that this is a variable you should replace with a real value.
-
+* [Clarifai Home Page](https://www.clarifai.com) 
+* [Predict Demo](https://www.clarifai.com/demo)
+* [Portal](https://portal.clarifai.com)
