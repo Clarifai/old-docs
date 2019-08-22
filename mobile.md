@@ -29,7 +29,7 @@ The Clarifai SDK is initialized by calling the `startWithApiKey` method. We reco
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 // Only for the Apple SDK
 
@@ -37,14 +37,14 @@ The Clarifai SDK is initialized by calling the `startWithApiKey` method. We reco
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 // Only for the Apple SDK
 
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 // Only for the Apple SDK
 
@@ -52,7 +52,7 @@ The Clarifai SDK is initialized by calling the `startWithApiKey` method. We reco
 {% endcode-tabs-item %}
 
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 @import Clarifai_Apple_SDK;
 
@@ -66,7 +66,7 @@ The Clarifai SDK is initialized by calling the `startWithApiKey` method. We reco
 {% endcode-tabs-item %}
 
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 // Only for the Apple SDK
 
@@ -75,7 +75,7 @@ The Clarifai SDK is initialized by calling the `startWithApiKey` method. We reco
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 // Only for the Apple SDK
 
@@ -106,7 +106,7 @@ All inputs are created from a DataAsset object in the Apple SDK. A Data Asset is
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 // Only for the Apple SDK
 
@@ -114,14 +114,14 @@ All inputs are created from a DataAsset object in the Apple SDK. A Data Asset is
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 // Only for the Apple SDK
 
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 // Only for the Apple SDK
 
@@ -129,7 +129,7 @@ All inputs are created from a DataAsset object in the Apple SDK. A Data Asset is
 {% endcode-tabs-item %}
 
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 // Initialize CAIImage object from an image URL
 NSURL *imageURL = [NSURL urlWithString:@"<your image url>"];
@@ -150,7 +150,7 @@ CAIInput *input = [[CAIInput alloc] initWithDataAsset:dataAsset];
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 // Only for the Apple SDK
 
@@ -159,7 +159,7 @@ CAIInput *input = [[CAIInput alloc] initWithDataAsset:dataAsset];
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 // Only for the Apple SDK
 
@@ -184,7 +184,7 @@ After creating Inputs, it is also possible to save them in the SDK for later use
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 // Only for the Apple SDK
 
@@ -192,14 +192,14 @@ After creating Inputs, it is also possible to save them in the SDK for later use
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 // Only for the Apple SDK
 
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 // Only for the Apple SDK
 
@@ -207,7 +207,7 @@ After creating Inputs, it is also possible to save them in the SDK for later use
 {% endcode-tabs-item %}
 
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 // Saving an input
 [[Clarifai sharedInstance] saveEntities:@[input]];
@@ -225,7 +225,7 @@ After creating Inputs, it is also possible to save them in the SDK for later use
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 // Only for the Apple SDK
 
@@ -233,7 +233,7 @@ After creating Inputs, it is also possible to save them in the SDK for later use
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 // Only for the Apple SDK
 
@@ -261,7 +261,7 @@ Note that the prediction results from pre-built models on the SDK may differ fro
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 // Only for the Apple SDK
 
@@ -269,14 +269,14 @@ Note that the prediction results from pre-built models on the SDK may differ fro
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 // Only for the Apple SDK
 
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 // Only for the Apple SDK
 
@@ -284,7 +284,7 @@ Note that the prediction results from pre-built models on the SDK may differ fro
 {% endcode-tabs-item %}
 
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 // See how to create an input from the examples above
 CAIInput *input = [[CAIInput alloc] initWithDataAsset:dataAsset];
@@ -300,7 +300,7 @@ CAIModel *generalModel = [Clarifai sharedInstance].generalModel;
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 // Only for the Apple SDK
 
@@ -308,7 +308,7 @@ CAIModel *generalModel = [Clarifai sharedInstance].generalModel;
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 // Only for the Apple SDK
 
@@ -333,7 +333,7 @@ Our team has developed a variety of pre-trained public models which our users ca
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 // Only for the Apple SDK
 
@@ -341,14 +341,14 @@ Our team has developed a variety of pre-trained public models which our users ca
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 // Only for the Apple SDK
 
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 // Only for the Apple SDK
 
@@ -356,7 +356,7 @@ Our team has developed a variety of pre-trained public models which our users ca
 {% endcode-tabs-item %}
 
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 // Get the General Model
 CAIModel *generalModel = [Clarifai sharedInstance].generalModel;
@@ -386,7 +386,7 @@ CAIModel *generalModel = [Clarifai sharedInstance].generalModel;
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 // Only for the Apple SDK
 
@@ -394,7 +394,7 @@ CAIModel *generalModel = [Clarifai sharedInstance].generalModel;
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 // Only for the Apple SDK
 

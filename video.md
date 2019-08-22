@@ -27,7 +27,7 @@ app.models.predict(Clarifai.GENERAL_MODEL, 'https://samples.clarifai.com/beer.mp
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import Video as ClVideo
 
@@ -38,7 +38,7 @@ model.predict([video])
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 ClarifaiResponse<List<ClarifaiOutput<Frame>>> frames = client.getDefaultModels().generalVideoModel().predict()
        .withInputs(
@@ -49,21 +49,21 @@ ClarifaiResponse<List<ClarifaiOutput<Frame>>> frames = client.getDefaultModels()
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 // Coming Soon
 ```
 {% endcode-tabs-item %}
 
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 Objective-C client details coming soon
 ```
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X POST \
@@ -107,7 +107,7 @@ app.models.predict(Clarifai.GENERAL_MODEL, {base64: 'AAAAIGZ...'}, {video: true}
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import Video as ClVideo
 
@@ -118,7 +118,7 @@ model.predict([video])
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 ClarifaiResponse<List<ClarifaiOutput<Frame>>> frames = client.getDefaultModels().generalVideoModel().predict()
        .withInputs(
@@ -129,21 +129,21 @@ ClarifaiResponse<List<ClarifaiOutput<Frame>>> frames = client.getDefaultModels()
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 // Coming Soon
 ```
 {% endcode-tabs-item %}
 
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 Objective-C client details coming soon
 ```
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \

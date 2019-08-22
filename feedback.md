@@ -63,7 +63,7 @@ app.models.feedback(Clarifai.GENERAL_MODEL, 'https://samples.clarifai.com/dog.ti
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp, FeedbackInfo
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -83,7 +83,7 @@ model.send_concept_feedback(
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 ModelFeedbackRequest request =
     client.modelFeedback(client.getDefaultModels().generalModel().id())
@@ -101,7 +101,7 @@ ModelFeedbackRequest request =
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Collections.Generic;
@@ -139,14 +139,14 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 // Coming Soon
 ```
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -180,7 +180,7 @@ if ($response-> isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
@@ -284,7 +284,7 @@ app.models.feedback(Clarifai.LOGO_MODEL, 'https://clarifai.com/images/model-samp
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp, Region, RegionInfo, BoundingBox, Concept, FeedbackInfo
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -307,7 +307,7 @@ model.send_region_feedback(
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 ModelFeedbackRequest request =
     client.modelFeedback(client.getDefaultModels().logoModel().id())
@@ -327,7 +327,7 @@ ModelFeedbackRequest request =
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Collections.Generic;
@@ -371,14 +371,14 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 // Coming Soon
 ```
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -420,7 +420,7 @@ if ($response-> isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
@@ -510,7 +510,7 @@ app.inputs.searchFeedback('{input_id}', '{search_id}', '{end_user_id}', '{sessio
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp, FeedbackInfo
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -522,7 +522,7 @@ app.inputs.send_search_feedback(
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 SearchesFeedbackRequest request = client.searchesFeedback()
     .withId("{input_id}")
@@ -534,7 +534,7 @@ SearchesFeedbackRequest request = client.searchesFeedback()
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -562,14 +562,14 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 // Coming Soon
 ```
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -592,7 +592,7 @@ if ($response-> isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \

@@ -70,7 +70,7 @@ app.models.predict(Clarifai.GENERAL_MODEL, "https://samples.clarifai.com/metro-n
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -87,7 +87,7 @@ m.predict_by_url('https://samples.clarifai.com/metro-north.jpg', lang='ja')
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 
 client.predict(client.getDefaultModels().generalModel().id())
@@ -99,7 +99,7 @@ client.predict(client.getDefaultModels().generalModel().id())
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -128,7 +128,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 // first get the general model.
@@ -149,7 +149,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -185,7 +185,7 @@ if ($response-> isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X POST \
@@ -421,7 +421,7 @@ app.inputs.search({
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 
@@ -434,7 +434,7 @@ app.inputs.search_by_predicted_concepts(u'人', lang='zh')
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 
 client.searchInputs(
@@ -447,7 +447,7 @@ client.searchInputs(
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Collections.Generic;
@@ -479,7 +479,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 // create search term with concept you want to search predicted inputs with.
@@ -499,7 +499,7 @@ ClarifaiSearchTerm *searchTerm = [[ClarifaiSearchTerm alloc] initWithSearchItem:
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -532,7 +532,7 @@ if ($response-> isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X POST \
@@ -589,7 +589,7 @@ app.concepts.search('人*', 'zh').then(
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 
@@ -600,7 +600,7 @@ app.concepts.search(u'人*', lang='zh')
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 
 client.searchConcepts("人*")
@@ -612,7 +612,7 @@ client.searchConcepts("人*")
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -639,7 +639,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 // Search for all concept names in chinese, beginning with "人".
@@ -654,7 +654,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -685,7 +685,7 @@ if ($response->isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X POST \
