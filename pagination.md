@@ -5,12 +5,17 @@ we are getting all inputs and specifying to start at page 2 and get back 20 resu
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.list({page: 2, perPage: 20});
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -19,6 +24,9 @@ app.inputs.get_by_page(page=2, per_page=20)
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.getInputs()
@@ -28,6 +36,9 @@ client.getInputs()
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -51,6 +62,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 [app getInputsOnPage:2 pageSize:20 completion:^(NSArray<ClarifaiInput *> *inputs, NSError *error) {
@@ -59,6 +73,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Inputs\ClarifaiInput;
@@ -86,6 +103,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X GET \
@@ -93,5 +113,5 @@ curl -X GET \
   https://api.clarifai.com/v2/inputs?page=2&per_page=20
 
 ```
-
-
+{% endcode-tabs-item %}
+{% endcode-tabs %}

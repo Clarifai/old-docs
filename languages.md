@@ -53,6 +53,8 @@ language. Here is how you predict concepts in Chinese:
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.models.predict(Clarifai.GENERAL_MODEL, "https://samples.clarifai.com/metro-north.jpg", {language: 'zh'}).then(
@@ -66,6 +68,9 @@ app.models.predict(Clarifai.GENERAL_MODEL, "https://samples.clarifai.com/metro-n
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -80,6 +85,9 @@ m.predict_by_url('https://samples.clarifai.com/metro-north.jpg', lang='ja')
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.predict(client.getDefaultModels().generalModel().id())
@@ -89,6 +97,9 @@ client.predict(client.getDefaultModels().generalModel().id())
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -115,6 +126,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 // first get the general model.
@@ -133,6 +147,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -153,7 +170,7 @@ if ($response-> isSuccessful()) {
     $output = $response->get();
 
     echo "Predicted concepts:\n";
-    
+
     foreach ($output->data() as $concept) {
         echo $concept->name() . ': ' . $concept->value() . "\n";
     }
@@ -166,6 +183,9 @@ if ($response-> isSuccessful()) {
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -193,10 +213,14 @@ curl -X POST \
   https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
-```response
+{% code-tabs %}
+{% code-tabs-item title="Response JSON" %}
+```json
 {
   "status": {
     "code": 10000,
@@ -364,6 +388,8 @@ curl -X POST \
   ]
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 #### Example Search By Tag API Request
 
@@ -373,6 +399,8 @@ searching for '人' which is simplified Chinese for 'people'.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.search({
@@ -391,6 +419,9 @@ app.inputs.search({
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 
@@ -401,6 +432,9 @@ app.inputs.search_by_predicted_concepts(u'人', lang='zh')
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.searchInputs(
@@ -411,6 +445,9 @@ client.searchInputs(
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Collections.Generic;
@@ -440,6 +477,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 // create search term with concept you want to search predicted inputs with.
@@ -457,6 +497,9 @@ ClarifaiSearchTerm *searchTerm = [[ClarifaiSearchTerm alloc] initWithSearchItem:
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -487,6 +530,9 @@ if ($response-> isSuccessful()) {
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -514,6 +560,8 @@ curl -X POST \
   https://api.clarifai.com/v2/searches
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -524,6 +572,8 @@ You can also search for concepts in a different language:
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.concepts.search('人*', 'zh').then(
@@ -537,6 +587,9 @@ app.concepts.search('人*', 'zh').then(
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 
@@ -545,6 +598,9 @@ app.concepts.search(u'人*', lang='zh')
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.searchConcepts("人*")
@@ -554,6 +610,9 @@ client.searchConcepts("人*")
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -578,6 +637,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 // Search for all concept names in chinese, beginning with "人".
@@ -590,6 +652,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -618,6 +683,9 @@ if ($response->isSuccessful()) {
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -633,10 +701,14 @@ curl -X POST \
   https://api.clarifai.com/v2/concepts/searches
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
-```response
+{% code-tabs %}
+{% code-tabs-item title="Response JSON" %}
+```json
 {
   "status": {
     "code": 10000,
@@ -806,3 +878,5 @@ curl -X POST \
   ]
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}

@@ -13,6 +13,8 @@ by providing the `ModelId` parameter as outlined in the [Predict API](predict.md
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 app.models.predict(Clarifai.GENERAL_MODEL, 'https://samples.clarifai.com/beer.mp4', {video: true})
   .then(response => {
@@ -23,6 +25,9 @@ app.models.predict(Clarifai.GENERAL_MODEL, 'https://samples.clarifai.com/beer.mp
   });
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import Video as ClVideo
 
@@ -31,6 +36,9 @@ video = ClVideo(url='https://samples.clarifai.com/beer.mp4')
 model.predict([video])
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 ClarifaiResponse<List<ClarifaiOutput<Frame>>> frames = client.getDefaultModels().generalVideoModel().predict()
        .withInputs(
@@ -39,10 +47,23 @@ ClarifaiResponse<List<ClarifaiOutput<Frame>>> frames = client.getDefaultModels()
        .executeSync();
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
+```csharp
+// Coming Soon
+```
+{% endcode-tabs-item %}
+
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 Objective-C client details coming soon
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -62,6 +83,8 @@ curl -X POST \
   }'\
   https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -70,6 +93,8 @@ curl -X POST \
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 app.models.predict(Clarifai.GENERAL_MODEL, {base64: 'AAAAIGZ...'}, {video: true})
   .then(response => {
@@ -80,6 +105,9 @@ app.models.predict(Clarifai.GENERAL_MODEL, {base64: 'AAAAIGZ...'}, {video: true}
   });
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import Video as ClVideo
 
@@ -88,6 +116,9 @@ video = ClVideo(filename='/home/user/video.mp4')
 model.predict([video])
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 ClarifaiResponse<List<ClarifaiOutput<Frame>>> frames = client.getDefaultModels().generalVideoModel().predict()
        .withInputs(
@@ -96,10 +127,23 @@ ClarifaiResponse<List<ClarifaiOutput<Frame>>> frames = client.getDefaultModels()
        .executeSync();
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
+```csharp
+// Coming Soon
+```
+{% endcode-tabs-item %}
+
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 Objective-C client details coming soon
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
@@ -118,6 +162,8 @@ curl -X POST \
   }'\
   https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -139,7 +185,9 @@ If the video input exceeds the limits, the processing will time out and you will
 If your video exceeds the above limits, please follow our [tutorial](http://help.clarifai.com/videos/how-to-split-video-files-into-smaller-pieces) on how to break up a large
 video into smaller components, and send those components into the Video API.
 
-```response
+{% code-tabs %}
+{% code-tabs-item title="Response JSON" %}
+```json
 {
   "status": {
     "code": 10000,
@@ -1358,3 +1406,5 @@ video into smaller components, and send those components into the Video API.
   ]
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}

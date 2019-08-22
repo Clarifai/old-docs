@@ -9,7 +9,7 @@ see how you would like it to see, you can then use that model to make prediction
 
 You do not need many images to get started. We recommend starting with 10 and adding more as needed. Before you train your first model you will have needed to [create an application](applications.md#create-an-application). From there you will be able to change your [Base Workflow](applications#base-workflow) to optimize custom training using the knowledge base from select public models.
 
-![inputs outputs](/images/illustration-training.png)  
+![inputs outputs](/images/illustration-training.png)
 
 ### Add Images With Concepts
 
@@ -18,6 +18,8 @@ your model to see.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.create({
@@ -32,6 +34,9 @@ app.inputs.create({
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 from clarifai.rest import Image as ClImage
@@ -46,6 +51,9 @@ app.inputs.bulk_create_images([img1, img2])
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.addInputs()
@@ -56,6 +64,9 @@ client.addInputs()
     .executeSync();
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Collections.Generic;
@@ -83,6 +94,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg" andConcepts:@"cute puppy"];
@@ -92,6 +106,9 @@ ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clar
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -117,6 +134,9 @@ if ($response-> isSuccessful()) {
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -143,11 +163,15 @@ curl -X POST \
   https://api.clarifai.com/v2/inputs
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
 
-```response
+{% code-tabs %}
+{% code-tabs-item title="Response JSON" %}
+```json
 
 {
   "status": {
@@ -180,6 +204,8 @@ curl -X POST \
 }
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 ### Create A Model
 
@@ -190,6 +216,8 @@ Take note of the `model id` that is returned in the response. You'll need that f
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.models.create(
@@ -208,6 +236,9 @@ app.models.create(
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -216,6 +247,9 @@ model = app.models.create('pets', concepts=['boscoe'])
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.createModel("pets")
@@ -225,6 +259,9 @@ client.createModel("pets")
     .executeSync();
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Collections.Generic;
@@ -250,6 +287,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 [app createModel:@[concept] name:modelName conceptsMutuallyExclusive:NO closedEnvironment:NO
@@ -259,6 +299,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -281,6 +324,9 @@ if ($response-> isSuccessful()) {
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -308,11 +354,15 @@ curl -X POST \
   https://api.clarifai.com/v2/models
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
 
-```response
+{% code-tabs %}
+{% code-tabs-item title="Response JSON" %}
+```json
 
 {
   "status": {
@@ -344,6 +394,8 @@ curl -X POST \
 }
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 ### Train The Model
 
@@ -352,10 +404,12 @@ train the model. When you train a model, you are telling the system to look at a
 you've provided and learn from them. This train operation is asynchronous. It may take a few seconds for your
 model to be fully trained and ready.
 
-Keep note of the `model_version id` in the response. We'll need that for the next section when we predict with the model. 
+Keep note of the `model_version id` in the response. We'll need that for the next section when we predict with the model.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.models.train("{model_id}").then(
@@ -380,6 +434,9 @@ model.train().then(
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 
@@ -390,11 +447,17 @@ model.train()
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.trainModel("{model_id}").executeSync();
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -417,6 +480,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg"]
@@ -428,6 +494,9 @@ ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clar
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -449,6 +518,9 @@ if ($response-> isSuccessful()) {
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -457,11 +529,15 @@ curl -X POST \
   https://api.clarifai.com/v2/models/<model_id>/versions
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
 
-```response
+{% code-tabs %}
+{% code-tabs-item title="Response JSON" %}
+```json
 
 {
   "status": {
@@ -493,10 +569,12 @@ curl -X POST \
 }
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 ### Predict With The Model
 
-Now that we have a trained model. We can start making predictions with it. In our predict call we need to specify three items. 
+Now that we have a trained model. We can start making predictions with it. In our predict call we need to specify three items.
 The `model id`, `model_version id` and the `input` we want a prediction for.
 
 *Note: you can repeat the above steps as often as you like. By adding more images with concepts and training,
@@ -504,6 +582,8 @@ you can get the model to predict exactly how you want it to.*
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 let app = new Clarifai.App({apiKey: 'YOUR_API_KEY'});
@@ -520,6 +600,9 @@ app.models.predict({id:'MODEL_ID', version:'MODEL_VERSION_ID'}, "https://samples
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -530,6 +613,9 @@ model.model_version = 'MODEL_VERSION_ID'  # This is optional. Defaults to the la
 response = model.predict_by_url('https://samples.clarifai.com/metro-north.jpg')
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 ModelVersion modelVersion = client.getModelVersionByID("MODEL_ID", "MODEL_VERSION_ID")
@@ -544,6 +630,9 @@ ModelVersion modelVersion = client.getModelVersionByID("MODEL_ID", "MODEL_VERSIO
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -571,6 +660,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg"]
@@ -583,6 +675,9 @@ ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clar
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -615,6 +710,9 @@ if ($response-> isSuccessful()) {
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -636,10 +734,14 @@ curl -X POST \
 
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
-```response
+{% code-tabs %}
+{% code-tabs-item title="Response JSON" %}
+```json
 
 {
   "status": {
@@ -699,3 +801,5 @@ curl -X POST \
 }
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}

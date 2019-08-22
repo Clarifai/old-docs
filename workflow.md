@@ -1,10 +1,10 @@
 ## Workflow
 
-Workflows are a new entity added to Clarifai, which encompass one or more Public or 
-Custom model(s). Every workflow is attached to one of your applications. 
+Workflows are a new entity added to Clarifai, which encompass one or more Public or
+Custom model(s). Every workflow is attached to one of your applications.
 Under each workflow, you will see a list of the public models and all custom models in
-that application when selecting models to add to your workflow. With Workflow Predict, you 
-will be able to reduce the latency and in turn make your product more efficient. 
+that application when selecting models to add to your workflow. With Workflow Predict, you
+will be able to reduce the latency and in turn make your product more efficient.
 
 Note: this won't have any impact on the price you are charged per call.
 You will still be charged for the same operation if it were separate calls to the API.
@@ -24,11 +24,11 @@ Then under that application, you will see a section labeled "App Workflows" and 
 ![Image showing My First Application and the Create Workflow button underneath the
 Create API Key](/images/create-workflow-new.png)
 
-After that, the page will reveal a new workflow form to fill out. Fill out the 
+After that, the page will reveal a new workflow form to fill out. Fill out the
 Workflow ID field, this will be used to make the API call, so make sure to
 give it something URL friendly! Included there, you will also a list that consists of a model
 field and a version associated with it. For the public models, you will be mandated
-to use the latest version. For your custom models, you will be able to 
+to use the latest version. For your custom models, you will be able to
 [select the version of your model](models.md#list-model-versions)</a>. To add another model, you will just click underneath your
 latest addition on the "Add Model". The max limit of models associated with any given workflow
 is 5 models. If you would like to remove a model, there is a
@@ -41,8 +41,8 @@ time, in case you don't like it.
 under a workflow with the name my-workflow](/images/my-workflow-new.png)
 
 ### Workflow Predict
-The Workflow Predict API allows you to predict using 1 or more model(s), regardless of them 
-being public or custom, within a single API call! The max number of inputs processed at once with 
+The Workflow Predict API allows you to predict using 1 or more model(s), regardless of them
+being public or custom, within a single API call! The max number of inputs processed at once with
 any given workflow is 32.
 
 Now that you have that all set up, you will be able to predict under a workflow using
@@ -58,6 +58,8 @@ a given input.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 app.workflow.predict('{workflow-id}', "https://samples.clarifai.com/metro-north.jpg").then(
     function(response){
@@ -69,6 +71,9 @@ app.workflow.predict('{workflow-id}', "https://samples.clarifai.com/metro-north.
 );
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 from clarifai.rest import Workflow
@@ -79,12 +84,18 @@ workflow = Workflow(app.api, workflow_id="YOUR_WORKFLOW_ID")
 response = workflow.predict_by_url('https://samples.clarifai.com/metro-north.jpg')
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 client.workflowPredict("{workflow-id}")
         .withInputs(ClarifaiInput.forImage("https://samples.clarifai.com/metro-north.jpg"))
         .executeSync();
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Collections.Generic;
@@ -113,10 +124,16 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 // Coming Soon
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -154,6 +171,9 @@ if ($response-> isSuccessful()) {
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 curl -X POST \
   -H 'authorization: Key YOUR_API_KEY' \
@@ -166,15 +186,19 @@ curl -X POST \
               "url": "https://samples.clarifai.com/metro-north.jpg"
           }
         }
-      }  
+      }
     ]
 }'\
 https://api.clarifai.com/v2/workflows/{workflow-id}/results
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
-```response
+{% code-tabs %}
+{% code-tabs-item title="Response JSON" %}
+```json
 {
   "status": {
     "code": 10000,
@@ -417,3 +441,5 @@ https://api.clarifai.com/v2/workflows/{workflow-id}/results
   ]
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}

@@ -7,6 +7,8 @@ predictions.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.search([
@@ -31,6 +33,9 @@ app.inputs.search([
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_CLARIFAI_KEY')
@@ -52,6 +57,9 @@ app.inputs.search_by_predicted_concepts(concepts=['cat', 'dog'], values=[True, F
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 // Search concept by name
@@ -77,6 +85,9 @@ client.searchInputs(SearchClause.matchConcept(Concept.forID("cat").withValue(fal
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -113,6 +124,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 // First create a search term with a concept you want to search.
@@ -128,6 +142,9 @@ ClarifaiSearchTerm *searchTerm = [ClarifaiSearchTerm searchByPredictedConcept:co
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Searches\SearchBy;
@@ -168,6 +185,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -194,6 +214,8 @@ curl -X POST \
   https://api.clarifai.com/v2/searches
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -204,6 +226,8 @@ search by those concepts.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.search([
@@ -230,6 +254,9 @@ app.inputs.search([
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_CLARIFAI_KEY')
@@ -251,6 +278,9 @@ app.inputs.search_by_annotated_concepts(concepts=['cat', 'dog'], values=[True, F
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 // Search concept by name
@@ -276,6 +306,9 @@ client.searchInputs(SearchClause.matchUserTaggedConcept(Concept.forID("cat").wit
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -314,6 +347,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 // If you have previously added inputs tagged with "dog", you can search for them by the same tag.
@@ -329,6 +365,9 @@ ClarifaiSearchTerm *term = [ClarifaiSearchTerm searchInputsByConcept:concept];
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Searches\SearchBy;
@@ -370,6 +409,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -396,6 +438,8 @@ curl -X POST \
   https://api.clarifai.com/v2/searches
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -406,6 +450,8 @@ how similar the results are to the image you provided in your query.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.search(
@@ -425,6 +471,9 @@ app.inputs.search(
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_CLARIFAI_KEY')
@@ -454,6 +503,9 @@ app.inputs.search_by_image(fileobj=fio)
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 // Search by image URL (String or java.net.URL)
@@ -468,6 +520,9 @@ client.searchInputs(SearchClause.matchImageVisually(ClarifaiImage.of(new File("i
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.IO;
@@ -500,6 +555,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 ClarifaiSearchTerm *searchTerm = [ClarifaiSearchTerm searchVisuallyWithImageURL:@"https://samples.clarifai.com/metro-north.jpg"];
@@ -513,6 +571,9 @@ ClarifaiSearchTerm *searchTerm = [ClarifaiSearchTerm searchVisuallyWithImageURL:
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Searches\SearchBy;
@@ -541,6 +602,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -567,6 +631,8 @@ curl -X POST \
   https://api.clarifai.com/v2/searches
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -576,6 +642,8 @@ based upon on how similar the results are to the crop of the image you provide i
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 app.inputs.search(
   {
@@ -594,6 +662,9 @@ app.inputs.search(
 );
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -603,6 +674,9 @@ search = app.inputs.search_by_image(url='https://samples.clarifai.com/puppy.jpg'
 print search
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 client.searchInputs(SearchClause.matchImageVisually(ClarifaiImage.of("https://samples.clarifai.com/puppy.jpg")
     .withCrop(Crop.create()
@@ -617,6 +691,9 @@ client.searchInputs(SearchClause.matchImageVisually(ClarifaiImage.of("https://sa
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -643,10 +720,16 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 // Coming Soon
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Crop;
@@ -677,6 +760,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 curl -X POST \
   -H 'authorization: Key YOUR_API_KEY' \
@@ -694,13 +780,15 @@ curl -X POST \
                 }
             }
           }
-        }  
+        }
       }
     ]
   }
 }'\
 https://api.clarifai.com/v2/searches
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -710,6 +798,8 @@ You can combine a search to find inputs that have concepts you have supplied as 
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.search([
@@ -737,6 +827,9 @@ app.inputs.search([
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp, InputSearchTerm, OutputSearchTerm, SearchQueryBuilder
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -751,6 +844,9 @@ app.inputs.search(query)
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.searchInputs()
@@ -764,6 +860,9 @@ client.searchInputs()
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -789,6 +888,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 ClarifaiConcept *conceptFromGeneralModel = [[ClarifaiConcept alloc] initWithConceptName:@"fast"];
@@ -806,6 +908,9 @@ ClarifaiSearchTerm *term2 = [ClarifaiSearchTerm searchByPredictedConcept:concept
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Searches\SearchBy;
@@ -834,6 +939,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -872,6 +980,8 @@ curl -X POST \
 https://api.clarifai.com/v2/searches
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -929,6 +1039,8 @@ How to perform searches:
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 // Search with only metadata
@@ -987,6 +1099,9 @@ app.inputs.search([
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp, InputSearchTerm, OutputSearchTerm, SearchQueryBuilder
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1007,6 +1122,9 @@ app.inputs.search(query)
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 JsonObject metadata = new JsonObject();
@@ -1018,6 +1136,9 @@ List<SearchHit> hits = client
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -1045,6 +1166,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 // Search by metadata only.
@@ -1071,10 +1195,16 @@ ClarifaiSearchTerm *searchTerm2 = [ClarifaiSearchTerm searchInputsWithMetadata:@
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 // Coming soon
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -1099,6 +1229,8 @@ curl -X POST \
   https://api.clarifai.com/v2/searches
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -1108,6 +1240,8 @@ You can also search for an input by URL.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.search(
@@ -1128,6 +1262,9 @@ app.inputs.search(
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1137,6 +1274,9 @@ app.inputs.search_by_metadata(meta)
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 // Lookup images with this URL
@@ -1146,6 +1286,9 @@ client.searchInputs(SearchClause.matchImageURL(ClarifaiImage.of("https://samples
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -1170,6 +1313,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 
@@ -1184,6 +1330,9 @@ ClarifaiSearchTerm *term = [ClarifaiSearchTerm searchInputsWithImageURL:@"https:
 }];
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Searches\SearchBy;
@@ -1212,6 +1361,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -1236,6 +1388,8 @@ curl -X POST \
   https://api.clarifai.com/v2/searches
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -1265,6 +1419,8 @@ GPS coordinate system (SRID 4326). There can be at most one single geo point ass
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 app.inputs.create({
   url: "https://samples.clarifai.com/puppy.jpg",
@@ -1279,6 +1435,9 @@ app.inputs.create({
 );
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp, Geo, GeoPoint
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1288,11 +1447,17 @@ geo_p1 = Geo(geo_point=GeoPoint(116.2317,39.5427))
 app.inputs.create_image_from_url(url="https://samples.clarifai.com/puppy.jpg", geo=geo_p1)
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 client.addInputs().plus(ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpg")
     .withGeo(PointF.at(116.2317F, 39.5427F))).executeSync();
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -1319,6 +1484,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/metro-north.jpg"];
 image.location = [[ClarifaiLocation alloc] initWithLatitude:116.2317 longitude:39.5427];
@@ -1329,6 +1497,9 @@ image.location = [[ClarifaiLocation alloc] initWithLatitude:116.2317 longitude:3
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\GeoPoint;
@@ -1351,6 +1522,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -1378,6 +1552,8 @@ curl -X POST \
   https://api.clarifai.com/v2/inputs
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -1385,6 +1561,8 @@ curl -X POST \
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 app.inputs.search({
   input: {
@@ -1405,6 +1583,9 @@ app.inputs.search({
 );
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp, GeoPoint, GeoLimit
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1415,6 +1596,9 @@ geo_l = GeoLimit(limit_type='kilometer', limit_range=1)
 imgs = app.inputs.search_by_geo(geo_point=geo_p, geo_limit=geo_l)
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 client.searchInputs(SearchClause.matchGeo(PointF.at(59F, 29.75F), Radius.of(500, Radius.Unit.KILOMETER)))
             .getPage(1)
@@ -1422,6 +1606,9 @@ client.searchInputs(SearchClause.matchGeo(PointF.at(59F, 29.75F), Radius.of(500,
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -1449,6 +1636,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 ClarifaiLocation *loc = [[ClarifaiLocation alloc] initWithLatitude:116.2317 longitude:39.5427];
@@ -1464,6 +1654,9 @@ ClarifaiSearchTerm *term = [ClarifaiSearchTerm searchInputsWithGeoFilter:geoFilt
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\GeoPoint;
@@ -1497,6 +1690,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -1528,6 +1724,8 @@ curl -X POST \
   https://api.clarifai.com/v2/searches
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -1535,6 +1733,8 @@ curl -X POST \
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 app.inputs.search({
   input: {
@@ -1556,6 +1756,9 @@ app.inputs.search({
 );
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp, GeoBox, GeoPoint
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1567,12 +1770,18 @@ box1 = GeoBox(point1=p1, point2=p2)
 imgs = app.inputs.search_by_geo(geo_box=box1)
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 client.searchInputs(SearchClause.matchGeo(PointF.at(3F, 0F), PointF.at(70, 30F)))
             .getPage(1)
             .executeSync()
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -1600,6 +1809,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 ClarifaiLocation *startLoc = [[ClarifaiLocation alloc] initWithLatitude:50 longitude:58];
@@ -1614,6 +1826,9 @@ ClarifaiGeo *geoBox = [[ClarifaiGeo alloc] initWithGeoBoxFromStartLocation:start
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\GeoPoint;
@@ -1643,6 +1858,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -1657,7 +1875,7 @@ curl -X POST \
             "data": {
               "geo": {
                 "geo_box": [
-                  {  
+                  {
                     "geo_point": {
                       "latitude": 35,
                       "longitude": -30
@@ -1680,6 +1898,8 @@ curl -X POST \
   https://api.clarifai.com/v2/searches
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -1689,6 +1909,8 @@ You can also combine searches using AND.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.search([
@@ -1706,6 +1928,9 @@ app.inputs.search([
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp, InputSearchTerm, OutputSearchTerm, SearchQueryBuilder
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1723,6 +1948,9 @@ app.inputs.search(query)
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.searchInputs()
@@ -1736,6 +1964,9 @@ client.searchInputs()
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -1762,6 +1993,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 //Search for inputs that are predicted as "fast" and visually similar to the given image.
@@ -1778,6 +2012,9 @@ ClarifaiSearchTerm *term2 = [ClarifaiSearchTerm searchVisuallyWithImageURL:@"htt
 }];
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Searches\SearchBy;
@@ -1809,6 +2046,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -1844,5 +2084,5 @@ curl -X POST \
 https://api.clarifai.com/v2/searches
 
 ```
-
-
+{% endcode-tabs-item %}
+{% endcode-tabs %}

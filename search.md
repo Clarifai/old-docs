@@ -13,8 +13,8 @@ The Search API allows you to send images \(url or bytes\) to the service and hav
 To get started with search, you must first add images to the search index. You can add one or more images to the index at a time. You can supply an image either with a publicly accessible URL or by directly sending image bytes. You can send up to 128 images in one API call.
 
 {% code-tabs %}
-{% code-tabs-item title="JavaScript" %}
-```javascript
+{% code-tabs-item title="js" %}
+```js
 app.inputs.create([
   {url: "https://samples.clarifai.com/metro-north.jpg"},
   {url: "https://samples.clarifai.com/wedding.jpg"},
@@ -31,7 +31,7 @@ app.inputs.create([
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=undefined %}
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 from clarifai.rest import Image as ClImage
@@ -46,7 +46,7 @@ app.inputs.bulk_create_images([img1, img2, img3])
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=undefined %}
+{% code-tabs-item title=java %}
 ```java
 client.addInputs()
     .plus(
@@ -57,7 +57,7 @@ client.addInputs()
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=undefined %}
+{% code-tabs-item title=csharp %}
 ```csharp
 using System.Threading.Tasks;
 using Clarifai.API;
@@ -81,8 +81,8 @@ namespace YourNamespace
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=undefined %}
-```objectivec
+{% code-tabs-item title=objective-c %}
+```objective-c
 ClarifaiImage *image1 = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/metro-north.jpg"];
 ClarifaiImage *image2 = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/wedding.jpg"];
 
@@ -92,7 +92,7 @@ ClarifaiImage *image2 = [[ClarifaiImage alloc] initWithURL:@"https://samples.cla
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=undefined %}
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Inputs\ClarifaiURLImage;
@@ -115,8 +115,8 @@ if ($response-> isSuccessful()) {
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=undefined %}
-```bash
+{% code-tabs-item title=cURL %}
+```cURL
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -146,7 +146,7 @@ curl -X POST \
 
 {% code-tabs %}
 {% code-tabs-item title="Response JSON" %}
-```javascript
+```json
 {
   "status": {
     "code": 10000,
@@ -190,7 +190,9 @@ th.jpg"
 
 Once your images are indexed, you can search for them by concept.
 
-```javascript
+{% code-tabs %}
+{% code-tabs-item title="js" %}
+```js
 app.inputs.search({ concept: {name: 'people'} }).then(
   function(response) {
     // do something with response
@@ -201,6 +203,9 @@ app.inputs.search({ concept: {name: 'people'} }).then(
 );
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -218,12 +223,18 @@ app.inputs.search_by_predicted_concepts(concept_id='ai_dP13sXL4')
 app.inputs.search_by_predicted_concepts(concept_ids=['ai_dP13sXL4'])
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 client.searchInputs(SearchClause.matchConcept(Concept.forName("people")))
     .getPage(1)
     .executeSync();
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 using System.Threading.Tasks;
 using Clarifai.API;
@@ -245,7 +256,10 @@ namespace YourNamespace
 }
 ```
 
-```text
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
+```objective-c
 // First create a search term with a concept you want to search.
 ClarifaiConcept *conceptFromGeneralModel = [[ClarifaiConcept alloc] initWithConceptName:@"people"];
 ClarifaiSearchTerm *searchTerm = [ClarifaiSearchTerm searchByPredictedConcept:conceptFromGeneralModel];
@@ -258,6 +272,9 @@ ClarifaiSearchTerm *searchTerm = [ClarifaiSearchTerm searchByPredictedConcept:co
 }];
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Searches\SearchBy;
@@ -282,7 +299,10 @@ if ($response-> isSuccessful()) {
 }
 ```
 
-```text
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
+```cURL
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -307,7 +327,9 @@ curl -X POST \
   https://api.clarifai.com/v2/searches
 ```
 
-```text
+{% code-tabs %}
+{% code-tabs-item title="Response JSON" %}
+```json
 {
   "status": {
     "code": 10000,
@@ -334,12 +356,17 @@ curl -X POST \
   ]
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 #### Search By Image
 
 You can also search for images using another image. In this case, you provide an image \(url or bytes\) and the results will return all the images in your search index that are visually similar to the one provided.
 
-```javascript
+
+{% code-tabs %}
+{% code-tabs-item title="js" %}
+```js
 app.inputs.search({ input: {url: 'https://samples.clarifai.com/puppy.jpg'} }).then(
   function(response) {
     // do something with response
@@ -350,6 +377,9 @@ app.inputs.search({ input: {url: 'https://samples.clarifai.com/puppy.jpg'} }).th
 );
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -378,12 +408,18 @@ fio = open("filename_on_local_disk.jpg", 'rb')
 app.inputs.search_by_image(fileobj=fio)
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 client.searchInputs(SearchClause.matchImageVisually(ClarifaiImage.of("https://samples.clarifai.com/metro-north.jpg")))
     .getPage(1)
     .executeSync();
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 using System.Threading.Tasks;
 using Clarifai.API;
@@ -405,7 +441,10 @@ namespace YourNamespace
 }
 ```
 
-```text
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
+```objective-c
 ClarifaiSearchTerm *searchTerm = [ClarifaiSearchTerm searchVisuallyWithImageURL:@"https://samples.clarifai.com/metro-north.jpg"];
 
 [app search:@[searchTerm] page:@1 perPage:@20 completion:^(NSArray<ClarifaiSearchResult *> *results, NSError *error) {
@@ -416,6 +455,9 @@ ClarifaiSearchTerm *searchTerm = [ClarifaiSearchTerm searchVisuallyWithImageURL:
 }];
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Searches\SearchBy;
@@ -442,7 +484,10 @@ if ($response-> isSuccessful()) {
 }
 ```
 
-```text
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
+```cURL
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -466,8 +511,12 @@ curl -X POST \
   }'\
   https://api.clarifai.com/v2/searches
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-```text
+{% code-tabs %}
+{% code-tabs-item title="Response JSON" %}
+```json
 {
   "status": {
     "code": 10000,
@@ -510,4 +559,5 @@ curl -X POST \
   ]
 }
 ```
-
+{% endcode-tabs-item %}
+{% endcode-tabs %}

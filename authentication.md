@@ -33,13 +33,13 @@ Note: API Keys do not expire. In case your API Key gets compromised, you should 
 After creating your `API Key`, you are ready to make API calls. If you are using a client, authentication will be handled for you. If you are using the REST API, you will need to add the `Authorization` header as described in the cURL example.
 
 {% code-tabs %}
-{% code-tabs-item title="Javascript" %}
-```javascript
+{% code-tabs-item title="js" %}
+```js
 const app = new Clarifai.App({apiKey: 'YOUR_API_KEY'});
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title="Python" %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 
@@ -47,13 +47,13 @@ app = ClarifaiApp(api_key='YOUR_API_KEY')
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=undefined %}
+{% code-tabs-item title=java %}
 ```java
 new ClarifaiBuilder("YOUR_API_KEY").buildSync();
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=undefined %}
+{% code-tabs-item title=csharp %}
 ```csharp
 using System.Threading.Tasks;
 using Clarifai.API;
@@ -71,14 +71,14 @@ namespace YourNamespace
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=undefined %}
-```objectivec
+{% code-tabs-item title=objective-c %}
+```objective-c
 ClarifaiApp *app = [[ClarifaiApp alloc] initWithApiKey:@"YOUR_API_KEY"];
 
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=undefined %}
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 
@@ -86,8 +86,8 @@ $client = new ClarifaiClient('YOUR_API_KEY');
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=undefined %}
-```bash
+{% code-tabs-item title=cURL %}
+```cURL
 curl -X POST \
   -H 'Authorization: Key YOUR_API_KEY' \
   -H "Content-Type: application/json" \
@@ -99,4 +99,3 @@ curl -X POST \
 
 
 If the API Key does not have the required scope\(s\), you will receive one of the following responses: 1. Rejected Request: if a large portion of the response requires a scope that is missing 2. Redacted Response: if majority of the response has the required scope\(s\), a small portion of the response will be redacted to not reveal unwarranted information
-

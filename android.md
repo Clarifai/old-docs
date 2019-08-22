@@ -68,16 +68,24 @@ The Clarifai SDK is initialized by calling `Clarifai.start(applicationContext, a
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 // Only for the Android SDK
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 // Only for the Android SDK
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 import com.clarifai.clarifai_android_sdk.core.Clarifai;
 
@@ -105,15 +113,38 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
+```csharp
+// Only for the Android SDK
+
+```
+{% endcode-tabs-item %}
+
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 // Only for the Android SDK
 
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title=php %}
+```php
+// Only for the Android SDK
+
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 // Only for the Android SDK
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -126,16 +157,24 @@ All inputs are created from a DataAsset object in the Android SDK. A Data Asset 
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 // Only for the Android SDK
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 // Only for the Android SDK
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 import com.clarifai.clarifai_android_sdk.dataassets.DataAsset;
 import com.clarifai.clarifai_android_sdk.dataassets.Image;
@@ -179,34 +218,64 @@ val dataAsset = DataAsset(imageFromBitmap)
 val input = Input(dataAsset)
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
+```csharp
+// Only for the Android SDK
+
+```
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 // Only for the Android SDK
 
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title=php %}
+```php
+// Only for the Android SDK
+
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 // Only for the Android SDK
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
 ### Load Models On Device
 
-Clarifai has a variety of Pre-Built Models to predict against. However, only the `General Model` is readily available within the SDK. For access to other models please contact sales@clarifai.com. The sample code below shows how to load the `General Model` and make a prediction against it.  
+Clarifai has a variety of Pre-Built Models to predict against. However, only the `General Model` is readily available within the SDK. For access to other models please contact sales@clarifai.com. The sample code below shows how to load the `General Model` and make a prediction against it.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 // Only for the Android SDK
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 // Only for the Android SDK
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 import com.clarifai.clarifai_android_sdk.datamodels.Model;
 ...
@@ -223,15 +292,37 @@ import com.clarifai.clarifai_android_sdk.datamodels.Model
 val model = Clarifai.getInstance().generalModel
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
+```csharp
+// Only for the Android SDK
+
+```
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 // Only for the Android SDK
 
 ```
+{% endcode-tabs-item %}
 
+{% code-tabs-item title=php %}
+```php
+// Only for the Android SDK
+
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 // Only for the Android SDK
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -240,22 +331,30 @@ val model = Clarifai.getInstance().generalModel
 Just as with our API, you can use the predict functionality on device with any of our available Pre-Built Models. Predictions generate outputs. An output has a similar structure to an input. It contains a data asset and concepts. The concepts associated with an output contain the predictions and their respective score (degree of confidence).
 
 
-Note that the prediction results from pre-built models on the SDK may differ from those on the API. Specifically, there may be a loss of accuracy up to 5% due to the conversion of the models that allow them to be compact enough to be used on lightweight devices. This loss is expected within the current industry standards. 
+Note that the prediction results from pre-built models on the SDK may differ from those on the API. Specifically, there may be a loss of accuracy up to 5% due to the conversion of the models that allow them to be compact enough to be used on lightweight devices. This loss is expected within the current industry standards.
 
 
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 // Only for the Android SDK
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 // Only for the Android SDK
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 import com.clarifai.clarifai_android_sdk.datamodels.Input;
 import com.clarifai.clarifai_android_sdk.datamodels.Model;
@@ -313,15 +412,34 @@ model.predict(object: Model.ModelCallbacks() {
 });
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
+```csharp
+// Only for the Android SDK
+
+```
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 // Only for the Android SDK
 
 ```
+{% endcode-tabs-item %}
 
-```cURL
+{% code-tabs-item title=php %}
+```php
 // Only for the Android SDK
 
 ```
 
+{% endcode-tabs-item %}
 
+{% code-tabs-item title=cURL %}
+```cURL
+// Only for the Android SDK
 
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}

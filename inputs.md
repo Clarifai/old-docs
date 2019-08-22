@@ -20,6 +20,8 @@ database. If you do not send an `id`, one will be created for you.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.create({
@@ -35,6 +37,9 @@ app.inputs.create({
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -43,6 +48,9 @@ app.inputs.create_image_from_url("https://samples.clarifai.com/metro-north.jpg")
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.addInputs()
@@ -51,6 +59,9 @@ client.addInputs()
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -74,6 +85,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/metro-north.jpg"];
@@ -83,6 +97,9 @@ ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clar
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -105,6 +122,9 @@ if ($response->isSuccessful()) {
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -125,6 +145,8 @@ curl -X POST \
   https://api.clarifai.com/v2/inputs
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -136,6 +158,8 @@ the `url` parameter.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.create({
@@ -151,6 +175,9 @@ app.inputs.create({
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -163,6 +190,9 @@ app.inputs.create_image_from_base64(base64_bytes)
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.addInputs()
@@ -171,6 +201,9 @@ client.addInputs()
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.IO;
@@ -195,6 +228,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 ClarifaiImage *imageFromImage = [[ClarifaiImage alloc] initWithImage:@"dress.jpg"];
@@ -204,6 +240,9 @@ ClarifaiImage *imageFromImage = [[ClarifaiImage alloc] initWithImage:@"dress.jpg
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Inputs\ClarifaiFileImage;
@@ -224,6 +263,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -244,6 +286,8 @@ curl -X POST \
   https://api.clarifai.com/v2/inputs
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -252,6 +296,8 @@ curl -X POST \
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.create([
@@ -274,6 +320,9 @@ app.inputs.create([
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 from clarifai.rest import Image as ClImage
@@ -287,6 +336,9 @@ app.inputs.bulk_create_images([img1, img2])
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.addInputs()
@@ -299,6 +351,9 @@ client.addInputs()
     .executeSync();
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Collections.Generic;
@@ -329,6 +384,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 ClarifaiImage *train = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/metro-north.jpg"];
@@ -343,6 +401,9 @@ puppy.inputID = @"puppy";
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Inputs\ClarifaiURLImage;
@@ -368,6 +429,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -397,6 +461,8 @@ curl -X POST \
   https://api.clarifai.com/v2/inputs
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -414,6 +480,8 @@ You can add inputs with concepts as either a URL or bytes.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.create({
@@ -435,6 +503,9 @@ app.inputs.create({
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 from clarifai.rest import Image as ClImage
@@ -460,6 +531,9 @@ img2 = ClImage(url="https://samples.clarifai.com/wedding.jpg", concepts=['our_we
 app.inputs.bulk_create_images([img1, img2])
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.addInputs()
@@ -472,6 +546,9 @@ client.addInputs()
     .executeSync();
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Collections.Generic;
@@ -500,6 +577,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 ClarifaiImage *puppy = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg"
@@ -511,6 +591,9 @@ ClarifaiImage *puppy = [[ClarifaiImage alloc] initWithURL:@"https://samples.clar
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Inputs\ClarifaiURLImage;
@@ -533,6 +616,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -559,6 +645,8 @@ curl -X POST \
   https://api.clarifai.com/v2/inputs
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -571,6 +659,8 @@ arbitrary JSON.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.create({
@@ -587,6 +677,9 @@ app.inputs.create({
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 from clarifai.rest import Image as ClImage
@@ -607,6 +700,9 @@ app.inputs.bulk_create_images([img])
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 final JsonObject metadata = new JsonObject();
@@ -618,6 +714,9 @@ client.addInputs()
     ).executeSync();
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -647,6 +746,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 ClarifaiImage *puppy = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg"
@@ -658,10 +760,16 @@ puppy.metadata = @{@"my_key": @[@"my",@"values"], @"cuteness": @"extra-cute"};
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 //coming soon
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -687,6 +795,8 @@ curl -X POST \
   https://api.clarifai.com/v2/inputs
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -703,6 +813,8 @@ original left edge.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.create(
@@ -721,6 +833,9 @@ app.inputs.create(
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -730,6 +845,9 @@ app.inputs.create_image_from_url(url="https://samples.clarifai.com/metro-north.j
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.addInputs()
@@ -747,6 +865,9 @@ client.addInputs()
     .executeSync();
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -773,6 +894,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 ClarifaiCrop *crop = [[ClarifaiCrop alloc] initWithTop:0.2 left:0.3 bottom:0.7 right:0.8];
@@ -784,6 +908,9 @@ ClarifaiImage *puppy = [[ClarifaiImage alloc] initWithURL:@"https://samples.clar
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Crop;
@@ -806,6 +933,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -827,6 +957,8 @@ curl -X POST \
   https://api.clarifai.com/v2/inputs
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -842,6 +974,8 @@ This request is paginated.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.list({page: 1, perPage: 20}).then(
@@ -855,6 +989,9 @@ app.inputs.list({page: 1, perPage: 20}).then(
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -867,6 +1004,9 @@ app.inputs.get_by_page(page=1, per_page=20)
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.getInputs() // optionally takes a perPage parameter
@@ -874,6 +1014,9 @@ client.getInputs() // optionally takes a perPage parameter
     .executeSync();
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -896,6 +1039,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 [app getInputsOnPage:1 pageSize:20 completion:^(NSArray<ClarifaiInput *> *inputs, NSError *error) {
@@ -904,6 +1050,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Inputs\ClarifaiInput;
@@ -925,6 +1074,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X GET \
@@ -932,6 +1084,8 @@ curl -X GET \
   https://api.clarifai.com/v2/inputs
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -941,6 +1095,8 @@ If you'd like to get a specific input by id, you can do that as well.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.get({id}).then(
@@ -954,6 +1110,9 @@ app.inputs.get({id}).then(
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -962,11 +1121,17 @@ image = app.inputs.get(input_id)
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.getInputByID("{id}").executeSync();
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -988,6 +1153,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 [_app getInput:input_id completion:^(ClarifaiInput *input, NSError *error) {
@@ -996,6 +1164,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Inputs\ClarifaiURLImage;
@@ -1016,6 +1187,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X GET \
@@ -1023,6 +1197,8 @@ curl -X GET \
   https://api.clarifai.com/v2/inputs/{id}
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -1034,6 +1210,8 @@ If you add inputs in bulk, they will process in the background. You can get the 
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.getStatus().then(
@@ -1047,6 +1225,9 @@ app.inputs.getStatus().then(
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1055,11 +1236,17 @@ app.inputs.check_status()
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.getInputsStatus().executeSync();
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -1081,6 +1268,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 [app getInputsStatus:^(int numProcessed, int numToProcess, int errors, NSError *error) {
@@ -1089,6 +1279,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Inputs\ClarifaiInputsStatus;
@@ -1111,6 +1304,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X GET \
@@ -1118,6 +1314,8 @@ curl -X GET \
   https://api.clarifai.com/v2/inputs/status
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -1129,6 +1327,8 @@ To update an input with a new concept, or to change a concept value from true/fa
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.mergeConcepts([
@@ -1168,6 +1368,9 @@ app.inputs.get({id}).then(
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1176,6 +1379,9 @@ app.inputs.merge_concepts('{id}', concepts=['tree'], not_concepts=['water'])
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.mergeConceptsForInput("{input_id}")
@@ -1186,6 +1392,9 @@ client.mergeConceptsForInput("{input_id}")
     .executeSync();
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Collections.Generic;
@@ -1214,6 +1423,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 ClarifaiConcept *concept = [[ClarifaiConcept alloc] initWithConceptName:@"cute cat"];
@@ -1223,6 +1435,9 @@ ClarifaiConcept *concept = [[ClarifaiConcept alloc] initWithConceptName:@"cute c
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Inputs\ModifyAction;
@@ -1245,6 +1460,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X PATCH \
@@ -1274,6 +1492,8 @@ curl -X PATCH \
   https://api.clarifai.com/v2/inputs
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -1283,6 +1503,8 @@ To remove concepts that were already added to an input, you can do this:
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.deleteConcepts([
@@ -1322,6 +1544,9 @@ app.inputs.get({id}).then(
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1330,6 +1555,9 @@ app.inputs.delete_concepts({id}, concepts=['tree', 'water'])
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.removeConceptsForInput("{input_id}")
@@ -1340,6 +1568,9 @@ client.removeConceptsForInput("{input_id}")
     .executeSync();
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Collections.Generic;
@@ -1368,6 +1599,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 ClarifaiConcept *concept = [[ClarifaiConcept alloc] initWithConceptName:@"cute cat"];
@@ -1377,6 +1611,9 @@ ClarifaiConcept *concept = [[ClarifaiConcept alloc] initWithConceptName:@"cute c
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Inputs\ModifyAction;
@@ -1399,6 +1636,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X PATCH \
@@ -1422,6 +1662,8 @@ curl -X PATCH \
   https://api.clarifai.com/v2/inputs/
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -1434,6 +1676,8 @@ its already been added.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.mergeConcepts([
@@ -1475,6 +1719,9 @@ app.inputs.mergeConcepts([
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1488,18 +1735,27 @@ app.inputs.bulk_merge_concepts(input_ids, concept_pairs)
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 // Coming soon
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 // Coming soon
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 ClarifaiConcept *newConcept = [[ClarifaiConcept alloc] initWithConceptID:@"tree"];
 [_app getInput:@"{input_id}" completion:^(ClarifaiInput *input, NSError *error) {
@@ -1516,12 +1772,18 @@ ClarifaiConcept *newConcept = [[ClarifaiConcept alloc] initWithConceptID:@"tree"
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 
 //coming soon
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X PATCH \
@@ -1566,6 +1828,8 @@ curl -X PATCH \
   https://api.clarifai.com/v2/inputs
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -1575,6 +1839,8 @@ You can bulk delete multiple concepts from a list of inputs:
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.deleteConcepts([
@@ -1603,6 +1869,9 @@ app.inputs.deleteConcepts([
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1616,18 +1885,27 @@ app.inputs.bulk_delete_concepts(input_ids, concept_pairs)
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 // Coming soon
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 // Coming soon
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 ClarifaiConcept *concept = [[ClarifaiConcept alloc] initWithConceptName:@"cute cat"];
@@ -1637,10 +1915,16 @@ ClarifaiConcept *concept = [[ClarifaiConcept alloc] initWithConceptName:@"cute c
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 // Coming soon
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X PATCH \
@@ -1681,6 +1965,8 @@ curl -X PATCH \
   https://api.clarifai.com/v2/inputs
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -1690,6 +1976,8 @@ You can delete a single input by id:
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.delete(INPUT_ID).then(
@@ -1703,6 +1991,9 @@ app.inputs.delete(INPUT_ID).then(
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1711,12 +2002,18 @@ app.inputs.delete("INPUT_ID")
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.deleteInput("INPUT_ID")
     .executeSync();
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -1738,6 +2035,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 [_app deleteInputsByIDList:@[INPUT_ID] completion:^(NSError *error) {
@@ -1746,6 +2046,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 
@@ -1764,6 +2067,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X DELETE \
@@ -1771,6 +2077,8 @@ curl -X DELETE \
   https://api.clarifai.com/v2/inputs/<INPUT_ID>
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -1780,6 +2088,8 @@ You can also delete multiple inputs in one API call. This will happen asynchrono
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.delete([{id1}, {id2}]).then(
@@ -1793,6 +2103,9 @@ app.inputs.delete([{id1}, {id2}]).then(
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1801,6 +2114,9 @@ app.delete(["{id1}", "{id2}"])
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.deleteInputsBatch()
@@ -1808,6 +2124,9 @@ client.deleteInputsBatch()
     .executeSync();
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -1829,6 +2148,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 [_app deleteInputsByIDList:@[{id1}, {id2}] completion:^(NSError *error) {
@@ -1837,6 +2159,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -1857,6 +2182,9 @@ if ($response->isSuccessful()) {
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X DELETE \
@@ -1869,6 +2197,8 @@ curl -X DELETE \
   https://api.clarifai.com/v2/inputs
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
@@ -1879,6 +2209,8 @@ that as well. This will happen asynchronously.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.inputs.delete().then(
@@ -1892,6 +2224,9 @@ app.inputs.delete().then(
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1900,12 +2235,18 @@ app.inputs.delete_all()
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.deleteAllInputs().executeSync();
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -1927,6 +2268,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 [app deleteAllInputs:^(ClarifaiInput *input, NSError *error) {
@@ -1935,6 +2279,9 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -1956,6 +2303,9 @@ if ($response->isSuccessful()) {
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X DELETE \
@@ -1968,5 +2318,5 @@ curl -X DELETE \
   https://api.clarifai.com/v2/inputs
 
 ```
-
-
+{% endcode-tabs-item %}
+{% endcode-tabs %}

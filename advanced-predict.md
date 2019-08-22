@@ -10,6 +10,8 @@ If you submit a request with not an exact match of the concept id or name, you w
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.models.predict(Clarifai.GENERAL_MODEL, 'https://samples.clarifai.com/metro-north.jpg', {
@@ -21,16 +23,22 @@ app.models.predict(Clarifai.GENERAL_MODEL, 'https://samples.clarifai.com/metro-n
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp, Concept
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 
 model = app.models.get('general-v1.3')
- 
+
 select_concept_list = [Concept(concept_name='train'), Concept(concept_id='ai_6kTjGfF6')]
 model.predict_by_url(url='https://samples.clarifai.com/metro-north.jpg', select_concepts=select_concept_list)
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 client.predict(client.getDefaultModels().generalModel().id())
     .withInputs(ClarifaiInput.forImage("https://samples.clarifai.com/metro-north.jpg"))
@@ -38,6 +46,9 @@ client.predict(client.getDefaultModels().generalModel().id())
     .executeSync();
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Collections.Generic;
@@ -69,10 +80,16 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 // Coming Soon
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Inputs\ClarifaiURLImage;
@@ -94,7 +111,7 @@ if ($response->isSuccessful()) {
     $output = $response->get();
 
     echo "Predicted concepts:\n";
-    
+
     foreach ($output->data() as $concept) {
         echo $concept->name() . ': ' . $concept->value() . "\n";
     }
@@ -106,6 +123,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 curl -X POST \
   -H 'authorization: Key YOUR_API_KEY' \
@@ -133,10 +153,14 @@ curl -X POST \
 }'\
 https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
-```response
+{% code-tabs %}
+{% code-tabs-item title="Response JSON" %}
+```json
 {
   "status": {
     "code": 10000,
@@ -197,6 +221,8 @@ https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs
   ]
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 ### Maximum Concepts
 
@@ -205,6 +231,8 @@ Setting the max concepts parameter will customize how many concepts and their co
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.models.predict(Clarifai.GENERAL_MODEL, 'https://samples.clarifai.com/metro-north.jpg', { maxConcepts: 3 })
@@ -217,6 +245,9 @@ app.models.predict(Clarifai.GENERAL_MODEL, 'https://samples.clarifai.com/metro-n
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -227,6 +258,9 @@ model.predict_by_url(url='https://samples.clarifai.com/metro-north.jpg', max_con
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.predict(client.getDefaultModels().generalModel().id())
@@ -236,6 +270,9 @@ client.predict(client.getDefaultModels().generalModel().id())
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -262,12 +299,18 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 //Coming soon
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Inputs\ClarifaiURLImage;
@@ -302,6 +345,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -329,10 +375,14 @@ curl -X POST \
   https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
-```response
+{% code-tabs %}
+{% code-tabs-item title="Response JSON" %}
+```json
 
 {
   "status": {
@@ -401,6 +451,8 @@ curl -X POST \
 }
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 ### Minimum Prediction Value
 
@@ -408,6 +460,8 @@ This parameter lets you set a minimum probability threshold for the outputs you 
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 
 app.models.predict(Clarifai.GENERAL_MODEL, 'https://samples.clarifai.com/metro-north.jpg', { minValue: 0.97 })
@@ -419,6 +473,9 @@ app.models.predict(Clarifai.GENERAL_MODEL, 'https://samples.clarifai.com/metro-n
   });
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_CLARIFAI_KEY')
@@ -429,6 +486,9 @@ model.predict_by_url(url='https://samples.clarifai.com/metro-north.jpg', min_val
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 client.predict(client.getDefaultModels().generalModel().id())
@@ -438,6 +498,9 @@ client.predict(client.getDefaultModels().generalModel().id())
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -464,12 +527,18 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 //Coming soon
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -506,6 +575,9 @@ if ($response->isSuccessful()) {
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -533,10 +605,14 @@ curl -X POST \
   https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
-```response
+{% code-tabs %}
+{% code-tabs-item title="Response JSON" %}
+```json
 
 {
   "status": {
@@ -635,14 +711,18 @@ curl -X POST \
 }
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 ### By Model Version ID
-Every time you train a custom model, it creates a new model version. By specifying `version id` in your predict call, you can continue to predict on a previous version, for consistent prediction results. Clarifai also updates our pre-built models on a regular basis.  
+Every time you train a custom model, it creates a new model version. By specifying `version id` in your predict call, you can continue to predict on a previous version, for consistent prediction results. Clarifai also updates our pre-built models on a regular basis.
 
-If you are looking for consistent results from your predict calls, use `version id`. If the model `version id` is not specified, predict will default to the most current model. 
+If you are looking for consistent results from your predict calls, use `version id`. If the model `version id` is not specified, predict will default to the most current model.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 let app = new Clarifai.App({apiKey: 'YOUR_API_KEY'});
 
@@ -656,6 +736,9 @@ app.models.predict({id:'MODEL_ID', version:'MODEL_VERSION_ID'}, "https://samples
 );
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -666,6 +749,9 @@ model.model_version = 'YOUR_MODEL_VERSION_ID'
 response = model.predict_by_url('https://samples.clarifai.com/metro-north.jpg')
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 
 ModelVersion modelVersion = client.getModelVersionByID("MODEL_ID", "MODEL_VERSION_ID")
@@ -677,6 +763,9 @@ ModelVersion modelVersion = client.getModelVersionByID("MODEL_ID", "MODEL_VERSIO
         .withInputs(ClarifaiInput.forImage("https://samples.clarifai.com/metro-north.jpg"))
         .executeSync();
 ```
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -703,12 +792,18 @@ namespace YourNamespace
 
 
 ```
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 
 //Coming soon
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Inputs\ClarifaiURLImage;
@@ -742,6 +837,9 @@ if ($response->isSuccessful()) {
 }
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 
 curl -X POST \
@@ -762,5 +860,5 @@ curl -X POST \
   https://api.clarifai.com/v2/models/<model_id>/versions/<model_version_id>/outputs
 
 ```
-
-
+{% endcode-tabs-item %}
+{% endcode-tabs %}
