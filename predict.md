@@ -332,7 +332,6 @@ Below is an example of how you would send the bytes of an image and receive back
 {% code-tabs %}
 
 {% code-tabs-item title="js" %}
-{% code-tabs-item title="js" %}
 ```js
 app.models.predict(Clarifai.GENERAL_MODEL, {base64: "G7p3m95uAl..."}).then(
   function(response) {
@@ -667,7 +666,6 @@ Below is an example of how you would send video URLs and receive back prediction
 
 {% code-tabs %}
 
-{% code-tabs-item title="js" %}
 {% code-tabs-item title="js" %}
 ```js
 const Clarifai = require('clarifai');
@@ -2135,7 +2133,6 @@ Below is an example of how you would send the bytes of a video and receive back 
 
 {% code-tabs %}
 
-{% code-tabs-item title="js" %}
 {% code-tabs-item title="js" %}
 ```js
 const Clarifai = require('clarifai');
