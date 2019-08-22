@@ -4,7 +4,7 @@
 
 The Clarifai API offers image and video recognition as a service. Whether you have one image or billions, you are only steps away from using artificial intelligence to recognize your visual content.
 
-This repository is a collection of our public documentation for our APIs and SDKs. The markdown here gets rendered over at [docs.clarifai.com](https://docs.clarifai.com). We welcome you to help improve our docs!
+This repository is a collection of our public documentation for our APIs and SDKs. The markdown here gets rendered over at [docs.clarifai.com](https://docs.clarifai.com). We welcome you to improve our docs!
 
 ## Contributing to our Docs
 
