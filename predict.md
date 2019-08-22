@@ -84,8 +84,8 @@ namespace YourNamespace
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title="objectivec" %}
-```objectivec
+{% code-tabs-item title="objective-c" %}
+```objective-c
 ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"@@sampleTrain"];
 [_app getModelByName:@"general-v1.3" completion:^(ClarifaiModel *model, NSError *error) {
     [model predictOnImages:@[image]
@@ -326,11 +326,6 @@ curl -X POST
 Below is an example of how you would send the bytes of an image and receive back predictions from the `general` model.
 
 {% code-tabs %}
-{% code-tabs-item title="text" %}
-```text
-
-```
-{% endcode-tabs-item %}
 
 {% code-tabs-item title="javascript" %}
 ```javascript
@@ -389,8 +384,8 @@ namespace YourNamespace
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title="text" %}
-```text
+{% code-tabs-item title="obj-c" %}
+```objective-c
 UIImage *image = [UIImage imageNamed:@"dress.jpg"];
 ClarifaiImage *clarifaiImage = [[ClarifaiImage alloc] initWithImage:image];
 [_app getModelByName:@"general-v1.3" completion:^(ClarifaiModel *model, NSError *error) {
@@ -475,13 +470,9 @@ FILEIN
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title="text" %}
-```text
-
-```
-{% endcode-tabs-item %}
 {% endcode-tabs %}
 
+Response:
 ```javascript
 {
   "status": {
@@ -668,11 +659,6 @@ If your video exceeds the limits, please follow our [tutorial](https://docs.goog
 Below is an example of how you would send video URLs and receive back predictions from the `general` model.
 
 {% code-tabs %}
-{% code-tabs-item title="text" %}
-```text
-
-```
-{% endcode-tabs-item %}
 
 {% code-tabs-item title="javascript" %}
 ```javascript
@@ -834,8 +820,8 @@ namespace YourPackageName
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title="text" %}
-```text
+{% code-tabs-item title="objective-c" %}
+```objective-c
 Objective-C client details coming soon
 ```
 {% endcode-tabs-item %}
@@ -882,8 +868,8 @@ if ($response->isSuccessful()) {
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title="text" %}
-```text
+{% code-tabs-item title="bash" %}
+```bash
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -909,16 +895,10 @@ curl -X POST \
   https://api.clarifai.com/v2/models/@@generalModelId/outputs
 ```
 {% endcode-tabs-item %}
-
-{% code-tabs-item title="text" %}
-```text
-
-```
-{% endcode-tabs-item %}
 {% endcode-tabs %}
 
-
-```javascript
+Response
+```json
 {
   "status": {
     "code": 10000,
@@ -2143,11 +2123,6 @@ curl -X POST \
 Below is an example of how you would send the bytes of a video and receive back predictions from the general model.
 
 {% code-tabs %}
-{% code-tabs-item title="text" %}
-```text
-
-```
-{% endcode-tabs-item %}
 
 {% code-tabs-item title="javascript" %}
 ```javascript
@@ -2311,8 +2286,8 @@ namespace YourPackageName
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title="text" %}
-```text
+{% code-tabs-item title="objective-c" %}
+```objective-c
 Objective-C client details coming soon
 ```
 {% endcode-tabs-item %}
@@ -2359,8 +2334,8 @@ if ($response->isSuccessful()) {
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title="text" %}
-```text
+{% code-tabs-item title="bash" %}
+```bash
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -2386,15 +2361,10 @@ curl -X POST \
   https://api.clarifai.com/v2/models/@@generalModelId/outputs
 ```
 {% endcode-tabs-item %}
+{% endcode-tabs %}
 
-{% code-tabs-item title="text" %}
-```text
-
-```
-{% endcode-tabs-item %}
-
-{% code-tabs-item title="text" %}
-```text
+Response:
+```json
 {
     "status": {
         "code": 10000,
@@ -2574,6 +2544,5 @@ curl -X POST \
     ]
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+
 
