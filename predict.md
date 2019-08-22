@@ -21,8 +21,8 @@ Below is an example of how you would send image URLs and receive back prediction
 You can learn all about the different [public models](public-models.md) available later in the guide.
 
 {% code-tabs %}
-{% code-tabs-item title="javascript" %}
-```javascript
+{% code-tabs-item title="js" %}
+```js
 app.models.initModel({id: Clarifai.GENERAL_MODEL, version: "aa7f35c01e0642fda5cf400f543e7c40"})
       .then(generalModel => {
         return generalModel.predict("@@sampleTrain");
@@ -130,8 +130,8 @@ if ($response->isSuccessful()) {
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title="bash" %}
-```bash
+{% code-tabs-item title="cURL" %}
+```cURL
 curl -X POST
     -H 'Authorization: Key YOUR_API_KEY'
     -H "Content-Type: application/json"
@@ -152,7 +152,9 @@ curl -X POST
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-```javascript
+{% code-tabs %}
+{% code-tabs-item title="Response JSON" %}
+```json
 {
   "status": {
     "code": 10000,
@@ -320,6 +322,8 @@ curl -X POST
   ]
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 **Via Bytes**
 
@@ -327,8 +331,9 @@ Below is an example of how you would send the bytes of an image and receive back
 
 {% code-tabs %}
 
-{% code-tabs-item title="javascript" %}
-```javascript
+{% code-tabs-item title="js" %}
+{% code-tabs-item title="js" %}
+```js
 app.models.predict(Clarifai.GENERAL_MODEL, {base64: "G7p3m95uAl..."}).then(
   function(response) {
     // do something with response
@@ -428,8 +433,8 @@ if ($response->isSuccessful()) {
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title="text" %}
-```text
+{% code-tabs-item title="cURL" %}
+```cURL
 // Smaller files (195 KB or less)
 
 curl -X POST \
@@ -469,11 +474,11 @@ curl -X POST \
 FILEIN
 ```
 {% endcode-tabs-item %}
-
 {% endcode-tabs %}
 
-Response:
-```javascript
+{% code-tabs %}
+{% code-tabs-item title="Response JSON" %}
+```json
 {
   "status": {
     "code": 10000,
@@ -641,6 +646,8 @@ Response:
   ]
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 #### Videos
 
@@ -660,8 +667,9 @@ Below is an example of how you would send video URLs and receive back prediction
 
 {% code-tabs %}
 
-{% code-tabs-item title="javascript" %}
-```javascript
+{% code-tabs-item title="js" %}
+{% code-tabs-item title="js" %}
+```js
 const Clarifai = require('clarifai');
 
 const app = new Clarifai.App({apiKey: 'YOUR_API_KEY'});
@@ -868,8 +876,8 @@ if ($response->isSuccessful()) {
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title="bash" %}
-```bash
+{% code-tabs-item title="cURL" %}
+```cURL
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -897,7 +905,8 @@ curl -X POST \
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Response
+{% code-tabs %}
+{% code-tabs-item title="Response JSON" %}
 ```json
 {
   "status": {
@@ -2117,6 +2126,8 @@ Response
   ]
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 **Via Bytes**
 
@@ -2124,8 +2135,9 @@ Below is an example of how you would send the bytes of a video and receive back 
 
 {% code-tabs %}
 
-{% code-tabs-item title="javascript" %}
-```javascript
+{% code-tabs-item title="js" %}
+{% code-tabs-item title="js" %}
+```js
 const Clarifai = require('clarifai');
 
 const app = new Clarifai.App({apiKey: 'YOUR_API_KEY'});
@@ -2334,8 +2346,8 @@ if ($response->isSuccessful()) {
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title="bash" %}
-```bash
+{% code-tabs-item title="cURL" %}
+```cURL
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -2363,7 +2375,8 @@ curl -X POST \
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Response:
+{% code-tabs %}
+{% code-tabs-item title="Response JSON" %}
 ```json
 {
     "status": {
@@ -2544,5 +2557,5 @@ Response:
     ]
 }
 ```
-
-
+{% endcode-tabs-item %}
+{% endcode-tabs %}

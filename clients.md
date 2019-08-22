@@ -135,7 +135,7 @@ namespace YourNamespace
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title="objectivec" %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 // Installation via CocoaPods - https://cocoapods.org

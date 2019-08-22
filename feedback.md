@@ -35,6 +35,8 @@ Note that the `event_type` should be set to `annotation`.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 app.models.feedback(Clarifai.GENERAL_MODEL, 'https://samples.clarifai.com/dog.tiff', {
   id: '{input_id}',
@@ -59,6 +61,9 @@ app.models.feedback(Clarifai.GENERAL_MODEL, 'https://samples.clarifai.com/dog.ti
   });
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp, FeedbackInfo
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -66,16 +71,19 @@ app = ClarifaiApp(api_key='YOUR_API_KEY')
 model = app.models.get('general-v1.3')
 
 model.send_concept_feedback(
-    input_id='{input_id}', 
-    url='https://samples.clarifai.com/dog.tiff', 
-    concepts=['ai_8S2Vq3cR'], 
-    not_concepts=['ai_mFqxrph2'], 
-    feedback_info=FeedbackInfo(event_type='annotation', 
-                               output_id='{output_id}', 
-                               end_user_id='{end_user_id}', 
+    input_id='{input_id}',
+    url='https://samples.clarifai.com/dog.tiff',
+    concepts=['ai_8S2Vq3cR'],
+    not_concepts=['ai_mFqxrph2'],
+    feedback_info=FeedbackInfo(event_type='annotation',
+                               output_id='{output_id}',
+                               end_user_id='{end_user_id}',
                                session_id='{session_id}'))
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 ModelFeedbackRequest request =
     client.modelFeedback(client.getDefaultModels().generalModel().id())
@@ -91,6 +99,9 @@ ModelFeedbackRequest request =
        .withSessionId("{session_id}");
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Collections.Generic;
@@ -126,10 +137,16 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 // Coming Soon
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -161,6 +178,9 @@ if ($response-> isSuccessful()) {
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
@@ -188,10 +208,14 @@ curl -X POST \
   }'\
   https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/feedback
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
-```response
+{% code-tabs %}
+{% code-tabs-item title="Response JSON" %}
+```json
 {
     "status": {
         "code": 10000,
@@ -199,6 +223,8 @@ curl -X POST \
     }
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 ### Prediction with Regions Feedback
 To send feedback on predictions, you can use `POST /v2/models/{model_id}/feedback`.
@@ -216,6 +242,8 @@ Note that the `event_type` should be set to `annotation`.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 app.models.feedback(Clarifai.LOGO_MODEL, 'https://clarifai.com/images/model-samples/logo-002.jpg', {
   id: '{input_id}',
@@ -254,6 +282,9 @@ app.models.feedback(Clarifai.LOGO_MODEL, 'https://clarifai.com/images/model-samp
   });
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp, Region, RegionInfo, BoundingBox, Concept, FeedbackInfo
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -274,6 +305,9 @@ model.send_region_feedback(
                                session_id='{session_id}'))
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 ModelFeedbackRequest request =
     client.modelFeedback(client.getDefaultModels().logoModel().id())
@@ -291,6 +325,9 @@ ModelFeedbackRequest request =
         .withSessionId("{session_id}");
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Collections.Generic;
@@ -332,10 +369,16 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 // Coming Soon
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -375,6 +418,9 @@ if ($response-> isSuccessful()) {
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
@@ -389,7 +435,7 @@ curl -X POST \
         },
         "regions":
         [
-          {   
+          {
             "region_info": {
               "bounding_box": {
                 "top_row": 0.3,
@@ -417,10 +463,14 @@ curl -X POST \
   }'\
   https://api.clarifai.com/v2/models/c443119bf2ed4da98487520d01a0b1e3/feedback
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
-```response
+{% code-tabs %}
+{% code-tabs-item title="Response JSON" %}
+```json
 {
     "status": {
         "code": 10000,
@@ -428,6 +478,8 @@ curl -X POST \
     }
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 ### Search Feedback
 To send feedback on searches, you can use `POST /v2/searches/feedback`.
@@ -444,6 +496,8 @@ Note that the `event_type` should be set to `search_click`.
 
 
 
+{% code-tabs %}
+{% code-tabs-item title="js" %}
 ```js
 app.inputs.searchFeedback('{input_id}', '{search_id}', '{end_user_id}', '{session_id}')
   .then(response => {
@@ -454,6 +508,9 @@ app.inputs.searchFeedback('{input_id}', '{search_id}', '{end_user_id}', '{sessio
   });
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=python %}
 ```python
 from clarifai.rest import ClarifaiApp, FeedbackInfo
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -463,6 +520,9 @@ app.inputs.send_search_feedback(
     FeedbackInfo('{end_user_id}', '{session_id}', 'search_click', search_id='{search_id}'))
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=java %}
 ```java
 SearchesFeedbackRequest request = client.searchesFeedback()
     .withId("{input_id}")
@@ -472,6 +532,9 @@ SearchesFeedbackRequest request = client.searchesFeedback()
     .withSearchId("{search_id}");
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=csharp %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -497,10 +560,16 @@ namespace YourNamespace
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=objective-c %}
 ```objective-c
 // Coming Soon
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=php %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -521,6 +590,9 @@ if ($response-> isSuccessful()) {
 
 ```
 
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=cURL %}
 ```cURL
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
@@ -539,10 +611,14 @@ curl -X POST \
   }'\
   https://api.clarifai.com/v2/searches/feedback
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
-```response
+{% code-tabs %}
+{% code-tabs-item title="Response JSON" %}
+```json
 {
     "status": {
         "code": 10000,
@@ -550,3 +626,5 @@ curl -X POST \
     }
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
