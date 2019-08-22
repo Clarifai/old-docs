@@ -1,3 +1,7 @@
+structure:
+  readme: ./getting-started.md
+  summary: ./SUMMARY.md
+
 redirects:
-  developer/guide/: ./README.md
-  developer/guide: ./README.md
+  developer/guide/: ./getting-started.md
+  developer/guide: ./getting-started.md
