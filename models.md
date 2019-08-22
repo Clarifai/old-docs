@@ -28,7 +28,7 @@ app.models.create("petsID").then(
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -39,7 +39,7 @@ app.models.create('petsID')
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 
 client.createModel("petsID").executeSync();
@@ -48,7 +48,7 @@ client.createModel("petsID").executeSync();
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -72,7 +72,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 [_app createModel:nil name:@"petsModel" modelID:@"petsID" conceptsMutuallyExclusive:NO closedEnvironment:NO completion:^(ClarifaiModel *model, NSError *error) {
@@ -83,7 +83,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 use Clarifai\API\ClarifaiClient;
 
@@ -104,7 +104,7 @@ if ($response->isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X POST \
@@ -156,7 +156,7 @@ app.models.create(
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -167,7 +167,7 @@ model = app.models.create('petsID', concepts=['boscoe'])
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 
 client.createModel("petsID")
@@ -180,7 +180,7 @@ client.createModel("petsID")
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Collections.Generic;
@@ -208,7 +208,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 [_app createModel:@[@"cat", @"dog"] name:@"petsModel" modelID:@"petsID" conceptsMutuallyExclusive:NO closedEnvironment:NO completion:^(ClarifaiModel *model, NSError *error) {
@@ -219,7 +219,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Predictions\Concept;
@@ -242,7 +242,7 @@ if ($response->isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X POST \
@@ -309,7 +309,7 @@ function updateModel(model) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -321,7 +321,7 @@ model.add_concepts(['boscoe'])
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 
 client.modifyModel("{{model_id}}")
@@ -338,7 +338,7 @@ model.modify()
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Collections.Generic;
@@ -378,7 +378,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 ClarifaiConcept *concept = [[ClarifaiConcept alloc] initWithConceptName:@"dress"];
@@ -390,7 +390,7 @@ ClarifaiConcept *concept = [[ClarifaiConcept alloc] initWithConceptName:@"dress"
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Inputs\ModifyAction;
@@ -416,7 +416,7 @@ if ($response->isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X PATCH \
@@ -481,7 +481,7 @@ function updateModel(model) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -493,7 +493,7 @@ model.delete_concepts(['boscoe'])
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 
 client.modifyModel("{{model_id}}")
@@ -510,7 +510,7 @@ model.modify()
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Collections.Generic;
@@ -551,7 +551,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 ClarifaiConcept *concept = [[ClarifaiConcept alloc] initWithConceptName:@"dress"];
@@ -563,7 +563,7 @@ ClarifaiConcept *concept = [[ClarifaiConcept alloc] initWithConceptName:@"dress"
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -591,7 +591,7 @@ if ($response->isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X PATCH \
@@ -637,7 +637,7 @@ The code below showcases how to update a concept's name given its id.
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -648,7 +648,7 @@ app.concepts.update(concept_id='concept_id', concept_name='new_concept_name')
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 
 ** Coming Soon
@@ -657,7 +657,7 @@ app.concepts.update(concept_id='concept_id', concept_name='new_concept_name')
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -683,7 +683,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 ** Coming Soon
@@ -692,7 +692,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Predictions\Concept;
@@ -715,7 +715,7 @@ if ($response->isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X PATCH \
@@ -770,7 +770,7 @@ function updateModel(model) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -795,7 +795,7 @@ model.update(model_name="newname",
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 
 client.modifyModel("{{model_id}}")
@@ -808,7 +808,7 @@ client.modifyModel("{{model_id}}")
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -836,7 +836,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 [_app updateModel:@"{model_id}" name:@"newName" conceptsMutuallyExclusive:NO closedEnvironment:NO completion:^(ClarifaiModel *model, NSError *error) {
@@ -847,7 +847,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 use Clarifai\API\ClarifaiClient;
 
@@ -872,7 +872,7 @@ if ($response->isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X PATCH \
@@ -929,7 +929,7 @@ app.models.list().then(
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -941,7 +941,7 @@ app.models.get_all()
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 
 client.getModels().getPage(1).executeSync();
@@ -950,7 +950,7 @@ client.getModels().getPage(1).executeSync();
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -975,7 +975,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 [_app getModels:1 resultsPerPage:30 completion:^(NSArray<ClarifaiModel *> *models, NSError *error) {
@@ -986,7 +986,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Models\Model;
@@ -1013,7 +1013,7 @@ if ($response->isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X GET \
@@ -1050,7 +1050,7 @@ app.models.get({model_id}).then(
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1065,7 +1065,7 @@ model = app.models.get('my_model1')
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 
 client.getModelByID("{model_id}").executeSync();
@@ -1074,7 +1074,7 @@ client.getModelByID("{model_id}").executeSync();
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -1100,7 +1100,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 [_app getModel:@"model_id" completion:^(ClarifaiModel *model, NSError *error) {
@@ -1111,7 +1111,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Models\Model;
@@ -1139,7 +1139,7 @@ if ($response->isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X GET \
@@ -1182,7 +1182,7 @@ function getModelOutputInfo(model) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1194,7 +1194,7 @@ model.get_info(verbose=True)
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 
 client.getModelByID("{model_id}").executeSync();
@@ -1203,7 +1203,7 @@ client.getModelByID("{model_id}").executeSync();
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -1231,7 +1231,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 [_app getModelByID:@"{model_id}" completion:^(ClarifaiModel *model, NSError *error) {
@@ -1242,7 +1242,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -1276,7 +1276,7 @@ if ($response->isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X GET \
@@ -1319,7 +1319,7 @@ app.models.initModel('{id}').then(
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1331,7 +1331,7 @@ model.list_versions()
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 
 client.getModelVersions("{model_id}").getPage(1).executeSync();
@@ -1340,7 +1340,7 @@ client.getModelVersions("{model_id}").getPage(1).executeSync();
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -1364,7 +1364,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 [app listVersionsForModel:@"{model_id}" page:1 resultsPerPage:30 completion:^(NSArray<ClarifaiModelVersion *> *versions, NSError *error) {
@@ -1375,7 +1375,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -1407,7 +1407,7 @@ if ($response->isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X GET \
@@ -1451,7 +1451,7 @@ app.models.initModel('{id}').then(
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1463,7 +1463,7 @@ model.get_version('{version_id}')
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 
 client.getModelVersionByID("{model_id}", "{version_id}").executeSync();
@@ -1477,7 +1477,7 @@ client.getModelByID("{model_id}")
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -1501,7 +1501,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 [app getVersionForModel:@"{model_id}" versionID:{version_id} completion:^(ClarifaiModelVersion *version, NSError *error) {
@@ -1512,7 +1512,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Models\ModelVersion;
@@ -1540,7 +1540,7 @@ if ($response->isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X GET \
@@ -1583,7 +1583,7 @@ app.models.initModel('{id}').then(
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1595,7 +1595,7 @@ model.get_inputs()
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 
 client.getModelInputs("{model_id}").getPage(1).executeSync();
@@ -1604,7 +1604,7 @@ client.getModelInputs("{model_id}").getPage(1).executeSync();
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -1629,7 +1629,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 [app listTrainingInputsForModel:@"{model_id}" page:1 resultsPerPage:30 completion:^(NSArray<ClarifaiInput *> *inputs, NSError *error) {
@@ -1640,7 +1640,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 // Coming soon
 ```
@@ -1648,7 +1648,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X GET \
@@ -1691,7 +1691,7 @@ app.models.initModel({id: '{model_id}', version: '{version_id}'}).then(
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1703,7 +1703,7 @@ model.get_inputs('{version_id}')
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 
 client.getModelInputs("{model_id}")
@@ -1715,7 +1715,7 @@ client.getModelInputs("{model_id}")
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -1740,7 +1740,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 [_app listTrainingInputsForModel:@"{model_id}" page:1 resultsPerPage:30 completion:^(NSArray<ClarifaiInput *> *inputs, NSError *error) {
@@ -1751,7 +1751,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 // Coming soon
 ```
@@ -1759,7 +1759,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X GET \
@@ -1795,7 +1795,7 @@ app.models.delete('{id}').then(
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1806,7 +1806,7 @@ app.models.delete('{id}')
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 
 client.deleteModel("{model_id}").executeSync();
@@ -1815,7 +1815,7 @@ client.deleteModel("{model_id}").executeSync();
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -1839,7 +1839,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 [app deleteModel:@"{model_id}" completion:^(NSError *error) {
@@ -1850,7 +1850,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 use Clarifai\API\ClarifaiClient;
 
@@ -1872,7 +1872,7 @@ if ($response->isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X DELETE \
@@ -1908,7 +1908,7 @@ app.models.delete('{model_id}', '{version_id}').then(
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1924,7 +1924,7 @@ model.delete_version('{version_id}')
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 
 client.deleteModelVersion("{model_id}", "{version_id}").executeSync();
@@ -1939,7 +1939,7 @@ client.getModelByID("{model_id}")
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -1969,7 +1969,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 [app deleteVersionForModel:{model_id} versionID:{version_id} completion:^(NSError *error) {
@@ -1980,7 +1980,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 use Clarifai\API\ClarifaiClient;
 
@@ -2002,7 +2002,7 @@ if ($response->isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X DELETE \
@@ -2039,7 +2039,7 @@ app.models.delete().then(
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -2050,7 +2050,7 @@ app.models.delete_all()
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 
 client.deleteAllModels().executeSync();
@@ -2059,7 +2059,7 @@ client.deleteAllModels().executeSync();
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -2083,7 +2083,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 [_app deleteAllModels:^(NSError *error) {
@@ -2094,7 +2094,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use ClarifaiIntTests\BaseIntTest;
@@ -2117,7 +2117,7 @@ if ($response->isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X DELETE \
@@ -2169,7 +2169,7 @@ model.train().then(
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -2181,7 +2181,7 @@ model.train()
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 
 client.trainModel("{model_id}").executeSync();
@@ -2190,7 +2190,7 @@ client.trainModel("{model_id}").executeSync();
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -2215,7 +2215,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg"]
@@ -2229,7 +2229,7 @@ ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clar
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Models\ModelType;
@@ -2252,7 +2252,7 @@ if ($response->isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X POST \
@@ -2302,7 +2302,7 @@ model.predict("https://samples.clarifai.com/puppy.jpg").then(
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -2314,7 +2314,7 @@ response = model.predict_by_url('https://samples.clarifai.com/puppy.jpg')
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 
 client.predict("{model_id}")
@@ -2327,7 +2327,7 @@ client.predict("{model_id}")
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -2355,7 +2355,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg"]
@@ -2370,7 +2370,7 @@ ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clar
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -2408,7 +2408,7 @@ if ($response->isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X POST \
@@ -2457,7 +2457,7 @@ app.models.search('general-v1.3', 'concept').then(
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -2472,7 +2472,7 @@ app.models.search(model_name='general-v1.3', model_type='concept')
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 
 client.findModel()
@@ -2485,7 +2485,7 @@ client.findModel()
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Threading.Tasks;
@@ -2512,7 +2512,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 
 [app searchForModelByName:@"general-v1.3" modelType:ClarifaiModelTypeConcept completion:^(NSArray<ClarifaiModel *> *models, NSError *error) {
@@ -2523,7 +2523,7 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -2555,7 +2555,7 @@ if ($response->isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 
 curl -X POST \

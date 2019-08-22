@@ -77,7 +77,7 @@ The Clarifai SDK is initialized by calling `Clarifai.start(applicationContext, a
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 // Only for the Android SDK
 
@@ -85,7 +85,7 @@ The Clarifai SDK is initialized by calling `Clarifai.start(applicationContext, a
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 import com.clarifai.clarifai_android_sdk.core.Clarifai;
 
@@ -115,7 +115,7 @@ class MainActivity : AppCompatActivity() {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 // Only for the Android SDK
 
@@ -123,14 +123,14 @@ class MainActivity : AppCompatActivity() {
 {% endcode-tabs-item %}
 
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 // Only for the Android SDK
 
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 // Only for the Android SDK
 
@@ -138,7 +138,7 @@ class MainActivity : AppCompatActivity() {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 // Only for the Android SDK
 
@@ -166,7 +166,7 @@ All inputs are created from a DataAsset object in the Android SDK. A Data Asset 
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 // Only for the Android SDK
 
@@ -174,7 +174,7 @@ All inputs are created from a DataAsset object in the Android SDK. A Data Asset 
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 import com.clarifai.clarifai_android_sdk.dataassets.DataAsset;
 import com.clarifai.clarifai_android_sdk.dataassets.Image;
@@ -220,21 +220,21 @@ val input = Input(dataAsset)
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 // Only for the Android SDK
 
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 // Only for the Android SDK
 
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 // Only for the Android SDK
 
@@ -242,7 +242,7 @@ val input = Input(dataAsset)
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 // Only for the Android SDK
 
@@ -267,7 +267,7 @@ Clarifai has a variety of Pre-Built Models to predict against. However, only the
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 // Only for the Android SDK
 
@@ -275,7 +275,7 @@ Clarifai has a variety of Pre-Built Models to predict against. However, only the
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 import com.clarifai.clarifai_android_sdk.datamodels.Model;
 ...
@@ -294,21 +294,21 @@ val model = Clarifai.getInstance().generalModel
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 // Only for the Android SDK
 
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 // Only for the Android SDK
 
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 // Only for the Android SDK
 
@@ -316,7 +316,7 @@ val model = Clarifai.getInstance().generalModel
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 // Only for the Android SDK
 
@@ -346,7 +346,7 @@ Note that the prediction results from pre-built models on the SDK may differ fro
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 // Only for the Android SDK
 
@@ -354,7 +354,7 @@ Note that the prediction results from pre-built models on the SDK may differ fro
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 import com.clarifai.clarifai_android_sdk.datamodels.Input;
 import com.clarifai.clarifai_android_sdk.datamodels.Model;
@@ -414,21 +414,21 @@ model.predict(object: Model.ModelCallbacks() {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 // Only for the Android SDK
 
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 // Only for the Android SDK
 
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 // Only for the Android SDK
 
@@ -436,7 +436,7 @@ model.predict(object: Model.ModelCallbacks() {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 // Only for the Android SDK
 

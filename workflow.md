@@ -73,7 +73,7 @@ app.workflow.predict('{workflow-id}', "https://samples.clarifai.com/metro-north.
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=python %}
+{% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
 from clarifai.rest import Workflow
@@ -86,7 +86,7 @@ response = workflow.predict_by_url('https://samples.clarifai.com/metro-north.jpg
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 client.workflowPredict("{workflow-id}")
         .withInputs(ClarifaiInput.forImage("https://samples.clarifai.com/metro-north.jpg"))
@@ -95,7 +95,7 @@ client.workflowPredict("{workflow-id}")
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 
 using System.Collections.Generic;
@@ -126,14 +126,14 @@ namespace YourNamespace
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 // Coming Soon
 ```
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 
 use Clarifai\API\ClarifaiClient;
@@ -173,7 +173,7 @@ if ($response-> isSuccessful()) {
 
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 curl -X POST \
   -H 'authorization: Key YOUR_API_KEY' \

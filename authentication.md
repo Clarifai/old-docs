@@ -47,13 +47,13 @@ app = ClarifaiApp(api_key='YOUR_API_KEY')
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=java %}
+{% code-tabs-item title="java" %}
 ```java
 new ClarifaiBuilder("YOUR_API_KEY").buildSync();
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=csharp %}
+{% code-tabs-item title="csharp" %}
 ```csharp
 using System.Threading.Tasks;
 using Clarifai.API;
@@ -71,14 +71,14 @@ namespace YourNamespace
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=objective-c %}
+{% code-tabs-item title="objective-c" %}
 ```objective-c
 ClarifaiApp *app = [[ClarifaiApp alloc] initWithApiKey:@"YOUR_API_KEY"];
 
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=php %}
+{% code-tabs-item title="php" %}
 ```php
 use Clarifai\API\ClarifaiClient;
 
@@ -86,7 +86,7 @@ $client = new ClarifaiClient('YOUR_API_KEY');
 ```
 {% endcode-tabs-item %}
 
-{% code-tabs-item title=cURL %}
+{% code-tabs-item title="cURL" %}
 ```cURL
 curl -X POST \
   -H 'Authorization: Key YOUR_API_KEY' \

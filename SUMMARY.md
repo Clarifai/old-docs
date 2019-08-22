@@ -2,7 +2,7 @@
 
 ## API Guide
 
-* [Getting Started](README.md)
+* [Getting Started](getting-started.md)
   * [Clients](clients.md)
   * [Glossary](glossary.md)
   * [Status codes](status-codes.md)
