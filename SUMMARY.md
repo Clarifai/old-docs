@@ -6,7 +6,7 @@
   * [Clients](clients.md)
   * [Glossary](glossary.md)
   * [Status codes](status-codes.md)
-  * [Portal](preview-ui.md)
+  * [Portal](portal.md)
 * [Authentication](authentication.md)
 * [Predict](predict.md)
   * [Video](video.md)
