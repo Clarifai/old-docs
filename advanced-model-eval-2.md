@@ -32,9 +32,11 @@ All prediction binary metrics, such as True Positives, False Negatives, and Fals
 This table summarizes the numerical evaluation results for every concept. For every concept, it calculates:
 
 **K-Split Average**
+
 1. **ROC AUC (Concept Accuracy Score):** concept’s prediction performance score, defined the area under the receiver operating characteristic curve. A score of 1 represents a perfect model; a score of .5 represents a worthless model. As a general rule of thumb, a score above .9 is considered good. Note: ROC AUC is not dependent on the prediction threshold.
 
 **1-Split**
+
 1. **Total Labeled:** Total number of inputs that were originally labeled as the concept in the test set. Total Labeled is the sum of True Positives (correct) and False Negatives (incorrect). Note: Total Labeled is not dependent on the prediction threshold.
 2. **Total Predicted:** Total number of inputs that were predicted as the concept in the test set. This means these inputs were predicted as a concept with probability greater than the prediction threshold value. Total Predicted is the sum of True Positives (correct) and False Positives (incorrect).
 3. **True Positives (TP):** Number of inputs that were correctly predicted as the concept they were actually labeled. Also known as “hits”. (E.g. These are the images that were labeled as “dog” and were predicted as “dog”) 
@@ -47,6 +49,7 @@ This table summarizes the numerical evaluation results for every concept. For ev
 This section has a concept by concept matrix. Note that this is not a confusion matrix; we recommend that you read this through before interpreting the data.
 
 In general, the matrix is meant to be read by fixing each row. Each row represents a subset of the test set that was actually labeled as a particular concept. For this subset, each cell across the row represents either
+
 1. The number of inputs that were predicted as a concept (i.e. “counts”), or 
 2. The average prediction probability for each concept, noted by the column name, for all inputs in this subset, across all K splits  (i.e. “probabilities”). 
  
@@ -61,6 +64,7 @@ The diagonal cells represent True Positives, i.e. correctly predicted inputs. Yo
 Depending on how your model was trained, the off-diagonal cells could include both correct and incorrect predictions. In a non-mutually exclusive concepts environment, you can label an image with more than 1 concept. For example, an image is labeled as both “dog” and “cat”, this image would be counted in both “dog” row and “cat” row. If the model correctly predicts this image to be both “dog” and “cat”, then this input will be counted in both on and off-diagonal cells. 
  
 Few things to note:
+
 1. Remember that the prediction counts depend on the threshold. This means the images are counted toward a predicted concept only if the prediction probability for this concept is higher than the threshold. 
 2. This means the sum of the row may be less or greater than the # of total labeled inputs that were labeled as the concept. 
 3. You can click on each cell to view the actual prediction results for every input that was counted in this cell. 
@@ -71,6 +75,7 @@ Few things to note:
 Each row represents the subset of the test set that were actually labeled as a concept, e.g. “dog”. As you go across the row, each cell shows the average prediction probability for each concept, noted by the column name, for all inputs in this subset. In short, the cell shows the average prediction probability for a concept given the images labeled as a concept.
  
 Few things to note:
+
 1. This matrix does not depend on the Prediction Threshold. 
 2. You can click on each cell to view the actual prediction results for every input that were used to calculate this cell. 
 3. This represents the average across all K splits. 
@@ -90,6 +95,7 @@ You can click on the expand button to view the prediction probabilities for ever
 
 ### Improving your Model
 The evaluation metrics are meant to help you diagnose the quality of your model. Your model may belong to one or more of many categories, including, but not limited to: 
+
 1. Good model with all great concepts. 
 2. OK model with a few bad concepts.
 3. Bad model: with all bad concepts. 
@@ -102,6 +108,7 @@ The evaluation metrics are meant to help you diagnose the quality of your model.
 The performance of your model depends on the performance of each concept, which is trained on a set of inputs. We’d recommend that you look at both inputs and concepts when diagnosing areas of improvement.
 
 **Inputs**
+
 1. Diversity: try to include all perspectives of the concept, e.g. include all angles of a “dog”, if you’re building a “dog” concept. 
 2. Strong positives: Images that are the true representation of your concept.
 3. Training data should be representative of the real world data -- avoid making models where the data is too ‘easy’, i.e. unrealistic set of data. 
@@ -110,11 +117,13 @@ The performance of your model depends on the performance of each concept, which 
 
 
 **Concepts**
+
 1. Concepts: avoid concepts that do not rely on visual cues within the image. Also, current custom training does not perform well on training to identify faces.
 2. Labels: check to see if any inputs are labeled with wrong concepts. 
 
 #### Tips
 When improving your model, there is no one-size-fits-all answer. Here are some tips to keep in mind:
+
 1. Although we use ROC AUC as a general top-level ‘score’ for both concept and model, we do not recommend that you rely on 1 metric only to draw your final conclusion on your model performance. 
 2. Refer to both Concepts by Concepts Results as well as Selection Details to get a better grasp of your model. 
 3. When interpreting the evaluation results, keep in mind the nature of your model. Specifically, pay attention to whether or not you have labeled the inputs with more than 1 concept (i.e. non-mutually exclusive concepts environment), vs. only 1 concept per image. 
