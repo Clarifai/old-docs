@@ -9,12 +9,12 @@ The feedback endpoint does not count towards your usage limits. Please use it as
 The feedback info object allows for specific information to be recorded
 from your application and your end users. All fields are optional unless noted.
 
-  * • `event_type` [required] - Use `'annotation'` for prediction feedback, and use `'search_click'` for search feedback.
-  * • `output_id`/`search_id` [required] - the id associated with the output or search received
+  * `event_type` [required] - Use `'annotation'` for prediction feedback, and use `'search_click'` for search feedback.
+  * `output_id`/`search_id` [required] - the id associated with the output or search received
   from a given API call. With this, the API can traceback the response.
-  * • `end_user_id` - the id associated with your end user. If you want to be able
+  * `end_user_id` - the id associated with your end user. If you want to be able
   to understand which user was producing this feedback, you can associate it with this field.
-  * • `session_id` - the id associated with your user's interface. This is allows you
+  * `session_id` - the id associated with your user's interface. This is allows you
   to understand what the user was doing during that time and allows you an avenue
   to investigate more.
 
@@ -25,8 +25,8 @@ Please use this request to send feedback on the model prediction responses witho
 
 In each request body, you can send
 
-  * • concept `id`: either the correct concept name that you defined or the id that Clarifai defined in the predict response
-  * • concept `value`: `true` if the concept is present in the input, or `false` if it is not present in the input
+  * concept `id`: either the correct concept name that you defined or the id that Clarifai defined in the predict response
+  * concept `value`: `true` if the concept is present in the input, or `false` if it is not present in the input
 
 This allows for our model to re-evaluate the concept and improve the accuracy of our predictions.
 
@@ -233,10 +233,10 @@ Please use this request to send feedback on the model prediction responses with 
 
 In the request body for the feedback for predictions with regions, you can send each `region` object with:
 
-  * • correct `bounding_box` coordinates of the region
-  * • `feedback` for the originally predicted region: `accurate` if it's correct, `misplaced` if the coordinates should be modified, `not_detected` if the region was not originally detected by the model, or `false_positive` if the region should not have been detected by the model
-  * • concept `id`: either the correct concept name that you defined or the id that Clarifai defined in the predict response
-  * • concept `value`: `true` if the concept is present in the input, or `false` if it is not present in the input
+  * correct `bounding_box` coordinates of the region
+  * `feedback` for the originally predicted region: `accurate` if it's correct, `misplaced` if the coordinates should be modified, `not_detected` if the region was not originally detected by the model, or `false_positive` if the region should not have been detected by the model
+  * concept `id`: either the correct concept name that you defined or the id that Clarifai defined in the predict response
+  * concept `value`: `true` if the concept is present in the input, or `false` if it is not present in the input
 
 Note that the `event_type` should be set to `annotation`.
 
@@ -488,8 +488,8 @@ This request is meant to collect the correctly searched inputs, which is usually
 
 In the request body for search feedback, you can specify:
 
-  * • input id of a correct image ('hit') from the search results
-  * • `search_id` from the search API response
+  * input id of a correct image ('hit') from the search results
+  * `search_id` from the search API response
 
 Note that the `event_type` should be set to `search_click`.
 

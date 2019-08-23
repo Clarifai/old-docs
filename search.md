@@ -158,8 +158,7 @@ curl -X POST \
       "created_at": "2016-11-22T17:06:02Z",
       "data": {
         "image": {
-          "url": "https://samples.clarifai.com/metro-nor
-th.jpg"
+          "url": "https://samples.clarifai.com/metro-north.jpg"
         }
       },
       "status": {
