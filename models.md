@@ -1,5 +1,3 @@
-## Models
-
 There are many methods to work with models.
 
 ### Create Model
