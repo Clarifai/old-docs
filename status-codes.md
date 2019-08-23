@@ -28,15 +28,11 @@ All of our API endpoints return back a status code and description with details 
 | 21103 | Custom model is currently in queue for training, waiting on inputs to process. |
 | 21110 | Model training had no data. |
 | 21111 | Model training had no positive examples. |
-| 21112 | Model training was with concepts_mutually_exclusive but with a single class. Try adding
-| more concepts or setting concepts_mutually_exclusive = false. |
-| 21113 | Training took longer than expected, contact support@clarifai.com if this continues to
-| happen when creating new versions of your model. |
-| 21114 | Training got error waiting on your inputs to process, please contact
-| support@clarifai.com. |
-| 21115 | Unknown error in training, please contact support@clarifai.com. |
-| 21116 | Training request was unexpectedly redelivered, contact support@clarifai.com if this
-| continues to happen. |
+| 21112 | Model training was with concepts_mutually_exclusive but with a single class. Try adding more concepts or setting concepts_mutually_exclusive = false. |
+| 21113 | Training took longer than expected, contact support@clarifai.com if this continues to happen when creating new versions of your model. |
+| 21114 | Training got error waiting on your inputs to process, please contact support@clarifai.com. |
+| 21115 | Unknown error in training, please contact sup1port@clarifai.com. |
+| 21116 | Training request was unexpectedly redelivered, contact support@clarifai.com if this continues to happen. |
 | 21150 | Model modification success |
 | 21151 | Model modification pending |
 | 21152 | Model modification failed |
@@ -52,10 +48,8 @@ All of our API endpoints return back a status code and description with details 
 | 21311 | Model evaluation timed out waiting on inputs to process. |
 | 21312 | Model evaluation unknown internal error. |
 | 21313 | Model prediction failed |
-| 21315 | Model evaluation failed because there are not enough annotated inputs. Please ensure there
-| are at least 2 concepts in your model before evaluating. |
-| 21316 | Model evaluation failed because there are not enough labeled inputs. Please ensure there
-| are at least 5 labeled inputs per concept before evaluating. |
+| 21315 | Model evaluation failed because there are not enough annotated inputs. Please ensure there are at least 2 concepts in your model before evaluating. |
+| 21316 | Model evaluation failed because there are not enough labeled inputs. Please ensure there are at least 5 labeled inputs per concept before evaluating. |
 | 22001 | Workflow does not have specified input model. |
 | 22002 | New model in workflow needs to be trained. |
 | 22100 | Duplicate URL in your application. Check the documentation to allow duplications. |
@@ -110,8 +104,7 @@ All of our API endpoints return back a status code and description with details 
 | 31203 | Input video modification failed |
 | 31300 | Input video decoding failed. Check URLs and bytes sent |
 | 39996 | Connection attempts to the input URL failed |
-| 39997 | Sorry, this type of request has been disabled for maintenance. Please try again in a few
-| hours. |
+| 39997 | Sorry, this type of request has been disabled for maintenance. Please try again in a few hours. |
 | 39998 | Input writes are disabled for maintenance. Please try again in a few hours. |
 | 39999 | Invalid input request |
 | 40001 | Invalid request |
@@ -123,8 +116,7 @@ All of our API endpoints return back a status code and description with details 
 | 40030 | Sorry, the server is too busy at the moment. Please try again later. |
 | 40031 | Sorry, the server is unavailable at the moment. Please try again later. |
 | 40032 | Sorry, your request has timed out. Please try your request again. |
-| 40033 | Sorry, the request sent is larger than the allowed limit. Please contact
-| support@clarifai.com. |
+| 40033 | Sorry, the request sent is larger than the allowed limit. Please contact support@clarifai.com. |
 | 41000 | Servers are busy. Please try again later. |
 | 42000 | Visualization succeeded |
 | 42001 | Visualization is pending |
