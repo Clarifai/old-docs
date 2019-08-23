@@ -12,7 +12,7 @@
   * [Video](video.md)
 * [Search](search.md)
 * [Train](train.md)
-* [Evaluate](advanced-model-eval.md)
+* [Evaluate](eval.md)
 * [Feedback](feedback.md)
 * [Workflow](workflow.md)
 * [Public models](public-models.md)
@@ -26,7 +26,7 @@
 ## Advanced
 * [Inputs](inputs.md)
 * [Models](models.md)
-* [Evaluation](advanced-model-eval-2.md)
+* [Evaluation](advanced-model-eval.md)
 * [Predictions](advanced-predict.md)
 * [Searches](advanced-searches.md)
 * [Pagination](pagination.md)
