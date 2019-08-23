@@ -325,6 +325,8 @@ curl -X POST \
   }'\
   https://api.clarifai.com/v2/searches
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 {% code-tabs %}
 {% code-tabs-item title="Response JSON" %}
