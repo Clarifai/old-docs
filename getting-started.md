@@ -19,5 +19,5 @@ All API access is over HTTPS, and accessed via the `https://api.clarifai.com` do
 In the examples throughout our documentation, we use single brackets `{variable}` to indicate that
 this is a variable you should replace with a real value.
 
-Pro Tip: we will continue to update out documentation regularly, so a good way to always stay up
+We will continue to update out documentation regularly, so a good way to always stay up
 to date is to watch our [documentation repo on GitHub](https://github.com/Clarifai/docs).
