@@ -31,7 +31,7 @@ All of our API endpoints return back a status code and description with details 
 | 21112 | Model training was with concepts_mutually_exclusive but with a single class. Try adding more concepts or setting concepts_mutually_exclusive = false. |
 | 21113 | Training took longer than expected, contact support@clarifai.com if this continues to happen when creating new versions of your model. |
 | 21114 | Training got error waiting on your inputs to process, please contact support@clarifai.com. |
-| 21115 | Unknown error in training, please contact sup1port@clarifai.com. |
+| 21115 | Unknown error in training, please contact support@clarifai.com. |
 | 21116 | Training request was unexpectedly redelivered, contact support@clarifai.com if this continues to happen. |
 | 21150 | Model modification success |
 | 21151 | Model modification pending |
