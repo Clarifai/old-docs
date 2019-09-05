@@ -14,6 +14,10 @@ Before you get started, if you haven't created an account and received your free
 
 Please note that your account will be limited to 100 API calls until you verify your email address. After verification, you will receive the full amount of API calls under your plan.
 
-All API access is over HTTPS, and accessed via the `https://api.clarifai.com` domain. The relative path prefix `/v2/` indicates that we are currently using version 2 of the API.
+All API access is over HTTPS, and accessed via the `https://api.clarifai.com` domain.
 
-In the below examples, we use single brackets `{variable}` to indicate that this is a variable you should replace with a real value.
+In the examples throughout our documentation, we use single brackets `{variable}` to indicate that
+this is a variable you should replace with a real value.
+
+We will continue to update our documentation regularly, so a good way to always stay up
+to date is to watch our [documentation repo on GitHub](https://github.com/Clarifai/docs).

@@ -1,12 +1,20 @@
 # Table of contents
 
-## API Guide
+## Getting Started
 
 * [Getting Started](getting-started.md)
   * [Clients](clients.md)
   * [Glossary](glossary.md)
   * [Status codes](status-codes.md)
   * [Portal](portal.md)
+
+
+## Product Updates
+
+* [Upcoming API Changes](upcoming-api-changes.md)
+
+## API Guide
+
 * [Authentication](authentication.md)
 * [Predict](predict.md)
   * [Video](video.md)
@@ -18,6 +26,7 @@
 * [Public models](public-models.md)
 * [Applications](applications.md)
 * [Languages](languages.md)
+
 
 ## SDK Guide
 * [Mobile](mobile.md)
