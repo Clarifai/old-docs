@@ -15,6 +15,9 @@ base64 encoding.
 You are encouraged to send inputs with your own `id`. This will help you later match the input to your own
 database. If you do not send an `id`, one will be created for you.
 
+**Important: adding inputs is an asynchronous operation.** That means it will process indexing of your inputs through your default workflow in the background, which can take some time. In order to check the status of each input you add, see the section on [Get Input by ID](#get-input-by-id) to look for status 30000 (INPUT_IMAGE_DOWNLOAD_SUCCESS) status code on each input to know when it's successfully been indexed. 
+
+
 ##### Add an input using a publicly accessible URL
 
 
