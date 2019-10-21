@@ -4,137 +4,137 @@ All of our API endpoints return back a status code and description with details 
 
 | CODE  | DESCRIPTION |
 | ----- | ----------- |
-| 10000 | Ok |
-| 10010 | Mixed Success |
-| 10020 | Failure |
-| 11000 | Account or plan issue |
-| 11001 | Invalid authentication token |
-| 11002 | Invalid credentials |
-| 11003 | Hourly request limit exceeded |
-| 11004 | Monthly request limit exceeded |
-| 11005 | Making too many requests |
-| 11006 | Account limits exceeded |
-| 11007 | API key has insufficient scopes |
-| 11008 | Invalid API key or Invalid API key/application pair |
-| 11009 | API key not found |
-| 11100 | Bad request format |
-| 11101 | Resource does not exist |
-| 11102 | Invalid request |
-| 11103 | Method not allowed |
-| 11104 | No GDPR Consent |
-| 21100 | Model trained successfully |
-| 21101 | Model is training |
-| 21102 | Model not yet trained |
-| 21103 | Custom model is currently in queue for training, waiting on inputs to process. |
-| 21110 | Model training had no data. |
-| 21111 | Model training had no positive examples. |
-| 21112 | Model training was with concepts_mutually_exclusive but with a single class. Try adding more concepts or setting concepts_mutually_exclusive = false. |
-| 21113 | Training took longer than expected, contact support@clarifai.com if this continues to happen when creating new versions of your model. |
-| 21114 | Training got error waiting on your inputs to process, please contact support@clarifai.com. |
-| 21115 | Unknown error in training, please contact support@clarifai.com. |
-| 21116 | Training request was unexpectedly redelivered, contact support@clarifai.com if this continues to happen. |
-| 21150 | Model modification success |
-| 21151 | Model modification pending |
-| 21152 | Model modification failed |
-| 21200 | Model does not exist |
-| 21201 | Model permission denied |
-| 21202 | Invalid model argument |
-| 21203 | Invalid model request |
-| 21300 | Model was successfully evaluated. |
-| 21301 | Model is evaluating. |
-| 21302 | Model is not yet evaluated. |
-| 21303 | Model is queued for evaluation. |
-| 21310 | Model evaluation timed out. |
-| 21311 | Model evaluation timed out waiting on inputs to process. |
-| 21312 | Model evaluation unknown internal error. |
-| 21313 | Model prediction failed |
-| 21315 | Model evaluation failed because there are not enough annotated inputs. Please ensure there are at least 2 concepts in your model before evaluating. |
-| 21316 | Model evaluation failed because there are not enough labeled inputs. Please ensure there are at least 5 labeled inputs per concept before evaluating. |
-| 22001 | Workflow does not have specified input model. |
-| 22002 | New model in workflow needs to be trained. |
-| 22100 | Duplicate URL in your application. Check the documentation to allow duplications. |
-| 22101 | Workflow format unsupported |
-| 22102 | Workflow does not exist |
-| 22103 | Workflow permission denied |
-| 22104 | Workflow invalid argument |
-| 22106 | Template workflow is invalid |
-| 22107 | Workflow graph is invalid |
-| 22150 | Workflow modification success |
-| 22151 | Workflow modification pending |
-| 22152 | Workflow modification failed |
-| 22999 | Invalid request |
-| 24150 | Annotation success |
-| 24151 | Annotation pending |
-| 24152 | Annotation failed; check URL |
-| 24153 | Annotation in progress |
-| 24155 | Annotation invalid argument |
-| 24156 | Permission to annotation denied |
-| 24250 | Annotation modification success |
-| 24251 | Annotation modification pending |
-| 24252 | Annotation modification failed |
-| 25000 | Custom Trainer unknown internal error |
-| 25004 | Custom Trainer failed to retrieve data or train |
-| 30000 | Download complete |
-| 30001 | Download pending |
-| 30002 | Download failed or we could not process it. Check URL or bytes you send in the request. |
-| 30003 | Download in progress |
-| 30100 | Duplicate URL in your application. Check the documentation to allow duplications. |
-| 30101 | Input image format unsupported |
-| 30102 | Input does not exist |
-| 30103 | Input permission denied |
-| 30104 | Input invalid argument |
-| 30105 | Input image is larger than the allowed limit |
-| 30106 | Input image URL invalid |
-| 30200 | Input image modification success |
-| 30201 | Input image modification pending |
-| 30203 | Input image modification failed |
-| 30300 | Input image decoding failed. Check URLs and bytes sent |
-| 31000 | Download complete |
-| 31001 | Download pending |
-| 31002 | Download failed or we could not process it. Check URL or bytes you sent in the request. |
-| 31100 | Duplicate URL in your application. Check the documentation to allow duplications. |
-| 31101 | Input video format unsupported |
-| 31102 | Input does not exist |
-| 31103 | Input permission denied |
-| 31104 | Input invalid argument |
-| 31105 | Input video is larger the allowed limit |
-| 31106 | Input video URL invalid |
-| 31200 | Input video modification success |
-| 31201 | Input video modification pending |
-| 31203 | Input video modification failed |
-| 31300 | Input video decoding failed. Check URLs and bytes sent |
-| 39996 | Connection attempts to the input URL failed |
-| 39997 | Sorry, this type of request has been disabled for maintenance. Please try again in a few hours. |
-| 39998 | Input writes are disabled for maintenance. Please try again in a few hours. |
-| 39999 | Invalid input request |
-| 40001 | Invalid request |
-| 40002 | Invalid search request |
-| 40003 | Invalid request |
-| 40010 | Object has a duplicate ID; another object with same ID already exist. |
-| 40017 | Object violates a constraint. Try again with different values for the fields. |
-| 40019 | The requested operation is currently processing for this app |
-| 40030 | Sorry, the server is too busy at the moment. Please try again later. |
-| 40031 | Sorry, the server is unavailable at the moment. Please try again later. |
-| 40032 | Sorry, your request has timed out. Please try your request again. |
-| 40033 | Sorry, the request sent is larger than the allowed limit. Please contact support@clarifai.com. |
-| 41000 | Servers are busy. Please try again later. |
-| 42000 | Visualization succeeded |
-| 42001 | Visualization is pending |
-| 42002 | Visualization failed |
-| 42003 | Visualization invalid request |
-| 42004 | Missing application visualization |
-| 42005 | Too many URLs to visualize |
-| 42006 | There is not inputs in app |
-| 43001 | Search internal issue |
-| 43002 | Search projection failure |
-| 43003 | Search prediction failure |
-| 43004 | Can only search by a fully indexed input |
-| 46002 | Signup not permitted |
-| 46003 | Filetype not supported |
-| 60000 | License is active. |
-| 60001 | License does not exist. |
-| 60002 | License needs update. |
-| 60003 | License has expired. |
-| 60004 | License has been revoked. |
-| 60006 | Exceeded volume limit on license |
-| 99009 | Internal error |
+| <span id="10000">10000</span> | Ok |
+| <span id="10010">10010</span> | Mixed Success |
+| <span id="10020">10020</span> | Failure |
+| <span id="11000">11000</span> | Account or plan issue |
+| <span id="11001">11001</span> | Invalid authentication token |
+| <span id="11002">11002</span> | Invalid credentials |
+| <span id="11003">11003</span> | Hourly request limit exceeded |
+| <span id="11004">11004</span> | Monthly request limit exceeded |
+| <span id="11005">11005</span> | Making too many requests |
+| <span id="11006">11006</span> | Account limits exceeded |
+| <span id="11007">11007</span> | API key has insufficient scopes |
+| <span id="11008">11008</span> | Invalid API key or Invalid API key/application pair |
+| <span id="11009">11009</span> | API key not found |
+| <span id="11100">11100</span> | Bad request format |
+| <span id="11101">11101</span> | Resource does not exist |
+| <span id="11102">11102</span> | Invalid request |
+| <span id="11103">11103</span> | Method not allowed |
+| <span id="11104">11104</span> | No GDPR Consent |
+| <span id="21100">21100</span> | Model trained successfully |
+| <span id="21101">21101</span> | Model is training |
+| <span id="21102">21102</span> | Model not yet trained |
+| <span id="21103">21103</span> | Custom model is currently in queue for training, waiting on inputs to process. |
+| <span id="21110">21110</span> | Model training had no data. |
+| <span id="21111">21111</span> | Model training had no positive examples. |
+| <span id="21112">21112</span> | Model training was with concepts_mutually_exclusive but with a single class. Try adding more concepts or setting concepts_mutually_exclusive = false. |
+| <span id="21113">21113</span> | Training took longer than expected, contact support@clarifai.com if this continues to happen when creating new versions of your model. |
+| <span id="21114">21114</span> | Training got error waiting on your inputs to process, please contact support@clarifai.com. |
+| <span id="21115">21115</span> | Unknown error in training, please contact support@clarifai.com. |
+| <span id="21116">21116</span> | Training request was unexpectedly redelivered, contact support@clarifai.com if this continues to happen. |
+| <span id="21150">21150</span> | Model modification success |
+| <span id="21151">21151</span> | Model modification pending |
+| <span id="21152">21152</span> | Model modification failed |
+| <span id="21200">21200</span> | Model does not exist |
+| <span id="21201">21201</span> | Model permission denied |
+| <span id="21202">21202</span> | Invalid model argument |
+| <span id="21203">21203</span> | Invalid model request |
+| <span id="21300">21300</span> | Model was successfully evaluated. |
+| <span id="21301">21301</span> | Model is evaluating. |
+| <span id="21302">21302</span> | Model is not yet evaluated. |
+| <span id="21303">21303</span> | Model is queued for evaluation. |
+| <span id="21310">21310</span> | Model evaluation timed out. |
+| <span id="21311">21311</span> | Model evaluation timed out waiting on inputs to process. |
+| <span id="21312">21312</span> | Model evaluation unknown internal error. |
+| <span id="21313">21313</span> | Model prediction failed |
+| <span id="21315">21315</span> | Model evaluation failed because there are not enough annotated inputs. Please ensure there are at least 2 concepts in your model before evaluating. |
+| <span id="21316">21316</span> | Model evaluation failed because there are not enough labeled inputs. Please ensure there are at least 5 labeled inputs per concept before evaluating. |
+| <span id="22001">22001</span> | Workflow does not have specified input model. |
+| <span id="22002">22002</span> | New model in workflow needs to be trained. |
+| <span id="22100">22100</span> | Duplicate URL in your application. Check the documentation to allow duplications. |
+| <span id="22101">22101</span> | Workflow format unsupported |
+| <span id="22102">22102</span> | Workflow does not exist |
+| <span id="22103">22103</span> | Workflow permission denied |
+| <span id="22104">22104</span> | Workflow invalid argument |
+| <span id="22106">22106</span> | Template workflow is invalid |
+| <span id="22107">22107</span> | Workflow graph is invalid |
+| <span id="22150">22150</span> | Workflow modification success |
+| <span id="22151">22151</span> | Workflow modification pending |
+| <span id="22152">22152</span> | Workflow modification failed |
+| <span id="22999">22999</span> | Invalid request |
+| <span id="24150">24150</span> | Annotation success |
+| <span id="24151">24151</span> | Annotation pending |
+| <span id="24152">24152</span> | Annotation failed; check URL |
+| <span id="24153">24153</span> | Annotation in progress |
+| <span id="24155">24155</span> | Annotation invalid argument |
+| <span id="24156">24156</span> | Permission to annotation denied |
+| <span id="24250">24250</span> | Annotation modification success |
+| <span id="24251">24251</span> | Annotation modification pending |
+| <span id="24252">24252</span> | Annotation modification failed |
+| <span id="25000">25000</span> | Custom Trainer unknown internal error |
+| <span id="25004">25004</span> | Custom Trainer failed to retrieve data or train |
+| <span id="30000">30000</span> | Download complete |
+| <span id="30001">30001</span> | Download pending |
+| <span id="30002">30002</span> | Download failed or we could not process it. Check URL or bytes you send in the request. |
+| <span id="30003">30003</span> | Download in progress |
+| <span id="30100">30100</span> | Duplicate URL in your application. Check the documentation to allow duplications. |
+| <span id="30101">30101</span> | Input image format unsupported |
+| <span id="30102">30102</span> | Input does not exist |
+| <span id="30103">30103</span> | Input permission denied |
+| <span id="30104">30104</span> | Input invalid argument |
+| <span id="30105">30105</span> | Input image is larger than the allowed limit |
+| <span id="30106">30106</span> | Input image URL invalid |
+| <span id="30200">30200</span> | Input image modification success |
+| <span id="30201">30201</span> | Input image modification pending |
+| <span id="30203">30203</span> | Input image modification failed |
+| <span id="30300">30300</span> | Input image decoding failed. Check URLs and bytes sent |
+| <span id="31000">31000</span> | Download complete |
+| <span id="31001">31001</span> | Download pending |
+| <span id="31002">31002</span> | Download failed or we could not process it. Check URL or bytes you sent in the request. |
+| <span id="31100">31100</span> | Duplicate URL in your application. Check the documentation to allow duplications. |
+| <span id="31101">31101</span> | Input video format unsupported |
+| <span id="31102">31102</span> | Input does not exist |
+| <span id="31103">31103</span> | Input permission denied |
+| <span id="31104">31104</span> | Input invalid argument |
+| <span id="31105">31105</span> | Input video is larger the allowed limit |
+| <span id="31106">31106</span> | Input video URL invalid |
+| <span id="31200">31200</span> | Input video modification success |
+| <span id="31201">31201</span> | Input video modification pending |
+| <span id="31203">31203</span> | Input video modification failed |
+| <span id="31300">31300</span> | Input video decoding failed. Check URLs and bytes sent |
+| <span id="39996">39996</span> | Connection attempts to the input URL failed |
+| <span id="39997">39997</span> | Sorry, this type of request has been disabled for maintenance. Please try again in a few hours. |
+| <span id="39998">39998</span> | Input writes are disabled for maintenance. Please try again in a few hours. |
+| <span id="39999">39999</span> | Invalid input request |
+| <span id="40001">40001</span> | Invalid request |
+| <span id="40002">40002</span> | Invalid search request |
+| <span id="40003">40003</span> | Invalid request |
+| <span id="40010">40010</span> | Object has a duplicate ID; another object with same ID already exist. |
+| <span id="40017">40017</span> | Object violates a constraint. Try again with different values for the fields. |
+| <span id="40019">40019</span> | The requested operation is currently processing for this app |
+| <span id="40030">40030</span> | Sorry, the server is too busy at the moment. Please try again later. |
+| <span id="40031">40031</span> | Sorry, the server is unavailable at the moment. Please try again later. |
+| <span id="40032">40032</span> | Sorry, your request has timed out. Please try your request again. |
+| <span id="40033">40033</span> | Sorry, the request sent is larger than the allowed limit. Please contact support@clarifai.com. |
+| <span id="41000">41000</span> | Servers are busy. Please try again later. |
+| <span id="42000">42000</span> | Visualization succeeded |
+| <span id="42001">42001</span> | Visualization is pending |
+| <span id="42002">42002</span> | Visualization failed |
+| <span id="42003">42003</span> | Visualization invalid request |
+| <span id="42004">42004</span> | Missing application visualization |
+| <span id="42005">42005</span> | Too many URLs to visualize |
+| <span id="42006">42006</span> | There is not inputs in app |
+| <span id="43001">43001</span> | Search internal issue |
+| <span id="43002">43002</span> | Search projection failure |
+| <span id="43003">43003</span> | Search prediction failure |
+| <span id="43004">43004</span> | Can only search by a fully indexed input |
+| <span id="46002">46002</span> | Signup not permitted |
+| <span id="46003">46003</span> | Filetype not supported |
+| <span id="60000">60000</span> | License is active. |
+| <span id="60001">60001</span> | License does not exist. |
+| <span id="60002">60002</span> | License needs update. |
+| <span id="60003">60003</span> | License has expired. |
+| <span id="60004">60004</span> | License has been revoked. |
+| <span id="60006">60006</span> | Exceeded volume limit on license |
+| <span id="99009">99009</span> | Internal error |
