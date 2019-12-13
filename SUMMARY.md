@@ -21,7 +21,6 @@
 * [Search](search.md)
 * [Train](train.md)
 * [Evaluate](eval.md)
-* [Feedback](feedback.md)
 * [Workflow](workflow.md)
 * [Public models](public-models.md)
 * [Applications](applications.md)
