@@ -13,6 +13,6 @@ You can access the
 </a>
 
 For a step-by-step guide on building and training a custom model using the Explorer mode in our Portal, checkout this 
-<a href="http://help.clarifai.com/custom-training/guides/custom-training-walkthrough" target="_blank">
+<a href="https://help.clarifai.com/hc/en-us/articles/360036921654-Custom-Training-Walkthrough-via-our-UI" target="_blank">
   walkthrough.<span class="icon icon-link-out"></span>
 </a>
