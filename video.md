@@ -182,7 +182,7 @@ and others are based on your plan. If you need to increase your limits, you may 
 The Video API currently supports videos of up to 80MB in size or 10min in length (whichever comes first) if you are uploading through URL, and videos of up to 10MB in size, if you are uploading through video bytes (base 64).
 If the video input exceeds the limits, the processing will time out and you will receive a response error.
 
-If your video exceeds the above limits, please follow our [tutorial](http://help.clarifai.com/videos/how-to-split-video-files-into-smaller-pieces) on how to break up a large
+If your video exceeds the above limits, please follow our [tutorial](https://help.clarifai.com/hc/en-us/articles/360037660174-How-to-Split-Large-Video-Files-Into-Smaller-Files) on how to break up a large
 video into smaller components, and send those components into the Video API.
 
 {% code-tabs %}
