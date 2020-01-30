@@ -159,20 +159,16 @@ Result = `{"key1":{"key2":"value2", "key3":"value3"}}`
 ```
 
 ### Overwrite
-`overwrite` action will overwrite a key:value with key:new_value or
-overwrite a list of values with the new list of values. In most cases
-this is similar to `merge` action.
+`overwrite` action will overwrite old object with new object.
 
 In the following examples A is being patched into B to create the Result:
 
 ```
-*Overwrite whole list*
 A = `{"a":[{"id": "1"}], "blah":1}`
-B = `{"a":[{"id": "2"}], "blah":"string"}`
+B = `{"a":[{"id": "2"}], "blah":"string", "foo": "bar}`
 Result = `{"a":[{"id": "1"}], "blah":1}`
 
-*For non-id lists, overwrite will overwrite whole list*
-A = `{"a":[{"blah": "1"}], "blah":1}`
+A = `{}`
 B = `{"a":[{"blah": "2"}], "blah":"string"}`
-Result = `{"a":[{"blah": "1"}], "blah":1}`
+Result = `{}`
 ```
