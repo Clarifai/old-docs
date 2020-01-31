@@ -159,20 +159,200 @@ Result = `{"key1":{"key2":"value2", "key3":"value3"}}`
 ```
 
 ### Overwrite
-`overwrite` action will overwrite a key:value with key:new_value or
-overwrite a list of values with the new list of values. In most cases
-this is similar to `merge` action.
+The `overwrite` action will overwrite the old object with the new object. If you want to change a field or sub-object with the `overwrite` action, it is suggested to first call `Get` to obtain the original object. Then you can change the field or sub-object you would like to overwrite, followed by assembling the `overwrite` request with the entire object.
 
 In the following examples A is being patched into B to create the Result:
 
 ```
-*Overwrite whole list*
 A = `{"a":[{"id": "1"}], "blah":1}`
-B = `{"a":[{"id": "2"}], "blah":"string"}`
+B = `{"a":[{"id": "2"}], "blah":"string", "foo": "bar}`
 Result = `{"a":[{"id": "1"}], "blah":1}`
 
-*For non-id lists, overwrite will overwrite whole list*
-A = `{"a":[{"blah": "1"}], "blah":1}`
+A = `{}`
 B = `{"a":[{"blah": "2"}], "blah":"string"}`
-Result = `{"a":[{"blah": "1"}], "blah":1}`
+Result = `{}`
+```
+
+*Patch inputs with overwrite action will overwrite data object*
+```
+*Before Patch*
+"input": {
+    "id": "68be8de5a7de42c4873bf63fb6b8683d",
+    "data": {
+        "image": {
+            "url": "https://samples.clarifai.com/your-image.jpg",
+        },
+        "concepts": [
+            {
+                "id": "car",
+                "name": "car",
+                "value": 1,
+                "app_id": "your-application-id"
+            }
+        ],
+        "geo": {
+            "geo_point": {
+                "longitude": 40.7129,
+                "latitude": 74.0058
+            }
+        }
+    },
+}
+
+*Patch Request*
+{
+    "inputs": [
+        {
+            "id": "68be8de5a7de42c4873bf63fb6b8683d",
+            "data": {
+                "concepts": [
+                    {
+                        "id": "ferrari",
+                        "value": 1.0
+                    }
+                ],
+                "metadata": {
+                    "foo": "bar"
+                }
+            }
+        }
+    ],
+    "action": "overwrite"
+}
+
+*Result*
+"input": {
+    "id": "68be8de5a7de42c4873bf63fb6b8683d",
+    "data": {
+        "image": {
+            "url": "https://samples.clarifai.com/your-image.jpg",
+        },
+        "concepts": [
+            {
+                "id": "ferrari",
+                "name": "ferrari",
+                "value": ,
+                "app_id": "your-application-id"
+            }
+        ],
+        "metadata": {
+            "foo": "bar"
+        }
+    },
+}
+```
+
+*Patch models with overwrite action will overwrite output_info and name*
+```
+*Before Patch*
+"model": {
+    "id": "test-model-1580486147",
+    "name": "test-model-1580486147",
+    "app_id": "test-app-1580486122",
+    "output_info": {
+        "data": {
+            "concepts": [
+                {
+                    "id": "car",
+                    "name": "car",
+                    "value": 1,
+                    "language": "en",
+                    "app_id": "test-app-1580486122"
+                },
+                {
+                    "id": "ferrari",
+                    "name": "ferrari",
+                    "value": 1,
+                    "language": "en",
+                    "app_id": "test-app-1580486122"
+                }
+            ]
+        },
+        "output_config": {
+            "concepts_mutually_exclusive": false,
+            "closed_environment": false,
+            "max_concepts": 0,
+            "min_value": 0,
+            "test_split_percent": 10,
+            "embed_model_version_id": "bb186755eda04f9cbb6fe32e816be104",
+            "invalid_data_tolerance_percent": 5
+        },
+        "type": "concept",
+        "type_ext": "concept"
+    }
+}
+
+*Patch Request*
+{
+    "models": [
+        {
+            "id": "test-model-1580486147",
+            "name": "my-new-model",
+            "output_info": {
+                "data": {
+                    "concepts": [
+                        {
+                            "id": "animal"
+                        },
+                        {
+                            "id": "dog"
+                        },
+                        {
+                            "id": "cat"
+                        }
+                    ]
+                },
+                "output_config": {
+                    "concepts_mutually_exclusive": true
+                }
+            }
+        }
+    ],
+    "action": "overwrite"
+}
+
+*Result*
+"model": {
+    "id": "test-model-1580486147",
+    "name": "my-new-model",
+    "app_id": "test-app-1580486122",
+    "output_info": {
+        "data": {
+            "concepts": [
+                {
+                    "id": "animal",
+                    "name": "animal",
+                    "value": 1,
+                    "language": "en",
+                    "app_id": "test-app-1580486122"
+                },
+                {
+                    "id": "cat",
+                    "name": "cat",
+                    "value": 1,
+                    "language": "en",
+                    "app_id": "test-app-1580486122"
+                },
+                {
+                    "id": "dog",
+                    "name": "dog",
+                    "value": 1,
+                    "language": "en",
+                    "app_id": "test-app-1580486122"
+                }
+            ]
+        },
+        "output_config": {
+            "concepts_mutually_exclusive": true,
+            "closed_environment": false,
+            "max_concepts": 0,
+            "min_value": 0,
+            "test_split_percent": 10,
+            "embed_model_version_id": "bb186755eda04f9cbb6fe32e816be104",
+            "invalid_data_tolerance_percent": 5
+        },
+        "type": "concept",
+        "type_ext": "concept"
+    }
+}
 ```
