@@ -20,6 +20,8 @@ watch our [documentation repo on GitHub](https://github.com/Clarifai/docs).
 
 | Date | Change |
 | ------ | ---- |
+| Feb 12, 2020. 9:00am ET | **Deprecation of Face object from API**<br><br>The Face object in our API responses will be deprecated in favor of a list of Concepts that other model types return. This should only effect users of the Celebrity, Demographics, or custom face recognition models where the `data.face` attributes like `data.face.identity`, `data.face.age_appearance`, `data.face.gender_appearance`, and `data.face.multicultural_appearance` will now be returned in the list of `data.concepts` Concept object. The API will return both for a while during the transition to give you time to update your code away from using the `data.face` objects altogether. We are doing this to simplify the API interface and make it more easily compatible for advanced functionality that is coming soon in workflows! |
+| Feb 12, 2020. 9:00am ET | **Deprecation of Face model type names**<br><br>The `facedetect*` model types will be deprecated in favor of their more general `detect*` counterparts. For example these would be the changes of model type:<br>`facedetect` -> `detect`<br>`facedetect-identity` -> `detect-concept`<br>`facedetect-demographics` -> `detect-concept`<br>`facedetect-embed` -> `detect-embed`<br>This change is to unify the APIs around face products and object detection products so that they are compatible everywhere either is used. |
 
 
 ### Completed Changes
