@@ -360,7 +360,6 @@ for c in outputs[0].data.regions[0].data:
 ```
 Similar examples could be made for all other languages. If you need help in the conversion, feel free to reach out to support@clarifai.com. 
 
-|
 
 
 ### Completed Changes
