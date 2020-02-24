@@ -1,7 +1,7 @@
 ## Android SDK
 
 Clarifai’s Android SDK enables machine learning directly on your device, bypassing the traditional
-requirement of internet connectivity and extensive computing power. It makes it easy to use
+requirement of internet connectivity and extensive computing power. This makes it easy to use
 image and video recognition on device and in real-time.
 
 <a href="https://www.clarifai.com/get-sdk" target="_blank">
