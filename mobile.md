@@ -1,3 +1,7 @@
+Update Notice
+
+We will be deprecating public support for our Android and Mobile SDK. Please plan to adjust your applications to use our cloud clients to have the best experience using our platform. If you need assistance please contact support@clarifai.com<a href="support@clarifai.com">.
+
 ## Apple SDK
 
 Clarifai’s Apple SDK enables machine learning directly on your device, bypassing the traditional
