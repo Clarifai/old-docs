@@ -1,7 +1,11 @@
+## Update Notice
+
+We will be deprecating public support for our Android and Mobile SDK. Please plan to adjust your applications to use our cloud clients to have the best experience using our platform. If you need assistance please contact support@clarifai.com<a href="support@clarifai.com">.
+
 ## Android SDK
 
 Clarifai’s Android SDK enables machine learning directly on your device, bypassing the traditional
-requirement of internet connectivity and extensive computing power. It makes it easy to use
+requirement of internet connectivity and extensive computing power. This makes it easy to use
 image and video recognition on device and in real-time.
 
 <a href="https://www.clarifai.com/get-sdk" target="_blank">
