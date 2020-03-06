@@ -6,6 +6,17 @@ Access our API over HTTPS via `https://api.clarifai.com`. In the examples throug
 
 We recommend using a client library to access the API. We offer official clients in a variety of languages.
 
+| Available Clients |
+| ----------------- |
+| [Clarifai C#](https://github.com/Clarifai/clarifai-csharp) |
+| [Clarifai Java](https://github.com/Clarifai/clarifai-java) |
+| [Clarifai JavaScript](https://github.com/Clarifai/clarifai-javascript) ([Reference Docs](https://sdk.clarifai.com/js/latest/index.html)) |
+| [Clarifai PHP](https://github.com/Clarifai/clarifai-php) |
+| [Clarifai Python](https://github.com/Clarifai/clarifai-python) ([Reference Docs](https://clarifai-python.readthedocs.io/en/latest/index.html)) |
+
+To access the Clarifai API in other languages, use the REST API directly. For REST documentation
+please see the cURL examples.
+
 ## Client Installation Instructions
 
 {% tabs %}
