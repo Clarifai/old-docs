@@ -168,3 +168,27 @@ composer require clarifai/clarifai-php
 {% endtab %}
 {% endtabs %}
 
+
+##### gRPC Clients (alpha)
+
+We are in the process of building auto-generated clients using [gRPC](https://grpc.io/). These
+clients may offer higher performance since they use the more optimized gRPC channel to transfer the
+data via network. The data is serialized with
+[Protocol Buffers](https://developers.google.com/protocol-buffers/).
+
+These clients are auto-generated and will always contain the latest available Clarifai API
+feature-set.
+
+It's even possible to make these clients use a standard REST+JSON channel, while enjoying a better
+auto-completion support in most IDEs (compared to handling JSON directly), and easily being able to
+switch to using a gRPC channel when/if desired.
+
+The gRPC clients below are currently available. We'll be adding more as time goes on. If you'd
+like request a client for a particular language, please make your request using
+[this form](https://docs.google.com/forms/d/e/1FAIpQLScqgilEonz-nalatwbaWQ7XsZ-76RmyMnMt_2jSork5T6kDTQ/viewform).
+
+| Available gRPC Clients |
+| ----------------- |
+| [Clarifai gRPC Java](https://github.com/Clarifai/clarifai-java-grpc/) |
+| [Clarifai gRPC NodeJS](https://github.com/Clarifai/clarifai-javascript-grpc) |
+| [Clarifai gRPC Python](https://github.com/Clarifai/clarifai-python-grpc/) |
