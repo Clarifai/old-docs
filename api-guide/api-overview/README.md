@@ -209,11 +209,11 @@ $client = new ClarifaiClient('YOUR_API_KEY');
 {% endtabs %}
 
 
-##### gRPC Clients (alpha)
+##### gRPC Clients
 
-We are in the process of building auto-generated clients using [gRPC](https://grpc.io/). These
-clients may offer higher performance since they use the more optimized gRPC channel to transfer the
-data over the network. The data is serialized with
+You can also use any of the new auto-generated clients built using [gRPC](https://grpc.io/). These
+clients may offer better performance since they use a gRPC channel where the network transfer of the
+data is optimized. The data is serialized with
 [Protocol Buffers](https://developers.google.com/protocol-buffers/).
 
 These clients are auto-generated and will always have the latest available Clarifai API
