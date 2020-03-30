@@ -8,4 +8,6 @@ For example, if you're training a custom model to recognize your restaurant's di
 
 Check out our model gallery for a description of the select public models that can be used as a base workflow. You can learn more about workflows here.
 
+{% hint style="info" %}
 We recommend choosing the 'General' model if you're not sure which public model would best suit your use case.
+{% endhint %}
