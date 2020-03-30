@@ -2,3 +2,4 @@ Your data, annotations, models, predictions and searches are contained within ap
 
 Each application is authenticated with a unique API Key. You can learn more about authentication on the next page.
 
+![image showing the edit app button on the Manage Application page](/images/applications.jpg)
