@@ -42,21 +42,21 @@
 
 ## Portal Guide
 
-* [Portal overview](portal-overview)
-* [Data management](data-management)
-* [Annotate](annotate)
-  * [Positive and negative annotations](positive-and-negative-annotations)
-* [Model](model)
-  * [Public models](public-models)
-  * [Custom model walkthrough](custom-model-walkthrough)
-  * [Workflows](workflows)
-  * [Evaluate](evaluate)
-    * [Interpreting evaluations](interpreting-evaluations)
-* [Predict](predict)
-* [Search](search)
-  * [Rank](rank)
-  * [Filter](filter)
-  * [Combine or negate](combine-or-negate)
+* [Portal overview](pportal-overview)
+* [Data management](pdata-management)
+* [Annotate](pannotate)
+  * [Positive and negative annotations](ppositive-and-negative-annotations)
+* [Model](pmodel)
+  * [Public models](ppublic-models)
+  * [Custom model walkthrough](pcustom-model-walkthrough)
+  * [Workflows](pworkflows)
+  * [Evaluate](pevaluate)
+    * [Interpreting evaluations](pinterpreting-evaluations)
+* [Predict](ppredict)
+* [Search](psearch)
+  * [Rank](prank)
+  * [Filter](pfilter)
+  * [Combine or negate](pcombine-or-negate)
 
 
 ## Product Updates
