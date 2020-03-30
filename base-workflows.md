@@ -6,7 +6,7 @@ When you create a new app, you choose a base workflow that will provide the tran
 
 For example, if you're training a custom model to recognize your restaurant's dishes on social media, you would choose the 'Food' model in your base workflow.
 
-Check out our model gallery for a description of the select public models that can be used as a base workflow. You can learn more about workflows here.
+Check out our [model gallery](https://www.clarifai.com/models) for a description of the select public models that can be used as a base workflow. You can learn more about workflows [here](https://docs.clarifai.com/main/api-guide/model/workflow/).
 
 {% hint style="info" %}
 We recommend choosing the 'General' model if you're not sure which public model would best suit your use case.
