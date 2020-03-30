@@ -2,7 +2,7 @@ Our platform is designed to make the process of creating custom machine learning
 
 When you create a new app, you choose a base workflow that will provide the transfer learning framework for your app. Each base workflow contains one public model, and the public model that you choose will determine the type of "head start" that you are giving your application.
 
-!(images/base-workflow.jpg)
+![image showing the edit app button on the Manage Application page](/images/base_workflow.jpg)
 
 For example, if you're training a custom model to recognize your restaurant's dishes on social media, you would choose the 'Food' model in your base workflow.
 
