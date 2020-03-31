@@ -1,32 +1,32 @@
-JavaScript
+##JavaScript
 
 [github.com/Clarifai/clarifai-javascript](github.com/Clarifai/clarifai-javascript)
 
 [Code Reference](https://sdk.clarifai.com/js/latest/index.html)
 
 
-Python
+##Python
 
 [github.com/Clarifai/clarifai-python](github.com/Clarifai/clarifai-python)
 
 [Code Reference](https://clarifai-python.readthedocs.io/en/latest/index.html)
 
 
-Java
+##Java
 
 [github.com/Clarifai/clarifai-java](github.com/Clarifai/clarifai-java)
 
 [Code Reference](https://github.com/Clarifai/clarifai-java)
 
 
-C#
+##C#
 
 [github.com/clarifai/clarifai-csharp](github.com/clarifai/clarifai-csharp)
 
 [Code Reference](https://github.com/clarifai/clarifai-csharp)
 
 
-PHP
+##PHP
 
 [github.com/Clarifai/clarifai-php](github.com/Clarifai/clarifai-php)
 
