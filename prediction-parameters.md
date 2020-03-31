@@ -1,6 +1,5 @@
-## Predictions
-
 You can set additional parameters to gain flexibility in the predict operation.
+
 ### Select Concepts
 By putting this additional parameter on your predict calls, you can receive predict value(s) for **only** the concepts that you want to. You can specify particular concepts by either their id and/or their name. The concept names and ids are case sensitive, and so, these must be exact matches.
 
