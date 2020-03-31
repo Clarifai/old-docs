@@ -2,7 +2,7 @@ With a video input, the Predict API response will return a list of predicted con
 
 You can run Predict on your video using a select number of [public models](https://www.clarifai.com/models). The models that are currently supported are: Apparel, Food, General, NSFW, Travel, and Wedding. You make an API call by providing the `{model-id}` parameter and your data parameter is `video` instead of `image`.
 
-**Video Limits**
+**Video limits**
 
 The Predict API has limits to the length and size it can support. A video, uploaded through URL, can be anywhere up to 80MB in size or 10mins in length. When a video is sent through by bytes, the Predict API can support 10MB in size.
 
@@ -1475,7 +1475,7 @@ curl -X POST \
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-**Via Bytes**
+**Via bytes**
 
 Below is an example of how you would send the bytes of a video and receive back predictions from the general model.
 
