@@ -1,12 +1,8 @@
-# Predict
+The Predict API analyzes your images or videos and tells you what's inside of them. The API will return a list of concepts with corresponding probabilities of how likely it is these concepts are contained within the image or video.
 
-The Predict API analyzes your images or videos and tells you what's inside of them.
+We recommend specifying the `version id` parameter in your predict calls. If no `version id` is specified, predictions will occur on the most recent version of the model. 
 
-The API will return a list of concepts with corresponding probabilities of how likely it is these concepts are contained within the image or video.
-
-When you make a prediction through the API, you tell it what model to use. This can be one Clarifai's pre-built models or a custom one trained by you. A model contains a group of concepts. A model will only 'see' the concepts it contains. You can also specify more parameters for predictions.
-
-We recommend specifying the `version id` parameter in your predict calls. If no `version id` is specified, predictions will occur on the most recent version of the model. More information can be found in the [Advanced Predictions section](advanced-predict.md#by-model-version-id).
+![image](/images/predict.jpg)
 
 #### Images
 
