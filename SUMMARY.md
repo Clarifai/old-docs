@@ -44,7 +44,7 @@
 ## Portal Guide
 
 * [Portal overview](portal-overview.md)
-* [Data management](pdata-management.md)
+* [Data management](pdata_management.md)
 * [Annotate](annotate.md)
   * [Positive and negative annotations](positive-and-negative-annotations.md)
 * [Model](model.md)
