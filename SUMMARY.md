@@ -6,7 +6,7 @@
 * [Quick Start](quick-start.md)
 * [Applications](applications.md)
   * [Create an Application](create-an-application.md)
-  * [Base Workflows](base-worflows.md)
+  * [Base Workflows](base-workflows.md)
   * [Application Settings](application-settings.md)
 * [Authentication](authentication.md)
 * [Glossary](glossary.md)
