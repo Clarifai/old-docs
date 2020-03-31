@@ -57,7 +57,7 @@
 * [Search](psearch.md)
   * [Rank](prank.md)
   * [Filter](pfilter.md)
-  * [Combine or negate](pcombine-or-negate.md)
+  * [Combine or negate](pcombine_or_negate.md)
 
 
 ## Product Updates
