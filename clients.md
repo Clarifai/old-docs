@@ -1,10 +1,10 @@
-### API Clients
+### API Overview
 
-We recommend using a client library to access the API. We offer official clients in various languages.
-[View our API Clients](https://www.clarifai.com/developer/reference).
+Our API enables you to build AI applications with capabilities like prediction, search and custom training.
 
-For REST documentation please see the cURL examples.
+Access our API over HTTPS via https://api.clarifai.com. In the examples throughout our documentation, we use single brackets {variable} to indicate variables that you should replace with a real value.
 
+We recommend using a client library to access the API. We offer official clients in a variety of languages.
 
 
 ##### Client Installation Instructions
