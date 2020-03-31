@@ -1,19 +1,10 @@
 ## Inputs
 
-The API is built around a simple idea. You send inputs (images) to the service and it returns predictions.
-In addition to receiving predictions on inputs, you can also 'save' inputs and their predictions to later
-search against. You can also 'save' inputs with concepts to later train your own model.
+The API is built around a simple idea. You send inputs (images) to the service and it returns predictions. In addition to receiving predictions on inputs, you can also 'save' inputs and their predictions to later search against. You can also 'save' inputs with concepts to later train your own model.
 
 ### Add Inputs
 
-You can add inputs one by one or in bulk. If you do send bulk, you are limited to sending 128 inputs at a
-time.
-
-Images can either be publicly accessible URLs or file bytes. If you are sending file bytes, you must use
-base64 encoding.
-
-You are encouraged to send inputs with your own `id`. This will help you later match the input to your own
-database. If you do not send an `id`, one will be created for you.
+You can add inputs one by one or in bulk. If you do send bulk, you are limited to sending 128 inputs at a time.
 
 **Important: adding inputs is an asynchronous operation.** That means it will process indexing of your inputs through your default workflow in the background, which can take some time. In order to check the status of each input you add, see the section on [Get Input by ID](#get-input-by-id) to look for status 30000 (INPUT_IMAGE_DOWNLOAD_SUCCESS) status code on each input to know when it's successfully been indexed. 
 
@@ -469,7 +460,7 @@ curl -X POST \
 
 
 
-### Add Inputs With Concepts
+### Add inputs with concepts
 
 If you would like to add an input with concepts, you can do so like this. Concepts play an important role in
 creating your own models using your own concepts. You can learn more about
@@ -654,7 +645,7 @@ curl -X POST \
 
 
 
-### Add Inputs With Custom Metadata
+### Add inputs with custom metadata
 
 In addition to adding an input with concepts, you can also add an input with custom metadata. This
 metadata will then be [searchable](advanced-searches.md#by-custom-metadata). Metadata can be any
@@ -803,7 +794,7 @@ curl -X POST \
 
 
 
-### Get Inputs
+### Get inputs
 
 You can list all the inputs (images) you have previously added either for
 [search](advanced-searches.md) or [train](train.md).
@@ -930,7 +921,7 @@ curl -X GET \
 
 
 
-### Get Input By Id
+### Get input by id
 
 If you'd like to get a specific input by id, you can do that as well.
 
@@ -1044,7 +1035,7 @@ curl -X GET \
 
 
 
-### Get Inputs Status
+### Get inputs status
 
 If you add inputs in bulk, they will process in the background. You can get the status of all your inputs
 (processed, to_process and errors) like this:
@@ -1159,8 +1150,8 @@ curl -X GET \
 {% endcode-tabs %}
 
 
-
-### Update Input With Concepts
+## Update inputs
+### Update input with concepts
 
 To update an input with a new concept, or to change a concept value from true/false, you can do that:
 
@@ -1337,8 +1328,172 @@ curl -X PATCH \
 {% endcode-tabs %}
 
 
+### Bulk update inputs with concepts
 
-### Delete Concepts From An Input
+You can update an existing input using its Id. This is useful if you'd like to add concepts to an input after
+its already been added.
+
+
+
+{% code-tabs %}
+{% code-tabs-item title="js" %}
+```js
+
+app.inputs.mergeConcepts([
+  {
+    id: "{id1}",
+    concepts: [
+      {
+        id: "tree",
+        value: true
+      },
+      {
+        id: "water",
+        value: false
+      }
+    ]
+  },
+  {
+    id: "{id2}",
+    concepts: [
+      {
+        id: "animal",
+        value: true
+      },
+      {
+        id: "fruit",
+        value: false
+      }
+    ]
+  }
+]).then(
+  function(response) {
+    // do something with response
+  },
+  function(err) {
+    // there was an error
+  }
+);
+
+
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="python" %}
+```python
+from clarifai.rest import ClarifaiApp
+app = ClarifaiApp(api_key='YOUR_API_KEY')
+
+input_ids = ["{id1}", "{id2}"]
+concept_pairs = [
+                 [('tree', True), ('water', False)],
+                 [('animal', True), ('fruit', False)],
+                ]
+app.inputs.bulk_merge_concepts(input_ids, concept_pairs)
+
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="java" %}
+```java
+
+// Coming soon
+
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="csharp" %}
+```csharp
+
+// Coming soon
+
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="objective-c" %}
+```objective-c
+ClarifaiConcept *newConcept = [[ClarifaiConcept alloc] initWithConceptID:@"tree"];
+[_app getInput:@"{input_id}" completion:^(ClarifaiInput *input, NSError *error) {
+  // Add tree concept to each current input's concept list.
+  NSMutableArray *newConceptList = [NSMutableArray arrayWithArray:input.concepts];
+  [newConceptList addObject:newConcept];
+  input.concepts = newConceptList;
+
+  // Merge the new list for one or more inputs.
+  [_app mergeConceptsForInputs:@[input] completion:^(NSArray<ClarifaiInput *> *inputs, NSError *error)   {
+    NSLog(@"updated inputs: %@", inputs);
+  }];
+}];
+
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="php" %}
+```php
+
+//coming soon
+
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="cURL" %}
+```cURL
+
+curl -X PATCH \
+  -H "Authorization: Key YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '
+  {
+    "inputs": [
+      {
+        "id": "{id1}",
+        "data": {
+          "concepts": [
+            {
+              "id": "tree",
+              "value": true
+            },
+            {
+              "id": "water",
+              "value": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "{id2}",
+        "data": {
+          "concepts": [
+            {
+              "id": "tree",
+              "value": true
+            },
+            {
+              "id": "water",
+              "value": false
+            }
+          ]
+        }
+      }
+    ],
+    "action":"merge"
+}'\
+  https://api.clarifai.com/v2/inputs
+
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+
+## Delete inputs
+
+### Delete concepts from an input
 
 To remove concepts that were already added to an input, you can do this:
 
@@ -1510,171 +1665,9 @@ curl -X PATCH \
 
 
 
-### Bulk Update Inputs With Concepts
-
-You can update an existing input using its Id. This is useful if you'd like to add concepts to an input after
-its already been added.
 
 
-
-{% code-tabs %}
-{% code-tabs-item title="js" %}
-```js
-
-app.inputs.mergeConcepts([
-  {
-    id: "{id1}",
-    concepts: [
-      {
-        id: "tree",
-        value: true
-      },
-      {
-        id: "water",
-        value: false
-      }
-    ]
-  },
-  {
-    id: "{id2}",
-    concepts: [
-      {
-        id: "animal",
-        value: true
-      },
-      {
-        id: "fruit",
-        value: false
-      }
-    ]
-  }
-]).then(
-  function(response) {
-    // do something with response
-  },
-  function(err) {
-    // there was an error
-  }
-);
-
-
-```
-
-{% endcode-tabs-item %}
-
-{% code-tabs-item title="python" %}
-```python
-from clarifai.rest import ClarifaiApp
-app = ClarifaiApp(api_key='YOUR_API_KEY')
-
-input_ids = ["{id1}", "{id2}"]
-concept_pairs = [
-                 [('tree', True), ('water', False)],
-                 [('animal', True), ('fruit', False)],
-                ]
-app.inputs.bulk_merge_concepts(input_ids, concept_pairs)
-
-```
-
-{% endcode-tabs-item %}
-
-{% code-tabs-item title="java" %}
-```java
-
-// Coming soon
-
-```
-
-{% endcode-tabs-item %}
-
-{% code-tabs-item title="csharp" %}
-```csharp
-
-// Coming soon
-
-```
-
-{% endcode-tabs-item %}
-
-{% code-tabs-item title="objective-c" %}
-```objective-c
-ClarifaiConcept *newConcept = [[ClarifaiConcept alloc] initWithConceptID:@"tree"];
-[_app getInput:@"{input_id}" completion:^(ClarifaiInput *input, NSError *error) {
-  // Add tree concept to each current input's concept list.
-  NSMutableArray *newConceptList = [NSMutableArray arrayWithArray:input.concepts];
-  [newConceptList addObject:newConcept];
-  input.concepts = newConceptList;
-
-  // Merge the new list for one or more inputs.
-  [_app mergeConceptsForInputs:@[input] completion:^(NSArray<ClarifaiInput *> *inputs, NSError *error)   {
-    NSLog(@"updated inputs: %@", inputs);
-  }];
-}];
-
-```
-
-{% endcode-tabs-item %}
-
-{% code-tabs-item title="php" %}
-```php
-
-//coming soon
-
-```
-
-{% endcode-tabs-item %}
-
-{% code-tabs-item title="cURL" %}
-```cURL
-
-curl -X PATCH \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "inputs": [
-      {
-        "id": "{id1}",
-        "data": {
-          "concepts": [
-            {
-              "id": "tree",
-              "value": true
-            },
-            {
-              "id": "water",
-              "value": false
-            }
-          ]
-        }
-      },
-      {
-        "id": "{id2}",
-        "data": {
-          "concepts": [
-            {
-              "id": "tree",
-              "value": true
-            },
-            {
-              "id": "water",
-              "value": false
-            }
-          ]
-        }
-      }
-    ],
-    "action":"merge"
-}'\
-  https://api.clarifai.com/v2/inputs
-
-```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
-
-
-
-### Bulk Delete Concepts From A List Of Inputs
+### Bulk delete concepts from a list of inputs
 
 You can bulk delete multiple concepts from a list of inputs:
 
@@ -1923,7 +1916,7 @@ curl -X DELETE \
 
 
 
-### Delete A List Of Inputs
+### Delete a list of inputs
 
 You can also delete multiple inputs in one API call. This will happen asynchronously.
 
@@ -2043,7 +2036,7 @@ curl -X DELETE \
 
 
 
-### Delete All Inputs
+### Delete all inputs
 
 If you would like to delete all inputs from an application, you can do
 that as well. This will happen asynchronously.
