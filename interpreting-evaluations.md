@@ -1,5 +1,3 @@
-## Evaluation
-
 ### Interpreting Results
 ![model eval results](/images/eval-results-new.png)
 Once the Model Evaluation is complete, you’ll be able to view the evaluation results in the <a href="https://clarifai.com/apps" target="_blank">
