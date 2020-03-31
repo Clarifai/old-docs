@@ -64,8 +64,3 @@
 
 * [Upcoming API Changes](upcoming-api-changes.md)
 * [Change log](change-log.md)
-
-
-## SDK Guide (depreciated)
-* [Mobile](mobile.md)
-* [Android](android.md)
