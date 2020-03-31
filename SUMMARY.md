@@ -47,7 +47,7 @@
 * [Data management](pdata-management.md)
 * [Annotate](annotate.md)
   * [Positive and negative annotations](positive-and-negative-annotations.md)
-* [Model](pmodel)
+* [Model](model.md)
   * [Public models](public-models.md)
   * [Custom model walkthrough](pcustom-model-walkthrough.md)
   * [Workflows](workflows.md)
