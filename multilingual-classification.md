@@ -1,5 +1,3 @@
-### Languages
-
 The Clarifai API supports many languages in addition to English. When making a
 [predict api request](predict.md), you can pass in the language you would like the
 concepts returned in.
