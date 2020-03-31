@@ -1,6 +1,6 @@
 ## Application Settings
 
-If at any point you'd like to change the application name, add/remove API Keys, and modify Workflow management for Predict, you may do so by visiting the application page and changing the values.
+If at any point you'd like to change the application name, add/remove API Keys, and modify Workflow management for Predict, you may do so by visiting the application details page and changing the values.
 
 ![image](/images/edit_application.jpg)
 
