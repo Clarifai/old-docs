@@ -1,13 +1,6 @@
-## Workflow
+Workflows encompass one or more Public or Custom model(s). Every workflow is attached to one of your applications. Under each workflow, you will see a list of the public models and all custom models in that application when selecting models to add to your workflow. With Workflow Predict, you will be able to reduce the latency and in turn make your product more efficient.
 
-Workflows are a new entity added to Clarifai, which encompass one or more Public or
-Custom model(s). Every workflow is attached to one of your applications.
-Under each workflow, you will see a list of the public models and all custom models in
-that application when selecting models to add to your workflow. With Workflow Predict, you
-will be able to reduce the latency and in turn make your product more efficient.
-
-Note: this won't have any impact on the price you are charged per call.
-You will still be charged for the same operation if it were separate calls to the API.
+Note: this won't have any impact on the price you are charged per call. You will still be charged for the same operation if it were separate calls to the API.
 
 ### Workflow Setup
 To set up a workflow, you will need to head over to the
