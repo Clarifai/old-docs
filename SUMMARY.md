@@ -43,7 +43,7 @@
 
 ## Portal Guide
 
-* [Portal overview](portal-overview.md)
+* [Portal overview](portal_overview.md)
 * [Data management](pdata_management.md)
 * [Annotate](annotate.md)
   * [Positive and negative annotations](positive-and-negative-annotations.md)
