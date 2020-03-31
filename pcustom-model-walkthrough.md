@@ -10,11 +10,11 @@ Type in the name of a new concept and click "Add".
 
 Select an image that you would like to annotate.
 
-![image](/images/select image.jpg)
+![image](/images/select_image.jpg)
 
 Click the check mark and then click train.
 
-![image](/images/label and train.jpg)
+![image](/images/label_and_train.jpg)
 
 That's it! You have created a new custom model and you can instantly use your new concept as a search term.
 
