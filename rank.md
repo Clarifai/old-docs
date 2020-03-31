@@ -617,15 +617,24 @@ curl -X POST \
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-## Search By Image
+## By Image
 
-You can also search for images using another image. In this case, you provide an image \(url or bytes\) and the results will return all the images in your search index that are visually similar to the one provided.
+You can use images to search through your collection. The API will return ranked results based on
+how similar the results are to the image you provided in your query.
+
 
 
 {% code-tabs %}
 {% code-tabs-item title="js" %}
 ```js
-app.inputs.search({ input: {url: 'https://samples.clarifai.com/puppy.jpg'} }).then(
+
+app.inputs.search(
+  {
+    input: {
+      url: 'https://samples.clarifai.com/puppy.jpg'
+    }
+  }
+).then(
   function(response) {
     // do something with response
   },
@@ -633,6 +642,7 @@ app.inputs.search({ input: {url: 'https://samples.clarifai.com/puppy.jpg'} }).th
     // there was an error
   }
 );
+
 ```
 
 {% endcode-tabs-item %}
@@ -640,7 +650,7 @@ app.inputs.search({ input: {url: 'https://samples.clarifai.com/puppy.jpg'} }).th
 {% code-tabs-item title="python" %}
 ```python
 from clarifai.rest import ClarifaiApp
-app = ClarifaiApp(api_key='YOUR_API_KEY')
+app = ClarifaiApp(api_key='YOUR_CLARIFAI_KEY')
 
 # search by image url
 app.inputs.search_by_image(url="https://samples.clarifai.com/metro-north.jpg")
@@ -664,21 +674,32 @@ app.inputs.search_by_image(filename=filename)
 # search from fileio
 fio = open("filename_on_local_disk.jpg", 'rb')
 app.inputs.search_by_image(fileobj=fio)
+
 ```
 
 {% endcode-tabs-item %}
 
 {% code-tabs-item title="java" %}
 ```java
+
+// Search by image URL (String or java.net.URL)
 client.searchInputs(SearchClause.matchImageVisually(ClarifaiImage.of("https://samples.clarifai.com/metro-north.jpg")))
     .getPage(1)
     .executeSync();
+
+// Search by local image (java.io.File or byte[])
+client.searchInputs(SearchClause.matchImageVisually(ClarifaiImage.of(new File("image.png"))))
+    .getPage(1)
+    .executeSync();
+
 ```
 
 {% endcode-tabs-item %}
 
 {% code-tabs-item title="csharp" %}
 ```csharp
+
+using System.IO;
 using System.Threading.Tasks;
 using Clarifai.API;
 using Clarifai.DTOs.Searches;
@@ -691,26 +712,37 @@ namespace YourNamespace
         {
             var client = new ClarifaiClient("YOUR_API_KEY");
 
-            await client.SearchInputs(SearchBy.ImageURL("https://samples.clarifai.com/metro-north.jpg"))
+            // Search by image URL
+            await client.SearchInputs(
+                    SearchBy.ImageVisually("https://samples.clarifai.com/metro-north.jpg"))
+                .Page(1)
+                .ExecuteAsync();
+
+            // Search by local image
+            await client.SearchInputs(
+                    SearchBy.ImageVisually(File.ReadAllBytes("image.png")))
                 .Page(1)
                 .ExecuteAsync();
         }
     }
 }
+
 ```
 
 {% endcode-tabs-item %}
 
 {% code-tabs-item title="objective-c" %}
 ```objective-c
+
 ClarifaiSearchTerm *searchTerm = [ClarifaiSearchTerm searchVisuallyWithImageURL:@"https://samples.clarifai.com/metro-north.jpg"];
 
 [app search:@[searchTerm] page:@1 perPage:@20 completion:^(NSArray<ClarifaiSearchResult *> *results, NSError *error) {
   // Print output of first search result.
   NSLog(@"inputID: %@", results[0].inputID);
   NSLog(@"URL: %@", results[0].mediaURL);
-  NSLog(@"probability of visual similarity: %@", results[0].score);
+  NSLog(@"probability of input matching search query: %@", results[0].score);
 }];
+
 ```
 
 {% endcode-tabs-item %}
@@ -724,13 +756,173 @@ use Clarifai\DTOs\Searches\SearchInputsResult;
 $client = new ClarifaiClient('YOUR_API_KEY');
 
 $response = $client->searchInputs(
-        SearchBy::imageURL('https://samples.clarifai.com/metro-north.jpg'))
+        SearchBy::urlImageVisually('https://samples.clarifai.com/metro-north.jpg'))
     ->executeSync();
 
-if ($response-> isSuccessful()) {
+if ($response->isSuccessful()) {
+    echo "Response is successful.\n";
 
     /** @var SearchInputsResult $result */
     $result = $response->get();
+
+    foreach ($result->searchHits() as $searchHit) {
+        echo $searchHit->input()->id() . ' ' . $searchHit->score() . "\n";
+    }
+} else {
+    echo "Response is not successful. Reason: \n";
+    echo $response->status()->description() . "\n";
+    echo $response->status()->errorDetails() . "\n";
+    echo "Status code: " . $response->status()->statusCode();
+}
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="cURL" %}
+```cURL
+
+curl -X POST \
+  -H "Authorization: Key YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '
+  {
+    "query": {
+      "ands": [
+        {
+          "output":{
+            "input":{
+              "data": {
+                "image": {
+                  "url": "https://samples.clarifai.com/metro-north.jpg"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }'\
+  https://api.clarifai.com/v2/searches
+
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+
+
+### By Image With Crop
+You can search using a crop of an image through your collection. The API will still return ranked results
+based upon on how similar the results are to the crop of the image you provide in your query.
+
+
+
+{% code-tabs %}
+{% code-tabs-item title="js" %}
+```js
+app.inputs.search(
+  {
+    input: {
+      url: 'https://samples.clarifai.com/puppy.jpg',
+      crop: [0.1, 0.1, 0.9, 0.9]
+    }
+  }
+).then(
+  function(response) {
+    // do something with response
+  },
+  function(err) {
+    // there was an error
+  }
+);
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="python" %}
+```python
+from clarifai.rest import ClarifaiApp
+app = ClarifaiApp(api_key='YOUR_API_KEY')
+
+search = app.inputs.search_by_image(url='https://samples.clarifai.com/puppy.jpg', crop=[0.1, 0.1, 0.9, 0.9])
+
+print search
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="java" %}
+```java
+client.searchInputs(SearchClause.matchImageVisually(ClarifaiImage.of("https://samples.clarifai.com/puppy.jpg")
+    .withCrop(Crop.create()
+        .top(0.1F)
+        .left(0.1F)
+        .bottom(0.9F)
+        .right(0.9F)
+    )
+))
+.getPage(1)
+.executeSync();
+
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="csharp" %}
+```csharp
+
+using System.Threading.Tasks;
+using Clarifai.API;
+using Clarifai.DTOs;
+using Clarifai.DTOs.Searches;
+
+namespace YourNamespace
+{
+    public class YourClassName
+    {
+        public static async Task Main()
+        {
+            var client = new ClarifaiClient("YOUR_API_KEY");
+
+            await client.SearchInputs(SearchBy.ImageVisually(
+                    "https://samples.clarifai.com/metro-north.jpg",
+                    crop: new Crop(0.1M, 0.1M, 0.9M, 0.9M)))
+                .Page(1)
+                .ExecuteAsync();
+        }
+    }
+}
+
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="objective-c" %}
+```objective-c
+// Coming Soon
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="php" %}
+```php
+use Clarifai\API\ClarifaiClient;
+use Clarifai\DTOs\Crop;
+use Clarifai\DTOs\Searches\SearchBy;
+use Clarifai\DTOs\Searches\SearchInputsResult;
+
+$client = new ClarifaiClient('YOUR_API_KEY');
+
+$response = $client->searchInputs(
+        SearchBy::urlImageVisually('https://samples.clarifai.com/metro-north.jpg')
+            ->withCrop(new Crop(0.1, 0.1, 0.9, 0.9)))
+    ->executeSync();
+
+if ($response->isSuccessful()) {
+    echo "Response is successful.\n";
+
+    /** @var SearchInputsResult $result */
+    $result = $response->get();
+
     foreach ($result->searchHits() as $searchHit) {
         echo $searchHit->input()->id() . ' ' . $searchHit->score() . "\n";
     }
@@ -747,75 +939,28 @@ if ($response-> isSuccessful()) {
 {% code-tabs-item title="cURL" %}
 ```cURL
 curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "query": {
-      "ands": [
-        {
-          "output": {
-            "input": {
+  -H 'authorization: Key YOUR_API_KEY' \
+  -H 'content-type: application/json' \
+  -d '{
+  "query": {
+    "ands": [
+      {
+        "output": {
+          "input": {
               "data": {
                 "image": {
-                  "url": "https://samples.clarifai.com/metro-north.jpg"
+                    "url": "https://samples.clarifai.com/puppy.jpg",
+                    "crop": [0.1,0.1,0.9,0.9]
                 }
-              }
             }
           }
         }
-      ]
-    }
-  }'\
-  https://api.clarifai.com/v2/searches
+      }
+    ]
+  }
+}'\
+https://api.clarifai.com/v2/searches
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-{% code-tabs %}
-{% code-tabs-item title="Response JSON" %}
-```json
-{
-  "status": {
-    "code": 10000,
-    "description": "Ok"
-  },
-  "id": "bd94239099d44d4686f38ca753495e22",
-  "hits": [
-    {
-      "score": 0.9999997,
-      "input": {
-        "id": "edc70c917475499abdc7151f41d6cf3e",
-        "created_at": "2016-11-22T17:06:02Z",
-        "data": {
-          "image": {
-            "url": "https://samples.clarifai.com/metro-north.jpg"
-          }
-        },
-        "status": {
-          "code": 30000,
-          "description": "Download complete"
-        }
-      }
-    },
-    {
-      "score": 0.3915897,
-      "input": {
-        "id": "f96ca3bbf02041c59addcc13e3468b7d",
-        "created_at": "2016-11-22T17:06:02Z",
-        "data": {
-          "image": {
-            "url": "https://samples.clarifai.com/wedding.jpg"
-          }
-        },
-        "status": {
-          "code": 30000,
-          "description": "Download complete"
-        }
-      }
-    }
-  ]
-}
-```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
