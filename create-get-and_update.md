@@ -1,5 +1,3 @@
-There are many methods to work with models.
-
 ### Create Model
 
 You can create your own model and train it with your own images and concepts. Once you train it to see how
