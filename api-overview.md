@@ -1,5 +1,3 @@
-### API Overview
-
 Our API enables you to build AI applications with capabilities like prediction, search and custom training.
 
 Access our API over HTTPS via `https://api.clarifai.com`. In the examples throughout our documentation, we use single brackets `{variable}` to indicate variables that you should replace with a real value.
