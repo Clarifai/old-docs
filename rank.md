@@ -1001,6 +1001,162 @@ curl -X POST \
 {% endcode-tabs %}
 
 
+### By Url
+
+You can also search for an input by URL.
+
+
+
+{% code-tabs %}
+{% code-tabs-item title="js" %}
+```js
+
+app.inputs.search(
+  {
+    input: {
+      type: 'input',
+      url: 'https://samples.clarifai.com/puppy.jpg'
+    }
+  }
+).then(
+  function(response) {
+    // do something with response
+  },
+  function(err) {
+    // there was an error
+  }
+);
+
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="python" %}
+```python
+from clarifai.rest import ClarifaiApp
+app = ClarifaiApp(api_key='YOUR_API_KEY')
+
+meta = {"url":"https://samples.clarifai.com/metro-north.jpg"}
+app.inputs.search_by_metadata(meta)
+
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="java" %}
+```java
+
+// Lookup images with this URL
+client.searchInputs(SearchClause.matchImageURL(ClarifaiImage.of("https://samples.clarifai.com/puppy.jpg")))
+    .getPage(1)
+    .executeSync();
+
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="csharp" %}
+```csharp
+
+using System.Threading.Tasks;
+using Clarifai.API;
+using Clarifai.DTOs.Searches;
+
+namespace YourNamespace
+{
+    public class YourClassName
+    {
+        public static async Task Main()
+        {
+            var client = new ClarifaiClient("YOUR_API_KEY");
+
+            await client.SearchInputs(
+                    SearchBy.ImageURL("https://samples.clarifai.com/metro-north.jpg"))
+                .Page(1)
+                .ExecuteAsync();
+        }
+    }
+}
+
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="objective-c" %}
+```objective-c
+
+
+// Lookup images with this URL
+ClarifaiSearchTerm *term = [ClarifaiSearchTerm searchInputsWithImageURL:@"https://samples.clarifai.com/metro-north.jpg"];
+
+[app search:@[term] page:@1 perPage:@20 completion:^(NSArray<ClarifaiSearchResult *> *results, NSError *error) {
+  // Print output of first search result.
+  NSLog(@"inputID: %@", results[0].inputID);
+  NSLog(@"URL: %@", results[0].mediaURL);
+  NSLog(@"probability of input matching search query: %@", results[0].score);
+}];
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="php" %}
+```php
+use Clarifai\API\ClarifaiClient;
+use Clarifai\DTOs\Searches\SearchBy;
+use Clarifai\DTOs\Searches\SearchInputsResult;
+
+$client = new ClarifaiClient('YOUR_API_KEY');
+
+$response = $client->searchInputs(
+        SearchBy::imageURL('https://samples.clarifai.com/metro-north.jpg'))
+    ->executeSync();
+
+if ($response->isSuccessful()) {
+    echo "Response is successful.\n";
+
+    /** @var SearchInputsResult $result */
+    $result = $response->get();
+
+    foreach ($result->searchHits() as $searchHit) {
+        echo $searchHit->input()->id() . ' ' . $searchHit->score() . "\n";
+    }
+} else {
+    echo "Response is not successful. Reason: \n";
+    echo $response->status()->description() . "\n";
+    echo $response->status()->errorDetails() . "\n";
+    echo "Status code: " . $response->status()->statusCode();
+}
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="cURL" %}
+```cURL
+
+curl -X POST \
+  -H "Authorization: Key YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '
+  {
+    "query": {
+      "ands": [
+        {
+          "input":{
+            "data": {
+              "image": {
+                "url": "https://samples.clarifai.com/metro-north.jpg"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }'\
+  https://api.clarifai.com/v2/searches
+
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 ### By Image With Crop
 You can search using a crop of an image through your collection. The API will still return ranked results
