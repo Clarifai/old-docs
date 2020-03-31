@@ -50,7 +50,7 @@
 * [Model](pmodel)
   * [Public models](public-models.md)
   * [Custom model walkthrough](pcustom-model-walkthrough.md)
-  * [Workflows](pworkflows.md)
+  * [Workflows](workflows.md)
   * [Evaluate](evaluate.md)
     * [Interpreting evaluations](interpreting-evaluations.md)
 * [Predict](ppredict.md)
