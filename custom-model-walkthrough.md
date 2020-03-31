@@ -1,13 +1,4 @@
-## Train
-
-Clarifai provides many different models that 'see' the world differently. A model contains a group of
-concepts. A model will only see the concepts it contains.
-
-There are times when you wish you had a model that sees the world the way you see it. The API allows you to
-do this. You can create your own model and train it with your own images and concepts. Once you train it to
-see how you would like it to see, you can then use that model to make predictions.
-
-You do not need many images to get started. We recommend starting with 10 and adding more as needed. Before you train your first model you will have needed to [create an application](applications.md#create-an-application). From there you will be able to change your [Base Workflow](applications.md#base-workflow) to optimize custom training using the knowledge base from select public models.
+You do not need many images to get started. We recommend starting with 10 and adding more as needed. Before you train your first model you will have needed to [create an application](applications.md#create-an-application) and select a [base workflow](applications.md#base-workflow).
 
 ![inputs outputs](/images/illustration-training.png)
 
