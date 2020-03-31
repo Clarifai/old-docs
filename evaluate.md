@@ -1,4 +1,3 @@
-## Evaluate
 Now that you've successfully trained the model, you may want to test its performance before using it in the production environment. The Model Evaluation tool allows you to perform a cross validation on a specified model version. Once the evaluation is complete, you’ll be able to view various metrics that will inform the model’s performance.  
  
 This evaluate operation is asynchronous and is currently available on the <a href="https://clarifai.com/apps" target="_blank">
