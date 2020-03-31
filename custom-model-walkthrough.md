@@ -2,7 +2,7 @@ You do not need many images to get started. We recommend starting with 10 and ad
 
 ![inputs outputs](/images/illustration-training.png)
 
-### Add Images With Concepts
+### Add images with concepts
 
 To get started training your own model, you must first add images that already contain the concepts you want
 your model to see.
@@ -198,7 +198,7 @@ curl -X POST \
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-### Create A Model
+### Create a model
 
 Once your images with concepts are added, you are now ready to create the model. You'll need a name for the
 model and you'll also need to provide it with the concepts you added above.
@@ -388,7 +388,7 @@ curl -X POST \
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-### Train The Model
+### Train the model
 
 Now that you've added images with concepts, then created a model with those concepts, the next step is to
 train the model. When you train a model, you are telling the system to look at all the images with concepts
@@ -563,7 +563,7 @@ curl -X POST \
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-### Predict With The Model
+### Predict with the model
 
 Now that we have a trained model. We can start making predictions with it. In our predict call we need to specify three items.
 The `model id`, `model_version id` and the `input` we want a prediction for.
