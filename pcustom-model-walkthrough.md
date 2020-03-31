@@ -6,7 +6,7 @@ Just navigate to Explorer and click the "+" button next to "No Concepts".
 
 Type in the name of a new concept and click "Add".
 
-![image](/images/create_concept.jpg)
+![image](/images/create_concpet.jpg)
 
 Select an image that you would like to annotate.
 
@@ -18,4 +18,4 @@ Click the check mark and then click train.
 
 That's it! You have created a new custom model and you can instantly use your new concept as a search term.
 
-![image](/images/ready to search.jpg)
+![image](/images/ready_to_search.jpg)
