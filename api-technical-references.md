@@ -4,11 +4,13 @@ JavaScript
 
 Code Reference
 
+
 Python
 
 [github.com/Clarifai/clarifai-python](github.com/Clarifai/clarifai-python)
 
 Code Reference
+
 
 Java
 
@@ -16,11 +18,13 @@ Java
 
 Code Reference
 
+
 C#
 
 [github.com/clarifai/clarifai-csharp](github.com/clarifai/clarifai-csharp)
 
 Code Reference 
+
 
 PHP
 
