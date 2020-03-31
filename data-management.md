@@ -4,4 +4,4 @@ You can upload images or videos from your computer, publicly accessible URLs, or
 
 You are encouraged to send inputs with your own `id`. This will help you later match the input to your own database. If you do not send an `id`, one will be created for you.
 
-![image](/images/photopanel_clean_data.jpg)
+![image](/images/photopanel_custom_model.jpg)
