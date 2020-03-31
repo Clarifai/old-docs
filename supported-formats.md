@@ -1,4 +1,4 @@
-## Supported Types
+## Supported Formats
 
 ### The API supports the following image formats:
 
