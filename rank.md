@@ -617,6 +617,198 @@ curl -X POST \
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
+
+### By public and custom concepts
+
+You can combine a search to find inputs that have concepts you have supplied as well as predictions from your model.
+
+
+
+{% code-tabs %}
+{% code-tabs-item title="js" %}
+```js
+
+app.inputs.search([
+  // this is the public concept
+  {
+    concept: {
+      name: 'cat'
+    }
+  },
+  // this is the user-supplied concept
+  {
+    concept: {
+      type: 'input',
+      name: 'dog'
+    }
+  }
+]).then(
+  function(response) {
+    // do something with response
+  },
+  function(err) {
+    // there was an error
+  }
+);
+
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="python" %}
+```python
+from clarifai.rest import ClarifaiApp, InputSearchTerm, OutputSearchTerm, SearchQueryBuilder
+app = ClarifaiApp(api_key='YOUR_API_KEY')
+
+term1 = InputSearchTerm(concept='cat')
+term2 = OutputSearchTerm(concept='dog', value=False)
+query = SearchQueryBuilder()
+query.add_term(term1)
+query.add_term(term2)
+
+app.inputs.search(query)
+
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="java" %}
+```java
+
+client.searchInputs()
+    // Matches images we tagged as "cat", and that the API tagged as not having "dog"
+    .ands(
+        SearchClause.matchUserTaggedConcept(Concept.forName("cat")),
+        SearchClause.matchConcept(Concept.forName("dog").withValue(false))
+    )
+    .getPage(1)
+    .executeSync();
+
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="csharp" %}
+```csharp
+
+using System.Threading.Tasks;
+using Clarifai.API;
+using Clarifai.DTOs.Searches;
+
+namespace YourNamespace
+{
+    public class YourClassName
+    {
+        public static async Task Main()
+        {
+            var client = new ClarifaiClient("YOUR_API_KEY");
+
+            await client.SearchInputs(
+                    SearchBy.UserTaggedConceptName("cat"),
+                    SearchBy.ConceptID("dog"))
+                .Page(1)
+                .ExecuteAsync();
+        }
+    }
+}
+
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="objective-c" %}
+```objective-c
+
+ClarifaiConcept *conceptFromGeneralModel = [[ClarifaiConcept alloc] initWithConceptName:@"fast"];
+ClarifaiConcept *conceptFromTrainedCustomModel = [[ClarifaiConcept alloc] initWithConceptName:@"dog"];
+
+ClarifaiSearchTerm *term1 = [ClarifaiSearchTerm searchByPredictedConcept:conceptFromGeneralModel];
+ClarifaiSearchTerm *term2 = [ClarifaiSearchTerm searchByPredictedConcept:conceptFromTrainedCustomModel];
+
+[_app search:@[term1, term2] page:@1 perPage:@20 completion:^(NSArray<ClarifaiSearchResult *> *results, NSError *error) {
+  // Print output of first search result.
+  NSLog(@"inputID: %@", results[0].inputID);
+  NSLog(@"URL: %@", results[0].mediaURL);
+  NSLog(@"probability of input matching search query: %@", results[0].score);
+}];
+
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="php" %}
+```php
+use Clarifai\API\ClarifaiClient;
+use Clarifai\DTOs\Searches\SearchBy;
+use Clarifai\DTOs\Searches\SearchInputsResult;
+
+$client = new ClarifaiClient('YOUR_API_KEY');
+
+$response = $client->searchInputs([SearchBy::userTaggedConceptName('cat'),
+        SearchBy::conceptID('dog')])
+    ->executeSync();
+
+if ($response->isSuccessful()) {
+    echo "Response is successful.\n";
+
+    /** @var SearchInputsResult $result */
+    $result = $response->get();
+
+    foreach ($result->searchHits() as $searchHit) {
+        echo $searchHit->input()->id() . ' ' . $searchHit->score() . "\n";
+    }
+} else {
+    echo "Response is not successful. Reason: \n";
+    echo $response->status()->description() . "\n";
+    echo $response->status()->errorDetails() . "\n";
+    echo "Status code: " . $response->status()->statusCode();
+}
+```
+
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="cURL" %}
+```cURL
+
+curl -X POST \
+  -H "Authorization: Key YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+-d '
+{
+  "query": {
+    "ands": [
+      {
+        "output": {
+          "data": {
+            "concepts": [
+              {
+                "name": "fast"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "input": {
+          "data": {
+            "concepts": [
+              {
+                "name": "ferrari23",
+                "value": true
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}'\
+https://api.clarifai.com/v2/searches
+
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
 ## By Image
 
 You can use images to search through your collection. The API will return ranked results based on
