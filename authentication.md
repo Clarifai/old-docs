@@ -1,12 +1,8 @@
 # Authentication
 
-Note: API Keys have replaced Access Tokens/Client ID & Secret
+API Keys will now be used to authorize your Clarifai applications. You can go to an [Application's detail page](https://portal.clarifai.com/apps) to create a new key. 
 
-API Keys will now be used to authorize your Clarifai applications. You can go to an [Application's detail page](https://portal.clarifai.com/apps) to create a new key . This change will not break existing applications - Access Tokens will be supported until late 2017. You can find more information on our [blog](http://blog.clarifai.com/introducing-api-keys-a-safer-way-to-authenticate-your-applications).
-
-Authentication to the API is handled through API Keys. You can limit the scope of an API Key, which enables the key to perform very specific operations on a given app, keeping your app secure.
-
-To create an API Key, you can head over to the [Application details page](https://portal.clarifai.com/apps), and specify what scopes you want the key to have.
+You have fine-grained control over the data exposed through your app. You can control the scope of an API Key through a simple checkbox interface when you first set up your app. 
 
 ![api keys](/images/apikey-screen.png)
 
