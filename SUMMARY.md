@@ -63,7 +63,7 @@
 ## Product Updates
 
 * [Upcoming API Changes](upcoming-api-changes.md)
-* [Change log](change-log)
+* [Change log](change-log.md)
 
 
 ## SDK Guide (depreciated)
