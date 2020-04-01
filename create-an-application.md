@@ -1,5 +1,7 @@
-To create an application, head on over to the [applications page](https://portal.clarifai.com/apps) and press the 'Create a New Application' button. Here, you will name your application and choose a [model](https://www.clarifai.com/models) for your base workflow.
-
-You can also set the default language. If you plan on using a language other than English, you must choose the General model under Base Workflow. 
+To create an application, head on over to the [applications page](https://portal.clarifai.com/apps) and press the 'Create a New Application' button. You have the option of using our General, Travel, Food, Face, Moderation, and Wedding models in your base workflow. More information on these, and other public models can be found in our [model gallery](https://www.clarifai.com/models). 
 
 ![image showing the edit app button on the Manage Application page](/images/create-new-app-new.png)
+
+{% hint style="info" %}
+You can also set the default language so that you can create, train and search on concepts in your own langugage. Please keep in mind that pre-trained model concepts currently only work in English. 
+{% endhint %}
