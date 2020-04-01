@@ -1,5 +1,5 @@
 ### Application 
-An application is a kind of self-contained workspace for your search indexes and custom models. A search performed in one application will return results from images within that same application, but will be blind to those in other applications. You can create as many applications as you like, and can divide your use among them to segment data into collections and manage access accordingly.
+An application is a kind of self-contained project for managing data, annotating, modeling, predicting and searching. An operation performed in one application will return results from data within that application, but will be blind to data in other applications. You can create as many applications as you like, and can divide your use among them to segment data into collections and manage access accordingly.
 ### Concept 
 A concept is something that describes an input, similar to a “tag” or “keyword.” There are two types of concepts - those that you specify to train a model, and those that a model assigns as a prediction.
 ### Embeddings 
