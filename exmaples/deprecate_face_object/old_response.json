@@ -1,0 +1,169 @@
+{
+    "status": {
+        "code": 10000,
+        "description": "Ok",
+        "req_id": "5f896aac18e1477d9e8127f9451bbd7e"
+    },
+    "outputs": [
+        {
+            "id": "5d94ed68546c4503962dba69826b6f28",
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            },
+            "created_at": "2020-02-13T16:00:32.850133015Z",
+            "model": {
+                "id": "c0c0ac362b03416da06ab3fa36fb58e3",
+                "name": "demographics",
+                "created_at": "2016-12-26T13:45:40.620652Z",
+                "app_id": "main",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "detect-concept",
+                    "type_ext": "detect-concept"
+                },
+                "model_version": {
+                    "id": "f783f0807c52474c8c6ad20c8cf45fc0",
+                    "created_at": "2016-12-26T13:45:40.620652Z",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model is trained and ready"
+                    },
+                    "worker_id": "8ced24ba0fb849c5bb3764ce62e88f60"
+                },
+                "display_name": "Demographics"
+            },
+            "input": {
+                "id": "9b9a09f2a33c4dc58afbbc699c4fa149",
+                "data": {
+                    "image": {
+                        "url": "..."
+                    }
+                }
+            },
+            "data": {
+                "regions": [
+                    {
+                        "id": "3tdmf0ao9zgn",
+                        "region_info": {
+                            "bounding_box": {
+                                "top_row": 0.19993289,
+                                "left_col": 0.51557815,
+                                "bottom_row": 0.5489441,
+                                "right_col": 0.71368855
+                            }
+                        },
+                        "data": {
+                            "face": {
+                                "age_appearance": {
+                                    "concepts": [
+                                        {
+                                            "id": "ai_fbRxTRbd",
+                                            "name": "46",
+                                            "value": 0.5995513,
+                                            "app_id": "main",
+                                            "vocab_id": "age_appearance"
+                                        },
+                                        {
+                                            "id": "ai_4w8KM6Rd",
+                                            "name": "45",
+                                            "value": 0.5868488,
+                                            "app_id": "main",
+                                            "vocab_id": "age_appearance"
+                                        },
+                                        ... // Usually top-k defaults to 20 here. 
+                                    ]
+                                },
+                                "gender_appearance": {
+                                    "concepts": [
+                                        {
+                                            "id": "ai_zgR2BBt0",
+                                            "name": "masculine",
+                                            "value": 0.97551966,
+                                            "app_id": "main",
+                                            "vocab_id": "gender_appearance"
+                                        },
+                                        {
+                                            "id": "ai_cVWr8NK5",
+                                            "name": "feminine",
+                                            "value": 0.02448032,
+                                            "app_id": "main",
+                                            "vocab_id": "gender_appearance"
+                                        }
+                                    ]
+                                },
+                                "multicultural_appearance": {
+                                    "concepts": [
+                                        {
+                                            "id": "ai_r5F00Gqn",
+                                            "name": "white",
+                                            "value": 0.5075468,
+                                            "app_id": "main",
+                                            "vocab_id": "multicultural_appearance"
+                                        },
+                                        {
+                                            "id": "ai_l9ngrR28",
+                                            "name": "hispanic, latino, or spanish origin",
+                                            "value": 0.113882765,
+                                            "app_id": "main",
+                                            "vocab_id": "multicultural_appearance"
+                                        },
+                                        {
+                                            "id": "ai_WWxnB3mw",
+                                            "name": "american indian or alaska native",
+                                            "value": 0.08919552,
+                                            "app_id": "main",
+                                            "vocab_id": "multicultural_appearance"
+                                        },
+                                        {
+                                            "id": "ai_bZft5m0H",
+                                            "name": "middle eastern or north african",
+                                            "value": 0.020790711,
+                                            "app_id": "main",
+                                            "vocab_id": "multicultural_appearance"
+                                        },
+                                        {
+                                            "id": "ai_659b6V0v",
+                                            "name": "asian",
+                                            "value": 0.015248744,
+                                            "app_id": "main",
+                                            "vocab_id": "multicultural_appearance"
+                                        },
+                                        {
+                                            "id": "ai_wScNwk9Z",
+                                            "name": "black or african american",
+                                            "value": 0.0024879198,
+                                            "app_id": "main",
+                                            "vocab_id": "multicultural_appearance"
+                                        },
+                                        {
+                                            "id": "ai_1qp01psl",
+                                            "name": "native hawaiian or pacific islander",
+                                            "value": 0.0018966927,
+                                            "app_id": "main",
+                                            "vocab_id": "multicultural_appearance"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "id": "2v3m24zsp6p3",
+                        "region_info": {
+                            "bounding_box": {
+                                "top_row": 0.2792136,
+                                "left_col": 0.23538604,
+                                "bottom_row": 0.6306359,
+                                "right_col": 0.4349089
+                            }
+                        },
+                        "data": {
+                            ...
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
