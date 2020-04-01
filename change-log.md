@@ -3,8 +3,6 @@
 ### New Feature
 
 * Display scopes on collaborator invitations
-* Implement cache for collectors 
-* Implement CRUD for /collectors
 * Deploy new face detector
 * Negative Embeddings Enhancements 
 * List templates through Go 
