@@ -21,4 +21,4 @@ All of the images in your app are indexed by both the concepts applied by the ap
 ### Train 
 Train is when you update a model to “learn” from all the annotated concepts on your inputs. Any time you add or update image concepts, you can use train again to create a new model version, fit to the latest information.
 ### Workflow 
-Workflows enables users to make predictions on one or more public/custom models, with a single API call.
+Workflows enables users to make predictions on one or more pre-trained or custom models, with a single API call.
