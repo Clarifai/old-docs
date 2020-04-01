@@ -1,5 +1,7 @@
 ### Application 
 An application is a kind of self-contained project for managing data, annotating, modeling, predicting and searching. An operation performed in one application will return results from data within that application but will be blind to data in other applications. You can create as many applications as you like and can divide your use among them to segment data into collections and manage access accordingly.
+### Base workflow
+When you add an input to your app, the base workflow of your app computes the outputs from all the models in that workflow and indexes those outputs. Those indexed outputs are what incur your monthly indexing fee, and enable search and training on top of the base workflow models.
 ### Concept 
 A concept is something that describes an entity in the physical world, similar to a “tag” or “keyword”. You can use a concept to annotate an input if that input has that entity. You can also add it to a model if you want that model to be able to recognize that entity. 
 ### Embeddings 
