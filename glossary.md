@@ -7,7 +7,9 @@ A low-dimensional representation of a model’s input that has rich semantic inf
 ### Portal 
 Portal is a web application that allows you to preview your Clarifai apps. You can view all the inputs you have added, perform searches, and train new models.
 ### Input 
-An input, usually an image, is the thing you’re trying to learn about. You send inputs to a given model, and Clarifai returns predictions. You can “save” inputs and their predictions to search against later. You can also add your own concepts to inputs to use when training your own model.
+An input, usually an image or video, is the data you're providing into the platform. Inputs and their predictions are indexed so that they can be used for search. You can also add your own concepts to inputs to use when training your own model. 
+### Output
+On output, usually in the form of a prediction or predictions, is the data returned to you when you send an input into a model. Because of their close relationship, the terms "outputs" and "predictions" are sometimes used interchangeably. 
 ### Model 
 Models convert inputs to predictions. Clarifai provides many different models that each ‘see’ the world differently - with a unique group of concepts. Clarifai has built some great models for you use, but there are times when you wish you had a model that sees the world the way you see it, with your own concepts. You can use your own model by adding images with concepts, training it, and then specifying it when making predictions.
 ### Operation 
