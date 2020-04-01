@@ -30,11 +30,6 @@ Turkish (tr) | tr
 Chinese Simplified (zh) | zh
 Chinese Traditional (zh-TW) | zh-TW
 
-#### Supported Models
-
-The only public model which supports languages other than English is the
-[General model](https://www.clarifai.com/models/general-image-recognition-model-aaa03c23b3724a16a56b629203edc62c). If you make a predict request using a language other
-than English on a public model other than General, you will receive an error.
 
 #### Default Language
 
