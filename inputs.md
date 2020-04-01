@@ -1,6 +1,6 @@
 ## Inputs
 
-The API is built around a simple idea. You send inputs (images) to the service and it returns predictions. In addition to receiving predictions on inputs, you can also 'save' inputs and their predictions to later search against. You can also 'save' inputs with concepts to later train your own model.
+The API is built around a simple idea. You send inputs (images) to the service and it returns predictions. In addition to receiving predictions on inputs, you can also index inputs and their predictions to later search against. You can also index inputs with concepts to later train your own model.
 
 ### Add Inputs
 
