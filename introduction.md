@@ -1,8 +1,6 @@
 Clarifai offers AI as a service. Whether you have one input or billions, you are only steps away from using artificial intelligence for your business applications.
 
-**Our API is built around a simple idea. You send inputs (photos or videos) and we return predictions.**
-
-The type of prediction we return depends the model you use. For example, if you send your input through our 'Food' model, we return concepts that the 'Food' model knows about - things like hamburgers and french fries. 
+The type of prediction we return depends the model you use. For example, if you send your input through our 'Food' model, we return concepts that the 'Food' model knows about - things like hamburgers and french fries.
 
 ![image](/images/input_model_predict.jpg)
 
