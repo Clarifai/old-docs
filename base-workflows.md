@@ -6,7 +6,7 @@ For example, if you're training a custom model to recognize your restaurant's di
 
 ![image](/images/base_workflow.jpg)
 
-Check out our [model gallery](https://www.clarifai.com/models) for a description of the select public models that can be used as a base workflow. You can learn more about workflows [here](https://docs.clarifai.com/main/api-guide/model/workflow/).
+You currently have the option of using our General, Travel, Food, Face, Moderation, and Wedding models in your base workflow. More information on these, and other public models can be found in our [model gallery](https://www.clarifai.com/models). You can learn more about workflows [here](https://docs.clarifai.com/main/api-guide/model/workflow/).
 
 {% hint style="info" %}
 We recommend choosing the 'General' model if you're not sure which public model would best suit your use case.
