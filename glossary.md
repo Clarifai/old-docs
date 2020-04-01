@@ -1,7 +1,7 @@
 ### Application 
 An application is a kind of self-contained project for managing data, annotating, modeling, predicting and searching. An operation performed in one application will return results from data within that application, but will be blind to data in other applications. You can create as many applications as you like, and can divide your use among them to segment data into collections and manage access accordingly.
 ### Concept 
-A concept is something that describes an input, similar to a “tag” or “keyword.” There are two types of concepts - those that you specify to train a model, and those that a model assigns as a prediction.
+A concept is something that describes an entity in the physical world, similar to a “tag” or “keyword”. You can use a concept to annotate an input if that input has that entity. You can also add it to a model if you want that model to be able to recognize that entity. 
 ### Embeddings 
 A low-dimensional representation of a model’s input that has rich semantic information.
 ### Portal 
