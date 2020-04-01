@@ -15,10 +15,10 @@ Models convert inputs to outputs. Clarifai provides many different models that e
 ### Operation 
 An Operation is an action that is performed via our API or User Interface. It can include actions such as predictions, searches, input uploads, training custom models, model evaluations and more.
 ### Prediction 
-A prediction is Clarifai’s answer to the question “What can you tell me about this input?”. When you call predict on an image, you will receive one or more predictions of different concepts that apply to that image. Predictions vary by model, which you can learn more about in this glossary.
+A prediction is an answer to the question “What can you tell me about this input?”. When you call predict on an input, you will receive one or more predictions of different concepts that apply to that image. Predictions vary based on the concepts included in a given model.
 ### Search 
 All of the images in your app are indexed by both the concepts applied by the app’s default model, and by their own visual properties. Search, in the context of Clarifai, refers to finding relevant images in your app by text (match concepts), reverse image search (similar-looking images), or both.
 ### Train 
-Train is when you update a model to “learn” from all the image concepts you have provided in your app. Any time you add or update image concepts, you can use train again to create a new model version, fit to the latest information.
+Train is when you update a model to “learn” from all the annotated concepts on your inputs. Any time you add or update image concepts, you can use train again to create a new model version, fit to the latest information.
 ### Workflow 
 Workflows enables users to make predictions on one or more public/custom models, with a single API call.
