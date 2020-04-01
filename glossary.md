@@ -10,6 +10,8 @@ Portal is a web application that allows you to preview your Clarifai apps. You c
 An input, usually an image or video, is the data you're providing into the platform. Inputs and their predictions are indexed so that they can be used for search. You can also add your own concepts to inputs to use when training your own model. 
 ### Output
 On output, usually in the form of a prediction or predictions, is the data returned to you when you send an input into a model. Because of their close relationship, the terms "outputs" and "predictions" are sometimes used interchangeably. 
+### Indexing
+Indexing collects, parses, and stores your inputs to facilitate fast and accurate information retrieval. Indexing happens automatically every time you add new inputs to your app. Indexing enables responsive visual search, data clustering, concept search and model training.
 ### Model 
 Models convert inputs to outputs. Clarifai provides many different models that each ‘see’ the world differently - with a unique group of concepts. Clarifai has built some great models for you use, but there are times when you wish you had a model that sees the world the way you see it, with your own concepts. You can use your own model by adding images with concepts, training it, and then specifying it when making predictions.
 ### Operation 
