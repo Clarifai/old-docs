@@ -6,7 +6,7 @@ You can run Predict on your video using a select number of [Clarifai Models](htt
 
 The Predict API has limits to the length and size it can support. A video, uploaded through URL, can be anywhere up to 80MB in size or 10mins in length. When a video is sent through by bytes, the Predict API can support 10MB in size.
 
-If your video exceeds the limits, please follow our [tutorial](https://docs.google.com/document/d/1mL1q5CIrgOauNlTe-PwokOiaDZ_4yyEzBjapl9BZbJc/edit?usp=sharing) on how to break up a large video into smaller components, and send those into the Video API. Otherwise, the processing will time out and you will receive an error response.
+If your video exceeds the limits, please follow our [tutorial](https://www.clarifai.com/blog/splitting-video-into-smaller-pieces) on how to break up a large video into smaller components, and send those into the Video API. Otherwise, the processing will time out and you will receive an error response.
 
 **Via URL**
 

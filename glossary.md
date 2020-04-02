@@ -9,7 +9,7 @@ A low-dimensional representation of a model’s input that has rich semantic inf
 ### Indexing
 Indexing collects, parses, and stores your inputs to facilitate fast and accurate information retrieval. Indexing happens automatically every time you add new inputs to your app. Indexing enables responsive visual search, data clustering, concept search and model training.
 ### Input
-An input is the data you're providing into the platform. Inputs and their predictions are indexed so that they can be used for search. You can also add your own concepts to inputs to use when training your own model. 
+An input is the data you're providing into the platform. Inputs and their predictions are indexed so that they can be used for search. You can also add your own concepts to inputs to use when training your own model. When you upload data to an app that is known as "POSTing" inputs. You can also send inputs to a model to get a model's outputs with PostModelOutputs.
 ### Model
 Models convert inputs to outputs. Clarifai provides many different models that each ‘see’ the world differently - with a unique group of concepts. Clarifai has built some great models for you use, but there are times when you wish you had a model that sees the world the way you see it, with your own concepts. You can use your own model by adding images with concepts, training it, and then specifying it when making predictions.
 ### Operation

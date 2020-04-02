@@ -2,6 +2,4 @@ Our platform enables you to store, analyze, search, and slice-and-dice your data
 
 You can upload images from your computer, publicly accessible URLs, or file bytes. If you are sending file bytes, you must use base64 encoding.
 
-You are encouraged to send inputs with your own `id`. This will help you later match the input to your own database. If you do not send an `id`, one will be created for you.
-
 ![image](/images/photopanel_custom_model.jpg)
