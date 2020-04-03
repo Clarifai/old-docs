@@ -54,9 +54,6 @@ Operation level scopes provide control over the ability to read, write, or delet
 **Search**
 * Search (Search by Inputs and Concepts)
 
-**Worker**
-* Workers:GetRead Workers
-
 **Workflow**
 * Workflows:Add (Write Workflows)
 * Workflows:Delete (Delete Workflows)
