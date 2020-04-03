@@ -1,6 +1,5 @@
 # Table of contents
 
-* [Introduction](getting-started.md)
 * [Introduction](introduction.md)
 
 ## Getting Started

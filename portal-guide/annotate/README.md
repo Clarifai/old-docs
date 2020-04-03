@@ -2,7 +2,7 @@
 
 Annotations \(sometimes called "labels"\) are how we "teach" machines to recognize concepts. When you want to create a custom model for your business, you do this by training this model to recognize the concepts that you have annotated on your sample data.
 
-![image](../../.gitbook/assets/annotate.jpg)
+![image](https://github.com/Clarifai/docs/tree/812eab0a1a002aa7427f55c7e467a7a3315846ef/.gitbook/assets/annotate.jpg)
 
 {% hint style="info" %}
 Annotations are similar to predictions, in that both are concerned with the concepts that your model can recognize. There is one important distinction to keep in mind: People make annotations about concepts Models make predictions about concepts

@@ -764,7 +764,7 @@ curl -X PATCH \
 
 ### Get Models
 
-To get a list of all models including models you've created as well as [public models](../../portal-guide/model/public-models.md):
+To get a list of all models including models you've created as well as [public models]():
 
 {% tabs %}
 {% tab title="js" %}
