@@ -4,5 +4,4 @@ Portal analyzes your inputs and tells you what's inside of them. Portal will ret
 
 Predictions are ready the moment you upload an image. Just click on the image and view your predictions in the window on the right hand side of the screen.
 
-![image](../.gitbook/assets/burger_predict.jpg)
-
+![](../images/burger_predict.jpg)

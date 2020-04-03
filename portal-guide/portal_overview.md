@@ -6,5 +6,4 @@ Portal is a user interface makes the world’s most advanced AI technology acces
 Anything that you can do in Portal, you can also do directly with our API. If you want to build powerful UIs, you can do so with our API.
 {% endhint %}
 
-![image](../.gitbook/assets/portal_med_tones.jpg)
-
+![](../images/portal_med_tones.jpg)

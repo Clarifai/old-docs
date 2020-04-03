@@ -6,11 +6,10 @@ When you create a new app, you choose a base workflow that will provide the tran
 
 For example, if you're training a custom model to recognize your restaurant's dishes on social media, you would choose the 'Food' model in your base workflow.
 
-![image](../../.gitbook/assets/base_workflow.jpg)
+![](../../images/base_workflow.jpg)
 
 You currently have the option of using our General, Travel, Food, Face, Moderation, and Wedding models in your base workflow. More information on these, and other Clarifai Models can be found in our [model gallery](https://www.clarifai.com/models). You can learn more about workflows [here](https://docs.clarifai.com/main/api-guide/model/workflow/).
 
 {% hint style="info" %}
 We recommend choosing the 'General' model if you're not sure which Clarifai Model would best suit your use case.
 {% endhint %}
-
