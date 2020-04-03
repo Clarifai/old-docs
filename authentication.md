@@ -26,7 +26,7 @@ You have control over both operation and endpoint level scopes.
 
 ### Operation Level Scopes
 
-Operation level scopes provide control over the ability to read, write, or delete a given resource type.
+Operation level scopes provide control over the ability to read, write, or delete a given resource type. To see the always up to date list of operation level scopes avilable in your plan create a key in Portal.
 
 **Annotation**
 * Annotations:Add (Write Annotations)
@@ -61,10 +61,11 @@ Operation level scopes provide control over the ability to read, write, or delet
 
 ### Endpoint level scopes
 
-Endpoint level scopes give you control over access to specific endpoints.
+Endpoint level scopes give you control over access to specific endpoints. To see the always up to date list of endpoint level scopes avilable in your plan create a key in Portal.
 
 **Concept**
 
+* /clarifai.api.V2/GetConcept
 * /clarifai.api.V2/GetConceptCounts
 * /clarifai.api.V2/ListConcepts
 * /clarifai.api.V2/PatchConcepts
@@ -98,6 +99,11 @@ Endpoint level scopes give you control over access to specific endpoints.
 * /clarifai.api.V2/PostModelVersions
 * /clarifai.api.V2/PostModels
 * /clarifai.api.V2/PostModelsSearches
+
+**Predict**
+
+* /clarifai.api.V2/PostModelOutputs
+* /clarifai.api.V2/PostWorkflowResults
 
 **Search**
 
