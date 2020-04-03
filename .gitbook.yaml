@@ -1,5 +1,5 @@
 structure:
-  readme: ./getting-started.md
+  readme: ./introduction.md
   summary: ./SUMMARY.md
 
 redirects:
