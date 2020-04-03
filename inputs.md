@@ -1,12 +1,14 @@
 ## Inputs
 
-The API is built around a simple idea. You send inputs (images) to the service and it returns predictions. In addition to receiving predictions on inputs, you can also 'save' inputs and their predictions to later search against. You can also 'save' inputs with concepts to later train your own model.
+The API is built around a simple idea. You send inputs (images) to the service and it returns predictions. In addition to receiving predictions on inputs, you can also index inputs and their predictions to later search against. You can also index inputs with concepts to later train your own model.
+
+When you add an input to your app, the base workflow of your app runs, computing the outputs from all the models in that workflow and indexes those outputs. Those indexed outputs are what incur the indexing fee monthly, and enablessearch and training on top of the outputs of the base workflow models.
 
 ### Add Inputs
 
 You can add inputs one by one or in bulk. If you do send bulk, you are limited to sending 128 inputs at a time.
 
-**Important: adding inputs is an asynchronous operation.** That means it will process indexing of your inputs through your default workflow in the background, which can take some time. In order to check the status of each input you add, see the section on [Get Input by ID](#get-input-by-id) to look for status 30000 (INPUT_IMAGE_DOWNLOAD_SUCCESS) status code on each input to know when it's successfully been indexed. 
+**Important: adding inputs is an asynchronous operation.** That means it will process indexing of your inputs through your default workflow in the background, which can take some time. In order to check the status of each input you add, see the section on [Get Input by ID](#get-input-by-id) to look for status 30000 (INPUT_IMAGE_DOWNLOAD_SUCCESS) status code on each input to know when it's successfully been indexed.
 
 
 ##### Add an input using a publicly accessible URL
@@ -288,6 +290,10 @@ curl -X POST \
 ##### Add multiple inputs with ids
 
 
+{% hint style="info" %}
+In cases where you have your own `id` and you only have one item per image, you are encouraged to send inputs with your own `id`. This will help you later match the input to your own database. If you do not send an `id`, one will be created for you.
+If you have more than one item per image, it is recommended that you put the product id in metadata.
+{% endhint %}
 
 
 {% code-tabs %}
@@ -651,6 +657,14 @@ In addition to adding an input with concepts, you can also add an input with cus
 metadata will then be [searchable](advanced-searches.md#by-custom-metadata). Metadata can be any
 arbitrary JSON.
 
+{% hint style="info" %}
+If you have more than one item per image it is recommended to put the id in metadata like:
+```
+{
+  "product_id": "xyz"
+}
+```
+{% endhint %}
 
 
 {% code-tabs %}

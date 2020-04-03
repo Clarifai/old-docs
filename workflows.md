@@ -1,4 +1,4 @@
-Workflows encompass one or more Public or Custom model(s). Every workflow is attached to one of your applications. Under each workflow, you will see a list of the public models and all custom models in that application when selecting models to add to your workflow. With Workflow Predict, you will be able to reduce the latency and in turn make your product more efficient.
+Workflows are a graph of computation that encompass one or more Clarifai or Custom model(s). Every workflow is attached to one of your applications. Under each workflow, you will see a list of the Clarifai Models and all custom models in that application when selecting models to add to your workflow. With Workflow Predict, you will be able to reduce the latency and in turn make your product more efficient.
 
 Note: this won't have any impact on the price you are charged per call. You will still be charged for the same operation if it were separate calls to the API.
 
@@ -20,7 +20,7 @@ Create API Key](/images/create-workflow-new.png)
 After that, the page will reveal a new workflow form to fill out. Fill out the
 Workflow ID field, this will be used to make the API call, so make sure to
 give it something URL friendly! Included there, you will also a list that consists of a model
-field and a version associated with it. For the public models, you will be mandated
+field and a version associated with it. For Clarifai Models, you will be mandated
 to use the latest version. For your custom models, you will be able to
 [select the version of your model](models.md#list-model-versions)</a>. To add another model, you will just click underneath your
 latest addition on the "Add Model". The max limit of models associated with any given workflow
@@ -35,7 +35,7 @@ under a workflow with the name my-workflow](/images/my-workflow-new.png)
 
 ### Workflow Predict
 The Workflow Predict API allows you to predict using 1 or more model(s), regardless of them
-being public or custom, within a single API call! The max number of inputs processed at once with
+being Clarifai or custom, within a single API call! The max number of inputs processed at once with
 any given workflow is 32.
 
 Now that you have that all set up, you will be able to predict under a workflow using

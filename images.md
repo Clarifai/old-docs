@@ -4,7 +4,7 @@ To get predictions for an input, you need to supply an image and the model you'd
 
 Below is an example of how you would send image URLs and receive back predictions from the `general` model.
 
-You can learn all about the different [public models](public-models.md) available later in the guide.
+You can learn all about the different [Clarifai Models](public-models.md) available later in the guide.
 
 {% code-tabs %}
 {% code-tabs-item title="js" %}

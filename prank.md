@@ -4,8 +4,8 @@ Discover and retrieve the most relevant images from your dataset by searching fo
 
 ![image](/images/rank_by_predictions.jpg)
 
-### Search by similarity 
+### Search by similarity
 
-Go beyond simple keyword searches. Draw a direct line from the source of an idea (an image, video, or block of text), to the information you need. No guessing keywords required. Similarly Search can be combined with detection models so that you can search for a specific thing a region of an image. You can even use an image to find a specific frame within a video clip.
+Go beyond simple keyword searches. Draw a direct line from the source of an idea (an image), to the information you need. No guessing keywords required. Similarly Search can be combined with detection models so that you can search for a specific thing a region of an image. 
 
 ![image](/images/Rank_Similarity_Search.jpg)
