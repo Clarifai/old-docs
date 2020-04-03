@@ -2,9 +2,9 @@
 
 ### Getting Started
 
-The Clarifai API offers image and video recognition as a service. Whether you have one image or billions, you are only steps away from using artificial intelligence to recognize your visual content.
+The Clarifai API offers image recognition as a service. Whether you have one image or billions, you are only steps away from using artificial intelligence to recognize your visual content.
 
-The API is built around a simple idea. You send inputs \(an image or video\) to the service and it returns predictions.
+The API is built around a simple idea. You send inputs to the service and it returns predictions.
 
 The type of prediction is based on what model you run the input through. For example, if you run your input through the 'food' model, the predictions it returns will contain concepts that the 'food' model knows about. If you run your input through the 'color' model, it will return predictions about the dominant colors in your image.
 
