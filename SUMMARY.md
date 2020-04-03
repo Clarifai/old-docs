@@ -25,7 +25,7 @@
 * [Annotate](annotate.md)
   * [Positive and negative annotations](positive-and-negative-annotations.md)
 * [Model](model.md)
-  * [Public models](public-models.md)
+  * [Clarifai Models](public-models.md)
   * [Custom model walkthrough](custom-model-walkthrough.md)
   * [Create, get and update](create-get-and-update.md)
   * [Workflows](workflows.md)
@@ -48,7 +48,7 @@
 * [Annotate](annotate.md)
   * [Positive and negative annotations](positive-and-negative-annotations.md)
 * [Model](model.md)
-  * [Public models](public-models.md)
+  * [Clarifai Models](public-models.md)
   * [Custom model walkthrough](pcustom-model-walkthrough.md)
   * [Workflows](workflows.md)
   * [Evaluate](evaluate.md)
@@ -64,3 +64,8 @@
 
 * [Upcoming API Changes](upcoming-api-changes.md)
 * [Change log](change-log.md)
+
+
+## SDK Guide (depreciated)
+* [Mobile](mobile.md)
+* [Android](android.md)

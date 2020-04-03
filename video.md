@@ -1,12 +1,12 @@
-With a video input, the Predict API response will return a list of predicted concepts for every frame of a video. Video is processed at 1 frame per second. This means you will receive a list of concepts for every second of your video.
+With a video input, the Predict API response will return a list of predicted concepts for every frame of a video. By default, video is processed at 1 frame per second (but this is configurable in the predict request). This means you will receive a list of concepts for every second of your video.
 
-You can run Predict on your video using a select number of [public models](https://www.clarifai.com/models). The models that are currently supported are: Apparel, Food, General, NSFW, Travel, and Wedding. You make an API call by providing the `{model-id}` parameter and your data parameter is `video` instead of `image`.
+You can run Predict on your video using a select number of [Clarifai Models](https://www.clarifai.com/models). The models that are currently supported are: Apparel, Food, General, NSFW, Travel, and Wedding. You make an API call by providing the `{model-id}` parameter and your data parameter is `video` instead of `image`.
 
 **Video limits**
 
 The Predict API has limits to the length and size it can support. A video, uploaded through URL, can be anywhere up to 80MB in size or 10mins in length. When a video is sent through by bytes, the Predict API can support 10MB in size.
 
-If your video exceeds the limits, please follow our [tutorial](https://docs.google.com/document/d/1mL1q5CIrgOauNlTe-PwokOiaDZ_4yyEzBjapl9BZbJc/edit?usp=sharing) on how to break up a large video into smaller components, and send those into the Video API. Otherwise, the processing will time out and you will receive an error response.
+If your video exceeds the limits, please follow our [tutorial](https://www.clarifai.com/blog/splitting-video-into-smaller-pieces) on how to break up a large video into smaller components, and send those into the Video API. Otherwise, the processing will time out and you will receive an error response.
 
 **Via URL**
 
