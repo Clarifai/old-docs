@@ -8,9 +8,7 @@ This evaluate operation is asynchronous and is currently available on the  [Port
 
 Model Evaluation performs a K-split cross validation on data you used to train your custom model.
 ![cross validation](../../../images/eval-metrics-1.0-2x.png)
-In the cross validation process, it will: 1. Set aside a random 1/K subset of the training data and designate as a test set, 2. Train a new model with the remaining training data, 3. Pass the test set data through this new model to make predictions, 4. Compare the predictions against the test set’s actual labels, and 5. Repeat steps 1\) through 4\) across K splits to average out the evaluation results
-
-For a refresher on custom training, please refer to our [training documentation](https://github.com/Clarifai/docs/tree/5882f46bd17affcd85ed3e2ec98f4d6f355b58a9/train.md).
+In the cross validation process, it will: 1. Set aside a random 1/K subset of the training data and designate as a test set, 2. Train a new model with the remaining training data, 3. Pass the test set data through this new model to make predictions, 4. Compare the predictions against the test set’s actual labels, and 5. Repeat steps 1\) through 4\) across K splits to average out the evaluation results.
 
 ## Requirements
 

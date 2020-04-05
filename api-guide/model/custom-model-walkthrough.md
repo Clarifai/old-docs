@@ -2,7 +2,7 @@
 
 You do not need many images to get started. We recommend starting with 10 and adding more as needed. Before you train your first model you will have needed to [create an application](../../getting-started/applications/#create-an-application) and select a [base workflow](../../getting-started/applications/#base-workflow).
 
-![inputs outputs](../../.gitbook/assets/illustration-training.png)
+![](../../images/illustration-training.png)
 
 ## Add images with concepts
 
@@ -686,4 +686,3 @@ curl -X POST \
 ```
 {% endtab %}
 {% endtabs %}
-
