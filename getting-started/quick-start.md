@@ -14,27 +14,26 @@ Just click here if you need to set up your account for the first time. Or click 
 
 Check your email. We will send you a link that enables you to automatically verify your email.
 
-![image](../.gitbook/assets/verify_emal2.gif)
+![](../images/verify_emal2.gif)
 
 ## Step 3: Create your first application
 
 Just click "Create Application".
 
-![image](../.gitbook/assets/create_application2.gif)
+![](../images/create_application2.gif)
 
 Give your application a name and select "General" as your base model.
 
-![image](../.gitbook/assets/create_application_too.gif)
+![](../images/create_application_too.gif)
 
 ## Step 4: Upload your data
 
 Upload any pictures you would like to test out.
 
-![image](../.gitbook/assets/upload_images.gif)
+![](../images/upload_images.gif)
 
 ## Step 5: Take a look at your first predictions
 
 The general model you selected can recognize over 11,000 concepts right out of the box. Just click on an image and take a look at the predictions that are generated on the right hand side of the screen.
 
-![image](../.gitbook/assets/predict2.gif)
-
+![](../images/predict2.gif)

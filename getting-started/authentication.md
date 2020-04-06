@@ -4,7 +4,7 @@ App-specific API Keys are used to authorize your Clarifai applications. You can 
 
 You have fine-grained control over the data exposed through your app. You can control the scope of an API Key through a simple checkbox interface when you first set up your app.
 
-![api keys](../.gitbook/assets/apikey-screen.png)
+![api keys](../images/apikey-screen.png)
 
 {% hint style="info" %}
 API Keys do not expire. In case your API Key gets compromised, you should delete that key, and create a new one with the same scopes.
@@ -203,4 +203,3 @@ curl -X POST \
 {% endtabs %}
 
 If the API Key does not have the required scope\(s\), you will receive one of the following responses: 1. Rejected Request: if a large portion of the response requires a scope that is missing 2. Redacted Response: if majority of the response has the required scope\(s\), a small portion of the response will be redacted to not reveal unwarranted information
-
