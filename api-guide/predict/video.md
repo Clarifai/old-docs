@@ -247,7 +247,7 @@ curl -X POST \
       }
     }
   }'\
-  https://api.clarifai.com/v2/models/{GENERAL_MODEL_ID}/outputs
+  https://api.clarifai.com/v2/models/{model-id}/outputs
 ```
 {% endtab %}
 {% endtabs %}
@@ -1715,7 +1715,7 @@ curl -X POST \
       }
     }
   }'\
-  https://api.clarifai.com/v2/models/{GENERAL_MODEL_ID}/outputs
+  https://api.clarifai.com/v2/models/{model-id}/outputs
 ```
 {% endtab %}
 {% endtabs %}

@@ -2,7 +2,7 @@
 
 ## Via URL
 
-To get predictions for an input, you need to supply an image and the model you'd like to get predictions from. You can supply an image either with a publicly accessible URL or by directly sending bytes. You can send up to 128 images in one API call. You specify the model you'd like to use with the `{model-id}` parameter.
+To get predictions for an input, you need to supply an image and the model you'd like to get predictions from. You can supply an image either with a publicly accessible URL or by directly sending bytes. You can send up to 128 images in one API call. genera
 
 Below is an example of how you would send image URLs and receive back predictions from the `general` model.
 
@@ -438,14 +438,14 @@ curl -X POST \
       }
     ]
   }'\
-  https://api.clarifai.com/v2/models/{GENERAL_MODEL_ID}/outputs
+  https://api.clarifai.com/v2/models/{model-id}/outputs
 
 // Larger Files (Greater than 195 KB)
 
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
-  -d @- https://api.clarifai.com/v2/models/{GENERAL_MODEL_ID}/outputs << FILEIN
+  -d @- https://api.clarifai.com/v2/models/{model-id}/outputs << FILEIN
   {
     "inputs": [
       {
