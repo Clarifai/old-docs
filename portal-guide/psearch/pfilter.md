@@ -6,6 +6,10 @@ Attach additional information to your inputs as you upload them to the Clarifai 
 
 ![](../../images/filter_by_metadata.jpg)
 
+You can even search by metadata in the single image view in Portal. Just expand the metadata window, click table, and then click the line that has the metadata you would like to use for search. The line is automatically added to the search bar and will filter your search results.
+
+![](../../images/metadata_search_image_view.jpg)
+
 ## Filter by geo-location
 
 Combine visual search with location-awareness to organize your data by place. Include latitude and longitude information when you upload your data, and then filter to find all inputs within a given radius. Or even define a region on the map and limit your results to the inputs within that region.
