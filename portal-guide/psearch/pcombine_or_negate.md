@@ -10,7 +10,7 @@ Find all data that is NOT similar to a given criteria. For example, you can sear
 
 Add together multiple search parameters to expand your search. You can even combine negated search terms for more advanced tasks.
 
-![](../../images/assets/combine_search_criteria.jpg)
+![](../../images/combine_search_criteria.jpg)
 
 {% hint style="info" %}
 Combining search criteria always uses the "AND" operation. "OR" is not an option.

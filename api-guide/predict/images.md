@@ -438,14 +438,14 @@ curl -X POST \
       }
     ]
   }'\
-  https://api.clarifai.com/v2/models/@@generalModelId/outputs
+  https://api.clarifai.com/v2/models/{model-id}/outputs
 
 // Larger Files (Greater than 195 KB)
 
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
-  -d @- https://api.clarifai.com/v2/models/@@generalModelId/outputs << FILEIN
+  -d @- https://api.clarifai.com/v2/models/{model-id}/outputs << FILEIN
   {
     "inputs": [
       {
@@ -634,4 +634,3 @@ FILEIN
 ```
 {% endtab %}
 {% endtabs %}
-

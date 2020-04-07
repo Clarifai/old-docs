@@ -10,4 +10,4 @@ Discover and retrieve the most relevant images from your dataset by searching fo
 
 Go beyond simple keyword searches. Draw a direct line from the source of an idea \(an image\), to the information you need. No guessing keywords required. Similarly Search can be combined with detection models so that you can search for a specific thing a region of an image.
 
-![](../../images/rank_similarity_search.jpg)
+![](../../images/Rank_Similarity_Search.jpg)
