@@ -1,10 +1,35 @@
 # Scopes
 
-You will see a list of scopes that you can add on to your API Key for the app that was selected. We recommend generating different keys for very specific purposes - this is the best approach to keep your app secure from malicious attacks. 
+Scopes provide control over the set of functionality and features available when using our API. Modifying scopes allows for fine-grained control over the data that users have access to, and can help keep your app secure from malicious attacks.
+
+You can control scopes for our apps at three different levels:
+
+**App-Specific API Keys**
+Control access to resources used by a specific app and a specific user
+
+**Personal Access Tokens**
+Control access to resources available to a specific user
+
+**Collaboration**
+Control access to resources available to collaborators
+
+## Combining Scopes
+
+A variety of use cases can be address by selecting different combinations of scopes.
+
+For example, you might want to create an app that only has access to the search endpoint, but for search to work properly it needs access to Predict at the operation level \(so that it can perform advanced visual searches like searching by an image crop, which first needs to be understood with a prediction before search is performed\).
+
+By giving the combination of predict op-level but only search endpoint, you can create an app that can perform searches, but not model predictions \(like PostModelOutputs\).
+
+{% hint style="info" %}
+When combining PATs and collaborator scopes, our API allow the "minimum" set of resources. The combined scopes will only include resources that are allowed by both the PAT and the collaborator. 
+{% endhint %}
+
+## Operations and Endpoints
 
 You have control over both operation and endpoint level scopes.
 
-## Operation Level Scopes
+### Operation Level Scopes
 
 Operation level scopes provide control over the ability to read, write, or delete a given resource type. To see the always up to date list of operation level scopes avilable in your plan create a key in Portal.
 
@@ -46,7 +71,7 @@ Operation level scopes provide control over the ability to read, write, or delet
 * Workflows:Delete \(Delete Workflows\)
 * Workflows:Get \(Read Workflows\)
 
-## Endpoint level scopes
+### Endpoint level scopes
 
 Endpoint level scopes give you control over access to specific endpoints. To see the always up to date list of endpoint level scopes avilable in your plan create a key in Portal.
 
@@ -104,11 +129,3 @@ Endpoint level scopes give you control over access to specific endpoints. To see
 * /clarifai.api.V2/ListWorkflows
 * /clarifai.api.V2/PatchWorkflows
 * /clarifai.api.V2/PostWorkflows
-
-## Combining Scopes
-
-A variety of use cases can be address by selecting different combinations of scopes.
-
-For example, you might want to create an app that only has access to the search endpoint, but for search to work properly it needs access to Predict at the operation level \(so that it can perform advanced visual searches like searching by an image crop, which first needs to be understood with a prediction before search is performed\).
-
-By giving the combination of predict op-level but only search endpoint, you can create an app that can perform searches, but not model predictions \(like PostModelOutputs\).

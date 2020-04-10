@@ -9,7 +9,12 @@
   * [Create an Application](getting-started/applications/create-an-application.md)
   * [Base Workflows](getting-started/applications/base-workflows.md)
   * [Application Settings](getting-started/applications/application-settings.md)
+  * [Collaboration](getting-started/applications/collaboration.md)
 * [Authentication](getting-started/authentication.md)
+  * [App-Specific API Keys](getting-started/authentication/app-specific-api-keys.md)
+  * [Personal Access Tokens](getting-started/authentication/personal-access-tokens.md)
+  * [Scopes](getting-started/authentication/scopes.md)
+  * [Authorize](getting-started/authentication/authorize.md)
 * [Glossary](getting-started/glossary.md)
 
 ## API Guide
@@ -67,4 +72,3 @@
 
 * [Mobile](sdk-guide-depreciated/mobile.md)
 * [Android](sdk-guide-depreciated/android.md)
-
