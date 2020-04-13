@@ -21,8 +21,9 @@ For example, you might want to create an app that only has access to the search 
 
 By giving the combination of predict op-level but only search endpoint, you can create an app that can perform searches, but not model predictions \(like PostModelOutputs\).
 
+
 {% hint style="info" %}
-When combining PATs and collaborator scopes, our API allow the "minimum" set of resources. The combined scopes will only include resources that are allowed by both the PAT and the collaborator. 
+Since collaborators need to create an API key to access the app they are invited to (or use a PAT), the scopes that are attached to the collaborator invite for an app will be intersected with the scopes attached to the API key or PAT. Therefore, the permissions allowed when making requests will be the minimum set of scopes from that intersection. This ensures that the app owner remains in full control of the permissions they want their collaborators to have.
 {% endhint %}
 
 ## Operations and Endpoints
@@ -73,7 +74,7 @@ Operation level scopes provide control over the ability to read, write, or delet
 
 ### Endpoint level scopes
 
-Endpoint level scopes give you control over access to specific endpoints. To see the always up to date list of endpoint level scopes avilable in your plan create a key in Portal.
+Endpoint level scopes give you control over access to specific endpoints. To see the always up to date list of endpoint level scopes available in your plan create a key in Portal.
 
 **Concept**
 

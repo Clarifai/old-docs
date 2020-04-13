@@ -65,6 +65,4 @@ curl -X POST \
 {% endtab %}
 {% endtabs %}
 
-If the API Key does not have the required scope\(s\), you will receive one of the following responses:
-1. Rejected Request: if a large portion of the response requires a scope that is missing
-2. Redacted Response: if majority of the response has the required scope\(s\), a small portion of the response will be redacted to not reveal unwarranted information.
+If the API Key does not have the required scope\(s\) to execute a given request, you will get an error message reporting the missing scopes and/or endpoints that your key needs to execute this request.
