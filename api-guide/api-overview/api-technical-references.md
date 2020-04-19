@@ -1,5 +1,17 @@
 # API technical references
 
+## gRPC Java
+
+[github.com/Clarifai/clarifai-java-grpc](https://github.com/Clarifai/clarifai-java-grpc)
+
+## gRPC NodeJS
+
+[github.com/Clarifai/clarifai-javascript-grpc](https://github.com/Clarifai/clarifai-javascript-grpc)
+
+## gRPC Pythonj
+
+[github.com/Clarifai/clarifai-python-grpc](https://github.com/Clarifai/clarifai-python-grpc)
+
 ## JavaScript
 
 [github.com/Clarifai/clarifai-javascript](https://github.com/Clarifai/clarifai-javascript)
