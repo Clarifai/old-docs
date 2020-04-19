@@ -42,6 +42,79 @@ The gRPC clients below are currently available and we'll be adding more as time 
 ## Client Installation Instructions
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+///////////////////////////////////////////////////////////////////////////////
+// Installation (build.gradle)
+///////////////////////////////////////////////////////////////////////////////
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation 'com.clarifai:clarifai-grpc:LATEST_VERSION'
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Initialize client
+///////////////////////////////////////////////////////////////////////////////
+
+import com.clarifai.channel.ClarifaiChannel;
+import io.grpc.Channel;
+
+...
+
+// Construct one of the channels you want to use
+Channel channel = ClarifaiChannel.INSTANCE.getJsonChannel();
+Channel channel = ClarifaiChannel.INSTANCE.getInsecureGrpcChannel();
+
+// Note: You can also use a secure (encrypted) ClarifaiChannel.INSTANCE.getGrpcChannel() however
+// it is currently not supported in the latest gRPC version.
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```javascript
+///////////////////////////////////////////////////////////////////////////////
+// Installation
+///////////////////////////////////////////////////////////////////////////////
+
+npm install clarifai-nodejs-grpc
+
+///////////////////////////////////////////////////////////////////////////////
+// Initialize client
+///////////////////////////////////////////////////////////////////////////////
+
+// Construct one of the stubs you want to use
+const stub = ClarifaiStub.json();
+const stub = ClarifaiStub.insecureGrpc();
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+///////////////////////////////////////////////////////////////////////////////
+// Installation
+///////////////////////////////////////////////////////////////////////////////
+
+pip install clarifai-grpc
+
+///////////////////////////////////////////////////////////////////////////////
+// Initialize client
+///////////////////////////////////////////////////////////////////////////////
+
+from clarifai_grpc.channel.clarifai_channel import ClarifaiChannel
+
+# Construct one of the channels you want to use
+channel = ClarifaiChannel.get_json_channel()
+channel = ClarifaiChannel.get_insecure_grpc_channel()
+
+# Note: You can also use a secure (encrypted) ClarifaiChannel.get_grpc_channel() however
+# it is currently not possible to use it with the latest gRPC version
+```
+{% endtab %}
+
 {% tab title="javascript" %}
 ```javascript
 // The JavaScript client works in both Node.js and the browser.
