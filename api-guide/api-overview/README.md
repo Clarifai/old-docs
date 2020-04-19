@@ -5,6 +5,31 @@ Our API enables you to build AI applications with capabilities like prediction, 
 Access our API over HTTPS via `https://api.clarifai.com`. In the examples throughout our documentation, we use single brackets `{variable}` to indicate variables that you should replace with a real value.
 
 We recommend using a client library to access the API. We offer official clients in a variety of languages.
+To access the Clarifai API in other languages, use the REST API directly. For REST documentation
+please see the cURL examples.
+
+## gRPC Clients
+
+For new projects, we recommend using one of the auto-generated clients built using [gRPC](https://grpc.io/). These
+clients may offer better performance since they use a gRPC channel where the network transfer of the
+data is optimized. The data is serialized with [Protocol Buffers](https://developers.google.com/protocol-buffers/).
+
+Since the gRPC clients are auto-generated and will always have the latest available Clarifai API
+feature-set.
+
+It's possible to make these clients use the standard HTTP+JSON channel, while enjoying a better
+auto-completion support in most IDEs (compared to building and parsing JSON directly), and easily
+being able to switch to using a gRPC channel when/if desired.
+
+The gRPC clients below are currently available and we'll be adding more as time goes on.
+
+| Available gRPC Clients |
+| ----------------- |
+| [Clarifai gRPC Java](https://github.com/Clarifai/clarifai-java-grpc/) |
+| [Clarifai gRPC NodeJS](https://github.com/Clarifai/clarifai-javascript-grpc) |
+| [Clarifai gRPC Python](https://github.com/Clarifai/clarifai-python-grpc/) |
+
+## Manually-built Clients
 
 | Available Clients |
 | ----------------- |
@@ -13,9 +38,6 @@ We recommend using a client library to access the API. We offer official clients
 | [Clarifai JavaScript](https://github.com/Clarifai/clarifai-javascript) ([Reference Docs](https://sdk.clarifai.com/js/latest/index.html)) |
 | [Clarifai PHP](https://github.com/Clarifai/clarifai-php) |
 | [Clarifai Python](https://github.com/Clarifai/clarifai-python) ([Reference Docs](https://clarifai-python.readthedocs.io/en/latest/index.html)) |
-
-To access the Clarifai API in other languages, use the REST API directly. For REST documentation
-please see the cURL examples.
 
 ## Client Installation Instructions
 
@@ -207,26 +229,3 @@ $client = new ClarifaiClient('YOUR_API_KEY');
 ```
 {% endtab %}
 {% endtabs %}
-
-
-##### gRPC Clients
-
-You can also use any of the new auto-generated clients built using [gRPC](https://grpc.io/). These
-clients may offer better performance since they use a gRPC channel where the network transfer of the
-data is optimized. The data is serialized with
-[Protocol Buffers](https://developers.google.com/protocol-buffers/).
-
-These clients are auto-generated and will always have the latest available Clarifai API
-feature-set.
-
-It's even possible to make these clients use the standard HTTP+JSON channel, while enjoying a better
-auto-completion support in most IDEs (compared to building and parsing JSON directly), and easily
-being able to switch to using a gRPC channel when/if desired.
-
-The gRPC clients below are currently available and we'll be adding more as time goes on.
-
-| Available gRPC Clients |
-| ----------------- |
-| [Clarifai gRPC Java](https://github.com/Clarifai/clarifai-java-grpc/) |
-| [Clarifai gRPC NodeJS](https://github.com/Clarifai/clarifai-javascript-grpc) |
-| [Clarifai gRPC Python](https://github.com/Clarifai/clarifai-python-grpc/) |
