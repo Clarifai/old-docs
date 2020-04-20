@@ -61,6 +61,8 @@ dependencies {
 ///////////////////////////////////////////////////////////////////////////////
 
 import com.clarifai.channel.ClarifaiChannel;
+import com.clarifai.credentials.ClarifaiCallCredentials;
+import com.clarifai.grpc.api.*;
 import io.grpc.Channel;
 
 ...
@@ -71,6 +73,9 @@ Channel channel = ClarifaiChannel.INSTANCE.getInsecureGrpcChannel();
 
 // Note: You can also use a secure (encrypted) ClarifaiChannel.INSTANCE.getGrpcChannel() however
 // it is currently not supported in the latest gRPC version.
+
+V2Grpc.V2BlockingStub stub = V2Grpc.newBlockingStub(channel)
+    .withCallCredentials(new ClarifaiCallCredentials("YOUR_CLARIFAI_API_KEY"));
 ```
 {% endtab %}
 
