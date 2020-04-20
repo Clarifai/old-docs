@@ -81,7 +81,7 @@ namespace YourNamespace
                     "{workflow-id}",
                     new List<IClarifaiInput>
                     {
-                        new ClarifaiURLImage("https://samples.clarifai.com/puppy.jpg")
+                        new ClarifaiURLImage("https://samples.clarifai.com/puppy.jpeg")
                     })
                 .ExecuteAsync();
         }

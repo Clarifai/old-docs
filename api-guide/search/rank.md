@@ -752,7 +752,7 @@ You can use images to search through your collection. The API will return ranked
 app.inputs.search(
   {
     input: {
-      url: 'https://samples.clarifai.com/puppy.jpg'
+      url: 'https://samples.clarifai.com/puppy.jpeg'
     }
   }
 ).then(
@@ -924,7 +924,7 @@ app.inputs.search(
   {
     input: {
       type: 'input',
-      url: 'https://samples.clarifai.com/puppy.jpg'
+      url: 'https://samples.clarifai.com/puppy.jpeg'
     }
   }
 ).then(
@@ -951,7 +951,7 @@ app.inputs.search_by_metadata(meta)
 {% tab title="java" %}
 ```java
 // Lookup images with this URL
-client.searchInputs(SearchClause.matchImageURL(ClarifaiImage.of("https://samples.clarifai.com/puppy.jpg")))
+client.searchInputs(SearchClause.matchImageURL(ClarifaiImage.of("https://samples.clarifai.com/puppy.jpeg")))
     .getPage(1)
     .executeSync();
 ```
@@ -1061,7 +1061,7 @@ You can search using a crop of an image through your collection. The API will st
 app.inputs.search(
   {
     input: {
-      url: 'https://samples.clarifai.com/puppy.jpg',
+      url: 'https://samples.clarifai.com/puppy.jpeg',
       crop: [0.1, 0.1, 0.9, 0.9]
     }
   }
@@ -1081,7 +1081,7 @@ app.inputs.search(
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 
-search = app.inputs.search_by_image(url='https://samples.clarifai.com/puppy.jpg', crop=[0.1, 0.1, 0.9, 0.9])
+search = app.inputs.search_by_image(url='https://samples.clarifai.com/puppy.jpeg', crop=[0.1, 0.1, 0.9, 0.9])
 
 print search
 ```
@@ -1089,7 +1089,7 @@ print search
 
 {% tab title="java" %}
 ```java
-client.searchInputs(SearchClause.matchImageVisually(ClarifaiImage.of("https://samples.clarifai.com/puppy.jpg")
+client.searchInputs(SearchClause.matchImageVisually(ClarifaiImage.of("https://samples.clarifai.com/puppy.jpeg")
     .withCrop(Crop.create()
         .top(0.1F)
         .left(0.1F)
@@ -1179,7 +1179,7 @@ curl -X POST \
           "input": {
               "data": {
                 "image": {
-                    "url": "https://samples.clarifai.com/puppy.jpg",
+                    "url": "https://samples.clarifai.com/puppy.jpeg",
                     "crop": [0.1,0.1,0.9,0.9]
                 }
             }

@@ -1830,7 +1830,7 @@ namespace YourNamespace
 
 {% tab title="objective-c" %}
 ```text
-ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg"]
+ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpeg"]
 [app getModel:@"{id}" completion:^(ClarifaiModel *model, NSError *error) {
     [model train:^(ClarifaiModel *model, NSError *error) {
         NSLog(@"model: %@", model);
@@ -1877,7 +1877,7 @@ Once you have trained a model you are ready to use your new model to get predict
 {% tabs %}
 {% tab title="js" %}
 ```javascript
-app.models.predict("{model_id}", ["https://samples.clarifai.com/puppy.jpg"]).then(
+app.models.predict("{model_id}", ["https://samples.clarifai.com/puppy.jpeg"]).then(
   function(response) {
     // do something with response
   },
@@ -1888,7 +1888,7 @@ app.models.predict("{model_id}", ["https://samples.clarifai.com/puppy.jpg"]).the
 
 // or if you have an instance of a model
 
-model.predict("https://samples.clarifai.com/puppy.jpg").then(
+model.predict("https://samples.clarifai.com/puppy.jpeg").then(
   function(response) {
     // do something with response
   },
@@ -1906,7 +1906,7 @@ app = ClarifaiApp(api_key='YOUR_API_KEY')
 
 model = app.models.get('YOUR_MODEL_ID')
 
-response = model.predict_by_url('https://samples.clarifai.com/puppy.jpg')
+response = model.predict_by_url('https://samples.clarifai.com/puppy.jpeg')
 ```
 {% endtab %}
 
@@ -1914,7 +1914,7 @@ response = model.predict_by_url('https://samples.clarifai.com/puppy.jpg')
 ```java
 client.predict("{model_id}")
     .withInputs(
-        ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpg")
+        ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpeg")
     )
     .executeSync();
 ```
@@ -1937,7 +1937,7 @@ namespace YourNamespace
 
             await client.Predict<Concept>(
                     "{model_id}",
-                    new ClarifaiURLImage("https://samples.clarifai.com/puppy.jpg"))
+                    new ClarifaiURLImage("https://samples.clarifai.com/puppy.jpeg"))
                 .ExecuteAsync();
         }
     }
@@ -1947,7 +1947,7 @@ namespace YourNamespace
 
 {% tab title="objective-c" %}
 ```text
-ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg"]
+ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpeg"]
 [app getModel:@"{model_id}" completion:^(ClarifaiModel *model, NSError *error) {
     [model predictOnImages:@[image]
                 completion:^(NSArray<ClarifaiSearchResult *> *outputs, NSError *error) {
@@ -2002,7 +2002,7 @@ curl -X POST \
       {
         "data": {
           "image": {
-            "url": "https://samples.clarifai.com/puppy.jpg"
+            "url": "https://samples.clarifai.com/puppy.jpeg"
           }
         }
       }

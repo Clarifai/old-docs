@@ -29,7 +29,7 @@ from clarifai.rest import Image as ClImage
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 
 img1 = ClImage(url="https://samples.clarifai.com/metro-north.jpg")
-img2 = ClImage(url="https://samples.clarifai.com/puppy.jpg")
+img2 = ClImage(url="https://samples.clarifai.com/puppy.jpeg")
 img3 = ClImage(file_obj=open('/home/user/image.jpeg', 'rb'))
 
 app.inputs.bulk_create_images([img1, img2, img3])

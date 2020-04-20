@@ -12,7 +12,7 @@ To get started training your own model, you must first add images that already c
 {% tab title="js" %}
 ```javascript
 app.inputs.create({
-  url: "https://samples.clarifai.com/puppy.jpg",
+  url: "https://samples.clarifai.com/puppy.jpeg",
   concepts: [
     {
       id: "boscoe",
@@ -31,7 +31,7 @@ from clarifai.rest import Image as ClImage
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 
 # add multiple images with concepts
-img1 = ClImage(url="https://samples.clarifai.com/puppy.jpg", concepts=['boscoe'], not_concepts=['our_wedding'])
+img1 = ClImage(url="https://samples.clarifai.com/puppy.jpeg", concepts=['boscoe'], not_concepts=['our_wedding'])
 img2 = ClImage(url="https://samples.clarifai.com/wedding.jpg", concepts=['our_wedding'], not_concepts=['cat','boscoe'])
 
 app.inputs.bulk_create_images([img1, img2])
@@ -42,7 +42,7 @@ app.inputs.bulk_create_images([img1, img2])
 ```java
 client.addInputs()
     .plus(
-        ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpg")
+        ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpeg")
             .withConcepts(Concept.forID("boscoe"))
     )
     .executeSync();
@@ -67,7 +67,7 @@ namespace YourNamespace
 
             await client.AddInputs(
                     new ClarifaiURLImage(
-                        "https://samples.clarifai.com/puppy.jpg",
+                        "https://samples.clarifai.com/puppy.jpeg",
                         positiveConcepts: new List<Concept> {new Concept(id: "boscoe")}))
                 .ExecuteAsync();
         }
@@ -78,7 +78,7 @@ namespace YourNamespace
 
 {% tab title="objective-c" %}
 ```text
-ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg" andConcepts:@"cute puppy"];
+ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpeg" andConcepts:@"cute puppy"];
 [_app addInputs:@[image] completion:^(NSArray<ClarifaiInput *> *inputs, NSError *error) {
     NSLog(@"inputs: %@", inputs);
 }];
@@ -121,7 +121,7 @@ curl -X POST \
       {
         "data": {
           "image": {
-            "url": "https://samples.clarifai.com/puppy.jpg"
+            "url": "https://samples.clarifai.com/puppy.jpeg"
           },
           "concepts":[
             {
@@ -410,7 +410,7 @@ namespace YourNamespace
 
 {% tab title="objective-c" %}
 ```text
-ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg"]
+ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpeg"]
 [app getModel:@"{id}" completion:^(ClarifaiModel *model, NSError *error) {
     [model train:^(ClarifaiModel *model, NSError *error) {
         NSLog(@"model: %@", model);
@@ -560,7 +560,7 @@ namespace YourNamespace
 
 {% tab title="objective-c" %}
 ```text
-ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg"]
+ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpeg"]
 [app getModel:@"{id}" completion:^(ClarifaiModel *model, NSError *error) {
     [model predictOnImages:@[image]
                 completion:^(NSArray<ClarifaiSearchResult *> *outputs, NSError *error) {

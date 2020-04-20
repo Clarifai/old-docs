@@ -256,7 +256,7 @@ app.inputs.create([
     id: 'train1'
   },
   {
-    url: "https://samples.clarifai.com/puppy.jpg",
+    url: "https://samples.clarifai.com/puppy.jpeg",
     id: 'puppy1'
   }
 ]).then(
@@ -278,7 +278,7 @@ from clarifai.rest import Image as ClImage
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 
 img1 = ClImage(url="https://samples.clarifai.com/metro-north.jpg", image_id="train1")
-img2 = ClImage(url="https://samples.clarifai.com/puppy.jpg", image_id="puppy1")
+img2 = ClImage(url="https://samples.clarifai.com/puppy.jpeg", image_id="puppy1")
 
 app.inputs.bulk_create_images([img1, img2])
 ```
@@ -332,7 +332,7 @@ namespace YourNamespace
 ClarifaiImage *train = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/metro-north.jpg"];
 train.inputID = @"train";
 
-ClarifaiImage *puppy = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg"];
+ClarifaiImage *puppy = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpeg"];
 puppy.inputID = @"puppy";
 
 [app addInputs:@[train, puppy] completion:^(NSArray<ClarifaiInput *> *inputs, NSError *error) {
@@ -387,7 +387,7 @@ curl -X POST \
       {
         "data": {
           "image": {
-            "url": "https://samples.clarifai.com/puppy.jpg"
+            "url": "https://samples.clarifai.com/puppy.jpeg"
           }
         },
         "id": "{id2}"
@@ -411,7 +411,7 @@ You can add inputs with concepts as either a URL or bytes.
 {% tab title="js" %}
 ```javascript
 app.inputs.create({
-  url: "https://samples.clarifai.com/puppy.jpg",
+  url: "https://samples.clarifai.com/puppy.jpeg",
   concepts: [
     {
       id: "boscoe",
@@ -437,7 +437,7 @@ from clarifai.rest import Image as ClImage
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 
 # add by url
-app.inputs.create_image_from_url("https://samples.clarifai.com/puppy.jpg", concepts=['boscoe'])
+app.inputs.create_image_from_url("https://samples.clarifai.com/puppy.jpeg", concepts=['boscoe'])
 
 # add by base64 bytes
 app.inputs.create_image_from_base64(base64_bytes, concepts=['boscoe'])
@@ -449,7 +449,7 @@ app.inputs.create_image_from_bytes(raw_bytes, concepts=['boscoe'])
 app.inputs.create_image_from_filename(local_filename, concepts=['boscoe'])
 
 # add multiple with concepts
-img1 = ClImage(url="https://samples.clarifai.com/puppy.jpg", concepts=['boscoe'], not_concepts=['our_wedding'])
+img1 = ClImage(url="https://samples.clarifai.com/puppy.jpeg", concepts=['boscoe'], not_concepts=['our_wedding'])
 img2 = ClImage(url="https://samples.clarifai.com/wedding.jpg", concepts=['our_wedding'], not_concepts=['cat','boscoe'])
 
 app.inputs.bulk_create_images([img1, img2])
@@ -459,7 +459,7 @@ app.inputs.bulk_create_images([img1, img2])
 {% tab title="java" %}
 ```java
 client.addInputs()
-    .plus(ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpg")
+    .plus(ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpeg")
         .withConcepts(
             // To mark a concept as being absent, chain `.withValue(false)`
             Concept.forID("boscoe")
@@ -499,7 +499,7 @@ namespace YourNamespace
 
 {% tab title="objective-c" %}
 ```text
-ClarifaiImage *puppy = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg"
+ClarifaiImage *puppy = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpeg"
                                               andConcepts:@[@"cute puppy"]];
 
 [app addInputs:@[puppy] completion:^(NSArray<ClarifaiInput *> *inputs, NSError *error) {
@@ -543,7 +543,7 @@ curl -X POST \
       {
         "data": {
           "image": {
-            "url": "https://samples.clarifai.com/puppy.jpg"
+            "url": "https://samples.clarifai.com/puppy.jpeg"
           },
           "concepts":[
             {
@@ -578,7 +578,7 @@ If you have more than one item per image it is recommended to put the id in meta
 {% tab title="js" %}
 ```javascript
 app.inputs.create({
-  url: "https://samples.clarifai.com/puppy.jpg",
+  url: "https://samples.clarifai.com/puppy.jpeg",
   metadata: {id: 'id001', type: 'plants', size: 100}
 }).then(
   function(response) {
@@ -602,7 +602,7 @@ app = ClarifaiApp(api_key='YOUR_API_KEY')
 metadata = {'id':'id001', 'type':'plants', 'size':100}
 
 # adding metadata along with url, filename, etc
-app.inputs.create_image_from_url(url="https://samples.clarifai.com/puppy.jpg", metadata=metadata)
+app.inputs.create_image_from_url(url="https://samples.clarifai.com/puppy.jpeg", metadata=metadata)
 app.inputs.create_image_from_filename(filename="aa.jpg", metadata=metadata)
 
 # define an image with metadata for bulk import
@@ -618,7 +618,7 @@ final JsonObject metadata = new JsonObject();
 metadata.addProperty("isPuppy", true);
 client.addInputs()
     .plus(
-        ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpg")
+        ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpeg")
             .withMetadata(metadata)
     ).executeSync();
 ```
@@ -655,7 +655,7 @@ namespace YourNamespace
 
 {% tab title="objective-c" %}
 ```text
-ClarifaiImage *puppy = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg"
+ClarifaiImage *puppy = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpeg"
                                               andConcepts:@[@"cute puppy"]];
 puppy.metadata = @{@"my_key": @[@"my",@"values"], @"cuteness": @"extra-cute"};
 [app addInputs:@[puppy] completion:^(NSArray<ClarifaiInput *> *inputs, NSError *error) {
@@ -681,7 +681,7 @@ curl -X POST \
       {
         "data": {
           "image": {
-            "url": "https://samples.clarifai.com/puppy.jpg",
+            "url": "https://samples.clarifai.com/puppy.jpeg",
             "allow_duplicate_url": true
           },
           "metadata": {

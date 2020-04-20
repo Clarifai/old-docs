@@ -6,7 +6,7 @@ You can also combine searches using AND.
 {% tab title="js" %}
 ```javascript
 app.inputs.search([
-  { input: { url: 'https://samples.clarifai.com/puppy.jpg' } },
+  { input: { url: 'https://samples.clarifai.com/puppy.jpeg' } },
   { concept: { name: 'cat', type: 'input' } },
   { concept: { name: 'dog' } }
 ]).then(

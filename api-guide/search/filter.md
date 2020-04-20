@@ -247,7 +247,7 @@ Provide a geo point to an input. The geo point is a JSON object consisting of a 
 {% tab title="js" %}
 ```javascript
 app.inputs.create({
-  url: "https://samples.clarifai.com/puppy.jpg",
+  url: "https://samples.clarifai.com/puppy.jpeg",
   geo: { longitude: 116.2317, latitude: 39.5427},
 }).then(
   function(response) {
@@ -267,13 +267,13 @@ app = ClarifaiApp(api_key='YOUR_API_KEY')
 
 geo_p1 = Geo(geo_point=GeoPoint(116.2317,39.5427))
 
-app.inputs.create_image_from_url(url="https://samples.clarifai.com/puppy.jpg", geo=geo_p1)
+app.inputs.create_image_from_url(url="https://samples.clarifai.com/puppy.jpeg", geo=geo_p1)
 ```
 {% endtab %}
 
 {% tab title="java" %}
 ```java
-client.addInputs().plus(ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpg")
+client.addInputs().plus(ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpeg")
     .withGeo(PointF.at(116.2317F, 39.5427F))).executeSync();
 ```
 {% endtab %}
@@ -295,7 +295,7 @@ namespace YourNamespace
 
             await client.AddInputs(
                     new ClarifaiURLImage(
-                        "https://samples.clarifai.com/puppy.jpg",
+                        "https://samples.clarifai.com/puppy.jpeg",
                         geo: new GeoPoint(116.2317M, 39.5427M)))
                 .ExecuteAsync();
         }
