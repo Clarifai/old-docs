@@ -75,7 +75,7 @@ Channel channel = ClarifaiChannel.INSTANCE.getInsecureGrpcChannel();
 // it is currently not supported in the latest gRPC version.
 
 V2Grpc.V2BlockingStub stub = V2Grpc.newBlockingStub(channel)
-    .withCallCredentials(new ClarifaiCallCredentials("YOUR_CLARIFAI_API_KEY"));
+    .withCallCredentials(new ClarifaiCallCredentials("{YOUR_CLARIFAI_API_KEY}"));
 ```
 {% endtab %}
 
@@ -91,9 +91,16 @@ npm install clarifai-nodejs-grpc
 // Initialize client
 ///////////////////////////////////////////////////////////////////////////////
 
+const {ClarifaiStub} = require("clarifai-nodejs-grpc");
+const grpc = require("@grpc/grpc-js");
+
 // Construct one of the stubs you want to use
 const stub = ClarifaiStub.json();
 const stub = ClarifaiStub.insecureGrpc();
+
+// This will be used by every Clarifai endpoint call.
+const metadata = new grpc.Metadata();
+metadata.set("authorization", "Key {YOUR_CLARIFAI_API_KEY}");
 ```
 {% endtab %}
 
