@@ -15,6 +15,31 @@ You can add inputs one by one or in bulk. If you do send bulk, you are limited t
 #### Add an input using a publicly accessible URL
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiInputResponse postInputsResponse = stub.postInputs(
+    PostInputsRequest.newBuilder().addInputs(
+        Input.newBuilder().setData(
+            Data.newBuilder().setImage(
+                Image.newBuilder()
+                    .setUrl("https://samples.clarifai.com/metro-north.jpg")
+                    .setAllowDuplicateUrl(true)
+            )
+        )
+    ).build()
+);
+
+if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.create({
@@ -128,6 +153,46 @@ curl -X POST \
 The data must be base64 encoded. When you add a base64 image to our servers, a copy will be stored and hosted on our servers. If you already have an image hosting service we recommend using it and adding images via the `url` parameter.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+import com.google.protobuf.ByteString;
+import java.io.File;
+import java.nio.file.Files;
+
+...
+
+MultiInputResponse postInputsResponse = stub.postInputs(
+    PostInputsRequest.newBuilder().addInputs(
+        Input.newBuilder().setData(
+            Data.newBuilder().setImage(
+                Image.newBuilder()
+                    .setBase64(ByteString.copyFrom(Files.readAllBytes(
+                        new File("YOUR_IMAGE_LOCATION").toPath()
+                    )))
+                    .setAllowDuplicateUrl(true)
+            )
+        )
+    ).build()
+);
+
+if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.create({
@@ -248,7 +313,62 @@ In cases where you have your own `id` and you only have one item per image, you 
 {% endhint %}
 
 {% tabs %}
-{% tab title="js" %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiInputResponse postInputsResponse = stub.postInputs(
+    PostInputsRequest.newBuilder()
+        .addInputs(
+            Input.newBuilder()
+                .setId("train1")
+                .setData(
+                    Data.newBuilder().setImage(
+                        Image.newBuilder()
+                            .setUrl("https://samples.clarifai.com/metro-north.jpg")
+                            .setAllowDuplicateUrl(true)
+                    )
+                )
+        )
+        .addInputs(
+            Input.newBuilder()
+                .setId("puppy1")
+                .setData(
+                    Data.newBuilder().setImage(
+                        Image.newBuilder()
+                            .setUrl("https://samples.clarifai.com/puppy.jpeg")
+                            .setAllowDuplicateUrl(true)
+                    )
+                )
+        )
+        .build()
+);
+
+if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    for (Input input : postInputsResponse.getInputsList()) {
+        System.out.println("Input " + input.getId() + " status: ");
+        System.out.println(input.getStatus() + "\n");
+    }
+
+    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
+% tab title="js" %}
 ```javascript
 app.inputs.create([
   {
@@ -408,6 +528,47 @@ When you add a concept to an input, you need to indicate whether the concept is 
 You can add inputs with concepts as either a URL or bytes.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiInputResponse postInputsResponse = stub.postInputs(
+    PostInputsRequest.newBuilder().addInputs(
+        Input.newBuilder().setData(
+            Data.newBuilder()
+                .setImage(
+                    Image.newBuilder()
+                        .setUrl("https://samples.clarifai.com/puppy.jpeg")
+                        .setAllowDuplicateUrl(true)
+                )
+                .addConcepts(
+                    Concept.newBuilder()
+                        .setId("boscoe")
+                        .setValue(1f)
+                )
+        )
+    ).build()
+);
+
+if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.create({
@@ -575,6 +736,50 @@ If you have more than one item per image it is recommended to put the id in meta
 {% endhint %}
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+import com.google.protobuf.Struct;
+import com.google.protobuf.Value;
+
+...
+
+MultiInputResponse postInputsResponse = stub.postInputs(
+    PostInputsRequest.newBuilder().addInputs(
+        Input.newBuilder().setData(
+            Data.newBuilder()
+                .setImage(
+                    Image.newBuilder()
+                        .setUrl("https://samples.clarifai.com/puppy.jpeg")
+                        .setAllowDuplicateUrl(true)
+                )
+                .setMetadata(
+                    Struct.newBuilder()
+                        .putFields("id", Value.newBuilder().setStringValue("id001").build())
+                        .putFields("type", Value.newBuilder().setStringValue("animal").build())
+                        .putFields("size", Value.newBuilder().setNumberValue(100).build())
+                )
+        )
+    ).build()
+);
+
+if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.create({
@@ -706,6 +911,40 @@ If you added inputs with concepts, they will be returned in the response as well
 This request is paginated.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiInputResponse listInputsResponse = stub.listInputs(
+    ListInputsRequest.newBuilder()
+        .setPage(1)
+        .setPerPage(10)
+        .build()
+);
+
+if (listInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("List inputs failed, status: " + listInputsResponse.getStatus());
+}
+
+for (Input input : listInputsResponse.getInputsList()) {
+    System.out.println(input);
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.list({page: 1, perPage: 20}).then(
@@ -807,6 +1046,38 @@ curl -X GET \
 If you'd like to get a specific input by id, you can do that as well.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+SingleInputResponse getInputResponse = stub.getInput(
+    GetInputRequest.newBuilder()
+        .setInputId("puppy1")
+        .build()
+);
+
+if (getInputResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Get input failed, status: " + getInputResponse.getStatus());
+}
+
+Input input = getInputResponse.getInput();
+System.out.println(input);
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.get({id}).then(
@@ -900,6 +1171,36 @@ curl -X GET \
 If you add inputs in bulk, they will process in the background. You can get the status of all your inputs \(processed, to\_process and errors\) like this:
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+SingleInputCountResponse getInputCountResponse = stub.getInputCount(
+    GetInputCountRequest.newBuilder().build()
+);
+
+if (getInputCountResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Get input count failed, status: " + getInputCountResponse.getStatus());
+}
+
+InputCount inputCount = getInputCountResponse.getCounts();
+System.out.println(inputCount);
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.getStatus().then(
@@ -997,6 +1298,53 @@ curl -X GET \
 To update an input with a new concept, or to change a concept value from true/false, you can do that:
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiInputResponse patchInputsResponse = stub.patchInputs(
+    PatchInputsRequest.newBuilder()
+        .setAction("merge")  // Supported actions: overwrite, merge, remove.
+        .addInputs(
+            Input.newBuilder()
+                .setId("{YOUR_INPUT_ID}")
+                .setData(
+                    Data.newBuilder()
+                        .addConcepts(
+                            Concept.newBuilder()
+                                .setId("tree")
+                                .setValue(1f)  // 1 means true, this concept is present.
+                        )
+                        .addConcepts(
+                            Concept.newBuilder()
+                                .setId("water")
+                                .setValue(0f)  // 0 means false, this concept is not present.
+                        )
+                )
+                .build()
+        )
+        .build()
+);
+
+if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Patch inputs failed, status: " + patchInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.mergeConcepts([
@@ -1153,6 +1501,71 @@ curl -X PATCH \
 You can update an existing input using its Id. This is useful if you'd like to add concepts to an input after its already been added.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiInputResponse patchInputsResponse = stub.patchInputs(
+    PatchInputsRequest.newBuilder()
+        .setAction("merge")  // Supported actions: overwrite, merge, remove.
+        .addInputs(
+            Input.newBuilder()
+                .setId("{YOUR_INPUT_ID_1}")
+                .setData(
+                    Data.newBuilder()
+                        .addConcepts(
+                            Concept.newBuilder()
+                                .setId("tree")
+                                .setValue(1f)  // 1 means true, this concept is present.
+                        )
+                        .addConcepts(
+                            Concept.newBuilder()
+                                .setId("water")
+                                .setValue(0f)  // 0 means false, this concept is not present.
+                        )
+                )
+                .build()
+        )
+        .addInputs(
+            Input.newBuilder()
+                .setId("{YOUR_INPUT_ID_2}")
+                .setData(
+                    Data.newBuilder()
+                        .addConcepts(
+                            Concept.newBuilder()
+                                .setId("animal")
+                                .setValue(1f)
+                        )
+                        .addConcepts(
+                            Concept.newBuilder()
+                                .setId("fruit")
+                                .setValue(0f)
+                        )
+                )
+                .build()
+        )
+        .build()
+);
+
+if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Patch inputs failed, status: " + patchInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.mergeConcepts([
@@ -1295,6 +1708,46 @@ curl -X PATCH \
 To remove concepts that were already added to an input, you can do this:
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiInputResponse patchInputsResponse = stub.patchInputs(
+    PatchInputsRequest.newBuilder()
+        .setAction("remove")  // Supported actions: overwrite, merge, remove.
+        .addInputs(
+            Input.newBuilder()
+                .setId("{YOUR_INPUT_ID}")
+                .setData(
+                    Data.newBuilder()
+                        .addConcepts(
+                            Concept.newBuilder().setId("tree")
+                        )
+                )
+                .build()
+        )
+        .build()
+);
+
+if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Patch inputs failed, status: " + patchInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.deleteConcepts([
@@ -1444,6 +1897,63 @@ curl -X PATCH \
 You can bulk delete multiple concepts from a list of inputs:
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiInputResponse patchInputsResponse = stub.patchInputs(
+    PatchInputsRequest.newBuilder()
+        .setAction("remove")  // Supported actions: overwrite, merge, remove.
+        .addInputs(
+            Input.newBuilder()
+                .setId("{YOUR_INPUT_ID_1}")
+                .setData(
+                    Data.newBuilder()
+                        .addConcepts(
+                            Concept.newBuilder().setId("tree")
+                        )
+                        .addConcepts(
+                            Concept.newBuilder().setId("water")
+                        )
+                )
+                .build()
+        )
+        .addInputs(
+            Input.newBuilder()
+                .setId("{YOUR_INPUT_ID_2}")
+                .setData(
+                    Data.newBuilder()
+                        .addConcepts(
+                            Concept.newBuilder().setId("animal")
+                        )
+                        .addConcepts(
+                            Concept.newBuilder().setId("fruit")
+                        )
+                )
+                .build()
+        )
+        .build()
+);
+
+if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Patch inputs failed, status: " + patchInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.deleteConcepts([
@@ -1560,6 +2070,35 @@ curl -X PATCH \
 You can delete a single input by id:
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+BaseResponse deleteInputResponse = stub.deleteInput(
+    DeleteInputRequest.newBuilder()
+        .setInputId("{YOUR_INPUT_ID}")
+        .build()
+);
+
+if (deleteInputResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Delete input failed, status: " + deleteInputResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.delete(INPUT_ID).then(
@@ -1652,6 +2191,36 @@ curl -X DELETE \
 You can also delete multiple inputs in one API call. This will happen asynchronously.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+BaseResponse listInputsResponse = stub.deleteInputs(
+    DeleteInputsRequest.newBuilder()
+        .addIds("{YOUR_INPUT_ID_1}")
+        .addIds("{YOUR_INPUT_ID_2}")
+        .build()
+);
+
+if (listInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Delete inputs failed, status: " + listInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.delete([{id1}, {id2}]).then(
@@ -1750,6 +2319,35 @@ curl -X DELETE \
 If you would like to delete all inputs from an application, you can do that as well. This will happen asynchronously.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+BaseResponse listInputsResponse = stub.deleteInputs(
+    DeleteInputsRequest.newBuilder()
+        .setDeleteAll(true)
+        .build()
+);
+
+if (listInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Delete inputs failed, status: " + listInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.delete().then(
