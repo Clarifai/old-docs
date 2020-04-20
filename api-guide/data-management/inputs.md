@@ -40,6 +40,31 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 {% endtab %}
 
+{% tab title="gRPC NodeJS" %}
+stub.PostInputs(
+    {
+        inputs: [{data: {image: {url: "https://samples.clarifai.com/metro-north.jpg", allow_duplicate_url: true}}}]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post inputs failed, status: " + response.status.description);
+        }
+    }
+);
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.create({
@@ -169,9 +194,8 @@ MultiInputResponse postInputsResponse = stub.postInputs(
             Data.newBuilder().setImage(
                 Image.newBuilder()
                     .setBase64(ByteString.copyFrom(Files.readAllBytes(
-                        new File("YOUR_IMAGE_LOCATION").toPath()
+                        new File("{YOUR_IMAGE_LOCATION}").toPath()
                     )))
-                    .setAllowDuplicateUrl(true)
             )
         )
     ).build()
@@ -185,6 +209,27 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+const fs = require("fs");
+
+...
+
+const imageBytes = fs.readFileSync("{YOUR_IMAGE_LOCATION}");
+
+stub.PostInputs(
+    {
+        inputs: [{data: {image: {base64: imageBytes}}}]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post inputs failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -360,6 +405,35 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostInputs(
+    {
+        inputs: [
+            {
+                id: "train1",
+                data: {image: {url: "https://samples.clarifai.com/metro-north.jpg", allow_duplicate_url: true}}
+            },
+            {
+                id: "puppy1",
+                data: {image: {url: "https://samples.clarifai.com/puppy.jpeg", allow_duplicate_url: true}}
+            },
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            for (const input of response.inputs) {
+                console.log("Input " + input.id + " status: ");
+                console.log(JSON.stringify(input.status, null, 2) + "\n");
+            }
+
+            throw new Error("Post inputs failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -561,6 +635,24 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostInputs(
+    {
+        inputs: [{data: {
+            image: {url: "https://samples.clarifai.com/puppy.jpeg", allow_duplicate_url: true},
+            concepts: [{id: "boscoe", value: 1.}]
+        }}]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post inputs failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -772,6 +864,24 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostInputs(
+    {
+        inputs: [{data: {
+            image: {url: "https://samples.clarifai.com/puppy.jpeg", allow_duplicate_url: true},
+            metadata: {id: "id001", type: "animal", size: 100}
+        }}]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post inputs failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -937,6 +1047,23 @@ for (Input input : listInputsResponse.getInputsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.ListInputs(
+    {page: 1, per_page: 10},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("List inputs failed, status: " + response.status.description);
+        }
+
+        for (const input of response.inputs) {
+            console.log(JSON.stringify(input, null, 2));
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -1055,7 +1182,7 @@ import com.clarifai.grpc.api.status.*;
 
 SingleInputResponse getInputResponse = stub.getInput(
     GetInputRequest.newBuilder()
-        .setInputId("puppy1")
+        .setInputId("{YOUR_INPUT_ID}")
         .build()
 );
 
@@ -1070,6 +1197,22 @@ System.out.println(input);
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.GetInput(
+    {input_id: "{YOUR_INPUT_ID}"},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Get input failed, status: " + response.status.description);
+        }
+
+        const input = response.input;
+        console.log(JSON.stringify(input, null, 2));
+    }
+);
 ```
 {% endtab %}
 
@@ -1193,6 +1336,22 @@ System.out.println(inputCount);
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.GetInputCount(
+    {},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Get input count failed, status: " + response.status.description);
+        }
+
+        const counts = response.counts;
+        console.log(JSON.stringify(counts, null, 2));
+    }
+);
 ```
 {% endtab %}
 
@@ -1337,6 +1496,27 @@ if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PatchInputs(
+    {
+        action: "merge",  // Supported actions: overwrite, merge, remove.
+        inputs: [
+            {
+                id: "{YOUR_INPUT_ID}",
+                data: {concepts: [{id: "tree", value: 1}, {id: "water", value: 0}]}
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Patch inputs failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -1558,6 +1738,31 @@ if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PatchInputs(
+    {
+        action: "merge",  // Supported actions: overwrite, merge, remove.
+        inputs: [
+            {
+                id: "{YOUR_INPUT_ID_1}",
+                data: {concepts: [{id: "tree", value: 1}, {id: "water", value: 0}]}
+            },
+            {
+                id: "{YOUR_INPUT_ID_2}",
+                data: {concepts: [{id: "animal", value: 1}, {id: "fruit", value: 0}]}
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Patch inputs failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -1740,6 +1945,26 @@ if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+MultiInputResponse patchInputsResponse = stub.patchInputs(
+    PatchInputsRequest.newBuilder()
+        .setAction("remove")  // Supported actions: overwrite, merge, remove.
+        .addInputs(
+            Input.newBuilder()
+                .setId("{YOUR_INPUT_ID}")
+                .setData(
+                    Data.newBuilder()
+                        .addConcepts(
+                            Concept.newBuilder().setId("tree")
+                        )
+                )
+                .build()
+        )
+        .build()
+);
+
+if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Patch inputs failed, status: " + patchInputsResponse.getStatus());
+}
 ```
 {% endtab %}
 
@@ -1946,6 +2171,31 @@ if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PatchInputs(
+    {
+        action: "remove",  // Supported actions: overwrite, merge, remove.
+        inputs: [
+            {
+                id: "{YOUR_INPUT_ID_1}",
+                data: {concepts: [{id: "tree"}, {id: "water"}]}
+            },
+            {
+                id: "{YOUR_INPUT_ID_2}",
+                data: {concepts: [{id: "animal"}, {id: "fruit"}]}
+            },
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Patch inputs failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -2091,6 +2341,21 @@ if (deleteInputResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.DeleteInput(
+    {
+        input_id: "{YOUR_INPUT_ID}"
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Delete input failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -2213,6 +2478,21 @@ if (listInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.DeleteInputs(
+    {
+        ids: ["{YOUR_INPUT_ID_1}", "{YOUR_INPUT_ID_2}"]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Delete inputs failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -2340,6 +2620,21 @@ if (listInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.DeleteInputs(
+    {
+        delete_all: true
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Delete inputs failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
