@@ -9,7 +9,12 @@
   * [Create an Application](getting-started/applications/create-an-application.md)
   * [Base Workflows](getting-started/applications/base-workflows.md)
   * [Application Settings](getting-started/applications/application-settings.md)
+  * [Collaboration](getting-started/applications/collaboration.md)
 * [Authentication](getting-started/authentication.md)
+  * [App-Specific API Keys](getting-started/authentication/app-specific-api-keys.md)
+  * [Personal Access Tokens](getting-started/authentication/personal-access-tokens.md)
+  * [Scopes](getting-started/authentication/scopes.md)
+  * [Authorize](getting-started/authentication/authorize.md)
 * [Glossary](getting-started/glossary.md)
 
 ## API Guide
@@ -28,7 +33,7 @@
   * [Clarifai Models](api-guide/model/public-models.md)
   * [Custom model walkthrough](api-guide/model/custom-model-walkthrough.md)
   * [Create, get and update](api-guide/model/create-get-and-update.md)
-  * [Workflows](api-guide/model/workflows.md)
+* [Workflows](api-guide/model/workflows.md)
 * [Predict](api-guide/predict/README.md)
   * [Images](api-guide/predict/images.md)
   * [Video](api-guide/predict/video.md)
@@ -49,9 +54,9 @@
 * [Model](portal-guide/model/README.md)
   * [Clarifai Models](portal-guide/model/public-models.md)
   * [Custom model walkthrough](portal-guide/model/pcustom-model-walkthrough.md)
-  * [Workflows](portal-guide/model/workflows.md)
   * [Evaluate](portal-guide/model/evaluate/README.md)
     * [Interpreting evaluations](portal-guide/model/evaluate/interpreting-evaluations.md)
+* [Workflows](portal-guide/model/workflows.md)
 * [Predict](portal-guide/ppredict.md)
 * [Search](portal-guide/psearch/README.md)
   * [Rank](portal-guide/psearch/prank.md)
@@ -67,4 +72,3 @@
 
 * [Mobile](sdk-guide-depreciated/mobile.md)
 * [Android](sdk-guide-depreciated/android.md)
-

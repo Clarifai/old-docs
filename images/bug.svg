@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="Page-1">
+        <g transform="matrix(1,0,0,1,1,1)">
+            <g id="new_feature">
+                <g id="New-feature">
+                    <path id="Rectangle-36" d="M14,2C14,0.896 13.104,0 12,0L2,0C0.896,0 0,0.896 0,2L0,12C0,13.104 0.896,14 2,14L12,14C13.104,14 14,13.104 14,12L14,2Z" style="fill:rgb(216,31,67);"/>
+                    <path id="Rectangle-75" d="M10,8L8,8L8,10C8,10.552 7.552,11 7,11C6.448,11 6,10.552 6,10L6,8L4,8C3.448,8 3,7.552 3,7C3,6.448 3.448,6 4,6L6,6L6,4C6,3.448 6.448,3 7,3C7.552,3 8,3.448 8,4L8,6L10,6C10.552,6 11,6.448 11,7C11,7.552 10.552,8 10,8Z" style="fill:rgb(216,31,67);"/>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,-1.00411,1.27511)">
+            <text x="4.282px" y="11.005px" style="font-family:'Arial-Black', 'Arial Black', sans-serif;font-weight:900;font-size:12px;fill:white;">B</text>
+        </g>
+    </g>
+</svg>
