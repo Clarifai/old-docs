@@ -62,6 +62,29 @@ stub.PostInputs(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+post_inputs_response = stub.PostInputs(
+    service_pb2.PostInputsRequest(
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/metro-north.jpg",
+                        allow_duplicate_url=True
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 {% endtab %}
 
@@ -235,6 +258,31 @@ stub.PostInputs(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+with open("{YOUR_IMAGE_LOCATION}", "rb") as f:
+    file_bytes = f.read()
+
+post_inputs_response = stub.PostInputs(
+    service_pb2.PostInputsRequest(
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        base64=file_bytes
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 {% endtab %}
 
@@ -439,6 +487,43 @@ stub.PostInputs(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+post_inputs_response = stub.PostInputs(
+    service_pb2.PostInputsRequest(
+        inputs=[
+            resources_pb2.Input(
+                id="train1",
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/metro-north.jpg",
+                        allow_duplicate_url=True
+                    )
+                )
+            ),
+            resources_pb2.Input(
+                id="puppy1",
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/puppy.jpeg",
+                        allow_duplicate_url=True
+                    )
+                )
+            ),
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    for input_response in post_inputs_response.inputs:
+        print("Input " + input_response.id + " status:")
+        print(input_response.status)
+
+    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 {% endtab %}
 
@@ -658,6 +743,30 @@ stub.PostInputs(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+post_inputs_response = stub.PostInputs(
+    service_pb2.PostInputsRequest(
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/puppy.jpeg",
+                        allow_duplicate_url=True
+                    ),
+                    concepts=[resources_pb2.Concept(id="boscoe", value=1.)]
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 {% endtab %}
 
@@ -887,6 +996,34 @@ stub.PostInputs(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+from google.protobuf.struct_pb2 import Struct
+
+...
+
+input_metadata = Struct()
+input_metadata.update({"id": "id001", "type": "animal", "size": 100})
+
+post_inputs_response = stub.PostInputs(
+    service_pb2.PostInputsRequest(
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/puppy.jpeg",
+                        allow_duplicate_url=True
+                    ),
+                    metadata=input_metadata
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 {% endtab %}
 
@@ -1069,6 +1206,21 @@ stub.ListInputs(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+list_inputs_response = stub.ListInputs(
+    service_pb2.ListInputsRequest(page=1, per_page=10),
+    metadata=metadata
+)
+
+if list_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("List inputs failed, status: " + list_inputs_response.status.description)
+
+for input_response in list_inputs_response.inputs:
+    print(input_response)
 ```
 {% endtab %}
 
@@ -1218,6 +1370,21 @@ stub.GetInput(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+get_input_response = stub.GetInput(
+    service_pb2.GetInputRequest(input_id="{YOUR_INPUT_ID}"),
+    metadata=metadata
+)
+
+if get_input_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Get input failed, status: " + get_input_response.status.description)
+
+input_response = get_input_response.input
+print(input_response)
 ```
 {% endtab %}
 
@@ -1357,6 +1524,21 @@ stub.GetInputCount(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+get_input_count_response = stub.GetInputCount(
+    service_pb2.GetInputCountRequest(),
+    metadata=metadata
+)
+
+if get_input_count_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Get input count failed, status: " + get_input_count_response.status.description)
+
+counts = get_input_count_response.counts
+print(counts)
 ```
 {% endtab %}
 
@@ -1502,6 +1684,8 @@ stub.PatchInputs(
         inputs: [
             {
                 id: "{YOUR_INPUT_ID}",
+                // 1 means true, this concept is present.
+                // 0 means false, this concept is not present.
                 data: {concepts: [{id: "tree", value: 1}, {id: "water", value: 0}]}
             }
         ]
@@ -1522,6 +1706,31 @@ stub.PatchInputs(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+patch_inputs_response = stub.PatchInputs(
+    service_pb2.PatchInputsRequest(
+        action="merge",  # Supported actions: overwrite, merge, remove.
+        inputs=[
+            resources_pb2.Input(
+                id="{YOUR_INPUT_ID}",
+                data=resources_pb2.Data(
+                    concepts=[
+                        resources_pb2.Concept(id="tree", value=1.),  # 1 means true, this concept is present.
+                        resources_pb2.Concept(id="water", value=0.)  # 0 means false, this concept is not present.
+                    ]
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if patch_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch inputs failed, status: " + patch_inputs_response.status.description)
 ```
 {% endtab %}
 
@@ -1768,6 +1977,40 @@ stub.PatchInputs(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+patch_inputs_response = stub.PatchInputs(
+    service_pb2.PatchInputsRequest(
+        action="merge",  # Supported actions: overwrite, merge, remove.
+        inputs=[
+            resources_pb2.Input(
+                id="{YOUR_INPUT_ID_1}",
+                data=resources_pb2.Data(
+                    concepts=[
+                        resources_pb2.Concept(id="tree", value=1.),  # 1 means true, this concept is present.
+                        resources_pb2.Concept(id="water", value=0.)  # 0 means false, this concept is not present.
+                    ]
+                )
+            ),
+            resources_pb2.Input(
+                id="{YOUR_INPUT_ID_2}",
+                data=resources_pb2.Data(
+                    concepts=[
+                        resources_pb2.Concept(id="animal", value=1.),
+                        resources_pb2.Concept(id="fruit", value=0.)
+                    ]
+                )
+            ),
+        ]
+    ),
+    metadata=metadata
+)
+
+if patch_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch inputs failed, status: " + patch_inputs_response.status.description)
 ```
 {% endtab %}
 
@@ -1970,6 +2213,30 @@ if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+patch_inputs_response = stub.PatchInputs(
+    service_pb2.PatchInputsRequest(
+        action="remove",  # Supported actions: overwrite, merge, remove.
+        inputs=[
+            resources_pb2.Input(
+                id="{YOUR_INPUT_ID}",
+                data=resources_pb2.Data(
+                    concepts=[
+                        resources_pb2.Concept(id="water"),
+                    ]
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if patch_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch inputs failed, status: " + patch_inputs_response.status.description)
 ```
 {% endtab %}
 
@@ -2201,6 +2468,40 @@ stub.PatchInputs(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+patch_inputs_response = stub.PatchInputs(
+    service_pb2.PatchInputsRequest(
+        action="remove",  # Supported actions: overwrite, merge, remove.
+        inputs=[
+            resources_pb2.Input(
+                id="{YOUR_INPUT_ID_1}",
+                data=resources_pb2.Data(
+                    concepts=[
+                        resources_pb2.Concept(id="tree"),
+                        resources_pb2.Concept(id="water"),
+                    ]
+                )
+            ),
+            resources_pb2.Input(
+                id="{YOUR_INPUT_ID_2}",
+                data=resources_pb2.Data(
+                    concepts=[
+                        resources_pb2.Concept(id="animal"),
+                        resources_pb2.Concept(id="fruit"),
+                    ]
+                )
+            ),
+        ]
+    ),
+    metadata=metadata
+)
+
+if patch_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch inputs failed, status: " + patch_inputs_response.status.description)
 ```
 {% endtab %}
 
@@ -2361,6 +2662,18 @@ stub.DeleteInput(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+delete_input_response = stub.DeleteInput(
+    service_pb2.DeleteInputRequest(input_id="{YOUR_INPUT_ID}"),
+    metadata=metadata
+)
+
+if delete_input_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Delete input failed, status: " + delete_input_response.status.description)
 ```
 {% endtab %}
 
@@ -2498,6 +2811,20 @@ stub.DeleteInputs(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+delete_inputs_response = stub.DeleteInputs(
+    service_pb2.DeleteInputsRequest(
+        ids=["{YOUR_INPUT_ID_1}", "{YOUR_INPUT_ID_2}"]
+    ),
+    metadata=metadata
+)
+
+if delete_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Delete inputs failed, status: " + delete_inputs_response.status.description)
 ```
 {% endtab %}
 
@@ -2640,6 +2967,20 @@ stub.DeleteInputs(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+delete_inputs_response = stub.DeleteInputs(
+    service_pb2.DeleteInputsRequest(
+        delete_all=True
+    ),
+    metadata=metadata
+)
+
+if delete_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Delete inputs failed, status: " + delete_inputs_response.status.description)
 ```
 {% endtab %}
 

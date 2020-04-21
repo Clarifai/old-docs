@@ -117,6 +117,7 @@ pip install clarifai-grpc
 ///////////////////////////////////////////////////////////////////////////////
 
 from clarifai_grpc.channel.clarifai_channel import ClarifaiChannel
+from clarifai_grpc.grpc.api import service_pb2_grpc
 
 # Construct one of the channels you want to use
 channel = ClarifaiChannel.get_json_channel()
@@ -124,6 +125,11 @@ channel = ClarifaiChannel.get_insecure_grpc_channel()
 
 # Note: You can also use a secure (encrypted) ClarifaiChannel.get_grpc_channel() however
 # it is currently not possible to use it with the latest gRPC version
+
+stub = service_pb2_grpc.V2Stub(channel)
+
+# This will be used by every Clarifai endpoint call.
+metadata = (('authorization', 'Key {YOUR_CLARIFAI_API_KEY}'),)
 ```
 {% endtab %}
 
