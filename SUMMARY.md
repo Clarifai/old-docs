@@ -33,7 +33,7 @@
   * [Clarifai Models](api-guide/model/public-models.md)
   * [Custom model walkthrough](api-guide/model/custom-model-walkthrough.md)
   * [Create, get and update](api-guide/model/create-get-and-update.md)
-* [Workflows](api-guide/model/workflows.md)
+* [Workflows](api-guide/workflows.md)
 * [Predict](api-guide/predict/README.md)
   * [Images](api-guide/predict/images.md)
   * [Video](api-guide/predict/video.md)
@@ -56,7 +56,7 @@
   * [Custom model walkthrough](portal-guide/model/pcustom-model-walkthrough.md)
   * [Evaluate](portal-guide/model/evaluate/README.md)
     * [Interpreting evaluations](portal-guide/model/evaluate/interpreting-evaluations.md)
-* [Workflows](portal-guide/model/workflows.md)
+* [Workflows](portal-guide/workflows.md)
 * [Predict](portal-guide/ppredict.md)
 * [Search](portal-guide/psearch/README.md)
   * [Rank](portal-guide/psearch/prank.md)
@@ -66,9 +66,4 @@
 ## Product Updates
 
 * [Upcoming API Changes](product-updates/upcoming-api-changes.md)
-* [Change log](product-updates/change-log.md)
-
-## SDK Guide \(depreciated\)
-
-* [Mobile](sdk-guide-depreciated/mobile.md)
-* [Android](sdk-guide-depreciated/android.md)
+* [Change log](product-updates/CHANGELOG.md)
