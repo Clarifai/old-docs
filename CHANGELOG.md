@@ -8,7 +8,7 @@
 |Status|Details|
 |-|-------|
 |![](/images/new_feature.jpg) |Create a UI for personal access tokens making it easier for users to access their own apps and any apps where they have been added as collaborators|
-|![](/images/new_feature.jpg)| Updated /keys to work with PATs|
+|![](/images/new_feature.jpg)| Updated /keys to work with PATs so that app-specific keys can be created programmatically. |
 |![](/images/bug.jpg)|Login (user/PW) has no rate limit/max attempts. Fixed|
 |![](/images/bug.jpg)|Remove all instances of worker_id from explorer
 |![](/images/bug.jpg)|When email link to verify my email address clicked, still see "verify your email" banner. Fixed
@@ -26,9 +26,7 @@
 |![](/images/bug.jpg)|Setting useCustomConfig isn't checked at login. Fixed
 |![](/images/bug.jpg)|Collaboration apps have race condition where wrong user id is used
 |![](/images/bug.jpg)|Stopped loading of collaborations for search demo/logged-out users
-|![](/images/bug.jpg)|Check the GetInputsKey of collectors has access to user's information
 |![](/images/bug.jpg)|Return “All” scopes when listing available scopes so that you have that option when creating new keys.
-|![](/images/bug.jpg)|`created_at` field in sharing table is incorrect. Fixed
 |![](/images/bug.jpg)|Collaborators can not see workers. Fixed
 |![](/images/bug.jpg)|Missing `Apps_Get` scope in session token auth caused creation of keys to fail temporarily. Fixed
 |![](/images/bug.jpg)|List of missing scopes is not correct in error messages. Fixed
@@ -38,24 +36,21 @@
 |-|-------|
 |![](/images/improvement.jpg)|Optimize video detection frame rate on Front end
 |![](/images/improvement.jpg)|Improve JSON serialization performance in our servers by using an optimized third party library
-|![](/images/improvement.jpg)|able to overwrite default max conn for Citus
+|![](/images/improvement.jpg)|Able to overwrite default max conn for Citus
 |![](/images/improvement.jpg)|Rewrite input counting in the API to be more scalable and robust
 |![](/images/bug.jpg)|Allow RegionInfo from SpireDetectEmbedResponse to contain Point when saving to DB
-|![](/images/bug.jpg)|grant select permission to clarifairead
 |![](/images/bug.jpg)|Unable to upload same file(s) through browse files. Fixed
 |![](/images/bug.jpg)|ffmpeg can produce no frames for very short videos
 |![](/images/bug.jpg)|Add Inputs/View Explorer does not display in new app anymore. Fixed
 |![](/images/bug.jpg)|Clicking video thumbs in detail view does not reload a video. Fixed
 |![](/images/bug.jpg)|Keyboard navigation in image details view highlights incorrect thumb
 |![](/images/bug.jpg)|No Prompt when uploading an image to Explorer through URL. Fixed
-|![](/images/bug.jpg)|Fix collector scopes so that predict keys don't need Collectors:Get
 |![](/images/bug.jpg)|Properly return error if `AddAssets` failed to insert into database
 
 ## Annotate
 |Status|Details|
 |-|-------|
 |![](/images/improvement.jpg)|Remove classification/detection toggle in image details view
-|![](/images/bug.jpg)|Mark /annotation endpoints with cl_private_rpc
 |![](/images/bug.jpg)|Improved adding negatives to regions
 |![](/images/bug.jpg)|Create one annotation for each bbox
 |![](/images/bug.jpg)|Log capability added for annotation/search request/response
@@ -67,21 +62,17 @@
 ## Model
 |Status|Details|
 |-|-------|
-|![](/images/new_feature.jpg)|Return deep training evals through the API to automate evaluation process
-|![](/images/new_feature.jpg)|Ability to keep concepts sorted by alpha
+|![](/images/new_feature.jpg)|Ability to keep concepts sorted by alpha in Portal
 |![](/images/new_feature.jpg)|Implement image crop model to make it possible to work in subregions of an image
-|![](/images/new_feature.jpg)|Implement RandomSample model type, adding to fixed function feature set
-|![](/images/improvement.jpg)|Update templates to have more straightforward names and more friendly defaults
+|![](/images/new_feature.jpg)|Implement random sample model type, adding to fixed function feature set
+|![](/images/improvement.jpg)|Update training templates to have more straightforward names and more friendly defaults
 |![](/images/improvement.jpg)|Fix the WorkflowInput field name in proto to workflow_input
 |![](/images/improvement.jpg)|Allow models that need outputs from previous nodes in a workflow to have access to those outputs to support chaining complex graphs of models
 |![](/images/bug.jpg)|Confusion matrix predicted/true are swapped in evaluation results. Fixed
-|![](/images/bug.jpg)|Explore Image/Text Joint embedding
 |![](/images/bug.jpg)|Fixed generalModel imports and optimize video click handlers with useCallback hooks
 |![](/images/bug.jpg)|Fix for selectEmbedModelVersionId in detection apps
-|![](/images/bug.jpg)|NLP bug fixes for non text apps
 |![](/images/bug.jpg)|Drawing annotations: wrong embed model version id
-|![](/images/bug.jpg)|ConfigRunner Test  test_tf_trainer_progress_status unreliable
-|![](/images/bug.jpg)|Made custom/transfer training evaluations for large models stable.
+|![](/images/bug.jpg)|Made custom training evaluations for large models stable.
 |![](/images/bug.jpg)|Training progress is saved too frequently, causing very slow training
 |![](/images/bug.jpg)|Return friendlier errors for incorrect parameters passed to templates
 |![](/images/bug.jpg)|Fixed a bug in tracing setup for custom trainer and evaluator
@@ -103,8 +94,7 @@
 |-|-------|
 |![](/images/new_feature.jpg)|Add click to search metadata attributes in image details sidebar
 |![](/images/new_feature.jpg)|Implement visual search in another app as a model type you can add to a workflow
-|![](/images/improvement.jpg)|Add metadata to collector added inputs so that you can filter by collector ID
-|![](/images/bug.jpg)|Search bar missing. Fixed   
+|![](/images/bug.jpg)|Search bar missing in some cases. Fixed   
 |![](/images/bug.jpg)|Region Searches within Search Bar still use crop coordinates instead of base64 bytes. Fixed
 |![](/images/bug.jpg)|Click Search button icons on Thumbs not working for localized search. Fixed
 |![](/images/bug.jpg)|Disable all search by click handlers in Portal for Text Apps
