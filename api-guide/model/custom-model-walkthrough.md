@@ -487,7 +487,7 @@ curl -X POST \
 
 ## Predict with the model
 
-Now that we have a trained model. We can start making predictions with it. In our predict call we need to specify three items. The `model id`, `model_version id` and the `input` we want a prediction for.
+Now that we have a trained model we can start making predictions with it. In our predict call we specify three items. The `model id`, `model version id` (optional, defaults to the latest trained version) and the `input` we want a prediction for.
 
 _Note: you can repeat the above steps as often as you like. By adding more images with concepts and training, you can get the model to predict exactly how you want it to._
 
