@@ -66,9 +66,4 @@
 ## Product Updates
 
 * [Upcoming API Changes](product-updates/upcoming-api-changes.md)
-* [Change log](product-updates/change-log.md)
-
-## SDK Guide \(depreciated\)
-
-* [Mobile](sdk-guide-depreciated/mobile.md)
-* [Android](sdk-guide-depreciated/android.md)
+* [Change log](product-updates/CHANGELOG.md)
