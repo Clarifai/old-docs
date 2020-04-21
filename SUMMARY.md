@@ -66,4 +66,4 @@
 ## Product Updates
 
 * [Upcoming API Changes](product-updates/upcoming-api-changes.md)
-* [Change log](product-updates/CHANGELOG.md)
+* [Change log](CHANGELOG.md)
