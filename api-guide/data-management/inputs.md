@@ -41,6 +41,7 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
+```js
 stub.PostInputs(
     {
         inputs: [{data: {image: {url: "https://samples.clarifai.com/metro-north.jpg", allow_duplicate_url: true}}}]
@@ -56,7 +57,6 @@ stub.PostInputs(
         }
     }
 );
-```js
 ```
 {% endtab %}
 
