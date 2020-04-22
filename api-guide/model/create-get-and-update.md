@@ -52,6 +52,24 @@ stub.PostModels(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+post_models_response = stub.PostModels(
+    service_pb2.PostModelsRequest(
+        models=[
+            resources_pb2.Model(
+                id="petsID"
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_models_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post models failed, status: " + post_models_response.status.description)
 ```
 {% endtab %}
 
@@ -206,6 +224,29 @@ stub.PostModels(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+post_models_response = stub.PostModels(
+    service_pb2.PostModelsRequest(
+        models=[
+            resources_pb2.Model(
+                id="petsID",
+                output_info=resources_pb2.OutputInfo(
+                    data=resources_pb2.Data(
+                        concepts=[resources_pb2.Concept(id="boscoe")]
+                    ),
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_models_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post models failed, status: " + post_models_response.status.description)
 ```
 {% endtab %}
 
@@ -391,6 +432,30 @@ stub.PatchModels(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+patch_models_response = stub.PatchModels(
+    service_pb2.PatchModelsRequest(
+        action="merge",  # Supported actions: overwrite, merge, remove
+        models=[
+            resources_pb2.Model(
+                id="petsID",
+                output_info=resources_pb2.OutputInfo(
+                    data=resources_pb2.Data(
+                        concepts=[resources_pb2.Concept(id="boscoe")]
+                    ),
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if patch_models_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch models failed, status: " + patch_models_response.status.description)
 ```
 {% endtab %}
 
@@ -548,7 +613,6 @@ Conversely, if you'd like to remove concepts from a model, you can also do that.
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-
 ...
 
 MultiModelResponse patchModelsResponse = stub.patchModels(
@@ -600,6 +664,30 @@ stub.PatchModels(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+patch_models_response = stub.PatchModels(
+    service_pb2.PatchModelsRequest(
+        action="remove",  # Supported actions: overwrite, merge, remove
+        models=[
+            resources_pb2.Model(
+                id="petsID",
+                output_info=resources_pb2.OutputInfo(
+                    data=resources_pb2.Data(
+                        concepts=[resources_pb2.Concept(id="boscoe")]
+                    ),
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if patch_models_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch models failed, status: " + patch_models_response.status.description)
 ```
 {% endtab %}
 
@@ -796,6 +884,21 @@ stub.PatchConcepts(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+patch_concepts_response = stub.PatchConcepts(
+    service_pb2.PatchConceptsRequest(
+        action="overwrite",  # The only supported action right now is overwrite.
+        concepts=[resources_pb2.Concept(id="boscoe", name="Boscoe Name")]
+    ),
+    metadata=metadata
+)
+
+if patch_concepts_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch concept failed, status: " + patch_concepts_response.status.description)
 ```
 {% endtab %}
 
@@ -963,6 +1066,38 @@ stub.PatchModels(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+patch_models_response = stub.PatchModels(
+    service_pb2.PatchModelsRequest(
+        action="overwrite",
+        models=[
+            resources_pb2.Model(
+                id="petsID",
+                name="newname",
+                output_info=resources_pb2.OutputInfo(
+                    data=resources_pb2.Data(
+                        concepts=[
+                            resources_pb2.Concept(id="birds"),
+                            resources_pb2.Concept(id="hurd")
+                        ]
+                    ),
+                    output_config=resources_pb2.OutputConfig(
+                        concepts_mutually_exclusive=True,
+                        closed_environment=True,
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if patch_models_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch models failed, status: " + patch_models_response.status.description)
 ```
 {% endtab %}
 
@@ -1154,6 +1289,21 @@ stub.ListModels(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+list_models_response = stub.ListModels(
+    service_pb2.ListModelsRequest(),
+    metadata=metadata
+)
+
+if list_models_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("List models failed, status: " + list_models_response.status.description)
+
+for model in list_models_response.models:
+    print(model)
 ```
 {% endtab %}
 
@@ -1300,6 +1450,16 @@ stub.GetModel(
 
 {% tab title="gRPC Python" %}
 ```python
+get_model_response = stub.GetModel(
+    service_pb2.GetModelRequest(model_id="petsID"),
+    metadata=metadata
+)
+
+if get_model_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Get model failed, status: " + get_model_response.status.description)
+
+model = get_model_response.model
+print(model)
 ```
 {% endtab %}
 
@@ -1451,6 +1611,21 @@ stub.GetModelOutputInfo(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+get_model_response = stub.GetModelOutputInfo(
+    service_pb2.GetModelRequest(model_id="petsID"),
+    metadata=metadata
+)
+
+if get_model_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Get model failed, status: " + get_model_response.status.description)
+
+model = get_model_response.model
+print(model)
 ```
 {% endtab %}
 
@@ -1616,6 +1791,23 @@ stub.ListModelVersions(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+list_model_versions_response = stub.ListModelVersions(
+    service_pb2.ListModelVersionsRequest(
+        model_id="petsID"
+    ),
+    metadata=metadata
+)
+
+if list_model_versions_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("List model versions failed, status: " + list_model_versions_response.status.description)
+
+for model_version in list_model_versions_response.model_versions:
+    print(model_version)
 ```
 {% endtab %}
 
@@ -1773,6 +1965,24 @@ stub.GetModelVersion(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+get_model_version_response = stub.GetModelVersion(
+    service_pb2.GetModelVersionRequest(
+        model_id="petsID",
+        version_id="{YOUR_MODEL_VERSION_ID}"
+    ),
+    metadata=metadata
+)
+
+if get_model_version_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Get model version failed, status: " + get_model_version_response.status.description)
+
+model_version = get_model_version_response.model_version
+print(model_version)
 ```
 {% endtab %}
 
@@ -1934,6 +2144,21 @@ stub.ListModelInputs(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+list_model_inputs_response = stub.ListModelInputs(
+    service_pb2.ListModelInputsRequest(model_id="petsID"),
+    metadata=metadata
+)
+
+if list_model_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("List model inputs failed, status: " + list_model_inputs_response.status.description)
+
+for input_object in list_model_inputs_response.inputs:
+    print(input_object)
 ```
 {% endtab %}
 
@@ -2076,6 +2301,24 @@ stub.ListModelInputs(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+list_model_inputs_response = stub.ListModelInputs(
+    service_pb2.ListModelInputsRequest(
+        model_id="petsID",
+        version_id="{YOUR_MODEL_VERSION_ID}"
+    ),
+    metadata=metadata
+)
+
+if list_model_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("List model inputs failed, status: " + list_model_inputs_response.status.description)
+
+for input_object in list_model_inputs_response.inputs:
+    print(input_object)
 ```
 {% endtab %}
 
@@ -2177,7 +2420,7 @@ import com.clarifai.grpc.api.status.*;
 
 BaseResponse deleteModelResponse = stub.deleteModel(
     DeleteModelRequest.newBuilder()
-        .setModelId("pets")
+        .setModelId("petsID")
         .build()
 );
 
@@ -2207,6 +2450,19 @@ stub.DeleteModel(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+delete_model_response = stub.DeleteModel(
+    service_pb2.DeleteModelRequest(model_id="petsID"),
+    metadata=metadata
+)
+
+if delete_model_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Delete model failed, status: " + delete_model_response.status.description)
+
 ```
 {% endtab %}
 
@@ -2344,6 +2600,21 @@ stub.DeleteModelVersion(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+delete_model_version_response = stub.DeleteModelVersion(
+    service_pb2.DeleteModelVersionRequest(
+        model_id="petsID",
+        version_id="{YOUR_MODEL_VERSION_ID}"
+    ),
+    metadata=metadata
+)
+
+if delete_model_version_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Delete model version failed, status: " + delete_model_version_response.status.description)
 ```
 {% endtab %}
 
@@ -2494,6 +2765,18 @@ stub.DeleteModels(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+delete_models_response = stub.DeleteModels(
+    service_pb2.DeleteModelsRequest(delete_all=True),
+    metadata=metadata
+)
+
+if delete_models_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Delete models failed, status: " + delete_models_response.status.description)
 ```
 {% endtab %}
 
@@ -2633,6 +2916,20 @@ stub.PostModelVersions(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+post_model_versions = stub.PostModelVersions(
+    service_pb2.PostModelVersionsRequest(
+        model_id="petsID"
+    ),
+    metadata=metadata
+)
+
+if post_model_versions.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post model versions failed, status: " + post_model_versions.status.description)
 ```
 {% endtab %}
 
@@ -2814,6 +3111,36 @@ stub.PostModelOutputs(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+post_model_outputs_response = stub.PostModelOutputs(
+    service_pb2.PostModelOutputsRequest(
+        model_id="petsID",
+        version_id="{YOUR_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/metro-north.jpg"
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+
+# Since we have one input, one output will exist here.
+output = post_model_outputs_response.outputs[0]
+
+print("Predicted concepts:")
+for concept in output.data.concepts:
+    print("%s %.2f" % (concept.name, concept.value))
 ```
 {% endtab %}
 
@@ -3019,6 +3346,26 @@ stub.PostModelsSearches(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+post_models_searches_response = stub.PostModelsSearches(
+    service_pb2.PostModelsSearchesRequest(
+        model_query=resources_pb2.ModelQuery(
+            name="gen*",
+            type="concept"
+        )
+    ),
+    metadata=metadata
+)
+
+if post_models_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post models searches failed, status: " + post_models_searches_response.status.description)
+
+for model in post_models_searches_response.models:
+    print(model)
 ```
 {% endtab %}
 
@@ -3135,4 +3482,3 @@ curl -X POST \
 ```
 {% endtab %}
 {% endtabs %}
-
