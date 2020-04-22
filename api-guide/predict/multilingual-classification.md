@@ -116,6 +116,43 @@ stub.PostModelOutputs(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+post_model_outputs_response = stub.PostModelOutputs(
+    service_pb2.PostModelOutputsRequest(
+        model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the publicly available General model.
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/metro-north.jpg"
+                    )
+                )
+            )
+        ],
+        model={
+            "output_info": {
+                "output_config": {
+                    "language": "zh"  # Chinese
+                }
+            }
+        }
+    ),
+    metadata=metadata
+)
+
+if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+
+# Since we have one input, one output will exist here.
+output = post_model_outputs_response.outputs[0]
+
+print("Predicted concepts:")
+for concept in output.data.concepts:
+    print("\t%s %.2f" % (concept.name, concept.value))
 ```
 {% endtab %}
 
@@ -495,6 +532,27 @@ stub.PostConceptsSearches(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+post_concepts_searches_response = stub.PostConceptsSearches(
+    service_pb2.PostConceptsSearchesRequest(
+        concept_query=resources_pb2.ConceptQuery(
+            name="人",
+            language="zh"
+        )
+    ),
+    metadata=metadata
+)
+
+if post_concepts_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post concepts searches failed, status: " + post_concepts_searches_response.status.description)
+
+print("Found concepts:")
+for concept in post_concepts_searches_response.concepts:
+    print("\t%s %.2f" % (concept.name, concept.value))
 ```
 {% endtab %}
 
@@ -696,6 +754,27 @@ stub.PostConceptsSearches(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+post_concepts_searches_response = stub.PostConceptsSearches(
+    service_pb2.PostConceptsSearchesRequest(
+        concept_query=resources_pb2.ConceptQuery(
+            name="人",
+            language="ja"
+        )
+    ),
+    metadata=metadata
+)
+
+if post_concepts_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post concepts searches failed, status: " + post_concepts_searches_response.status.description)
+
+print("Found concepts:")
+for concept in post_concepts_searches_response.concepts:
+    print("\t%s %.2f" % (concept.name, concept.value))
 ```
 {% endtab %}
 
