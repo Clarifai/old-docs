@@ -84,6 +84,33 @@ for (Concept concept : output.getData().getConceptsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostModelOutputs(
+    {
+        model_id: "aaa03c23b3724a16a56b629203edc62c",
+        inputs: [
+            {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
+        ],
+        model: {output_info: {output_config: {language: "zh"}}}
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post model outputs failed, status: " + response.status.description);
+        }
+
+        // Since we have one input, one output will exist here.
+        const output = response.outputs[0];
+
+        console.log("Predicted concepts:");
+        for (const concept of output.data.concepts) {
+            console.log(concept.name + " " + concept.value);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -443,6 +470,26 @@ for (Concept concept : postConceptsSearchesResponse.getConceptsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostConceptsSearches(
+    {
+        concept_query: {name: "人", language: "zh"}
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post concepts searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found concepts:");
+        for (const concept of response.concepts) {
+            console.log("\t" + concept.name + " " + concept.value);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -624,6 +671,26 @@ for (Concept concept : postConceptsSearchesResponse.getConceptsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostConceptsSearches(
+    {
+        concept_query: {name: "人", language: "ja"}
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post concepts searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found concepts:");
+        for (const concept of response.concepts) {
+            console.log("\t" + concept.name + " " + concept.value);
+        }
+    }
+);
 ```
 {% endtab %}
 

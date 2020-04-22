@@ -55,6 +55,36 @@ for (Frame frame : output.getData().getFramesList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostModelOutputs(
+    {
+        model_id: "{THE_MODEL_ID}",
+        version_id: "{THE_MODEL_VERSION_ID}",  // This is optional. Defaults to the latest model version.
+        inputs: [
+            {data: {video: {url: "https://samples.clarifai.com/beer.mp4"}}}
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post model outputs failed, status: " + response.status.description);
+        }
+
+        // Since we have one input, one output will exist here.
+        const output = response.outputs[0]
+
+        // A separate prediction is available for each "frame".
+        for (const frame of output.data.frames) {
+            console.log("Predicted concepts on frame " + frame.frame_info.time + ":");
+            for (const concept of frame.data.concepts) {
+                console.log("\t" + concept.name + " " + concept.value);
+            }
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -1572,6 +1602,41 @@ for (Frame frame : output.getData().getFramesList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+const fs = require("fs");
+
+...
+
+const videoBytes = fs.readFileSync("{YOUR_VIDEO_FILE_LOCATION}");
+stub.PostModelOutputs(
+    {
+        model_id: "{THE_MODEL_ID}",
+        version_id: "{YOUR_MODEL_VERSION_ID}",  // This is optional. Defaults to the latest model version.
+        inputs: [
+            {data: {video: {base64: videoBytes}}}
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post model outputs failed, status: " + response.status.description);
+        }
+
+        // Since we have one input, one output will exist here.
+        const output = response.outputs[0]
+
+        // A separate prediction is available for each "frame".
+        for (const frame of output.data.frames) {
+            console.log("Predicted concepts on frame " + frame.frame_info.time + ":");
+            for (const concept of frame.data.concepts) {
+                console.log("\t" + concept.name + " " + concept.value);
+            }
+        }
+    }
+);
 ```
 {% endtab %}
 

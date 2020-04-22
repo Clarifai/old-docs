@@ -46,6 +46,33 @@ for (Concept concept : output.getData().getConceptsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostModelOutputs(
+    {
+        model_id: "{THE_MODEL_ID}",
+        version_id: "{THE_MODEL_VERSION_ID}",  // This is optional. Defaults to the latest model version.
+        inputs: [
+            {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post model outputs failed, status: " + response.status.description);
+        }
+
+        // Since we have one input, one output will exist here.
+        const output = response.outputs[0];
+
+        console.log("Predicted concepts:");
+        for (const concept of output.data.concepts) {
+            console.log(concept.name + " " + concept.value);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -406,6 +433,38 @@ for (Concept concept : output.getData().getConceptsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+const fs = require("fs");
+
+...
+
+const imageBytes = fs.readFileSync("{YOUR_IMAGE_FILE_LOCATION}");
+stub.PostModelOutputs(
+    {
+        model_id: "{THE_MODEL_ID}",
+        version_id: "{THE_MODEL_VERSION_ID}",  // This is optional. Defaults to the latest model version.
+        inputs: [
+            {data: {image: {base64: imageBytes}}}
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post model outputs failed, status: " + response.status.description);
+        }
+
+        // Since we have one input, one output will exist here.
+        const output = response.outputs[0];
+
+        console.log("Predicted concepts:");
+        for (const concept of output.data.concepts) {
+            console.log(concept.name + " " + concept.value);
+        }
+    }
+);
 ```
 {% endtab %}
 
