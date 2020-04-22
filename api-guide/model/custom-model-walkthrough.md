@@ -138,9 +138,9 @@ post_inputs_response = stub.PostInputs(
 )
 
 if post_inputs_response.status.code != status_code_pb2.SUCCESS:
-    for input_response in post_inputs_response.inputs:
-        print("Input " + input_response.id + " status:")
-        print(input_response.status)
+    for input_object in post_inputs_response.inputs:
+        print("Input " + input_object.id + " status:")
+        print(input_object.status)
 
     raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```

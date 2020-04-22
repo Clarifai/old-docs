@@ -64,8 +64,8 @@ list_inputs_response = stub.ListInputs(
 if list_inputs_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("List inputs failed, status: " + list_inputs_response.status.description)
 
-for input_response in list_inputs_response.inputs:
-    print(input_response)
+for input_object in list_inputs_response.inputs:
+    print(input_object)
 ```
 {% endtab %}
 

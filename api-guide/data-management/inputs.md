@@ -519,9 +519,9 @@ post_inputs_response = stub.PostInputs(
 )
 
 if post_inputs_response.status.code != status_code_pb2.SUCCESS:
-    for input_response in post_inputs_response.inputs:
-        print("Input " + input_response.id + " status:")
-        print(input_response.status)
+    for input_object in post_inputs_response.inputs:
+        print("Input " + input_object.id + " status:")
+        print(input_object.status)
 
     raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
@@ -1219,8 +1219,8 @@ list_inputs_response = stub.ListInputs(
 if list_inputs_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("List inputs failed, status: " + list_inputs_response.status.description)
 
-for input_response in list_inputs_response.inputs:
-    print(input_response)
+for input_object in list_inputs_response.inputs:
+    print(input_object)
 ```
 {% endtab %}
 
@@ -1383,8 +1383,8 @@ get_input_response = stub.GetInput(
 if get_input_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Get input failed, status: " + get_input_response.status.description)
 
-input_response = get_input_response.input
-print(input_response)
+input_object = get_input_response.input
+print(input_object)
 ```
 {% endtab %}
 
