@@ -9,6 +9,66 @@ You do not need many images to get started. We recommend starting with 10 and ad
 To get started training your own model, you must first add images that already contain the concepts you want your model to see.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiInputResponse postInputsResponse = stub.postInputs(
+    PostInputsRequest.newBuilder()
+        .addInputs(
+            Input.newBuilder()
+                .setData(
+                    Data.newBuilder()
+                        .setImage(
+                            Image.newBuilder()
+                                .setUrl("https://samples.clarifai.com/puppy.jpeg")
+                                .setAllowDuplicateUrl(true)
+                        )
+                        .addConcepts(Concept.newBuilder().setId("boscoe").setValue(1))
+                        .addConcepts(Concept.newBuilder().setId("our_wedding").setValue(0))
+                )
+        )
+        .addInputs(
+            Input.newBuilder()
+                .setData(
+                    Data.newBuilder()
+                        .setImage(
+                            Image.newBuilder()
+                                .setUrl("https://samples.clarifai.com/wedding.jpg")
+                                .setAllowDuplicateUrl(true)
+                        )
+                        .addConcepts(Concept.newBuilder().setId("our_wedding").setValue(1))
+                        .addConcepts(Concept.newBuilder().setId("boscoe").setValue(0))
+                        .addConcepts(Concept.newBuilder().setId("cat").setValue(0))
+                )
+        )
+        .build()
+);
+
+if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    for (Input input : postInputsResponse.getInputsList()) {
+        System.out.println("Input " + input.getId() + " status: ");
+        System.out.println(input.getStatus() + "\n");
+    }
+
+    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.create({
@@ -181,6 +241,47 @@ Once your images with concepts are added, you are now ready to create the model.
 Take note of the `model id` that is returned in the response. You'll need that for the next two steps.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+SingleModelResponse postModelsResponse = stub.postModels(
+    PostModelsRequest.newBuilder().addModels(
+        Model.newBuilder()
+            .setId("pets")
+            .setOutputInfo(
+                OutputInfo.newBuilder()
+                    .setData(
+                        Data.newBuilder().addConcepts(Concept.newBuilder().setId("boscoe"))
+                    )
+                    .setOutputConfig(
+                        OutputConfig.newBuilder()
+                            .setConceptsMutuallyExclusive(false)
+                            .setClosedEnvironment(false)
+                    )
+            )
+    ).build()
+);
+
+if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.create(
@@ -345,6 +446,38 @@ Now that you've added images with concepts, then created a model with those conc
 Keep note of the `model_version id` in the response. We'll need that for the next section when we predict with the model.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+SingleModelResponse postModelVersionsResponse = stub.postModelVersions(
+    PostModelVersionsRequest.newBuilder()
+        .setModelId("pets")
+        .build()
+);
+
+if (postModelVersionsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post model versions failed, status: " + postModelVersionsResponse.getStatus());
+}
+
+String modelVersionId = postModelVersionsResponse.getModel().getModelVersion().getId();
+System.out.println("New model version ID: " + modelVersionId);
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.train("{model_id}").then(
@@ -492,6 +625,46 @@ Now that we have a trained model we can start making predictions with it. In our
 _Note: you can repeat the above steps as often as you like. By adding more images with concepts and training, you can get the model to predict exactly how you want it to._
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
+    PostModelOutputsRequest.newBuilder()
+        .setModelId("{YOUR_MODEL_ID}")
+        .setVersionId("{YOUR_MODEL_VERSION_ID}")  // This is optional. Defaults to the latest model version.
+        .addInputs(
+            Input.newBuilder().setData(
+                Data.newBuilder().setImage(
+                    Image.newBuilder().setUrl("https://samples.clarifai.com/metro-north.jpg")
+                )
+            )
+        )
+        .build()
+);
+
+if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
+}
+
+// Since we have one input, one output will exist here.
+Output output = postModelOutputsResponse.getOutputs(0);
+
+System.out.println("Predicted concepts:");
+for (Concept concept : output.getData().getConceptsList()) {
+    System.out.printf("%s %.2f%n", concept.getName(), concept.getValue());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 let app = new Clarifai.App({apiKey: 'YOUR_API_KEY'});
