@@ -28,6 +28,25 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostModels(
+    {
+        models: [
+            {
+                id: "petsID",
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post models failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -160,6 +179,28 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostModels(
+    {
+        models: [
+            {
+                id: "petsID",
+                output_info: {
+                    data: {concepts: [{id: "boscoe"}]},
+                }
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post models failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -324,6 +365,27 @@ if (patchModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PatchModels(
+    {
+        action: "merge",  // Supported actions: overwrite, merge, remove
+        models: [
+            {
+                id: "petsID",
+                output_info: {data: {concepts: [{id: "boscoe"}]}}
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Patch models failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -512,6 +574,27 @@ if (patchModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PatchModels(
+    {
+        action: "remove",  // Supported actions: overwrite, merge, remove
+        models: [
+            {
+                id: "petsID",
+                output_info: {data: {concepts: [{id: "boscoe"}]}}
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Patch models failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -692,6 +775,22 @@ if (patchConceptsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PatchConcepts(
+    {
+        action: "overwrite",  // The only supported action right now is overwrite
+        concepts: [{id: "boscoe", name: "Boscoe Name"}]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Patch concepts failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -833,6 +932,31 @@ if (patchModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
+stub.PatchModels(
+    {
+        action: "overwrite",
+        models: [
+            {
+                id: "petsID",
+                name: "newname",
+                output_info: {
+                    data: {concepts: [{id: "birds"}, {id: "hurd"}]},
+                    output_config: {concepts_mutually_exclusive: true, closed_environment: true}
+                }
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Patch models failed, status: " + response.status.description);
+        }
+    }
+);
 ```js
 ```
 {% endtab %}
@@ -1008,6 +1132,23 @@ for (Model model : models) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.ListModels(
+    {},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("List models failed, status: " + response.status.description);
+        }
+
+        for (const model of response.models) {
+            console.log(JSON.stringify(model, null, 2));
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -1138,6 +1279,22 @@ System.out.println(model);
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.GetModel(
+    {model_id: "petsID"},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("List models failed, status: " + response.status.description);
+        }
+
+        const model = response.model;
+        console.log(JSON.stringify(model, null, 2));
+    }
+);
 ```
 {% endtab %}
 
@@ -1273,6 +1430,22 @@ System.out.println(model);
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.GetModelOutputInfo(
+    {model_id: "petsID"},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("List models failed, status: " + response.status.description);
+        }
+
+        const model = response.model;
+        console.log(JSON.stringify(model, null, 2));
+    }
+);
 ```
 {% endtab %}
 
@@ -1421,6 +1594,23 @@ for (ModelVersion modelVersion : modelVersions) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.ListModelVersions(
+    {model_id: "petsID"},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("List model versions failed, status: " + response.status.description);
+        }
+
+        for (const model_version of response.model_versions) {
+            console.log(JSON.stringify(model_version, null, 2));
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -1562,6 +1752,22 @@ System.out.println(modelVersion);
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.GetModelVersion(
+    {model_id: "petsID", version_id: "{YOUR_MODEL_VERSION_ID}"},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Get model version failed, status: " + response.status.description);
+        }
+
+        const model_version = response.model_version;
+        console.log(JSON.stringify(model_version, null, 2));
+    }
+);
 ```
 {% endtab %}
 
@@ -1706,6 +1912,23 @@ for (Input input : inputs) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.ListModelInputs(
+    {model_id: "petsID"},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("List model inputs failed, status: " + response.status.description);
+        }
+
+        for (const input of response.inputs) {
+            console.log(JSON.stringify(input, null, 2));
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -1828,6 +2051,26 @@ for (Input input : inputs) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.ListModelInputs(
+    {
+        model_id: "petsID",
+        version_id: "{YOUR_MODEL_VERSION_ID}"
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("List model inputs failed, status: " + response.status.description);
+        }
+
+        for (const input of response.inputs) {
+            console.log(JSON.stringify(input, null, 2));
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -1946,6 +2189,19 @@ if (deleteModelResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.DeleteModel(
+    {model_id: "petsID"},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Delete model failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -2067,6 +2323,22 @@ if (deleteModelVersionResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.DeleteModelVersion(
+    {
+        model_id: "petsID",
+        version_id: "{YOUR_MODEL_VERSION_ID}"
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Delete model version failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -2204,6 +2476,19 @@ if (deleteModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.DeleteModels(
+    {delete_all: true},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Delete models failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -2330,6 +2615,19 @@ System.out.println("New model version ID: " + modelVersionId);
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostModelVersions(
+    {model_id: "petsID"},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post model versions failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -2484,6 +2782,33 @@ for (Concept concept : output.getData().getConceptsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostModelOutputs(
+    {
+        model_id: "petsID",
+        version_id: "{YOUR_MODEL_VERSION_ID}",  // This is optional. Defaults to the latest model version.
+        inputs: [
+            {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post model outputs failed, status: " + response.status.description);
+        }
+
+        // Since we have one input, one output will exist here.
+        const output = response.outputs[0];
+
+        console.log("Predicted concepts:");
+        for (const concept of output.data.concepts) {
+            console.log(concept.name + " " + concept.value);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -2666,6 +2991,29 @@ for (Model model : models) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostModelsSearches(
+    {
+        model_query: {
+            name: "gen*",
+            type: "concept"
+        }
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post model searches failed, status: " + response.status.description);
+        }
+
+        const models = response.models;
+        for (const model of models) {
+            console.log(JSON.stringify(model, null, 2));
+        }
+    }
+);
 ```
 {% endtab %}
 
