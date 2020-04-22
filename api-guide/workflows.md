@@ -29,6 +29,124 @@ Now that you have that all set up, you will be able to predict under a workflow 
 You can also use the Explorer in Clarifai Portal to see the results of your workflow's predictions on a given input.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+PostWorkflowResultsResponse postWorkflowResultsResponse = stub.postWorkflowResults(
+    PostWorkflowResultsRequest.newBuilder()
+        .setWorkflowId("{YOUR_WORKFLOW_ID}")
+        .addInputs(
+            Input.newBuilder().setData(
+                Data.newBuilder().setImage(
+                    Image.newBuilder().setUrl(
+                        "https://samples.clarifai.com/metro-north.jpg"
+                    )
+                )
+            )
+        )
+        .build()
+);
+
+if (postWorkflowResultsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post workflow results failed, status: " + postWorkflowResultsResponse.getStatus());
+}
+
+// We'll get one WorkflowResult for each input we used above. Because of one input, we have here
+// one WorkflowResult.
+WorkflowResult results = postWorkflowResultsResponse.getResults(0);
+
+// Each model we have in the workflow will produce one output.
+for (Output output : results.getOutputsList()) {
+    Model model = output.getModel();
+
+    System.out.println("Predicted concepts for the model `" + model.getName() + "`:");
+    for (Concept concept : output.getData().getConceptsList()) {
+        System.out.printf("\t%s %.2f%n", concept.getName(), concept.getValue());
+    }
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+stub.PostWorkflowResults(
+    {
+        workflow_id: "{YOUR_WORKFLOW_ID}",
+        inputs: [
+            {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post workflow results failed, status: " + response.status.description);
+        }
+
+        // We'll get one WorkflowResult for each input we used above. Because of one input, we have here
+        // one WorkflowResult.
+        const results = response.results[0];
+
+        // Each model we have in the workflow will produce one output.
+        for (const output of results.outputs) {
+            const model = output.model;
+
+            console.log("Predicted concepts for the model `" + model.name + "`:");
+            for (const concept of output.data.concepts) {
+                console.log("\t" + concept.name + " " + concept.value);
+            }
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+post_workflow_results_response = stub.PostWorkflowResults(
+    service_pb2.PostWorkflowResultsRequest(
+        workflow_id="{YOUR_WORKFLOW_ID}",
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/metro-north.jpg"
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+if post_workflow_results_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post workflow results failed, status: " + post_workflow_results_response.status.description)
+
+# We'll get one WorkflowResult for each input we used above. Because of one input, we have here
+# one WorkflowResult.
+results = post_workflow_results_response.results[0]
+
+# Each model we have in the workflow will produce one output.
+for output in results.outputs:
+    model = output.model
+
+    print("Predicted concepts for the model `%s`" % model.name)
+    for concept in output.data.concepts:
+        print("\t%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.workflow.predict('{workflow-id}', "https://samples.clarifai.com/metro-north.jpg").then(
