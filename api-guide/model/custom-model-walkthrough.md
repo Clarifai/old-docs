@@ -61,6 +61,39 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostInputs(
+    {
+        inputs: [
+            {
+                data: {
+                    image: {url: "https://samples.clarifai.com/puppy.jpeg", allow_duplicate_url: true},
+                    concepts: [{id: "boscoe", value: 1}, {id: "our_wedding", value: 0}]
+                }
+            },
+            {
+                data: {
+                    image: {url: "https://samples.clarifai.com/wedding.jpg", allow_duplicate_url: true},
+                    concepts: [{id: "our_wedding", value: 1}, {id: "boscoe", value: 0}, {id: "cat", value: 0}]
+                }
+            },
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            for (const input of response.inputs) {
+                console.log("Input " + input.id + " status: ");
+                console.log(JSON.stringify(input.status, null, 2) + "\n");
+            }
+
+            throw new Error("Post inputs failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -274,6 +307,29 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostModels(
+    {
+        models: [
+            {
+                id: "pets",
+                output_info: {
+                    data: {concepts: [{id: "boscoe"}]},
+                    output_config: {concepts_mutually_exclusive: false, closed_environment: false}
+                }
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post models failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -470,6 +526,19 @@ System.out.println("New model version ID: " + modelVersionId);
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostModelVersions(
+    {model_id: "pets"},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post model versions failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -629,7 +698,7 @@ _Note: you can repeat the above steps as often as you like. By adding more image
 ```java
 MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
     PostModelOutputsRequest.newBuilder()
-        .setModelId("{YOUR_MODEL_ID}")
+        .setModelId("pets")
         .setVersionId("{YOUR_MODEL_VERSION_ID}")  // This is optional. Defaults to the latest model version.
         .addInputs(
             Input.newBuilder().setData(
@@ -657,6 +726,33 @@ for (Concept concept : output.getData().getConceptsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostModelOutputs(
+    {
+        model_id: "pets",
+        version_id: "{YOUR_MODEL_VERSION_ID}",  // This is optional. Defaults to the latest model version.
+        inputs: [
+            {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post model outputs failed, status: " + response.status.description);
+        }
+
+        // Since we have one input, one output will exist here.
+        const output = response.outputs[0];
+
+        console.log("Predicted concepts:");
+        for (const concept of output.data.concepts) {
+            console.log(concept.name + " " + concept.value);
+        }
+    }
+);
 ```
 {% endtab %}
 
