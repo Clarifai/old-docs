@@ -9,6 +9,51 @@ Below is an example of how you would send image URLs and receive back prediction
 You can learn all about the different [Clarifai Models]() available later in the guide.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
+    PostModelOutputsRequest.newBuilder()
+        .setModelId("{THE_MODEL_ID}")
+        .setVersionId("{THE_MODEL_VERSION_ID")  // This is optional. Defaults to the latest model version.
+        .addInputs(
+            Input.newBuilder().setData(
+                Data.newBuilder().setImage(
+                    Image.newBuilder().setUrl("https://samples.clarifai.com/metro-north.jpg")
+                )
+            )
+        )
+        .build()
+);
+
+if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
+}
+
+// Since we have one input, one output will exist here.
+Output output = postModelOutputsResponse.getOutputs(0);
+
+System.out.println("Predicted concepts:");
+for (Concept concept : output.getData().getConceptsList()) {
+    System.out.printf("%s %.2f%n", concept.getName(), concept.getValue());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.initModel({id: Clarifai.GENERAL_MODEL, version: "aa7f35c01e0642fda5cf400f543e7c40"})
@@ -318,6 +363,57 @@ curl -X POST
 Below is an example of how you would send the bytes of an image and receive back predictions from the `general` model.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+import com.google.protobuf.ByteString;
+import java.io.File;
+import java.nio.file.Files;
+
+...
+
+MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
+    PostModelOutputsRequest.newBuilder()
+        .setModelId("{THE_MODEL_ID}")
+        .setVersionId("{THE_MODEL_VERSION_ID")  // This is optional. Defaults to the latest model version.
+        .addInputs(
+            Input.newBuilder().setData(
+                Data.newBuilder().setImage(
+                    Image.newBuilder()
+                        .setBase64(ByteString.copyFrom(Files.readAllBytes(
+                            new File("{YOUR_IMAGE_FILE_LOCATION}").toPath()
+                        )))
+                )
+            )
+        )
+        .build()
+);
+
+if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
+}
+
+// Since we have one input, one output will exist here.
+Output output = postModelOutputsResponse.getOutputs(0);
+
+System.out.println("Predicted concepts:");
+for (Concept concept : output.getData().getConceptsList()) {
+    System.out.printf("%s %.2f%n", concept.getName(), concept.getValue());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.predict(Clarifai.GENERAL_MODEL, {base64: "G7p3m95uAl..."}).then(

@@ -41,6 +41,57 @@ When you create a new Application, you must specify a default language. This wil
 You can predict concepts in a language other then the Application's default, by explicitly passing in the language. Here is how you predict concepts in Chinese:
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
+    PostModelOutputsRequest.newBuilder()
+        .setModelId("aaa03c23b3724a16a56b629203edc62c")  // This is model ID of the publicly available General model.
+        .addInputs(
+            Input.newBuilder().setData(
+                Data.newBuilder().setImage(
+                    Image.newBuilder().setUrl("https://samples.clarifai.com/metro-north.jpg")
+                )
+            )
+        )
+        .setModel(
+            Model.newBuilder().setOutputInfo(
+                OutputInfo.newBuilder().setOutputConfig(
+                    OutputConfig.newBuilder().setLanguage("zh")  // Chinese
+                )
+            )
+        )
+        .build()
+);
+
+if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
+}
+
+// Since we have one input, one output will exist here.
+Output output = postModelOutputsResponse.getOutputs(0);
+
+System.out.println("Predicted concepts:");
+for (Concept concept : output.getData().getConceptsList()) {
+    System.out.printf("%s %.2f%n", concept.getName(), concept.getValue());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.predict(Clarifai.GENERAL_MODEL, "https://samples.clarifai.com/metro-north.jpg", {language: 'zh'}).then(
@@ -362,6 +413,44 @@ curl -X POST \
 You can search for concepts in other languages even if the default language of your application is English. When you add inputs to your application, concepts are predicted for every language. Here is an example of searching for '人' which is simplified Chinese for 'people'.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiConceptResponse postConceptsSearchesResponse = stub.postConceptsSearches(
+    PostConceptsSearchesRequest.newBuilder()
+        .setConceptQuery(
+            ConceptQuery.newBuilder()
+                .setName("人")
+                .setLanguage("zh")
+        )
+        .build()
+);
+
+if (postConceptsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post concepts searches failed, status: " + postConceptsSearchesResponse.getStatus());
+}
+
+System.out.println("Found concepts:");
+for (Concept concept : postConceptsSearchesResponse.getConceptsList()) {
+    System.out.printf("\t%s %.2f%n", concept.getName(), concept.getValue());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.search({
@@ -510,6 +599,39 @@ curl -X POST \
 You can also search for concepts in a different language:
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+MultiConceptResponse postConceptsSearchesResponse = stub.postConceptsSearches(
+    PostConceptsSearchesRequest.newBuilder()
+        .setConceptQuery(
+            ConceptQuery.newBuilder()
+                .setName("人")
+                .setLanguage("ja")
+        )
+        .build()
+);
+
+if (postConceptsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post concepts searches failed, status: " + postConceptsSearchesResponse.getStatus());
+}
+
+System.out.println("Found concepts:");
+for (Concept concept : postConceptsSearchesResponse.getConceptsList()) {
+    System.out.printf("\t%s %.2f%n", concept.getName(), concept.getValue());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.concepts.search('人*', 'zh').then(

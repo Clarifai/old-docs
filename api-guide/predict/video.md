@@ -15,6 +15,54 @@ If your video exceeds the limits, please follow our [tutorial](https://www.clari
 Below is an example of how you would send video URLs and receive back predictions from the `general` model.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
+    PostModelOutputsRequest.newBuilder()
+        .setModelId("{THE_MODEL_ID}")
+        .setVersionId("{THE_MODEL_VERSION_ID")  // This is optional. Defaults to the latest model version.
+        .addInputs(
+            Input.newBuilder().setData(
+                Data.newBuilder().setVideo(
+                    Video.newBuilder().setUrl("https://samples.clarifai.com/beer.mp4")
+                )
+            )
+        )
+        .build()
+);
+
+if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
+}
+
+// Since we have one input, one output will exist here.
+Output output = postModelOutputsResponse.getOutputs(0);
+
+// A separate prediction is available for each "frame".
+for (Frame frame : output.getData().getFramesList()) {
+    System.out.println("Predicted concepts on frame " + frame.getFrameInfo().getTime() + ":");
+    for (Concept concept : frame.getData().getConceptsList()) {
+        System.out.printf("\t%s %.2f%n", concept.getName(), concept.getValue());
+    }
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 const Clarifai = require('clarifai');
@@ -1481,6 +1529,57 @@ curl -X POST \
 Below is an example of how you would send the bytes of a video and receive back predictions from the general model.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
+    PostModelOutputsRequest.newBuilder()
+        .setModelId("{THE_MODEL_ID}")
+        .setVersionId("{THE_MODEL_VERSION_ID")  // This is optional. Defaults to the latest model version.
+        .addInputs(
+            Input.newBuilder().setData(
+                Data.newBuilder().setVideo(
+                    Video.newBuilder()
+                        .setBase64(ByteString.copyFrom(Files.readAllBytes(
+                            new File("{YOUR_VIDEO_FILE_LOCATION}").toPath()
+                        )))
+                )
+            )
+        )
+        .build()
+);
+
+if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
+}
+
+// Since we have one input, one output will exist here.
+Output output = postModelOutputsResponse.getOutputs(0);
+
+// A separate prediction is available for each "frame".
+for (Frame frame : output.getData().getFramesList()) {
+    System.out.println("Predicted concepts on frame " + frame.getFrameInfo().getTime() + ":");
+    for (Concept concept : frame.getData().getConceptsList()) {
+        System.out.printf("\t%s %.2f%n", concept.getName(), concept.getValue());
+    }
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 const Clarifai = require('clarifai');
