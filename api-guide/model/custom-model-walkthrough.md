@@ -99,6 +99,50 @@ stub.PostInputs(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+post_inputs_response = stub.PostInputs(
+    service_pb2.PostInputsRequest(
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/puppy.jpeg",
+                        allow_duplicate_url=True
+                    ),
+                    concepts=[
+                        resources_pb2.Concept(id="boscoe", value=1),
+                        resources_pb2.Concept(id="our_wedding", value=0),
+                    ]
+                )
+            ),
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/wedding.jpg",
+                        allow_duplicate_url=True
+                    ),
+                    concepts=[
+                        resources_pb2.Concept(id="our_wedding", value=1),
+                        resources_pb2.Concept(id="boscoe", value=0),
+                        resources_pb2.Concept(id="cat", value=0),
+                    ]
+                )
+            ),
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    for input_response in post_inputs_response.inputs:
+        print("Input " + input_response.id + " status:")
+        print(input_response.status)
+
+    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 {% endtab %}
 
@@ -335,6 +379,33 @@ stub.PostModels(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+post_models_response = stub.PostModels(
+    service_pb2.PostModelsRequest(
+        models=[
+            resources_pb2.Model(
+                id="pets",
+                output_info=resources_pb2.OutputInfo(
+                    data=resources_pb2.Data(
+                        concepts=[resources_pb2.Concept(id="boscoe")]
+                    ),
+                    output_config=resources_pb2.OutputConfig(
+                        concepts_mutually_exclusive=False,
+                        closed_environment=False
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_models_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post models failed, status: " + post_models_response.status.description)
 ```
 {% endtab %}
 
@@ -544,6 +615,20 @@ stub.PostModelVersions(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+post_model_versions = stub.PostModelVersions(
+    service_pb2.PostModelVersionsRequest(
+        model_id="pets"
+    ),
+    metadata=metadata
+)
+
+if post_model_versions.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post model versions failed, status: " + post_model_versions.status.description)
 ```
 {% endtab %}
 
@@ -758,6 +843,36 @@ stub.PostModelOutputs(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+post_model_outputs_response = stub.PostModelOutputs(
+    service_pb2.PostModelOutputsRequest(
+        model_id="pets",
+        version_id="673896e7965b4aefa00496325b2aaa97",  # This is optional. Defaults to the latest model version.
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/metro-north.jpg"
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+
+# Since we have one input, one output will exist here.
+output = post_model_outputs_response.outputs[0]
+
+print("Predicted concepts:")
+for concept in output.data.concepts:
+    print("%s %.2f" % (concept.name, concept.value))
 ```
 {% endtab %}
 
