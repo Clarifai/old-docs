@@ -3,6 +3,65 @@
 You can also combine searches using AND.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiSearchResponse postSearchesResponse = stub.postSearches(
+    PostSearchesRequest.newBuilder().setQuery(
+        Query.newBuilder()
+            .addAnds(
+                And.newBuilder().setInput( // Setting Input indicates we search for images that have the concept(s)
+                                           // which we added to the input manually.
+                    Input.newBuilder().setData(
+                        Data.newBuilder().addConcepts(
+                            Concept.newBuilder()
+                                .setName("cat")
+                                .setValue(1f)
+                        )
+                    )
+                )
+            )
+            .addAnds(
+                And.newBuilder().setOutput(  // Setting Output indicates we search for images that have the concept(s)
+                                             // which were predicted by the General model.
+                    Output.newBuilder().setData(
+                        Data.newBuilder().addConcepts(
+                            Concept.newBuilder()
+                                .setName("dog")
+                                .setValue(0f)
+                        )
+                    )
+                )
+            )
+    )
+    .build()
+);
+
+if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
+}
+
+System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
+for (Hit hit : postSearchesResponse.getHitsList()) {
+    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.search([

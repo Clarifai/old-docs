@@ -3,6 +3,65 @@
 To get started with search, you must first add images to the search index. You can add one or more images to the index at a time. You can supply an image either with a publicly accessible URL or by directly sending image bytes. You can send up to 128 images in one API call.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+MultiInputResponse postInputsResponse = stub.postInputs(
+    PostInputsRequest.newBuilder()
+        .addInputs(
+            Input.newBuilder()
+                .setData(
+                    Data.newBuilder().setImage(
+                        Image.newBuilder()
+                            .setUrl("https://samples.clarifai.com/metro-north.jpg")
+                            .setAllowDuplicateUrl(true)
+                    )
+                )
+        )
+        .addInputs(
+            Input.newBuilder()
+                .setData(
+                    Data.newBuilder().setImage(
+                        Image.newBuilder()
+                            .setUrl("https://samples.clarifai.com/wedding.jpg")
+                            .setAllowDuplicateUrl(true)
+                    )
+                )
+        )
+        .addInputs(
+            Input.newBuilder()
+                .setData(
+                    Data.newBuilder().setImage(
+                        Image.newBuilder()
+                            .setBase64(ByteString.copyFrom(Files.readAllBytes(
+                                new File("{YOUR_IMAGE_FILE_LOCATION}").toPath()
+                            )))
+                    )
+                )
+        )
+        .build()
+);
+
+if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    for (Input input : postInputsResponse.getInputsList()) {
+        System.out.println("Input " + input.getId() + " status: ");
+        System.out.println(input.getStatus() + "\n");
+    }
+
+    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
+}
+```
+{% endtab %}
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.create([

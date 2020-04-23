@@ -7,6 +7,52 @@ Rank Order your search results with the intuitive insights of AI. Your model can
 Once your images are indexed, you can search for them by concept.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiSearchResponse postSearchesResponse = stub.postSearches(
+    PostSearchesRequest.newBuilder().setQuery(
+        Query.newBuilder().addAnds(
+            And.newBuilder().setOutput( // Setting Output indicates we search for images that have the concept(s)
+                                        // which were predicted by the General model.
+                Output.newBuilder().setData(
+                    Data.newBuilder().addConcepts(  // You can search by multiple concepts.
+                        Concept.newBuilder()
+                            .setName("people")  // You could search by concept ID as well.
+                            .setValue(1f)  // Value of 0 will search for images that don't have the concept.
+                    )
+                )
+            )
+        )
+    )
+    .build()
+);
+
+if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
+}
+
+System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
+for (Hit hit : postSearchesResponse.getHitsList()) {
+    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.search({ concept: {name: 'people'} }).then(
@@ -176,6 +222,52 @@ curl -X POST \
 When you add an input, it automatically gets predictions from the general model. You can search for those predictions.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiSearchResponse postSearchesResponse = stub.postSearches(
+    PostSearchesRequest.newBuilder().setQuery(
+        Query.newBuilder().addAnds(
+            And.newBuilder().setOutput( // Setting Output indicates we search for images that have the concept(s)
+                                        // which were predicted by the General model.
+                Output.newBuilder().setData(
+                    Data.newBuilder().addConcepts(  // You can search by multiple concepts.
+                        Concept.newBuilder()
+                            .setName("people")  // You could search by concept ID as well.
+                            .setValue(1f)  // Value of 0 will search for images that don't have the concept.
+                    )
+                )
+            )
+        )
+    )
+    .build()
+);
+
+if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
+}
+
+System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
+for (Hit hit : postSearchesResponse.getHitsList()) {
+    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.search([
@@ -373,6 +465,52 @@ curl -X POST \
 After you have [added inputs with concepts](../data-management/inputs.md#add-inputs-with-concepts), you can search by those concepts.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiSearchResponse postSearchesResponse = stub.postSearches(
+    PostSearchesRequest.newBuilder().setQuery(
+        Query.newBuilder().addAnds(
+            And.newBuilder().setInput( // Setting Input indicates we search for images that have the concept(s)
+                                       // which we added to the input manually.
+                Input.newBuilder().setData(
+                    Data.newBuilder().addConcepts(  // You can search by multiple concepts.
+                        Concept.newBuilder()
+                            .setName("people")  // You could search by concept ID as well.
+                            .setValue(1f)  // Value of 0 will search for images that we marked not to have the concept.
+                    )
+                )
+            )
+        )
+    )
+    .build()
+);
+
+if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
+}
+
+System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
+for (Hit hit : postSearchesResponse.getHitsList()) {
+    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.search([
@@ -575,6 +713,65 @@ curl -X POST \
 You can combine a search to find inputs that have concepts you have supplied as well as predictions from your model.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiSearchResponse postSearchesResponse = stub.postSearches(
+    PostSearchesRequest.newBuilder().setQuery(
+        Query.newBuilder()
+            .addAnds(
+                And.newBuilder().setInput( // Setting Input indicates we search for images that have the concept(s)
+                                           // which we added to the input manually.
+                    Input.newBuilder().setData(
+                        Data.newBuilder().addConcepts(
+                            Concept.newBuilder()
+                                .setName("cat")
+                                .setValue(1f)
+                        )
+                    )
+                )
+            )
+            .addAnds(
+                And.newBuilder().setOutput(  // Setting Output indicates we search for images that have the concept(s)
+                                             // which were predicted by the General model.
+                    Output.newBuilder().setData(
+                        Data.newBuilder().addConcepts(
+                            Concept.newBuilder()
+                                .setName("dog")
+                                .setValue(0f)
+                        )
+                    )
+                )
+            )
+    )
+    .build()
+);
+
+if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
+}
+
+System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
+for (Hit hit : postSearchesResponse.getHitsList()) {
+    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.search([
@@ -747,6 +944,52 @@ https://api.clarifai.com/v2/searches
 You can use images to search through your collection. The API will return ranked results based on how similar the results are to the image you provided in your query.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiSearchResponse postSearchesResponse = stub.postSearches(
+    PostSearchesRequest.newBuilder().setQuery(
+        Query.newBuilder().addAnds(
+            And.newBuilder().setOutput(
+                Output.newBuilder().setInput(
+                    Input.newBuilder().setData(
+                        Data.newBuilder().setImage(
+                            Image.newBuilder()
+                                .setUrl("{YOUR_IMAGE_URL}")
+                        )
+                    )
+                )
+            )
+        )
+    )
+    .build()
+);
+
+if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
+}
+
+System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
+for (Hit hit : postSearchesResponse.getHitsList()) {
+    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.search(
@@ -918,6 +1161,50 @@ curl -X POST \
 You can also search for an input by URL.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiSearchResponse postSearchesResponse = stub.postSearches(
+    PostSearchesRequest.newBuilder().setQuery(
+        Query.newBuilder().addAnds(
+            And.newBuilder().setInput(
+                Input.newBuilder().setData(
+                    Data.newBuilder().setImage(
+                        Image.newBuilder()
+                            .setUrl("{YOUR_IMAGE_URL}")
+                    )
+                )
+            )
+        )
+    )
+    .build()
+);
+
+if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
+}
+
+System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
+for (Hit hit : postSearchesResponse.getHitsList()) {
+    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.search(

@@ -52,6 +52,51 @@ Then the following searches will find this:
 How to perform searches:
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+import com.google.protobuf.*;
+
+...
+
+MultiSearchResponse postSearchesResponse = stub.postSearches(
+    PostSearchesRequest.newBuilder().setQuery(
+        Query.newBuilder().addAnds(
+            And.newBuilder().setInput(
+                Input.newBuilder().setData(
+                    Data.newBuilder().setMetadata(
+                        Struct.newBuilder()
+                            .putFields("type", Value.newBuilder().setStringValue("animal").build())
+                    )
+                )
+            )
+        )
+    )
+    .build()
+);
+
+if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
+}
+
+System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
+for (Hit hit : postSearchesResponse.getHitsList()) {
+    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 // Search with only metadata
@@ -239,11 +284,54 @@ If you are providing two points, a box will be drawn from the uppermost point to
 
 Before you perform a search by geo location, make sure you have added inputs with longitude and latitude points.
 
-### Add inputs with longitiude and latitude points
+### Add inputs with longitude and latitude points
 
 Provide a geo point to an input. The geo point is a JSON object consisting of a longitude and a latitude in GPS coordinate system \(SRID 4326\). There can be at most one single geo point associated with each input.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiInputResponse postInputsResponse = stub.postInputs(
+    PostInputsRequest.newBuilder().addInputs(
+        Input.newBuilder().setData(
+            Data.newBuilder()
+                .setImage(
+                    Image.newBuilder()
+                        .setUrl("https://samples.clarifai.com/dog.tiff")
+                        .setAllowDuplicateUrl(true)
+                )
+                .setGeo(
+                    Geo.newBuilder().setGeoPoint(
+                        GeoPoint.newBuilder()
+                            .setLongitude(-30)
+                            .setLatitude(40)
+                    )
+                )
+        )
+    ).build()
+);
+
+if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.create({
@@ -371,6 +459,59 @@ curl -X POST \
 ### Perform a search with one geo point and radius in kilometers
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiSearchResponse postSearchesResponse = stub.postSearches(
+    PostSearchesRequest.newBuilder().setQuery(
+        Query.newBuilder().addAnds(
+            And.newBuilder().setInput(
+                Input.newBuilder().setData(
+                    Data.newBuilder().setGeo(
+                        Geo.newBuilder()
+                            .setGeoPoint(
+                                GeoPoint.newBuilder()
+                                    .setLongitude(-29)
+                                    .setLatitude(40)
+                            )
+                            .setGeoLimit(
+                                GeoLimit.newBuilder()
+                                    .setType("withinKilometers")
+                                    .setValue(150.0f)
+                            )
+                    )
+                )
+            )
+        )
+    )
+    .build()
+);
+
+if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
+}
+
+System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
+for (Hit hit : postSearchesResponse.getHitsList()) {
+    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.search({
@@ -525,6 +666,63 @@ curl -X POST \
 ### Perform a search with two geo points
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiSearchResponse postSearchesResponse = stub.postSearches(
+    PostSearchesRequest.newBuilder().setQuery(
+        Query.newBuilder().addAnds(
+            And.newBuilder().setInput(
+                Input.newBuilder().setData(
+                    Data.newBuilder().setGeo(
+                        Geo.newBuilder()
+                            .addGeoBox(
+                                GeoBoxedPoint.newBuilder().setGeoPoint(
+                                    GeoPoint.newBuilder()
+                                        .setLongitude(-31)
+                                        .setLatitude(42)
+                                )
+                            )
+                            .addGeoBox(
+                                GeoBoxedPoint.newBuilder().setGeoPoint(
+                                    GeoPoint.newBuilder()
+                                        .setLongitude(-29)
+                                        .setLatitude(39)
+                                ).build()
+                            )
+                    )
+                )
+            )
+        )
+    )
+    .build()
+);
+
+if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
+}
+
+System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
+for (Hit hit : postSearchesResponse.getHitsList()) {
+    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.search({
