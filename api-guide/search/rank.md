@@ -90,6 +90,40 @@ stub.PostSearches(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+post_searches_response = stub.PostSearches(
+    service_pb2.PostSearchesRequest(
+        query=resources_pb2.Query(
+            ands=[
+                resources_pb2.And(
+                    output=resources_pb2.Output( # Setting Output indicates we search for images that have the concept(s)
+                                                 # which were predicted by the General model.
+                        data=resources_pb2.Data(
+                            concepts=[  # You can search by multiple concepts.
+                                resources_pb2.Concept(
+                                    name="people",  # You could search by concept ID as well.
+                                    value=1  # Value of 0 will search for images that don't have the concept.
+                                )
+                            ]
+                        )
+                    )
+                )
+            ]
+        )
+    ),
+    metadata=metadata
+)
+
+if post_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post searches failed, status: " + post_searches_response.status.description)
+
+print("Found inputs:")
+for hit in post_searches_response.hits:
+    print("\tScore %.2f for %s" % (hit.score, hit.input.id))
 ```
 {% endtab %}
 
@@ -369,6 +403,40 @@ stub.PostSearches(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+post_searches_response = stub.PostSearches(
+    service_pb2.PostSearchesRequest(
+        query=resources_pb2.Query(
+            ands=[
+                resources_pb2.And(
+                    input=resources_pb2.Input(  # Setting Input indicates we search for images that have the concept(s)
+                                                # which we added to the input manually.
+                        data=resources_pb2.Data(
+                            concepts=[  # You can search by multiple concepts.
+                                resources_pb2.Concept(
+                                    name="people",  # You could search by concept ID as well.
+                                    value=1  # Value of 0 will search for images that we marked not to have the concept.
+                                )
+                            ]
+                        )
+                    )
+                )
+            ]
+        )
+    ),
+    metadata=metadata
+)
+
+if post_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post searches failed, status: " + post_searches_response.status.description)
+
+print("Found inputs:")
+for hit in post_searches_response.hits:
+    print("\tScore %.2f for %s" % (hit.score, hit.input.id))
 ```
 {% endtab %}
 
@@ -683,6 +751,55 @@ stub.PostSearches(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+# Here we search for images which we labeled with "cat" and for which the General prediction model does not find
+# a "dog" concept.
+post_searches_response = stub.PostSearches(
+    service_pb2.PostSearchesRequest(
+        query=resources_pb2.Query(
+            ands=[
+                resources_pb2.And(
+                    input=resources_pb2.Input(  # Setting Input indicates we search for images that have the concept(s)
+                                                # which we added to the input manually.
+                        data=resources_pb2.Data(
+                            concepts=[
+                                resources_pb2.Concept(
+                                    name="cat",
+                                    value=1
+                                )
+                            ]
+                        )
+                    )
+                ),
+                resources_pb2.And(
+                    output=resources_pb2.Output(  # Setting Output indicates we search for images that have the concept(s)
+                                                  # which were predicted by the General model.
+                        data=resources_pb2.Data(
+                            concepts=[
+                                resources_pb2.Concept(
+                                    name="dog",
+                                    value=0
+                                )
+                            ]
+                        )
+                    )
+                )
+            ]
+        )
+    ),
+    metadata=metadata
+)
+
+if post_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post searches failed, status: " + post_searches_response.status.description)
+
+print("Found inputs:")
+for hit in post_searches_response.hits:
+    print("\tScore %.2f for %s" % (hit.score, hit.input.id))
 ```
 {% endtab %}
 
@@ -935,6 +1052,38 @@ stub.PostSearches(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+post_searches_response = stub.PostSearches(
+    service_pb2.PostSearchesRequest(
+        query=resources_pb2.Query(
+            ands=[
+                resources_pb2.And(
+                    output=resources_pb2.Output(
+                        input=resources_pb2.Input(
+                            data=resources_pb2.Data(
+                                image=resources_pb2.Image(
+                                    url="{YOUR_IMAGE_URL}"
+                                )
+                            )
+                        )
+                    )
+                )
+            ]
+        )
+    ),
+    metadata=metadata
+)
+
+if post_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post searches failed, status: " + post_searches_response.status.description)
+
+print("Found inputs:")
+for hit in post_searches_response.hits:
+    print("\tScore %.2f for %s" % (hit.score, hit.input.id))
 ```
 {% endtab %}
 
@@ -1182,6 +1331,36 @@ stub.PostSearches(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+post_searches_response = stub.PostSearches(
+    service_pb2.PostSearchesRequest(
+        query=resources_pb2.Query(
+            ands=[
+                resources_pb2.And(
+                    input=resources_pb2.Input(
+                        data=resources_pb2.Data(
+                            image=resources_pb2.Image(
+                                url="{YOUR_IMAGE_URL}"
+                            )
+                        )
+                    )
+                )
+            ]
+        )
+    ),
+    metadata=metadata
+)
+
+if post_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post searches failed, status: " + post_searches_response.status.description)
+
+print("Found inputs:")
+for hit in post_searches_response.hits:
+    print("\tScore %.2f for %s" % (hit.score, hit.input.id))
 ```
 {% endtab %}
 

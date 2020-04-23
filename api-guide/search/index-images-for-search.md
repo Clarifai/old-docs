@@ -95,6 +95,51 @@ stub.PostInputs(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+...
+
+with open("{YOUR_IMAGE_FILE_LOCATION}", "rb") as f:
+    file_bytes = f.read()
+
+post_inputs_response = stub.PostInputs(
+    service_pb2.PostInputsRequest(
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/metro-north.jpg",
+                        allow_duplicate_url=True
+                    )
+                )
+            ),
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/wedding.jpg",
+                        allow_duplicate_url=True
+                    )
+                )
+            ),
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        base64=file_bytes
+                    )
+                )
+            ),
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    for input_response in post_inputs_response.inputs:
+        print("Input " + input_response.id + " status:")
+        print(input_response.status)
+
+    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 {% endtab %}
 

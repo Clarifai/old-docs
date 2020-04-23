@@ -112,6 +112,50 @@ stub.PostSearches(
 
 {% tab title="gRPC Python" %}
 ```python
+# Here we search for images which we labeled with "cat" and for which the General prediction model does not find
+# a "dog" concept.
+post_searches_response = stub.PostSearches(
+    service_pb2.PostSearchesRequest(
+        query=resources_pb2.Query(
+            ands=[
+                resources_pb2.And(
+                    input=resources_pb2.Input(  # Setting Input indicates we search for images that have the concept(s)
+                                                # which we added to the input manually.
+                        data=resources_pb2.Data(
+                            concepts=[
+                                resources_pb2.Concept(
+                                    name="cat",
+                                    value=1
+                                )
+                            ]
+                        )
+                    )
+                ),
+                resources_pb2.And(
+                    output=resources_pb2.Output(  # Setting Output indicates we search for images that have the concept(s)
+                                                  # which were predicted by the General model.
+                        data=resources_pb2.Data(
+                            concepts=[
+                                resources_pb2.Concept(
+                                    name="dog",
+                                    value=0
+                                )
+                            ]
+                        )
+                    )
+                )
+            ]
+        )
+    ),
+    metadata=metadata
+)
+
+if post_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post searches failed, status: " + post_searches_response.status.description)
+
+print("Found inputs:")
+for hit in post_searches_response.hits:
+    print("\tScore %.2f for %s" % (hit.score, hit.input.id))
 ```
 {% endtab %}
 
