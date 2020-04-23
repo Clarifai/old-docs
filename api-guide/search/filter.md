@@ -89,6 +89,38 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostSearches(
+    {
+        query: {
+            ands: [
+                {
+                    input: {
+                        data: {
+                            metadata: {
+                                "type": "animal"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found inputs:");
+        for (const hit of response.hits) {
+            console.log("\tScore " + hit.score + " for " + hit.input.id);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -324,6 +356,33 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostInputs(
+    {
+        inputs: [
+            {
+                data: {
+                    image: {url: "https://samples.clarifai.com/dog.tiff", allow_duplicate_url: true},
+                    geo: {
+                        geo_point: {
+                            longitude: -30,
+                            latitude: 40
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post inputs failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -504,6 +563,45 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostSearches(
+    {
+        query: {
+            ands: [
+                {
+                    input: {
+                        data: {
+                            geo: {
+                                geo_point: {
+                                    longitude: -29,
+                                    latitude: 40
+                                },
+                                geo_limit: {
+                                    type: "withinKilometers",
+                                    value: 150.0
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found inputs:");
+        for (const hit of response.hits) {
+            console.log("\tScore " + hit.score + " for " + hit.input.id);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -715,6 +813,51 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostSearches(
+    {
+        query: {
+            ands: [
+                {
+                    input: {
+                        data: {
+                            geo: {
+                                geo_box: [
+                                    {
+                                        geo_point: {
+                                            longitude: -31,
+                                            latitude: 42
+                                        }
+                                    },
+                                    {
+                                        geo_point: {
+                                            longitude: -29,
+                                            latitude: 39
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found inputs:");
+        for (const hit of response.hits) {
+            console.log("\tScore " + hit.score + " for " + hit.input.id);
+        }
+    }
+);
 ```
 {% endtab %}
 

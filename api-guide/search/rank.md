@@ -45,6 +45,42 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostSearches(
+    {
+        query: {
+            ands: [
+                {
+                    output: {  // Setting Output indicates we search for images that have the concept(s)
+                               // which were predicted by the General model.
+                        data: {
+                            concepts: [  // You can search by multiple concepts.
+                                {
+                                    name: "people",  // You could search by concept ID as well.
+                                    value: 1  // Value of 0 will search for images that don't have the concept
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found inputs:");
+        for (const hit of response.hits) {
+            console.log("\tScore " + hit.score + " for " + hit.input.id);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -260,6 +296,42 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostSearches(
+    {
+        query: {
+            ands: [
+                {
+                    output: {  // Setting Output indicates we search for images that have the concept(s)
+                               // which were predicted by the General model.
+                        data: {
+                            concepts: [  // You can search by multiple concepts.
+                                {
+                                    name: "people",  // You could search by concept ID as well.
+                                    value: 1  // Value of 0 will search for images that don't have the concept
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found inputs:");
+        for (const hit of response.hits) {
+            console.log("\tScore " + hit.score + " for " + hit.input.id);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -503,6 +575,42 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostSearches(
+    {
+        query: {
+            ands: [
+                {
+                    input: {  // Setting Input indicates we search for images that have the concept(s)
+                              // which we added to the input manually.
+                        data: {
+                            concepts: [  // You can search by multiple concepts.
+                                {
+                                    name: "people",  // You could search by concept ID as well.
+                                    value: 1  // Value of 0 will search for images that we marked not to have the concept.
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found inputs:");
+        for (const hit of response.hits) {
+            console.log("\tScore " + hit.score + " for " + hit.input.id);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -720,6 +828,8 @@ import com.clarifai.grpc.api.status.*;
 
 ...
 
+// Here we search for images which we labeled with "cat" and for which the General prediction model does not find
+// a "dog" concept.
 MultiSearchResponse postSearchesResponse = stub.postSearches(
     PostSearchesRequest.newBuilder().setQuery(
         Query.newBuilder()
@@ -742,7 +852,7 @@ MultiSearchResponse postSearchesResponse = stub.postSearches(
                         Data.newBuilder().addConcepts(
                             Concept.newBuilder()
                                 .setName("dog")
-                                .setValue(0f)
+                                .setValue(0f)  // Because of 0, the dog must not be present in the image.
                         )
                     )
                 )
@@ -764,6 +874,57 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Here we search for images which we labeled with "cat" and for which the General prediction model does not find
+// a "dog" concept.
+stub.PostSearches(
+    {
+        query: {
+            ands: [
+                {
+                    input: {  // Setting Input indicates we search for images that have the concept(s)
+                              // which we added to the input manually.
+                        data: {
+                            concepts: [
+                                {
+                                    name: "cat",
+                                    value: 1
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    output: {  // Setting Output indicates we search for images that have the concept(s)
+                               // which were predicted by the General model.
+                        data: {
+                            concepts: [
+                                {
+                                    name: "dog",
+                                    value: 0
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found inputs:");
+        for (const hit of response.hits) {
+            console.log("\tScore " + hit.score + " for " + hit.input.id);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -982,6 +1143,40 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostSearches(
+    {
+        query: {
+            ands: [
+                {
+                    output: {
+                        input: {
+                            data: {
+                                image: {
+                                    url: "{YOUR_IMAGE_URL}"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found inputs:");
+        for (const hit of response.hits) {
+            console.log("\tScore " + hit.score + " for " + hit.input.id);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -1197,6 +1392,38 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+stub.PostSearches(
+    {
+        query: {
+            ands: [
+                {
+                    input: {
+                        data: {
+                            image: {
+                                url: "{YOUR_IMAGE_URL}"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found inputs:");
+        for (const hit of response.hits) {
+            console.log("\tScore " + hit.score + " for " + hit.input.id);
+        }
+    }
+);
 ```
 {% endtab %}
 

@@ -53,6 +53,42 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 {% tab title="gRPC NodeJS" %}
 ```js
+const fs = require("fs");
+
+...
+
+const imageBytes = fs.readFileSync("{YOUR_IMAGE_FILE_LOCATION}");
+
+stub.PostInputs(
+    {
+        inputs: [
+            {
+                data: {image: {url: "https://samples.clarifai.com/metro-north.jpg", allow_duplicate_url: true}}
+            },
+            {
+                data: {image: {url: "https://samples.clarifai.com/puppy.jpeg", allow_duplicate_url: true}}
+            },
+            {
+                data: {image: {base64: imageBytes}}
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            for (const input of response.inputs) {
+                console.log("Input " + input.id + " status: ");
+                console.log(JSON.stringify(input.status, null, 2) + "\n");
+            }
+
+            throw new Error("Post inputs failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 

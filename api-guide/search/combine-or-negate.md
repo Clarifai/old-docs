@@ -10,6 +10,8 @@ import com.clarifai.grpc.api.status.*;
 
 ...
 
+// Here we search for images which we labeled with "cat" and for which the General prediction model does not find
+// a "dog" concept.
 MultiSearchResponse postSearchesResponse = stub.postSearches(
     PostSearchesRequest.newBuilder().setQuery(
         Query.newBuilder()
@@ -54,6 +56,57 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Here we search for images which we labeled with "cat" and for which the General prediction model does not find
+// a "dog" concept.
+stub.PostSearches(
+    {
+        query: {
+            ands: [
+                {
+                    input: {  // Setting Input indicates we search for images that have the concept(s)
+                              // which we added to the input manually.
+                        data: {
+                            concepts: [
+                                {
+                                    name: "cat",
+                                    value: 1
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    output: {  // Setting Output indicates we search for images that have the concept(s)
+                               // which were predicted by the General model.
+                        data: {
+                            concepts: [
+                                {
+                                    name: "dog",
+                                    value: 0
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found inputs:");
+        for (const hit of response.hits) {
+            console.log("\tScore " + hit.score + " for " + hit.input.id);
+        }
+    }
+);
 ```
 {% endtab %}
 
