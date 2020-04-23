@@ -26,7 +26,7 @@ The gRPC clients below are currently available and we'll be adding more as time 
 | Available gRPC Clients |
 | ----------------- |
 | [Clarifai gRPC Java](https://github.com/Clarifai/clarifai-java-grpc/) |
-| [Clarifai gRPC NodeJS](https://github.com/Clarifai/clarifai-javascript-grpc) |
+| [Clarifai gRPC NodeJS](https://github.com/Clarifai/clarifai-nodejs-grpc) |
 | [Clarifai gRPC Python](https://github.com/Clarifai/clarifai-python-grpc/) |
 
 ## Manually-built Clients

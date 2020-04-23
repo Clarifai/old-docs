@@ -6,9 +6,9 @@
 
 ## gRPC NodeJS
 
-[github.com/Clarifai/clarifai-javascript-grpc](https://github.com/Clarifai/clarifai-javascript-grpc)
+[github.com/Clarifai/clarifai-nodejs-grpc](https://github.com/Clarifai/clarifai-nodejs-grpc)
 
-## gRPC Pythonj
+## gRPC Python
 
 [github.com/Clarifai/clarifai-python-grpc](https://github.com/Clarifai/clarifai-python-grpc)
 
