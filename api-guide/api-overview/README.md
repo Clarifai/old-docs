@@ -17,7 +17,7 @@ data is optimized. The data is serialized with [Protocol Buffers](https://develo
 Since the gRPC clients are auto-generated, they will always have the latest available Clarifai API
 feature-set.
 
-It's possible to make these clients use the standard HTTP+JSON channel, while enjoying a better
+It's possible to make these clients using the standard HTTP+JSON channel, while enjoying a better
 auto-completion support in most IDEs (compared to building and parsing JSON directly), and easily
 being able to switch to using a gRPC channel when/if desired.
 
