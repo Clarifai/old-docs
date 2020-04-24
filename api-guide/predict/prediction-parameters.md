@@ -32,6 +32,7 @@ MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
             Model.newBuilder().setOutputInfo(
                 OutputInfo.newBuilder().setOutputConfig(
                     OutputConfig.newBuilder()
+                        // When selecting concepts, value is ignored, so no need to specify it.
                         .addSelectConcepts(Concept.newBuilder().setName("train"))
                         .addSelectConcepts(Concept.newBuilder().setId("ai_6kTjGfF6")
                         )
@@ -63,6 +64,7 @@ stub.PostModelOutputs(
         inputs: [
             {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
         ],
+        // When selecting concepts, value is ignored, so no need to specify it.
         model: {output_info: {output_config: {select_concepts: [{name: "train"}, {id: "ai_6kTjGfF6"}]}}}
     },
     metadata,
@@ -110,6 +112,7 @@ post_model_outputs_response = stub.PostModelOutputs(
             output_info=resources_pb2.OutputInfo(
                 output_config=resources_pb2.OutputConfig(
                     select_concepts=[
+                        # When selecting concepts, value is ignored, so no need to specify it.
                         resources_pb2.Concept(name="train"),
                         resources_pb2.Concept(id="ai_6kTjGfF6")
                     ]

@@ -391,7 +391,7 @@ post_models_response = stub.PostModels(
                 id="pets",
                 output_info=resources_pb2.OutputInfo(
                     data=resources_pb2.Data(
-                        concepts=[resources_pb2.Concept(id="boscoe")]
+                        concepts=[resources_pb2.Concept(id="boscoe", value=1)]
                     ),
                     output_config=resources_pb2.OutputConfig(
                         concepts_mutually_exclusive=False,
