@@ -14,7 +14,8 @@ You can learn all about the different [Clarifai Models]() available later in the
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
     PostModelOutputsRequest.newBuilder()
@@ -46,6 +47,9 @@ for (Concept concept : output.getData().getConceptsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostModelOutputs(
     {
         model_id: "{THE_MODEL_ID}",
@@ -81,7 +85,8 @@ stub.PostModelOutputs(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
@@ -428,7 +433,8 @@ import com.google.protobuf.ByteString;
 import java.io.File;
 import java.nio.file.Files;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
     PostModelOutputsRequest.newBuilder()
@@ -463,11 +469,12 @@ for (Concept concept : output.getData().getConceptsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 const fs = require("fs");
-
-...
-
 const imageBytes = fs.readFileSync("{YOUR_IMAGE_FILE_LOCATION}");
+
 stub.PostModelOutputs(
     {
         model_id: "{THE_MODEL_ID}",
@@ -503,7 +510,8 @@ stub.PostModelOutputs(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 with open("{YOUR_IMAGE_FILE_LOCATION}", "rb") as f:
     file_bytes = f.read()

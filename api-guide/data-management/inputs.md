@@ -20,7 +20,8 @@ You can add inputs one by one or in bulk. If you do send bulk, you are limited t
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiInputResponse postInputsResponse = stub.postInputs(
     PostInputsRequest.newBuilder().addInputs(
@@ -42,6 +43,9 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostInputs(
     {
         inputs: [{data: {image: {url: "https://samples.clarifai.com/metro-north.jpg", allow_duplicate_url: true}}}]
@@ -65,7 +69,8 @@ stub.PostInputs(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_inputs_response = stub.PostInputs(
     service_pb2.PostInputsRequest(
@@ -209,7 +214,8 @@ import com.google.protobuf.ByteString;
 import java.io.File;
 import java.nio.file.Files;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiInputResponse postInputsResponse = stub.postInputs(
     PostInputsRequest.newBuilder().addInputs(
@@ -232,10 +238,10 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 const fs = require("fs");
-
-...
-
 const imageBytes = fs.readFileSync("{YOUR_IMAGE_LOCATION}");
 
 stub.PostInputs(
@@ -261,7 +267,8 @@ stub.PostInputs(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 with open("{YOUR_IMAGE_LOCATION}", "rb") as f:
     file_bytes = f.read()
@@ -411,7 +418,8 @@ In cases where you have your own `id` and you only have one item per image, you 
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiInputResponse postInputsResponse = stub.postInputs(
     PostInputsRequest.newBuilder()
@@ -453,6 +461,9 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostInputs(
     {
         inputs: [
@@ -490,7 +501,8 @@ stub.PostInputs(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_inputs_response = stub.PostInputs(
     service_pb2.PostInputsRequest(
@@ -692,7 +704,8 @@ You can add inputs with concepts as either a URL or bytes.
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiInputResponse postInputsResponse = stub.postInputs(
     PostInputsRequest.newBuilder().addInputs(
@@ -720,6 +733,9 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostInputs(
     {
         inputs: [{data: {
@@ -746,7 +762,8 @@ stub.PostInputs(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_inputs_response = stub.PostInputs(
     service_pb2.PostInputsRequest(
@@ -944,7 +961,8 @@ import com.clarifai.grpc.api.status.*;
 import com.google.protobuf.Struct;
 import com.google.protobuf.Value;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiInputResponse postInputsResponse = stub.postInputs(
     PostInputsRequest.newBuilder().addInputs(
@@ -973,6 +991,9 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostInputs(
     {
         inputs: [{data: {
@@ -1000,7 +1021,8 @@ from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 from google.protobuf.struct_pb2 import Struct
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 input_metadata = Struct()
 input_metadata.update({"id": "id001", "type": "animal", "size": 100})
@@ -1163,7 +1185,8 @@ This request is paginated.
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiInputResponse listInputsResponse = stub.listInputs(
     ListInputsRequest.newBuilder()
@@ -1184,6 +1207,9 @@ for (Input input : listInputsResponse.getInputsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.ListInputs(
     {page: 1, per_page: 10},
     metadata,
@@ -1209,7 +1235,8 @@ stub.ListInputs(
 from clarifai_grpc.grpc.api import service_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 list_inputs_response = stub.ListInputs(
     service_pb2.ListInputsRequest(page=1, per_page=10),
@@ -1330,7 +1357,8 @@ If you'd like to get a specific input by id, you can do that as well.
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 SingleInputResponse getInputResponse = stub.getInput(
     GetInputRequest.newBuilder()
@@ -1349,6 +1377,9 @@ System.out.println(input);
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.GetInput(
     {input_id: "{YOUR_INPUT_ID}"},
     metadata,
@@ -1373,7 +1404,8 @@ stub.GetInput(
 from clarifai_grpc.grpc.api import service_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 get_input_response = stub.GetInput(
     service_pb2.GetInputRequest(input_id="{YOUR_INPUT_ID}"),
@@ -1486,7 +1518,8 @@ If you add inputs in bulk, they will process in the background. You can get the 
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 SingleInputCountResponse getInputCountResponse = stub.getInputCount(
     GetInputCountRequest.newBuilder().build()
@@ -1503,6 +1536,9 @@ System.out.println(inputCount);
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.GetInputCount(
     {},
     metadata,
@@ -1527,7 +1563,8 @@ stub.GetInputCount(
 from clarifai_grpc.grpc.api import service_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 get_input_count_response = stub.GetInputCount(
     service_pb2.GetInputCountRequest(),
@@ -1644,7 +1681,8 @@ To update an input with a new concept, or to change a concept value from true/fa
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiInputResponse patchInputsResponse = stub.patchInputs(
     PatchInputsRequest.newBuilder()
@@ -1678,6 +1716,9 @@ if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PatchInputs(
     {
         action: "merge",  // Supported actions: overwrite, merge, remove.
@@ -1709,7 +1750,8 @@ stub.PatchInputs(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 patch_inputs_response = stub.PatchInputs(
     service_pb2.PatchInputsRequest(
@@ -1895,7 +1937,8 @@ You can update an existing input using its Id. This is useful if you'd like to a
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiInputResponse patchInputsResponse = stub.patchInputs(
     PatchInputsRequest.newBuilder()
@@ -1947,6 +1990,9 @@ if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PatchInputs(
     {
         action: "merge",  // Supported actions: overwrite, merge, remove.
@@ -1980,7 +2026,8 @@ stub.PatchInputs(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 patch_inputs_response = stub.PatchInputs(
     service_pb2.PatchInputsRequest(
@@ -2161,7 +2208,8 @@ To remove concepts that were already added to an input, you can do this:
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiInputResponse patchInputsResponse = stub.patchInputs(
     PatchInputsRequest.newBuilder()
@@ -2190,6 +2238,9 @@ if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 MultiInputResponse patchInputsResponse = stub.patchInputs(
     PatchInputsRequest.newBuilder()
         .setAction("remove")  // Supported actions: overwrite, merge, remove.
@@ -2220,7 +2271,8 @@ if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 patch_inputs_response = stub.PatchInputs(
     service_pb2.PatchInputsRequest(
@@ -2400,7 +2452,8 @@ You can bulk delete multiple concepts from a list of inputs:
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiInputResponse patchInputsResponse = stub.patchInputs(
     PatchInputsRequest.newBuilder()
@@ -2446,6 +2499,9 @@ if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PatchInputs(
     {
         action: "remove",  // Supported actions: overwrite, merge, remove.
@@ -2481,7 +2537,8 @@ stub.PatchInputs(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 patch_inputs_response = stub.PatchInputs(
     service_pb2.PatchInputsRequest(
@@ -2638,7 +2695,8 @@ You can delete a single input by id:
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 BaseResponse deleteInputResponse = stub.deleteInput(
     DeleteInputRequest.newBuilder()
@@ -2654,6 +2712,9 @@ if (deleteInputResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.DeleteInput(
     {
         input_id: "{YOUR_INPUT_ID}"
@@ -2677,7 +2738,8 @@ stub.DeleteInput(
 from clarifai_grpc.grpc.api import service_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 delete_input_response = stub.DeleteInput(
     service_pb2.DeleteInputRequest(input_id="{YOUR_INPUT_ID}"),
@@ -2786,7 +2848,8 @@ You can also delete multiple inputs in one API call. This will happen asynchrono
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 BaseResponse listInputsResponse = stub.deleteInputs(
     DeleteInputsRequest.newBuilder()
@@ -2803,6 +2866,9 @@ if (listInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.DeleteInputs(
     {
         ids: ["{YOUR_INPUT_ID_1}", "{YOUR_INPUT_ID_2}"]
@@ -2826,7 +2892,8 @@ stub.DeleteInputs(
 from clarifai_grpc.grpc.api import service_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 delete_inputs_response = stub.DeleteInputs(
     service_pb2.DeleteInputsRequest(
@@ -2943,7 +3010,8 @@ If you would like to delete all inputs from an application, you can do that as w
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 BaseResponse listInputsResponse = stub.deleteInputs(
     DeleteInputsRequest.newBuilder()
@@ -2959,6 +3027,9 @@ if (listInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.DeleteInputs(
     {
         delete_all: true
@@ -2982,7 +3053,7 @@ stub.DeleteInputs(
 from clarifai_grpc.grpc.api import service_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+
 
 delete_inputs_response = stub.DeleteInputs(
     service_pb2.DeleteInputsRequest(

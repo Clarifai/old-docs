@@ -65,7 +65,6 @@ import com.clarifai.credentials.ClarifaiCallCredentials;
 import com.clarifai.grpc.api.*;
 import io.grpc.Channel;
 
-...
 
 // Construct one of the channels you want to use
 Channel channel = ClarifaiChannel.INSTANCE.getJsonChannel();
@@ -80,7 +79,7 @@ V2Grpc.V2BlockingStub stub = V2Grpc.newBlockingStub(channel)
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```javascript
+```js
 ///////////////////////////////////////////////////////////////////////////////
 // Installation
 ///////////////////////////////////////////////////////////////////////////////

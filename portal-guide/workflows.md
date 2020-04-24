@@ -34,7 +34,8 @@ You can also use the Explorer in Clarifai Portal to see the results of your work
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 PostWorkflowResultsResponse postWorkflowResultsResponse = stub.postWorkflowResults(
     PostWorkflowResultsRequest.newBuilder()
@@ -73,6 +74,9 @@ for (Output output : results.getOutputsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostWorkflowResults(
     {
         workflow_id: "{YOUR_WORKFLOW_ID}",
@@ -113,7 +117,8 @@ stub.PostWorkflowResults(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_workflow_results_response = stub.PostWorkflowResults(
     service_pb2.PostWorkflowResultsRequest(

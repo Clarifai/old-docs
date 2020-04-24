@@ -20,7 +20,8 @@ Below is an example of how you would send video URLs and receive back prediction
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
     PostModelOutputsRequest.newBuilder()
@@ -55,6 +56,9 @@ for (Frame frame : output.getData().getFramesList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostModelOutputs(
     {
         model_id: "{THE_MODEL_ID}",
@@ -93,7 +97,8 @@ stub.PostModelOutputs(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
@@ -1596,7 +1601,8 @@ Below is an example of how you would send the bytes of a video and receive back 
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
     PostModelOutputsRequest.newBuilder()
@@ -1634,11 +1640,12 @@ for (Frame frame : output.getData().getFramesList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 const fs = require("fs");
-
-...
-
 const videoBytes = fs.readFileSync("{YOUR_VIDEO_FILE_LOCATION}");
+
 stub.PostModelOutputs(
     {
         model_id: "{THE_MODEL_ID}",
@@ -1677,7 +1684,8 @@ stub.PostModelOutputs(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 with open("{YOUR_VIDEO_FILE_LOCATION}", "rb") as f:
     file_bytes = f.read()

@@ -14,7 +14,8 @@ To get started training your own model, you must first add images that already c
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiInputResponse postInputsResponse = stub.postInputs(
     PostInputsRequest.newBuilder()
@@ -61,6 +62,9 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostInputs(
     {
         inputs: [
@@ -102,7 +106,8 @@ stub.PostInputs(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_inputs_response = stub.PostInputs(
     service_pb2.PostInputsRequest(
@@ -323,7 +328,8 @@ Take note of the `model id` that is returned in the response. You'll need that f
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 SingleModelResponse postModelsResponse = stub.postModels(
     PostModelsRequest.newBuilder().addModels(
@@ -351,6 +357,9 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostModels(
     {
         models: [
@@ -382,7 +391,8 @@ stub.PostModels(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_models_response = stub.PostModels(
     service_pb2.PostModelsRequest(
@@ -578,7 +588,8 @@ Keep note of the `model_version id` in the response. We'll need that for the nex
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 SingleModelResponse postModelVersionsResponse = stub.postModelVersions(
     PostModelVersionsRequest.newBuilder()
@@ -597,6 +608,9 @@ System.out.println("New model version ID: " + modelVersionId);
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostModelVersions(
     {model_id: "pets"},
     metadata,
@@ -618,7 +632,8 @@ stub.PostModelVersions(
 from clarifai_grpc.grpc.api import service_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_model_versions = stub.PostModelVersions(
     service_pb2.PostModelVersionsRequest(
@@ -781,6 +796,12 @@ _Note: you can repeat the above steps as often as you like. By adding more image
 {% tabs %}
 {% tab title="gRPC Java" %}
 ```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
     PostModelOutputsRequest.newBuilder()
         .setModelId("pets")
@@ -811,6 +832,9 @@ for (Concept concept : output.getData().getConceptsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostModelOutputs(
     {
         model_id: "pets",
@@ -846,7 +870,8 @@ stub.PostModelOutputs(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(

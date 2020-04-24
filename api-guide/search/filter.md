@@ -58,7 +58,8 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 import com.google.protobuf.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postSearchesResponse = stub.postSearches(
     PostSearchesRequest.newBuilder().setQuery(
@@ -89,6 +90,9 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostSearches(
     {
         query: {
@@ -130,7 +134,8 @@ from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 from google.protobuf.struct_pb2 import Struct
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 search_metadata = Struct()
 search_metadata.update({"type": "animal"})
@@ -358,7 +363,8 @@ Provide a geo point to an input. The geo point is a JSON object consisting of a 
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiInputResponse postInputsResponse = stub.postInputs(
     PostInputsRequest.newBuilder().addInputs(
@@ -388,6 +394,9 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostInputs(
     {
         inputs: [
@@ -423,7 +432,8 @@ stub.PostInputs(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_inputs_response = stub.PostInputs(
     service_pb2.PostInputsRequest(
@@ -584,7 +594,8 @@ curl -X POST \
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postSearchesResponse = stub.postSearches(
     PostSearchesRequest.newBuilder().setQuery(
@@ -624,6 +635,9 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostSearches(
     {
         query: {
@@ -671,7 +685,8 @@ stub.PostSearches(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_searches_response = stub.PostSearches(
     service_pb2.PostSearchesRequest(
@@ -867,7 +882,8 @@ curl -X POST \
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postSearchesResponse = stub.postSearches(
     PostSearchesRequest.newBuilder().setQuery(
@@ -911,6 +927,9 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostSearches(
     {
         query: {
@@ -964,7 +983,8 @@ stub.PostSearches(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_searches_response = stub.PostSearches(
     service_pb2.PostSearchesRequest(

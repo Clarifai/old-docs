@@ -12,7 +12,8 @@ When you create a model you give it a name and an id. If you don't supply an id,
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 SingleModelResponse postModelsResponse = stub.postModels(
     PostModelsRequest.newBuilder().addModels(
@@ -28,6 +29,9 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostModels(
     {
         models: [
@@ -55,7 +59,8 @@ stub.PostModels(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_models_response = stub.PostModels(
     service_pb2.PostModelsRequest(
@@ -176,7 +181,8 @@ You can also create a model and initialize it with the concepts it will contain.
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 SingleModelResponse postModelsResponse = stub.postModels(
     PostModelsRequest.newBuilder().addModels(
@@ -197,6 +203,9 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostModels(
     {
         models: [
@@ -227,7 +236,8 @@ stub.PostModels(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_models_response = stub.PostModels(
     service_pb2.PostModelsRequest(
@@ -406,6 +416,9 @@ if (patchModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PatchModels(
     {
         action: "merge",  // Supported actions: overwrite, merge, remove
@@ -435,7 +448,8 @@ stub.PatchModels(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 patch_models_response = stub.PatchModels(
     service_pb2.PatchModelsRequest(
@@ -613,7 +627,8 @@ Conversely, if you'd like to remove concepts from a model, you can also do that.
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiModelResponse patchModelsResponse = stub.patchModels(
     PatchModelsRequest.newBuilder()
@@ -638,6 +653,9 @@ if (patchModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PatchModels(
     {
         action: "remove",  // Supported actions: overwrite, merge, remove
@@ -667,7 +685,8 @@ stub.PatchModels(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 patch_models_response = stub.PatchModels(
     service_pb2.PatchModelsRequest(
@@ -846,7 +865,8 @@ The code below showcases how to update a concept's name given its id.
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiConceptResponse patchConceptsResponse = stub.patchConcepts(
     PatchConceptsRequest.newBuilder()
@@ -863,6 +883,9 @@ if (patchConceptsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PatchConcepts(
     {
         action: "overwrite",  // The only supported action right now is overwrite
@@ -887,7 +910,8 @@ stub.PatchConcepts(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 patch_concepts_response = stub.PatchConcepts(
     service_pb2.PatchConceptsRequest(
@@ -1003,7 +1027,8 @@ Here we will change the model name to 'newname' and the model's configuration to
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiModelResponse patchModelsResponse = stub.patchModels(
     PatchModelsRequest.newBuilder()
@@ -1035,6 +1060,10 @@ if (patchModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PatchModels(
     {
         action: "overwrite",
@@ -1060,7 +1089,6 @@ stub.PatchModels(
         }
     }
 );
-```js
 ```
 {% endtab %}
 
@@ -1069,7 +1097,8 @@ stub.PatchModels(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 patch_models_response = stub.PatchModels(
     service_pb2.PatchModelsRequest(
@@ -1248,7 +1277,8 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 import java.util.List;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiModelResponse listModelsResponse = stub.listModels(
     ListModelsRequest.newBuilder().build()
@@ -1267,6 +1297,9 @@ for (Model model : models) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.ListModels(
     {},
     metadata,
@@ -1292,7 +1325,8 @@ stub.ListModels(
 from clarifai_grpc.grpc.api import service_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 list_models_response = stub.ListModels(
     service_pb2.ListModelsRequest(),
@@ -1410,7 +1444,8 @@ All models have unique Ids. You can get a specific model by its id:
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 SingleModelResponse getModelResponse = stub.getModel(
     GetModelRequest.newBuilder()
@@ -1429,6 +1464,9 @@ System.out.println(model);
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.GetModel(
     {model_id: "petsID"},
     metadata,
@@ -1450,6 +1488,12 @@ stub.GetModel(
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
 get_model_response = stub.GetModel(
     service_pb2.GetModelRequest(model_id="petsID"),
     metadata=metadata
@@ -1571,7 +1615,8 @@ The output info of a model lists what concepts it contains.
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 SingleModelResponse getModelOutputInfoResponse = stub.getModelOutputInfo(
     GetModelRequest.newBuilder()
@@ -1590,6 +1635,9 @@ System.out.println(model);
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.GetModelOutputInfo(
     {model_id: "petsID"},
     metadata,
@@ -1614,7 +1662,8 @@ stub.GetModelOutputInfo(
 from clarifai_grpc.grpc.api import service_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 get_model_response = stub.GetModelOutputInfo(
     service_pb2.GetModelRequest(model_id="petsID"),
@@ -1748,7 +1797,8 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 import java.util.List;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiModelVersionResponse listModelVersionsResponse = stub.listModelVersions(
     ListModelVersionsRequest.newBuilder()
@@ -1769,6 +1819,9 @@ for (ModelVersion modelVersion : modelVersions) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.ListModelVersions(
     {model_id: "petsID"},
     metadata,
@@ -1794,7 +1847,8 @@ stub.ListModelVersions(
 from clarifai_grpc.grpc.api import service_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 list_model_versions_response = stub.ListModelVersions(
     service_pb2.ListModelVersionsRequest(
@@ -1923,7 +1977,8 @@ To get a specific model version, you must provide the model\_id as well as the v
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 
 SingleModelVersionResponse getModelVersionResponse = stub.getModelVersion(
@@ -1944,6 +1999,9 @@ System.out.println(modelVersion);
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.GetModelVersion(
     {model_id: "petsID", version_id: "{YOUR_MODEL_VERSION_ID}"},
     metadata,
@@ -1968,7 +2026,8 @@ stub.GetModelVersion(
 from clarifai_grpc.grpc.api import service_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 get_model_version_response = stub.GetModelVersion(
     service_pb2.GetModelVersionRequest(
@@ -2101,7 +2160,8 @@ You can list all the inputs that were used to train the model.
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiInputResponse listModelInputsResponse = stub.listModelInputs(
     ListModelInputsRequest.newBuilder()
@@ -2122,6 +2182,9 @@ for (Input input : inputs) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.ListModelInputs(
     {model_id: "petsID"},
     metadata,
@@ -2147,7 +2210,8 @@ stub.ListModelInputs(
 from clarifai_grpc.grpc.api import service_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 list_model_inputs_response = stub.ListModelInputs(
     service_pb2.ListModelInputsRequest(model_id="petsID"),
@@ -2254,7 +2318,8 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 import java.util.List;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiInputResponse listModelInputsResponse = stub.listModelInputs(
     ListModelInputsRequest.newBuilder()
@@ -2276,6 +2341,9 @@ for (Input input : inputs) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.ListModelInputs(
     {
         model_id: "petsID",
@@ -2304,7 +2372,8 @@ stub.ListModelInputs(
 from clarifai_grpc.grpc.api import service_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 list_model_inputs_response = stub.ListModelInputs(
     service_pb2.ListModelInputsRequest(
@@ -2416,7 +2485,8 @@ You can delete a model using the model\_id.
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 BaseResponse deleteModelResponse = stub.deleteModel(
     DeleteModelRequest.newBuilder()
@@ -2432,6 +2502,9 @@ if (deleteModelResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.DeleteModel(
     {model_id: "petsID"},
     metadata,
@@ -2453,7 +2526,8 @@ stub.DeleteModel(
 from clarifai_grpc.grpc.api import service_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 delete_model_response = stub.DeleteModel(
     service_pb2.DeleteModelRequest(model_id="petsID"),
@@ -2562,7 +2636,8 @@ You can also delete a specific version of a model with the model\_id and version
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 BaseResponse deleteModelVersionResponse = stub.deleteModelVersion(
     DeleteModelVersionRequest.newBuilder()
@@ -2579,6 +2654,9 @@ if (deleteModelVersionResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.DeleteModelVersion(
     {
         model_id: "petsID",
@@ -2603,7 +2681,8 @@ stub.DeleteModelVersion(
 from clarifai_grpc.grpc.api import service_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 delete_model_version_response = stub.DeleteModelVersion(
     service_pb2.DeleteModelVersionRequest(
@@ -2731,7 +2810,8 @@ If you would like to delete all models associated with an application, you can a
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 BaseResponse deleteModelsResponse = stub.deleteModels(
     DeleteModelsRequest.newBuilder()
@@ -2747,6 +2827,9 @@ if (deleteModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.DeleteModels(
     {delete_all: true},
     metadata,
@@ -2768,7 +2851,8 @@ stub.DeleteModels(
 from clarifai_grpc.grpc.api import service_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 delete_models_response = stub.DeleteModels(
     service_pb2.DeleteModelsRequest(delete_all=True),
@@ -2879,7 +2963,8 @@ _Note: you can repeat this operation as often as you like. By adding more images
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 SingleModelResponse postModelVersionsResponse = stub.postModelVersions(
     PostModelVersionsRequest.newBuilder()
@@ -2898,6 +2983,9 @@ System.out.println("New model version ID: " + modelVersionId);
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostModelVersions(
     {model_id: "petsID"},
     metadata,
@@ -2919,7 +3007,8 @@ stub.PostModelVersions(
 from clarifai_grpc.grpc.api import service_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_model_versions = stub.PostModelVersions(
     service_pb2.PostModelVersionsRequest(
@@ -3047,7 +3136,8 @@ Once you have trained a model you are ready to use your new model to get predict
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
     PostModelOutputsRequest.newBuilder()
@@ -3079,6 +3169,9 @@ for (Concept concept : output.getData().getConceptsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostModelOutputs(
     {
         model_id: "petsID",
@@ -3114,7 +3207,8 @@ stub.PostModelOutputs(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
@@ -3293,7 +3387,8 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 import java.util.List;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiModelResponse postModelsSearchesResponse = stub.postModelsSearches(
     PostModelsSearchesRequest.newBuilder()
@@ -3318,6 +3413,9 @@ for (Model model : models) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostModelsSearches(
     {
         model_query: {
@@ -3349,7 +3447,8 @@ stub.PostModelsSearches(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_models_searches_response = stub.PostModelsSearches(
     service_pb2.PostModelsSearchesRequest(

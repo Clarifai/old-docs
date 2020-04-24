@@ -8,7 +8,8 @@ Many API calls are paginated. You can provide `page` and `per_page` params to th
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiInputResponse listInputsResponse = stub.listInputs(
     ListInputsRequest.newBuilder()
@@ -29,6 +30,9 @@ for (Input input : listInputsResponse.getInputsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.ListInputs(
     {page: 2, per_page: 20},
     metadata,
@@ -54,7 +58,8 @@ stub.ListInputs(
 from clarifai_grpc.grpc.api import service_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 list_inputs_response = stub.ListInputs(
     service_pb2.ListInputsRequest(page=2, per_page=20),

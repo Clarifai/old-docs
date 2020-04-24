@@ -16,7 +16,8 @@ When you add an input, it automatically gets predictions from the general model.
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postSearchesResponse = stub.postSearches(
     PostSearchesRequest.newBuilder().setQuery(
@@ -49,6 +50,9 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostSearches(
     {
         query: {
@@ -93,7 +97,8 @@ stub.PostSearches(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_searches_response = stub.PostSearches(
     service_pb2.PostSearchesRequest(
@@ -329,7 +334,8 @@ After you have [added inputs with concepts](../data-management/inputs.md#add-inp
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postSearchesResponse = stub.postSearches(
     PostSearchesRequest.newBuilder().setQuery(
@@ -362,6 +368,9 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostSearches(
     {
         query: {
@@ -406,7 +415,8 @@ stub.PostSearches(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_searches_response = stub.PostSearches(
     service_pb2.PostSearchesRequest(
@@ -647,7 +657,8 @@ You can combine a search to find inputs that have concepts you have supplied as 
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 // Here we search for images which we labeled with "cat" and for which the General prediction model does not find
 // a "dog" concept.
@@ -695,6 +706,9 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 // Here we search for images which we labeled with "cat" and for which the General prediction model does not find
 // a "dog" concept.
 stub.PostSearches(
@@ -754,7 +768,8 @@ stub.PostSearches(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 # Here we search for images which we labeled with "cat" and for which the General prediction model does not find
 # a "dog" concept.
@@ -980,7 +995,8 @@ You can use images to search through your collection. The API will return ranked
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postSearchesResponse = stub.postSearches(
     PostSearchesRequest.newBuilder().setQuery(
@@ -1013,6 +1029,9 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostSearches(
     {
         query: {
@@ -1055,7 +1074,8 @@ stub.PostSearches(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_searches_response = stub.PostSearches(
     service_pb2.PostSearchesRequest(
@@ -1263,7 +1283,8 @@ You can also search for an input by URL.
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postSearchesResponse = stub.postSearches(
     PostSearchesRequest.newBuilder().setQuery(
@@ -1294,6 +1315,9 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostSearches(
     {
         query: {
@@ -1334,7 +1358,8 @@ stub.PostSearches(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_searches_response = stub.PostSearches(
     service_pb2.PostSearchesRequest(

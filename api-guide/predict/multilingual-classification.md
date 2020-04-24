@@ -46,7 +46,8 @@ You can predict concepts in a language other then the Application's default, by 
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
     PostModelOutputsRequest.newBuilder()
@@ -84,6 +85,9 @@ for (Concept concept : output.getData().getConceptsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostModelOutputs(
     {
         model_id: "aaa03c23b3724a16a56b629203edc62c",
@@ -119,7 +123,8 @@ stub.PostModelOutputs(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
@@ -482,7 +487,8 @@ You can search for concepts in other languages even if the default language of y
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-...
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
 MultiConceptResponse postConceptsSearchesResponse = stub.postConceptsSearches(
     PostConceptsSearchesRequest.newBuilder()
@@ -507,6 +513,9 @@ for (Concept concept : postConceptsSearchesResponse.getConceptsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostConceptsSearches(
     {
         concept_query: {name: "人", language: "zh"}
@@ -535,7 +544,8 @@ stub.PostConceptsSearches(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_concepts_searches_response = stub.PostConceptsSearches(
     service_pb2.PostConceptsSearchesRequest(
@@ -706,6 +716,12 @@ You can also search for concepts in a different language:
 {% tabs %}
 {% tab title="gRPC Java" %}
 ```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 MultiConceptResponse postConceptsSearchesResponse = stub.postConceptsSearches(
     PostConceptsSearchesRequest.newBuilder()
         .setConceptQuery(
@@ -729,6 +745,9 @@ for (Concept concept : postConceptsSearchesResponse.getConceptsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
 stub.PostConceptsSearches(
     {
         concept_query: {name: "人", language: "ja"}
@@ -757,7 +776,8 @@ stub.PostConceptsSearches(
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-...
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 post_concepts_searches_response = stub.PostConceptsSearches(
     service_pb2.PostConceptsSearchesRequest(
