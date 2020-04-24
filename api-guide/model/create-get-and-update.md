@@ -623,6 +623,8 @@ MultiModelResponse patchModelsResponse = stub.patchModels(
                 .setId("petsID")
                 .setOutputInfo(
                     OutputInfo.newBuilder().setData(
+                        // We're removing the concept, so there's no need to specify
+                        // the concept value.
                         Data.newBuilder().addConcepts(Concept.newBuilder().setId("boscoe"))
                     )
                 )
@@ -644,6 +646,8 @@ stub.PatchModels(
         models: [
             {
                 id: "petsID",
+                // We're removing the concept, so there's no need to specify
+                // the concept value.
                 output_info: {data: {concepts: [{id: "boscoe"}]}}
             }
         ]
@@ -677,6 +681,8 @@ patch_models_response = stub.PatchModels(
                 id="petsID",
                 output_info=resources_pb2.OutputInfo(
                     data=resources_pb2.Data(
+                        # We're removing the concept, so there's no need to specify
+                        # the concept value.
                         concepts=[resources_pb2.Concept(id="boscoe")]
                     ),
                 )

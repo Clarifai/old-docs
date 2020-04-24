@@ -2172,6 +2172,8 @@ MultiInputResponse patchInputsResponse = stub.patchInputs(
                 .setData(
                     Data.newBuilder()
                         .addConcepts(
+                            // We're removing the concept, so there's no need to specify
+                            // the concept value.
                             Concept.newBuilder().setId("tree")
                         )
                 )
@@ -2197,6 +2199,8 @@ MultiInputResponse patchInputsResponse = stub.patchInputs(
                 .setData(
                     Data.newBuilder()
                         .addConcepts(
+                            // We're removing the concept, so there's no need to specify
+                            // the concept value.
                             Concept.newBuilder().setId("tree")
                         )
                 )
@@ -2226,6 +2230,8 @@ patch_inputs_response = stub.PatchInputs(
                 id="{YOUR_INPUT_ID}",
                 data=resources_pb2.Data(
                     concepts=[
+                        # We're removing the concept, so there's no need to specify
+                        # the concept value.
                         resources_pb2.Concept(id="water"),
                     ]
                 )
@@ -2404,6 +2410,8 @@ MultiInputResponse patchInputsResponse = stub.patchInputs(
                 .setId("{YOUR_INPUT_ID_1}")
                 .setData(
                     Data.newBuilder()
+                        // We're removing the concepts, so there's no need to specify
+                        // the concept value.
                         .addConcepts(
                             Concept.newBuilder().setId("tree")
                         )
@@ -2444,6 +2452,8 @@ stub.PatchInputs(
         inputs: [
             {
                 id: "{YOUR_INPUT_ID_1}",
+                // We're removing the concepts, so there's no need to specify
+                // the concept value.
                 data: {concepts: [{id: "tree"}, {id: "water"}]}
             },
             {
@@ -2481,6 +2491,8 @@ patch_inputs_response = stub.PatchInputs(
                 id="{YOUR_INPUT_ID_1}",
                 data=resources_pb2.Data(
                     concepts=[
+                        # We're removing the concepts, so there's no need to specify
+                        # the concept value.
                         resources_pb2.Concept(id="tree"),
                         resources_pb2.Concept(id="water"),
                     ]
