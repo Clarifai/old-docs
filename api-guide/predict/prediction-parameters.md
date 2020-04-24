@@ -106,16 +106,16 @@ post_model_outputs_response = stub.PostModelOutputs(
                 )
             )
         ],
-        model={
-            "output_info": {
-                "output_config": {
-                    "select_concepts": [
-                        {"name": "train"},
-                        {"id": "ai_6kTjGfF6"}
+        model=resources_pb2.Model(
+            output_info=resources_pb2.OutputInfo(
+                output_config=resources_pb2.OutputConfig(
+                    select_concepts=[
+                        resources_pb2.Concept(name="train"),
+                        resources_pb2.Concept(id="ai_6kTjGfF6")
                     ]
-                }
-            }
-        }
+                )
+            )
+        )
     ),
     metadata=metadata
 )
@@ -428,13 +428,13 @@ post_model_outputs_response = stub.PostModelOutputs(
                 )
             )
         ],
-        model={
-            "output_info": {
-                "output_config": {
-                    "max_concepts": 3
-                }
-            }
-        }
+        model=resources_pb2.Model(
+            output_info=resources_pb2.OutputInfo(
+                output_config=resources_pb2.OutputConfig(
+                    max_concepts=3
+                )
+            )
+        )
     ),
     metadata=metadata
 )
@@ -748,13 +748,13 @@ post_model_outputs_response = stub.PostModelOutputs(
                 )
             )
         ],
-        model={
-            "output_info": {
-                "output_config": {
-                    "min_value": 0.95
-                }
-            }
-        }
+        model=resources_pb2.Model(
+            output_info=resources_pb2.OutputInfo(
+                output_config=resources_pb2.OutputConfig(
+                    min_value=0.95
+                )
+            )
+        )
     ),
     metadata=metadata
 )

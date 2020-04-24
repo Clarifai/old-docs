@@ -133,13 +133,13 @@ post_model_outputs_response = stub.PostModelOutputs(
                 )
             )
         ],
-        model={
-            "output_info": {
-                "output_config": {
-                    "language": "zh"  # Chinese
-                }
-            }
-        }
+        model=resources_pb2.Model(
+            output_info=resources_pb2.OutputInfo(
+                output_config=resources_pb2.OutputConfig(
+                    language="zh"  # Chinese
+                )
+            )
+        )
     ),
     metadata=metadata
 )
