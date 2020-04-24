@@ -14,7 +14,7 @@ For new projects, we recommend using one of the auto-generated clients built usi
 clients may offer better performance since they use a gRPC channel where the network transfer of the
 data is optimized. The data is serialized with [Protocol Buffers](https://developers.google.com/protocol-buffers/).
 
-Since the gRPC clients are auto-generated and will always have the latest available Clarifai API
+Since the gRPC clients are auto-generated, they will always have the latest available Clarifai API
 feature-set.
 
 It's possible to make these clients use the standard HTTP+JSON channel, while enjoying a better
