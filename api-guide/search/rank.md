@@ -6,176 +6,132 @@ Rank Order your search results with the intuitive insights of AI. Your model can
 
 Once your images are indexed, you can search for them by concept.
 
-{% tabs %}
-{% tab title="js" %}
-```javascript
-app.inputs.search({ concept: {name: 'people'} }).then(
-  function(response) {
-    // do something with response
-  },
-  function(err) {
-    // there was an error
-  }
-);
-```
-{% endtab %}
-
-{% tab title="python" %}
-```python
-from clarifai.rest import ClarifaiApp
-app = ClarifaiApp(api_key='YOUR_API_KEY')
-
-# search by public concept
-app.inputs.search_by_predicted_concepts(concept='people')
-
-# search by a list of concepts
-app.inputs.search_by_predicted_concepts(concepts=['people'])
-
-# search by concept id
-app.inputs.search_by_predicted_concepts(concept_id='ai_dP13sXL4')
-
-# search by a list of concept ids
-app.inputs.search_by_predicted_concepts(concept_ids=['ai_dP13sXL4'])
-```
-{% endtab %}
-
-{% tab title="java" %}
-```java
-client.searchInputs(SearchClause.matchConcept(Concept.forName("people")))
-    .getPage(1)
-    .executeSync();
-```
-{% endtab %}
-
-{% tab title="csharp" %}
-```csharp
-using System.Threading.Tasks;
-using Clarifai.API;
-using Clarifai.DTOs.Searches;
-
-namespace YourNamespace
-{
-    public class YourClassName
-    {
-        public static async Task Main()
-        {
-            var client = new ClarifaiClient("YOUR_API_KEY");
-
-            await client.SearchInputs(SearchBy.ConceptName("people"))
-                .Page(1)
-                .ExecuteAsync();
-        }
-    }
-}
-```
-{% endtab %}
-
-{% tab title="objective-c" %}
-```text
-// First create a search term with a concept you want to search.
-ClarifaiConcept *conceptFromGeneralModel = [[ClarifaiConcept alloc] initWithConceptName:@"people"];
-ClarifaiSearchTerm *searchTerm = [ClarifaiSearchTerm searchByPredictedConcept:conceptFromGeneralModel];
-
-[app search:@[searchTerm] page:@1 perPage:@20 completion:^(NSArray<ClarifaiSearchResult *> *results, NSError *error) {
-  // Print output of first search result.
-  NSLog(@"inputID: %@", results[0].inputID);
-  NSLog(@"URL: %@", results[0].mediaURL);
-  NSLog(@"probability of public concept: %@", results[0].score);
-}];
-```
-{% endtab %}
-
-{% tab title="php" %}
-```php
-use Clarifai\API\ClarifaiClient;
-use Clarifai\DTOs\Searches\SearchBy;
-use Clarifai\DTOs\Searches\SearchInputsResult;
-
-$client = new ClarifaiClient('YOUR_API_KEY');
-
-$response = $client->searchInputs(SearchBy::conceptName('people'))->executeSync();
-
-if ($response-> isSuccessful()) {
-
-    /** @var SearchInputsResult $result */
-    $result = $response->get();
-    foreach ($result->searchHits() as $searchHit) {
-        echo $searchHit->input()->id() . ' ' . $searchHit->score() . "\n";
-    }
-} else {
-    echo "Response is not successful. Reason: \n";
-    echo $response->status()->description() . "\n";
-    echo $response->status()->errorDetails() . "\n";
-    echo "Status code: " . $response->status()->statusCode();
-}
-```
-{% endtab %}
-
-{% tab title="cURL" %}
-```text
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "query": {
-      "ands": [
-        {
-          "output": {
-            "data": {
-              "concepts": [
-                {
-                  "name": "people"
-                }
-              ]
-            }
-          }
-        }
-      ]
-    }
-  }'\
-  https://api.clarifai.com/v2/searches
-```
-{% endtab %}
-{% endtabs %}
-
-{% tabs %}
-{% tab title="Response JSON" %}
-```javascript
-{
-  "status": {
-    "code": 10000,
-    "description": "Ok"
-  },
-  "id":"d275a3c0f3e748378617d6ba9bd0f8d4",
-  "hits": [
-    {
-      "score": 0.98155165,
-      "input": {
-        "id": "f96ca3bbf02041c59addcc13e3468b7d",
-        "created_at": "2016-11-22T17:06:02Z",
-        "data": {
-          "image": {
-            "url": "https://samples.clarifai.com/wedding.jpg"
-          }
-        },
-        "status": {
-          "code": 30000,
-          "description": "Download complete"
-        }
-      }
-    }
-  ]
-}
-```
-{% endtab %}
-{% endtabs %}
-
 ### By Public Concepts
 
 When you add an input, it automatically gets predictions from the general model. You can search for those predictions.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiSearchResponse postSearchesResponse = stub.postSearches(
+    PostSearchesRequest.newBuilder().setQuery(
+        Query.newBuilder().addAnds(
+            And.newBuilder().setOutput( // Setting Output indicates we search for images that have the concept(s)
+                                        // which were predicted by the General model.
+                Output.newBuilder().setData(
+                    Data.newBuilder().addConcepts(  // You can search by multiple concepts.
+                        Concept.newBuilder()
+                            .setName("people")  // You could search by concept ID as well.
+                            .setValue(1f)  // Value of 0 will search for images that don't have the concept.
+                    )
+                )
+            )
+        )
+    )
+    .build()
+);
+
+if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
+}
+
+System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
+for (Hit hit : postSearchesResponse.getHitsList()) {
+    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostSearches(
+    {
+        query: {
+            ands: [
+                {
+                    output: {  // Setting Output indicates we search for images that have the concept(s)
+                               // which were predicted by the General model.
+                        data: {
+                            concepts: [  // You can search by multiple concepts.
+                                {
+                                    name: "people",  // You could search by concept ID as well.
+                                    value: 1  // Value of 0 will search for images that don't have the concept
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found inputs:");
+        for (const hit of response.hits) {
+            console.log("\tScore " + hit.score + " for " + hit.input.id);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_searches_response = stub.PostSearches(
+    service_pb2.PostSearchesRequest(
+        query=resources_pb2.Query(
+            ands=[
+                resources_pb2.And(
+                    output=resources_pb2.Output( # Setting Output indicates we search for images that have the concept(s)
+                                                 # which were predicted by the General model.
+                        data=resources_pb2.Data(
+                            concepts=[  # You can search by multiple concepts.
+                                resources_pb2.Concept(
+                                    name="people",  # You could search by concept ID as well.
+                                    value=1  # Value of 0 will search for images that don't have the concept.
+                                )
+                            ]
+                        )
+                    )
+                )
+            ]
+        )
+    ),
+    metadata=metadata
+)
+
+if post_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post searches failed, status: " + post_searches_response.status.description)
+
+print("Found inputs:")
+for hit in post_searches_response.hits:
+    print("\tScore %.2f for %s" % (hit.score, hit.input.id))
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.search([
@@ -373,6 +329,127 @@ curl -X POST \
 After you have [added inputs with concepts](../data-management/inputs.md#add-inputs-with-concepts), you can search by those concepts.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiSearchResponse postSearchesResponse = stub.postSearches(
+    PostSearchesRequest.newBuilder().setQuery(
+        Query.newBuilder().addAnds(
+            And.newBuilder().setInput( // Setting Input indicates we search for images that have the concept(s)
+                                       // which we added to the input manually.
+                Input.newBuilder().setData(
+                    Data.newBuilder().addConcepts(  // You can search by multiple concepts.
+                        Concept.newBuilder()
+                            .setName("people")  // You could search by concept ID as well.
+                            .setValue(1f)  // Value of 0 will search for images that we marked not to have the concept.
+                    )
+                )
+            )
+        )
+    )
+    .build()
+);
+
+if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
+}
+
+System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
+for (Hit hit : postSearchesResponse.getHitsList()) {
+    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostSearches(
+    {
+        query: {
+            ands: [
+                {
+                    input: {  // Setting Input indicates we search for images that have the concept(s)
+                              // which we added to the input manually.
+                        data: {
+                            concepts: [  // You can search by multiple concepts.
+                                {
+                                    name: "people",  // You could search by concept ID as well.
+                                    value: 1  // Value of 0 will search for images that we marked not to have the concept.
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found inputs:");
+        for (const hit of response.hits) {
+            console.log("\tScore " + hit.score + " for " + hit.input.id);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_searches_response = stub.PostSearches(
+    service_pb2.PostSearchesRequest(
+        query=resources_pb2.Query(
+            ands=[
+                resources_pb2.And(
+                    input=resources_pb2.Input(  # Setting Input indicates we search for images that have the concept(s)
+                                                # which we added to the input manually.
+                        data=resources_pb2.Data(
+                            concepts=[  # You can search by multiple concepts.
+                                resources_pb2.Concept(
+                                    name="people",  # You could search by concept ID as well.
+                                    value=1  # Value of 0 will search for images that we marked not to have the concept.
+                                )
+                            ]
+                        )
+                    )
+                )
+            ]
+        )
+    ),
+    metadata=metadata
+)
+
+if post_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post searches failed, status: " + post_searches_response.status.description)
+
+print("Found inputs:")
+for hit in post_searches_response.hits:
+    print("\tScore %.2f for %s" % (hit.score, hit.input.id))
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.search([
@@ -575,6 +652,172 @@ curl -X POST \
 You can combine a search to find inputs that have concepts you have supplied as well as predictions from your model.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+// Here we search for images which we labeled with "cat" and for which the General prediction model does not find
+// a "dog" concept.
+MultiSearchResponse postSearchesResponse = stub.postSearches(
+    PostSearchesRequest.newBuilder().setQuery(
+        Query.newBuilder()
+            .addAnds(
+                And.newBuilder().setInput( // Setting Input indicates we search for images that have the concept(s)
+                                           // which we added to the input manually.
+                    Input.newBuilder().setData(
+                        Data.newBuilder().addConcepts(
+                            Concept.newBuilder()
+                                .setName("cat")
+                                .setValue(1f)
+                        )
+                    )
+                )
+            )
+            .addAnds(
+                And.newBuilder().setOutput(  // Setting Output indicates we search for images that have the concept(s)
+                                             // which were predicted by the General model.
+                    Output.newBuilder().setData(
+                        Data.newBuilder().addConcepts(
+                            Concept.newBuilder()
+                                .setName("dog")
+                                .setValue(0f)  // Because of 0, the dog must not be present in the image.
+                        )
+                    )
+                )
+            )
+    )
+    .build()
+);
+
+if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
+}
+
+System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
+for (Hit hit : postSearchesResponse.getHitsList()) {
+    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+// Here we search for images which we labeled with "cat" and for which the General prediction model does not find
+// a "dog" concept.
+stub.PostSearches(
+    {
+        query: {
+            ands: [
+                {
+                    input: {  // Setting Input indicates we search for images that have the concept(s)
+                              // which we added to the input manually.
+                        data: {
+                            concepts: [
+                                {
+                                    name: "cat",
+                                    value: 1
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    output: {  // Setting Output indicates we search for images that have the concept(s)
+                               // which were predicted by the General model.
+                        data: {
+                            concepts: [
+                                {
+                                    name: "dog",
+                                    value: 0
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found inputs:");
+        for (const hit of response.hits) {
+            console.log("\tScore " + hit.score + " for " + hit.input.id);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+# Here we search for images which we labeled with "cat" and for which the General prediction model does not find
+# a "dog" concept.
+post_searches_response = stub.PostSearches(
+    service_pb2.PostSearchesRequest(
+        query=resources_pb2.Query(
+            ands=[
+                resources_pb2.And(
+                    input=resources_pb2.Input(  # Setting Input indicates we search for images that have the concept(s)
+                                                # which we added to the input manually.
+                        data=resources_pb2.Data(
+                            concepts=[
+                                resources_pb2.Concept(
+                                    name="cat",
+                                    value=1
+                                )
+                            ]
+                        )
+                    )
+                ),
+                resources_pb2.And(
+                    output=resources_pb2.Output(  # Setting Output indicates we search for images that have the concept(s)
+                                                  # which were predicted by the General model.
+                        data=resources_pb2.Data(
+                            concepts=[
+                                resources_pb2.Concept(
+                                    name="dog",
+                                    value=0
+                                )
+                            ]
+                        )
+                    )
+                )
+            ]
+        )
+    ),
+    metadata=metadata
+)
+
+if post_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post searches failed, status: " + post_searches_response.status.description)
+
+print("Found inputs:")
+for hit in post_searches_response.hits:
+    print("\tScore %.2f for %s" % (hit.score, hit.input.id))
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.search([
@@ -747,12 +990,129 @@ https://api.clarifai.com/v2/searches
 You can use images to search through your collection. The API will return ranked results based on how similar the results are to the image you provided in your query.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiSearchResponse postSearchesResponse = stub.postSearches(
+    PostSearchesRequest.newBuilder().setQuery(
+        Query.newBuilder().addAnds(
+            And.newBuilder().setOutput(
+                Output.newBuilder().setInput(
+                    Input.newBuilder().setData(
+                        Data.newBuilder().setImage(
+                            Image.newBuilder()
+                                .setUrl("{YOUR_IMAGE_URL}")
+                        )
+                    )
+                )
+            )
+        )
+    )
+    .build()
+);
+
+if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
+}
+
+System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
+for (Hit hit : postSearchesResponse.getHitsList()) {
+    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostSearches(
+    {
+        query: {
+            ands: [
+                {
+                    output: {
+                        input: {
+                            data: {
+                                image: {
+                                    url: "{YOUR_IMAGE_URL}"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found inputs:");
+        for (const hit of response.hits) {
+            console.log("\tScore " + hit.score + " for " + hit.input.id);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_searches_response = stub.PostSearches(
+    service_pb2.PostSearchesRequest(
+        query=resources_pb2.Query(
+            ands=[
+                resources_pb2.And(
+                    output=resources_pb2.Output(
+                        input=resources_pb2.Input(
+                            data=resources_pb2.Data(
+                                image=resources_pb2.Image(
+                                    url="{YOUR_IMAGE_URL}"
+                                )
+                            )
+                        )
+                    )
+                )
+            ]
+        )
+    ),
+    metadata=metadata
+)
+
+if post_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post searches failed, status: " + post_searches_response.status.description)
+
+print("Found inputs:")
+for hit in post_searches_response.hits:
+    print("\tScore %.2f for %s" % (hit.score, hit.input.id))
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.search(
   {
     input: {
-      url: 'https://samples.clarifai.com/puppy.jpg'
+      url: 'https://samples.clarifai.com/puppy.jpeg'
     }
   }
 ).then(
@@ -918,13 +1278,124 @@ curl -X POST \
 You can also search for an input by URL.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiSearchResponse postSearchesResponse = stub.postSearches(
+    PostSearchesRequest.newBuilder().setQuery(
+        Query.newBuilder().addAnds(
+            And.newBuilder().setInput(
+                Input.newBuilder().setData(
+                    Data.newBuilder().setImage(
+                        Image.newBuilder()
+                            .setUrl("{YOUR_IMAGE_URL}")
+                    )
+                )
+            )
+        )
+    )
+    .build()
+);
+
+if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
+}
+
+System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
+for (Hit hit : postSearchesResponse.getHitsList()) {
+    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostSearches(
+    {
+        query: {
+            ands: [
+                {
+                    input: {
+                        data: {
+                            image: {
+                                url: "{YOUR_IMAGE_URL}"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found inputs:");
+        for (const hit of response.hits) {
+            console.log("\tScore " + hit.score + " for " + hit.input.id);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_searches_response = stub.PostSearches(
+    service_pb2.PostSearchesRequest(
+        query=resources_pb2.Query(
+            ands=[
+                resources_pb2.And(
+                    input=resources_pb2.Input(
+                        data=resources_pb2.Data(
+                            image=resources_pb2.Image(
+                                url="{YOUR_IMAGE_URL}"
+                            )
+                        )
+                    )
+                )
+            ]
+        )
+    ),
+    metadata=metadata
+)
+
+if post_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post searches failed, status: " + post_searches_response.status.description)
+
+print("Found inputs:")
+for hit in post_searches_response.hits:
+    print("\tScore %.2f for %s" % (hit.score, hit.input.id))
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.search(
   {
     input: {
       type: 'input',
-      url: 'https://samples.clarifai.com/puppy.jpg'
+      url: 'https://samples.clarifai.com/puppy.jpeg'
     }
   }
 ).then(
@@ -951,7 +1422,7 @@ app.inputs.search_by_metadata(meta)
 {% tab title="java" %}
 ```java
 // Lookup images with this URL
-client.searchInputs(SearchClause.matchImageURL(ClarifaiImage.of("https://samples.clarifai.com/puppy.jpg")))
+client.searchInputs(SearchClause.matchImageURL(ClarifaiImage.of("https://samples.clarifai.com/puppy.jpeg")))
     .getPage(1)
     .executeSync();
 ```
@@ -1050,147 +1521,3 @@ curl -X POST \
 ```
 {% endtab %}
 {% endtabs %}
-
-### By Image With Crop
-
-You can search using a crop of an image through your collection. The API will still return ranked results based upon on how similar the results are to the crop of the image you provide in your query.
-
-{% tabs %}
-{% tab title="js" %}
-```javascript
-app.inputs.search(
-  {
-    input: {
-      url: 'https://samples.clarifai.com/puppy.jpg',
-      crop: [0.1, 0.1, 0.9, 0.9]
-    }
-  }
-).then(
-  function(response) {
-    // do something with response
-  },
-  function(err) {
-    // there was an error
-  }
-);
-```
-{% endtab %}
-
-{% tab title="python" %}
-```python
-from clarifai.rest import ClarifaiApp
-app = ClarifaiApp(api_key='YOUR_API_KEY')
-
-search = app.inputs.search_by_image(url='https://samples.clarifai.com/puppy.jpg', crop=[0.1, 0.1, 0.9, 0.9])
-
-print search
-```
-{% endtab %}
-
-{% tab title="java" %}
-```java
-client.searchInputs(SearchClause.matchImageVisually(ClarifaiImage.of("https://samples.clarifai.com/puppy.jpg")
-    .withCrop(Crop.create()
-        .top(0.1F)
-        .left(0.1F)
-        .bottom(0.9F)
-        .right(0.9F)
-    )
-))
-.getPage(1)
-.executeSync();
-```
-{% endtab %}
-
-{% tab title="csharp" %}
-```csharp
-using System.Threading.Tasks;
-using Clarifai.API;
-using Clarifai.DTOs;
-using Clarifai.DTOs.Searches;
-
-namespace YourNamespace
-{
-    public class YourClassName
-    {
-        public static async Task Main()
-        {
-            var client = new ClarifaiClient("YOUR_API_KEY");
-
-            await client.SearchInputs(SearchBy.ImageVisually(
-                    "https://samples.clarifai.com/metro-north.jpg",
-                    crop: new Crop(0.1M, 0.1M, 0.9M, 0.9M)))
-                .Page(1)
-                .ExecuteAsync();
-        }
-    }
-}
-```
-{% endtab %}
-
-{% tab title="objective-c" %}
-```text
-// Coming Soon
-```
-{% endtab %}
-
-{% tab title="php" %}
-```php
-use Clarifai\API\ClarifaiClient;
-use Clarifai\DTOs\Crop;
-use Clarifai\DTOs\Searches\SearchBy;
-use Clarifai\DTOs\Searches\SearchInputsResult;
-
-$client = new ClarifaiClient('YOUR_API_KEY');
-
-$response = $client->searchInputs(
-        SearchBy::urlImageVisually('https://samples.clarifai.com/metro-north.jpg')
-            ->withCrop(new Crop(0.1, 0.1, 0.9, 0.9)))
-    ->executeSync();
-
-if ($response->isSuccessful()) {
-    echo "Response is successful.\n";
-
-    /** @var SearchInputsResult $result */
-    $result = $response->get();
-
-    foreach ($result->searchHits() as $searchHit) {
-        echo $searchHit->input()->id() . ' ' . $searchHit->score() . "\n";
-    }
-} else {
-    echo "Response is not successful. Reason: \n";
-    echo $response->status()->description() . "\n";
-    echo $response->status()->errorDetails() . "\n";
-    echo "Status code: " . $response->status()->statusCode();
-}
-```
-{% endtab %}
-
-{% tab title="cURL" %}
-```text
-curl -X POST \
-  -H 'authorization: Key YOUR_API_KEY' \
-  -H 'content-type: application/json' \
-  -d '{
-  "query": {
-    "ands": [
-      {
-        "output": {
-          "input": {
-              "data": {
-                "image": {
-                    "url": "https://samples.clarifai.com/puppy.jpg",
-                    "crop": [0.1,0.1,0.9,0.9]
-                }
-            }
-          }
-        }
-      }
-    ]
-  }
-}'\
-https://api.clarifai.com/v2/searches
-```
-{% endtab %}
-{% endtabs %}
-

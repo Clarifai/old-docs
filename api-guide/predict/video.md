@@ -15,6 +15,121 @@ If your video exceeds the limits, please follow our [tutorial](https://www.clari
 Below is an example of how you would send video URLs and receive back predictions from the `general` model.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
+    PostModelOutputsRequest.newBuilder()
+        .setModelId("{THE_MODEL_ID}")
+        .setVersionId("{THE_MODEL_VERSION_ID")  // This is optional. Defaults to the latest model version.
+        .addInputs(
+            Input.newBuilder().setData(
+                Data.newBuilder().setVideo(
+                    Video.newBuilder().setUrl("https://samples.clarifai.com/beer.mp4")
+                )
+            )
+        )
+        .build()
+);
+
+if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
+}
+
+// Since we have one input, one output will exist here.
+Output output = postModelOutputsResponse.getOutputs(0);
+
+// A separate prediction is available for each "frame".
+for (Frame frame : output.getData().getFramesList()) {
+    System.out.println("Predicted concepts on frame " + frame.getFrameInfo().getTime() + ":");
+    for (Concept concept : frame.getData().getConceptsList()) {
+        System.out.printf("\t%s %.2f%n", concept.getName(), concept.getValue());
+    }
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostModelOutputs(
+    {
+        model_id: "{THE_MODEL_ID}",
+        version_id: "{THE_MODEL_VERSION_ID}",  // This is optional. Defaults to the latest model version.
+        inputs: [
+            {data: {video: {url: "https://samples.clarifai.com/beer.mp4"}}}
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post model outputs failed, status: " + response.status.description);
+        }
+
+        // Since we have one input, one output will exist here.
+        const output = response.outputs[0]
+
+        // A separate prediction is available for each "frame".
+        for (const frame of output.data.frames) {
+            console.log("Predicted concepts on frame " + frame.frame_info.time + ":");
+            for (const concept of frame.data.concepts) {
+                console.log("\t" + concept.name + " " + concept.value);
+            }
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_model_outputs_response = stub.PostModelOutputs(
+    service_pb2.PostModelOutputsRequest(
+        model_id="{THE_MODEL_ID}",
+        version_id="{THE_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    video=resources_pb2.Video(
+                        url="https://samples.clarifai.com/beer.mp4"
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+
+# Since we have one input, one output will exist here.
+output = post_model_outputs_response.outputs[0]
+
+# A separate prediction is available for each "frame".
+for frame in output.data.frames:
+    print("Predicted concepts on frame " + str(frame.frame_info.time) + ":")
+    for concept in frame.data.concepts:
+        print("\t%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 const Clarifai = require('clarifai');
@@ -1481,6 +1596,130 @@ curl -X POST \
 Below is an example of how you would send the bytes of a video and receive back predictions from the general model.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
+    PostModelOutputsRequest.newBuilder()
+        .setModelId("{THE_MODEL_ID}")
+        .setVersionId("{THE_MODEL_VERSION_ID")  // This is optional. Defaults to the latest model version.
+        .addInputs(
+            Input.newBuilder().setData(
+                Data.newBuilder().setVideo(
+                    Video.newBuilder()
+                        .setBase64(ByteString.copyFrom(Files.readAllBytes(
+                            new File("{YOUR_VIDEO_FILE_LOCATION}").toPath()
+                        )))
+                )
+            )
+        )
+        .build()
+);
+
+if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
+}
+
+// Since we have one input, one output will exist here.
+Output output = postModelOutputsResponse.getOutputs(0);
+
+// A separate prediction is available for each "frame".
+for (Frame frame : output.getData().getFramesList()) {
+    System.out.println("Predicted concepts on frame " + frame.getFrameInfo().getTime() + ":");
+    for (Concept concept : frame.getData().getConceptsList()) {
+        System.out.printf("\t%s %.2f%n", concept.getName(), concept.getValue());
+    }
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+const fs = require("fs");
+const videoBytes = fs.readFileSync("{YOUR_VIDEO_FILE_LOCATION}");
+
+stub.PostModelOutputs(
+    {
+        model_id: "{THE_MODEL_ID}",
+        version_id: "{YOUR_MODEL_VERSION_ID}",  // This is optional. Defaults to the latest model version.
+        inputs: [
+            {data: {video: {base64: videoBytes}}}
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post model outputs failed, status: " + response.status.description);
+        }
+
+        // Since we have one input, one output will exist here.
+        const output = response.outputs[0]
+
+        // A separate prediction is available for each "frame".
+        for (const frame of output.data.frames) {
+            console.log("Predicted concepts on frame " + frame.frame_info.time + ":");
+            for (const concept of frame.data.concepts) {
+                console.log("\t" + concept.name + " " + concept.value);
+            }
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+with open("{YOUR_VIDEO_FILE_LOCATION}", "rb") as f:
+    file_bytes = f.read()
+
+post_model_outputs_response = stub.PostModelOutputs(
+    service_pb2.PostModelOutputsRequest(
+        model_id="{THE_MODEL_ID}",
+        version_id="{THE_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    video=resources_pb2.Video(
+                        base64=file_bytes
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+
+# Since we have one input, one output will exist here.
+output = post_model_outputs_response.outputs[0]
+
+# A separate prediction is available for each "frame".
+for frame in output.data.frames:
+    print("Predicted concepts on frame " + str(frame.frame_info.time) + ":")
+    for concept in frame.data.concepts:
+        print("\t%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 const Clarifai = require('clarifai');

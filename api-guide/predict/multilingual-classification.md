@@ -41,6 +41,126 @@ When you create a new Application, you must specify a default language. This wil
 You can predict concepts in a language other then the Application's default, by explicitly passing in the language. Here is how you predict concepts in Chinese:
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
+    PostModelOutputsRequest.newBuilder()
+        .setModelId("aaa03c23b3724a16a56b629203edc62c")  // This is model ID of the publicly available General model.
+        .addInputs(
+            Input.newBuilder().setData(
+                Data.newBuilder().setImage(
+                    Image.newBuilder().setUrl("https://samples.clarifai.com/metro-north.jpg")
+                )
+            )
+        )
+        .setModel(
+            Model.newBuilder().setOutputInfo(
+                OutputInfo.newBuilder().setOutputConfig(
+                    OutputConfig.newBuilder().setLanguage("zh")  // Chinese
+                )
+            )
+        )
+        .build()
+);
+
+if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
+}
+
+// Since we have one input, one output will exist here.
+Output output = postModelOutputsResponse.getOutputs(0);
+
+System.out.println("Predicted concepts:");
+for (Concept concept : output.getData().getConceptsList()) {
+    System.out.printf("%s %.2f%n", concept.getName(), concept.getValue());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostModelOutputs(
+    {
+        model_id: "aaa03c23b3724a16a56b629203edc62c",
+        inputs: [
+            {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
+        ],
+        model: {output_info: {output_config: {language: "zh"}}}
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post model outputs failed, status: " + response.status.description);
+        }
+
+        // Since we have one input, one output will exist here.
+        const output = response.outputs[0];
+
+        console.log("Predicted concepts:");
+        for (const concept of output.data.concepts) {
+            console.log(concept.name + " " + concept.value);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_model_outputs_response = stub.PostModelOutputs(
+    service_pb2.PostModelOutputsRequest(
+        model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the publicly available General model.
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/metro-north.jpg"
+                    )
+                )
+            )
+        ],
+        model=resources_pb2.Model(
+            output_info=resources_pb2.OutputInfo(
+                output_config=resources_pb2.OutputConfig(
+                    language="zh"  # Chinese
+                )
+            )
+        )
+    ),
+    metadata=metadata
+)
+
+if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+
+# Since we have one input, one output will exist here.
+output = post_model_outputs_response.outputs[0]
+
+print("Predicted concepts:")
+for concept in output.data.concepts:
+    print("\t%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.predict(Clarifai.GENERAL_MODEL, "https://samples.clarifai.com/metro-north.jpg", {language: 'zh'}).then(
@@ -362,6 +482,90 @@ curl -X POST \
 You can search for concepts in other languages even if the default language of your application is English. When you add inputs to your application, concepts are predicted for every language. Here is an example of searching for '人' which is simplified Chinese for 'people'.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiConceptResponse postConceptsSearchesResponse = stub.postConceptsSearches(
+    PostConceptsSearchesRequest.newBuilder()
+        .setConceptQuery(
+            ConceptQuery.newBuilder()
+                .setName("人")
+                .setLanguage("zh")
+        )
+        .build()
+);
+
+if (postConceptsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post concepts searches failed, status: " + postConceptsSearchesResponse.getStatus());
+}
+
+System.out.println("Found concepts:");
+for (Concept concept : postConceptsSearchesResponse.getConceptsList()) {
+    System.out.printf("\t%s %.2f%n", concept.getName(), concept.getValue());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostConceptsSearches(
+    {
+        concept_query: {name: "人", language: "zh"}
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post concepts searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found concepts:");
+        for (const concept of response.concepts) {
+            console.log("\t" + concept.name + " " + concept.value);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_concepts_searches_response = stub.PostConceptsSearches(
+    service_pb2.PostConceptsSearchesRequest(
+        concept_query=resources_pb2.ConceptQuery(
+            name="人",
+            language="zh"
+        )
+    ),
+    metadata=metadata
+)
+
+if post_concepts_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post concepts searches failed, status: " + post_concepts_searches_response.status.description)
+
+print("Found concepts:")
+for concept in post_concepts_searches_response.concepts:
+    print("\t%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.search({
@@ -510,6 +714,90 @@ curl -X POST \
 You can also search for concepts in a different language:
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiConceptResponse postConceptsSearchesResponse = stub.postConceptsSearches(
+    PostConceptsSearchesRequest.newBuilder()
+        .setConceptQuery(
+            ConceptQuery.newBuilder()
+                .setName("人")
+                .setLanguage("ja")
+        )
+        .build()
+);
+
+if (postConceptsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post concepts searches failed, status: " + postConceptsSearchesResponse.getStatus());
+}
+
+System.out.println("Found concepts:");
+for (Concept concept : postConceptsSearchesResponse.getConceptsList()) {
+    System.out.printf("\t%s %.2f%n", concept.getName(), concept.getValue());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostConceptsSearches(
+    {
+        concept_query: {name: "人", language: "ja"}
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post concepts searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found concepts:");
+        for (const concept of response.concepts) {
+            console.log("\t" + concept.name + " " + concept.value);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_concepts_searches_response = stub.PostConceptsSearches(
+    service_pb2.PostConceptsSearchesRequest(
+        concept_query=resources_pb2.ConceptQuery(
+            name="人",
+            language="ja"
+        )
+    ),
+    metadata=metadata
+)
+
+if post_concepts_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post concepts searches failed, status: " + post_concepts_searches_response.status.description)
+
+print("Found concepts:")
+for concept in post_concepts_searches_response.concepts:
+    print("\t%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.concepts.search('人*', 'zh').then(

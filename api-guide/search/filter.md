@@ -52,6 +52,120 @@ Then the following searches will find this:
 How to perform searches:
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+import com.google.protobuf.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiSearchResponse postSearchesResponse = stub.postSearches(
+    PostSearchesRequest.newBuilder().setQuery(
+        Query.newBuilder().addAnds(
+            And.newBuilder().setInput(
+                Input.newBuilder().setData(
+                    Data.newBuilder().setMetadata(
+                        Struct.newBuilder()
+                            .putFields("type", Value.newBuilder().setStringValue("animal").build())
+                    )
+                )
+            )
+        )
+    )
+    .build()
+);
+
+if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
+}
+
+System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
+for (Hit hit : postSearchesResponse.getHitsList()) {
+    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostSearches(
+    {
+        query: {
+            ands: [
+                {
+                    input: {
+                        data: {
+                            metadata: {
+                                "type": "animal"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found inputs:");
+        for (const hit of response.hits) {
+            console.log("\tScore " + hit.score + " for " + hit.input.id);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+from google.protobuf.struct_pb2 import Struct
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+search_metadata = Struct()
+search_metadata.update({"type": "animal"})
+
+post_searches_response = stub.PostSearches(
+    service_pb2.PostSearchesRequest(
+        query=resources_pb2.Query(
+            ands=[
+                resources_pb2.And(
+                    input=resources_pb2.Input(
+                        data=resources_pb2.Data(
+                            metadata=search_metadata
+                        )
+                    )
+                )
+            ]
+        )
+    ),
+    metadata=metadata
+)
+
+if post_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post searches failed, status: " + post_searches_response.status.description)
+
+print("Found inputs:")
+for hit in post_searches_response.hits:
+    print("\tScore %.2f for %s" % (hit.score, hit.input.id))
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 // Search with only metadata
@@ -239,15 +353,119 @@ If you are providing two points, a box will be drawn from the uppermost point to
 
 Before you perform a search by geo location, make sure you have added inputs with longitude and latitude points.
 
-### Add inputs with longitiude and latitude points
+### Add inputs with longitude and latitude points
 
 Provide a geo point to an input. The geo point is a JSON object consisting of a longitude and a latitude in GPS coordinate system \(SRID 4326\). There can be at most one single geo point associated with each input.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiInputResponse postInputsResponse = stub.postInputs(
+    PostInputsRequest.newBuilder().addInputs(
+        Input.newBuilder().setData(
+            Data.newBuilder()
+                .setImage(
+                    Image.newBuilder()
+                        .setUrl("https://samples.clarifai.com/dog.tiff")
+                        .setAllowDuplicateUrl(true)
+                )
+                .setGeo(
+                    Geo.newBuilder().setGeoPoint(
+                        GeoPoint.newBuilder()
+                            .setLongitude(-30)
+                            .setLatitude(40)
+                    )
+                )
+        )
+    ).build()
+);
+
+if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostInputs(
+    {
+        inputs: [
+            {
+                data: {
+                    image: {url: "https://samples.clarifai.com/dog.tiff", allow_duplicate_url: true},
+                    geo: {
+                        geo_point: {
+                            longitude: -30,
+                            latitude: 40
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post inputs failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_inputs_response = stub.PostInputs(
+    service_pb2.PostInputsRequest(
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/dog.tiff",
+                        allow_duplicate_url=True
+                    ),
+                    geo=resources_pb2.Geo(
+                        geo_point=resources_pb2.GeoPoint(
+                            longitude=-30.0,
+                            latitude=40.0,
+                        )
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.create({
-  url: "https://samples.clarifai.com/puppy.jpg",
+  url: "https://samples.clarifai.com/puppy.jpeg",
   geo: { longitude: 116.2317, latitude: 39.5427},
 }).then(
   function(response) {
@@ -267,13 +485,13 @@ app = ClarifaiApp(api_key='YOUR_API_KEY')
 
 geo_p1 = Geo(geo_point=GeoPoint(116.2317,39.5427))
 
-app.inputs.create_image_from_url(url="https://samples.clarifai.com/puppy.jpg", geo=geo_p1)
+app.inputs.create_image_from_url(url="https://samples.clarifai.com/puppy.jpeg", geo=geo_p1)
 ```
 {% endtab %}
 
 {% tab title="java" %}
 ```java
-client.addInputs().plus(ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpg")
+client.addInputs().plus(ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpeg")
     .withGeo(PointF.at(116.2317F, 39.5427F))).executeSync();
 ```
 {% endtab %}
@@ -295,7 +513,7 @@ namespace YourNamespace
 
             await client.AddInputs(
                     new ClarifaiURLImage(
-                        "https://samples.clarifai.com/puppy.jpg",
+                        "https://samples.clarifai.com/puppy.jpeg",
                         geo: new GeoPoint(116.2317M, 39.5427M)))
                 .ExecuteAsync();
         }
@@ -371,6 +589,140 @@ curl -X POST \
 ### Perform a search with one geo point and radius in kilometers
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiSearchResponse postSearchesResponse = stub.postSearches(
+    PostSearchesRequest.newBuilder().setQuery(
+        Query.newBuilder().addAnds(
+            And.newBuilder().setInput(
+                Input.newBuilder().setData(
+                    Data.newBuilder().setGeo(
+                        Geo.newBuilder()
+                            .setGeoPoint(
+                                GeoPoint.newBuilder()
+                                    .setLongitude(-29)
+                                    .setLatitude(40)
+                            )
+                            .setGeoLimit(
+                                GeoLimit.newBuilder()
+                                    .setType("withinKilometers")
+                                    .setValue(150.0f)
+                            )
+                    )
+                )
+            )
+        )
+    )
+    .build()
+);
+
+if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
+}
+
+System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
+for (Hit hit : postSearchesResponse.getHitsList()) {
+    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostSearches(
+    {
+        query: {
+            ands: [
+                {
+                    input: {
+                        data: {
+                            geo: {
+                                geo_point: {
+                                    longitude: -29,
+                                    latitude: 40
+                                },
+                                geo_limit: {
+                                    type: "withinKilometers",
+                                    value: 150.0
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found inputs:");
+        for (const hit of response.hits) {
+            console.log("\tScore " + hit.score + " for " + hit.input.id);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_searches_response = stub.PostSearches(
+    service_pb2.PostSearchesRequest(
+        query=resources_pb2.Query(
+            ands=[
+                resources_pb2.And(
+                    input=resources_pb2.Input(
+                        data=resources_pb2.Data(
+                            geo=resources_pb2.Geo(
+                                geo_point=resources_pb2.GeoPoint(
+                                    longitude=-29.0,
+                                    latitude=40.0,
+                                ),
+                                geo_limit=resources_pb2.GeoLimit(
+                                    type="withinKilometers",
+                                    value=150.0
+                                )
+                            )
+                        )
+                    )
+                )
+            ]
+        )
+    ),
+    metadata=metadata
+)
+
+if post_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post searches failed, status: " + post_searches_response.status.description)
+
+print("Found inputs:")
+for hit in post_searches_response.hits:
+    print("\tScore %.2f for %s" % (hit.score, hit.input.id))
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.search({
@@ -525,6 +877,156 @@ curl -X POST \
 ### Perform a search with two geo points
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiSearchResponse postSearchesResponse = stub.postSearches(
+    PostSearchesRequest.newBuilder().setQuery(
+        Query.newBuilder().addAnds(
+            And.newBuilder().setInput(
+                Input.newBuilder().setData(
+                    Data.newBuilder().setGeo(
+                        Geo.newBuilder()
+                            .addGeoBox(
+                                GeoBoxedPoint.newBuilder().setGeoPoint(
+                                    GeoPoint.newBuilder()
+                                        .setLongitude(-31)
+                                        .setLatitude(42)
+                                )
+                            )
+                            .addGeoBox(
+                                GeoBoxedPoint.newBuilder().setGeoPoint(
+                                    GeoPoint.newBuilder()
+                                        .setLongitude(-29)
+                                        .setLatitude(39)
+                                ).build()
+                            )
+                    )
+                )
+            )
+        )
+    )
+    .build()
+);
+
+if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
+}
+
+System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
+for (Hit hit : postSearchesResponse.getHitsList()) {
+    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostSearches(
+    {
+        query: {
+            ands: [
+                {
+                    input: {
+                        data: {
+                            geo: {
+                                geo_box: [
+                                    {
+                                        geo_point: {
+                                            longitude: -31,
+                                            latitude: 42
+                                        }
+                                    },
+                                    {
+                                        geo_point: {
+                                            longitude: -29,
+                                            latitude: 39
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found inputs:");
+        for (const hit of response.hits) {
+            console.log("\tScore " + hit.score + " for " + hit.input.id);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_searches_response = stub.PostSearches(
+    service_pb2.PostSearchesRequest(
+        query=resources_pb2.Query(
+            ands=[
+                resources_pb2.And(
+                    input=resources_pb2.Input(
+                        data=resources_pb2.Data(
+                            geo=resources_pb2.Geo(
+                                geo_box=[
+                                    resources_pb2.GeoBoxedPoint(
+                                        geo_point=resources_pb2.GeoPoint(
+                                            longitude=-31.0,
+                                            latitude=42.0,
+                                        ),
+                                    ),
+                                    resources_pb2.GeoBoxedPoint(
+                                        geo_point=resources_pb2.GeoPoint(
+                                            longitude=-29.0,
+                                            latitude=39.0,
+                                        ),
+                                    ),
+                                ]
+                            )
+                        )
+                    )
+                )
+            ]
+        )
+    ),
+    metadata=metadata
+)
+
+if post_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post searches failed, status: " + post_searches_response.status.description)
+
+print("Found inputs:")
+for hit in post_searches_response.hits:
+    print("\tScore %.2f for %s" % (hit.score, hit.input.id))
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.search({

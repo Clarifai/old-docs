@@ -9,10 +9,152 @@ You do not need many images to get started. We recommend starting with 10 and ad
 To get started training your own model, you must first add images that already contain the concepts you want your model to see.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiInputResponse postInputsResponse = stub.postInputs(
+    PostInputsRequest.newBuilder()
+        .addInputs(
+            Input.newBuilder()
+                .setData(
+                    Data.newBuilder()
+                        .setImage(
+                            Image.newBuilder()
+                                .setUrl("https://samples.clarifai.com/puppy.jpeg")
+                                .setAllowDuplicateUrl(true)
+                        )
+                        .addConcepts(Concept.newBuilder().setId("boscoe").setValue(1))
+                        .addConcepts(Concept.newBuilder().setId("our_wedding").setValue(0))
+                )
+        )
+        .addInputs(
+            Input.newBuilder()
+                .setData(
+                    Data.newBuilder()
+                        .setImage(
+                            Image.newBuilder()
+                                .setUrl("https://samples.clarifai.com/wedding.jpg")
+                                .setAllowDuplicateUrl(true)
+                        )
+                        .addConcepts(Concept.newBuilder().setId("our_wedding").setValue(1))
+                        .addConcepts(Concept.newBuilder().setId("boscoe").setValue(0))
+                        .addConcepts(Concept.newBuilder().setId("cat").setValue(0))
+                )
+        )
+        .build()
+);
+
+if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    for (Input input : postInputsResponse.getInputsList()) {
+        System.out.println("Input " + input.getId() + " status: ");
+        System.out.println(input.getStatus() + "\n");
+    }
+
+    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostInputs(
+    {
+        inputs: [
+            {
+                data: {
+                    image: {url: "https://samples.clarifai.com/puppy.jpeg", allow_duplicate_url: true},
+                    concepts: [{id: "boscoe", value: 1}, {id: "our_wedding", value: 0}]
+                }
+            },
+            {
+                data: {
+                    image: {url: "https://samples.clarifai.com/wedding.jpg", allow_duplicate_url: true},
+                    concepts: [{id: "our_wedding", value: 1}, {id: "boscoe", value: 0}, {id: "cat", value: 0}]
+                }
+            },
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            for (const input of response.inputs) {
+                console.log("Input " + input.id + " status: ");
+                console.log(JSON.stringify(input.status, null, 2) + "\n");
+            }
+
+            throw new Error("Post inputs failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_inputs_response = stub.PostInputs(
+    service_pb2.PostInputsRequest(
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/puppy.jpeg",
+                        allow_duplicate_url=True
+                    ),
+                    concepts=[
+                        resources_pb2.Concept(id="boscoe", value=1),
+                        resources_pb2.Concept(id="our_wedding", value=0),
+                    ]
+                )
+            ),
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/wedding.jpg",
+                        allow_duplicate_url=True
+                    ),
+                    concepts=[
+                        resources_pb2.Concept(id="our_wedding", value=1),
+                        resources_pb2.Concept(id="boscoe", value=0),
+                        resources_pb2.Concept(id="cat", value=0),
+                    ]
+                )
+            ),
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    for input_object in post_inputs_response.inputs:
+        print("Input " + input_object.id + " status:")
+        print(input_object.status)
+
+    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.create({
-  url: "https://samples.clarifai.com/puppy.jpg",
+  url: "https://samples.clarifai.com/puppy.jpeg",
   concepts: [
     {
       id: "boscoe",
@@ -31,7 +173,7 @@ from clarifai.rest import Image as ClImage
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 
 # add multiple images with concepts
-img1 = ClImage(url="https://samples.clarifai.com/puppy.jpg", concepts=['boscoe'], not_concepts=['our_wedding'])
+img1 = ClImage(url="https://samples.clarifai.com/puppy.jpeg", concepts=['boscoe'], not_concepts=['our_wedding'])
 img2 = ClImage(url="https://samples.clarifai.com/wedding.jpg", concepts=['our_wedding'], not_concepts=['cat','boscoe'])
 
 app.inputs.bulk_create_images([img1, img2])
@@ -42,7 +184,7 @@ app.inputs.bulk_create_images([img1, img2])
 ```java
 client.addInputs()
     .plus(
-        ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpg")
+        ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpeg")
             .withConcepts(Concept.forID("boscoe"))
     )
     .executeSync();
@@ -67,7 +209,7 @@ namespace YourNamespace
 
             await client.AddInputs(
                     new ClarifaiURLImage(
-                        "https://samples.clarifai.com/puppy.jpg",
+                        "https://samples.clarifai.com/puppy.jpeg",
                         positiveConcepts: new List<Concept> {new Concept(id: "boscoe")}))
                 .ExecuteAsync();
         }
@@ -78,7 +220,7 @@ namespace YourNamespace
 
 {% tab title="objective-c" %}
 ```text
-ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg" andConcepts:@"cute puppy"];
+ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpeg" andConcepts:@"cute puppy"];
 [_app addInputs:@[image] completion:^(NSArray<ClarifaiInput *> *inputs, NSError *error) {
     NSLog(@"inputs: %@", inputs);
 }];
@@ -121,7 +263,7 @@ curl -X POST \
       {
         "data": {
           "image": {
-            "url": "https://samples.clarifai.com/puppy.jpg"
+            "url": "https://samples.clarifai.com/puppy.jpeg"
           },
           "concepts":[
             {
@@ -181,6 +323,102 @@ Once your images with concepts are added, you are now ready to create the model.
 Take note of the `model id` that is returned in the response. You'll need that for the next two steps.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+SingleModelResponse postModelsResponse = stub.postModels(
+    PostModelsRequest.newBuilder().addModels(
+        Model.newBuilder()
+            .setId("pets")
+            .setOutputInfo(
+                OutputInfo.newBuilder()
+                    .setData(
+                        Data.newBuilder().addConcepts(Concept.newBuilder().setId("boscoe"))
+                    )
+                    .setOutputConfig(
+                        OutputConfig.newBuilder()
+                            .setConceptsMutuallyExclusive(false)
+                            .setClosedEnvironment(false)
+                    )
+            )
+    ).build()
+);
+
+if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostModels(
+    {
+        models: [
+            {
+                id: "pets",
+                output_info: {
+                    data: {concepts: [{id: "boscoe"}]},
+                    output_config: {concepts_mutually_exclusive: false, closed_environment: false}
+                }
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post models failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_models_response = stub.PostModels(
+    service_pb2.PostModelsRequest(
+        models=[
+            resources_pb2.Model(
+                id="pets",
+                output_info=resources_pb2.OutputInfo(
+                    data=resources_pb2.Data(
+                        concepts=[resources_pb2.Concept(id="boscoe", value=1)]
+                    ),
+                    output_config=resources_pb2.OutputConfig(
+                        concepts_mutually_exclusive=False,
+                        closed_environment=False
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_models_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post models failed, status: " + post_models_response.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.create(
@@ -345,6 +583,70 @@ Now that you've added images with concepts, then created a model with those conc
 Keep note of the `model_version id` in the response. We'll need that for the next section when we predict with the model.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+SingleModelResponse postModelVersionsResponse = stub.postModelVersions(
+    PostModelVersionsRequest.newBuilder()
+        .setModelId("pets")
+        .build()
+);
+
+if (postModelVersionsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post model versions failed, status: " + postModelVersionsResponse.getStatus());
+}
+
+String modelVersionId = postModelVersionsResponse.getModel().getModelVersion().getId();
+System.out.println("New model version ID: " + modelVersionId);
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostModelVersions(
+    {model_id: "pets"},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post model versions failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_model_versions = stub.PostModelVersions(
+    service_pb2.PostModelVersionsRequest(
+        model_id="pets"
+    ),
+    metadata=metadata
+)
+
+if post_model_versions.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post model versions failed, status: " + post_model_versions.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.train("{model_id}").then(
@@ -410,7 +712,7 @@ namespace YourNamespace
 
 {% tab title="objective-c" %}
 ```text
-ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg"]
+ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpeg"]
 [app getModel:@"{id}" completion:^(ClarifaiModel *model, NSError *error) {
     [model train:^(ClarifaiModel *model, NSError *error) {
         NSLog(@"model: %@", model);
@@ -487,11 +789,118 @@ curl -X POST \
 
 ## Predict with the model
 
-Now that we have a trained model. We can start making predictions with it. In our predict call we need to specify three items. The `model id`, `model_version id` and the `input` we want a prediction for.
+Now that we have a trained model we can start making predictions with it. In our predict call we specify three items. The `model id`, `model version id` (optional, defaults to the latest trained version) and the `input` we want a prediction for.
 
 _Note: you can repeat the above steps as often as you like. By adding more images with concepts and training, you can get the model to predict exactly how you want it to._
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
+    PostModelOutputsRequest.newBuilder()
+        .setModelId("pets")
+        .setVersionId("{YOUR_MODEL_VERSION_ID}")  // This is optional. Defaults to the latest model version.
+        .addInputs(
+            Input.newBuilder().setData(
+                Data.newBuilder().setImage(
+                    Image.newBuilder().setUrl("https://samples.clarifai.com/metro-north.jpg")
+                )
+            )
+        )
+        .build()
+);
+
+if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
+}
+
+// Since we have one input, one output will exist here.
+Output output = postModelOutputsResponse.getOutputs(0);
+
+System.out.println("Predicted concepts:");
+for (Concept concept : output.getData().getConceptsList()) {
+    System.out.printf("%s %.2f%n", concept.getName(), concept.getValue());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostModelOutputs(
+    {
+        model_id: "pets",
+        version_id: "{YOUR_MODEL_VERSION_ID}",  // This is optional. Defaults to the latest model version.
+        inputs: [
+            {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post model outputs failed, status: " + response.status.description);
+        }
+
+        // Since we have one input, one output will exist here.
+        const output = response.outputs[0];
+
+        console.log("Predicted concepts:");
+        for (const concept of output.data.concepts) {
+            console.log(concept.name + " " + concept.value);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_model_outputs_response = stub.PostModelOutputs(
+    service_pb2.PostModelOutputsRequest(
+        model_id="pets",
+        version_id="673896e7965b4aefa00496325b2aaa97",  # This is optional. Defaults to the latest model version.
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/metro-north.jpg"
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+
+# Since we have one input, one output will exist here.
+output = post_model_outputs_response.outputs[0]
+
+print("Predicted concepts:")
+for concept in output.data.concepts:
+    print("%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 let app = new Clarifai.App({apiKey: 'YOUR_API_KEY'});
@@ -560,7 +969,7 @@ namespace YourNamespace
 
 {% tab title="objective-c" %}
 ```text
-ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg"]
+ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpeg"]
 [app getModel:@"{id}" completion:^(ClarifaiModel *model, NSError *error) {
     [model predictOnImages:@[image]
                 completion:^(NSArray<ClarifaiSearchResult *> *outputs, NSError *error) {

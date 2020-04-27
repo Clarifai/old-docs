@@ -15,6 +15,84 @@ You can add inputs one by one or in bulk. If you do send bulk, you are limited t
 #### Add an input using a publicly accessible URL
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiInputResponse postInputsResponse = stub.postInputs(
+    PostInputsRequest.newBuilder().addInputs(
+        Input.newBuilder().setData(
+            Data.newBuilder().setImage(
+                Image.newBuilder()
+                    .setUrl("https://samples.clarifai.com/metro-north.jpg")
+                    .setAllowDuplicateUrl(true)
+            )
+        )
+    ).build()
+);
+
+if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostInputs(
+    {
+        inputs: [{data: {image: {url: "https://samples.clarifai.com/metro-north.jpg", allow_duplicate_url: true}}}]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post inputs failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_inputs_response = stub.PostInputs(
+    service_pb2.PostInputsRequest(
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/metro-north.jpg",
+                        allow_duplicate_url=True
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.create({
@@ -128,6 +206,93 @@ curl -X POST \
 The data must be base64 encoded. When you add a base64 image to our servers, a copy will be stored and hosted on our servers. If you already have an image hosting service we recommend using it and adding images via the `url` parameter.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+import com.google.protobuf.ByteString;
+import java.io.File;
+import java.nio.file.Files;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiInputResponse postInputsResponse = stub.postInputs(
+    PostInputsRequest.newBuilder().addInputs(
+        Input.newBuilder().setData(
+            Data.newBuilder().setImage(
+                Image.newBuilder()
+                    .setBase64(ByteString.copyFrom(Files.readAllBytes(
+                        new File("{YOUR_IMAGE_LOCATION}").toPath()
+                    )))
+            )
+        )
+    ).build()
+);
+
+if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+const fs = require("fs");
+const imageBytes = fs.readFileSync("{YOUR_IMAGE_LOCATION}");
+
+stub.PostInputs(
+    {
+        inputs: [{data: {image: {base64: imageBytes}}}]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post inputs failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+with open("{YOUR_IMAGE_LOCATION}", "rb") as f:
+    file_bytes = f.read()
+
+post_inputs_response = stub.PostInputs(
+    service_pb2.PostInputsRequest(
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        base64=file_bytes
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.create({
@@ -248,7 +413,133 @@ In cases where you have your own `id` and you only have one item per image, you 
 {% endhint %}
 
 {% tabs %}
-{% tab title="js" %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiInputResponse postInputsResponse = stub.postInputs(
+    PostInputsRequest.newBuilder()
+        .addInputs(
+            Input.newBuilder()
+                .setId("train1")
+                .setData(
+                    Data.newBuilder().setImage(
+                        Image.newBuilder()
+                            .setUrl("https://samples.clarifai.com/metro-north.jpg")
+                            .setAllowDuplicateUrl(true)
+                    )
+                )
+        )
+        .addInputs(
+            Input.newBuilder()
+                .setId("puppy1")
+                .setData(
+                    Data.newBuilder().setImage(
+                        Image.newBuilder()
+                            .setUrl("https://samples.clarifai.com/puppy.jpeg")
+                            .setAllowDuplicateUrl(true)
+                    )
+                )
+        )
+        .build()
+);
+
+if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    for (Input input : postInputsResponse.getInputsList()) {
+        System.out.println("Input " + input.getId() + " status: ");
+        System.out.println(input.getStatus() + "\n");
+    }
+
+    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostInputs(
+    {
+        inputs: [
+            {
+                id: "train1",
+                data: {image: {url: "https://samples.clarifai.com/metro-north.jpg", allow_duplicate_url: true}}
+            },
+            {
+                id: "puppy1",
+                data: {image: {url: "https://samples.clarifai.com/puppy.jpeg", allow_duplicate_url: true}}
+            },
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            for (const input of response.inputs) {
+                console.log("Input " + input.id + " status: ");
+                console.log(JSON.stringify(input.status, null, 2) + "\n");
+            }
+
+            throw new Error("Post inputs failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_inputs_response = stub.PostInputs(
+    service_pb2.PostInputsRequest(
+        inputs=[
+            resources_pb2.Input(
+                id="train1",
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/metro-north.jpg",
+                        allow_duplicate_url=True
+                    )
+                )
+            ),
+            resources_pb2.Input(
+                id="puppy1",
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/puppy.jpeg",
+                        allow_duplicate_url=True
+                    )
+                )
+            ),
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    for input_object in post_inputs_response.inputs:
+        print("Input " + input_object.id + " status:")
+        print(input_object.status)
+
+    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
+```
+{% endtab %}
+
+% tab title="js" %}
 ```javascript
 app.inputs.create([
   {
@@ -256,7 +547,7 @@ app.inputs.create([
     id: 'train1'
   },
   {
-    url: "https://samples.clarifai.com/puppy.jpg",
+    url: "https://samples.clarifai.com/puppy.jpeg",
     id: 'puppy1'
   }
 ]).then(
@@ -278,7 +569,7 @@ from clarifai.rest import Image as ClImage
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 
 img1 = ClImage(url="https://samples.clarifai.com/metro-north.jpg", image_id="train1")
-img2 = ClImage(url="https://samples.clarifai.com/puppy.jpg", image_id="puppy1")
+img2 = ClImage(url="https://samples.clarifai.com/puppy.jpeg", image_id="puppy1")
 
 app.inputs.bulk_create_images([img1, img2])
 ```
@@ -332,7 +623,7 @@ namespace YourNamespace
 ClarifaiImage *train = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/metro-north.jpg"];
 train.inputID = @"train";
 
-ClarifaiImage *puppy = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg"];
+ClarifaiImage *puppy = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpeg"];
 puppy.inputID = @"puppy";
 
 [app addInputs:@[train, puppy] completion:^(NSArray<ClarifaiInput *> *inputs, NSError *error) {
@@ -387,7 +678,7 @@ curl -X POST \
       {
         "data": {
           "image": {
-            "url": "https://samples.clarifai.com/puppy.jpg"
+            "url": "https://samples.clarifai.com/puppy.jpeg"
           }
         },
         "id": "{id2}"
@@ -408,10 +699,98 @@ When you add a concept to an input, you need to indicate whether the concept is 
 You can add inputs with concepts as either a URL or bytes.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiInputResponse postInputsResponse = stub.postInputs(
+    PostInputsRequest.newBuilder().addInputs(
+        Input.newBuilder().setData(
+            Data.newBuilder()
+                .setImage(
+                    Image.newBuilder()
+                        .setUrl("https://samples.clarifai.com/puppy.jpeg")
+                        .setAllowDuplicateUrl(true)
+                )
+                .addConcepts(
+                    Concept.newBuilder()
+                        .setId("boscoe")
+                        .setValue(1f)
+                )
+        )
+    ).build()
+);
+
+if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostInputs(
+    {
+        inputs: [{data: {
+            image: {url: "https://samples.clarifai.com/puppy.jpeg", allow_duplicate_url: true},
+            concepts: [{id: "boscoe", value: 1.}]
+        }}]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post inputs failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_inputs_response = stub.PostInputs(
+    service_pb2.PostInputsRequest(
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/puppy.jpeg",
+                        allow_duplicate_url=True
+                    ),
+                    concepts=[resources_pb2.Concept(id="boscoe", value=1.)]
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.create({
-  url: "https://samples.clarifai.com/puppy.jpg",
+  url: "https://samples.clarifai.com/puppy.jpeg",
   concepts: [
     {
       id: "boscoe",
@@ -437,7 +816,7 @@ from clarifai.rest import Image as ClImage
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 
 # add by url
-app.inputs.create_image_from_url("https://samples.clarifai.com/puppy.jpg", concepts=['boscoe'])
+app.inputs.create_image_from_url("https://samples.clarifai.com/puppy.jpeg", concepts=['boscoe'])
 
 # add by base64 bytes
 app.inputs.create_image_from_base64(base64_bytes, concepts=['boscoe'])
@@ -449,7 +828,7 @@ app.inputs.create_image_from_bytes(raw_bytes, concepts=['boscoe'])
 app.inputs.create_image_from_filename(local_filename, concepts=['boscoe'])
 
 # add multiple with concepts
-img1 = ClImage(url="https://samples.clarifai.com/puppy.jpg", concepts=['boscoe'], not_concepts=['our_wedding'])
+img1 = ClImage(url="https://samples.clarifai.com/puppy.jpeg", concepts=['boscoe'], not_concepts=['our_wedding'])
 img2 = ClImage(url="https://samples.clarifai.com/wedding.jpg", concepts=['our_wedding'], not_concepts=['cat','boscoe'])
 
 app.inputs.bulk_create_images([img1, img2])
@@ -459,7 +838,7 @@ app.inputs.bulk_create_images([img1, img2])
 {% tab title="java" %}
 ```java
 client.addInputs()
-    .plus(ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpg")
+    .plus(ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpeg")
         .withConcepts(
             // To mark a concept as being absent, chain `.withValue(false)`
             Concept.forID("boscoe")
@@ -499,7 +878,7 @@ namespace YourNamespace
 
 {% tab title="objective-c" %}
 ```text
-ClarifaiImage *puppy = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg"
+ClarifaiImage *puppy = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpeg"
                                               andConcepts:@[@"cute puppy"]];
 
 [app addInputs:@[puppy] completion:^(NSArray<ClarifaiInput *> *inputs, NSError *error) {
@@ -543,7 +922,7 @@ curl -X POST \
       {
         "data": {
           "image": {
-            "url": "https://samples.clarifai.com/puppy.jpg"
+            "url": "https://samples.clarifai.com/puppy.jpeg"
           },
           "concepts":[
             {
@@ -575,10 +954,105 @@ If you have more than one item per image it is recommended to put the id in meta
 {% endhint %}
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+import com.google.protobuf.Struct;
+import com.google.protobuf.Value;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiInputResponse postInputsResponse = stub.postInputs(
+    PostInputsRequest.newBuilder().addInputs(
+        Input.newBuilder().setData(
+            Data.newBuilder()
+                .setImage(
+                    Image.newBuilder()
+                        .setUrl("https://samples.clarifai.com/puppy.jpeg")
+                        .setAllowDuplicateUrl(true)
+                )
+                .setMetadata(
+                    Struct.newBuilder()
+                        .putFields("id", Value.newBuilder().setStringValue("id001").build())
+                        .putFields("type", Value.newBuilder().setStringValue("animal").build())
+                        .putFields("size", Value.newBuilder().setNumberValue(100).build())
+                )
+        )
+    ).build()
+);
+
+if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostInputs(
+    {
+        inputs: [{data: {
+            image: {url: "https://samples.clarifai.com/puppy.jpeg", allow_duplicate_url: true},
+            metadata: {id: "id001", type: "animal", size: 100}
+        }}]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post inputs failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+from google.protobuf.struct_pb2 import Struct
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+input_metadata = Struct()
+input_metadata.update({"id": "id001", "type": "animal", "size": 100})
+
+post_inputs_response = stub.PostInputs(
+    service_pb2.PostInputsRequest(
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/puppy.jpeg",
+                        allow_duplicate_url=True
+                    ),
+                    metadata=input_metadata
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.create({
-  url: "https://samples.clarifai.com/puppy.jpg",
+  url: "https://samples.clarifai.com/puppy.jpeg",
   metadata: {id: 'id001', type: 'plants', size: 100}
 }).then(
   function(response) {
@@ -602,7 +1076,7 @@ app = ClarifaiApp(api_key='YOUR_API_KEY')
 metadata = {'id':'id001', 'type':'plants', 'size':100}
 
 # adding metadata along with url, filename, etc
-app.inputs.create_image_from_url(url="https://samples.clarifai.com/puppy.jpg", metadata=metadata)
+app.inputs.create_image_from_url(url="https://samples.clarifai.com/puppy.jpeg", metadata=metadata)
 app.inputs.create_image_from_filename(filename="aa.jpg", metadata=metadata)
 
 # define an image with metadata for bulk import
@@ -618,7 +1092,7 @@ final JsonObject metadata = new JsonObject();
 metadata.addProperty("isPuppy", true);
 client.addInputs()
     .plus(
-        ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpg")
+        ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpeg")
             .withMetadata(metadata)
     ).executeSync();
 ```
@@ -655,7 +1129,7 @@ namespace YourNamespace
 
 {% tab title="objective-c" %}
 ```text
-ClarifaiImage *puppy = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg"
+ClarifaiImage *puppy = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpeg"
                                               andConcepts:@[@"cute puppy"]];
 puppy.metadata = @{@"my_key": @[@"my",@"values"], @"cuteness": @"extra-cute"};
 [app addInputs:@[puppy] completion:^(NSArray<ClarifaiInput *> *inputs, NSError *error) {
@@ -681,7 +1155,7 @@ curl -X POST \
       {
         "data": {
           "image": {
-            "url": "https://samples.clarifai.com/puppy.jpg",
+            "url": "https://samples.clarifai.com/puppy.jpeg",
             "allow_duplicate_url": true
           },
           "metadata": {
@@ -706,6 +1180,77 @@ If you added inputs with concepts, they will be returned in the response as well
 This request is paginated.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiInputResponse listInputsResponse = stub.listInputs(
+    ListInputsRequest.newBuilder()
+        .setPage(1)
+        .setPerPage(10)
+        .build()
+);
+
+if (listInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("List inputs failed, status: " + listInputsResponse.getStatus());
+}
+
+for (Input input : listInputsResponse.getInputsList()) {
+    System.out.println(input);
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.ListInputs(
+    {page: 1, per_page: 10},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("List inputs failed, status: " + response.status.description);
+        }
+
+        for (const input of response.inputs) {
+            console.log(JSON.stringify(input, null, 2));
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+list_inputs_response = stub.ListInputs(
+    service_pb2.ListInputsRequest(page=1, per_page=10),
+    metadata=metadata
+)
+
+if list_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("List inputs failed, status: " + list_inputs_response.status.description)
+
+for input_object in list_inputs_response.inputs:
+    print(input_object)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.list({page: 1, perPage: 20}).then(
@@ -807,6 +1352,74 @@ curl -X GET \
 If you'd like to get a specific input by id, you can do that as well.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+SingleInputResponse getInputResponse = stub.getInput(
+    GetInputRequest.newBuilder()
+        .setInputId("{YOUR_INPUT_ID}")
+        .build()
+);
+
+if (getInputResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Get input failed, status: " + getInputResponse.getStatus());
+}
+
+Input input = getInputResponse.getInput();
+System.out.println(input);
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.GetInput(
+    {input_id: "{YOUR_INPUT_ID}"},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Get input failed, status: " + response.status.description);
+        }
+
+        const input = response.input;
+        console.log(JSON.stringify(input, null, 2));
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+get_input_response = stub.GetInput(
+    service_pb2.GetInputRequest(input_id="{YOUR_INPUT_ID}"),
+    metadata=metadata
+)
+
+if get_input_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Get input failed, status: " + get_input_response.status.description)
+
+input_object = get_input_response.input
+print(input_object)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.get({id}).then(
@@ -900,6 +1513,72 @@ curl -X GET \
 If you add inputs in bulk, they will process in the background. You can get the status of all your inputs \(processed, to\_process and errors\) like this:
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+SingleInputCountResponse getInputCountResponse = stub.getInputCount(
+    GetInputCountRequest.newBuilder().build()
+);
+
+if (getInputCountResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Get input count failed, status: " + getInputCountResponse.getStatus());
+}
+
+InputCount inputCount = getInputCountResponse.getCounts();
+System.out.println(inputCount);
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.GetInputCount(
+    {},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Get input count failed, status: " + response.status.description);
+        }
+
+        const counts = response.counts;
+        console.log(JSON.stringify(counts, null, 2));
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+get_input_count_response = stub.GetInputCount(
+    service_pb2.GetInputCountRequest(),
+    metadata=metadata
+)
+
+if get_input_count_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Get input count failed, status: " + get_input_count_response.status.description)
+
+counts = get_input_count_response.counts
+print(counts)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.getStatus().then(
@@ -997,6 +1676,106 @@ curl -X GET \
 To update an input with a new concept, or to change a concept value from true/false, you can do that:
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiInputResponse patchInputsResponse = stub.patchInputs(
+    PatchInputsRequest.newBuilder()
+        .setAction("merge")  // Supported actions: overwrite, merge, remove.
+        .addInputs(
+            Input.newBuilder()
+                .setId("{YOUR_INPUT_ID}")
+                .setData(
+                    Data.newBuilder()
+                        .addConcepts(
+                            Concept.newBuilder()
+                                .setId("tree")
+                                .setValue(1f)  // 1 means true, this concept is present.
+                        )
+                        .addConcepts(
+                            Concept.newBuilder()
+                                .setId("water")
+                                .setValue(0f)  // 0 means false, this concept is not present.
+                        )
+                )
+                .build()
+        )
+        .build()
+);
+
+if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Patch inputs failed, status: " + patchInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PatchInputs(
+    {
+        action: "merge",  // Supported actions: overwrite, merge, remove.
+        inputs: [
+            {
+                id: "{YOUR_INPUT_ID}",
+                // 1 means true, this concept is present.
+                // 0 means false, this concept is not present.
+                data: {concepts: [{id: "tree", value: 1}, {id: "water", value: 0}]}
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Patch inputs failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+patch_inputs_response = stub.PatchInputs(
+    service_pb2.PatchInputsRequest(
+        action="merge",  # Supported actions: overwrite, merge, remove.
+        inputs=[
+            resources_pb2.Input(
+                id="{YOUR_INPUT_ID}",
+                data=resources_pb2.Data(
+                    concepts=[
+                        resources_pb2.Concept(id="tree", value=1.),  # 1 means true, this concept is present.
+                        resources_pb2.Concept(id="water", value=0.)  # 0 means false, this concept is not present.
+                    ]
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if patch_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch inputs failed, status: " + patch_inputs_response.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.mergeConcepts([
@@ -1153,6 +1932,135 @@ curl -X PATCH \
 You can update an existing input using its Id. This is useful if you'd like to add concepts to an input after its already been added.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiInputResponse patchInputsResponse = stub.patchInputs(
+    PatchInputsRequest.newBuilder()
+        .setAction("merge")  // Supported actions: overwrite, merge, remove.
+        .addInputs(
+            Input.newBuilder()
+                .setId("{YOUR_INPUT_ID_1}")
+                .setData(
+                    Data.newBuilder()
+                        .addConcepts(
+                            Concept.newBuilder()
+                                .setId("tree")
+                                .setValue(1f)  // 1 means true, this concept is present.
+                        )
+                        .addConcepts(
+                            Concept.newBuilder()
+                                .setId("water")
+                                .setValue(0f)  // 0 means false, this concept is not present.
+                        )
+                )
+                .build()
+        )
+        .addInputs(
+            Input.newBuilder()
+                .setId("{YOUR_INPUT_ID_2}")
+                .setData(
+                    Data.newBuilder()
+                        .addConcepts(
+                            Concept.newBuilder()
+                                .setId("animal")
+                                .setValue(1f)
+                        )
+                        .addConcepts(
+                            Concept.newBuilder()
+                                .setId("fruit")
+                                .setValue(0f)
+                        )
+                )
+                .build()
+        )
+        .build()
+);
+
+if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Patch inputs failed, status: " + patchInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PatchInputs(
+    {
+        action: "merge",  // Supported actions: overwrite, merge, remove.
+        inputs: [
+            {
+                id: "{YOUR_INPUT_ID_1}",
+                data: {concepts: [{id: "tree", value: 1}, {id: "water", value: 0}]}
+            },
+            {
+                id: "{YOUR_INPUT_ID_2}",
+                data: {concepts: [{id: "animal", value: 1}, {id: "fruit", value: 0}]}
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Patch inputs failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+patch_inputs_response = stub.PatchInputs(
+    service_pb2.PatchInputsRequest(
+        action="merge",  # Supported actions: overwrite, merge, remove.
+        inputs=[
+            resources_pb2.Input(
+                id="{YOUR_INPUT_ID_1}",
+                data=resources_pb2.Data(
+                    concepts=[
+                        resources_pb2.Concept(id="tree", value=1.),  # 1 means true, this concept is present.
+                        resources_pb2.Concept(id="water", value=0.)  # 0 means false, this concept is not present.
+                    ]
+                )
+            ),
+            resources_pb2.Input(
+                id="{YOUR_INPUT_ID_2}",
+                data=resources_pb2.Data(
+                    concepts=[
+                        resources_pb2.Concept(id="animal", value=1.),
+                        resources_pb2.Concept(id="fruit", value=0.)
+                    ]
+                )
+            ),
+        ]
+    ),
+    metadata=metadata
+)
+
+if patch_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch inputs failed, status: " + patch_inputs_response.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.mergeConcepts([
@@ -1295,6 +2203,101 @@ curl -X PATCH \
 To remove concepts that were already added to an input, you can do this:
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiInputResponse patchInputsResponse = stub.patchInputs(
+    PatchInputsRequest.newBuilder()
+        .setAction("remove")  // Supported actions: overwrite, merge, remove.
+        .addInputs(
+            Input.newBuilder()
+                .setId("{YOUR_INPUT_ID}")
+                .setData(
+                    Data.newBuilder()
+                        .addConcepts(
+                            // We're removing the concept, so there's no need to specify
+                            // the concept value.
+                            Concept.newBuilder().setId("tree")
+                        )
+                )
+                .build()
+        )
+        .build()
+);
+
+if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Patch inputs failed, status: " + patchInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiInputResponse patchInputsResponse = stub.patchInputs(
+    PatchInputsRequest.newBuilder()
+        .setAction("remove")  // Supported actions: overwrite, merge, remove.
+        .addInputs(
+            Input.newBuilder()
+                .setId("{YOUR_INPUT_ID}")
+                .setData(
+                    Data.newBuilder()
+                        .addConcepts(
+                            // We're removing the concept, so there's no need to specify
+                            // the concept value.
+                            Concept.newBuilder().setId("tree")
+                        )
+                )
+                .build()
+        )
+        .build()
+);
+
+if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Patch inputs failed, status: " + patchInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+patch_inputs_response = stub.PatchInputs(
+    service_pb2.PatchInputsRequest(
+        action="remove",  # Supported actions: overwrite, merge, remove.
+        inputs=[
+            resources_pb2.Input(
+                id="{YOUR_INPUT_ID}",
+                data=resources_pb2.Data(
+                    concepts=[
+                        # We're removing the concept, so there's no need to specify
+                        # the concept value.
+                        resources_pb2.Concept(id="water"),
+                    ]
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if patch_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch inputs failed, status: " + patch_inputs_response.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.deleteConcepts([
@@ -1444,6 +2447,133 @@ curl -X PATCH \
 You can bulk delete multiple concepts from a list of inputs:
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiInputResponse patchInputsResponse = stub.patchInputs(
+    PatchInputsRequest.newBuilder()
+        .setAction("remove")  // Supported actions: overwrite, merge, remove.
+        .addInputs(
+            Input.newBuilder()
+                .setId("{YOUR_INPUT_ID_1}")
+                .setData(
+                    Data.newBuilder()
+                        // We're removing the concepts, so there's no need to specify
+                        // the concept value.
+                        .addConcepts(
+                            Concept.newBuilder().setId("tree")
+                        )
+                        .addConcepts(
+                            Concept.newBuilder().setId("water")
+                        )
+                )
+                .build()
+        )
+        .addInputs(
+            Input.newBuilder()
+                .setId("{YOUR_INPUT_ID_2}")
+                .setData(
+                    Data.newBuilder()
+                        .addConcepts(
+                            Concept.newBuilder().setId("animal")
+                        )
+                        .addConcepts(
+                            Concept.newBuilder().setId("fruit")
+                        )
+                )
+                .build()
+        )
+        .build()
+);
+
+if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Patch inputs failed, status: " + patchInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PatchInputs(
+    {
+        action: "remove",  // Supported actions: overwrite, merge, remove.
+        inputs: [
+            {
+                id: "{YOUR_INPUT_ID_1}",
+                // We're removing the concepts, so there's no need to specify
+                // the concept value.
+                data: {concepts: [{id: "tree"}, {id: "water"}]}
+            },
+            {
+                id: "{YOUR_INPUT_ID_2}",
+                data: {concepts: [{id: "animal"}, {id: "fruit"}]}
+            },
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Patch inputs failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+patch_inputs_response = stub.PatchInputs(
+    service_pb2.PatchInputsRequest(
+        action="remove",  # Supported actions: overwrite, merge, remove.
+        inputs=[
+            resources_pb2.Input(
+                id="{YOUR_INPUT_ID_1}",
+                data=resources_pb2.Data(
+                    concepts=[
+                        # We're removing the concepts, so there's no need to specify
+                        # the concept value.
+                        resources_pb2.Concept(id="tree"),
+                        resources_pb2.Concept(id="water"),
+                    ]
+                )
+            ),
+            resources_pb2.Input(
+                id="{YOUR_INPUT_ID_2}",
+                data=resources_pb2.Data(
+                    concepts=[
+                        resources_pb2.Concept(id="animal"),
+                        resources_pb2.Concept(id="fruit"),
+                    ]
+                )
+            ),
+        ]
+    ),
+    metadata=metadata
+)
+
+if patch_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch inputs failed, status: " + patch_inputs_response.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.deleteConcepts([
@@ -1560,6 +2690,67 @@ curl -X PATCH \
 You can delete a single input by id:
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+BaseResponse deleteInputResponse = stub.deleteInput(
+    DeleteInputRequest.newBuilder()
+        .setInputId("{YOUR_INPUT_ID}")
+        .build()
+);
+
+if (deleteInputResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Delete input failed, status: " + deleteInputResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.DeleteInput(
+    {
+        input_id: "{YOUR_INPUT_ID}"
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Delete input failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+delete_input_response = stub.DeleteInput(
+    service_pb2.DeleteInputRequest(input_id="{YOUR_INPUT_ID}"),
+    metadata=metadata
+)
+
+if delete_input_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Delete input failed, status: " + delete_input_response.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.delete(INPUT_ID).then(
@@ -1652,6 +2843,70 @@ curl -X DELETE \
 You can also delete multiple inputs in one API call. This will happen asynchronously.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+BaseResponse listInputsResponse = stub.deleteInputs(
+    DeleteInputsRequest.newBuilder()
+        .addIds("{YOUR_INPUT_ID_1}")
+        .addIds("{YOUR_INPUT_ID_2}")
+        .build()
+);
+
+if (listInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Delete inputs failed, status: " + listInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.DeleteInputs(
+    {
+        ids: ["{YOUR_INPUT_ID_1}", "{YOUR_INPUT_ID_2}"]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Delete inputs failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+delete_inputs_response = stub.DeleteInputs(
+    service_pb2.DeleteInputsRequest(
+        ids=["{YOUR_INPUT_ID_1}", "{YOUR_INPUT_ID_2}"]
+    ),
+    metadata=metadata
+)
+
+if delete_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Delete inputs failed, status: " + delete_inputs_response.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.delete([{id1}, {id2}]).then(
@@ -1750,6 +3005,68 @@ curl -X DELETE \
 If you would like to delete all inputs from an application, you can do that as well. This will happen asynchronously.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+BaseResponse listInputsResponse = stub.deleteInputs(
+    DeleteInputsRequest.newBuilder()
+        .setDeleteAll(true)
+        .build()
+);
+
+if (listInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Delete inputs failed, status: " + listInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.DeleteInputs(
+    {
+        delete_all: true
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Delete inputs failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+
+
+delete_inputs_response = stub.DeleteInputs(
+    service_pb2.DeleteInputsRequest(
+        delete_all=True
+    ),
+    metadata=metadata
+)
+
+if delete_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Delete inputs failed, status: " + delete_inputs_response.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.inputs.delete().then(

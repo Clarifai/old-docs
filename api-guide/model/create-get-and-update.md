@@ -7,6 +7,77 @@ You can create your own model and train it with your own images and concepts. On
 When you create a model you give it a name and an id. If you don't supply an id, one will be created for you.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+SingleModelResponse postModelsResponse = stub.postModels(
+    PostModelsRequest.newBuilder().addModels(
+        Model.newBuilder().setId("petsID")
+    ).build()
+);
+
+if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostModels(
+    {
+        models: [
+            {
+                id: "petsID",
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post models failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_models_response = stub.PostModels(
+    service_pb2.PostModelsRequest(
+        models=[
+            resources_pb2.Model(
+                id="petsID"
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_models_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post models failed, status: " + post_models_response.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.create("petsID").then(
@@ -105,6 +176,90 @@ curl -X POST \
 You can also create a model and initialize it with the concepts it will contain. You can always add and remove concepts later.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+SingleModelResponse postModelsResponse = stub.postModels(
+    PostModelsRequest.newBuilder().addModels(
+        Model.newBuilder()
+            .setId("petsID")
+            .setOutputInfo(
+                OutputInfo.newBuilder().setData(
+                    Data.newBuilder().addConcepts(Concept.newBuilder().setId("boscoe"))
+                )
+            )
+    ).build()
+);
+
+if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostModels(
+    {
+        models: [
+            {
+                id: "petsID",
+                output_info: {
+                    data: {concepts: [{id: "boscoe"}]},
+                }
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post models failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_models_response = stub.PostModels(
+    service_pb2.PostModelsRequest(
+        models=[
+            resources_pb2.Model(
+                id="petsID",
+                output_info=resources_pb2.OutputInfo(
+                    data=resources_pb2.Data(
+                        concepts=[resources_pb2.Concept(id="boscoe", value=1)]
+                    ),
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_models_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post models failed, status: " + post_models_response.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.create(
@@ -231,6 +386,93 @@ curl -X POST \
 You can add concepts to a model at any point. As you add concepts to inputs, you may want to add them to your model.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+...
+
+MultiModelResponse patchModelsResponse = stub.patchModels(
+    PatchModelsRequest.newBuilder()
+        .setAction("merge")  // Supported actions: overwrite, merge, remove
+        .addModels(
+            Model.newBuilder()
+                .setId("petsID")
+                .setOutputInfo(
+                    OutputInfo.newBuilder().setData(
+                        Data.newBuilder().addConcepts(Concept.newBuilder().setId("boscoe"))
+                    )
+                )
+        )
+        .build()
+);
+
+if (patchModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Patch models failed, status: " + patchModelsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PatchModels(
+    {
+        action: "merge",  // Supported actions: overwrite, merge, remove
+        models: [
+            {
+                id: "petsID",
+                output_info: {data: {concepts: [{id: "boscoe"}]}}
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Patch models failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+patch_models_response = stub.PatchModels(
+    service_pb2.PatchModelsRequest(
+        action="merge",  # Supported actions: overwrite, merge, remove
+        models=[
+            resources_pb2.Model(
+                id="petsID",
+                output_info=resources_pb2.OutputInfo(
+                    data=resources_pb2.Data(
+                        concepts=[resources_pb2.Concept(id="boscoe")]
+                    ),
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if patch_models_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch models failed, status: " + patch_models_response.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.initModel({model_id}).then(function(model) {
@@ -380,6 +622,94 @@ curl -X PATCH \
 Conversely, if you'd like to remove concepts from a model, you can also do that.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiModelResponse patchModelsResponse = stub.patchModels(
+    PatchModelsRequest.newBuilder()
+        .setAction("remove")  // Supported actions: overwrite, merge, remove
+        .addModels(
+            Model.newBuilder()
+                .setId("petsID")
+                .setOutputInfo(
+                    OutputInfo.newBuilder().setData(
+                        Data.newBuilder().addConcepts(Concept.newBuilder().setId("boscoe"))
+                    )
+                )
+        )
+        .build()
+);
+
+if (patchModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Patch models failed, status: " + patchModelsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PatchModels(
+    {
+        action: "remove",  // Supported actions: overwrite, merge, remove
+        models: [
+            {
+                id: "petsID",
+                output_info: {data: {concepts: [{id: "boscoe"}]}}
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Patch models failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+patch_models_response = stub.PatchModels(
+    service_pb2.PatchModelsRequest(
+        action="remove",  # Supported actions: overwrite, merge, remove
+        models=[
+            resources_pb2.Model(
+                id="petsID",
+                output_info=resources_pb2.OutputInfo(
+                    data=resources_pb2.Data(
+                        concepts=[resources_pb2.Concept(id="boscoe")]
+                    ),
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if patch_models_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch models failed, status: " + patch_models_response.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.initModel({model_id}).then(function(model) {
@@ -530,6 +860,72 @@ curl -X PATCH \
 The code below showcases how to update a concept's name given its id.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiConceptResponse patchConceptsResponse = stub.patchConcepts(
+    PatchConceptsRequest.newBuilder()
+        .setAction("overwrite")  // The only supported action right now is overwrite.
+        .addConcepts(Concept.newBuilder().setId("boscoe").setName("Boscoe Name"))
+        .build()
+);
+
+if (patchConceptsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Patch concepts failed, status: " + patchConceptsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PatchConcepts(
+    {
+        action: "overwrite",  // The only supported action right now is overwrite
+        concepts: [{id: "boscoe", name: "Boscoe Name"}]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Patch concepts failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+patch_concepts_response = stub.PatchConcepts(
+    service_pb2.PatchConceptsRequest(
+        action="overwrite",  # The only supported action right now is overwrite.
+        concepts=[resources_pb2.Concept(id="boscoe", name="Boscoe Name")]
+    ),
+    metadata=metadata
+)
+
+if patch_concepts_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch concept failed, status: " + patch_concepts_response.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 ** Coming Soon
@@ -626,6 +1022,114 @@ curl -X PATCH \
 Here we will change the model name to 'newname' and the model's configuration to have concepts\_mutually\_exclusive=true and closed\_environment=true.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiModelResponse patchModelsResponse = stub.patchModels(
+    PatchModelsRequest.newBuilder()
+        .setAction("overwrite")
+        .addModels(
+            Model.newBuilder()
+                .setId("petsID")
+                .setName("newname")
+                .setOutputInfo(
+                    OutputInfo.newBuilder()
+                        .setData(
+                            Data.newBuilder()
+                                .addConcepts(Concept.newBuilder().setId("birds"))
+                                .addConcepts(Concept.newBuilder().setId("hurd"))
+                        )
+                        .setOutputConfig(
+                            OutputConfig.newBuilder()
+                                .setConceptsMutuallyExclusive(true)
+                                .setClosedEnvironment(true)
+                        )
+                )
+    ).build()
+);
+
+if (patchModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Patch models failed, status: " + patchModelsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PatchModels(
+    {
+        action: "overwrite",
+        models: [
+            {
+                id: "petsID",
+                name: "newname",
+                output_info: {
+                    data: {concepts: [{id: "birds"}, {id: "hurd"}]},
+                    output_config: {concepts_mutually_exclusive: true, closed_environment: true}
+                }
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Patch models failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+patch_models_response = stub.PatchModels(
+    service_pb2.PatchModelsRequest(
+        action="overwrite",
+        models=[
+            resources_pb2.Model(
+                id="petsID",
+                name="newname",
+                output_info=resources_pb2.OutputInfo(
+                    data=resources_pb2.Data(
+                        concepts=[
+                            resources_pb2.Concept(id="birds"),
+                            resources_pb2.Concept(id="hurd")
+                        ]
+                    ),
+                    output_config=resources_pb2.OutputConfig(
+                        concepts_mutually_exclusive=True,
+                        closed_environment=True,
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if patch_models_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch models failed, status: " + patch_models_response.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.initModel({model_id}).then(
@@ -767,6 +1271,76 @@ curl -X PATCH \
 To get a list of all models including models you've created as well as [public models]():
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+import java.util.List;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiModelResponse listModelsResponse = stub.listModels(
+    ListModelsRequest.newBuilder().build()
+);
+
+if (listModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("List models failed, status: " + listModelsResponse.getStatus());
+}
+
+List<Model> models = listModelsResponse.getModelsList();
+for (Model model : models) {
+    System.out.println(model);
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.ListModels(
+    {},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("List models failed, status: " + response.status.description);
+        }
+
+        for (const model of response.models) {
+            console.log(JSON.stringify(model, null, 2));
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+list_models_response = stub.ListModels(
+    service_pb2.ListModelsRequest(),
+    metadata=metadata
+)
+
+if list_models_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("List models failed, status: " + list_models_response.status.description)
+
+for model in list_models_response.models:
+    print(model)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.list().then(
@@ -865,6 +1439,74 @@ curl -X GET \
 All models have unique Ids. You can get a specific model by its id:
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+SingleModelResponse getModelResponse = stub.getModel(
+    GetModelRequest.newBuilder()
+        .setModelId("petsID")
+        .build()
+);
+
+if (getModelResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Get model failed, status: " + getModelResponse.getStatus());
+}
+
+Model model = getModelResponse.getModel();
+System.out.println(model);
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.GetModel(
+    {model_id: "petsID"},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("List models failed, status: " + response.status.description);
+        }
+
+        const model = response.model;
+        console.log(JSON.stringify(model, null, 2));
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+get_model_response = stub.GetModel(
+    service_pb2.GetModelRequest(model_id="petsID"),
+    metadata=metadata
+)
+
+if get_model_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Get model failed, status: " + get_model_response.status.description)
+
+model = get_model_response.model
+print(model)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.get({model_id}).then(
@@ -968,6 +1610,74 @@ curl -X GET \
 The output info of a model lists what concepts it contains.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+SingleModelResponse getModelOutputInfoResponse = stub.getModelOutputInfo(
+    GetModelRequest.newBuilder()
+        .setModelId("petsID")
+        .build()
+);
+
+if (getModelOutputInfoResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Get model output info failed, status: " + getModelOutputInfoResponse.getStatus());
+}
+
+Model model = getModelOutputInfoResponse.getModel();
+System.out.println(model);
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.GetModelOutputInfo(
+    {model_id: "petsID"},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("List models failed, status: " + response.status.description);
+        }
+
+        const model = response.model;
+        console.log(JSON.stringify(model, null, 2));
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+get_model_response = stub.GetModelOutputInfo(
+    service_pb2.GetModelRequest(model_id="petsID"),
+    metadata=metadata
+)
+
+if get_model_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Get model failed, status: " + get_model_response.status.description)
+
+model = get_model_response.model
+print(model)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.initModel({model_id}).then(
@@ -1081,6 +1791,80 @@ curl -X GET \
 Every time you train a model, it creates a new version. You can list all the versions created.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+import java.util.List;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiModelVersionResponse listModelVersionsResponse = stub.listModelVersions(
+    ListModelVersionsRequest.newBuilder()
+        .setModelId("petsID")
+        .build()
+);
+
+if (listModelVersionsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("List model versions failed, status: " + listModelVersionsResponse.getStatus());
+}
+
+List<ModelVersion> modelVersions = listModelVersionsResponse.getModelVersionsList();
+for (ModelVersion modelVersion : modelVersions) {
+    System.out.println(modelVersion);
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.ListModelVersions(
+    {model_id: "petsID"},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("List model versions failed, status: " + response.status.description);
+        }
+
+        for (const model_version of response.model_versions) {
+            console.log(JSON.stringify(model_version, null, 2));
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+list_model_versions_response = stub.ListModelVersions(
+    service_pb2.ListModelVersionsRequest(
+        model_id="petsID"
+    ),
+    metadata=metadata
+)
+
+if list_model_versions_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("List model versions failed, status: " + list_model_versions_response.status.description)
+
+for model_version in list_model_versions_response.model_versions:
+    print(model_version)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.initModel('{id}').then(
@@ -1188,6 +1972,79 @@ curl -X GET \
 To get a specific model version, you must provide the model\_id as well as the version\_id. You can inspect the model version status to determine if your model is trained or still training.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+
+SingleModelVersionResponse getModelVersionResponse = stub.getModelVersion(
+    GetModelVersionRequest.newBuilder()
+        .setModelId("petsID")
+        .setVersionId("{YOUR_MODEL_VERSION_ID}")
+        .build()
+);
+
+if (getModelVersionResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Get model version failed, status: " + getModelVersionResponse.getStatus());
+}
+
+ModelVersion modelVersion = getModelVersionResponse.getModelVersion();
+System.out.println(modelVersion);
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.GetModelVersion(
+    {model_id: "petsID", version_id: "{YOUR_MODEL_VERSION_ID}"},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Get model version failed, status: " + response.status.description);
+        }
+
+        const model_version = response.model_version;
+        console.log(JSON.stringify(model_version, null, 2));
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+get_model_version_response = stub.GetModelVersion(
+    service_pb2.GetModelVersionRequest(
+        model_id="petsID",
+        version_id="{YOUR_MODEL_VERSION_ID}"
+    ),
+    metadata=metadata
+)
+
+if get_model_version_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Get model version failed, status: " + get_model_version_response.status.description)
+
+model_version = get_model_version_response.model_version
+print(model_version)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.initModel('{id}').then(
@@ -1298,6 +2155,77 @@ curl -X GET \
 You can list all the inputs that were used to train the model.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiInputResponse listModelInputsResponse = stub.listModelInputs(
+    ListModelInputsRequest.newBuilder()
+        .setModelId("petsID")
+        .build()
+);
+
+if (listModelInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("List model inputs failed, status: " + listModelInputsResponse.getStatus());
+}
+
+List<Input> inputs = listModelInputsResponse.getInputsList();
+for (Input input : inputs) {
+    System.out.println(input);
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.ListModelInputs(
+    {model_id: "petsID"},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("List model inputs failed, status: " + response.status.description);
+        }
+
+        for (const input of response.inputs) {
+            console.log(JSON.stringify(input, null, 2));
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+list_model_inputs_response = stub.ListModelInputs(
+    service_pb2.ListModelInputsRequest(model_id="petsID"),
+    metadata=metadata
+)
+
+if list_model_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("List model inputs failed, status: " + list_model_inputs_response.status.description)
+
+for input_object in list_model_inputs_response.inputs:
+    print(input_object)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.initModel('{id}').then(
@@ -1384,6 +2312,85 @@ curl -X GET \
 You can also list all the inputs that were used to train a specific model version.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+import java.util.List;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiInputResponse listModelInputsResponse = stub.listModelInputs(
+    ListModelInputsRequest.newBuilder()
+        .setModelId("petsID")
+        .setVersionId("{YOUR_MODEL_VERSION_ID}")
+        .build()
+);
+
+if (listModelInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("List model inputs failed, status: " + listModelInputsResponse.getStatus());
+}
+
+List<Input> inputs = listModelInputsResponse.getInputsList();
+for (Input input : inputs) {
+    System.out.println(input);
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.ListModelInputs(
+    {
+        model_id: "petsID",
+        version_id: "{YOUR_MODEL_VERSION_ID}"
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("List model inputs failed, status: " + response.status.description);
+        }
+
+        for (const input of response.inputs) {
+            console.log(JSON.stringify(input, null, 2));
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+list_model_inputs_response = stub.ListModelInputs(
+    service_pb2.ListModelInputsRequest(
+        model_id="petsID",
+        version_id="{YOUR_MODEL_VERSION_ID}"
+    ),
+    metadata=metadata
+)
+
+if list_model_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("List model inputs failed, status: " + list_model_inputs_response.status.description)
+
+for input_object in list_model_inputs_response.inputs:
+    print(input_object)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.initModel({id: '{model_id}', version: '{version_id}'}).then(
@@ -1473,6 +2480,66 @@ curl -X GET \
 You can delete a model using the model\_id.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+BaseResponse deleteModelResponse = stub.deleteModel(
+    DeleteModelRequest.newBuilder()
+        .setModelId("petsID")
+        .build()
+);
+
+if (deleteModelResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Delete model failed, status: " + deleteModelResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.DeleteModel(
+    {model_id: "petsID"},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Delete model failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+delete_model_response = stub.DeleteModel(
+    service_pb2.DeleteModelRequest(model_id="petsID"),
+    metadata=metadata
+)
+
+if delete_model_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Delete model failed, status: " + delete_model_response.status.description)
+
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.delete('{id}').then(
@@ -1564,6 +2631,72 @@ curl -X DELETE \
 You can also delete a specific version of a model with the model\_id and version\_id.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+BaseResponse deleteModelVersionResponse = stub.deleteModelVersion(
+    DeleteModelVersionRequest.newBuilder()
+        .setModelId("petsID")
+        .setVersionId("{YOUR_MODEL_VERSION_ID}")
+        .build()
+);
+
+if (deleteModelVersionResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Delete model version failed, status: " + deleteModelVersionResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.DeleteModelVersion(
+    {
+        model_id: "petsID",
+        version_id: "{YOUR_MODEL_VERSION_ID}"
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Delete model version failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+delete_model_version_response = stub.DeleteModelVersion(
+    service_pb2.DeleteModelVersionRequest(
+        model_id="petsID",
+        version_id="{YOUR_MODEL_VERSION_ID}"
+    ),
+    metadata=metadata
+)
+
+if delete_model_version_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Delete model version failed, status: " + delete_model_version_response.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.delete('{model_id}', '{version_id}').then(
@@ -1672,6 +2805,65 @@ curl -X DELETE \
 If you would like to delete all models associated with an application, you can also do that. Please proceed with caution as these cannot be recovered.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+BaseResponse deleteModelsResponse = stub.deleteModels(
+    DeleteModelsRequest.newBuilder()
+        .setDeleteAll(true)
+        .build()
+);
+
+if (deleteModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Delete models failed, status: " + deleteModelsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.DeleteModels(
+    {delete_all: true},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Delete models failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+delete_models_response = stub.DeleteModels(
+    service_pb2.DeleteModelsRequest(delete_all=True),
+    metadata=metadata
+)
+
+if delete_models_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Delete models failed, status: " + delete_models_response.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.delete().then(
@@ -1766,6 +2958,70 @@ When you train a model, you are telling the system to look at all the images wit
 _Note: you can repeat this operation as often as you like. By adding more images with concepts and training, you can get the model to predict exactly how you want it to._
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+SingleModelResponse postModelVersionsResponse = stub.postModelVersions(
+    PostModelVersionsRequest.newBuilder()
+        .setModelId("petsID")
+        .build()
+);
+
+if (postModelVersionsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post model versions failed, status: " + postModelVersionsResponse.getStatus());
+}
+
+String modelVersionId = postModelVersionsResponse.getModel().getModelVersion().getId();
+System.out.println("New model version ID: " + modelVersionId);
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostModelVersions(
+    {model_id: "petsID"},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post model versions failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_model_versions = stub.PostModelVersions(
+    service_pb2.PostModelVersionsRequest(
+        model_id="petsID"
+    ),
+    metadata=metadata
+)
+
+if post_model_versions.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post model versions failed, status: " + post_model_versions.status.description)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.train("{model_id}").then(
@@ -1830,7 +3086,7 @@ namespace YourNamespace
 
 {% tab title="objective-c" %}
 ```text
-ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg"]
+ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpeg"]
 [app getModel:@"{id}" completion:^(ClarifaiModel *model, NSError *error) {
     [model train:^(ClarifaiModel *model, NSError *error) {
         NSLog(@"model: %@", model);
@@ -1875,9 +3131,116 @@ curl -X POST \
 Once you have trained a model you are ready to use your new model to get predictions. The predictions returned will only contain the concepts that you told it to see.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
+    PostModelOutputsRequest.newBuilder()
+        .setModelId("petsID")
+        .setVersionId("{YOUR_MODEL_VERSION_ID}")  // Optional. Defaults to the latest version.
+        .addInputs(
+            Input.newBuilder().setData(
+                Data.newBuilder().setImage(
+                    Image.newBuilder().setUrl("https://samples.clarifai.com/metro-north.jpg")
+                )
+            )
+        )
+        .build()
+);
+
+if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
+}
+
+// Since we have one input, one output will exist here.
+Output output = postModelOutputsResponse.getOutputs(0);
+
+System.out.println("Predicted concepts:");
+for (Concept concept : output.getData().getConceptsList()) {
+    System.out.printf("%s %.2f%n", concept.getName(), concept.getValue());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostModelOutputs(
+    {
+        model_id: "petsID",
+        version_id: "{YOUR_MODEL_VERSION_ID}",  // This is optional. Defaults to the latest model version.
+        inputs: [
+            {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post model outputs failed, status: " + response.status.description);
+        }
+
+        // Since we have one input, one output will exist here.
+        const output = response.outputs[0];
+
+        console.log("Predicted concepts:");
+        for (const concept of output.data.concepts) {
+            console.log(concept.name + " " + concept.value);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_model_outputs_response = stub.PostModelOutputs(
+    service_pb2.PostModelOutputsRequest(
+        model_id="petsID",
+        version_id="{YOUR_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/metro-north.jpg"
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+
+# Since we have one input, one output will exist here.
+output = post_model_outputs_response.outputs[0]
+
+print("Predicted concepts:")
+for concept in output.data.concepts:
+    print("%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
-app.models.predict("{model_id}", ["https://samples.clarifai.com/puppy.jpg"]).then(
+app.models.predict("{model_id}", ["https://samples.clarifai.com/puppy.jpeg"]).then(
   function(response) {
     // do something with response
   },
@@ -1888,7 +3251,7 @@ app.models.predict("{model_id}", ["https://samples.clarifai.com/puppy.jpg"]).the
 
 // or if you have an instance of a model
 
-model.predict("https://samples.clarifai.com/puppy.jpg").then(
+model.predict("https://samples.clarifai.com/puppy.jpeg").then(
   function(response) {
     // do something with response
   },
@@ -1906,7 +3269,7 @@ app = ClarifaiApp(api_key='YOUR_API_KEY')
 
 model = app.models.get('YOUR_MODEL_ID')
 
-response = model.predict_by_url('https://samples.clarifai.com/puppy.jpg')
+response = model.predict_by_url('https://samples.clarifai.com/puppy.jpeg')
 ```
 {% endtab %}
 
@@ -1914,7 +3277,7 @@ response = model.predict_by_url('https://samples.clarifai.com/puppy.jpg')
 ```java
 client.predict("{model_id}")
     .withInputs(
-        ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpg")
+        ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpeg")
     )
     .executeSync();
 ```
@@ -1937,7 +3300,7 @@ namespace YourNamespace
 
             await client.Predict<Concept>(
                     "{model_id}",
-                    new ClarifaiURLImage("https://samples.clarifai.com/puppy.jpg"))
+                    new ClarifaiURLImage("https://samples.clarifai.com/puppy.jpeg"))
                 .ExecuteAsync();
         }
     }
@@ -1947,7 +3310,7 @@ namespace YourNamespace
 
 {% tab title="objective-c" %}
 ```text
-ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpg"]
+ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpeg"]
 [app getModel:@"{model_id}" completion:^(ClarifaiModel *model, NSError *error) {
     [model predictOnImages:@[image]
                 completion:^(NSArray<ClarifaiSearchResult *> *outputs, NSError *error) {
@@ -2002,7 +3365,7 @@ curl -X POST \
       {
         "data": {
           "image": {
-            "url": "https://samples.clarifai.com/puppy.jpg"
+            "url": "https://samples.clarifai.com/puppy.jpeg"
           }
         }
       }
@@ -2018,6 +3381,93 @@ curl -X POST \
 You can search all your models by name and type of model.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+import java.util.List;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiModelResponse postModelsSearchesResponse = stub.postModelsSearches(
+    PostModelsSearchesRequest.newBuilder()
+        .setModelQuery(
+            ModelQuery.newBuilder()
+                .setName("gen*")
+                .setType("concept")
+        )
+        .build()
+);
+
+if (postModelsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post models searches failed, status: " + postModelsSearchesResponse.getStatus());
+}
+
+List<Model> models = postModelsSearchesResponse.getModelsList();
+for (Model model : models) {
+    System.out.println(model);
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostModelsSearches(
+    {
+        model_query: {
+            name: "gen*",
+            type: "concept"
+        }
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post model searches failed, status: " + response.status.description);
+        }
+
+        const models = response.models;
+        for (const model of models) {
+            console.log(JSON.stringify(model, null, 2));
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_models_searches_response = stub.PostModelsSearches(
+    service_pb2.PostModelsSearchesRequest(
+        model_query=resources_pb2.ModelQuery(
+            name="gen*",
+            type="concept"
+        )
+    ),
+    metadata=metadata
+)
+
+if post_models_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post models searches failed, status: " + post_models_searches_response.status.description)
+
+for model in post_models_searches_response.models:
+    print(model)
+```
+{% endtab %}
+
 {% tab title="js" %}
 ```javascript
 app.models.search('general-v1.3', 'concept').then(
@@ -2131,4 +3581,3 @@ curl -X POST \
 ```
 {% endtab %}
 {% endtabs %}
-
