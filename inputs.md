@@ -130,7 +130,7 @@ if ($response->isSuccessful()) {
 {% code-tabs-item title="cURL" %}
 ```cURL
 
-curl -X POST \
+curl -X POST https://api.clarifai.com/v2/inputs\
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '
@@ -144,8 +144,8 @@ curl -X POST \
         }
       }
     ]
-  }'\
-  https://api.clarifai.com/v2/inputs
+  }'
+  
 
 ```
 {% endcode-tabs-item %}
