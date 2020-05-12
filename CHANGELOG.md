@@ -14,8 +14,8 @@
 ## API
 |Status|Details|
 |-|-------|
-|![](/images/new_feature.jpg) |Introduce new Python grpc API client, enabling new features and performance enhancements across API
-|![](/images/new_feature.jpg) |Introduce new Java grpc API client, enabling new features and performance enhancements across API
+|![](/images/new_feature.jpg) |Introduce new Python gRPC API client, enabling new features and performance enhancements across API
+|![](/images/new_feature.jpg) |Introduce new Java gRPC API client, enabling new features and performance enhancements across API
 |![](/images/new_feature.jpg) |Finished CRUD on concept relationships, enabling standard HTTP actions
 |![](/images/improvement.jpg)|Remove the get_inputs_key_id in collectors to simplify API
 |![](/images/improvement.jpg)|Update API key type for "app_specific" for app-specific keys to be more clear to users
@@ -26,7 +26,7 @@
 |Status|Details|
 |-|-------|
 |![](/images/new_feature.jpg) |Allow Personal Access Tokens when calling /users/me (GetUsers)
-|![](/images/bug.jpg)|[Frontend] Enable "Copy Application" from collaborated apps, making it easy to duplicate and build upon exisitng applications
+|![](/images/bug.jpg)|[Frontend] Enable "Copy Application" from collaborated apps, making it easy to duplicate and build upon existing applications
 |![](/images/bug.jpg)|Program to clean internal apps crashing. Fixed
 
 
