@@ -1,3 +1,109 @@
+# Change log 6.0
+
+|New Feature|Improvement|Bug Fix|Enterprise Only
+|:-:|:-:|:-:|:-:|
+|![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
+
+## Accounts
+|Status|Details|
+|-|-------|
+|![](/images/improvement.jpg)|Remove country field from signup form, simplifying new customer signups
+|![](/images/bug.jpg)|Essential Plan User can't add collaborators. Fixed
+
+
+## API
+|Status|Details|
+|-|-------|
+|![](/images/new_feature.jpg) |Introduce new Python grpc API client, enabling new features and performance enhancements across API
+|![](/images/new_feature.jpg) |Introduce new Java grpc API client, enabling new features and performance enhancements across API
+|![](/images/new_feature.jpg) |Finished CRUD on concept relationships, enabling standard HTTP actions
+|![](/images/improvement.jpg)|Remove the get_inputs_key_id in collectors to simplify API
+|![](/images/improvement.jpg)|Update API key type for "app_specific" for app-specific keys to be more clear to users
+|![](/images/bug.jpg)|Invalidate appAuthUserAppIDCache cache / app id
+
+
+## Applications
+|Status|Details|
+|-|-------|
+|![](/images/new_feature.jpg) |Allow Personal Access Tokens when calling /users/me (GetUsers)
+|![](/images/bug.jpg)|[Frontend] Enable "Copy Application" from collaborated apps, making it easy to duplicate and build upon exisitng applications
+|![](/images/bug.jpg)|Program to clean internal apps crashing. Fixed
+
+
+## Data Management
+|Status|Details|
+|-|-------|
+|![](/images/improvement.jpg)|Added the ability to accept b64 Gifs
+|![](/images/bug.jpg)|Functionality to upload pre-tagged images missing. Fixed
+|![](/images/bug.jpg)|Images pre-tagged with concepts do not successfully upload into Clarifai UI On doing bulk uploads (>20-30 urls). Fixed
+|![](/images/bug.jpg)|Bulk image upload issue. Fixed
+|![](/images/bug.jpg)|"Download Failed" error when uploading images. Fixed
+|![](/images/bug.jpg)|Issue with post inputs key being a PAT in a collector. Fixed
+
+
+## Annotate
+|Status|Details|
+|-|-------|
+|![](/images/bug.jpg)|Skip aligning landmarks if landmark points are out of range to avoid errors and unexpected behavior
+|![](/images/bug.jpg)|Bounding Boxes and Cropped Regions aren't displaying on Videos with default runtime config. Fixed
+|![](/images/bug.jpg)|Insert annotations and related data in batch
+|![](/images/bug.jpg)|Annotation indexes for videos are thrown off for video without annotations within the first 2 frames. Fixed
+
+
+## Model
+|Status|Details|
+|-|-------|
+|![](/images/improvement.jpg)|Evaluate new face embedding model workflow end to end for optimal performance
+|![](/images/improvement.jpg)|Validate that concept.app_id shouldn't be set when creating/patching models
+|![](/images/improvement.jpg)|Introduce concept mapping model that uses the knowledge graph relations, creating a path for users to eventually benefit from pool of networked data
+|![](/images/improvement.jpg)|Add new predicate to knowledge graph for "relates_to"
+|![](/images/bug.jpg)|Model training lag. Fixed
+|![](/images/bug.jpg)|Model has missing inputs. Fixed
+|![](/images/bug.jpg)|Submitted models becoming stuck in queue. Fixed
+|![](/images/bug.jpg)|Custom training models when uploaded images are not fully pre-processed. Fixed
+|![](/images/bug.jpg)|CFR Boxes do not correspond with detection boxes/ CFR prediction interval for video is still 1000ms for apps supporting 100ms runtime config. Fixed
+|![](/images/bug.jpg)|frame_info time off by a factor of 10 for general detection model. Fixed
+|![](/images/bug.jpg)|Detection Models throw error at end of video due to invalid index lookup. Fixed
+
+
+## Workflow
+|Status|Details|
+|-|-------|
+|![](/images/improvement.jpg)|Use the output of the model as input to the pre-queue workflow in collectors, making it easy to connect models in a graph
+|![](/images/bug.jpg)|Deleting a workflow should clear or update localStorage. Fixed
+
+## Portal
+|Status|Details|
+|-|-------|
+|![](/images/improvement.jpg)|Clean up app overflow UI, improving user experience
+|![](/images/improvement.jpg)|Improve Error boundary screen, improving user experience
+|![](/images/improvement.jpg)|Add sentry error Id to Error Screen
+|![](/images/bug.jpg)|Images not loading. Fixed
+|![](/images/bug.jpg)|Label and prediction on the right side under Custom Model Predictions section no longer shows up automatically. Fixed
+|![](/images/bug.jpg)|Provide a way for user.metadata to be updated from portal when there are failing apps stuck in there. Fixed
+|![](/images/bug.jpg)|Predictions for a detection model don't show properly in portal. Fixed
+|![](/images/bug.jpg)|CFR Predict Boxes not displaying. Fixed
+|![](/images/bug.jpg)|Adding inputs in explorer redirects to explorer view with flashing images. Fixed
+
+
+## Predict
+|Status|Details|
+|-|-------|
+|![](/images/improvement.jpg)|Run prediction by ID in small batch, improving performance
+|![](/images/bug.jpg)|Custom model predictions not displaying. Fixed
+|![](/images/bug.jpg)|Custom model detections not displaying. Fixed
+
+
+## Search
+|Status|Details|
+|-|-------|
+|![](/images/new_feature.jpg) |	Add file upload input button to explorer search bar, simplifying the UX for file uploads
+|![](/images/new_feature.jpg) |Filter CFR Bounding Boxes using a sliding bar, adding easy thresholding to CFR models
+|![](/images/improvement.jpg)|Search Bar allows file upload
+|![](/images/improvement.jpg)|Remove Explorer App Overflow Menu for improved UX
+
+
+
 # Change log 5.11
 
 |New Feature|Improvement|Bug Fix|Enterprise Only
