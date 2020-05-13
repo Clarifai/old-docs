@@ -1,4 +1,4 @@
-# Change log 6.0
+# Changelog 6.0
 
 |New Feature|Improvement|Bug Fix|Enterprise Only
 |:-:|:-:|:-:|:-:|
@@ -14,19 +14,16 @@
 ## API
 |Status|Details|
 |-|-------|
-|![](/images/new_feature.jpg) |Introduce new Python gRPC API client, enabling new features and performance enhancements across API
-|![](/images/new_feature.jpg) |Introduce new Java gRPC API client, enabling new features and performance enhancements across API
-|![](/images/new_feature.jpg) |Finished CRUD on concept relationships, enabling standard HTTP actions
-|![](/images/improvement.jpg)|Remove the get_inputs_key_id in collectors to simplify API
+|![](/images/new_feature.jpg) |Introduce new [Python gRPC API client](https://docs.clarifai.com/api-guide/api-overview), enabling new features and performance enhancements across API
+|![](/images/new_feature.jpg) |Introduce new [Java gRPC API client](https://docs.clarifai.com/api-guide/api-overview), enabling new features and performance enhancements across API
 |![](/images/improvement.jpg)|Update API key type for "app_specific" for app-specific keys to be more clear to users
-|![](/images/bug.jpg)|Invalidate appAuthUserAppIDCache cache / app id
 
 
 ## Applications
 |Status|Details|
 |-|-------|
 |![](/images/new_feature.jpg) |Allow Personal Access Tokens when calling /users/me (GetUsers)
-|![](/images/bug.jpg)|[Frontend] Enable "Copy Application" from collaborated apps, making it easy to duplicate and build upon existing applications
+|![](/images/new_feature.jpg)|[Frontend] Enable "Copy Application" from collaborated apps, making it easy to duplicate and build upon existing applications
 |![](/images/bug.jpg)|Program to clean internal apps crashing. Fixed
 
 
@@ -46,8 +43,7 @@
 |-|-------|
 |![](/images/bug.jpg)|Skip aligning landmarks if landmark points are out of range to avoid errors and unexpected behavior
 |![](/images/bug.jpg)|Bounding Boxes and Cropped Regions aren't displaying on Videos with default runtime config. Fixed
-|![](/images/bug.jpg)|Insert annotations and related data in batch
-|![](/images/bug.jpg)|Annotation indexes for videos are thrown off for video without annotations within the first 2 frames. Fixed
+|![](/images/bug.jpg)|Insert annotations and related data in batch to improve performance
 
 
 ## Model
@@ -56,12 +52,12 @@
 |![](/images/improvement.jpg)|Evaluate new face embedding model workflow end to end for optimal performance
 |![](/images/improvement.jpg)|Validate that concept.app_id shouldn't be set when creating/patching models
 |![](/images/improvement.jpg)|Introduce concept mapping model that uses the knowledge graph relations, creating a path for users to eventually benefit from pool of networked data
-|![](/images/improvement.jpg)|Add new predicate to knowledge graph for "relates_to"
+|![](/images/improvement.jpg)|Add new predicate to knowledge graph for "relates_to" to represent synonyms
 |![](/images/bug.jpg)|Model training lag. Fixed
 |![](/images/bug.jpg)|Model has missing inputs. Fixed
 |![](/images/bug.jpg)|Submitted models becoming stuck in queue. Fixed
 |![](/images/bug.jpg)|Custom training models when uploaded images are not fully pre-processed. Fixed
-|![](/images/bug.jpg)|CFR Boxes do not correspond with detection boxes/ CFR prediction interval for video is still 1000ms for apps supporting 100ms runtime config. Fixed
+|![](/images/bug.jpg)|Custom facial recognition bboxes do not correspond with detection boxes/ Custom facial recognition prediction interval for video is still 1000ms for apps supporting 100ms runtime config. Fixed
 |![](/images/bug.jpg)|frame_info time off by a factor of 10 for general detection model. Fixed
 |![](/images/bug.jpg)|Detection Models throw error at end of video due to invalid index lookup. Fixed
 
@@ -69,7 +65,6 @@
 ## Workflow
 |Status|Details|
 |-|-------|
-|![](/images/improvement.jpg)|Use the output of the model as input to the pre-queue workflow in collectors, making it easy to connect models in a graph
 |![](/images/bug.jpg)|Deleting a workflow should clear or update localStorage. Fixed
 
 ## Portal
@@ -82,7 +77,7 @@
 |![](/images/bug.jpg)|Label and prediction on the right side under Custom Model Predictions section no longer shows up automatically. Fixed
 |![](/images/bug.jpg)|Provide a way for user.metadata to be updated from portal when there are failing apps stuck in there. Fixed
 |![](/images/bug.jpg)|Predictions for a detection model don't show properly in portal. Fixed
-|![](/images/bug.jpg)|CFR Predict Boxes not displaying. Fixed
+|![](/images/bug.jpg)|Custom facial recognition Predict Boxes not displaying. Fixed
 |![](/images/bug.jpg)|Adding inputs in explorer redirects to explorer view with flashing images. Fixed
 
 
@@ -98,13 +93,13 @@
 |Status|Details|
 |-|-------|
 |![](/images/new_feature.jpg) |	Add file upload input button to explorer search bar, simplifying the UX for file uploads
-|![](/images/new_feature.jpg) |Filter CFR Bounding Boxes using a sliding bar, adding easy thresholding to CFR models
+|![](/images/new_feature.jpg) |Filter custom facial recognition bboxes using a sliding bar, adding easy thresholding to custom facial recognition models
 |![](/images/improvement.jpg)|Search Bar allows file upload
 |![](/images/improvement.jpg)|Remove Explorer App Overflow Menu for improved UX
 
 
 
-# Change log 5.11
+# Changelog 5.11
 
 |New Feature|Improvement|Bug Fix|Enterprise Only
 |:-:|:-:|:-:|:-:|
@@ -212,7 +207,7 @@
 |![](/images/bug.jpg)|Explorer Visibility in small resolution screen improved
 
 
-# Change Log 5.10
+# Changelog 5.10
 |New Feature|Improvement|Bug Fix|Enterprise Only
 |:-:|:-:|:-:|:-:|
 |![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)

@@ -1,10 +1,11 @@
 # Saved Searches
 
-Saving searches helps you to make your model tests reproducible.
+With saved searches you can capture your search results at a given point in time, and record the inputs, annotations, search parameters and models that you are running through the platform. Saved searches help you to:
 
-With saved searches you can capture your search results at a given point in time, and record the inputs, annotations, search parameters and models that you are running through the platform.
-
-Saved searches are extremely helpful when testing out multiple versions of a model, or collaborating with a team. Just save your search, and refer back to it any time.
+* Save a search so that you can return to those same results later
+* Share a search with a collaborator in your app
+* Carve out data that you want to evaluate your models on as a "golden set"
+* Split your data into training sets and test tests
 
 ## Click save in the search bar
 

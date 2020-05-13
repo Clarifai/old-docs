@@ -12,6 +12,8 @@ Just navigate to the app management page and click "Create an API Key"
 
 ## Create an API Key programmatically
 
+For enterprise customers, it is also possible to generate applications and keys programmatically. If you are managing the work of multiple users who's data, models, and concepts need to be segregated, we recommend you create apps and a keys this way. This ensures that each individual user only has access to their own private resources.
+
 {% tabs %}
 {% tab title="cURL" %}
 ```text
