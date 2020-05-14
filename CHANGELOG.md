@@ -158,7 +158,7 @@
 |![](/images/bug.jpg)|Eliminated error if no annotation to be deleted
 |![](/images/bug.jpg)|Last concept used for bounding boxes is retained between apps. Fixed
 |![](/images/bug.jpg)|The Add Positives / Add Negatives buttons on a Concept details view breaks portal
-|![](/images/bug.jpg)|CFR rectangles on grid view do not correlate. Fixed
+|![](/images/bug.jpg)|Custom facial recognition bboxes on grid view do not correlate. Fixed
 
 ## Model
 |Status|Details|
