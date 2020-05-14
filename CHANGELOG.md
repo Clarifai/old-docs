@@ -1,3 +1,63 @@
+# Changelog 6.1
+
+|New Feature|Improvement|Bug Fix|Enterprise Only
+|:-:|:-:|:-:|:-:|
+|![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
+
+## Annotate
+|Status|Details|
+|-|-------|
+|![](/images/new_feature.jpg) |Introduce AWAITING_REVIEW status for annotations                                                 |
+|![](/images/bug.jpg)|Negative Tags not Visible. Fixed
+
+## Clients
+|Status|Details|
+|-|-------|
+|![](/images/improvement.jpg)|Remove Feedback endpoints from Python client                                                     |
+|![](/images/improvement.jpg)|Remove Feedback endpoints from Java client                                                       |
+|![](/images/improvement.jpg)|Remove Feedback endpoints from Javascript client                                                 |
+|![](/images/improvement.jpg)|Remove Feedback endpoints from Portal/demo                                                       |
+|![](/images/improvement.jpg)|Remove image.crop field from Python API client                                                   |
+|![](/images/improvement.jpg)|Remove image.crop field from Java API client                                                     |
+|![](/images/improvement.jpg)|Remove image.crop field from Javascript API client   
+
+## Model
+|Status|Details|
+|-|-------|
+|![](/images/new_feature.jpg) |Detection evaluation in platform                                                                 |
+|![](/images/new_feature.jpg) |Create concept mapping model to map from clarifai/main to your concepts through knowledge graph. |
+|![](/images/bug.jpg)|Fix a bug that caused the new face spire huge performance drop                                   |
+|![](/images/bug.jpg)|Train and eval worker didn't invalidate model related cache. Fixed                               |
+|![](/images/bug.jpg)|annotation.trusted should be based on actual worker, not authenticated worker                    |
+|![](/images/bug.jpg)|Fix bug in deleting a concept relation by ID                                                     |
+
+## Portal
+|Status|Details|
+|-|-------|
+|![](/images/new_feature.jpg) |Created a Person with Label Icon                                                                 |
+|![](/images/improvement.jpg)|Bulk Labelling                                                                                   |
+|![](/images/improvement.jpg)|Show Check/X on custom detection model predictions in Portal                                     |
+|![](/images/improvement.jpg)|Allow multi concepts per bbox    
+
+## Predict
+|Status|Details|
+|-|-------|
+|![](/images/improvement.jpg)|Remove extra round trip to storage in predict pathway                                            |
+|![](/images/improvement.jpg)|Remove the image.crop argument during predict and POST /inputs calls to simplify the API         |
+|![](/images/improvement.jpg)|Add region predictions from custom models to detections in videos  
+
+## Search
+|Status|Details|
+|-|-------|
+|![](/images/new_feature.jpg) |Implement search by annotation.status in backend                                                 |
+|![](/images/improvement.jpg)|Connect saved searches and annotation status    
+
+## Workflow
+|Status|Details|
+|-|-------|
+|![](/images/improvement.jpg)|Implement thresholding workflow as pre-queue workflow  
+
+
 # Changelog 6.0
 
 |New Feature|Improvement|Bug Fix|Enterprise Only
@@ -92,7 +152,7 @@
 ## Search
 |Status|Details|
 |-|-------|
-|![](/images/new_feature.jpg) |	Add file upload input button to explorer search bar, simplifying the UX for file uploads
+|![](/images/new_feature.jpg) |Add file upload input button to explorer search bar, simplifying the UX for file uploads
 |![](/images/new_feature.jpg) |Filter custom facial recognition bboxes using a sliding bar, adding easy thresholding to custom facial recognition models
 |![](/images/improvement.jpg)|Search Bar allows file upload
 |![](/images/improvement.jpg)|Remove Explorer App Overflow Menu for improved UX
