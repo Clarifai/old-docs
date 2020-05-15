@@ -263,12 +263,39 @@ curl -X POST \
       {
         "data": {
           "image": {
-            "url": "https://samples.clarifai.com/puppy.jpeg"
+            "url": "https://samples.clarifai.com/puppy.jpeg",
+            "allow_duplicate_url": true
           },
           "concepts":[
             {
               "id": "boscoe",
-              "value": true
+              "value": 1
+            },
+            {
+              "id": "our_wedding",
+              "value": 0
+            }
+          ]
+        }
+      },
+      {
+        "data": {
+          "image": {
+            "url": "https://samples.clarifai.com/wedding.jpg",
+            "allow_duplicate_url": true
+          },
+          "concepts":[
+            {
+              "id": "our_wedding",
+              "value": 1
+            },
+            {
+              "id": "boscoe",
+              "value": 0
+            },
+            {
+              "id": "cat",
+              "value": 0
             }
           ]
         }
@@ -747,7 +774,7 @@ if ($response-> isSuccessful()) {
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
-  https://api.clarifai.com/v2/models/<model_id>/versions
+  https://api.clarifai.com/v2/models/pets/versions
 ```
 {% endtab %}
 {% endtabs %}
@@ -876,7 +903,7 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
         model_id="pets",
-        version_id="673896e7965b4aefa00496325b2aaa97",  # This is optional. Defaults to the latest model version.
+        version_id="{YOUR_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
         inputs=[
             resources_pb2.Input(
                 data=resources_pb2.Data(
@@ -1028,7 +1055,7 @@ curl -X POST \
       }
     ]
   }'\
-  https://api.clarifai.com/v2/models/<model_id>/versions/<model_version_id>/outputs
+  https://api.clarifai.com/v2/models/pets/versions/{YOUR_MODEL_VERSION_ID}/outputs
 ```
 {% endtab %}
 {% endtabs %}

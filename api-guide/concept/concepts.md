@@ -246,8 +246,8 @@ curl -X PATCH \
   {
     "concepts": [
       {
-        "id": "{concept_id}",
-        "name": "{new_concept_name}"
+        "id": "boscoe",
+        "name": "Boscoe Name"
       }
       ],
     "action": "overwrite"
@@ -602,8 +602,8 @@ curl -X POST \
   -d '
   {
     "concept_query": {
-      "name":"人*",
-      "language": "zh"
+      "name":"人",
+      "language": "ja"
     }
   }'\
   https://api.clarifai.com/v2/concepts/searches

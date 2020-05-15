@@ -266,6 +266,8 @@ curl -X POST \
   }
 }'\
   https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs
+
+# Above is model ID of the publicly available General model.
 ```
 {% endtab %}
 {% endtabs %}

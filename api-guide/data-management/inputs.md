@@ -190,7 +190,8 @@ curl -X POST \
       {
         "data": {
           "image": {
-            "url": "https://samples.clarifai.com/metro-north.jpg"
+            "url": "https://samples.clarifai.com/metro-north.jpg",
+            "allow_duplicate_url": true
           }
         }
       }
@@ -670,18 +671,20 @@ curl -X POST \
       {
         "data": {
           "image": {
-            "url": "https://samples.clarifai.com/metro-north.jpg"
+            "url": "https://samples.clarifai.com/metro-north.jpg",
+            "allow_duplicate_url": true
           }
         },
-        "id": "{id1}"
+        "id": "train1"
       },
       {
         "data": {
           "image": {
-            "url": "https://samples.clarifai.com/puppy.jpeg"
+            "url": "https://samples.clarifai.com/puppy.jpeg",
+            "allow_duplicate_url": true
           }
         },
-        "id": "{id2}"
+        "id": "puppy1"
       }
     ]
   }'\
@@ -922,12 +925,13 @@ curl -X POST \
       {
         "data": {
           "image": {
-            "url": "https://samples.clarifai.com/puppy.jpeg"
+            "url": "https://samples.clarifai.com/puppy.jpeg",
+            "allow_duplicate_url": true
           },
           "concepts":[
             {
               "id": "boscoe",
-              "value": true
+              "value": 1
             }
           ]
         }
@@ -1158,10 +1162,7 @@ curl -X POST \
             "url": "https://samples.clarifai.com/puppy.jpeg",
             "allow_duplicate_url": true
           },
-          "metadata": {
-            "key": "value",
-            "list":[1,2,3]
-          }
+          "metadata": {"id": "id001", "type": "animal", "size": 100}
         }
       }
     ]
@@ -1342,7 +1343,7 @@ if ($response->isSuccessful()) {
 ```text
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/inputs
+  https://api.clarifai.com/v2/inputs?page=1&per_page=10
 ```
 {% endtab %}
 {% endtabs %}
@@ -1596,7 +1597,7 @@ if ($response->isSuccessful()) {
 ```text
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/inputs/{id}
+  https://api.clarifai.com/v2/inputs/{YOUR_INPUT_ID}
 ```
 {% endtab %}
 {% endtabs %}
@@ -1991,6 +1992,9 @@ if ($response->isSuccessful()) {
 
 {% tab title="cURL" %}
 ```text
+# Value of 1 means true, this concept is present.
+# Value of 0 means false, this concept is not present.
+# Supported actions: overwrite, merge, remove.
 curl -X PATCH \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -1998,16 +2002,16 @@ curl -X PATCH \
   {
     "inputs": [
       {
-        "id": "{id}",
+        "id": "{YOUR_INPUT_ID}",
         "data": {
           "concepts": [
             {
               "id": "tree",
-              "value": true
+              "value": 1
             },
             {
               "id": "water",
-              "value": false
+              "value": 0
             }
           ]
         }
@@ -2245,6 +2249,9 @@ ClarifaiConcept *newConcept = [[ClarifaiConcept alloc] initWithConceptID:@"tree"
 
 {% tab title="cURL" %}
 ```text
+# Value of 1 means true, this concept is present.
+# Value of 0 means false, this concept is not present.
+# Supported actions: overwrite, merge, remove.
 curl -X PATCH \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -2252,31 +2259,31 @@ curl -X PATCH \
   {
     "inputs": [
       {
-        "id": "{id1}",
+        "id": "{YOUR_INPUT_ID_1}",
         "data": {
           "concepts": [
             {
               "id": "tree",
-              "value": true
+              "value": 1
             },
             {
               "id": "water",
-              "value": false
+              "value": 0
             }
           ]
         }
       },
       {
-        "id": "{id2}",
+        "id": "{YOUR_INPUT_ID_2}",
         "data": {
           "concepts": [
             {
-              "id": "tree",
-              "value": true
+              "id": "animal",
+              "value": 1
             },
             {
-              "id": "water",
-              "value": false
+              "id": "fruit",
+              "value": 0
             }
           ]
         }
@@ -2512,6 +2519,8 @@ if ($response->isSuccessful()) {
 
 {% tab title="cURL" %}
 ```text
+# We're removing the concept, so there's no need to specify
+# the concept value.
 curl -X PATCH \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -2519,11 +2528,10 @@ curl -X PATCH \
   {
     "inputs": [
       {
-        "id":"{{asset_id}}",
+        "id":"{YOUR_INPUT_ID}",
         "data": {
             "concepts":[
-                {"id":"mattid2", "value":true},
-                {"id":"ferrari", "value":false}
+                {"id":"water"}
             ]
         }
       }
@@ -2738,6 +2746,8 @@ ClarifaiConcept *concept = [[ClarifaiConcept alloc] initWithConceptName:@"cute c
 
 {% tab title="cURL" %}
 ```text
+# We're removing the concept, so there's no need to specify
+# the concept value.
 curl -X PATCH \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -2745,27 +2755,27 @@ curl -X PATCH \
   {
     "inputs": [
       {
-        "id": "{id1}",
+        "id": "{YOUR_INPUT_ID_1}",
         "data": {
           "concepts":[
             {
-              "id": "mattid2"
+              "id": "tree"
             },
             {
-              "id": "ferrari"
+              "id": "water"
             }
           ]
         }
       },
       {
-        "id": "{id2}",
+        "id": "{YOUR_INPUT_ID_2}",
         "data": {
           "concepts":[
             {
-              "id": "mattid2"
+              "id": "animal"
             },
             {
-              "id": "ferrari"
+              "id": "fruit"
             }
           ]
         }
@@ -2926,7 +2936,7 @@ if ($response->isSuccessful()) {
 ```text
 curl -X DELETE \
   -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/inputs/<INPUT_ID>
+  https://api.clarifai.com/v2/inputs/{YOUR_INPUT_ID}
 ```
 {% endtab %}
 {% endtabs %}
@@ -3086,7 +3096,7 @@ curl -X DELETE \
   -H "Content-Type: application/json" \
   -d '
   {
-    "ids":["INPUT_ID1","INPUT_ID2"]
+    "ids":["{YOUR_INPUT_ID_1}","{YOUR_INPUT_ID_2}"]
   }'\
   https://api.clarifai.com/v2/inputs
 ```
@@ -3244,7 +3254,7 @@ curl -X DELETE \
   -H "Content-Type: application/json" \
   -d '
   {
-    "delete_all":true
+    "delete_all": true
   }'\
   https://api.clarifai.com/v2/inputs
 ```

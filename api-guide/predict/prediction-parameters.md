@@ -270,6 +270,8 @@ curl -X POST \
   }
 }'\
 https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs
+
+# Above is model ID of the publicly available General model.
 ```
 {% endtab %}
 {% endtabs %}
@@ -907,7 +909,7 @@ curl -X POST \
     "model":{
       "output_info":{
         "output_config":{
-          "min_value": 0.97
+          "min_value": 0.95
         }
       }
     }
@@ -1258,7 +1260,10 @@ curl -X POST \
       }
     ]
   }'\
-  https://api.clarifai.com/v2/models/<model_id>/versions/<model_version_id>/outputs
+  https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/versions/aa7f35c01e0642fda5cf400f543e7c40/outputs
+
+# Above is model ID of the publicly available General model.
+# Version ID is optional. It defaults to the latest model version.
 ```
 {% endtab %}
 {% endtabs %}

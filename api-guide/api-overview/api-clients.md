@@ -304,7 +304,7 @@ $client = new ClarifaiClient('YOUR_API_KEY');
 ```
 {% endtab %}
 
-{% tab title="bash" %}
+{% tab title="cURL" %}
 ```text
 // Your system may already have curl installed. Test by running `curl --help` from your terminal.
 // Otherwise, install cURL: https://curl.haxx.se/download.html

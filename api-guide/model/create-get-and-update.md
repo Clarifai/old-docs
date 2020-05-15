@@ -365,13 +365,10 @@ curl -X POST \
         "data": {
           "concepts": [
             {
-              "id": "boscoe"
+              "id": "boscoe",
+              "value": 1
             }
           ]
-        },
-        "output_config": {
-          "concepts_mutually_exclusive": false,
-          "closed_environment":false
         }
       }
     }
@@ -598,12 +595,12 @@ curl -X PATCH \
   {
     "models": [
       {
-        "id": "{model_id}",
+        "id": "petsID",
         "output_info": {
           "data": {
             "concepts": [
               {
-                "id": "dogs"
+                "id": "boscoe"
               }
             ]
           }
@@ -836,12 +833,12 @@ curl -X PATCH \
   {
     "models": [
       {
-        "id": "{model_id}",
+        "id": "petsID",
         "output_info": {
           "data": {
             "concepts": [
               {
-                "id": "dogs"
+                "id": "boscoe"
               }
             ]
           }
@@ -1089,9 +1086,10 @@ curl -X PATCH \
   {
     "models": [
       {
-        "id": "MODEL_ID",
+        "id": "petsID",
         "name": "newname",
         "output_info": {
+          "data": {"concepts": [{"id": "birds"}, {"id": "hurd"}]},
           "output_config": {
             "concepts_mutually_exclusive": true,
             "closed_environment": true
@@ -1440,7 +1438,7 @@ if ($response->isSuccessful()) {
 ```text
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/{model_id}
+  https://api.clarifai.com/v2/models/petsID
 ```
 {% endtab %}
 {% endtabs %}
@@ -1621,7 +1619,7 @@ if ($response->isSuccessful()) {
 ```text
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/{model_id}/output_info
+  https://api.clarifai.com/v2/models/petsID/output_info
 ```
 {% endtab %}
 {% endtabs %}
@@ -1802,7 +1800,7 @@ if ($response->isSuccessful()) {
 ```text
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/{model_id}/versions
+  https://api.clarifai.com/v2/models/petsID/versions
 ```
 {% endtab %}
 {% endtabs %}
@@ -1985,7 +1983,7 @@ if ($response->isSuccessful()) {
 ```text
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/{model_id}/versions/{version_id}
+  https://api.clarifai.com/v2/models/petsID/versions/{YOUR_MODEL_VERSION_ID}
 ```
 {% endtab %}
 {% endtabs %}
@@ -2142,7 +2140,7 @@ namespace YourNamespace
 ```text
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/{model_id}/inputs
+  https://api.clarifai.com/v2/models/petsID/inputs
 ```
 {% endtab %}
 {% endtabs %}
@@ -2310,7 +2308,7 @@ namespace YourNamespace
 ```text
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/{model_id}/versions/{version_id}/inputs
+  https://api.clarifai.com/v2/models/petsID/versions/{YOUR_MODEL_VERSION_ID}/inputs
 ```
 {% endtab %}
 {% endtabs %}
@@ -2461,7 +2459,7 @@ if ($response->isSuccessful()) {
 ```text
 curl -X DELETE \
   -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/{model_id}
+  https://api.clarifai.com/v2/models/petsID
 ```
 {% endtab %}
 {% endtabs %}
@@ -2635,7 +2633,7 @@ if ($response->isSuccessful()) {
 ```text
 curl -X DELETE \
   -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/{model_id}/versions/{version_id}
+  https://api.clarifai.com/v2/models/petsID/versions/{YOUR_MODEL_VERSION_ID}
 ```
 {% endtab %}
 {% endtabs %}
@@ -2961,7 +2959,7 @@ if ($response->isSuccessful()) {
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
-  https://api.clarifai.com/v2/models/{model_id}/versions
+  https://api.clarifai.com/v2/models/petsID/versions
 ```
 {% endtab %}
 {% endtabs %}
@@ -3211,7 +3209,10 @@ curl -X POST \
       }
     ]
   }'\
-  https://api.clarifai.com/v2/models/{model_id}/outputs
+  https://api.clarifai.com/v2/models/petsID/outputs
+
+# Model version defaults to latest. If you want to specify the model version, use this URL:
+# https://api.clarifai.com/v2/models/petsID/versions/{YOUR_MODEL_VERSION_ID}/outputs
 ```
 {% endtab %}
 {% endtabs %}
@@ -3413,7 +3414,7 @@ curl -X POST \
   -d '
   {
     "model_query": {
-      "name": "general-v1.3",
+      "name": "gen*",
       "type": "concept"
     }
   }'\

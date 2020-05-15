@@ -298,6 +298,13 @@ if ($response->isSuccessful()) {
 
 {% tab title="cURL" %}
 ```text
+# Setting "output" indicates we search for images that have the concept(s) which were predicted by
+# the General model.
+#
+# Value of 0 will search for images that don't have the concept.
+#
+# Instead of "name" you can search by "id" as well.
+
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -310,7 +317,8 @@ curl -X POST \
             "data": {
               "concepts": [
                 {
-                  "name":"dog"
+                  "name":"people",
+                  "value": 1
                 }
               ]
             }
@@ -621,6 +629,13 @@ if ($response->isSuccessful()) {
 
 {% tab title="cURL" %}
 ```text
+# Setting "input" indicates we search for images that have the concept(s) which we added to the
+# input manually.
+#
+# Value of 0 will search for images that don't have the concept.
+#
+# Instead of "name" you can search by "id" as well.
+
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -633,7 +648,8 @@ curl -X POST \
             "data": {
               "concepts": [
                 {
-                  "name":"dog"
+                  "name":"people",
+                  "value": 1
                 }
               ]
             }
@@ -947,6 +963,9 @@ if ($response->isSuccessful()) {
 
 {% tab title="cURL" %}
 ```text
+# Here we search for images which we labeled with "cat" and for which the General prediction model
+# does not find a "dog" concept.
+
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -955,23 +974,24 @@ curl -X POST \
   "query": {
     "ands": [
       {
-        "output": {
+        "input": {
           "data": {
             "concepts": [
               {
-                "name": "fast"
+                "name": "cat",
+                "value": 1
               }
             ]
           }
         }
       },
       {
-        "input": {
+        "output": {
           "data": {
             "concepts": [
               {
-                "name": "ferrari23",
-                "value": true
+                "name": "dog",
+                "value": 0
               }
             ]
           }
@@ -1420,7 +1440,7 @@ curl -X POST \
             "input":{
               "data": {
                 "image": {
-                  "url": "https://samples.clarifai.com/metro-north.jpg"
+                  "url": "{YOUR_IMAGE_URL}"
                 }
               }
             }
@@ -1670,7 +1690,7 @@ curl -X POST \
           "input":{
             "data": {
               "image": {
-                "url": "https://samples.clarifai.com/metro-north.jpg"
+                "url": "{YOUR_IMAGE_URL}"
               }
             }
           }

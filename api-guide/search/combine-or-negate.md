@@ -295,6 +295,9 @@ if ($response->isSuccessful()) {
 
 {% tab title="cURL" %}
 ```text
+# Here we search for images which we labeled with "cat" and for which the General prediction model does not find
+# a "dog" concept.
+
 curl -X POST \
   -H "Authorization: Key {api-key}" \
   -H "Content-Type: application/json" \
@@ -303,13 +306,14 @@ curl -X POST \
     "query": {
         "ands": [
             {
-                "output": {
-                    "input":{
-                        "data": {
-                            "image": {
-                                "url": "http://i.imgur.com/HEoT5xR.png"
+                "input":{
+                    "data": {
+                        "concepts": [
+                            {
+                                "name": "cat",
+                                "value": 1
                             }
-                        }
+                        ]
                     }
                 }
             },
@@ -317,7 +321,10 @@ curl -X POST \
                 "output": {
                     "data": {
                         "concepts": [
-                            {"name":"fast", "value":true}
+                            {
+                                "name": "dog",
+                                "value": 0
+                            }
                         ]
                     }
                 }

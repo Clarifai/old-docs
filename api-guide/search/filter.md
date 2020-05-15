@@ -328,7 +328,7 @@ curl -X POST \
           "input":{
             "data": {
               "metadata": {
-                "key": "value"
+                "type": "animal"
               }
             }
           }
@@ -855,12 +855,12 @@ curl -X POST \
             "data": {
               "geo": {
                 "geo_point": {
-                  "longitude": 59,
-                  "latitude": 29.75
+                  "longitude": -29.0,
+                  "latitude": 40.0
                 },
                 "geo_limit": {
                   "type": "withinKilometers",
-                  "value": 1
+                  "value": 150
                 }
               }
             }
@@ -1159,14 +1159,14 @@ curl -X POST \
                 "geo_box": [
                   {
                     "geo_point": {
-                      "latitude": 35,
-                      "longitude": -30
+                      "latitude": 42,
+                      "longitude": -31
                     }
                   },
                   {
                     "geo_point": {
-                      "latitude": 50,
-                      "longitude": -35
+                      "latitude": 39,
+                      "longitude": -29
                     }
                   }
                 ]
