@@ -350,7 +350,7 @@ import com.clarifai.grpc.api.status.*;
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
-MultiConceptResponse listConceptResponse = stub.listConcepts(
+MultiConceptResponse listConceptsResponse = stub.listConcepts(
     ListConceptsRequest.newBuilder()
         .build()
 );
