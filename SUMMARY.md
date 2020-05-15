@@ -25,7 +25,7 @@
   * [Status codes](api-guide/api-overview/status-codes.md)
   * [Pagination](api-guide/api-overview/pagination.md)
   * [Patching](api-guide/api-overview/patching.md)
-* [Inputs](api-guide/data-management/README.md)
+* [Input Data](api-guide/data-management/README.md)
   * [Inputs](api-guide/data-management/inputs.md)
   * [Supported formats](api-guide/data-management/supported-formats.md)
 * [Concepts](api-guide/concepts/README.md)
@@ -52,6 +52,7 @@
 
 * [Portal overview](portal-guide/portal_overview.md)
 * [Data management](portal-guide/pdata_management.md)
+* [Concepts](portal-guide/concepts/README.md)
 * [Annotate](portal-guide/annotate/README.md)
   * [Positive and negative annotations](portal-guide/annotate/positive-and-negative-annotations.md)
 * [Model](portal-guide/model/README.md)

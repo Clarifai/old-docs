@@ -1171,7 +1171,7 @@ curl -X POST \
 {% endtab %}
 {% endtabs %}
 
-### Get inputs
+### List inputs
 
 You can list all the inputs \(images\) you have previously added either for [search](https://github.com/Clarifai/docs/tree/5882f46bd17affcd85ed3e2ec98f4d6f355b58a9/advanced-searches.md) or [train](https://github.com/Clarifai/docs/tree/5882f46bd17affcd85ed3e2ec98f4d6f355b58a9/train.md).
 
@@ -1343,6 +1343,99 @@ if ($response->isSuccessful()) {
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
   https://api.clarifai.com/v2/inputs
+```
+{% endtab %}
+{% endtabs %}
+
+
+### List inputs (streaming)
+
+This is an extension of List inputs which was built to scalably list all the inputs in an app in an iterative / streaming fashion. The idea is that the last call to StreamInputs will return a list of inputs and you can feed in the last id of those inputs into the next StreamInputs call.
+
+The stream starts from the oldest assets and works it's way forward by default. There is a `descending` field you can set to True to reverse that order.
+
+{% tabs %}
+{% tab title="gRPC Java" %}
+```java
+// FIXME(rok): update for the streaming request.
+
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiInputResponse streaminputsResponse = stub.streaminputs(
+    StreaminputsRequest.newBuilder()
+        .setPage(1)
+        .setPerPage(10)
+        .build()
+);
+
+if (streaminputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("List inputs failed, status: " + streaminputsResponse.getStatus());
+}
+
+for (Input input : streaminputsResponse.getInputsList()) {
+    System.out.println(input);
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// FIXME(rok): update for the streaming request.
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.Streaminputs(
+    {page: 1, per_page: 10},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("List inputs failed, status: " + response.status.description);
+        }
+
+        for (const input of response.inputs) {
+            console.log(JSON.stringify(input, null, 2));
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+# First page id isn't provided.
+list_inputs_response = stub.Streaminputs(
+    service_pb2.StreaminputsRequest(per_page=10),
+    metadata=metadata
+)
+
+if list_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("List inputs failed, status: " + list_inputs_response.status.description)
+
+for input_object in list_inputs_response.inputs:
+    print(input_object)
+
+last_id = list_inputs_response.inputs[-1].id
+
+# second page starts from the last_id.
+list_inputs_response = stub.Streaminputs(
+    service_pb2.StreaminputsRequest(per_page=10, last_id=last_id),
+    metadata=metadata
+)
 ```
 {% endtab %}
 {% endtabs %}
