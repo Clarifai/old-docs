@@ -721,7 +721,7 @@ MultiInputResponse postInputsResponse = stub.postInputs(
                 )
                 .addConcepts(
                     Concept.newBuilder()
-                        .setId("boscoe")
+                        .setId("charlie")
                         .setValue(1f)
                 )
         )
@@ -743,7 +743,7 @@ stub.PostInputs(
     {
         inputs: [{data: {
             image: {url: "https://samples.clarifai.com/puppy.jpeg", allow_duplicate_url: true},
-            concepts: [{id: "boscoe", value: 1.}]
+            concepts: [{id: "charlie", value: 1.}]
         }}]
     },
     metadata,
@@ -777,7 +777,7 @@ post_inputs_response = stub.PostInputs(
                         url="https://samples.clarifai.com/puppy.jpeg",
                         allow_duplicate_url=True
                     ),
-                    concepts=[resources_pb2.Concept(id="boscoe", value=1.)]
+                    concepts=[resources_pb2.Concept(id="charlie", value=1.)]
                 )
             )
         ]
@@ -796,7 +796,7 @@ app.inputs.create({
   url: "https://samples.clarifai.com/puppy.jpeg",
   concepts: [
     {
-      id: "boscoe",
+      id: "charlie",
       value: true
     }
   ]
@@ -819,20 +819,20 @@ from clarifai.rest import Image as ClImage
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 
 # add by url
-app.inputs.create_image_from_url("https://samples.clarifai.com/puppy.jpeg", concepts=['boscoe'])
+app.inputs.create_image_from_url("https://samples.clarifai.com/puppy.jpeg", concepts=['charlie'])
 
 # add by base64 bytes
-app.inputs.create_image_from_base64(base64_bytes, concepts=['boscoe'])
+app.inputs.create_image_from_base64(base64_bytes, concepts=['charlie'])
 
 # add by raw bytes
-app.inputs.create_image_from_bytes(raw_bytes, concepts=['boscoe'])
+app.inputs.create_image_from_bytes(raw_bytes, concepts=['charlie'])
 
 # add by local file
-app.inputs.create_image_from_filename(local_filename, concepts=['boscoe'])
+app.inputs.create_image_from_filename(local_filename, concepts=['charlie'])
 
 # add multiple with concepts
-img1 = ClImage(url="https://samples.clarifai.com/puppy.jpeg", concepts=['boscoe'], not_concepts=['our_wedding'])
-img2 = ClImage(url="https://samples.clarifai.com/wedding.jpg", concepts=['our_wedding'], not_concepts=['cat','boscoe'])
+img1 = ClImage(url="https://samples.clarifai.com/puppy.jpeg", concepts=['charlie'], not_concepts=['our_wedding'])
+img2 = ClImage(url="https://samples.clarifai.com/wedding.jpg", concepts=['our_wedding'], not_concepts=['cat','charlie'])
 
 app.inputs.bulk_create_images([img1, img2])
 ```
@@ -844,7 +844,7 @@ client.addInputs()
     .plus(ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpeg")
         .withConcepts(
             // To mark a concept as being absent, chain `.withValue(false)`
-            Concept.forID("boscoe")
+            Concept.forID("charlie")
         )
     )
     .executeSync();
@@ -871,7 +871,7 @@ namespace YourNamespace
                     new ClarifaiURLImage(
                         "https://samples.clarifai.com/puppy.jpeg",
                         // To mark a concept as being absent, use negativeConcepts
-                        positiveConcepts: new List<Concept> {new Concept("boscoe")}))
+                        positiveConcepts: new List<Concept> {new Concept("charlie")}))
                 .ExecuteAsync();
         }
     }
@@ -930,7 +930,7 @@ curl -X POST \
           },
           "concepts":[
             {
-              "id": "boscoe",
+              "id": "charlie",
               "value": 1
             }
           ]

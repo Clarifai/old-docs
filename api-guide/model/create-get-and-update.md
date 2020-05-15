@@ -190,7 +190,7 @@ SingleModelResponse postModelsResponse = stub.postModels(
             .setId("petsID")
             .setOutputInfo(
                 OutputInfo.newBuilder().setData(
-                    Data.newBuilder().addConcepts(Concept.newBuilder().setId("boscoe"))
+                    Data.newBuilder().addConcepts(Concept.newBuilder().setId("charlie"))
                 )
             )
     ).build()
@@ -212,7 +212,7 @@ stub.PostModels(
             {
                 id: "petsID",
                 output_info: {
-                    data: {concepts: [{id: "boscoe"}]},
+                    data: {concepts: [{id: "charlie"}]},
                 }
             }
         ]
@@ -246,7 +246,7 @@ post_models_response = stub.PostModels(
                 id="petsID",
                 output_info=resources_pb2.OutputInfo(
                     data=resources_pb2.Data(
-                        concepts=[resources_pb2.Concept(id="boscoe", value=1)]
+                        concepts=[resources_pb2.Concept(id="charlie", value=1)]
                     ),
                 )
             )
@@ -265,7 +265,7 @@ if post_models_response.status.code != status_code_pb2.SUCCESS:
 app.models.create(
   "petsID",
   [
-    { "id": "boscoe" }
+    { "id": "charlie" }
   ]
 ).then(
   function(response) {
@@ -283,7 +283,7 @@ app.models.create(
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 
-model = app.models.create('petsID', concepts=['boscoe'])
+model = app.models.create('petsID', concepts=['charlie'])
 ```
 {% endtab %}
 
@@ -291,7 +291,7 @@ model = app.models.create('petsID', concepts=['boscoe'])
 ```java
 client.createModel("petsID")
     .withOutputInfo(ConceptOutputInfo.forConcepts(
-        Concept.forID("boscoe")
+        Concept.forID("charlie")
     ))
     .executeSync();
 ```
@@ -314,7 +314,7 @@ namespace YourNamespace
 
             await client.CreateModel(
                     "petsID",
-                    concepts: new List<Concept> {new Concept("boscoe")})
+                    concepts: new List<Concept> {new Concept("charlie")})
                 .ExecuteAsync();
         }
     }
@@ -365,7 +365,7 @@ curl -X POST \
         "data": {
           "concepts": [
             {
-              "id": "boscoe",
+              "id": "charlie",
               "value": 1
             }
           ]
@@ -398,7 +398,7 @@ MultiModelResponse patchModelsResponse = stub.patchModels(
                 .setId("petsID")
                 .setOutputInfo(
                     OutputInfo.newBuilder().setData(
-                        Data.newBuilder().addConcepts(Concept.newBuilder().setId("boscoe"))
+                        Data.newBuilder().addConcepts(Concept.newBuilder().setId("charlie"))
                     )
                 )
         )
@@ -422,7 +422,7 @@ stub.PatchModels(
         models: [
             {
                 id: "petsID",
-                output_info: {data: {concepts: [{id: "boscoe"}]}}
+                output_info: {data: {concepts: [{id: "charlie"}]}}
             }
         ]
     },
@@ -456,7 +456,7 @@ patch_models_response = stub.PatchModels(
                 id="petsID",
                 output_info=resources_pb2.OutputInfo(
                     data=resources_pb2.Data(
-                        concepts=[resources_pb2.Concept(id="boscoe")]
+                        concepts=[resources_pb2.Concept(id="charlie")]
                     ),
                 )
             )
@@ -480,7 +480,7 @@ app.models.initModel({model_id}).then(function(model) {
 });
 
 function updateModel(model) {
-  model.mergeConcepts({"id": "boscoe"}).then(
+  model.mergeConcepts({"id": "charlie"}).then(
     function(response) {
       // do something with response
     },
@@ -498,7 +498,7 @@ from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 
 model = app.models.get('{model_id}')
-model.add_concepts(['boscoe'])
+model.add_concepts(['charlie'])
 ```
 {% endtab %}
 
@@ -600,7 +600,7 @@ curl -X PATCH \
           "data": {
             "concepts": [
               {
-                "id": "boscoe"
+                "id": "charlie"
               }
             ]
           }
@@ -635,7 +635,7 @@ MultiModelResponse patchModelsResponse = stub.patchModels(
                 .setId("petsID")
                 .setOutputInfo(
                     OutputInfo.newBuilder().setData(
-                        Data.newBuilder().addConcepts(Concept.newBuilder().setId("boscoe"))
+                        Data.newBuilder().addConcepts(Concept.newBuilder().setId("charlie"))
                     )
                 )
         )
@@ -659,7 +659,7 @@ stub.PatchModels(
         models: [
             {
                 id: "petsID",
-                output_info: {data: {concepts: [{id: "boscoe"}]}}
+                output_info: {data: {concepts: [{id: "charlie"}]}}
             }
         ]
     },
@@ -693,7 +693,7 @@ patch_models_response = stub.PatchModels(
                 id="petsID",
                 output_info=resources_pb2.OutputInfo(
                     data=resources_pb2.Data(
-                        concepts=[resources_pb2.Concept(id="boscoe")]
+                        concepts=[resources_pb2.Concept(id="charlie")]
                     ),
                 )
             )
@@ -717,7 +717,7 @@ app.models.initModel({model_id}).then(function(model) {
 });
 
 function updateModel(model) {
-  model.deleteConcepts({"id": "boscoe"}).then(
+  model.deleteConcepts({"id": "charlie"}).then(
     function(response) {
       // do something with response
     },
@@ -735,7 +735,7 @@ from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 
 model = app.models.get('{model_id}')
-model.delete_concepts(['boscoe'])
+model.delete_concepts(['charlie'])
 ```
 {% endtab %}
 
@@ -838,7 +838,7 @@ curl -X PATCH \
           "data": {
             "concepts": [
               {
-                "id": "boscoe"
+                "id": "charlie"
               }
             ]
           }

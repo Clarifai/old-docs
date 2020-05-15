@@ -21,7 +21,7 @@ import com.clarifai.grpc.api.status.*;
 
 MultiConceptResponse postConceptsResponse = stub.postConcepts(
     PostConceptsRequest.newBuilder()
-        .addConcepts(Concept.newBuilder().setId("boscoe").setName("Boscoe Name"))
+        .addConcepts(Concept.newBuilder().setId("charlie").setName("Charlie Name"))
         .build()
 );
 
@@ -38,7 +38,7 @@ if (postConceptsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 stub.PostConcepts(
     {
-        concepts: [{id: "boscoe", name: "Boscoe Name"}]
+        concepts: [{id: "charlie", name: "Charlie Name"}]
     },
     metadata,
     (err, response) => {
@@ -64,7 +64,7 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 
 post_concepts_response = stub.PostConcepts(
     service_pb2.PostConceptsRequest(
-        concepts=[resources_pb2.Concept(id="boscoe", name="Boscoe Name")]
+        concepts=[resources_pb2.Concept(id="charlie", name="Charlie Name")]
     ),
     metadata=metadata
 )
@@ -111,7 +111,7 @@ import com.clarifai.grpc.api.status.*;
 MultiConceptResponse patchConceptsResponse = stub.patchConcepts(
     PatchConceptsRequest.newBuilder()
         .setAction("overwrite")  // The only supported action right now is overwrite.
-        .addConcepts(Concept.newBuilder().setId("boscoe").setName("Boscoe Name"))
+        .addConcepts(Concept.newBuilder().setId("charlie").setName("Charlie Name"))
         .build()
 );
 
@@ -129,7 +129,7 @@ if (patchConceptsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 stub.PatchConcepts(
     {
         action: "overwrite",  // The only supported action right now is overwrite
-        concepts: [{id: "boscoe", name: "Boscoe Name"}]
+        concepts: [{id: "charlie", name: "Charlie Name"}]
     },
     metadata,
     (err, response) => {
@@ -156,7 +156,7 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 patch_concepts_response = stub.PatchConcepts(
     service_pb2.PatchConceptsRequest(
         action="overwrite",  # The only supported action right now is overwrite.
-        concepts=[resources_pb2.Concept(id="boscoe", name="Boscoe Name")]
+        concepts=[resources_pb2.Concept(id="charlie", name="Charlie Name")]
     ),
     metadata=metadata
 )
@@ -246,8 +246,8 @@ curl -X PATCH \
   {
     "concepts": [
       {
-        "id": "boscoe",
-        "name": "Boscoe Name"
+        "id": "charlie",
+        "name": "Charlie Name"
       }
       ],
     "action": "overwrite"
@@ -273,7 +273,7 @@ import com.clarifai.grpc.api.status.*;
 
 SingleConceptResponse getConceptResponse = stub.getConcept(
     GetConceptRequest.newBuilder()
-        .setConceptId("boscoe")
+        .setConceptId("charlie")
         .build()
 );
 
@@ -316,7 +316,7 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 
 get_concepts_response = stub.GetConcept(
     service_pb2.GetConceptRequest(
-        concept_id="boscoe"
+        concept_id="charlie"
     ),
     metadata=metadata
 )

@@ -57,7 +57,7 @@ import com.clarifai.grpc.api.status.*;
 
 MultiConceptResponse listConceptLanguagesResponse = stub.listConceptLanguages(
     ListConceptLanguagesRequest.newBuilder()
-        .setConceptId("boscoe")
+        .setConceptId("charlie")
         .build()
 );
 
@@ -74,7 +74,7 @@ if (listConceptLanguagesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 stub.ListConceptLanguages(
     {
-      concept_id: "boscoe"
+      concept_id: "charlie"
     },
     metadata,
     (err, response) => {
@@ -100,7 +100,7 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 
 list_concept_languages_response = stub.ListConceptLanguages(
     service_pb2.ListConceptLanguagesRequest(
-        concept_id="boscoe"
+        concept_id="charlie"
     ),
     metadata=metadata
 )
@@ -137,7 +137,7 @@ import com.clarifai.grpc.api.status.*;
 
 MultiConceptResponse getConceptLanguageResponse = stub.getConceptLanguage(
     ListConceptLanguageRequest.newBuilder()
-        .setConceptId("boscoe")
+        .setConceptId("charlie")
         .setLanguage("ja")
         .build()
 );
@@ -155,7 +155,7 @@ if (getConceptLanguageResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 stub.GetConceptLanguage(
     {
-      concept_id: "boscoe",
+      concept_id: "charlie",
       language: "ja"
     },
     metadata,
@@ -182,7 +182,7 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 
 get_concept_language_response = stub.GetConceptLanguage(
     service_pb2.GetConceptLanguageRequest(
-        concept_id="boscoe",
+        concept_id="charlie",
         language="ja"
     ),
     metadata=metadata
@@ -219,7 +219,7 @@ import com.clarifai.grpc.api.status.*;
 
 MultiConceptResponse postConceptLanguageResponse = stub.postConceptLanguage(
     PostConceptLanguageRequest.newBuilder()
-        .setConceptId("boscoe")
+        .setConceptId("charlie")
         .addConceptLanguages(ConceptLanguage.newBuilder().setId("ja").setName("ボスコ"))
         .build()
 );
@@ -237,7 +237,7 @@ if (postConceptLanguageResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 stub.PostConceptLanguage(
     {
-      concept_id: "boscoe",
+      concept_id: "charlie",
       concept_languages: [
         {
           id: "ja",
@@ -269,7 +269,7 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 
 get_concept_language_response = stub.PostConceptLanguage(
     service_pb2.PostConceptLanguageRequest(
-        concept_id="boscoe",
+        concept_id="charlie",
         concept_languages=[resources_pb2.ConceptLanguages(
           id="ja",
           name="ボスコ"
@@ -311,7 +311,7 @@ import com.clarifai.grpc.api.status.*;
 MultiConceptResponse patchConceptLanguageResponse = stub.patchConceptLanguage(
     PatchConceptLanguageRequest.newBuilder()
         .setAction("overwrite")
-        .setConceptId("boscoe")
+        .setConceptId("charlie")
         .addConceptLanguages(ConceptLanguage.newBuilder().setId("ja").setName("new name"))
         .build()
 );
@@ -330,7 +330,7 @@ if (patchConceptLanguageResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 stub.PatchConceptLanguage(
     {
       action: "overwrite",
-      concept_id: "boscoe",
+      concept_id: "charlie",
       concept_languages: [
         {
           id: "ja",
@@ -362,7 +362,7 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 
 get_concept_language_response = stub.PatchConceptLanguage(
     service_pb2.PatchConceptLanguageRequest(
-        concept_id="boscoe",
+        concept_id="charlie",
         concept_languages=[resources_pb2.ConceptLanguages(
           id="ja",
           name="new name"
