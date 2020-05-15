@@ -6,9 +6,9 @@ Rank Order your search results with the intuitive insights of AI. Your model can
 
 Once your images are indexed, you can search for them by concept.
 
-### By Public Concepts
+### By clarifai/main App Concepts
 
-When you add an input, it automatically gets predictions from the general model. You can search for those predictions.
+When you add an input, it automatically gets predictions from the models in your default which are typically models from the clarifai/main app such as the general model. You can search by those predictions.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -647,7 +647,7 @@ curl -X POST \
 {% endtab %}
 {% endtabs %}
 
-### By public and custom concepts
+### By clarifai/main and custom concepts
 
 You can combine a search to find inputs that have concepts you have supplied as well as predictions from your model.
 
@@ -984,6 +984,167 @@ https://api.clarifai.com/v2/searches
 ```
 {% endtab %}
 {% endtabs %}
+
+
+### By concept in another language
+
+Concepts that have a translation into another langauge can be searched for in that language, even without having the default language for your app being in that language. This uses Clarifai's knowledge graph to lookup the translation and then perform the search. For example, if you app is in english and you want to search for "dog" in Japanese, then you could search wiht `language="ja"` and `name="犬"`.
+
+{% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiSearchResponse postSearchesResponse = stub.postSearches(
+    PostSearchesRequest.newBuilder().setQuery(
+        Query.newBuilder().addAnds(
+            And.newBuilder().setOutput( // Setting Output indicates we search for images that have the concept(s)
+                                        // which were predicted by the General model.
+                Output.newBuilder().setData(
+                    Data.newBuilder().addConcepts(  // You can search by multiple concepts.
+                        Concept.newBuilder()
+                            .setName("犬")  // You could search by concept ID as well.
+                            .setLanguage("ja") // japanese
+                            .setValue(1f)  // Value of 0 will search for images that don't have the concept.
+                    )
+                )
+            )
+        )
+    )
+    .build()
+);
+
+if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
+}
+
+System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
+for (Hit hit : postSearchesResponse.getHitsList()) {
+    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostSearches(
+    {
+        query: {
+            ands: [
+                {
+                    output: {  // Setting Output indicates we search for images that have the concept(s)
+                               // which were predicted by the General model.
+                        data: {
+                            concepts: [  // You can search by multiple concepts.
+                                {
+                                    name: "犬",  // You could search by concept ID as well.
+                                    language: "ja", // japanese
+                                    value: 1  // Value of 0 will search for images that don't have the concept
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post searches failed, status: " + response.status.description);
+        }
+
+        console.log("Found inputs:");
+        for (const hit of response.hits) {
+            console.log("\tScore " + hit.score + " for " + hit.input.id);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_searches_response = stub.PostSearches(
+    service_pb2.PostSearchesRequest(
+        query=resources_pb2.Query(
+            ands=[
+                resources_pb2.And(
+                    output=resources_pb2.Output( # Setting Output indicates we search for images that have the concept(s)
+                                                 # which were predicted by the General model.
+                        data=resources_pb2.Data(
+                            concepts=[  # You can search by multiple concepts.
+                                resources_pb2.Concept(
+                                    name="犬",  # You could search by concept ID as well.
+                                    language="ja", # japanese
+                                    value=1  # Value of 0 will search for images that don't have the concept.
+                                )
+                            ]
+                        )
+                    )
+                )
+            ]
+        )
+    ),
+    metadata=metadata
+)
+
+if post_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post searches failed, status: " + post_searches_response.status.description)
+
+print("Found inputs:")
+for hit in post_searches_response.hits:
+    print("\tScore %.2f for %s" % (hit.score, hit.input.id))
+```
+{% endtab %}
+
+{% tab title="cURL" %}
+```text
+curl -X POST \
+  -H "Authorization: Key YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '
+  {
+    "query": {
+      "ands": [
+        {
+          "output": {
+            "data": {
+              "concepts": [
+                {
+                  "name":"犬",
+                  "language": "ja",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }'\
+  https://api.clarifai.com/v2/searches
+```
+{% endtab %}
+{% endtabs %}
+
 
 ## By Image
 

@@ -1268,7 +1268,7 @@ curl -X PATCH \
 
 ### Get Models
 
-To get a list of all models including models you've created as well as [public models]():
+To get a list of all models including models you've created as well as [Clarifai models](api-guide/model/public-models.md):
 
 {% tabs %}
 {% tab title="gRPC Java" %}

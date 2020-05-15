@@ -4,11 +4,6 @@
 |:-:|:-:|:-:|:-:|
 |![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
 
-## Annotate
-|Status|Details|
-|-|-------|
-|![](/images/new_feature.jpg) |Introduce AWAITING_REVIEW status for annotations                                                 |
-|![](/images/bug.jpg)|Negative Tags not Visible. Fixed
 
 ## Clients
 |Status|Details|
@@ -19,43 +14,42 @@
 |![](/images/improvement.jpg)|Remove Feedback endpoints from Portal/demo                                                       |
 |![](/images/improvement.jpg)|Remove image.crop field from Python API client                                                   |
 |![](/images/improvement.jpg)|Remove image.crop field from Java API client                                                     |
-|![](/images/improvement.jpg)|Remove image.crop field from Javascript API client   
+|![](/images/improvement.jpg)|Remove image.crop field from Javascript API client
 
 ## Model
 |Status|Details|
 |-|-------|
-|![](/images/new_feature.jpg) |Detection evaluation in platform                                                                 |
-|![](/images/new_feature.jpg) |Create concept mapping model to map from clarifai/main to your concepts through knowledge graph. |
-|![](/images/bug.jpg)|Fix a bug that caused the new face spire huge performance drop                                   |
+|![](/images/new_feature.jpg) |Added detection evaluation in platform                                                                 |
+|![](/images/new_feature.jpg)|Introduce concept mapping model that uses the knowledge graph relations, creating a path for users to eventually benefit from pool of networked data
+|![](/images/bug.jpg)|Fix a bug that caused the new face predictions to have a huge performance drop                                   |
 |![](/images/bug.jpg)|Train and eval worker didn't invalidate model related cache. Fixed                               |
-|![](/images/bug.jpg)|annotation.trusted should be based on actual worker, not authenticated worker                    |
 |![](/images/bug.jpg)|Fix bug in deleting a concept relation by ID                                                     |
 
 ## Portal
 |Status|Details|
 |-|-------|
-|![](/images/new_feature.jpg) |Created a Person with Label Icon                                                                 |
-|![](/images/improvement.jpg)|Bulk Labelling                                                                                   |
+|![](/images/new_feature.jpg)|Bulk labelling can now be done from Explorer mode.|
 |![](/images/improvement.jpg)|Show Check/X on custom detection model predictions in Portal                                     |
-|![](/images/improvement.jpg)|Allow multi concepts per bbox    
+|![](/images/improvement.jpg)|Allow multi concepts per bbox
+|![](/images/bug.jpg)|Negative tags not visible in Portal. Fixed
 
 ## Predict
 |Status|Details|
 |-|-------|
 |![](/images/improvement.jpg)|Remove extra round trip to storage in predict pathway                                            |
 |![](/images/improvement.jpg)|Remove the image.crop argument during predict and POST /inputs calls to simplify the API         |
-|![](/images/improvement.jpg)|Add region predictions from custom models to detections in videos  
+|![](/images/improvement.jpg)|Add region predictions from custom models to detections in videos
 
 ## Search
 |Status|Details|
 |-|-------|
 |![](/images/new_feature.jpg) |Implement search by annotation.status in backend                                                 |
-|![](/images/improvement.jpg)|Connect saved searches and annotation status    
+|![](/images/improvement.jpg)|Connect saved searches and annotation status
 
 ## Workflow
 |Status|Details|
 |-|-------|
-|![](/images/improvement.jpg)|Implement thresholding workflow as pre-queue workflow  
+|![](/images/improvement.jpg)|Implement thresholding workflow as pre-queue workflow
 
 
 # Changelog 6.0
@@ -111,7 +105,6 @@
 |-|-------|
 |![](/images/improvement.jpg)|Evaluate new face embedding model workflow end to end for optimal performance
 |![](/images/improvement.jpg)|Validate that concept.app_id shouldn't be set when creating/patching models
-|![](/images/improvement.jpg)|Introduce concept mapping model that uses the knowledge graph relations, creating a path for users to eventually benefit from pool of networked data
 |![](/images/improvement.jpg)|Add new predicate to knowledge graph for "relates_to" to represent synonyms
 |![](/images/bug.jpg)|Model training lag. Fixed
 |![](/images/bug.jpg)|Model has missing inputs. Fixed
@@ -255,7 +248,7 @@
 |-|-------|
 |![](/images/new_feature.jpg)|Add click to search metadata attributes in image details sidebar
 |![](/images/new_feature.jpg)|Implement visual search in another app as a model type you can add to a workflow
-|![](/images/bug.jpg)|Search bar missing in some cases. Fixed   
+|![](/images/bug.jpg)|Search bar missing in some cases. Fixed
 |![](/images/bug.jpg)|Region Searches within Search Bar still use crop coordinates instead of base64 bytes. Fixed
 |![](/images/bug.jpg)|Click Search button icons on Thumbs not working for localized search. Fixed
 |![](/images/bug.jpg)|Disable all search by click handlers in Portal for Text Apps
@@ -329,7 +322,7 @@
 |![](/images/new_feature.jpg)|Created evaluation metrics for custom facial recognition in backend for improved facial recognition performance
 |![](/images/improvement.jpg)|Topological sort for workflows for scheduling a sequence based on dependencies
 |![](/images/improvement.jpg)|Cleaned up duplicate models in workflow model list
-|![](/images/improvement.jpg)|Deployed public general v1.5 in concept model
+|![](/images/improvement.jpg)|Deployed clarifai/main general v1.5 in concept model
 |![](/images/improvement.jpg)|Create Pixel Training Hyperparameter Help Guide
 |![](/images/improvement.jpg)|Improved accuracy of annotation counts, improving the user experience when annotating inputs
 |![](/images/bug.jpg)|If an image is tagged with a concept that is not in the model, training fails due to KeyError, this is fixed

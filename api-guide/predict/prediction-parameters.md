@@ -21,7 +21,7 @@ import com.clarifai.grpc.api.status.StatusCode;
 
 MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
     PostModelOutputsRequest.newBuilder()
-        .setModelId("aaa03c23b3724a16a56b629203edc62c")  // This is model ID of the publicly available General model.
+        .setModelId("aaa03c23b3724a16a56b629203edc62c")  // This is model ID of the clarifai/main General model.
         .addInputs(
             Input.newBuilder().setData(
                 Data.newBuilder().setImage(
@@ -64,7 +64,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 
 stub.PostModelOutputs(
     {
-        model_id: "aaa03c23b3724a16a56b629203edc62c",  // This is model ID of the publicly available General model.
+        model_id: "aaa03c23b3724a16a56b629203edc62c",  // This is model ID of the clarifai/main General model.
         inputs: [
             {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
         ],
@@ -103,7 +103,7 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
-        model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the publicly available General model.
+        model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the clarifai/main General model.
         inputs=[
             resources_pb2.Input(
                 data=resources_pb2.Data(
@@ -355,7 +355,7 @@ import com.clarifai.grpc.api.status.*;
 
 MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
     PostModelOutputsRequest.newBuilder()
-        .setModelId("aaa03c23b3724a16a56b629203edc62c")  // This is model ID of the publicly available General model.
+        .setModelId("aaa03c23b3724a16a56b629203edc62c")  // This is model ID of the clarifai/main General model.
         .addInputs(
             Input.newBuilder().setData(
                 Data.newBuilder().setImage(
@@ -393,7 +393,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 
 stub.PostModelOutputs(
     {
-        model_id: "aaa03c23b3724a16a56b629203edc62c",  // This is model ID of the publicly available General model
+        model_id: "aaa03c23b3724a16a56b629203edc62c",  // This is model ID of the clarifai/main General model
         inputs: [
             {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
         ],
@@ -431,7 +431,7 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
-        model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the publicly available General model.
+        model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the clarifai/main General model.
         inputs=[
             resources_pb2.Input(
                 data=resources_pb2.Data(
@@ -679,7 +679,7 @@ import com.clarifai.grpc.api.status.*;
 
 MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
     PostModelOutputsRequest.newBuilder()
-        .setModelId("aaa03c23b3724a16a56b629203edc62c")  // This is model ID of the publicly available General model.
+        .setModelId("aaa03c23b3724a16a56b629203edc62c")  // This is model ID of the clarifai/main General model.
         .addInputs(
             Input.newBuilder().setData(
                 Data.newBuilder().setImage(
@@ -718,7 +718,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 
 stub.PostModelOutputs(
     {
-        model_id: "aaa03c23b3724a16a56b629203edc62c",  // This is model ID of the publicly available General model
+        model_id: "aaa03c23b3724a16a56b629203edc62c",  // This is model ID of the clarifai/main General model
         inputs: [
             {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
         ],
@@ -756,7 +756,7 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
-        model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the publicly available General model.
+        model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the clarifai/main General model.
         inputs=[
             resources_pb2.Input(
                 data=resources_pb2.Data(
@@ -1036,7 +1036,7 @@ import com.clarifai.grpc.api.status.*;
 
 MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
     PostModelOutputsRequest.newBuilder()
-        .setModelId("aaa03c23b3724a16a56b629203edc62c")  // This is model ID of the publicly available General model.
+        .setModelId("aaa03c23b3724a16a56b629203edc62c")  // This is model ID of the clarifai/main General model.
         .setVersionId("aa7f35c01e0642fda5cf400f543e7c40")  // This is optional. Defaults to the latest model version.
         .addInputs(
             Input.newBuilder().setData(
@@ -1069,7 +1069,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 
 stub.PostModelOutputs(
     {
-        model_id: "aaa03c23b3724a16a56b629203edc62c",  // This is model ID of the publicly available General model
+        model_id: "aaa03c23b3724a16a56b629203edc62c",  // This is model ID of the clarifai/main General model
         version_id: "aa7f35c01e0642fda5cf400f543e7c40",  // This is optional. Defaults to the latest model version.
         inputs: [
             {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
@@ -1107,7 +1107,7 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
-        model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the publicly available General model.
+        model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the clarifai/main General model.
         version_id="aa7f35c01e0642fda5cf400f543e7c40",  # This is optional. Defaults to the latest model version.
         inputs=[
             resources_pb2.Input(
