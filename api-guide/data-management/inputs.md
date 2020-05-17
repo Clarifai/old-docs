@@ -1405,26 +1405,56 @@ for (Input input : secondStreamInputsResponse.getInputsList()) {
 
 {% tab title="gRPC NodeJS" %}
 ```js
-// FIXME(rok): update for the streaming request.
-
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
-stub.Streaminputs(
-    {page: 1, per_page: 10},
+stub.StreamInputs(
+    {
+        per_page: 10
+    },
     metadata,
-    (err, response) => {
+    (err, firstResponse) => {
         if (err) {
-            throw new Error(err);
+            done(err);
+            return;
         }
 
-        if (response.status.code !== 10000) {
-            throw new Error("List inputs failed, status: " + response.status.description);
+        if (firstResponse.status.code !== 10000) {
+            done(new Error("Received status: " + firstResponse.status.description + "\n" + firstResponse.status.details));
+            return;
         }
 
-        for (const input of response.inputs) {
-            console.log(JSON.stringify(input, null, 2));
+        console.log("First response (starting from the first input):");
+        for (const input of firstResponse.inputs) {
+            console.log("\t" + input.id);
         }
+
+        const lastId = firstResponse.inputs[firstResponse.inputs.length - 1].id;
+        stub.StreamInputs(
+            {
+                last_id: lastId,
+                per_page: 10
+            },
+            metadata,
+            (err, secondResponse) => {
+                if (err) {
+                    done(err);
+                    return;
+                }
+
+                if (secondResponse.status.code !== 10000) {
+                    done(new Error("Received status: " + secondResponse.status.description + "\n" + secondResponse.status.details));
+                    return;
+                }
+
+                console.log("Second response (first input is the one following input ID " + lastId + ")");
+                for (const input of secondResponse.inputs) {
+                    console.log("\t" + input.id);
+                }
+
+                done();
+            }
+        );
     }
 );
 ```
