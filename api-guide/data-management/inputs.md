@@ -1358,27 +1358,47 @@ By default, the stream will return inputs from oldest to newest. Set the `descen
 {% tabs %}
 {% tab title="gRPC Java" %}
 ```java
-// FIXME(rok): update for the streaming request.
-
+import java.util.List;
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
-MultiInputResponse streaminputsResponse = stub.streaminputs(
-    StreaminputsRequest.newBuilder()
-        .setPage(1)
+// To start from beginning, do not provide the last ID parameter.
+MultiInputResponse firstStreamInputsResponse = stub.streamInputs(
+    StreamInputsRequest.newBuilder()
         .setPerPage(10)
         .build()
 );
 
-if (streaminputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("List inputs failed, status: " + streaminputsResponse.getStatus());
+if (firstStreamInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Stream inputs failed, status: " + firstStreamInputsResponse.getStatus());
 }
 
-for (Input input : streaminputsResponse.getInputsList()) {
-    System.out.println(input);
+System.out.println("First response (starting from the first input):");
+List<Input> inputs = firstStreamInputsResponse.getInputsList();
+for (Input input : inputs) {
+    System.out.println("\t" + input.getId());
+}
+
+String lastId = inputs.get(inputs.size() - 1).getId();
+
+// Set last ID to get the next set of inputs. The returned inputs will not include the last ID input.
+MultiInputResponse secondStreamInputsResponse = stub.streamInputs(
+    StreamInputsRequest.newBuilder()
+        .setLastId(lastId)
+        .setPerPage(10)
+        .build()
+);
+
+if (secondStreamInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Stream inputs failed, status: " + secondStreamInputsResponse.getStatus());
+}
+
+System.out.println(String.format("Second response (first input is the one following input ID %s)", lastId));
+for (Input input : secondStreamInputsResponse.getInputsList()) {
+    System.out.println("\t" + input.getId());
 }
 ```
 {% endtab %}
