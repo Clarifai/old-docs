@@ -1351,9 +1351,9 @@ curl -X GET \
 
 ### List inputs (streaming)
 
-This is an extension of List inputs which was built to scalably list all the inputs in an app in an iterative / streaming fashion. The idea is that the last call to StreamInputs will return a list of inputs and you can feed in the last id of those inputs into the next StreamInputs call.
+Another method for listing inputs which was built to scalably list app's inputs in an iterative / streaming fashion. `StreamInputs` will return `per_page` number of inputs from a certain input onward, controlled by the optional `last_id` parameter (defaults to the first input).
 
-The stream starts from the oldest assets and works it's way forward by default. There is a `descending` field you can set to True to reverse that order.
+By default, the stream will return inputs from oldest to newest. Set the `descending` field to true to reverse that order.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
