@@ -1418,25 +1418,30 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
-# First page id isn't provided.
-list_inputs_response = stub.Streaminputs(
-    service_pb2.StreaminputsRequest(per_page=10),
+# To start from beginning, do not provide the last_id parameter.
+stream_inputs_response = stub.StreamInputs(
+    service_pb2.StreamInputsRequest(per_page=10),
     metadata=metadata
 )
 
-if list_inputs_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("List inputs failed, status: " + list_inputs_response.status.description)
+if stream_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Stream inputs failed, status: " + stream_inputs_response.status.description)
 
-for input_object in list_inputs_response.inputs:
-    print(input_object)
+print("First response (starting from the first input):")
+for input_object in stream_inputs_response.inputs:
+    print("\t" + input_object.id)
 
-last_id = list_inputs_response.inputs[-1].id
+last_id = stream_inputs_response.inputs[-1].id
 
-# second page starts from the last_id.
-list_inputs_response = stub.Streaminputs(
-    service_pb2.StreaminputsRequest(per_page=10, last_id=last_id),
+# Set last_id to get the next set of inputs. The returned inputs will not include the last_id input.
+stream_inputs_response = stub.StreamInputs(
+    service_pb2.StreamInputsRequest(per_page=10, last_id=last_id),
     metadata=metadata
 )
+
+print(f"Second response (first input is the one following input ID {last_id}):")
+for input_object in stream_inputs_response.inputs:
+    print("\t" + input_object.id)
 ```
 {% endtab %}
 {% endtabs %}
