@@ -272,7 +272,7 @@ curl -X POST \
       }
     ]
 }'\
-https://api.clarifai.com/v2/workflows/{workflow-id}/results
+https://api.clarifai.com/v2/workflows/{YOUR_WORKFLOW_ID}/results
 ```
 {% endtab %}
 {% endtabs %}
