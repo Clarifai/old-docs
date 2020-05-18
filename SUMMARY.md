@@ -44,6 +44,7 @@
   * [Rank](api-guide/search/rank.md)
   * [Filter](api-guide/search/filter.md)
   * [Combine or negate](api-guide/search/combine-or-negate.md)
+  * [Saved searches](api-guide/search/saved_searches.md)
 
 ## Portal Guide
 
@@ -62,6 +63,8 @@
   * [Rank](portal-guide/psearch/prank.md)
   * [Filter](portal-guide/psearch/pfilter.md)
   * [Combine or negate](portal-guide/psearch/pcombine_or_negate.md)
+  * [Combine or negate](portal-guide/psearch/psaved_searches.md)
+
 
 ## Product Updates
 
