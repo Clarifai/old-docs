@@ -2,20 +2,18 @@ Tasks enable you delegate labeling jobs to your team.
 
 ## Task types
 
-Choose the type of label that you would like your worker to add to your images or video.
+Choose the type of label that you would like your worker to add to your images or video. You can choose classification, bounding box detection, polygon detection label types.
 
+Please note that if you want to create a detection labeling task, you will need to select a detection model as the base workflow in your app.
 
 
 ## Input sources
 
-You can choose "All inputs", which will include all inputs from your dataset, or you can choose any one of your "Saved Searches".
+You can choose "All inputs", which will include all inputs from your dataset, or you can choose any one of your [Saved Searches].
 
 By saving your searches, you can slice and dice your dataset, and configure dynamic and static types of datasets.
 
-Metadata as a versatile filtering system
-
-(link to saved searches)
-
+You can also search by using metadata filtering
 
 
 ## Applicable concepts
