@@ -71,6 +71,7 @@
   * [Rank](portal-guide/psearch/prank.md)
   * [Filter](portal-guide/psearch/pfilter.md)
   * [Combine or negate](portal-guide/psearch/pcombine_or_negate.md)
+  * [Saved searches](portal-guide/psearch/psaved_searches.md)
 
 ## Product Updates
 
