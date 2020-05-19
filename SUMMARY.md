@@ -55,7 +55,7 @@
 
 * [Portal overview](portal-guide/portal_overview.md)
 * [Data management](portal-guide/pdata_management.md)
-  * [Concepts](portal-guide/concepts/README.md)
+  * [Concepts](portal-guide/concept/README.md)
   * [Create, Get, Update](api-guide/concept/concepts.md)
 * [Languages](api-guide/concept/languages.md)
 * [Annotate](portal-guide/annotate/README.md)
