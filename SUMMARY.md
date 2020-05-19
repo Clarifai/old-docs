@@ -29,14 +29,16 @@
   * [Create, Get, Update, Delete](api-guide/data-management/inputs.md)
   * [Supported formats](api-guide/data-management/supported-formats.md)
 * [Concepts](api-guide/concepts/README.md)
-  * [Create, Get, Update](api-guide/concepts/concepts.md)
-  * [Languages](api-guide/concepts/languages.md)
+  * [Create, Get, Update](api-guide/concept/concepts.md)
+  * [Languages](api-guide/concept/languages.md)
 * [Annotations](api-guide/annotate/README.md)
   * [Positive and negative annotations](api-guide/annotate/positive-and-negative-annotations.md)
 * [Models](api-guide/model/README.md)
   * [Clarifai Models](api-guide/model/clarifai-models.md)
   * [Custom model walkthrough](api-guide/model/custom-model-walkthrough.md)
   * [Create, Get, Update, Delete](api-guide/model/create-get-and-update.md)
+  * [Evaluate](portal-guide/model/evaluate/README.md)
+    * [Interpreting evaluations](portal-guide/model/evaluate/interpreting-evaluations.md)
 * [Workflows](api-guide/workflows.md)
 * [Predict](api-guide/predict/README.md)
   * [Images](api-guide/predict/images.md)
@@ -53,7 +55,9 @@
 
 * [Portal overview](portal-guide/portal_overview.md)
 * [Data management](portal-guide/pdata_management.md)
-* [Concepts](portal-guide/concepts/README.md)
+  * [Concepts](portal-guide/concept/README.md)
+  * [Create, Get, Update](api-guide/concept/concepts.md)
+* [Languages](api-guide/concept/languages.md)
 * [Annotate](portal-guide/annotate/README.md)
   * [Positive and negative annotations](portal-guide/annotate/positive-and-negative-annotations.md)
 * [Model](portal-guide/model/README.md)
@@ -67,6 +71,7 @@
   * [Rank](portal-guide/psearch/prank.md)
   * [Filter](portal-guide/psearch/pfilter.md)
   * [Combine or negate](portal-guide/psearch/pcombine_or_negate.md)
+  * [Saved searches](portal-guide/psearch/psaved_searches.md)
 
 ## Product Updates
 
