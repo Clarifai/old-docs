@@ -29,7 +29,7 @@ curl --location --request POST 'https://api.clarifai.com/v2/users/{{user_id}}/ap
 }'
 ```
 {% endtab %}
-
+{% endtabs %}
 
 ## Copy an application
 

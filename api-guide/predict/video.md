@@ -353,16 +353,11 @@ curl -X POST \
           }
         }
       }
-    ],
-    "model": {
-      "output_info": {
-        "output_config": {
-          "sample_ms": 1000
-        }
-      }
-    }
+    ]
   }'\
-  https://api.clarifai.com/v2/models/{model-id}/outputs
+  https://api.clarifai.com/v2/models/{THE_MODEL_ID}/versions/{THE_MODEL_VERSION_ID}/outputs
+
+# Model version ID is optional. It defaults to the latest model version.
 ```
 {% endtab %}
 {% endtabs %}
@@ -1945,16 +1940,11 @@ curl -X POST \
           }
         }
       }
-    ],
-    "model": {
-      "output_info": {
-        "output_config": {
-          "sample_ms": 1000
-        }
-      }
-    }
+    ]
   }'\
-  https://api.clarifai.com/v2/models/{model-id}/outputs
+  https://api.clarifai.com/v2/models/{THE_MODEL_ID}/versions/{THE_MODEL_VERSION_ID}/outputs
+
+# The model version ID is optional. It defaults to the latest model version.
 ```
 {% endtab %}
 {% endtabs %}

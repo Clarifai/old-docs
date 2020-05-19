@@ -38,7 +38,7 @@ curl --location --request POST 'https://api.clarifai.com/v2/users/{{user_id}}/ke
 }'
 ```
 {% endtab %}
-
+{% endtabs %}
 
 {% hint style="info" %}
 API Keys do not expire. In case your API Key gets compromised, you should delete that key, and create a new one with the same scopes. We recommend that you do **not** share your API Key with other users.
