@@ -20,11 +20,11 @@ Concepts are the words that you are labeling your data with. Concepts can be any
 
 ## Worker strategy
 
-Manually assign work to a specific person, or have work randomly assigned to a group of collaborators. 
+Manually assign work to a specific person, or have work randomly assigned to workers from a group of collaborators.
 
 ## Workers
 
-You can assign work to a worker, or group of workers. Simply add the worker's email address and the worker will receive an email notification, and will see a new Task under the "assigned to me" tab.
+You can assign work to a worker, or group of workers. Simply add the worker email addresses and workers will receive an email notification and a new task will be added to their "Assigned to Me" tab.
 
 ## Review strategy
 ### None
@@ -41,7 +41,7 @@ Consensus review will mark labels with "Success" status in cases where multiple 
 
 ## Sample size to select for manual review
 
-You can choose to review all or part of a workers labels. Simply adjust the slider, and you will review a random subset of their labeled images. For example, if a worker is labeling 10,000 images, you might choose to review 1% of them as a quality control  measure.
+You can choose to review all or part of a workers labels. Simply adjust the slider, and you will review a random subset of their labeled images. For example, if a worker is labeling 10,000 images, you might choose to review 1% of them for quality control.
 
 ## Reviewers
 
