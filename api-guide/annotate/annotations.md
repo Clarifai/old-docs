@@ -1536,3 +1536,4 @@ curl -X DELETE \
   https://api.clarifai.com/v2/annotations
 ```
 {% endtab %}
+{% endtabs %}
