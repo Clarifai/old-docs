@@ -157,9 +157,9 @@ curl -X POST \
 {% endtabs %}
 
 
-#### Label model detected regions in an Image
+#### Label existing regions in an Image
 
-When you index the input, our model will detect regions if your worfklow is detection workflow (for example `Face` or `General Detection`). You can check these detected regions by list model created annotations. Any data should be within `Region.Data`. Each annotation can have only 1 region. If you want to label multiple regions, you can post multiple annotations in a single API call.
+When you index the input, our model will detect regions if your worfklow is detection workflow (for example `Face` or `General Detection`). You can check these detected regions by list model created annotations. Your labels should be within `Region.Data`. Each annotation can have only 1 region. If you want to label multiple regions, you can post multiple annotations in a single API call.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
