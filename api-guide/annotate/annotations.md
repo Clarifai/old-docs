@@ -2,10 +2,9 @@
 
 ## Annotations
 
-When you add inputs to your app, we will create one input level annotations for each input. This annotation contains any data you provided in POST /inputs call. Meanwhile models in your default workflow could write annotations and can be used for search and train.
+Annotations are the data describes your input. When you add inputs to your app, we will create a input level annotation for each input. This annotation contains any data you provided in POST /inputs call. Meanwhile models in your default workflow could write annotations and can be used for search and train.
 
 Once your input is successfully indexed, you can label the input by adding annotations, for example add cooncepts, draw bounding boxes and so on.
-
 
 ### Add Annotations
 
