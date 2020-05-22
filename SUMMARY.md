@@ -50,6 +50,7 @@
   * [Rank](api-guide/search/rank.md)
   * [Filter](api-guide/search/filter.md)
   * [Combine or negate](api-guide/search/combine-or-negate.md)
+  * [Saved searches](api-guide/search/saved_searches.md)
 
 ## Portal Guide
 
