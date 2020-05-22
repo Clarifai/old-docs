@@ -26,8 +26,8 @@
   * [Pagination](api-guide/api-overview/pagination.md)
   * [Patching](api-guide/api-overview/patching.md)
 * [Inputs](api-guide/data-management/README.md)
-  * [Create, Get, Update, Delete](api-guide/data-management/inputs.md)
-  * [Supported formats](api-guide/data-management/supported-formats.md)
+  * [Create, Get, Update, Delete](api-guide/inputs/create-get-update-delete.md)
+  * [Supported formats](api-guide/inputs/supported-formats.md)
 * [Concepts](api-guide/concepts/README.md)
   * [Create, Get, Update](api-guide/concept/concepts.md)
   * [Languages](api-guide/concept/languages.md)
@@ -55,9 +55,9 @@
 ## Portal Guide
 
 * [Portal overview](portal-guide/portal_overview.md)
-* [Data management](portal-guide/pdata_management.md)
+* [Inputs](portal-guide/pinputs.md)
   * [Concepts](portal-guide/concept/README.md)
-  * [Create, Get, Update](api-guide/concept/concepts.md)
+  * [Create, Get, Update, Delete](api-guide/concept/concepts.md)
 * [Languages](api-guide/concept/languages.md)
 * [Annotate](portal-guide/annotate/README.md)
   * [Positive and negative annotations](portal-guide/annotate/positive-and-negative-annotations.md)
