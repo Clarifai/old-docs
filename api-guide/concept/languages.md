@@ -1,8 +1,8 @@
-represented# Languages
+# Languages
 
 ## Multilingual support in Clarifai
 
-The Clarifai API supports many languages in addition to English. These are represented as translations of the names of concepts so that when you search by concept name or get predictions from a model's concepts you can utilize the language of your choice.
+The Clarifai API supports many languages in addition to English. These are representated as translations of the names of concpets so that when you search by concept name or get predictions from a model's concepts you can utilize the language of your choice.
 
 ## Supported Languages
 
@@ -41,7 +41,7 @@ When you create a new Application, you must specify a default language. This wil
 ![create new app](../../images/create-new-app-new.png)
 
 
-## List language translations by concept ID
+## List Language trasnaltions by concept ID
 
 You can see all the language translations for a given concept ID with a GET call. This call supports [pagination](../api-overview/pagination.md).
 
@@ -123,7 +123,7 @@ curl -X GET \
 
 ## Get specific language translation for a concept
 
-To get a single language translation you have for a concept you can get by the language code and concept id.
+To get a single langauge translation you have for a concept you can get by the language code and concept id.
 
 
 {% tabs %}

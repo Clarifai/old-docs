@@ -8,7 +8,7 @@
 |Status         |Details                                                                                              |
 |---------------|-----------------------------------------------------------------------------------------------------|
 |![](/images/improvement.jpg)    |Updated Privacy Policy URL                                                                            |
-|![](/images/bug.jpg)            |Fixed panic error in Signup        
+|![](/images/bug.jpg)            |Fixed panic error in Signup
 
 ## Applications
 |Status         |Details                                                                                              |

@@ -28,7 +28,7 @@
 * [Inputs](api-guide/data-management/README.md)
   * [Create, Get, Update, Delete](api-guide/inputs/create-get-update-delete.md)
   * [Supported formats](api-guide/inputs/supported-formats.md)
-  * [Supported formats](api-guide/inputs/collectors.md)
+  * [Collectors](api-guide/inputs/collectors.md)
 * [Concepts](api-guide/concepts/README.md)
   * [Create, Get, Update](api-guide/concept/concepts.md)
   * [Languages](api-guide/concept/languages.md)
