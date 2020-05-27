@@ -242,7 +242,7 @@ curl -X POST
         }
       ]
     }'
-    https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/versions/aa7f35c01e0642fda5cf400f543e7c40/outputs
+    https://api.clarifai.com/v2/models/{THE_MODEL_ID}/versions/{THE_MODEL_VERSION_ID}/outputs
 ```
 {% endtab %}
 {% endtabs %}
@@ -665,7 +665,7 @@ curl -X POST \
       }
     ]
   }'\
-  https://api.clarifai.com/v2/models/{model-id}/outputs
+  https://api.clarifai.com/v2/models/{THE_MODEL_ID}/outputs
 
 // Larger Files (Greater than 195 KB)
 
