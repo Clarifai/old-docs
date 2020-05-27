@@ -34,7 +34,7 @@ curl --location --request POST 'https://api.clarifai.com/v2/searches/' \
 '
 ```
 {% endtab %}
-
+{% endtabs %}
 
 ## List saved searches in an app
 
@@ -46,7 +46,7 @@ curl --location --request GET 'https://api.clarifai.com/v2/searches/' \
 --header 'Authorization: Key {{key}}'
 ```
 {% endtab %}
-
+{% endtabs %}
 
 ## Search by search ID
 
@@ -64,5 +64,6 @@ curl --location --request POST 'https://api.clarifai.com/v2/searches/{{search_id
 }'
 ```
 {% endtab %}
+{% endtabs %}
 
 Saved searches are extremely helpful when testing out multiple versions of a model, or collaborating with a team. Just save your search, and refer back to it any time.
