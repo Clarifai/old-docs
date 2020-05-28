@@ -8,7 +8,7 @@ You can get started for free. No credit card required. Just keep in mind that yo
 
 ## Step 1: Set up your account or login
 
-Just click here if you need to set up your account for the first time. Or click here to login.
+Just [click](https://portal.clarifai.com/signup) here if you need to set up your account for the first time. Or [click here](https://portal.clarifai.com/login) to login.
 
 ## Step 2: Verify your email address
 
