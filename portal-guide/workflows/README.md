@@ -1,8 +1,10 @@
 # Workflows
 
-Workflows are a graph of computation that encompass one or more Clarifai or Custom model\(s\). Every workflow is attached to one of your applications. Under each workflow, you will see a list of the Clarifai Models and all custom models in that application when selecting models to add to your workflow. With Workflow Predict, you will be able to reduce the latency and in turn make your product more efficient.
+Workflows are a graph of computation that encompass one or more Clarifai or Custom model\(s\). Every workflow is attached to one of your applications. Under each workflow, you will see a list of the Clarifai Models and all custom models in that application when selecting models to add to your workflow. With Workflow Predict, you will be able to run your business logic on one efficient tool.
 
-Note: this won't have any impact on the price you are charged per call. You will still be charged for the same operation if it were separate calls to the API.
+{% hint style="info" %}
+This won't have any impact on the price you are charged per call. You will still be charged for the same operation if it were separate calls to the API. When you do a predict with a workflow you're charged for the prediction of each model in the workflow as if they were separate calls.
+{% endhint %}
 
 ## Workflow Setup
 
