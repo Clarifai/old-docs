@@ -2,15 +2,15 @@
 
 ## Annotations
 
-Annotations are the data describes your input. When you add inputs to your app, we will create a input level annotation for each input. This annotation contains any data you provided in POST /inputs call. Meanwhile models in your default workflow could write annotations and can be used for search and train.
+Annotations are the data describe an input. When you add inputs to your app, we will create an input level annotation for each input. This input level annotation contains any data you provided in POST /inputs call. Meanwhile some models in your default workflow could write annotations and can be used for search and training.
 
 Once your input is successfully indexed, you can label the input by adding annotations, for example add cooncepts, draw bounding boxes and so on.
 
 ### Add Annotations
 
-You can label your inputs by POST annotations. For example, add concept(s) to an image, draw a bounding box, label concept(s) to a video frame. Each annotation should contain at most 1 region. If it is a video, each annotation can have at most 1 frame. Later you coulld train your model using these data.
+You can label your inputs by POST annotations. For example, add concept(s) to an image, draw a bounding box, label concept(s) to a video frame. Each annotation should contain at most 1 region. If it is a video, each annotation can have at most 1 frame.
 
-When you add an annotation, by default we will not run the workflow for this data. It means data will not be used to train your custom model or visual search. To make it available for training or searching, you need to provide `embed_model_version_id` field. This helps us to know how you want to apply the data and when to use this data. `embed_model_version_id` is the embed model version id in your app default workflow. It is recomended to provide this info.
+When you add an annotation, by default we will not run the workflow for this data. It means data will not be used to train your custom model or visual search. To make it available for training or visual search, you need to provide `embed_model_version_id` field. This helps us to know how you want to apply this data to your input and when to use this data. `embed_model_version_id` is the embed model version id in your app default workflow. It is recomended to provide this info all the time.
 
 You can add 1 or more annotations in a single API call but limited to sending 128 annotations at a time. 
 
