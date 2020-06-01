@@ -527,6 +527,121 @@ curl -X POST \
 {% endtab %}
 {% endtabs %}
 
+#### Label an images with other user id and status
+Each annotation is tied to each a user or a model in your workflow. By default, when a user post an annotation, this user is the owner of this annotation. Sometimes, you might want to post an annotation as other user, for example in labeler product, when you assign an image to a labeler, you will create an annotation with a labeler user_id and `PENDING` status. Note only app owner can post an annotation with other user's user_id.
+
+{% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import java.util.List;
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiAnnotationResponse postAnnotationsResponse = stub.postAnnotations(
+    PostAnnotationsRequest.newBuilder().addAnnotations(
+        Annotation.newBuilder()
+            .setInputId("{YOUR_INPUT_ID}")
+            .setUserId("{USER_ID}")  // If empty, it is the user who posts this annotation 
+            .setStatus(
+                Status.newBuilder()
+                    .setCodeValue(24151) // annotation pending status. By default success.
+                    .build()
+            )
+            .build()
+    ).build()
+);
+
+if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post annotations failed, status: " + postAnnotationsResponse.getStatus());
+}
+
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostAnnotations(
+    {
+        annotations: [
+            {
+                input_id: "{YOUR_INPUT_ID}",
+                user_id: "{USER_ID}",  // If empty, it is the user who posts this annotation 
+                status: {
+                    code: 24151    // annotation pending status. By default success.
+                }
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post annotations failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_pb2, status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_annotations_response = stub.PostAnnotations(
+    service_pb2.PostAnnotationsRequest(
+        annotations=[
+            resources_pb2.Annotation(
+                input_id="{YOUR_INPUT_ID}",
+                user_id="{USER_ID}",    # If empty, it is the user who posts this annotation 
+                data=status_pb2.Status(
+                    code=status_code_pb2.ANNOTATION_PENDING  # annotation pending status. By default success.
+                ),
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_annotations_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post annotations failed, status: " + post_annotations_response.status.description)
+
+```
+{% endtab %}
+
+{% tab title="cURL" %}
+```text
+curl -X POST \
+  -H "Authorization: Key YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '
+  {
+    "annotations": [
+      {
+        "input_id": "{YOUR_INPUT_ID}",
+        "user_id": "{USER_ID}",
+        "status": {
+            "code": 21415
+        }
+      }
+    ],
+}'\
+  https://api.clarifai.com/v2/annotations
+```
+{% endtab %}
+{% endtabs %}
 
 ### List annotations
 
@@ -1114,7 +1229,7 @@ curl -X PATCH \
               "value": 1
             }
           ]
-        },
+        }
       }
     ],
     "action":"merge"
@@ -1276,6 +1391,128 @@ curl -X PATCH \
                 ]
               }
           ]
+        }
+      }
+    ],
+    "action":"merge"
+}'\
+  https://api.clarifai.com/v2/annotations
+```
+{% endtab %}
+{% endtabs %}
+
+#### Update annotation status
+
+You can update an annotation status if you have the privilege to do so.
+
+{% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import java.util.List;
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiAnnotationResponse patchAnnotationsResponse = stub.patchAnnotations(
+    PatchAnnotationsRequest.newBuilder()
+        .setAction("merge")  // Supported actions: overwrite, merge, remove.
+        .addAnnotations(
+        Annotation.newBuilder()
+            .setInputId("{YOUR_INPUT_ID}")
+            .setId("{YOUR_ANNOTATION_ID}")
+            .setStatus(
+                Status.newBuilder()
+                    .setCodeValue(24150) // annotation success status.
+                    .build()
+            )
+            .build()
+    ).build()
+);
+
+if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("patch annotations failed, status: " + patchAnnotationsResponse.getStatus());
+}
+
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PatchAnnotations(
+    {
+        action: "merge",  // Supported actions: overwrite, merge, remove.
+        annotations: [
+            {
+                input_id: "{YOUR_INPUT_ID}",
+                id: "{YOUR_ANNOTATION_ID}",
+                status: {
+                    code: 24150
+                }
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Patch annotations failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_pb2, status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+patch_annotations_response = stub.PatchAnnotations(
+    service_pb2.PatchAnnotationsRequest(
+        action="merge",  # Supported actions: overwrite, merge, remove.
+        annotations=[
+            resources_pb2.Annotation(
+                input_id="{YOUR_INPUT_ID}",
+                id="{YOUR_ANNOTATION_ID}",
+                status=status_pb2.Status(
+                    code=status_code_pb2.ANNOTATION_SUCCESS
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if patch_annotations_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch annotations failed, status: " + patch_annotations_response.status.description)
+
+```
+{% endtab %}
+
+{% tab title="cURL" %}
+```text
+curl -X PATCH \
+  -H "Authorization: Key YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '
+  {
+    "annotations": [
+      {
+        "input_id": "{YOUR_INPUT_ID}",
+        "id": "{YOUR_ANNOTATION_ID}"
+        "status": {
+          "code": 24150
         }
       }
     ],
