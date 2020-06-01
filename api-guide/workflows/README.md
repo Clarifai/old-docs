@@ -10,26 +10,32 @@ This won't have any impact on the price you are charged per call. You will still
 
 To set up a workflow, you will need to head over to the [Applications page](https://portal.clarifai.com/apps) through your account. From there, you will need to select which application you want to create the workflow under.
 
-![Image showing the top-level Applications page on the Clarifai Developer website](../../images/application-screen-new.png)
+![AI Applications](../../images/application-screen-new.png)
 
 Then click on the model mode icon in the lefthand sidebar. From here, click the "Create Workflow" button at the top righthand corner of the screen.
 
-![Image showing My First Application and the Create Workflow button underneath the Create API Key](../../images/create-workflow-new.png)
+![AI model gallery](../../images/create-workflow-new.png)
 
 ### Create a Workflow
 
-To create a custom workflow, just click the "ADD" button next you the model you would like to add. You will see the model displayed in the "Selected Models" section below. Once added you can configure your input nodes for each model. Model outputs vary based on the type of model that you are working with.
+To create a custom workflow, just click the "ADD" button next you the model you would like to add. You will see the model displayed in the "Selected Models" section below. You can use the dropdown menu on the left hand side of the screen to filter through your available models:
 
-*Workflow ID* Provide a descriptive name for your workflow. This ID will be used to make the API call, so make sure to give it something URL friendly.
+*Workflow ID* Provide a descriptive name for your workflow. This ID will be used to make the API call, so make sure to give it something URL-friendly.
 
-*User* Filter your available models by user ID. Be sure to select "Clarifai" if you would like to choose a Clarifai Model.
+*User* Filter your models by user ID. Be sure to select "Clarifai" if you would like to choose a Clarifai Model.
 
-*APP* Filter your available models based on app
+*APP* Filter your models based on their app.
+
+*Inputs* Filter your models based on the type if input that they accept.
+
+*Outputs* Filter your models based on the type of output that they return.
+
+Once added you can configure your input nodes for each model. Model outputs vary based on the type of model that you are working with.
 
 {% hint style="info" %}
-For Clarifai Models, you will be able to use the latest version. For your custom models, you can [select the version of your model](https://github.com/Clarifai/docs/tree/5882f46bd17affcd85ed3e2ec98f4d6f355b58a9/models.md#list-model-versions)&lt;/a&gt;.
+For Clarifai Models, you will be able to use the latest version. For your custom models, you can select the version of your model.
 {% endhint %}
 
 You can add up to 20 models to a single workflow. Once you have finished adding everything, press the "Save Workflow" button and that will save the state of your workflow. Now you are ready to predict using your brand new workflow. You can edit a workflow at any time.
 
-![Image showing a list of models \(Moderation and General\) under a workflow with the name my-workflow](../../images/my-workflow-new.png)
+![Create a workflow](../../images/my-workflow-new.png)

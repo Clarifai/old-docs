@@ -2,7 +2,9 @@ The outputs from one workflow can be used as the inputs in another workflow. Thi
 
 ## Supported input and output types
 
-Different models accept different types of inputs and produce different types of inputs and produce different outputs.
+To view your available models, just open your app and click Model Mode icon on the left hand side of the screen. From here just click the Create a Custom Model button in the top righthand corner of the screen.
+
+Different models accept different types of inputs and return different types of outputs
 
 #### Inputs
 
@@ -24,33 +26,6 @@ Different models accept different types of inputs and produce different types of
 * Region with text
 * Region with image
 
-## Clarifai models: The building blocks
+## The building blocks
 
 You can create workflows out of any custom models that you have created for your app. The inputs and outputs supported by your custom models will depend on the inputs and outputs supported by the Clarifai models that you have used to build them. Clarifai models support different inputs and outputs depending on how they are designed and what they are used for.
-
-#### Models types that accept images and video
-
-* Visual Classifier (output concept)
-* Clusterer (output cluster)
-* Visual Detector + Classifier (output region with concept)
-
-#### Models types that accept images only
-
-* Image cropper (output image)
-
-#### Models that accept concepts
-
-* Concept Thresholder (output concepts)
-* Concept Synonym Mapper (output concepts)
-
-#### Models that accept text
-
-* Text classifier (output concept)
-
-#### Models that accept any input type
-
-* Annotation writer (no outputs, writes annotation)
-* Random sampler (any output type)
-* Email alert (any output type)
-* SMS Alert (any output type)
-* Deep training (any output type)
