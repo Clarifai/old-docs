@@ -26,8 +26,8 @@
   * [Pagination](api-guide/api-overview/pagination.md)
   * [Patching](api-guide/api-overview/patching.md)
 * [Inputs](api-guide/data-management/README.md)
-  * [Create, Get, Update, Delete](api-guide/data-management/inputs.md)
-  * [Supported formats](api-guide/data-management/supported-formats.md)
+  * [Create, Get, Update, Delete](api-guide/inputs/create-get-update-delete.md)
+  * [Supported formats](api-guide/inputs/supported-formats.md)
 * [Concepts](api-guide/concepts/README.md)
   * [Create, Get, Update](api-guide/concept/concepts.md)
   * [Languages](api-guide/concept/languages.md)
@@ -50,13 +50,14 @@
   * [Rank](api-guide/search/rank.md)
   * [Filter](api-guide/search/filter.md)
   * [Combine or negate](api-guide/search/combine-or-negate.md)
+  * [Saved searches](api-guide/search/saved_searches.md)
 
 ## Portal Guide
 
 * [Portal overview](portal-guide/portal_overview.md)
-* [Data management](portal-guide/pdata_management.md)
+* [Inputs](portal-guide/pinputs.md)
   * [Concepts](portal-guide/concept/README.md)
-  * [Create, Get, Update](api-guide/concept/concepts.md)
+  * [Create, Get, Update, Delete](api-guide/concept/concepts.md)
 * [Languages](api-guide/concept/languages.md)
 * [Annotate](portal-guide/annotate/README.md)
   * [Positive and negative annotations](portal-guide/annotate/positive-and-negative-annotations.md)
@@ -72,6 +73,7 @@
   * [Filter](portal-guide/psearch/pfilter.md)
   * [Combine or negate](portal-guide/psearch/pcombine_or_negate.md)
   * [Saved searches](portal-guide/psearch/psaved_searches.md)
+
 
 ## Product Updates
 
