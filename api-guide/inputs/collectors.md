@@ -18,14 +18,13 @@ Provide additional details.
 
 ### Pre-queue workflow
 
-Pre-queue workflows allow you to specify sampling rules for triggering data ingestion.
+Pre-queue workflows allow you to specify filtering rules for triggering data ingestion.
 
 In many scenarios, you will only want to ingest a sample, or subset of a given data source into your app. Pre-queue workflows allow you to pre-process your inputs so that you can sample and filter your new data before it is ever added to your app.
 
-Common pre-queue workflows are designed to:
+Common use case for pre-queue workflows are:
 
 * Randomly sample inputs
-* Filter inputs by metadata
 * Filter inputs with a maximum probability below a given threshold
 * Filter inputs with a minimum probability above a given threshold
 * Filter specific concept probabilities above a given threshold
@@ -39,12 +38,12 @@ Select the API key that you would like to use to allow new inputs to be posted t
 
 ### Caller
 
-Choose to only ingest inputs from a specified user, or anyone who posts new inputs to a model.  The user is referred to as the "caller" since they are making API calls as they post new inputs to their model. Just input the caller's user ID, or select "Any caller" to accept inputs from anyone posting new inputs to the model.
+Choose to only ingest inputs from a specified user.  The user is referred to as the "caller" since they are making API calls as they post new inputs to their model. Just input the caller's user ID, or select "Any caller" to accept inputs from anyone posting new inputs to the model.
 
 
 ### Source
 
-Select the model that you would like to collect from, and the collector will automatically post the new inputs to your app. Simply enter your model name, or model ID number. You can select the model that you would like to collect from in the drop down menu.
+Select the model that you would like to collect from, and the collector will automatically post the new inputs to your app. Simply enter your ID number. You can select the model that you would like to collect from in the drop down menu.
 
 
 {% hint style="info" %}
