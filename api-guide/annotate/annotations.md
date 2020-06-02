@@ -148,7 +148,7 @@ curl -X POST \
         },
         "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
       }
-    ],
+    ]
 }'\
   https://api.clarifai.com/v2/annotations
 ```
@@ -301,6 +301,7 @@ curl -X POST \
         "input_id": "{YOUR_INPUT_ID}",
         "data": {
           "regions": [
+            {
               "id": "{REGION_ID}",
               "data": {
                 "concepts": [
@@ -314,11 +315,12 @@ curl -X POST \
                   }
                 ]
               }
+            }
           ]
         },
         "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
       }
-    ],
+    ]
 }'\
   https://api.clarifai.com/v2/annotations
 ```
@@ -496,6 +498,7 @@ curl -X POST \
         "input_id": "{YOUR_INPUT_ID}",
         "data": {
           "regions": [
+            {
               "region_info": {
                   "bounding_box": {
                       "top_row": 0,
@@ -516,11 +519,12 @@ curl -X POST \
                   }
                 ]
               }
+            }
           ]
         },
         "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
       }
-    ],
+    ]
 }'\
   https://api.clarifai.com/v2/annotations
 ```
@@ -633,10 +637,10 @@ curl -X POST \
         "input_id": "{YOUR_INPUT_ID}",
         "user_id": "{USER_ID}",
         "status": {
-            "code": 21415
+            "code": "ANNOTATION_PENDING"
         }
       }
-    ],
+    ]
 }'\
   https://api.clarifai.com/v2/annotations
 ```
@@ -1221,7 +1225,7 @@ curl -X PATCH \
     "annotations": [
       {
         "input_id": "{YOUR_INPUT_ID}",
-        "id": "{YOUR_ANNOTATION_ID}"
+        "id": "{YOUR_ANNOTATION_ID}",
         "data": {
           "concepts": [
             {
@@ -1381,6 +1385,7 @@ curl -X PATCH \
         "id": "{YOUR_ANNOTATION_ID}",
         "data": {
           "regions": [
+            {
               "id": "{REGION_ID}",
               "data": {
                 "concepts": [
@@ -1390,6 +1395,7 @@ curl -X PATCH \
                   }
                 ]
               }
+            }
           ]
         }
       }
@@ -1510,9 +1516,9 @@ curl -X PATCH \
     "annotations": [
       {
         "input_id": "{YOUR_INPUT_ID}",
-        "id": "{YOUR_ANNOTATION_ID}"
+        "id": "{YOUR_ANNOTATION_ID}",
         "status": {
-          "code": 24150
+          "code": "ANNOTATION_SUCCESS"
         }
       }
     ],
@@ -1767,7 +1773,7 @@ curl -X DELETE \
   -H "Authorization: Key YOUR_API_KEY" \
   -d '
   {
-    "input_ids":["{YOUR_INPUT_ID_1}","{YOUR_INPUT_ID_2}"],
+    "input_ids":["{YOUR_INPUT_ID_1}","{YOUR_INPUT_ID_2}"]
   }'\
   https://api.clarifai.com/v2/annotations
 ```
