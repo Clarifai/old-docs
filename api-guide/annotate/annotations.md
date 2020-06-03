@@ -362,12 +362,14 @@ MultiAnnotationResponse postAnnotationsResponse = stub.postAnnotations(
                                 .build()
                         )
                         .setData(
-                            Data.newBuilder().addConcepts(
-                                Concept.newBuilder()
-                                    .setId("tree")
-                                    .setValue(1f)  // 1 means true, this concept is present.
-                                    .build()
-                                ).addConcepts(
+                            Data.newBuilder()
+                                .addConcepts(
+                                    Concept.newBuilder()
+                                        .setId("tree")
+                                        .setValue(1f)  // 1 means true, this concept is present.
+                                        .build()
+                                )
+                                .addConcepts(
                                     Concept.newBuilder()
                                         .setId("water")
                                         .setValue(0f)  // 0 means false, this concept is not present.
@@ -551,7 +553,7 @@ MultiAnnotationResponse postAnnotationsResponse = stub.postAnnotations(
             .setUserId("{USER_ID}")  // If empty, it is the user who posts this annotation 
             .setStatus(
                 Status.newBuilder()
-                    .setCodeValue(24151) // annotation pending status. By default success.
+                    .setCodeValue(StatusCode.ANNOTATION_PENDING_VALUE) // annotation pending status. By default, it's ANNOTATION_SUCCESS_VALUE.
                     .build()
             )
             .build()
@@ -668,6 +670,7 @@ import com.clarifai.grpc.api.status.*;
 MultiAnnotationResponse listAnnotationsResponse = stub.listAnnotations(
     ListAnnotationsRequest.newBuilder()
         .setPerPage(10)
+        .setPage(1)  // Pages start at 1.
         .build()
 );
 
@@ -755,6 +758,7 @@ MultiAnnotationResponse listAnnotationsResponse = stub.listAnnotations(
         .addInputIds("{YOUR_INPUT_ID_1}")
         .addInputIds("{YOUR_INPUT_ID_2}")
         .setPerPage(10)
+        .setPage(1)  // Pages start at 1.
         .build()
 );
 
@@ -937,8 +941,8 @@ import com.clarifai.grpc.api.status.*;
 
 MultiAnnotationResponse listAnnotationsResponse = stub.listAnnotations(
     ListAnnotationsRequest.newBuilder()
-        .addUserIDs("{USER_ID_1}")
-        .addUserIDs("{USER_ID_2}")
+        .addUserIds("{USER_ID_1}")
+        .addUserIds("{USER_ID_2}")
         .setPerPage(10)
         .build()
 );
@@ -1139,7 +1143,7 @@ MultiAnnotationResponse patchAnnotationsResponse = stub.patchAnnotations(
 );
 
 if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("patch annotations failed, status: " + patchAnnotationsResponse.getStatus());
+    throw new RuntimeException("Patch annotations failed, status: " + patchAnnotationsResponse.getStatus());
 }
 
 ```
@@ -1267,7 +1271,7 @@ MultiAnnotationResponse patchAnnotationsResponse = stub.patchAnnotations(
                 .setData(
                     Data.newBuilder().addRegions(
                         Region.newBuilder()
-                            .setId("{REGION_ID}") // this should be the region id of this annotation before patch
+                            .setId("{REGION_ID}") // this should be the region id of this annotation
                             .setData(
                                 Data.newBuilder().addConcepts(
                                     Concept.newBuilder()
@@ -1430,7 +1434,7 @@ MultiAnnotationResponse patchAnnotationsResponse = stub.patchAnnotations(
             .setId("{YOUR_ANNOTATION_ID}")
             .setStatus(
                 Status.newBuilder()
-                    .setCodeValue(24150) // annotation success status.
+                    .setCodeValue(StatusCode.ANNOTATION_SUCCESS_VALUE)
                     .build()
             )
             .build()
@@ -1546,8 +1550,8 @@ import com.clarifai.grpc.api.status.*;
 
 BaseResponse deleteAnnotationResponse = stub.deleteAnnotation(
     DeleteAnnotationRequest.newBuilder()
-        .setInputId("{YOUR_INPUT_ID_1}")
-        .setAnnotationId("{YOUR_ANNOTATION_ID_2}")
+        .setInputId("{YOUR_INPUT_ID}")
+        .setAnnotationId("{YOUR_ANNOTATION_ID}")
         .build()
 );
 
@@ -1626,10 +1630,10 @@ import com.clarifai.grpc.api.status.*;
 
 BaseResponse deleteAnnotationsResponse = stub.deleteAnnotations(
     DeleteAnnotationsRequest.newBuilder()
-        .addInputId("{YOUR_INPUT_ID_1}")
-        .addInputId("{YOUR_INPUT_ID_2}")
-        .setAnnotationId("{YOUR_ANNOTATION_ID_1}")
-        .setAnnotationId("{YOUR_ANNOTATION_ID_2}")
+        .addInputIds("{YOUR_INPUT_ID_1}")
+        .addInputIds("{YOUR_INPUT_ID_2}")
+        .addIds("{YOUR_ANNOTATION_ID_1}")
+        .addIds("{YOUR_ANNOTATION_ID_2}")
         .build()
 );
 
@@ -1713,8 +1717,8 @@ import com.clarifai.grpc.api.status.*;
 
 BaseResponse deleteAnnotationsResponse = stub.deleteAnnotations(
     DeleteAnnotationsRequest.newBuilder()
-        .addInputId("{YOUR_INPUT_ID_1}")
-        .addInputId("{YOUR_INPUT_ID_2}")
+        .addInputIds("{YOUR_INPUT_ID_1}")
+        .addInputIds("{YOUR_INPUT_ID_2}")
         .build()
 );
 
