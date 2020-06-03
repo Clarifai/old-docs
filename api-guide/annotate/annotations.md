@@ -4,15 +4,15 @@
 
 Annotations are the data describe an input. When you add inputs to your app, we will create an input level annotation for each input. This input level annotation contains any data you provided in POST /inputs call. Meanwhile some models in your default workflow could write annotations and can be used for search and training.
 
-Once your input is successfully indexed, you can label the input by adding annotations, for example add cooncepts, draw bounding boxes and so on.
+Once your input is successfully indexed, you can label the input by adding annotations, for example add concepts, draw bounding boxes and so on.
 
 ### Add Annotations
 
-You can label your inputs by POST annotations. For example, add concept(s) to an image, draw a bounding box, label concept(s) to a video frame. Each annotation should contain at most 1 region. If it is a video, each annotation can have at most 1 frame.
+You can label your inputs by doing POST /annotations. For example, you can add concept(s) to an image, draw a bounding box, label concept(s) to a video frame. Note that Each annotation should contain at most 1 region. If it is a video, each annotation should contain 1 frame. IF there are multiple regions in a frame you want to label, you can add multiple annotations and each annotation contains the same frame but different region.
 
-When you add an annotation, by default we will not run the workflow for this data. It means data will not be used to train your custom model or visual search. To make it available for training or visual search, you need to provide `embed_model_version_id` field. This helps us to know how you want to apply this data to your input and when to use this data. `embed_model_version_id` is the embed model version id in your app default workflow. It is recomended to provide this info all the time.
+When you add an annotation, the app's default workflow will not be run, by default. This means that the annotation will not be immediately available for training of your custom model or for visual search. To make it available, you need to provide `embed_model_version_id` field. This field specifies how to apply the annotation to your input and when to use the annotation. The field `embed_model_version_id` should be set to your app's default workflow embed model version ID. It is recommended to provide this field on each add annotation call.
 
-You can add 1 or more annotations in a single API call but limited to sending 128 annotations at a time. 
+You can add from 1 up to 128 annotations in a single API call.
 
 #### Label an images with concepts
 
@@ -155,180 +155,7 @@ curl -X POST \
 {% endtab %}
 {% endtabs %}
 
-
-#### Label existing regions in an Image
-
-When you index the input, our model will detect regions if your worfklow is detection workflow (for example `Face` or `General Detection`). You can check these detected regions by list model created annotations. Your labels should be within `Region.Data`. Each annotation can have only 1 region. If you want to label multiple regions, you can post multiple annotations in a single API call.
-
-{% tabs %}
-{% tab title="gRPC Java" %}
-```java
-import java.util.List;
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-MultiAnnotationResponse postAnnotationsResponse = stub.postAnnotations(
-    PostAnnotationsRequest.newBuilder().addAnnotations(
-        Annotation.newBuilder()
-            .setInputId("{YOUR_INPUT_ID}")
-            .setData(
-                Data.newBuilder().addRegions(
-                    Region.newBuilder()
-                        .setId("{REGION_ID}") // this should be a region id  returned from list annotations call
-                        .setData(
-                            Data.newBuilder().addConcepts(
-                                Concept.newBuilder()
-                                    .setId("tree")
-                                    .setValue(1f)  // 1 means true, this concept is present.
-                                    .build()
-                                ).addConcepts(
-                                    Concept.newBuilder()
-                                        .setId("water")
-                                        .setValue(0f)  // 0 means false, this concept is not present.
-                                        .build()
-                                )
-                        ).build()
-                ).build()
-            ).setEmbedModelVersionId("{EMBED_MODEL_VERSION_ID}") // so the concept can be used for custom model training
-            .build()
-    ).build()
-);
-
-if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post annotations failed, status: " + postAnnotationsResponse.getStatus());
-}
-
-```
-{% endtab %}
-
-{% tab title="gRPC NodeJS" %}
-```js
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-stub.PostAnnotations(
-    {
-        annotations: [
-            {
-                input_id: "{YOUR_INPUT_ID}",
-                data: {
-                    regions: [
-                        {
-                            id: "{REGION_ID}" // this should be a region id  returned from list annotations call
-                            // 1 means true, this concept is present.
-                            // 0 means false, this concept is not present.
-                            data: {
-                                concepts: [
-                                    {id: "tree", value: 1},
-                                    {id: "water", value: 0}
-                                ]
-                            },
-                        }
-                    ]
-                }
-                embed_model_version_id: "{EMBED_MODEL_VERSION_ID}"
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post annotations failed, status: " + response.status.description);
-        }
-    }
-);
-```
-{% endtab %}
-
-{% tab title="gRPC Python" %}
-```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-post_annotations_response = stub.PostAnnotations(
-    service_pb2.PostAnnotationsRequest(
-        annotations=[
-            resources_pb2.Annotation(
-                input_id="{YOUR_INPUT_ID}",
-                data=resources_pb2.Data(
-                    regions=[
-                        resources_pb2.Region(
-                            id="{REGION_ID}" ,  # this should be a region id returned from list annotations call
-                            data=resources_pb2.Data(
-                                concepts=[
-                                    resources_pb2.Concept(id="tree", value=1.),  # 1 means true, this concept is present.
-                                    resources_pb2.Concept(id="water", value=0.)  # 0 means false, this concept is not present.
-                                ]
-                            )
-                        )
-                    ]
-                ),
-                embed_model_version_id="{EMBED_MODEL_VERSION_ID}"
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_annotations_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post annotations failed, status: " + post_annotations_response.status.description)
-
-```
-{% endtab %}
-
-{% tab title="cURL" %}
-```text
-# Value of 1 means true, this concept is present.
-# Value of 0 means false, this concept is not present.
-# region id should be a region id returned from list annotations call
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "annotations": [
-      {
-        "input_id": "{YOUR_INPUT_ID}",
-        "data": {
-          "regions": [
-            {
-              "id": "{REGION_ID}",
-              "data": {
-                "concepts": [
-                  {
-                    "id": "tree",
-                    "value": 1
-                  },
-                  {
-                    "id": "water",
-                    "value": 0
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
-      }
-    ]
-}'\
-  https://api.clarifai.com/v2/annotations
-```
-{% endtab %}
-{% endtabs %}
-
-
-#### Label a new bounding box in an Image
+#### Label new bounding boxes in an Image
 
 You can label a new bounding box by providing bounding box coordinates.
 
@@ -344,14 +171,14 @@ import com.clarifai.grpc.api.status.*;
 
 MultiAnnotationResponse postAnnotationsResponse = stub.postAnnotations(
     PostAnnotationsRequest.newBuilder().addAnnotations(
-        Annotation.newBuilder()
+        Annotation.newBuilder()                     // label a region in this image
             .setInputId("{YOUR_INPUT_ID}")
             .setData(
                 Data.newBuilder().addRegions(
                     Region.newBuilder()
                         .setRegionInfo(
                             RegionInfo.newBuilder()
-                                .setBoundingBox(
+                                .setBoundingBox(        // draw a bounding box
                                     BoundingBox.newBuilder()
                                         .setTopRow(0f)
                                         .setLeftCol(0f)
@@ -379,6 +206,35 @@ MultiAnnotationResponse postAnnotationsResponse = stub.postAnnotations(
                 ).build()
             ).setEmbedModelVersionId("{EMBED_MODEL_VERSION_ID}") // so the concept can be used for custom model training
             .build()
+    ).addAnnotations(                           // label another region in this image
+            .setInputId("{YOUR_INPUT_ID}")
+            .setData(
+                Data.newBuilder().addRegions(
+                    Region.newBuilder()
+                        .setRegionInfo(
+                            RegionInfo.newBuilder()
+                                .setBoundingBox(        // draw another bounding box
+                                    BoundingBox.newBuilder()
+                                        .setTopRow(0.6f)
+                                        .setLeftCol(0.6f)
+                                        .setBottomRow(0.8f)
+                                        .setRightCol(0.8f)
+                                        .build()
+                                )
+                                .build()
+                        )
+                        .setData(
+                            Data.newBuilder()
+                                .addConcepts(
+                                    Concept.newBuilder()
+                                        .setId("bike")
+                                        .setValue(1f)  // 1 means true, this concept is present.
+                                        .build()
+                                )
+                        ).build()
+                ).build()
+            ).setEmbedModelVersionId("{EMBED_MODEL_VERSION_ID}") // so the concept can be used for custom model training
+            .build()
     ).build()
 );
 
@@ -397,13 +253,13 @@ if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 stub.PostAnnotations(
     {
         annotations: [
-            {
+            {                     // label a region in this image
                 input_id: "{YOUR_INPUT_ID}",
                 data: {
                     regions: [
                         {
                             region_info: {
-                                bounding_box: {
+                                bounding_box: {        // draw a bounding box
                                     top_row: 0,
                                     left_col: 0,
                                     bottom_row: 0.5,
@@ -416,6 +272,30 @@ stub.PostAnnotations(
                                 concepts: [
                                     {id: "tree", value: 1},
                                     {id: "water", value: 0}
+                                ]
+                            },
+                        }
+                    ]
+                }
+                embed_model_version_id: "{EMBED_MODEL_VERSION_ID}"
+            }, {                     // label another region in this image
+                input_id: "{YOUR_INPUT_ID}",
+                data: {
+                    regions: [
+                        {
+                            region_info: {
+                                bounding_box: {        // draw another bounding box
+                                    top_row: 0.6,
+                                    left_col: 0.6,
+                                    bottom_row: 0.8,
+                                    right_col: 0.8
+                                }
+                            }
+                            // 1 means true, this concept is present.
+                            // 0 means false, this concept is not present.
+                            data: {
+                                concepts: [
+                                    {id: "bike", value: 1},
                                 ]
                             },
                         }
@@ -456,7 +336,7 @@ post_annotations_response = stub.PostAnnotations(
                     regions=[
                         resources_pb2.Region(
                             region_info=resources_pb2.RegionInfo(
-                                bounding_box=resources_pb2.BoundingBox(
+                                bounding_box=resources_pb2.BoundingBox(       # draw a bounding box
                                     top_row=0,
                                     left_col=0,
                                     bottom_row=0.5,
@@ -467,6 +347,29 @@ post_annotations_response = stub.PostAnnotations(
                                 concepts=[
                                     resources_pb2.Concept(id="tree", value=1.),  # 1 means true, this concept is present.
                                     resources_pb2.Concept(id="water", value=0.)  # 0 means false, this concept is not present.
+                                ]
+                            )
+                        )
+                    ]
+                ),
+                embed_model_version_id="{EMBED_MODEL_VERSION_ID}"
+            ),
+            resources_pb2.Annotation(
+                input_id="{YOUR_INPUT_ID}",
+                data=resources_pb2.Data(
+                    regions=[
+                        resources_pb2.Region(
+                            region_info=resources_pb2.RegionInfo(
+                                bounding_box=resources_pb2.BoundingBox(        # draw another bounding box
+                                    top_row=0.6,
+                                    left_col=0.6,
+                                    bottom_row=0.8,
+                                    right_col=0.8
+                                )
+                            ),
+                            data=resources_pb2.Data(
+                                concepts=[
+                                    resources_pb2.Concept(id="bike", value=1.),  # 1 means true, this concept is present.
                                 ]
                             )
                         )
@@ -487,9 +390,9 @@ if post_annotations_response.status.code != status_code_pb2.SUCCESS:
 
 {% tab title="cURL" %}
 ```text
+# draw 2 bouding boxes in the same region
 # Value of 1 means true, this concept is present.
 # Value of 0 means false, this concept is not present.
-# region id should be a region id returned from list annotations call
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -525,6 +428,31 @@ curl -X POST \
           ]
         },
         "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
+      }, {
+        "input_id": "{YOUR_INPUT_ID}",
+        "data": {
+          "regions": [
+            {
+              "region_info": {
+                  "bounding_box": {
+                      "top_row": 0.6,
+                      "left_col": 0.6,
+                      "bottom_row": 0.8,
+                      "right_col": 0.8
+                  }
+              },
+              "data": {
+                "concepts": [
+                  {
+                    "id": "bike",
+                    "value": 1
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
       }
     ]
 }'\
@@ -533,8 +461,251 @@ curl -X POST \
 {% endtab %}
 {% endtabs %}
 
-#### Label an images with other user id and status
-Each annotation is tied to each a user or a model in your workflow. By default, when a user post an annotation, this user is the owner of this annotation. Sometimes, you might want to post an annotation as other user, for example in labeler product, when you assign an image to a labeler, you will create an annotation with a labeler user_id and `PENDING` status. Note only app owner can post an annotation with other user's user_id.
+
+#### Label existing regions in an Image
+
+When you add an input, our model will detect regions in the case the workflow is of a type detection, for example `Face` or `General Detection`. You can check these detected regions by listing model's annotations. Your labels should be within `Region.Data`. Each annotation can have only 1 region. If you want to label multiple regions, It is possible to label multiple annotations in a single API call.
+
+{% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import java.util.List;
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiAnnotationResponse postAnnotationsResponse = stub.postAnnotations(
+    PostAnnotationsRequest.newBuilder().addAnnotations(
+        Annotation.newBuilder()                // label a region in this image
+            .setInputId("{YOUR_INPUT_ID}")
+            .setData(
+                Data.newBuilder().addRegions(
+                    Region.newBuilder()
+                        .setId("{REGION_ID_1}") // this should be a region id returned from list annotations call
+                        .setData(
+                            Data.newBuilder().addConcepts(
+                                Concept.newBuilder()
+                                    .setId("tree")
+                                    .setValue(1f)  // 1 means true, this concept is present.
+                                    .build()
+                                ).addConcepts(
+                                    Concept.newBuilder()
+                                        .setId("water")
+                                        .setValue(0f)  // 0 means false, this concept is not present.
+                                        .build()
+                                )
+                        ).build()
+                ).build()
+            ).setEmbedModelVersionId("{EMBED_MODEL_VERSION_ID}") // so the concept can be used for custom model training
+            .build()
+    ).AddAnnotations(
+        Annotation.newBuilder()                // label another region in the same image
+            .setInputId("{YOUR_INPUT_ID}")
+            .setData(
+                Data.newBuilder().addRegions(
+                    Region.newBuilder()
+                        .setId("{REGION_ID_2}") // this should be a region id returned from list annotations call
+                        .setData(
+                            Data.newBuilder().addConcepts(
+                                Concept.newBuilder()
+                                    .setId("bike")
+                                    .setValue(1f)  // 1 means true, this concept is present.
+                                    .build()
+                                )
+                        ).build()
+                ).build()
+            ).setEmbedModelVersionId("{EMBED_MODEL_VERSION_ID}") // so the concept can be used for custom model training
+            .build()
+    ).build()
+);
+
+if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post annotations failed, status: " + postAnnotationsResponse.getStatus());
+}
+
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PostAnnotations(
+    {
+        annotations: [
+            {                // label a region in this image
+                input_id: "{YOUR_INPUT_ID}",
+                data: {
+                    regions: [
+                        {
+                            id: "{REGION_ID_1}" // this should be a region id  returned from list annotations call
+                            // 1 means true, this concept is present.
+                            // 0 means false, this concept is not present.
+                            data: {
+                                concepts: [
+                                    {id: "tree", value: 1},
+                                    {id: "water", value: 0}
+                                ]
+                            },
+                        }
+                    ]
+                }
+                embed_model_version_id: "{EMBED_MODEL_VERSION_ID}"
+            }, {                // label another region in this image
+                input_id: "{YOUR_INPUT_ID}",
+                data: {
+                    regions: [
+                        {
+                            id: "{REGION_ID_2}" // this should be a region id  returned from list annotations call
+                            // 1 means true, this concept is present.
+                            // 0 means false, this concept is not present.
+                            data: {
+                                concepts: [
+                                    {id: "bike", value: 1},
+                                ]
+                            },
+                        }
+                    ]
+                }
+                embed_model_version_id: "{EMBED_MODEL_VERSION_ID}"
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post annotations failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_annotations_response = stub.PostAnnotations(
+    service_pb2.PostAnnotationsRequest(
+        annotations=[
+            resources_pb2.Annotation(                # label a region in this image
+                input_id="{YOUR_INPUT_ID}",
+                data=resources_pb2.Data(
+                    regions=[
+                        resources_pb2.Region(
+                            id="{REGION_ID_1}" ,  # this should be a region id returned from list annotations call
+                            data=resources_pb2.Data(
+                                concepts=[
+                                    resources_pb2.Concept(id="tree", value=1.),  # 1 means true, this concept is present.
+                                    resources_pb2.Concept(id="water", value=0.)  # 0 means false, this concept is not present.
+                                ]
+                            )
+                        )
+                    ]
+                ),
+                embed_model_version_id="{EMBED_MODEL_VERSION_ID}"
+            ),
+            resources_pb2.Annotation(                # label another region in this image
+                input_id="{YOUR_INPUT_ID}",
+                data=resources_pb2.Data(
+                    regions=[
+                        resources_pb2.Region(
+                            id="{REGION_ID_2}" ,  # this should be a region id returned from list annotations call
+                            data=resources_pb2.Data(
+                                concepts=[
+                                    resources_pb2.Concept(id="bike", value=1.),  # 1 means true, this concept is present.
+                                ]
+                            )
+                        )
+                    ]
+                ),
+                embed_model_version_id="{EMBED_MODEL_VERSION_ID}"
+            ),
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_annotations_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post annotations failed, status: " + post_annotations_response.status.description)
+
+```
+{% endtab %}
+
+{% tab title="cURL" %}
+```text
+# Value of 1 means true, this concept is present.
+# Value of 0 means false, this concept is not present.
+# region id should be a region id returned from list annotations call
+curl -X POST \
+  -H "Authorization: Key YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '
+  {
+    "annotations": [
+      {
+        "input_id": "{YOUR_INPUT_ID}",
+        "data": {
+          "regions": [
+            {
+              "id": "{REGION_ID_1}",
+              "data": {
+                "concepts": [
+                  {
+                    "id": "tree",
+                    "value": 1
+                  },
+                  {
+                    "id": "water",
+                    "value": 0
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
+      }, {
+        "input_id": "{YOUR_INPUT_ID}",
+        "data": {
+          "regions": [
+            {
+              "id": "{REGION_ID_2}",
+              "data": {
+                "concepts": [
+                  {
+                    "id": "bike",
+                    "value": 1
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
+      }
+    ]
+}'\
+  https://api.clarifai.com/v2/annotations
+```
+{% endtab %}
+{% endtabs %}
+
+#### Label an images with other user id and a different status
+Each annotation is tied to each a user or a model in your workflow. By default, when a user posts an annotation, this user is the owner of the annotation. Sometimes however, you might want to post an annotation as other user, for example in Labeler product, when assigning an image, an annotation is created with another user_id (and status `PENDING`). 
+
+Note only app owner can post an annotation with other user's user_id.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -657,6 +828,10 @@ These requests are paginated. By default each page will return 20 annotations.
 
 #### List all labeled annotations in your app
 
+To list all you labeled annotations.
+
+Note this will not show annotations by models in your worfklow. To include model created annotations, you need to set `list_all_annotations` to `True`.
+
 {% tabs %}
 {% tab title="gRPC Java" %}
 ```java
@@ -739,9 +914,98 @@ curl -X GET \
 {% endtab %}
 {% endtabs %}
 
-#### List labeled annotations by Input IDs
+#### List all annotations in your app
 
-To list all labeled annotations for specific input(s), you can supply a list of input Ids in request. 
+To list all annotations, including models created.
+
+{% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import java.util.List;
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiAnnotationResponse listAnnotationsResponse = stub.listAnnotations(
+    ListAnnotationsRequest.newBuilder()
+        .setPerPage(10)
+        .setListAllAnnotations(true)
+        .setPage(1)  // Pages start at 1.
+        .build()
+);
+
+if (listAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("List annotations failed, status: " + listAnnotationsResponse.getStatus());
+}
+
+for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
+    System.out.println(annotation);
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.ListAnnotations(
+    {list_all_annotations: true, page: 1, per_page: 10},
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("List annotations failed, status: " + response.status.description);
+        }
+
+        for (const annotation of response.annotations) {
+            console.log(JSON.stringify(annotation, null, 2));
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+list_annotations_response = stub.ListAnnotations(
+    service_pb2.ListAnnotationsRequest(list_all_annotations=True, per_page=10),
+    metadata=metadata
+)
+
+if list_annotations_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("List annotations failed, status: " + list_annotations_response.status.description)
+
+for annotation_object in list_annotations_response.annotations:
+    print(annotation_object)
+```
+{% endtab %}
+
+{% tab title="cURL" %}
+```text
+curl -X GET \
+  -H "Authorization: Key YOUR_API_KEY" \
+  https://api.clarifai.com/v2/annotations?page=1&per_page=10&list_all_annotations=true
+```
+{% endtab %}
+{% endtabs %}
+
+#### List annotations by Input IDs
+
+To list all labeled annotations for certain input (one or several), provide a list of input IDs.
+
+Note this will not show annotations by models in your worfklow. To include model created annotations, you need to set `list_all_annotations` to `True`.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -1015,7 +1279,7 @@ curl -X GET \
 
 #### List annotations by model version Ids
 
-An annotation is created by either a user or a model. For example if your workflow has detection model, when you add input, we will detect objects in your input. You can see these model detected objects by listing detection model created annotations.
+An annotation is created by either a user or a model. For example if your workflow has a detection model, when you add input, the model will detect objects in your input. You can see these  objects by listing the annotations created detection model. You can also label these regioins by Post annotation with region id returned from this call.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -1106,12 +1370,11 @@ curl -X GET \
 
 ### Update annotations
 
-You can change the data of annotation by making a PATCH call. Patch support `overwrite`, `merge`, `remove` actions. You can patch 1 or more annotations in a single API call but limited to sending 128 annotations at a time. 
-
+Changing annotation's data is possible. Update supports overwrite, merge, remove actions. You can update from 1 up to 128 annotations in a single API call.
 
 #### Update annotation with concepts
 
-To update an annotation of the entire image with a new concept, or to change a concept value from true/false, you can do that:
+Update an annotation of a image with a new concept, or to change a concept value from true to false (or vice versa).
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -1704,7 +1967,7 @@ curl -X DELETE \
 
 #### Bulk Delete all annotations By Input Ids
 
-If you want to delete all labels of a given input, you just need to set input Ids in request. This willl delete all annotations for these input(s) EXCEPT input level annotation. 
+To delete all annotations of a given input, you just need to set input ID(s). This will delete all annotations for these input(s) EXCEPT input level annotations.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
