@@ -23,177 +23,319 @@ concepts
 
 ## Create
 
-Point out that will need to have concept as part of model
+To create a relation between two concepts, you first have to create them in your custom model. See [the Concepts page](https://docs.clarifai.com/api-guide/concepts/concepts) on how to do that programatically.
+
+Each relation has to have specified a predicate, which can be _hyponym_, _hypernym_, or _synonym_.
 
 {% tabs %}
-{% tab title="gRPC Python" %}
-```python
-
-```
-{% endtab %}
-
 {% tab title="gRPC Java" %}
 ```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
 
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiConceptRelationResponse postConceptRelationsResponse = stub.postConceptRelations(
+    PostConceptRelationsRequest.newBuilder()
+        .setUserAppId(
+            UserAppIDSet.newBuilder()
+                .setAppId("{YOUR_APP_ID}")
+                .build()
+        )
+        .setConceptId("{YOUR_SUBJECT_CONCEPT_ID}")
+        .addConceptRelations(
+            ConceptRelation.newBuilder()
+                .setObjectConcept(Concept.newBuilder().setId("{YOUR_OBJECT_CONCEPT_ID}").build())
+                .setPredicate("hypernym").build()) // This can be hypernym, hypnonym, or synonym.
+        .build()
+);
+
+if (postConceptRelationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post concept relations failed, status: " + postConceptRelationsResponse.getStatus());
+}
 ```
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
-```
-{% endtab %}
-
-{% tab title="cURL" %}
-```text
-curl --location --request POST 'https://api.clarifai.com/v2/users/{{user_id}}/apps/{{app_id}}/concepts/walker/relations' \
---header 'Authorization: Key {{personal_access_token}}' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "concept_relations": [
-        {
-            "object_concept": {
-                "id": "person"
-            },
-            "predicate": "hyponym"
+stub.PostConceptRelations(
+    {
+        user_app_id: {
+            app_id: "{YOUR_APP_ID}"
+        },
+        concept_id: "{YOUR_SUBJECT_CONCEPT_ID}",
+        concept_relations: [
+            {
+                object_concept: {
+                    id: "{YOUR_OBJECT_CONCEPT_ID}",
+                },
+                predicate: "hypernym" // This can be hypernym, hyponym, or synonym.
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
         }
-    ]
-}'
+
+        if (response.status.code !== 10000) {
+            throw new Error("Create concept relations failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
-{% endtabs %}
 
-
-
-
-## Get
-
-### Get existing relations
-
-{% tabs %}
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
 
-```
-{% endtab %}
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
-{% tab title="gRPC Java" %}
-```java
+post_concept_relation_response = stub.PostConceptRelations(
+    service_pb2.PostConceptRelationsRequest(
+        user_app_id=resources_pb2.UserAppIDSet(
+            app_id="{YOUR_APP_ID}"
+        ),
+        concept_id="{YOUR_SUBJECT_CONCEPT_ID}",
+        concept_relations=[
+            resources_pb2.ConceptRelation(
+                object_concept=resources_pb2.Concept(id="{YOUR_OBJECT_CONCEPT_ID}"),
+                predicate="hypernym" # This can be hypernym, hyponym, or synonym.
+            )
+        ]
+    ),
+    metadata=metadata
+)
 
-```
-{% endtab %}
-
-{% tab title="gRPC NodeJS" %}
-```js
-
+if post_concept_relation_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post concept relation failed, status: " + post_concept_relation_response.status.description)
 ```
 {% endtab %}
 
 {% tab title="cURL" %}
 ```text
-curl --location --request GET 'https://api.clarifai.com/v2/users/{{user_id}}/apps/{{app_id}}/concepts/lamborghini23/relations' \
---header 'Authorization: Key {{key}}'
+curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{YOUR_APP_ID}/concepts/{YOUR_SUBJECT_CONCEPT_ID}/relations' \
+    -H 'Authorization: Key {YOUR_PERSONAL_ACCESS_TOKEN}' \
+    -H 'Content-Type: application/json' \
+    --data-raw '{
+        "concept_relations": [
+            {
+                "object_concept": {
+                    "id": "{YOUR_OBJECT_CONCEPT_ID}"
+                },
+                "predicate": "hypernym"
+            }
+        ]
+    }'
 ```
 {% endtab %}
 {% endtabs %}
 
 
-### Get existing hypernym
+
+
+## List existing relations
 
 {% tabs %}
-{% tab title="gRPC Python" %}
-```python
-
-```
-{% endtab %}
-
 {% tab title="gRPC Java" %}
 ```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
 
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiConceptRelationResponse listConceptRelationsResponse = stub.listConceptRelations(
+    ListConceptRelationsRequest.newBuilder()
+        .setUserAppId(
+            UserAppIDSet.newBuilder()
+                .setAppId("{YOUR_APP_ID}")
+                .build()
+        )
+        .setConceptId("{YOUR_CONCEPT_ID}")
+        .setPredicate("hypernym")  // This is optional. If skipped, all concept's relations will be returned.
+        .build()
+);
+
+
+if (listConceptRelationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("List concept relations failed, status: " + listConceptRelationsResponse.getStatus());
+}
+
+for (ConceptRelation relation : listConceptRelationsResponse.getConceptRelationsList()) {
+    System.out.println(relation);
+}
 ```
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
+stub.ListConceptRelations(
+    {
+        user_app_id: {
+            app_id: "{YOUR_APP_ID}"
+        },
+        concept_id: "{YOUR_CONCEPT_ID}",
+        predicate: "hypernym" // This is optional. If skipped, all concept's relations will be returned.
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("List concept relations failed, status: " + response.status.description);
+        }
+
+        for (const relation of response.concept_relations) {
+            console.log(relation);
+        }
+    }
+);
 ```
 {% endtab %}
 
-{% tab title="cURL" %}
-```text
-curl --location --request GET 'https://api.clarifai.com/v2/users/{{user_id}}/apps/{{app_id}}/concepts/{{concept_id}}/relations?predicate=hypernym' \
---header 'Authorization: Key {{key}}'
-```
-{% endtab %}
-{% endtabs %}
-
-
-
-### Get existing hyponym
-
-{% tabs %}
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
 
-```
-{% endtab %}
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
-{% tab title="gRPC Java" %}
-```java
+list_concept_relation_response = stub.ListConceptRelations(
+    service_pb2.ListConceptRelationsRequest(
+        user_app_id=resources_pb2.UserAppIDSet(
+            app_id="{YOUR_APP_ID}"
+        ),
+        concept_id="{YOUR_CONCEPT_ID}",
+        predicate="hypernym"  # This is optional. If skipped, all concept's relations will be returned.
+    ),
+    metadata=metadata
+)
 
-```
-{% endtab %}
+if list_concept_relation_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("List concept relation failed, status: " + list_concept_relation_response.status.description)
 
-{% tab title="gRPC NodeJS" %}
-```js
-
+for relation in list_concept_relation_response.concept_relations:
+    print(relation)
 ```
 {% endtab %}
 
 {% tab title="cURL" %}
 ```text
-curl --location --request GET '{{base_url}}/v2/users/{{user_id}}/apps/{{app_id}}/concepts/{{concept_id}}/relations?predicate=hyponym' \
---header 'Authorization: Key {{key}}'
+# Setting the predicate GET parameter is optional. If skipped, all concept's relations will be returned.
+curl -X GET 'https://api.clarifai.com/v2/users/me/apps/{YOUR_APP_ID}/concepts/{YOUR_CONCEPT_ID}/relations?predicate=hypernym' \
+    -H 'Authorization: Key {YOUR_PERSONAL_ACCESS_TOKEN}' \
+    -H 'Content-Type: application/json'
 ```
 {% endtab %}
 {% endtabs %}
-
 
 
 
 ## Delete
 
 {% tabs %}
-{% tab title="gRPC Python" %}
-```python
-
-```
-{% endtab %}
-
 {% tab title="gRPC Java" %}
 ```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
 
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+BaseResponse deleteConceptRelationsResponse = stub.deleteConceptRelations(
+    DeleteConceptRelationsRequest.newBuilder()
+        .setUserAppId(
+            UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}").build()
+        )
+        .addIds("{YOUR_CONCEPT_RELATION_ID}")
+        .setConceptId("{YOUR_OBJECT_CONCEPT_ID}")
+        .build()
+);
+
+if (deleteConceptRelationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Delete concept relations failed, status: " + deleteConceptRelationsResponse.getStatus());
+}
 ```
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
+stub.DeleteConceptRelations(
+    {
+        user_app_id: {
+            app_id: "{YOUR_APP_ID}"
+        },
+        concept_id: "{YOUR_OBJECT_CONCEPT_ID}",
+        ids: [
+            "{YOUR_CONCEPT_RELATION_ID}"
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Delete concept relations failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+delete_concept_relation_response = stub.DeleteConceptRelations(
+    service_pb2.DeleteConceptRelationsRequest(
+        user_app_id=resources_pb2.UserAppIDSet(
+            app_id="{YOUR_APP_ID}"
+        ),
+        concept_id="{YOUR_OBJECT_CONCEPT_ID}",
+        ids=["{YOUR_CONCEPT_RELATION_ID}"]
+    ),
+    metadata=metadata
+)
+
+if delete_concept_relation_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Delete concept relation failed, status: " + delete_concept_relation_response.status.description)
 ```
 {% endtab %}
 
 {% tab title="cURL" %}
 ```text
-
-curl --location --request DELETE '{{base_url}}/v2/users/{{user_id}}/apps/{{app_id}}/concepts/{{your_concept}}/relations' \
---header 'Authorization: Key {{key}}' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "ids": [
-    	"{{your_related_concept}}"
-    ]
-}'
-
+curl -X DELETE 'https://api.clarifai.com/v2/users/me/apps/{YOUR_APP_ID}/concepts/{YOUR_OBJECT_CONCEPT_ID}/relations' \
+    -H 'Authorization: Key {YOUR_PERSONAL_ACCESS_TOKEN}' \
+    -H 'Content-Type: application/json' \
+    --data-raw '{
+        "ids": [
+            "{YOUR_CONCEPT_RELATION_ID}"
+        ]
+    }'
 ```
 {% endtab %}
 {% endtabs %}
