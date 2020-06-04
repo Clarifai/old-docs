@@ -1,35 +1,7 @@
 ## Auto Annotation Tutorial (WIP)
 
 
-Let's create a process where inputs are going to be automatically annotated by a model when the confidence is high, and when the model is unsure, the annotation is going to be sent into human review.
-
-
-### Add a collaborator
-
-Add a collaborator to whom we are later going to assign the task of reviewing annotations.
-
-{% tabs %}
-{% tab title="cURL" %}
-```text
-curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/collaborators' \
-    -H 'Authorization: Key {{PAT}}' \
-    -H 'Content-Type: application/javascript' \
-    --data-raw '{
-        "collaborators": [
-            {
-                "id": "my-collaborator-1",
-                "user": {
-                    "id": "{YOUR_COLLABORATOR_USER_ID}"
-                },
-                "scopes": [],
-                "endpoints": []
-            }
-        ]
-    }'
-```
-{% endtab %}
-{% endtabs %}
-
+Let's create a process where inputs are going to be automatically annotated with some concepts and success status as you by a model when the confidence is high, and when the model is unsure, the annotation is going to be writen as you with `Pending` status .
 
 ### Create concepts
 
@@ -202,7 +174,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 {% endtab %}
 {% endtabs %}
 
-### Create a "write as me" model
+### Create a "write success as me" model
 
 {% tabs %}
 {% tab title="cURL" %}
@@ -228,7 +200,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 {% endtab %}
 {% endtabs %}
 
-### Create a "write as collaborator" model
+### Create a "write pending as me" model
 
 {% tabs %}
 {% tab title="cURL" %}
@@ -244,10 +216,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
                 "output_config": {
                     "model_metadata": {
                         "annotation_status": 24151,
-                        "annotation_user_id": "{YOUR_COLLABORATOR_USER_ID}",
-                        "annotation_info": {
-                            "task_id": "{YOUR_TASK_ID}"
-                        }
+                        "annotation_user_id": "{YOUR_USER_ID}"
                     }
                 }
             }
@@ -260,6 +229,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 ### Create the workflow
 
 We will now joint all the models together into a single workflow.
+Every input will be predicted by general embed model to generate embedding. The output of the embed model (embeddins) will be sent to general concept to predict concept and cluster model. Then the concept model's output (a list of concepts) will be sent to concept mapper model which maps clarifai concept to your concept, `people`, `man` and `adult` in this case. Then the mapped concepts will be sent to both concept thresholds models (`GREATER THAN` and `LESS THAN`). `GREATER THAN` model will filter out the concept if it lower than corresponding value you defined in model and send the final concept list to `write success as me` model which labels the input with these concepts (your app concepts only) as you with `success` stauts. You can train or search on these concepts immediately. At the mean time, `LESS THAN` model will filter out the concept if it higher than ccorresponding valud you defined in model and send the final concept list to `write pending as me` model which labels the input with these concepts (your app concepts only) as you with `pending` status.
 
 {% tabs %}
 {% tab title="cURL" %}
@@ -270,7 +240,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
     --data-raw '{
         "workflows": [
             {
-                "id": "mapper-threshold-testID",
+                "id": "auto-annotation-workflow-ID",
                 "nodes": [
                     {
                         "id": "general-embed",
@@ -392,7 +362,7 @@ curl -X PATCH 'https://api.clarifai.com/v2/users/me/apps' \
         "apps": [
             {
                 "id": "{{app}}",
-                "default_workflow_id": "mapper-threshold-testID"
+                "default_workflow_id": "auto-annotation-workflow-ID"
             }
         ]
     }'
@@ -421,6 +391,21 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/inputs' \
             }
         ]
     }'
+```
+{% endtab %}
+{% endtabs %}
+
+### List annotations
+
+Now you can list annotations with your user id to see the annotations created by model.
+
+{% tabs %}
+{% tab title="cURL" %}
+```text
+curl -X GET \
+  -H "Authorization: Key YOUR_API_KEY" \
+  https://api.clarifai.com/v2/annotations?user_ids={YOUR_USER_ID}
+
 ```
 {% endtab %}
 {% endtabs %}
