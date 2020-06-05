@@ -8,6 +8,60 @@ Let's create a process where inputs are going to be automatically annotated with
 Create the concepts that we'll be using in our model. In this tutorial we'll create the following concepts: `people`, `man` and `adult`.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiConceptResponse postConceptsResponse = stub.postConcepts(
+    PostConceptsRequest.newBuilder()
+        .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
+        .addConcepts(
+            Concept.newBuilder()
+                .setId("peopleID")
+                .setName("people")
+        )
+        .addConcepts(
+            Concept.newBuilder()
+                .setId("manID")
+                .setName("man")
+        )
+        .addConcepts(
+            Concept.newBuilder()
+                .setId("adultID")
+                .setName("adult")
+        )
+        .build()
+);
+
+if (postConceptsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post concepts failed, status: " + postConceptsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+```
+{% endtab %}
+
 {% tab title="cURL" %}
 ```text
 curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/concepts' \
@@ -43,6 +97,55 @@ Run the code below three times, once for each concept created previously. The co
 - `ai_VPmHr5bm` - the adult concept
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiConceptRelationResponse postConceptRelationsResponse = stub.postConceptRelations(
+    PostConceptRelationsRequest.newBuilder()
+        .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
+        .setConceptId("{YOUR_MODEL_CONCEPT_ID}")
+        .addConceptRelations(
+            ConceptRelation.newBuilder()
+                .setObjectConcept(
+                    Concept.newBuilder()
+                        .setId("{GENERAL_MODEL_CONCEPT_ID}")
+                        .setAppId("main")
+                )
+                .setPredicate("synonym").build())
+        .build()
+);
+
+if (postConceptRelationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post concept relations failed, status: " + postConceptRelationsResponse.getStatus());
+}
+
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+```
+{% endtab %}
+
 {% tab title="cURL" %}
 ```text
 curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/concepts/{YOUR_MODEL_CONCEPT_ID}/relations' \
@@ -68,8 +171,62 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/concepts/{YOUR_M
 
 We're going to create a mapper model that translates the concepts from the General model to our new concepts. The model will map the concepts as synonyms. Hypernyms and hyponyms are supported as well.
 
+We'll be setting the `knowledge_graph_id` value to be empty, to declare search should not be done to any spe
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+Struct.Builder modelMetadata = Struct.newBuilder()
+    .putFields("knowledge_graph_id", Value.newBuilder().setStringValue("").build());
+
+SingleModelResponse postModelsResponse = stub.postModels(
+  PostModelsRequest.newBuilder()
+      .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
+      .addModels(
+          Model.newBuilder()
+              .setId("synonym-model-id")
+              .setOutputInfo(
+                  OutputInfo.newBuilder()
+                      .setType("concept-synonym-mapper")
+                      .setOutputConfig(
+                          OutputConfig.newBuilder().setModelMetadata(modelMetadata)
+                      )
+              )
+      )
+      .build()
+);
+
+if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+```
+{% endtab %}
+
 {% tab title="cURL" %}
 ```text
 curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
@@ -95,6 +252,80 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 ### Create a "greater than" model
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+Struct.Builder modelMetadata = Struct.newBuilder()
+  .putFields(
+      "concept_threshold_type",
+      Value.newBuilder().setNumberValue(ValueComparator.GREATER_THAN_VALUE).build()
+  );
+
+SingleModelResponse postModelsResponse = stub.postModels(
+  PostModelsRequest.newBuilder()
+      .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
+      .addModels(
+          Model.newBuilder()
+              .setId("greater-than-model-id")
+              .setOutputInfo(
+                  OutputInfo.newBuilder()
+                      .setType("concept-threshold")
+                      .setData(
+                          Data.newBuilder()
+                              .addConcepts(
+                                  Concept.newBuilder()
+                                      .setId("peopleID")
+                                      .setValue(0.5f)
+                              )
+                              .addConcepts(
+                                  Concept.newBuilder()
+                                      .setId("manID")
+                                      .setValue(0.5f)
+                              )
+                              .addConcepts(
+                                  Concept.newBuilder()
+                                      .setId("adultID")
+                                      .setValue(0.95f)
+                              )
+                      )
+                      .setOutputConfig(
+                          OutputConfig.newBuilder().setModelMetadata(modelMetadata)
+                      )
+              )
+      )
+      .build()
+);
+
+if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+```
+{% endtab %}
+
 {% tab title="cURL" %}
 ```text
 curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
@@ -136,6 +367,80 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 ### Create a "less than" model
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+Struct.Builder modelMetadata = Struct.newBuilder()
+    .putFields(
+        "concept_threshold_type",
+        Value.newBuilder().setNumberValue(ValueComparator.LESS_THAN_VALUE).build()
+    );
+
+SingleModelResponse postModelsResponse = stub.postModels(
+  PostModelsRequest.newBuilder()
+      .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
+      .addModels(
+          Model.newBuilder()
+              .setId("less-than-model-id")
+              .setOutputInfo(
+                  OutputInfo.newBuilder()
+                      .setType("concept-threshold")
+                      .setData(
+                          Data.newBuilder()
+                              .addConcepts(
+                                  Concept.newBuilder()
+                                      .setId("peopleID")
+                                      .setValue(0.5f)
+                              )
+                              .addConcepts(
+                                  Concept.newBuilder()
+                                      .setId("manID")
+                                      .setValue(0.5f)
+                              )
+                              .addConcepts(
+                                  Concept.newBuilder()
+                                      .setId("adultID")
+                                      .setValue(0.95f)
+                              )
+                      )
+                      .setOutputConfig(
+                          OutputConfig.newBuilder().setModelMetadata(modelMetadata)
+                      )
+              )
+      )
+      .build()
+);
+
+if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+```
+{% endtab %}
+
 {% tab title="cURL" %}
 ```text
 curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
@@ -177,6 +482,65 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 ### Create a "write success as me" model
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+Struct.Builder modelMetadata = Struct.newBuilder()
+    .putFields(
+        "annotation_status", Value.newBuilder().setNumberValue(StatusCode.ANNOTATION_SUCCESS_VALUE).build()
+    )
+    .putFields(
+        "annotation_user_id",
+        Value.newBuilder().setStringValue("{YOUR_USER_ID}").build()
+    );
+
+SingleModelResponse postModelsResponse = stub.postModels(
+  PostModelsRequest.newBuilder()
+      .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
+      .addModels(
+          Model.newBuilder()
+              .setId("write-success-as-me-id")
+              .setOutputInfo(
+                  OutputInfo.newBuilder()
+                      .setType("annotation-writer")
+                      .setOutputConfig(
+                          OutputConfig.newBuilder().setModelMetadata(modelMetadata)
+                      )
+              )
+      )
+      .build()
+);
+
+if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+```
+{% endtab %}
+
 {% tab title="cURL" %}
 ```text
 curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
@@ -184,7 +548,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
     -H 'Content-Type: application/javascript' \
     --data-raw '{
         "model": {
-            "id": "write-as-me",
+            "id": "write-success-as-me",
             "output_info": {
                 "type": "annotation-writer",
                 "output_config": {
@@ -203,6 +567,65 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 ### Create a "write pending as me" model
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+Struct.Builder modelMetadata = Struct.newBuilder()
+    .putFields(
+        "annotation_status", Value.newBuilder().setNumberValue(StatusCode.ANNOTATION_PENDING_VALUE).build()
+    )
+    .putFields(
+        "annotation_user_id",
+        Value.newBuilder().setStringValue("{YOUR_USER_ID}").build()
+    );
+
+SingleModelResponse postModelsResponse = stub.postModels(
+  PostModelsRequest.newBuilder()
+      .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
+      .addModels(
+          Model.newBuilder()
+              .setId("write-pending-as-me-id")
+              .setOutputInfo(
+                  OutputInfo.newBuilder()
+                      .setType("annotation-writer")
+                      .setOutputConfig(
+                          OutputConfig.newBuilder().setModelMetadata(modelMetadata)
+                      )
+              )
+      )
+      .build()
+);
+
+if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+```
+{% endtab %}
+
 {% tab title="cURL" %}
 ```text
 curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
@@ -210,7 +633,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
     -H 'Content-Type: application/javascript' \
     --data-raw '{
         "model": {
-            "id": "write-as-collaborator",
+            "id": "write-pending-as-me",
             "output_info": {
                 "type": "annotation-writer",
                 "output_config": {
@@ -231,7 +654,153 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 We will now joint all the models together into a single workflow.
 Every input will be predicted by general embed model to generate embedding. The output of the embed model (embeddins) will be sent to general concept to predict concept and cluster model. Then the concept model's output (a list of concepts) will be sent to concept mapper model which maps clarifai concept to your concept, `people`, `man` and `adult` in this case. Then the mapped concepts will be sent to both concept thresholds models (`GREATER THAN` and `LESS THAN`). `GREATER THAN` model will filter out the concept if it lower than corresponding value you defined in model and send the final concept list to `write success as me` model which labels the input with these concepts (your app concepts only) as you with `success` stauts. You can train or search on these concepts immediately. At the mean time, `LESS THAN` model will filter out the concept if it higher than ccorresponding valud you defined in model and send the final concept list to `write pending as me` model which labels the input with these concepts (your app concepts only) as you with `pending` status.
 
+The model IDs and model version IDs from the public `clarifai/main` application are fixed, so they are already hard-coded in the code examples below. It's possible to use some other public model / model version IDs.
+
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiWorkflowResponse postWorkflowsResponse = stub.postWorkflows(
+  PostWorkflowsRequest.newBuilder()
+      .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
+      .addWorkflows(
+          Workflow.newBuilder()
+              .setId("auto-annotation-workflow-id")
+              .addNodes(
+                  WorkflowNode.newBuilder()
+                      .setId("general-embed")
+                      .setModel(
+                          Model.newBuilder()
+                              .setId("bbb5f41425b8468d9b7a554ff10f8581")
+                              .setModelVersion(
+                                  ModelVersion.newBuilder()
+                                      .setId("bb186755eda04f9cbb6fe32e816be104")
+                              )
+                      )
+              )
+              .addNodes(
+                  WorkflowNode.newBuilder()
+                      .setId("general-concept")
+                      .setModel(
+                          Model.newBuilder()
+                              .setId("aaa03c23b3724a16a56b629203edc62c")
+                              .setModelVersion(
+                                  ModelVersion.newBuilder()
+                                      .setId("aa7f35c01e0642fda5cf400f543e7c40")
+                              )
+                      )
+              )
+              .addNodes(
+                  WorkflowNode.newBuilder()
+                      .setId("general-cluster")
+                      .setModel(
+                          Model.newBuilder()
+                              .setId("cccbe437d6e54e2bb911c6aa292fb072")
+                              .setModelVersion(
+                                  ModelVersion.newBuilder()
+                                      .setId("cc2074cff6dc4c02b6f4e1b8606dcb54")
+                              )
+                      )
+              )
+              .addNodes(
+                  WorkflowNode.newBuilder()
+                      .setId("mapper")
+                      .setModel(
+                          Model.newBuilder()
+                              .setId("synonym-model-id")
+                              .setModelVersion(
+                                  ModelVersion.newBuilder()
+                                      .setId("{YOUR_SYNONYM_MODEL_VERSION_ID}")
+                              )
+                      )
+                      .addNodeInputs(NodeInput.newBuilder().setNodeId("general-concept"))
+              )
+              .addNodes(
+                  WorkflowNode.newBuilder()
+                      .setId("greater-than")
+                      .setModel(
+                          Model.newBuilder()
+                              .setId("greater-than-model-id")
+                              .setModelVersion(
+                                  ModelVersion.newBuilder()
+                                      .setId("{YOUR_GREATER_THAN_MODEL_VERSION_ID}")
+                              )
+                      )
+                      .addNodeInputs(NodeInput.newBuilder().setNodeId("mapper"))
+              )
+              .addNodes(
+                  WorkflowNode.newBuilder()
+                      .setId("write-as-success-as-me")
+                      .setModel(
+                          Model.newBuilder()
+                              .setId("write-success-as-me-id")
+                              .setModelVersion(
+                                  ModelVersion.newBuilder()
+                                      .setId("{YOUR_WRITE_SUCCESS_AS_ME_MODEL_VERSION_ID}")
+                              )
+                      )
+                      .addNodeInputs(NodeInput.newBuilder().setNodeId("greater-than"))
+              )
+              .addNodes(
+                  WorkflowNode.newBuilder()
+                      .setId("less-than")
+                      .setModel(
+                          Model.newBuilder()
+                              .setId("less-than-model-id")
+                              .setModelVersion(
+                                  ModelVersion.newBuilder()
+                                      .setId("{YOUR_LESS_THAN_MODEL_VERSION_ID}")
+                              )
+                      )
+                      .addNodeInputs(NodeInput.newBuilder().setNodeId("mapper"))
+              )
+              .addNodes(
+                  WorkflowNode.newBuilder()
+                      .setId("write-pending")
+                      .setModel(
+                          Model.newBuilder()
+                              .setId("write-pending-as-me-id")
+                              .setModelVersion(
+                                  ModelVersion.newBuilder()
+                                      .setId("{YOUR_WRITE_PENDING_AS_ME_MODEL_VERSION_ID}")
+                              )
+                      )
+                      .addNodeInputs(NodeInput.newBuilder().setNodeId("less-than"))
+              )
+      )
+      .build()
+);
+
+if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post workflows failed, status: " + postWorkflowsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+```
+{% endtab %}
+
 {% tab title="cURL" %}
 ```text
 curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
@@ -240,7 +809,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
     --data-raw '{
         "workflows": [
             {
-                "id": "auto-annotation-workflow-ID",
+                "id": "auto-annotation-workflow-id",
                 "nodes": [
                     {
                         "id": "general-embed",
@@ -298,9 +867,9 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
                         ]
                     },
                     {
-                        "id": "write-as-me",
+                        "id": "write-success",
                         "model": {
-                            "id": "write-as-me",
+                            "id": "write-success-as-me",
                             "model_version": {
                                 "id": "{YOUR_WRITE_AS_ME_MODEL_VERSION_ID}"
                             }
@@ -326,9 +895,9 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
                         ]
                     },
                     {
-                        "id": "write-as-collaborator",
+                        "id": "write-pending",
                         "model": {
-                            "id": "write-as-collaborator",
+                            "id": "write-pending-as-me",
                             "model_version": {
                                 "id": "{YOUR_WRITE_AS_COLLABORATOR_MODEL_VERSION_ID}"
                             }
@@ -352,6 +921,49 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
 Make this the default workflow in the app, so it will every time we add an input.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiAppResponse patchAppsResponse = stub.patchApps(
+    PatchAppsRequest.newBuilder()
+        .setAction("overwrite")
+        .addApps(
+            App.newBuilder()
+                .setId("{YOUR_APP_ID}")
+                .setDefaultWorkflowId("auto-annotation-workflow-id")
+        ).build()
+);
+
+if (patchAppsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Patch apps failed, status: " + patchAppsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+```
+{% endtab %}
+
 {% tab title="cURL" %}
 ```text
 curl -X PATCH 'https://api.clarifai.com/v2/users/me/apps' \
@@ -375,6 +987,55 @@ curl -X PATCH 'https://api.clarifai.com/v2/users/me/apps' \
 Adding the image will trigger the default workflow.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiInputResponse postInputsResponse = stub.postInputs(
+    PostInputsRequest.newBuilder()
+        .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
+        .addInputs(
+            Input.newBuilder()
+                .setData(
+                    Data.newBuilder()
+                        .setImage(
+                            Image.newBuilder()
+                                .setUrl("{YOUR_IMAGE_URL}")
+                        )
+                )
+        )
+        .build()
+);
+
+if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+```
+{% endtab %}
+
 {% tab title="cURL" %}
 ```text
 curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/inputs' \
@@ -400,6 +1061,51 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/inputs' \
 Now you can list annotations with your user id to see the annotations created by model.
 
 {% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiAnnotationResponse listAnnotationsResponse = stub.listAnnotations(
+  ListAnnotationsRequest.newBuilder()
+      .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
+      .addUserIds("{YOUR_USER_ID}")
+      .setListAllAnnotations(true)
+      .build()
+);
+
+if (listAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+  throw new RuntimeException("List annotations failed, status: " + listAnnotationsResponse.getStatus());
+}
+
+for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
+    System.out.println(annotation);
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+```
+{% endtab %}
+
 {% tab title="cURL" %}
 ```text
 curl -X GET \
