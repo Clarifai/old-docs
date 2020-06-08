@@ -59,6 +59,22 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
+post_concepts_response = stub.PostConcepts(
+    service_pb2.PostConceptsRequest(
+        user_app_id=resources_pb2.UserAppIDSet(
+            app_id="{YOUR_APP_ID}"
+        ),
+        concepts=[
+            resources_pb2.Concept(id="peopleID", name="people"),
+            resources_pb2.Concept(id="manID", name="man"),
+            resources_pb2.Concept(id="adultID", name="adult"),
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_concepts_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post concepts failed, status: " + post_concepts_response.status.description)
 ```
 {% endtab %}
 
@@ -94,7 +110,7 @@ Link the newly created concepts with the ones from the clarifai/main General mod
 Run the code below three times, once for each concept created previously. The concept IDs of the clarifai/main General models are the following:
 - `ai_l8TKp2h5` - the people concept,
 - `ai_dxSG2s86` - the man concept,
-- `ai_VPmHr5bm` - the adult concept
+- `ai_VPmHr5bm` - the adult concept.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -143,6 +159,24 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
+post_concept_relations_response = stub.PostConceptRelations(
+    service_pb2.PostConceptRelationsRequest(
+        user_app_id=resources_pb2.UserAppIDSet(
+            app_id="{YOUR_APP_ID}"
+        ),
+        concept_id="{YOUR_MODEL_CONCEPT_ID}",
+        concept_relations=[
+            resources_pb2.ConceptRelation(
+                object_concept=resources_pb2.Concept(id="{GENERAL_MODEL_CONCEPT_ID}", app_id="main"),
+                predicate="synonym"
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_concept_relations_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post concept relations failed, status: " + post_concept_relations_response.status.description)
 ```
 {% endtab %}
 
@@ -221,9 +255,38 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
+from google.protobuf.struct_pb2 import Struct
+
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
+model_metadata = Struct()
+model_metadata.update({
+    "knowledge_graph_id": ""
+})
+
+post_models_response = stub.PostModels(
+    service_pb2.PostModelsRequest(
+        user_app_id=resources_pb2.UserAppIDSet(
+            app_id="{YOUR_APP_ID}"
+        ),
+        models=[
+            resources_pb2.Model(
+                id="synonym-model-id",
+                output_info=resources_pb2.OutputInfo(
+                    type="concept-synonym-mapper",
+                    output_config=resources_pb2.OutputConfig(
+                        model_metadata=model_metadata
+                    )
+                )
+            ),
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_models_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post models failed, status: " + post_models_response.status.description)
 ```
 {% endtab %}
 
@@ -323,6 +386,40 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
+model_metadata = Struct()
+model_metadata.update({
+    "concept_threshold_type": resources_pb2.GREATER_THAN
+})
+
+post_models_response = stub.PostModels(
+    service_pb2.PostModelsRequest(
+        user_app_id=resources_pb2.UserAppIDSet(
+            app_id="{YOUR_APP_ID}"
+        ),
+        models=[
+            resources_pb2.Model(
+                id="greater-than-model-id",
+                output_info=resources_pb2.OutputInfo(
+                    type="concept-threshold",
+                    data=resources_pb2.Data(
+                        concepts=[
+                            resources_pb2.Concept(id="peopleID", value=0.5),
+                            resources_pb2.Concept(id="manID", value=0.5),
+                            resources_pb2.Concept(id="adultID", value=0.95),
+                        ]
+                    ),
+                    output_config=resources_pb2.OutputConfig(
+                        model_metadata=model_metadata
+                    )
+                )
+            ),
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_models_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post models failed, status: " + post_models_response.status.description)
 ```
 {% endtab %}
 
@@ -438,6 +535,40 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
+model_metadata = Struct()
+model_metadata.update({
+    "concept_threshold_type": resources_pb2.LESS_THAN
+})
+
+post_models_response = stub.PostModels(
+    service_pb2.PostModelsRequest(
+        user_app_id=resources_pb2.UserAppIDSet(
+            app_id="{YOUR_APP_ID}"
+        ),
+        models=[
+            resources_pb2.Model(
+                id="less-than-model-id",
+                output_info=resources_pb2.OutputInfo(
+                    type="concept-threshold",
+                    data=resources_pb2.Data(
+                        concepts=[
+                            resources_pb2.Concept(id="peopleID", value=0.5),
+                            resources_pb2.Concept(id="manID", value=0.5),
+                            resources_pb2.Concept(id="adultID", value=0.95),
+                        ]
+                    ),
+                    output_config=resources_pb2.OutputConfig(
+                        model_metadata=model_metadata
+                    )
+                )
+            ),
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_models_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post models failed, status: " + post_models_response.status.description)
 ```
 {% endtab %}
 
@@ -538,6 +669,34 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
+model_metadata = Struct()
+model_metadata.update({
+    "annotation_status": status_code_pb2.ANNOTATION_SUCCESS,
+    "annotation_user_id": "{YOUR_USER_ID}"
+})
+
+post_models_response = stub.PostModels(
+    service_pb2.PostModelsRequest(
+        user_app_id=resources_pb2.UserAppIDSet(
+            app_id="{YOUR_APP_ID}"
+        ),
+        models=[
+            resources_pb2.Model(
+                id="write-success-model-id",
+                output_info=resources_pb2.OutputInfo(
+                    type="annotation-writer",
+                    output_config=resources_pb2.OutputConfig(
+                        model_metadata=model_metadata
+                    )
+                )
+            ),
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_models_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post models failed, status: " + post_models_response.status.description)
 ```
 {% endtab %}
 
@@ -623,6 +782,34 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
+model_metadata = Struct()
+model_metadata.update({
+    "annotation_status": status_code_pb2.ANNOTATION_PENDING,
+    "annotation_user_id": "{YOUR_USER_ID}"
+})
+
+post_models_response = stub.PostModels(
+    service_pb2.PostModelsRequest(
+        user_app_id=resources_pb2.UserAppIDSet(
+            app_id="{YOUR_APP_ID}"
+        ),
+        models=[
+            resources_pb2.Model(
+                id="write-pending-model-id",
+                output_info=resources_pb2.OutputInfo(
+                    type="annotation-writer",
+                    output_config=resources_pb2.OutputConfig(
+                        model_metadata=model_metadata
+                    )
+                )
+            ),
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_models_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post models failed, status: " + post_models_response.status.description)
 ```
 {% endtab %}
 
@@ -798,6 +985,111 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
+post_workflows_response = stub.PostWorkflows(
+    service_pb2.PostWorkflowsRequest(
+        user_app_id=resources_pb2.UserAppIDSet(
+            app_id="cdd79189eb6f44049b6c5b58f14a87e6"
+        ),
+        workflows=[
+            resources_pb2.Workflow(
+                id="auto-annotation-workflow-id",
+                nodes=[
+                    resources_pb2.WorkflowNode(
+                        id="general-embed",
+                        model=resources_pb2.Model(
+                            id="bbb5f41425b8468d9b7a554ff10f8581",
+                            model_version=resources_pb2.ModelVersion(
+                                id="bb186755eda04f9cbb6fe32e816be104"
+                            )
+                        )
+                    ),
+                    resources_pb2.WorkflowNode(
+                        id="general-concept",
+                        model=resources_pb2.Model(
+                            id="aaa03c23b3724a16a56b629203edc62c",
+                            model_version=resources_pb2.ModelVersion(
+                                id="aa7f35c01e0642fda5cf400f543e7c40"
+                            )
+                        )
+                    ),
+                    resources_pb2.WorkflowNode(
+                        id="general-cluster",
+                        model=resources_pb2.Model(
+                            id="cccbe437d6e54e2bb911c6aa292fb072",
+                            model_version=resources_pb2.ModelVersion(
+                                id="cc2074cff6dc4c02b6f4e1b8606dcb54"
+                            )
+                        ),
+                    ),
+                    resources_pb2.WorkflowNode(
+                        id="mapper",
+                        model=resources_pb2.Model(
+                            id="synonym-model-id",
+                            model_version=resources_pb2.ModelVersion(
+                                id="{YOUR_SYNONYM_MODEL_VERSION_ID}"
+                            )
+                        ),
+                        node_inputs=[
+                            resources_pb2.NodeInput(node_id="general-concept")
+                        ]
+                    ),
+                    resources_pb2.WorkflowNode(
+                        id="greater-than",
+                        model=resources_pb2.Model(
+                            id="greater-than-model-id",
+                            model_version=resources_pb2.ModelVersion(
+                                id="{YOUR_GREATER_THAN_MODEL_VERSION_ID}"
+                            )
+                        ),
+                        node_inputs=[
+                            resources_pb2.NodeInput(node_id="mapper")
+                        ]
+                    ),
+                    resources_pb2.WorkflowNode(
+                        id="write-as-success-as-me",
+                        model=resources_pb2.Model(
+                            id="write-success-model-id",
+                            model_version=resources_pb2.ModelVersion(
+                                id="{YOUR_WRITE_SUCCESS_MODEL_VERSION_ID}"
+                            )
+                        ),
+                        node_inputs=[
+                            resources_pb2.NodeInput(node_id="greater-than")
+                        ]
+                    ),
+                    resources_pb2.WorkflowNode(
+                        id="less-than",
+                        model=resources_pb2.Model(
+                            id="less-than-model-id",
+                            model_version=resources_pb2.ModelVersion(
+                                id="{YOUR_LESS_THAN_MODEL_VERSION_ID}"
+                            )
+                        ),
+                        node_inputs=[
+                            resources_pb2.NodeInput(node_id="mapper")
+                        ]
+                    ),
+                    resources_pb2.WorkflowNode(
+                        id="write-pending",
+                        model=resources_pb2.Model(
+                            id="write-pending-model-id",
+                            model_version=resources_pb2.ModelVersion(
+                                id="{YOUR_WRITE_PENDING_MODEL_VERSION_ID}"
+                            )
+                        ),
+                        node_inputs=[
+                            resources_pb2.NodeInput(node_id="less-than")
+                        ]
+                    ),
+                ]
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_workflows_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post workflows failed, status: " + post_workflows_response.status.description)
 ```
 {% endtab %}
 
@@ -961,6 +1253,21 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
+patch_apps_response = stub.PatchApps(
+    service_pb2.PatchAppsRequest(
+        action="overwrite",
+        apps=[
+            resources_pb2.App(
+                id="{YOUR_APP_ID}",
+                default_workflow_id="auto-annotation-workflow-id"
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if patch_apps_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch apps failed, status: " + patch_apps_response.status.description)
 ```
 {% endtab %}
 
@@ -1033,6 +1340,26 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
+post_inputs_response = stub.PostInputs(
+    service_pb2.PostInputsRequest(
+        user_app_id=resources_pb2.UserAppIDSet(
+            app_id="{YOUR_APP_ID}"
+        ),
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="{YOUR_IMAGE_URL}"
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 {% endtab %}
 
@@ -1103,6 +1430,22 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
+list_annotations_response = stub.ListAnnotations(
+    service_pb2.ListAnnotationsRequest(
+        user_app_id=resources_pb2.UserAppIDSet(
+            app_id="{YOUR_APP_ID}"
+        ),
+        user_ids=["{YOUR_USER_ID}"],
+        list_all_annotations=True,
+    ),
+    metadata=metadata
+)
+
+if list_annotations_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("List annotations failed, status: " + list_annotations_response.status.description)
+
+for annotation in list_annotations_response.annotations:
+    print(annotation)
 ```
 {% endtab %}
 
