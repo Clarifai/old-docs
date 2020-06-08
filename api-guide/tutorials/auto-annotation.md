@@ -48,6 +48,37 @@ if (postConceptsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
+stub.PostConcepts(
+    {
+        user_app_id: {
+            app_id: "{YOUR_APP_ID}"
+        },
+        concepts: [
+            {
+                id: "peopleID",
+                name: "people"
+            },
+            {
+                id: "manID",
+                name: "man"
+            },
+            {
+                id: "adultID",
+                name: "adult"
+            },
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post concepts failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -112,6 +143,8 @@ Run the code below three times, once for each concept created previously. The co
 - `ai_dxSG2s86` - the man concept,
 - `ai_VPmHr5bm` - the adult concept.
 
+Your model's concept IDs are the ones you created in the previous step: `peopleID`, `manID`, and `adultID`.
+
 {% tabs %}
 {% tab title="gRPC Java" %}
 ```java
@@ -148,6 +181,33 @@ if (postConceptRelationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
+stub.PostConceptRelations(
+    {
+        user_app_id: {
+            app_id: "{YOUR_APP_ID}"
+        },
+        concept_id: "{YOUR_MODEL_CONCEPT_ID}",
+        concept_relations: [
+            {
+                object_concept: {
+                    id: "{GENERAL_MODEL_CONCEPT_ID}",
+                    app_id: "main"
+                },
+                predicate: "synonym"
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post concept relations failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -247,6 +307,38 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
+const model_metadata = {
+    knowledge_graph_id: ""
+}
+
+stub.PostModels(
+    {
+        user_app_id: {
+            app_id: "{YOUR_APP_ID}"
+        },
+        models: [
+            {
+                id: "synonym-model-id",
+                output_info: {
+                    type: "concept-synonym-mapper",
+                    output_config: {
+                        model_metadata: model_metadata
+                    }
+                }
+            },
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post models failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -375,6 +467,45 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
+const model_metadata = {
+    concept_threshold_type: "GREATER_THAN"
+}
+
+stub.PostModels(
+    {
+        user_app_id: {
+            app_id: "{YOUR_APP_ID}"
+        },
+        models: [
+            {
+                id: "greater-than-model-id",
+                output_info: {
+                    type: "concept-threshold",
+                    data: {
+                        concepts: [
+                            {id: "peopleID", value: 0.5},
+                            {id: "manID", value: 0.5},
+                            {id: "adultID", value: 0.95}
+                        ]
+                    },
+                    output_config: {
+                        model_metadata: model_metadata
+                    }
+                }
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post models failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -524,6 +655,45 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
+const model_metadata = {
+    concept_threshold_type: "LESS_THAN"
+}
+
+stub.PostModels(
+    {
+        user_app_id: {
+            app_id: "{YOUR_APP_ID}"
+        },
+        models: [
+            {
+                id: "less-than-model-id",
+                output_info: {
+                    type: "concept-threshold",
+                    data: {
+                        concepts: [
+                            {id: "peopleID", value: 0.5},
+                            {id: "manID", value: 0.5},
+                            {id: "adultID", value: 0.95}
+                        ]
+                    },
+                    output_config: {
+                        model_metadata: model_metadata
+                    }
+                }
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post models failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -658,6 +828,39 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
+const model_metadata = {
+    annotation_status: "ANNOTATION_SUCCESS",
+    annotation_user_id: "{YOUR_USER_ID}"
+}
+
+stub.PostModels(
+    {
+        user_app_id: {
+            app_id: "{YOUR_APP_ID}"
+        },
+        models: [
+            {
+                id: "write-success-model-id",
+                output_info: {
+                    type: "annotation-writer",
+                    output_config: {
+                        model_metadata: model_metadata
+                    }
+                }
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Post models failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -974,6 +1177,118 @@ if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
+stub.PostWorkflows(
+    {
+        user_app_id: {
+            app_id: "e83440590d104cee97ef84af1856837d"
+        },
+        workflows: [
+            {
+                id: "auto-annotation-workflow-id",
+                nodes: [
+                    {
+                        id: "general-embed",
+                        model: {
+                            id: "bbb5f41425b8468d9b7a554ff10f8581",
+                            model_version: {
+                                id: "bb186755eda04f9cbb6fe32e816be104"
+                            }
+                        }
+                    },
+                    {
+                        id: "general-concept",
+                        model: {
+                            id: "aaa03c23b3724a16a56b629203edc62c",
+                            model_version: {
+                                id: "aa7f35c01e0642fda5cf400f543e7c40"
+                            }
+                        }
+                    },
+                    {
+                        id: "general-cluster",
+                        model: {
+                            id: "cccbe437d6e54e2bb911c6aa292fb072",
+                            model_version: {
+                                id: "cc2074cff6dc4c02b6f4e1b8606dcb54"
+                            }
+                        }
+                    },
+                    {
+                        id: "mapper",
+                        model: {
+                            id: "synonym-model-id",
+                            model_version: {
+                                id: "{YOUR_SYNONYM_MODEL_VERSION_ID}"
+                            }
+                        },
+                        node_inputs: [
+                            {node_id: "general-concept"}
+                        ]
+                    },
+                    {
+                        id: "greater-than",
+                        model: {
+                            id: "greater-than-model-id",
+                            model_version: {
+                                id: "{YOUR_GREATER_THAN_MODEL_VERSION_ID}"
+                            }
+                        },
+                        node_inputs: [
+                            {node_id: "mapper"}
+                        ]
+                    },
+                    {
+                        id: "write-success",
+                        model: {
+                            id: "write-success-model-id",
+                            model_version: {
+                                id: "{YOUR_WRITE_SUCCESS_MODEL_VERSION_ID}"
+                            }
+                        },
+                        node_inputs: [
+                            {node_id: "greater-than"}
+                        ]
+                    },
+                    {
+                        id: "less-than",
+                        model: {
+                            id: "less-than-model-id",
+                            model_version: {
+                                id: "{YOUR_LESS_THAN_MODEL_VERSION_ID}"
+                            }
+                        },
+                        node_inputs: [
+                            {node_id: "mapper"}
+                        ]
+                    },
+                    {
+                        id: "write-pending",
+                        model: {
+                            id: "write-pending-model-id",
+                            model_version: {
+                                id: "{YOUR_WRITE_PENDING_MODEL_VERSION_ID}"
+                            }
+                        },
+                        node_inputs: [
+                            {node_id: "less-than"}
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            console.log(response.status);
+            throw new Error("Post workflows failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -1046,7 +1361,7 @@ post_workflows_response = stub.PostWorkflows(
                         ]
                     ),
                     resources_pb2.WorkflowNode(
-                        id="write-as-success-as-me",
+                        id="write-success",
                         model=resources_pb2.Model(
                             id="write-success-model-id",
                             model_version=resources_pb2.ModelVersion(
@@ -1242,6 +1557,28 @@ if (patchAppsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
+stub.PatchApps(
+    {
+        action: "overwrite",
+        apps: [
+            {
+                id: "{YOUR_APP_ID}",
+                default_workflow_id: "auto-annotation-workflow-id"
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            console.log(response.status);
+            throw new Error("Patch apps failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -1329,6 +1666,33 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
+stub.PostInputs(
+    {
+        user_app_id: {
+            app_id: "{YOUR_APP_ID}"
+        },
+        inputs: [
+            {
+                data: {
+                    image: {
+                        url: "{YOUR_IMAGE_URL}"
+                    }
+                }
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            console.log(response.status);
+            throw new Error("Post inputs failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
@@ -1419,6 +1783,29 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
+stub.ListAnnotations(
+    {
+        user_app_id: {
+            app_id: "{YOUR_APP_ID}"
+        },
+        user_ids: ["{YOUR_USER_ID}"],
+        list_all_annotations: true
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("List annotations failed, status: " + response.status.description);
+        }
+
+        for (const annotation of response.annotations) {
+            console.log(annotation);
+        }
+    }
+);
 ```
 {% endtab %}
 
