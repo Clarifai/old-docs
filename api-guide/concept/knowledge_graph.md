@@ -1,4 +1,4 @@
-The Clarifai Knowledge Graph enables you to build a (hierarchy) and to map your custom concepts to a common set of concepts understood by all Clarifai Models. The knowledge graph makes it possible to link data across multiple custom and pre-built models in a meaningful way.
+The Clarifai Knowledge Graph enables you to establish a hierarchical relationship between your concepts and to map your custom concepts to a common set of concepts understood by all Clarifai Models. The knowledge graph makes it possible to link data across multiple custom and pre-built models in a meaningful way.
 
 The knowledge graph uses three different *predicates* to organize your concepts: hypernyms, hyponyms, and synonyms.
 
@@ -8,18 +8,6 @@ The knowledge graph uses three different *predicates* to organize your concepts:
 
 **Synonym** The 'synonym' relation defines two concepts that essential mean the same thing. This is more like a "is" relationship. So for example a 'synonym' relationship could be: "puppy" is "pup" The reverse is also true once the former is added so: "pup" is "puppy" will appear in queries as well.
 
-
-
-What you need to make these calls
-
-PAT
-need docs to explain the best way to get user id
-need to explain pat
-need to explain APP ID
-concepts
-
-
-(returned in login request)
 
 ## Create
 
