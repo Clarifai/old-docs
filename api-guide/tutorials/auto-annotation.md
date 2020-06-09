@@ -248,7 +248,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/concepts/{YOUR_M
     --data-raw '{
         "concept_relations": [
             {
-                
+
                 "object_concept": {
                     "id": "{GENERAL_MODEL_CONCEPT_ID}",
                     "app_id": "main"
@@ -1042,9 +1042,9 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 ### Create the workflow
 
 We will now joint all the models together into a single workflow.
-Every input will be predicted by general embed model to generate embedding. The output of the embed model (embeddins) will be sent to general concept to predict concept and cluster model. Then the concept model's output (a list of concepts) will be sent to concept mapper model which maps clarifai concept to your concept, `people`, `man` and `adult` in this case. Then the mapped concepts will be sent to both concept thresholds models (`GREATER THAN` and `LESS THAN`). `GREATER THAN` model will filter out the concept if it lower than corresponding value you defined in model and send the final concept list to `write success as me` model which labels the input with these concepts (your app concepts only) as you with `success` stauts. You can train or search on these concepts immediately. At the mean time, `LESS THAN` model will filter out the concept if it higher than ccorresponding valud you defined in model and send the final concept list to `write pending as me` model which labels the input with these concepts (your app concepts only) as you with `pending` status.
+Every input will be predicted by general embed model to generate embedding. The output of the embed model (embeddings) will be sent to general concept to predict concept and cluster model. Then the concept model's output (a list of concepts) will be sent to concept mapper model which maps Clarifai concept to your concept, `people`, `man` and `adult` in this case. Then the mapped concepts will be sent to both concept thresholds models (`GREATER THAN` and `LESS THAN`). `GREATER THAN` model will filter out the concept if it lower than corresponding value you defined in model and send the final concept list to `write success as me` model which labels the input with these concepts (your app concepts only) as you with `success` stauts. You can train or search on these concepts immediately. At the mean time, `LESS THAN` model will filter out the concept if it higher than ccorresponding valud you defined in model and send the final concept list to `write pending as me` model which labels the input with these concepts (your app concepts only) as you with `pending` status.
 
-The model IDs and model version IDs from the public `clarifai/main` application are fixed, so they are already hard-coded in the code examples below. It's possible to use some other public model / model version IDs.
+The model IDs and model version IDs from the public `clarifai/main` application are fixed, so they are already hard-coded in the code examples below. It's possible to use other public model or model version IDs.
 
 {% tabs %}
 {% tab title="gRPC Java" %}

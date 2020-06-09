@@ -4,7 +4,7 @@ The outputs from one workflow can be used as the inputs in another workflow. Thi
 
 To view your available models, just open your app and click Model Mode icon on the left hand side of the screen. From here just click the Create a Custom Model button in the top righthand corner of the screen.
 
-Different models accept different types of inputs and return different types of outputs
+Different models accept different types of inputs and return different types of outputs. Some examples include:
 
 #### Inputs
 
@@ -28,4 +28,4 @@ Different models accept different types of inputs and return different types of 
 
 ## The building blocks
 
-You can create workflows out of any custom models that you have created for your app. The inputs and outputs supported by your custom models will depend on the inputs and outputs supported by the Clarifai models that you have used to build them. Clarifai models support different inputs and outputs depending on how they are designed and what they are used for.
+You can create workflows out of any Clarifai Models or custom models that you have created for your app. The inputs and outputs supported by your custom models will depend on the inputs and outputs supported by the Clarifai Models, or model templates that you have used to build them. 
