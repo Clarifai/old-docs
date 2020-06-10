@@ -1,4 +1,6 @@
-The outputs from one workflow can be used as the inputs in another workflow. This allows you to link together the models in a graph. This ability to link together models is the key to building targeted AI solutions.
+The outputs from one model can be used as the inputs in another model. This allows you to link together the models in a graph. Linking models helps you build sophisticated AI solutions, that can zero-in on a specific use case.
+
+![](../../images/input_nodes.jpg)
 
 ## Supported input and output types
 

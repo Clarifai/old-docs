@@ -79,8 +79,26 @@ The process of creating concepts and labeling inputs is the same for deep traine
 
 ![](../../images/label_inputs_dt.jpg)
 
-#### Choose your template and train
+### Model Mode
 
-Just create a new model in explorer or model mode and choose the template that you would like to use for the model. Keep in mind that deep training can take longer than training with Clarifai Models.
+Click the "four squares" icon on the lefthand sidebar to enter Model Mode.
+
+![](../../images/model_mode.jpg)
+
+### Create the custom models that you need
+
+Click the blue `Create Custom Model` button at the top righthand corner of the screen and select `Deep Training`
+
+![](../../images/create_custom_model.jpg)
+
+#### Configure your Model
+
+* **Model ID** An optional user-created id for your model. If not specified then a generated hash string will be used.
+* **Display Name** Name your model.
+* **Template Name** Your pre-configured model template. You can choose from any of the templates mentioned on this page. Depending on your data you might want to try a few templates to see which yields optimal results.
+* **Data** The list of concepts you want this model to predict from. You can use any existing concepts in your app.
+* **Hyperparams** Any hyperparameters that you want to pass through to backend training service.
+* **Test Split Percent** The percentage of the app to use as validation set for evaluations. Defaults to 10%.
+* **Invalid Data Tolerance Percent** Percentage value of tolerance level to invalid inputs among all training inputs. Training will be stopped with error thrown if actual percent of invalid inputs is higher than this.
 
 ![](../../images/create_dt_model.jpg)
