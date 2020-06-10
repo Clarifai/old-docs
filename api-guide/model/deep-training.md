@@ -89,28 +89,32 @@ Deep training gives you the power to tune the hyperparameters that affect “how
 
 {% tab title="cURL" %}
 ```text
-
-curl --location --request POST '{{base_url}}/v2/models' \
---header 'Authorization: Key {{key}}' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "model": {
-        "id": "lawrence-1591638385",
-        "template_name": "small_image_classification",
-        "output_info": {
-            "data": {
-                "concepts": [
-                    {"id":"ferrari23"},
-                    {"id":"outdoors23"}
-                ]
+curl -X POST 'https://api.clarifai.com/v2/models' \
+    -H 'Authorization: Key YOUR_API_KEY' \
+    -H 'Content-Type: application/json' \
+    --data-raw '{
+        "model": {
+            "id": "lawrence-1591638385",
+            "model_type_id": "visual-classifier",
+            "train_info": {
+                "params": {
+                    "template": "classification_cifar10_v1",
+                    "num_epochs": 2
+                }
             },
-            "output_config": {
-              "hyper_params": { "num_epochs": 2},
-        	  "closed_environment" : true
+            "output_info": {
+                "data": {
+                    "concepts": [
+                        {"id":"ferrari23"},
+                        {"id":"outdoors23"}
+                    ]
+                },
+                "output_config": {
+                  "closed_environment" : true
+                }
             }
         }
-    }
-}'
+    }'
 ```
 {% endtab %}
 {% endtabs %}
@@ -141,28 +145,32 @@ curl --location --request POST '{{base_url}}/v2/models' \
 
 {% tab title="cURL" %}
 ```text
-
-curl --location --request POST '{{base_url}}/v2/models' \
---header 'Authorization: Key {{key}}' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "model": {
-        "id": "detection-test-1591638385",
-        "template_name": "detection",
-        "output_info": {
-            "data": {
-                "concepts": [
-                    {"id":"ferrari23"},
-                    {"id":"outdoors23"}
-                ]
+curl -X POST 'https://api.clarifai.com/v2/models' \
+    -H 'Authorization: Key YOUR_API_KEY' \
+    -H 'Content-Type: application/json' \
+    --data-raw '{
+        "model": {
+            "id": "detection-test-1591638385",
+            "model_type_id": "visual-detector",
+            "train_info": {
+                "params": {
+                    "template": "Clarifai-InceptionV2",
+                    "num_epochs": 2
+                }
             },
-            "output_config": {
-              "hyper_params": { "num_epochs": 2},
-        	  "closed_environment" : true
+            "output_info": {
+                "data": {
+                    "concepts": [
+                        {"id":"ferrari23"},
+                        {"id":"outdoors23"}
+                    ]
+                },
+                "output_config": {
+                  "closed_environment" : true
+                }
             }
         }
-    }
-}'
+    }'
 ```
 {% endtab %}
 {% endtabs %}
@@ -200,7 +208,7 @@ curl --location --request POST '{{base_url}}/v2/models' \
 
 ## Get
 
-### List training templates
+### List model types
 
 
 {% tabs %}
@@ -226,10 +234,8 @@ curl --location --request POST '{{base_url}}/v2/models' \
 
 {% tab title="cURL" %}
 ```text
-
-curl --location --request GET '{{base_url}}/v2/users/{{user_id}}/apps/{{app_id}}/templates' \
---header 'Content-Type: application/json' \
---header 'X-Clarifai-Session-Token: {{session_token}}'
+curl -X GET 'https://api.clarifai.com/v2/models/types?per_page=200&page=1' \
+    -H 'Authorization: Key YOUR_API_KEY'
 ```
 {% endtab %}
 {% endtabs %}
