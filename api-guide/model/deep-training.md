@@ -2,7 +2,7 @@
 
 Clarifai offers a variety of prebuilt models that are designed to help you build AI solutions quickly and efficiently. Clarifai Models are the recommended starting point for many users because they are easy to work with and produce great results.
 
-But there are many cases where accuracy and the ability to carefully target solutions takes priority over speed and ease of use. For these cases, it is also possible to "deep train" your custom models and integrate them directly within your workflows.
+But there are many cases where accuracy and the ability to carefully target solutions takes priority over speed and ease of use. Additionally, your may need a model to learn new features not recognized by existing Clarifai Models. For these cases, it is possible to "deep train" your custom models and integrate them directly within your workflows.
 
 You might consider deep training if you have:
 * **A custom tailored dataset**
@@ -18,26 +18,13 @@ You can take advantage of a variety of templates when building your deep trained
 
 Classification templates let you classify what is in your images or videos.
 
-* **InceptionV2** A best in class CNN designed to reduce information loss or “representational bottleneck”. Convolutions are designed to minimally alter the dimensions of an input. Smart factorization methods are used to keep computation efficient.
-* **InceptionBatchNorm** Combines InceptionV2 with a deep learning technique called Batch Normalization (BN) to deliver higher accuracy and faster training speed. BN is used for normalizing value distributions before each layer is processed.
-* **InceptionResnetV2** Residual connections allow shortcuts in the model so that you can train even deeper neural networks. This has also enabled significant simplification of the Inception blocks and improved performance.
-* **ResNext** A simple, highly modularized network architecture for image classification. Constructed by repeating a building block that aggregate a set of transformations with the same topology. Uses a homogeneous, multi-branch architecture that has only a few hyper-parameters to set.
-
-
 #### Detection
 
 Detection templates make it easy to build models that can identify objects within a region of your images or videos. Detection models return concepts and bounding boxes.
 
-* **InceptionV2** A best in class CNN designed to reduce information loss or “representational bottleneck”. Convolutions are designed to minimally alter the dimensions of an input. Smart factorization methods are used to keep computation efficient.
-* **InceptionV4** A pure Inception variant without any residual connections. It can be trained without partitioning replicas. Features memory optimization for backpropagation.
-
-
 #### Embedding
 
 Embedding models can be useful in their own right (for applications like clustering and visual search), or as an input to a machine learning model for a supervised task. In effect, embedding templates enable you to create your own "base models" that you can then use in  your workflows.
-
-* **InceptionBatchNorm** Combines InceptionV2 with a deep learning technique called Batch Normalization (BN) to deliver higher accuracy and faster training speed. BN is used for normalizing value distributions before each layer is processed.
-* **ResNext** A simple, highly modularized network architecture for image classification. Constructed by repeating a building block that aggregate a set of transformations with the same topology. Uses a homogeneous, multi-branch architecture that has only a few hyper-parameters to set.
 
 
 ## Hyperparameters
@@ -124,7 +111,7 @@ curl -X POST 'https://api.clarifai.com/v2/models' \
 
 ### Create Visual Detector  
 
-Create a visual detector to detect bounding box regions in images or video frames and then  classify the objects detected. You can also send the regions detected by bounding boxes to an image cropper model to create a new cropped image from the region. 
+Create a visual detector to detect bounding box regions in images or video frames and then  classify the objects detected. You can also send the regions detected by bounding boxes to an image cropper model to create a new cropped image from the region.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -215,6 +202,7 @@ Create a visual embedding model to transform images and videos frames into "high
 
 ### List model types
 
+Learn about available model types and their parameters.
 
 {% tabs %}
 {% tab title="gRPC Java" %}

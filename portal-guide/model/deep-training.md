@@ -2,7 +2,7 @@
 
 Clarifai offers a variety of prebuilt models that are designed to help you build AI solutions quickly and efficiently. Clarifai Models are the recommended starting point for many users because they are easy to work with and produce great results.
 
-But there are many cases where accuracy and the ability to carefully target solutions takes priority over speed and ease of use. For these cases, it is also possible to "deep train" your custom models and integrate them directly within your workflows.
+But there are many cases where accuracy and the ability to carefully target solutions takes priority over speed and ease of use. Additionally, your may need a model to learn new features not recognized by existing Clarifai Models. For these cases, it is possible to "deep train" your custom models and integrate them directly within your workflows.
 
 You might consider deep training if you have:
 * **A custom tailored dataset**
@@ -18,26 +18,13 @@ You can take advantage of a variety of templates when building your deep trained
 
 Classification templates let you classify what is in your images or videos.
 
-* **InceptionV2** A best in class CNN designed to reduce information loss or “representational bottleneck”. Convolutions are designed to minimally alter the dimensions of an input. Smart factorization methods are used to keep computation efficient.
-* **InceptionBatchNorm** Combines InceptionV2 with a deep learning technique called Batch Normalization (BN) to deliver higher accuracy and faster training speed. BN is used for normalizing value distributions before each layer is processed.
-* **InceptionResnetV2** Residual connections allow shortcuts in the model so that you can train even deeper neural networks. This has also enabled significant simplification of the Inception blocks and improved performance.
-* **ResNext** A simple, highly modularized network architecture for image classification. Constructed by repeating a building block that aggregate a set of transformations with the same topology. Uses a homogeneous, multi-branch architecture that has only a few hyper-parameters to set.
-
-
 #### Detection
 
 Detection templates make it easy to build models that can identify objects within a region of your images or videos. Detection models return concepts and bounding boxes.
 
-* **InceptionV2** A best in class CNN designed to reduce information loss or “representational bottleneck”. Convolutions are designed to minimally alter the dimensions of an input. Smart factorization methods are used to keep computation efficient.
-* **InceptionV4** A pure Inception variant without any residual connections. It can be trained without partitioning replicas. Features memory optimization for backpropagation.
-
-
 #### Embedding
 
 Embedding models can be useful in their own right (for applications like clustering and visual search), or as an input to a machine learning model for a supervised task. In effect, embedding templates enable you to create your own "base models" that you can then use in  your workflows.
-
-* **InceptionBatchNorm** Combines InceptionV2 with a deep learning technique called Batch Normalization (BN) to deliver higher accuracy and faster training speed. BN is used for normalizing value distributions before each layer is processed.
-* **ResNext** A simple, highly modularized network architecture for image classification. Constructed by repeating a building block that aggregate a set of transformations with the same topology. Uses a homogeneous, multi-branch architecture that has only a few hyper-parameters to set.
 
 
 ## Hyperparameters
@@ -93,12 +80,6 @@ Click the blue `Create Custom Model` button at the top righthand corner of the s
 
 #### Configure your Model
 
-* **MODEL ID (OPTIONAL)** An optional user-created id for your model. If not specified then a generated hash string will be used.
-* **DISPLAY NAME** Name your model.
-* **OUTPUT_INFO.DATA** The list of concepts you want this model to predict from. You can use any existing concepts in your app.
-* **TRAIN_INFO.PARAMS.TEMPLATE** Your pre-configured model template. You can choose from any of the templates mentioned on this page. Depending on your data you might want to try a few templates to see which yields optimal results.
-* **Hyperparams** Any hyperparameters that you want to pass through to backend training service.
-* **Test Split Percent** The percentage of the app to use as validation set for evaluations. Defaults to 10%.
-* **Invalid Data Tolerance Percent** Percentage value of tolerance level to invalid inputs among all training inputs. Training will be stopped with error thrown if actual percent of invalid inputs is higher than this.
+When you choose your your deep training template you will see the hyperparameters that are available within that template populated with default values. Adjust these values as desired and then click "Create Model".
 
 ![](../../images/create_dt_model.jpg)
