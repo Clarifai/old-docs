@@ -64,7 +64,9 @@ Deep training gives you the power to tune the hyperparameters that affect “how
 
 ## Create
 
-### Create Deep Model (Classification)
+### Create Visual Classifier
+
+Use a visual classifier model if you would like to classify images and videos frames into set of concepts.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -116,7 +118,9 @@ curl --location --request POST '{{base_url}}/v2/models' \
 {% endtabs %}
 
 
-### Create Deep Model (Detection)
+### Create Visual Detector  
+
+Create a visual detector to detect bounding box regions in images or video frames and then  classify the objects detected.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -167,8 +171,9 @@ curl --location --request POST '{{base_url}}/v2/models' \
 {% endtab %}
 {% endtabs %}
 
-### Create Deep Model (Embed)
+### Create Visual Embedder
 
+Create a visual embedding model to transform images and videos frames into "high level" vector representation understood by our AI models. These embeddings enable visual search and can be used as base models to train other models.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -238,6 +243,8 @@ curl --location --request GET '{{base_url}}/v2/users/{{user_id}}/apps/{{app_id}}
 ## Update
 
 ### Patch base workflow
+
+You can use your deep trained embeddings as the base workflow in your application. 
 
 {% tabs %}
 {% tab title="gRPC Java" %}
