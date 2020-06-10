@@ -124,7 +124,7 @@ curl -X POST 'https://api.clarifai.com/v2/models' \
 
 ### Create Visual Detector  
 
-Create a visual detector to detect bounding box regions in images or video frames and then  classify the objects detected.
+Create a visual detector to detect bounding box regions in images or video frames and then  classify the objects detected. You can also send the regions detected by bounding boxes to an image cropper model to create a new cropped image from the region. 
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -250,7 +250,7 @@ curl -X GET 'https://api.clarifai.com/v2/models/types?per_page=200&page=1' \
 
 ### Patch base workflow
 
-You can use your deep trained embeddings as the base workflow in your application. 
+You can use your deep trained embeddings as the base workflow in your application.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
