@@ -6,6 +6,7 @@ Workflows are a graph of computation that encompass one or more Clarifai or Cust
 This won't have any impact on the price you are charged per call. You will still be charged for the same operation if it were separate calls to the API. When you do a predict with a workflow you're charged for the prediction of each model in the workflow as if they were separate calls.
 {% endhint %}
 
+
 ## Workflow Setup
 
 To set up a workflow, you will need to head over to the [Applications page](https://portal.clarifai.com/apps) through your account. From there, you will need to select which application you want to create the workflow under.
@@ -39,3 +40,4 @@ For Clarifai Models, you will be able to use the latest version. For your custom
 You can add up to 20 models to a single workflow. Once you have finished adding everything, press the "Save Workflow" button and that will save the state of your workflow. Now you are ready to predict using your brand new workflow. You can edit a workflow at any time.
 
 ![Create a workflow](../../images/my-workflow-new.png)
+

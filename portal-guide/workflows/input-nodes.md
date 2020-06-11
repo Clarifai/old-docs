@@ -8,6 +8,7 @@ To view your available models, just open your app and click Model Mode icon on t
 
 Different models accept different types of inputs and return different types of outputs. Some examples include:
 
+
 #### Inputs
 
 * Concept
@@ -63,3 +64,4 @@ Finally you will need to connect the `Input Nodes` in your workflow. You can lin
 To activate your new workflow in your app, head back to the "App Overview" page, and change your `Base Workflow` to the new workflow that you have just created and click the checkbox. 
 
 ![](../../images/change_base_workflow.jpg)
+

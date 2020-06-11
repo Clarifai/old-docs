@@ -317,6 +317,7 @@ curl -X POST 'https://api.clarifai.com/v2/workflows/my-custom-workflow/results' 
 {% endtab %}
 {% endtabs %}
 
+
 ### Get
 #### Get all workflows in an app
 
@@ -511,6 +512,7 @@ curl -X GET 'https://api.clarifai.com/v2/workflows/my-custom-workflow' \
 ```
 {% endtab %}
 {% endtabs %}
+
 
 ### Update
 #### Patch workflow
@@ -729,7 +731,7 @@ curl -X PATCH 'https://api.clarifai.com/v2/workflows' \
 {% endtab %}
 {% endtabs %}
 
-#### Patch base workflow
+
 
 
 
