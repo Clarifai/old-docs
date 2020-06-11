@@ -74,7 +74,7 @@ Click the "four squares" icon on the lefthand sidebar to enter Model Mode.
 
 ### Create the custom models that you need
 
-Click the blue `Create Custom Model` button at the top righthand corner of the screen and select `Deep Training`
+Click the blue `Create Custom Model` button at the top righthand corner of the screen and select `Visual Classifier`, `Visual Embedder`, or `Visual Detector`.
 
 ![](../../images/create_custom_model.jpg)
 
@@ -83,3 +83,5 @@ Click the blue `Create Custom Model` button at the top righthand corner of the s
 When you choose your your deep training template you will see the hyperparameters that are available within that template populated with default values. Adjust these values as desired and then click "Create Model".
 
 ![](../../images/create_dt_model.jpg)
+
+Once you have created your new model you can add it to your [workflows](https://docs.clarifai.com/portal-guide/workflows) so that you can use it in your app.

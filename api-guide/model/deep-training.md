@@ -51,9 +51,9 @@ Deep training gives you the power to tune the hyperparameters that affect “how
 
 ## Get
 
-### List model types
+### List Model Types
 
-Learn about available model types and their parameters.
+Learn about available model types and their hyperparameters.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -127,7 +127,7 @@ curl -X GET 'https://api.clarifai.com/v2/models/types?per_page=20&page=1' \
 
 ## Create
 
-### Create Visual Classifier
+### Create a Visual Classifier
 
 Use a visual classifier model if you would like to classify images and videos frames into set of concepts.
 
@@ -306,9 +306,9 @@ curl -X POST 'https://api.clarifai.com/v2/models' \
 {% endtabs %}
 
 
-### Create Visual Detector  
+### Create a Visual Detector  
 
-Create a visual detector to detect bounding box regions in images or video frames and then  classify the objects detected. You can also send the regions detected by bounding boxes to an image cropper model to create a new cropped image from the region.
+Create a visual detector to detect bounding box regions in images or video frames and then  classify the detected images. You can also send the image regions to an image cropper model to create a new cropped image.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -481,7 +481,7 @@ curl -X POST 'https://api.clarifai.com/v2/models' \
 {% endtab %}
 {% endtabs %}
 
-### Create Visual Embedder
+### Create a Visual Embedder
 
 Create a visual embedding model to transform images and videos frames into "high level" vector representation understood by our AI models. These embeddings enable visual search and can be used as base models to train other models.
 
@@ -658,7 +658,9 @@ curl -X POST 'https://api.clarifai.com/v2/models' \
 {% endtabs %}
 
 
-### Create the workflow
+### Create a Workflow with a Deep Trained Model
+
+Put your new deep-trained model to work by adding it to a workflow.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -848,11 +850,9 @@ curl -X POST 'https://api.clarifai.com/v2/workflows' \
 {% endtab %}
 {% endtabs %}
 
-### Make the new workflow app's default
+### Update your Default Workflow with your Deep Trained Model
 
-Make this the default workflow in the app, so it will every time we add an input.
-
-You can use your deep trained embeddings as the base workflow in your application.
+Index your inputs with your deep trained model by updating your default workflow. You can also use your deep trained embeddings as the basis for clustering and search. 
 
 {% tabs %}
 {% tab title="gRPC Java" %}
