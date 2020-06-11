@@ -49,6 +49,82 @@ Deep training gives you the power to tune the hyperparameters that affect “how
 
 
 
+## Get
+
+### List model types
+
+Learn about available model types and their parameters.
+
+{% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiModelTypeResponse listModelTypesResponse = stub.listModelTypes(ListModelTypesRequest.newBuilder().build());
+
+for (ModelType modelType : listModelTypesResponse.getModelTypesList()) {
+    System.out.println(modelType);
+}
+```
+{% endtab %}
+
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.ListModelTypes(
+    {
+        page: 1,
+        per_page: 500
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Received status: " + response.status.description + "\n" + response.status.details);
+        }
+
+        for (const model_type of response.model_types) {
+            console.log(model_type)
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+response = stub.ListModelTypes(service_pb2.ListModelTypesRequest(), metadata=metadata)
+
+for model_type in response.model_types:
+  print(model_type)
+```
+{% endtab %}
+
+
+{% tab title="cURL" %}
+```text
+curl -X GET 'https://api.clarifai.com/v2/models/types?per_page=20&page=1' \
+    -H 'Authorization: Key YOUR_API_KEY'
+```
+{% endtab %}
+{% endtabs %}
+
 ## Create
 
 ### Create Visual Classifier
@@ -58,20 +134,141 @@ Use a visual classifier model if you would like to classify images and videos fr
 {% tabs %}
 {% tab title="gRPC Java" %}
 ```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
 
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+Struct.Builder trainInfoParams = Struct.newBuilder()
+    .putFields(
+        "num_epochs", Value.newBuilder().setNumberValue(2).build()
+
+    )
+    .putFields(
+        "template", Value.newBuilder().setStringValue("classification_cifar10_v1").build()
+    );
+
+SingleModelResponse postModelsResponse = stub.postModels(
+    PostModelsRequest.newBuilder()
+        .addModels(
+            Model.newBuilder()
+                .setId("lawrence-1591638385")
+                .setModelTypeId("visual-classifier")
+                .setTrainInfo(TrainInfo.newBuilder().setParams(trainInfoParams))
+                .setOutputInfo(
+                    OutputInfo.newBuilder()
+                        .setData(
+                            Data.newBuilder()
+                                .addConcepts(Concept.newBuilder().setId("ferrari23"))
+                                .addConcepts(Concept.newBuilder().setId("outdoors23"))
+                        )
+                        .setOutputConfig(
+                            OutputConfig.newBuilder()
+                                .setClosedEnvironment(true)
+                        )
+                )
+        )
+        .build()
+);
+
+if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
+}
 ```
 {% endtab %}
 
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
+stub.PostModels(
+    {
+        models: [
+            {
+                id: "lawrence-1591638385",
+                model_type_id: "visual-classifier",
+                train_info: {
+                    params: {
+                        num_epoch: 2,
+                        template: "classification_cifar10_v1"
+                    }
+                },
+                output_info: {
+                    data: {
+                        concepts: [
+                            {id: "ferrari23"},
+                            {id: "outdoors23"}
+                        ]
+                    },
+                    output_config: {
+                        closed_environment: true
+                    }
+                }
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            done(err);
+            return;
+        }
+
+        if (response.status.code !== 10000) {
+            done(new Error("Received status: " + response.status.description + "\n" + response.status.details));
+        }
+
+        done();
+    }
+);
 ```
 {% endtab %}
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
 
+from google.protobuf.struct_pb2 import Struct
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+train_params = Struct()
+train_params.update(
+{
+  "template": "classification_cifar10_v1",
+  "num_epochs": 2
+}
+)
+
+post_models_response = stub.PostModels(
+service_pb2.PostModelsRequest(
+  models=[
+    resources_pb2.Model(
+      id="lawrence-1591638385",
+      model_type_id="visual-classifier",
+      train_info=resources_pb2.TrainInfo(params=train_params),
+      output_info=resources_pb2.OutputInfo(
+        data=resources_pb2.Data(
+          concepts=[
+            resources_pb2.Concept(id="ferrari23"),
+            resources_pb2.Concept(id="outdoors23")
+          ]
+        ),
+        output_config=resources_pb2.OutputConfig(closed_environment=True)
+      )
+    )
+  ]
+),
+metadata=metadata
+)
+
+if post_models_response.status.code != status_code_pb2.SUCCESS:
+raise Exception("Post models failed, status: " + post_models_response.status.description)
 ```
 {% endtab %}
 
@@ -116,20 +313,138 @@ Create a visual detector to detect bounding box regions in images or video frame
 {% tabs %}
 {% tab title="gRPC Java" %}
 ```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
 
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+Struct.Builder trainInfoParams = Struct.newBuilder()
+    .putFields(
+        "num_epochs", Value.newBuilder().setNumberValue(2).build()
+
+    )
+    .putFields(
+        "template", Value.newBuilder().setStringValue("Clarifai-InceptionV2").build()
+    );
+
+SingleModelResponse postModelsResponse = stub.postModels(
+    PostModelsRequest.newBuilder()
+        .addModels(
+            Model.newBuilder()
+                .setId("detection-test-1591638385")
+                .setModelTypeId("visual-detector")
+                .setTrainInfo(TrainInfo.newBuilder().setParams(trainInfoParams))
+                .setOutputInfo(
+                    OutputInfo.newBuilder()
+                        .setData(
+                            Data.newBuilder()
+                                .addConcepts(Concept.newBuilder().setId("ferrari23"))
+                                .addConcepts(Concept.newBuilder().setId("outdoors23"))
+                        )
+                        .setOutputConfig(
+                            OutputConfig.newBuilder()
+                                .setClosedEnvironment(true)
+                        )
+                )
+        )
+        .build()
+);
+
+if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
+}
 ```
 {% endtab %}
 
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
+stub.PostModels(
+    {
+        models: [
+            {
+                id: "detection-test-1591638385",
+                model_type_id: "visual-detector",
+                train_info: {
+                    params: {
+                        num_epoch: 2,
+                        template: "Clarifai-InceptionV2"
+                    }
+                },
+                output_info: {
+                    data: {
+                        concepts: [
+                            {id: "ferrari23"},
+                            {id: "outdoors23"}
+                        ]
+                    },
+                    output_config: {
+                        closed_environment: true
+                    }
+                }
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Received status: " + response.status.description + "\n" + response.status.details);
+        }
+    }
+);
 ```
 {% endtab %}
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
 
+from google.protobuf.struct_pb2 import Struct
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+train_params = Struct()
+train_params.update(
+    {
+        "template": "Clarifai-InceptionV2",
+        "num_epochs": 2
+    }
+)
+
+post_models_response = stub.PostModels(
+    service_pb2.PostModelsRequest(
+        models=[
+            resources_pb2.Model(
+                id="detection-test-1591638385",
+                model_type_id="visual-detector",
+                train_info=resources_pb2.TrainInfo(params=train_params),
+                output_info=resources_pb2.OutputInfo(
+                    data=resources_pb2.Data(
+                        concepts=[
+                            resources_pb2.Concept(id="ferrari23"),
+                            resources_pb2.Concept(id="outdoors23")
+                        ]
+                    ),
+                    output_config=resources_pb2.OutputConfig(closed_environment=True)
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_models_response.status.code != status_code_pb2.SUCCESS:
+  raise Exception("Post models failed, status: " + post_models_response.status.description)
 ```
 {% endtab %}
 
@@ -173,19 +488,138 @@ Create a visual embedding model to transform images and videos frames into "high
 {% tabs %}
 {% tab title="gRPC Java" %}
 ```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
 
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+Struct.Builder trainInfoParams = Struct.newBuilder()
+    .putFields(
+        "num_epochs", Value.newBuilder().setNumberValue(2).build()
+
+    )
+    .putFields(
+        "template", Value.newBuilder().setStringValue("classification_basemodel_v1_embed").build()
+    );
+
+SingleModelResponse postModelsResponse = stub.postModels(
+    PostModelsRequest.newBuilder()
+        .addModels(
+            Model.newBuilder()
+                .setId("embed-test-1591638385")
+                .setModelTypeId("visual-embedder")
+                .setTrainInfo(TrainInfo.newBuilder().setParams(trainInfoParams))
+                .setOutputInfo(
+                    OutputInfo.newBuilder()
+                        .setData(
+                            Data.newBuilder()
+                                .addConcepts(Concept.newBuilder().setId("ferrari23"))
+                                .addConcepts(Concept.newBuilder().setId("outdoors23"))
+                        )
+                        .setOutputConfig(
+                            OutputConfig.newBuilder()
+                                .setClosedEnvironment(true)
+                        )
+                )
+        )
+        .build()
+);
+
+if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
+}
 ```
 {% endtab %}
 
 
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
+stub.PostModels(
+    {
+        models: [
+            {
+                id: "embed-test-1591638385",
+                model_type_id: "visual-embedder",
+                train_info: {
+                    params: {
+                        num_epoch: 2,
+                        template: "classification_basemodel_v1_embed"
+                    }
+                },
+                output_info: {
+                    data: {
+                        concepts: [
+                            {id: "ferrari23"},
+                            {id: "outdoors23"}
+                        ]
+                    },
+                    output_config: {
+                        closed_environment: true
+                    }
+                }
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Received status: " + response.status.description + "\n" + response.status.details);
+        }
+    }
+);
 ```
 {% endtab %}
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+from google.protobuf.struct_pb2 import Struct
+
+train_params = Struct()
+train_params.update(
+    {
+        "template": "classification_basemodel_v1_embed",
+        "num_epochs": 2
+    }
+)
+
+post_models_response = stub.PostModels(
+    service_pb2.PostModelsRequest(
+        models=[
+            resources_pb2.Model(
+                id="embed-test-1591638385",
+                model_type_id="visual-embedder",
+                train_info=resources_pb2.TrainInfo(params=train_params),
+                output_info=resources_pb2.OutputInfo(
+                    data=resources_pb2.Data(
+                        concepts=[
+                            resources_pb2.Concept(id="ferrari23"),
+                            resources_pb2.Concept(id="outdoors23")
+                        ]
+                    ),
+                    output_config=resources_pb2.OutputConfig(closed_environment=True)
+                )
+            )
+        ]
+      ),
+      metadata=metadata
+)
+
+if post_models_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post models failed, status: " + post_models_response.status.description)
 
 ```
 {% endtab %}
@@ -193,113 +627,328 @@ Create a visual embedding model to transform images and videos frames into "high
 
 {% tab title="cURL" %}
 ```text
-
+curl -X POST 'https://api.clarifai.com/v2/models' \
+    -H 'Authorization: Key YOUR_API_KEY' \
+    -H 'Content-Type: application/json' \
+    --data-raw '{
+        "model": {
+            "id": "embed-test-1591638385",
+            "model_type_id": "visual-embedder",
+            "train_info": {
+                "params": {
+                    "template": "classification_basemodel_v1_embed",
+                    "num_epochs": 2
+                }
+            },
+            "output_info": {
+                "data": {
+                    "concepts": [
+                        {"id":"ferrari23"},
+                        {"id":"outdoors23"}
+                    ]
+                },
+                "output_config": {
+                  "closed_environment" : true
+                }
+            }
+        }
+    }'
 ```
 {% endtab %}
 {% endtabs %}
 
-## Get
 
-### List model types
-
-Learn about available model types and their parameters.
+### Create the workflow
 
 {% tabs %}
 {% tab title="gRPC Java" %}
 ```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
 
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiWorkflowResponse postWorkflowsResponse = stub.postWorkflows(
+  PostWorkflowsRequest.newBuilder()
+      .addWorkflows(
+          Workflow.newBuilder()
+              .setId("my-new-workflow-id")
+              .addNodes(
+                  WorkflowNode.newBuilder()
+                      .setId("embed")
+                      .setModel(
+                          Model.newBuilder()
+                              .setId("{YOUR_EMBED_MODEL_ID}")
+                              .setModelVersion(
+                                  ModelVersion.newBuilder()
+                                      .setId("{YOUR_EMBED_MODEL_VERSION_ID}")
+                              )
+                      )
+              )
+              .addNodes(
+                  WorkflowNode.newBuilder()
+                      .setId("my-custom-model")
+                      .setModel(
+                          Model.newBuilder()
+                              .setId("{YOUR_CUSTOM_MODEL_ID}")
+                              .setModelVersion(
+                                  ModelVersion.newBuilder()
+                                      .setId("{YOUR_CUSTOM_MODEL_MODEL_VERSION_ID}")
+                              )
+                      )
+                      .addNodeInputs(NodeInput.newBuilder().setNodeId("embed"))
+              )
+      )
+      .build()
+);
+
+if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post workflows failed, status: " + postWorkflowsResponse.getStatus());
+}
 ```
 {% endtab %}
 
-
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
+stub.PostWorkflows(
+    {
+        workflows: [
+            {
+                id: "my-new-workflow-id",
+                nodes: [
+                    {
+                        id: "embed",
+                        model: {
+                            id: "{YOUR_EMBED_MODEL_ID}",
+                            model_version: {
+                                id: "{YOUR_EMBED_MODEL_VERSION_ID}"
+                            }
+                        }
+                    },
+                    {
+                        id: "my-custom-model",
+                        model: {
+                            id: "{YOUR_CUSTOM_MODEL_ID}",
+                            model_version: {
+                                id: "{YOUR_CUSTOM_MODEL_VERSION_ID}"
+                            }
+                        },
+                        node_inputs: [
+                            {node_id: "embed"}
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            console.log(response.status);
+            throw new Error("Post workflows failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
 
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_workflows_response = stub.PostWorkflows(
+    service_pb2.PostWorkflowsRequest(
+        workflows=[
+            resources_pb2.Workflow(
+                id="my-new-workflow-id",
+                nodes=[
+                    resources_pb2.WorkflowNode(
+                        id="embed",
+                        model=resources_pb2.Model(
+                            id="{YOUR_EMBED_MODEL_ID}",
+                            model_version=resources_pb2.ModelVersion(
+                                id="{YOUR_EMBED_MODEL_VERSION_ID}"
+                            )
+                        )
+                    ),
+                    resources_pb2.WorkflowNode(
+                        id="my-custom-model",
+                        model=resources_pb2.Model(
+                            id="{YOUR_CUSTOM_MODEL_ID}",
+                            model_version=resources_pb2.ModelVersion(
+                                id="{YOUR_CUSTOM_MODEL_VERSION_ID}"
+                            )
+                        ),
+                        node_inputs=[
+                            resources_pb2.NodeInput(node_id="embed")
+                        ]
+                    ),
+                ]
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_workflows_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post workflows failed, status: " + post_workflows_response.status.description)
 ```
 {% endtab %}
 
-
 {% tab title="cURL" %}
 ```text
-curl -X GET 'https://api.clarifai.com/v2/models/types?per_page=200&page=1' \
-    -H 'Authorization: Key YOUR_API_KEY'
+curl -X POST 'https://api.clarifai.com/v2/workflows' \
+    -H 'Authorization: Key YOUR_API_KEY' \
+    -H 'Content-Type: application/json' \
+    --data-raw '{
+        "workflows": [
+            {
+                "id": "my-new-workflow-id",
+                "nodes": [
+                    {
+                        "id": "embed",
+                        "model": {
+                            "id": "{YOUR_EMBED_MODEL_ID}",
+                            "model_version": {
+                                "id": "{YOUR_EMBED_MODEL_VERSION_ID}"
+                            }
+                        }
+                    },
+                    {
+                        "id": "my-custom-model",
+                        "model": {
+                            "id": "{YOUR_CUSTOM_MODEL_ID}",
+                            "model_version": {
+                                "id": "{YOUR_CUSTOM_MODEL_VERSION_ID}"
+                            }
+                        },
+                        "node_inputs": [
+                            {
+                                "node_id": "embed"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }'
 ```
 {% endtab %}
 {% endtabs %}
 
+### Make the new workflow app's default
 
-## Update
-
-### Patch base workflow
+Make this the default workflow in the app, so it will every time we add an input.
 
 You can use your deep trained embeddings as the base workflow in your application.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
 ```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
 
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiAppResponse patchAppsResponse = stub.patchApps(
+    PatchAppsRequest.newBuilder()
+        .setAction("overwrite")
+        .addApps(
+            App.newBuilder()
+                .setId("{YOUR_APP_ID}")
+                .setDefaultWorkflowId("auto-annotation-workflow-id")
+        ).build()
+);
+
+if (patchAppsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Patch apps failed, status: " + patchAppsResponse.getStatus());
+}
 ```
 {% endtab %}
 
-
 {% tab title="gRPC NodeJS" %}
 ```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
 
+stub.PatchApps(
+    {
+        action: "overwrite",
+        apps: [
+            {
+                id: "{YOUR_APP_ID}",
+                default_workflow_id: "auto-annotation-workflow-id"
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            console.log(response.status);
+            throw new Error("Patch apps failed, status: " + response.status.description);
+        }
+    }
+);
 ```
 {% endtab %}
 
 {% tab title="gRPC Python" %}
 ```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
 
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+patch_apps_response = stub.PatchApps(
+    service_pb2.PatchAppsRequest(
+        action="overwrite",
+        apps=[
+            resources_pb2.App(
+                id="{YOUR_APP_ID}",
+                default_workflow_id="auto-annotation-workflow-id"
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if patch_apps_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch apps failed, status: " + patch_apps_response.status.description)
 ```
 {% endtab %}
 
-
 {% tab title="cURL" %}
 ```text
-
-curl --location --request PATCH '{{base_url}}/v2/users/84aesy5efwjl/apps/efe2d3cf79084c799cbde19a4e71527c/base-workflows' \
---header 'Content-Type: application/json' \
---header 'Authorization: Key 63bca3ac25124c2e852c8d81c5475356' \
---data-raw '{
-    "workflows": [
-        {
-            "id": "General",
-            "nodes": [
-                {
-                    "id": "embed",
-                    "model": {
-                        "id": "bbb5f41425b8468d9b7a554ff10f8581",
-                        "model_version": {
-                            "id": "bb7ac05c86be42d38b67bc473d33"
-                        }
-                    }
-                },
-                {
-                    "id": "my-custom-model",
-                    "model": {
-                        "id": "f4e854e89c794d03b9ee31c201160d1a",
-                        "model_version": {
-                            "id": "d59832dc348c4cbf9146acec68c3366c"
-                        }
-                    },
-                    "input": {
-                        "node_id": "embed",
-                        "output": "embed"
-                    }
-                }
-            ]
-        }
-    ],
-    "action": "merge",
-    "reindex": true
-}'
+curl -X PATCH 'https://api.clarifai.com/v2/users/me/apps' \
+    -H 'Authorization: Key {{PAT}}' \
+    -H 'Content-Type: application/json' \
+    --data-raw '{
+        "action": "overwrite",
+        "apps": [
+            {
+                "id": "{{app}}",
+                "default_workflow_id": "auto-annotation-workflow-ID"
+            }
+        ]
+    }'
 ```
 {% endtab %}
 {% endtabs %}
