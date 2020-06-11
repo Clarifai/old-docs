@@ -62,7 +62,6 @@
 
 * [Portal Overview](portal-guide/portal_overview.md)
 * [Inputs](portal-guide/pinputs/README.md)
-  * [Collectors](portal-guide/pinputs/collectors.md)
 * [Concepts](portal-guide/concept/README.md)
   * [Create, Get, Update, Delete](api-guide/concept/concepts.md)
   * [Knowledge Graph](portal-guide/concept/knowledge_graph.md)
