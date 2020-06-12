@@ -1,32 +1,24 @@
 The outputs from one model can be used as the inputs in another model. This allows you to link together the models in a graph. Linking models helps you build sophisticated AI solutions, that can zero-in on a specific use case.
 
-![](../../images/input_nodes.jpg)
-
 ## Supported input and output types
 
 To view your available models, just open your app and click Model Mode icon on the left hand side of the screen. From here just click the Create a Custom Model button in the top righthand corner of the screen.
 
-Different models accept different types of inputs and return different types of outputs. Some examples include:
+Different models accept different types of inputs and return different types of outputs. They are named after the fields in the Data object of our API. This object is uses in inputs, annotations, models and workflows. Some examples include:
 
 #### Inputs
 
-* Concept
+* Concepts
+* Embeddings
 * Image
-* Image and video
-* Text
+* Image or video
+* Regions
 
 #### Outputs
 
-* Cluster
-* Color
-* Concept
 * Concepts
-* Embed
-* Region with concept
-* Region with embed
-* Region masks with concepts
-* Region with text
-* Region with image
+* Clusters
+* Regions
 
 ## The building blocks
 
@@ -115,19 +107,6 @@ MultiWorkflowResponse postWorkflowsResponse = stub.postWorkflows(
               )
               .addNodes(
                   WorkflowNode.newBuilder()
-                      .setId("write-as-success-as-me")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("write-success-as-me-id")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("{YOUR_WRITE_SUCCESS_AS_ME_MODEL_VERSION_ID}")
-                              )
-                      )
-                      .addNodeInputs(NodeInput.newBuilder().setNodeId("greater-than"))
-              )
-              .addNodes(
-                  WorkflowNode.newBuilder()
                       .setId("less-than")
                       .setModel(
                           Model.newBuilder()
@@ -138,19 +117,6 @@ MultiWorkflowResponse postWorkflowsResponse = stub.postWorkflows(
                               )
                       )
                       .addNodeInputs(NodeInput.newBuilder().setNodeId("mapper"))
-              )
-              .addNodes(
-                  WorkflowNode.newBuilder()
-                      .setId("write-pending")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("write-pending-as-me-id")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("{YOUR_WRITE_PENDING_AS_ME_MODEL_VERSION_ID}")
-                              )
-                      )
-                      .addNodeInputs(NodeInput.newBuilder().setNodeId("less-than"))
               )
       )
       .build()
@@ -228,18 +194,6 @@ stub.PostWorkflows(
                         ]
                     },
                     {
-                        id: "write-success",
-                        model: {
-                            id: "write-success-model-id",
-                            model_version: {
-                                id: "{YOUR_WRITE_SUCCESS_MODEL_VERSION_ID}"
-                            }
-                        },
-                        node_inputs: [
-                            {node_id: "greater-than"}
-                        ]
-                    },
-                    {
                         id: "less-than",
                         model: {
                             id: "less-than-model-id",
@@ -251,18 +205,6 @@ stub.PostWorkflows(
                             {node_id: "mapper"}
                         ]
                     },
-                    {
-                        id: "write-pending",
-                        model: {
-                            id: "write-pending-model-id",
-                            model_version: {
-                                id: "{YOUR_WRITE_PENDING_MODEL_VERSION_ID}"
-                            }
-                        },
-                        node_inputs: [
-                            {node_id: "less-than"}
-                        ]
-                    }
                 ]
             }
         ]
@@ -351,18 +293,6 @@ post_workflows_response = stub.PostWorkflows(
                         ]
                     ),
                     resources_pb2.WorkflowNode(
-                        id="write-success",
-                        model=resources_pb2.Model(
-                            id="write-success-model-id",
-                            model_version=resources_pb2.ModelVersion(
-                                id="{YOUR_WRITE_SUCCESS_MODEL_VERSION_ID}"
-                            )
-                        ),
-                        node_inputs=[
-                            resources_pb2.NodeInput(node_id="greater-than")
-                        ]
-                    ),
-                    resources_pb2.WorkflowNode(
                         id="less-than",
                         model=resources_pb2.Model(
                             id="less-than-model-id",
@@ -372,18 +302,6 @@ post_workflows_response = stub.PostWorkflows(
                         ),
                         node_inputs=[
                             resources_pb2.NodeInput(node_id="mapper")
-                        ]
-                    ),
-                    resources_pb2.WorkflowNode(
-                        id="write-pending",
-                        model=resources_pb2.Model(
-                            id="write-pending-model-id",
-                            model_version=resources_pb2.ModelVersion(
-                                id="{YOUR_WRITE_PENDING_MODEL_VERSION_ID}"
-                            )
-                        ),
-                        node_inputs=[
-                            resources_pb2.NodeInput(node_id="less-than")
                         ]
                     ),
                 ]
@@ -464,20 +382,6 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
                         ]
                     },
                     {
-                        "id": "write-success",
-                        "model": {
-                            "id": "write-success-as-me",
-                            "model_version": {
-                                "id": "{YOUR_WRITE_AS_ME_MODEL_VERSION_ID}"
-                            }
-                        },
-                        "node_inputs": [
-                            {
-                                "node_id": "greater-than"
-                            }
-                        ]
-                    },
-                    {
                         "id": "less-than",
                         "model": {
                             "id": "less-than-model-id",
@@ -491,20 +395,6 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
                             }
                         ]
                     },
-                    {
-                        "id": "write-pending",
-                        "model": {
-                            "id": "write-pending-as-me",
-                            "model_version": {
-                                "id": "{YOUR_WRITE_AS_COLLABORATOR_MODEL_VERSION_ID}"
-                            }
-                        },
-                        "node_inputs": [
-                            {
-                                "node_id": "less-than"
-                            }
-                        ]
-                    }
                 ]
             }
         ]

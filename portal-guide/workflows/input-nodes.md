@@ -1,33 +1,24 @@
 The outputs from one model can be used as the inputs in another model. This allows you to link together the models in a graph. Linking models helps you build sophisticated AI solutions, that can zero-in on a specific use case.
 
-![](../../images/input_nodes.jpg)
-
 ## Supported input and output types
 
 To view your available models, just open your app and click Model Mode icon on the left hand side of the screen. From here just click the Create a Custom Model button in the top righthand corner of the screen.
 
-Different models accept different types of inputs and return different types of outputs. Some examples include:
-
+Different models accept different types of inputs and return different types of outputs. They are named after the fields in the Data object of our API. This object is uses in inputs, annotations, models and workflows. Some examples include:
 
 #### Inputs
 
-* Concept
+* Concepts
+* Embeddings
 * Image
-* Image and video
-* Text
+* Image or video
+* Regions
 
 #### Outputs
 
-* Cluster
-* Color
-* Concept
 * Concepts
-* Embed
-* Region with concept
-* Region with embed
-* Region masks with concepts
-* Region with text
-* Region with image
+* Clusters
+* Regions
 
 ## The building blocks
 
@@ -61,7 +52,6 @@ Finally you will need to connect the `Input Nodes` in your workflow. You can lin
 
 ### Update your base workflow
 
-To activate your new workflow in your app, head back to the "App Overview" page, and change your `Base Workflow` to the new workflow that you have just created and click the checkbox. 
+To activate your new workflow in your app, head back to the "App Overview" page, and change your `Base Workflow` to the new workflow that you have just created and click the checkbox.
 
 ![](../../images/change_base_workflow.jpg)
-
