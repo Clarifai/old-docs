@@ -1,6 +1,6 @@
 # Deep training
 
-Clarifai offers a variety of prebuilt models that are designed to help you build AI solutions quickly and efficiently. Clarifai Models are the recommended starting point for many users because they are easy to work with and produce great results.
+Clarifai offers a variety of prebuilt models that are designed to help you build AI solutions quickly and efficiently. Clarifai Models are the recommended starting point for many users because they offer incredibly fast training times when you customize them using the "Context-Based Classifier" type in Portal's Model Mode.
 
 But there are many cases where accuracy and the ability to carefully target solutions takes priority over speed and ease of use. Additionally, your may need a model to learn new features not recognized by existing Clarifai Models. For these cases, it is possible to "deep train" your custom models and integrate them directly within your workflows.
 
@@ -14,22 +14,22 @@ You might consider deep training if you have:
 
 You can take advantage of a variety of templates when building your deep trained models. Templates give you the control to choose the specific architecture used by your neural network, and also define a set of hyperparameters that you can use to fine-tune the way that your model learns.
 
-#### Classification
+#### Visual Classifier
 
 Classification templates let you classify what is in your images or videos.
 
-#### Detection
+#### Visual Detector
 
 Detection templates make it easy to build models that can identify objects within a region of your images or videos. Detection models return concepts and bounding boxes.
 
-#### Embedding
+#### Visual Embedder
 
 Embedding models can be useful in their own right (for applications like clustering and visual search), or as an input to a machine learning model for a supervised task. In effect, embedding templates enable you to create your own "base models" that you can then use in  your workflows.
 
 
 ## Hyperparameters
 
-Deep training gives you the power to tune the hyperparameters that affect “how” your model learns.
+Deep training gives you the power to tune the hyperparameters that affect “how” your model learns. Model Mode dynamically changes the available hyperparameters based on the template selected.
 
 * **average_horizontal_flips** Provides basic data augmentation for your dataset. If set to true, there is a 0.5 probability that current image and associated ground truth will flip horizontally.
 * **base_gradient_multiplier** This sets the learning rate of the pre-initialized base (also sometimes called "backbone") model that generates embeddings. Learning rate controls how the weights of our network are adjusted with respect to the loss gradient. The lower the value, the slower the trip along the downward slope. A low learning rate can help ensure that local minima are not missed, but can take a long time to converge — especially if the model gets stuck on a plateau region.

@@ -38,7 +38,7 @@
 * [Model](api-guide/model/README.md)
   * [Clarifai Models](api-guide/model/clarifai-models.md)
   * [Custom Model Walkthrough](api-guide/model/custom-model-walkthrough.md)
-  * [Create, Get, Update, Delete](api-guide/model/create-get-and-update.md)
+  * [Create, Get, Update, Delete](api-guide/model/create-get-update-and-delete.md)
   * [Deep Training](api-guide/model/deep-training.md)
   * [Evaluate](portal-guide/model/evaluate/README.md)
     * [Interpreting Evaluations](portal-guide/model/evaluate/interpreting-evaluations.md)
