@@ -1104,6 +1104,83 @@ curl -X PATCH \
 {% endtab %}
 {% endtabs %}
 
+
+## Get
+
+### List Model Types
+
+Learn about available model types and their hyperparameters. This endpoint lists all the possible models that are creatable (when creatable=true), or in general in the platform (the others ones have creatable=false).
+
+{% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiModelTypeResponse listModelTypesResponse = stub.listModelTypes(ListModelTypesRequest.newBuilder().build());
+
+for (ModelType modelType : listModelTypesResponse.getModelTypesList()) {
+    System.out.println(modelType);
+}
+```
+{% endtab %}
+
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.ListModelTypes(
+    {
+        page: 1,
+        per_page: 500
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Received status: " + response.status.description + "\n" + response.status.details);
+        }
+
+        for (const model_type of response.model_types) {
+            console.log(model_type)
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+response = stub.ListModelTypes(service_pb2.ListModelTypesRequest(), metadata=metadata)
+
+for model_type in response.model_types:
+  print(model_type)
+```
+{% endtab %}
+
+
+{% tab title="cURL" %}
+```text
+curl -X GET 'https://api.clarifai.com/v2/models/types?per_page=20&page=1' \
+    -H 'Authorization: Key YOUR_API_KEY'
+```
+{% endtab %}
+{% endtabs %}
+
 ### Get Models
 
 To get a list of all models including models you've created as well as [Clarifai models](api-guide/model/public-models.md):

@@ -1,65 +1,59 @@
-The outputs from one workflow can be used as the inputs in another workflow. This allows you to link together the models in a graph. This ability to link together models is the key to building targeted AI solutions.
+# Input Nodes
+
+The outputs from one model can be used as the inputs in another model. This allows you to link together the models in a graph. Linking models helps you build sophisticated AI solutions, that can zero-in on a specific use case.
 
 ## Supported input and output types
 
-Different models accept different types of inputs and produce different types of inputs and produce different outputs.
+To view your available models, just open your app and click Model Mode icon on the left hand side of the screen. From here just click the Create a Custom Model button in the top righthand corner of the screen.
+
+Different models accept different types of inputs and return different types of outputs. They are named after the fields in the Data object of our API. This object is uses in inputs, annotations, models and workflows. Some examples include:
 
 #### Inputs
 
-* Concept
+* Concepts
+* Embeddings
 * Image
-* Image and video
-* Text
+* Image or video
+* Regions
 
 #### Outputs
 
-* Cluster
-* Color
-* Concept
 * Concepts
-* Embed
-* Region with concept
-* Region with embed
-* Region masks with concepts
-* Region with text
-* Region with image
+* Clusters
+* Regions
 
-## Clarifai models: The building blocks
+## The building blocks
 
-You can create workflows out of any custom models that you have created for your app. The inputs and outputs supported by your custom models will depend on the inputs and outputs supported by the Clarifai models that you have used to build them. Clarifai models support different inputs and outputs depending on how they are designed and what they are used for.
+You can create workflows out of any Clarifai Models or custom models that you have created for your app. The inputs and outputs supported by your custom models will depend on the inputs and outputs supported by the Clarifai Models, or model templates that you have used to build them.
 
-#### Models types that accept images and video
+### Model Mode
 
-* Visual Classifier (output concept)
-* Clusterer (output cluster)
-* Visual Detector + Classifier (output region with concept)
+Click the "four squares" icon on the lefthand sidebar to enter Model Mode.
 
-#### Models types that accept images only
+![](../../images/model_mode.jpg)
 
-* Image cropper (output image)
+### Create the custom models that you need
 
-#### Models that accept concepts
+Click the blue `Create Custom Model` button at the top righthand corner of the screen to create any custom models that you might need for your app.
 
-* Concept Thresholder (output concepts)
-* Concept Synonym Mapper (output concepts)
+![](../../images/create_custom_model.jpg)
 
-#### Models that accept text
+### Create your workflow
 
-* Text classifier (output concept)
+Click the blue `Create Custom Workflow` button at the top righthand corner of the screen build your new workflow. Just add the models that you would like to use in the sequence that you would like to have them in your workflow.
 
-#### Models that accept any input type
+You can filter the available models by using the dropdown menus on the lefthand side of the screen. Change the user dropdown menu to "Clarifai" to view Clarifai Models.
 
-* Annotation writer (no outputs, writes annotation)
-* Random sampler (any output type)
-* Email alert (any output type)
-* SMS Alert (any output type)
-* Deep training (any output type)
+![](../../images/create_workflow.jpg)
 
+### Connect your nodes
 
-## Designing custom solutions
+Finally you will need to connect the `Input Nodes` in your workflow. You can link your models to any models that precede them in the graph. Click "Create Workflow" and then you are ready to get started!
 
-Let's take a look at how workflows can be linked to produce custom AI solutions.
+![](../../images/connect_nodes.jpg)
 
-Add custom models to app
+### Update your base workflow
 
-Create workflow
+To activate your new workflow in your app, head back to the "App Overview" page, and change your `Base Workflow` to the new workflow that you have just created and click the checkbox.
+
+![](../../images/change_base_workflow.jpg)

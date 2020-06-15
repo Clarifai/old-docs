@@ -33,6 +33,14 @@ The gRPC clients below are currently available and we'll be adding more as time 
 
 ## Client Installation Instructions
 
+The key to be used as authorization can be either:
+- an API key, which is tied to a certain application, or
+- a Personal Access Token (PAT), which is tied to a user.
+
+Since a user can own multiple applications, using a PAT is more powerful. However, using a PAT also means that you need to specify the application ID to which the request should be applied.
+
+With most endpoints you can freely choose whether to use an API key or a PAT. In this documentation, some code examples use one and some the other. But certain endpoints support only PAT (e.g. creating a new application or a new API key).
+
 {% tabs %}
 {% tab title="gRPC Java" %}
 ```java
