@@ -32,7 +32,7 @@
   * [Create, Get, Update](api-guide/concept/concepts.md)
   * [Languages](api-guide/concept/languages.md)
   * [Search by Concept](api-guide/concept/search-by-concept.md)
-  * [Knowledge Graph](api-guide/concept/knowledge-graph.md)
+  * [Knowledge Graph](api-guide/concept/knowledge_graph.md)
 * [Annotations](api-guide/annotate/README.md)
   * [Positive and Negative Annotations](api-guide/annotate/positive-and-negative-annotations.md)
 * [Model](api-guide/model/README.md)
