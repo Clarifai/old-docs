@@ -34,6 +34,8 @@
   * [Search by Concept](api-guide/concept/search-by-concept.md)
   * [Knowledge Graph](api-guide/concept/knowledge_graph.md)
 * [Annotations](api-guide/annotate/README.md)
+  * [Annotations](api-guide/annotate/annotations.md)
+  * [Auto Annotation Walkthrough](api-guide/annotate/auto-annotation-walkthrough.md)
   * [Positive and Negative Annotations](api-guide/annotate/positive-and-negative-annotations.md)
 * [Model](api-guide/model/README.md)
   * [Clarifai Models](api-guide/model/clarifai-models.md)

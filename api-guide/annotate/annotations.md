@@ -2,21 +2,55 @@
 
 ## Annotations
 
-Annotations are the data describe an input. When you add inputs to your app, we will create an input level annotation for each input. This input level annotation contains any data you provided in POST /inputs call. Meanwhile some models in your default workflow could write annotations and can be used for search and training.
+Annotations (also known as labels) describe your inputs. When you add inputs to your app, we will create an input level annotation for each input. This input level annotation contains any data you provided in `POST /inputs` call. Models in your default workflow can also write annotations.
 
-Once your input is successfully indexed, you can label the input by adding annotations, for example add concepts, draw bounding boxes and so on.
+Once your input is successfully indexed, you can add additional annotations such as concepts and bounding boxes.
 
 ### Add Annotations
 
-You can label your inputs by doing POST /annotations. For example, you can add concept(s) to an image, draw a bounding box, label concept(s) to a video frame. Note that Each annotation should contain at most 1 region. If it is a video, each annotation should contain 1 frame. IF there are multiple regions in a frame you want to label, you can add multiple annotations and each annotation contains the same frame but different region.
+You can label your inputs by calling the `POST /annotations` endpoint. For example, you can add concept(s) to an image, draw a bounding box, or label concept(s) in a video frame.
 
-When you add an annotation, the app's default workflow will not be run, by default. This means that the annotation will not be immediately available for training of your custom model or for visual search. To make it available, you need to provide `embed_model_version_id` field. This field specifies how to apply the annotation to your input and when to use the annotation. The field `embed_model_version_id` should be set to your app's default workflow embed model version ID. It is recommended to provide this field on each add annotation call.
+When you add an annotation, the app's default workflow will not run by default. This means that the annotation will not be immediately available for training of your custom model or for visual search. To make it available, you need to provide `embed_model_version_id` field. This field specifies how to apply the annotation to your input and when to use the annotation. The field `embed_model_version_id` should be set to your app's default workflow embed model version ID. It is recommended to provide this field on each add annotation call.
 
 You can add from 1 up to 128 annotations in a single API call.
 
-#### Label an images with concepts
+Each annotation should contain at most one region. If it is a video, each annotation should contain 1 frame. If there are multiple regions in a frame you want to label, you can add multiple annotations and each annotation will be contained the same frame but a different region.
+
+#### Label images with concepts
 
 {% tabs %}
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_annotations_response = stub.PostAnnotations(
+    service_pb2.PostAnnotationsRequest(
+        annotations=[
+            resources_pb2.Annotation(
+                input_id="{YOUR_INPUT_ID}",
+                data=resources_pb2.Data(
+                    concepts=[
+                        resources_pb2.Concept(id="tree", value=1.),  # 1 means true, this concept is present.
+                        resources_pb2.Concept(id="water", value=0.)  # 0 means false, this concept is not present.
+                    ]
+                ),
+                embed_model_version_id="{EMBED_MODEL_VERSION_ID}"
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_annotations_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post annotations failed, status: " + post_annotations_response.status.description)
+
+```
+{% endtab %}
+
 {% tab title="gRPC Java" %}
 ```java
 import java.util.List;
@@ -90,38 +124,6 @@ stub.PostAnnotations(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
-```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-post_annotations_response = stub.PostAnnotations(
-    service_pb2.PostAnnotationsRequest(
-        annotations=[
-            resources_pb2.Annotation(
-                input_id="{YOUR_INPUT_ID}",
-                data=resources_pb2.Data(
-                    concepts=[
-                        resources_pb2.Concept(id="tree", value=1.),  # 1 means true, this concept is present.
-                        resources_pb2.Concept(id="water", value=0.)  # 0 means false, this concept is not present.
-                    ]
-                ),
-                embed_model_version_id="{EMBED_MODEL_VERSION_ID}"
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_annotations_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post annotations failed, status: " + post_annotations_response.status.description)
-
-```
-{% endtab %}
-
 {% tab title="cURL" %}
 ```text
 # Value of 1 means true, this concept is present.
@@ -155,11 +157,80 @@ curl -X POST \
 {% endtab %}
 {% endtabs %}
 
-#### Label new bounding boxes in an Image
+#### Label new bounding boxes in an image
 
 You can label a new bounding box by providing bounding box coordinates.
 
 {% tabs %}
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_annotations_response = stub.PostAnnotations(
+    service_pb2.PostAnnotationsRequest(
+        annotations=[
+            resources_pb2.Annotation(
+                input_id="{YOUR_INPUT_ID}",
+                data=resources_pb2.Data(
+                    regions=[
+                        resources_pb2.Region(
+                            region_info=resources_pb2.RegionInfo(
+                                bounding_box=resources_pb2.BoundingBox(       # draw a bounding box
+                                    top_row=0,
+                                    left_col=0,
+                                    bottom_row=0.5,
+                                    right_col=0.5
+                                )
+                            ),
+                            data=resources_pb2.Data(
+                                concepts=[
+                                    resources_pb2.Concept(id="tree", value=1.),  # 1 means true, this concept is present.
+                                    resources_pb2.Concept(id="water", value=0.)  # 0 means false, this concept is not present.
+                                ]
+                            )
+                        )
+                    ]
+                ),
+                embed_model_version_id="{EMBED_MODEL_VERSION_ID}"
+            ),
+            resources_pb2.Annotation(
+                input_id="{YOUR_INPUT_ID}",
+                data=resources_pb2.Data(
+                    regions=[
+                        resources_pb2.Region(
+                            region_info=resources_pb2.RegionInfo(
+                                bounding_box=resources_pb2.BoundingBox(        # draw another bounding box
+                                    top_row=0.6,
+                                    left_col=0.6,
+                                    bottom_row=0.8,
+                                    right_col=0.8
+                                )
+                            ),
+                            data=resources_pb2.Data(
+                                concepts=[
+                                    resources_pb2.Concept(id="bike", value=1.),  # 1 means true, this concept is present.
+                                ]
+                            )
+                        )
+                    ]
+                ),
+                embed_model_version_id="{EMBED_MODEL_VERSION_ID}"
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_annotations_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post annotations failed, status: " + post_annotations_response.status.description)
+
+```
+{% endtab %}
+
 {% tab title="gRPC Java" %}
 ```java
 import java.util.List;
@@ -319,75 +390,6 @@ stub.PostAnnotations(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
-```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-post_annotations_response = stub.PostAnnotations(
-    service_pb2.PostAnnotationsRequest(
-        annotations=[
-            resources_pb2.Annotation(
-                input_id="{YOUR_INPUT_ID}",
-                data=resources_pb2.Data(
-                    regions=[
-                        resources_pb2.Region(
-                            region_info=resources_pb2.RegionInfo(
-                                bounding_box=resources_pb2.BoundingBox(       # draw a bounding box
-                                    top_row=0,
-                                    left_col=0,
-                                    bottom_row=0.5,
-                                    right_col=0.5
-                                )
-                            ),
-                            data=resources_pb2.Data(
-                                concepts=[
-                                    resources_pb2.Concept(id="tree", value=1.),  # 1 means true, this concept is present.
-                                    resources_pb2.Concept(id="water", value=0.)  # 0 means false, this concept is not present.
-                                ]
-                            )
-                        )
-                    ]
-                ),
-                embed_model_version_id="{EMBED_MODEL_VERSION_ID}"
-            ),
-            resources_pb2.Annotation(
-                input_id="{YOUR_INPUT_ID}",
-                data=resources_pb2.Data(
-                    regions=[
-                        resources_pb2.Region(
-                            region_info=resources_pb2.RegionInfo(
-                                bounding_box=resources_pb2.BoundingBox(        # draw another bounding box
-                                    top_row=0.6,
-                                    left_col=0.6,
-                                    bottom_row=0.8,
-                                    right_col=0.8
-                                )
-                            ),
-                            data=resources_pb2.Data(
-                                concepts=[
-                                    resources_pb2.Concept(id="bike", value=1.),  # 1 means true, this concept is present.
-                                ]
-                            )
-                        )
-                    ]
-                ),
-                embed_model_version_id="{EMBED_MODEL_VERSION_ID}"
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_annotations_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post annotations failed, status: " + post_annotations_response.status.description)
-
-```
-{% endtab %}
-
 {% tab title="cURL" %}
 ```text
 # draw 2 bouding boxes in the same region
@@ -464,9 +466,64 @@ curl -X POST \
 
 #### Label existing regions in an Image
 
-When you add an input, our model will detect regions in the case the workflow is of a type detection, for example `Face` or `General Detection`. You can check these detected regions by listing model's annotations. Your labels should be within `Region.Data`. Each annotation can have only 1 region. If you want to label multiple regions, It is possible to label multiple annotations in a single API call.
+When you add an input, detection models (such as `Face Detection` or `General Detection`) will detect regions in your image where there appear to be relevant objects. You can check these detected regions by listing model's annotations. Your labels should be contained within `Region.Data`. Each annotation can have only 1 region. If you want to label multiple regions, It is possible to label multiple annotations in a single API call.
 
 {% tabs %}
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_annotations_response = stub.PostAnnotations(
+    service_pb2.PostAnnotationsRequest(
+        annotations=[
+            resources_pb2.Annotation(                # label a region in this image
+                input_id="{YOUR_INPUT_ID}",
+                data=resources_pb2.Data(
+                    regions=[
+                        resources_pb2.Region(
+                            id="{REGION_ID_1}" ,  # this should be a region id returned from list annotations call
+                            data=resources_pb2.Data(
+                                concepts=[
+                                    resources_pb2.Concept(id="tree", value=1.),  # 1 means true, this concept is present.
+                                    resources_pb2.Concept(id="water", value=0.)  # 0 means false, this concept is not present.
+                                ]
+                            )
+                        )
+                    ]
+                ),
+                embed_model_version_id="{EMBED_MODEL_VERSION_ID}"
+            ),
+            resources_pb2.Annotation(                # label another region in this image
+                input_id="{YOUR_INPUT_ID}",
+                data=resources_pb2.Data(
+                    regions=[
+                        resources_pb2.Region(
+                            id="{REGION_ID_2}" ,  # this should be a region id returned from list annotations call
+                            data=resources_pb2.Data(
+                                concepts=[
+                                    resources_pb2.Concept(id="bike", value=1.),  # 1 means true, this concept is present.
+                                ]
+                            )
+                        )
+                    ]
+                ),
+                embed_model_version_id="{EMBED_MODEL_VERSION_ID}"
+            ),
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_annotations_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post annotations failed, status: " + post_annotations_response.status.description)
+
+```
+{% endtab %}
+
 {% tab title="gRPC Java" %}
 ```java
 import java.util.List;
@@ -588,61 +645,6 @@ stub.PostAnnotations(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
-```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-post_annotations_response = stub.PostAnnotations(
-    service_pb2.PostAnnotationsRequest(
-        annotations=[
-            resources_pb2.Annotation(                # label a region in this image
-                input_id="{YOUR_INPUT_ID}",
-                data=resources_pb2.Data(
-                    regions=[
-                        resources_pb2.Region(
-                            id="{REGION_ID_1}" ,  # this should be a region id returned from list annotations call
-                            data=resources_pb2.Data(
-                                concepts=[
-                                    resources_pb2.Concept(id="tree", value=1.),  # 1 means true, this concept is present.
-                                    resources_pb2.Concept(id="water", value=0.)  # 0 means false, this concept is not present.
-                                ]
-                            )
-                        )
-                    ]
-                ),
-                embed_model_version_id="{EMBED_MODEL_VERSION_ID}"
-            ),
-            resources_pb2.Annotation(                # label another region in this image
-                input_id="{YOUR_INPUT_ID}",
-                data=resources_pb2.Data(
-                    regions=[
-                        resources_pb2.Region(
-                            id="{REGION_ID_2}" ,  # this should be a region id returned from list annotations call
-                            data=resources_pb2.Data(
-                                concepts=[
-                                    resources_pb2.Concept(id="bike", value=1.),  # 1 means true, this concept is present.
-                                ]
-                            )
-                        )
-                    ]
-                ),
-                embed_model_version_id="{EMBED_MODEL_VERSION_ID}"
-            ),
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_annotations_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post annotations failed, status: " + post_annotations_response.status.description)
-
-```
-{% endtab %}
-
 {% tab title="cURL" %}
 ```text
 # Value of 1 means true, this concept is present.
@@ -702,12 +704,42 @@ curl -X POST \
 {% endtab %}
 {% endtabs %}
 
-#### Label an images with other user id and a different status
-Each annotation is tied to each a user or a model in your workflow. By default, when a user posts an annotation, this user is the owner of the annotation. Sometimes however, you might want to post an annotation as other user, for example in Labeler product, when assigning an image, an annotation is created with another user_id (and status `PENDING`). 
+#### Label images with differen `user id` and `status`
 
-Note only app owner can post an annotation with other user's user_id.
+Each annotation is tied to a user or a model in your workflow. By default, when a user posts an annotation, this user is the owner of the annotation. Sometimes however, you might want to post an annotation as other user, for example in Labeler product, when assigning an image, an annotation is created with another user_id (and status `PENDING`).
+
+Note only app owner can post an annotation with other user's `user_id`.
 
 {% tabs %}
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_pb2, status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+post_annotations_response = stub.PostAnnotations(
+    service_pb2.PostAnnotationsRequest(
+        annotations=[
+            resources_pb2.Annotation(
+                input_id="{YOUR_INPUT_ID}",
+                user_id="{USER_ID}",    # If empty, it is the user who posts this annotation
+                data=status_pb2.Status(
+                    code=status_code_pb2.ANNOTATION_PENDING  # annotation pending status. By default success.
+                ),
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_annotations_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post annotations failed, status: " + post_annotations_response.status.description)
+
+```
+{% endtab %}
+
 {% tab title="gRPC Java" %}
 ```java
 import java.util.List;
@@ -721,7 +753,7 @@ MultiAnnotationResponse postAnnotationsResponse = stub.postAnnotations(
     PostAnnotationsRequest.newBuilder().addAnnotations(
         Annotation.newBuilder()
             .setInputId("{YOUR_INPUT_ID}")
-            .setUserId("{USER_ID}")  // If empty, it is the user who posts this annotation 
+            .setUserId("{USER_ID}")  // If empty, it is the user who posts this annotation
             .setStatus(
                 Status.newBuilder()
                     .setCodeValue(StatusCode.ANNOTATION_PENDING_VALUE) // annotation pending status. By default, it's ANNOTATION_SUCCESS_VALUE.
@@ -748,7 +780,7 @@ stub.PostAnnotations(
         annotations: [
             {
                 input_id: "{YOUR_INPUT_ID}",
-                user_id: "{USER_ID}",  // If empty, it is the user who posts this annotation 
+                user_id: "{USER_ID}",  // If empty, it is the user who posts this annotation
                 status: {
                     code: 24151    // annotation pending status. By default success.
                 }
@@ -766,35 +798,6 @@ stub.PostAnnotations(
         }
     }
 );
-```
-{% endtab %}
-
-{% tab title="gRPC Python" %}
-```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_pb2, status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-post_annotations_response = stub.PostAnnotations(
-    service_pb2.PostAnnotationsRequest(
-        annotations=[
-            resources_pb2.Annotation(
-                input_id="{YOUR_INPUT_ID}",
-                user_id="{USER_ID}",    # If empty, it is the user who posts this annotation 
-                data=status_pb2.Status(
-                    code=status_code_pb2.ANNOTATION_PENDING  # annotation pending status. By default success.
-                ),
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_annotations_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post annotations failed, status: " + post_annotations_response.status.description)
-
 ```
 {% endtab %}
 
@@ -822,7 +825,7 @@ curl -X POST \
 
 ### List annotations
 
-You can get a list of annotations within your app with a GET call. Annotations will be returned from oldest to newest. 
+You can get a list of annotations within your app with a GET call. Annotations will be returned from oldest to newest.
 
 These requests are paginated. By default each page will return 20 annotations.
 
@@ -833,6 +836,27 @@ To list all you labeled annotations.
 Note this will not show annotations by models in your worfklow. To include model created annotations, you need to set `list_all_annotations` to `True`.
 
 {% tabs %}
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+list_annotations_response = stub.ListAnnotations(
+    service_pb2.ListAnnotationsRequest(per_page=10),
+    metadata=metadata
+)
+
+if list_annotations_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("List annotations failed, status: " + list_annotations_response.status.description)
+
+for annotation_object in list_annotations_response.annotations:
+    print(annotation_object)
+```
+{% endtab %}
+
 {% tab title="gRPC Java" %}
 ```java
 import java.util.List;
@@ -884,27 +908,6 @@ stub.ListAnnotations(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
-```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-list_annotations_response = stub.ListAnnotations(
-    service_pb2.ListAnnotationsRequest(per_page=10),
-    metadata=metadata
-)
-
-if list_annotations_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("List annotations failed, status: " + list_annotations_response.status.description)
-
-for annotation_object in list_annotations_response.annotations:
-    print(annotation_object)
-```
-{% endtab %}
-
 {% tab title="cURL" %}
 ```text
 curl -X GET \
@@ -916,9 +919,30 @@ curl -X GET \
 
 #### List all annotations in your app
 
-To list all annotations, including models created.
+List all annotations, including models created.
 
 {% tabs %}
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+list_annotations_response = stub.ListAnnotations(
+    service_pb2.ListAnnotationsRequest(list_all_annotations=True, per_page=10),
+    metadata=metadata
+)
+
+if list_annotations_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("List annotations failed, status: " + list_annotations_response.status.description)
+
+for annotation_object in list_annotations_response.annotations:
+    print(annotation_object)
+```
+{% endtab %}
+
 {% tab title="gRPC Java" %}
 ```java
 import java.util.List;
@@ -971,27 +995,6 @@ stub.ListAnnotations(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
-```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-list_annotations_response = stub.ListAnnotations(
-    service_pb2.ListAnnotationsRequest(list_all_annotations=True, per_page=10),
-    metadata=metadata
-)
-
-if list_annotations_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("List annotations failed, status: " + list_annotations_response.status.description)
-
-for annotation_object in list_annotations_response.annotations:
-    print(annotation_object)
-```
-{% endtab %}
-
 {% tab title="cURL" %}
 ```text
 curl -X GET \
@@ -1008,6 +1011,27 @@ To list all labeled annotations for certain input (one or several), provide a li
 Note this will not show annotations by models in your worfklow. To include model created annotations, you need to set `list_all_annotations` to `True`.
 
 {% tabs %}
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+list_annotations_response = stub.ListAnnotations(
+    service_pb2.ListAnnotationsRequest(input_ids=["{YOUR_INPUT_ID_1}". "{YOUR_INPUT_ID_2}"], per_page=10),
+    metadta=metadata
+)
+
+if list_annotations_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("List annotations failed, status: " + list_annotations_response.status.description)
+
+for annotation_object in list_annotations_response.annotations:
+    print(annotation_object)
+```
+{% endtab %}
+
 {% tab title="gRPC Java" %}
 ```java
 import java.util.List;
@@ -1061,6 +1085,20 @@ stub.ListAnnotations(
 ```
 {% endtab %}
 
+{% tab title="cURL" %}
+```text
+curl -X GET \
+  -H "Authorization: Key YOUR_API_KEY" \
+  https://api.clarifai.com/v2/annotations?page=1&per_page=10&input_ids=your_input_Id
+```
+{% endtab %}
+{% endtabs %}
+
+#### List labeled annotations by `input IDs` and `annotation IDs`
+
+You can list annotations by both `input IDs` and `annotation IDs`. Number of input Ids and annotation Ids should be the same.
+
+{% tabs %}
 {% tab title="gRPC Python" %}
 ```python
 from clarifai_grpc.grpc.api import service_pb2
@@ -1070,8 +1108,12 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 # https://docs.clarifai.com/api-guide/api-overview
 
 list_annotations_response = stub.ListAnnotations(
-    service_pb2.ListAnnotationsRequest(input_ids=["{YOUR_INPUT_ID_1}". "{YOUR_INPUT_ID_2}"], per_page=10),
-    metadta=metadata
+    service_pb2.ListAnnotationsRequest(
+       input_ids=["{YOUR_INPUT_ID_1}". "{YOUR_INPUT_ID_2}"]
+        ids=["{YOUR_ANNOTATION_ID_1}", "{YOUR_ANNOTATION_ID_2}"],
+        per_page=10
+    ),
+    metadata=metadata
 )
 
 if list_annotations_response.status.code != status_code_pb2.SUCCESS:
@@ -1082,20 +1124,6 @@ for annotation_object in list_annotations_response.annotations:
 ```
 {% endtab %}
 
-{% tab title="cURL" %}
-```text
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/annotations?page=1&per_page=10&input_ids=your_input_Id
-```
-{% endtab %}
-{% endtabs %}
-
-#### List labeled annotations by input Ids and annotation Ids
-
-You can list annotations by both input Ids and annotation Ids. Number of input Ids and annotation Ids should be the same.
-
-{% tabs %}
 {% tab title="gRPC Java" %}
 ```java
 import java.util.List;
@@ -1132,8 +1160,8 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 
 stub.ListAnnotations(
     {
-        input_ids: ["{YOUR_INPUT_ID_2}", "{YOUR_INPUT_ID_2}"], 
-        ids: ["{YOUR_ANNOTATION_ID_1}", "{YOUR_ANNOTATION_ID_2}"], 
+        input_ids: ["{YOUR_INPUT_ID_2}", "{YOUR_INPUT_ID_2}"],
+        ids: ["{YOUR_ANNOTATION_ID_1}", "{YOUR_ANNOTATION_ID_2}"],
         page: 1, per_page: 10
     },
     metadata,
@@ -1154,6 +1182,21 @@ stub.ListAnnotations(
 ```
 {% endtab %}
 
+{% tab title="cURL" %}
+```text
+curl -X GET \
+  -H "Authorization: Key YOUR_API_KEY" \
+  https://api.clarifai.com/v2/annotations?page=1&per_page=10&input_ids=YOUR_INPUT_ID_1&input_ids=YOUR_INPUT_ID_2&ids=YOUR_ANNOTATION_ID_1&ids=YOUR_ANNOTATION_ID_2
+```
+{% endtab %}
+{% endtabs %}
+
+
+#### List annotations by user IDs
+
+An annotation is created by either a user or a model. You can list annotations created by specific user(s).
+
+{% tabs %}
 {% tab title="gRPC Python" %}
 ```python
 from clarifai_grpc.grpc.api import service_pb2
@@ -1163,11 +1206,7 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 # https://docs.clarifai.com/api-guide/api-overview
 
 list_annotations_response = stub.ListAnnotations(
-    service_pb2.ListAnnotationsRequest(
-       input_ids=["{YOUR_INPUT_ID_1}". "{YOUR_INPUT_ID_2}"] 
-        ids=["{YOUR_ANNOTATION_ID_1}", "{YOUR_ANNOTATION_ID_2}"], 
-        per_page=10
-    ),
+    service_pb2.ListAnnotationsRequest(user_ids=["{USER_ID_1}", "{USER_ID_2}"], per_page=10),
     metadata=metadata
 )
 
@@ -1179,21 +1218,6 @@ for annotation_object in list_annotations_response.annotations:
 ```
 {% endtab %}
 
-{% tab title="cURL" %}
-```text
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/annotations?page=1&per_page=10&input_ids=YOUR_INPUT_ID_1&input_ids=YOUR_INPUT_ID_2&ids=YOUR_ANNOTATION_ID_1&ids=YOUR_ANNOTATION_ID_2
-```
-{% endtab %}
-{% endtabs %}
-
-
-#### List annotations by user Ids
-
-An annotation is created by either a user or a model. You can list annotations created by specific user(s).
-
-{% tabs %}
 {% tab title="gRPC Java" %}
 ```java
 import java.util.List;
@@ -1246,27 +1270,6 @@ stub.ListAnnotations(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
-```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-list_annotations_response = stub.ListAnnotations(
-    service_pb2.ListAnnotationsRequest(user_ids=["{USER_ID_1}", "{USER_ID_2}"], per_page=10),
-    metadata=metadata
-)
-
-if list_annotations_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("List annotations failed, status: " + list_annotations_response.status.description)
-
-for annotation_object in list_annotations_response.annotations:
-    print(annotation_object)
-```
-{% endtab %}
-
 {% tab title="cURL" %}
 ```text
 curl -X GET \
@@ -1279,9 +1282,33 @@ curl -X GET \
 
 #### List annotations by model version Ids
 
-An annotation is created by either a user or a model. For example if your workflow has a detection model, when you add input, the model will detect objects in your input. You can see these  objects by listing the annotations created detection model. You can also label these regioins by Post annotation with region id returned from this call.
+An annotation is created by either a user or a model. For example if your workflow has a detection model, when you add input, the model will detect objects in your input. You can see these  objects by listing the annotations created detection model. You can also label these regions by using `Post annotation` with the region id returned from this call.
 
 {% tabs %}
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+list_annotations_response = stub.ListAnnotations(
+    service_pb2.ListAnnotationsRequest(
+        model_version_ids=["{MODEL_VERSION_ID_1}", "{MODEL_VERSION_ID_2}"],
+        per_page=10
+    ),
+    metadata=metadata
+)
+
+if list_annotations_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("List annotations failed, status: " + list_annotations_response.status.description)
+
+for annotation_object in list_annotations_response.annotations:
+    print(annotation_object)
+```
+{% endtab %}
+
 {% tab title="gRPC Java" %}
 ```java
 import java.util.List;
@@ -1334,30 +1361,6 @@ stub.ListAnnotations(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
-```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-list_annotations_response = stub.ListAnnotations(
-    service_pb2.ListAnnotationsRequest(
-        model_version_ids=["{MODEL_VERSION_ID_1}", "{MODEL_VERSION_ID_2}"], 
-        per_page=10
-    ),
-    metadata=metadata
-)
-
-if list_annotations_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("List annotations failed, status: " + list_annotations_response.status.description)
-
-for annotation_object in list_annotations_response.annotations:
-    print(annotation_object)
-```
-{% endtab %}
-
 {% tab title="cURL" %}
 ```text
 curl -X GET \
@@ -1370,13 +1373,45 @@ curl -X GET \
 
 ### Update annotations
 
-Changing annotation's data is possible. Update supports overwrite, merge, remove actions. You can update from 1 up to 128 annotations in a single API call.
+Changing annotation data is possible. Update supports overwrite, merge, remove actions. You can update from 1 up to 128 annotations in a single API call.
 
 #### Update annotation with concepts
 
 Update an annotation of a image with a new concept, or to change a concept value from true to false (or vice versa).
 
 {% tabs %}
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+patch_annotations_response = stub.PatchAnnotations(
+    service_pb2.PatchAnnotationsRequest(
+        action="merge",  # Supported actions: overwrite, merge, remove.
+        annotations=[
+            resources_pb2.Annotation(
+                input_id="{YOUR_INPUT_ID}",
+                id="{YOUR_ANNOTATION_ID}",
+                data=resources_pb2.Data(
+                    concepts=[
+                        resources_pb2.Concept(id="apple", value=1.)  # 1 means true, this concept is present.
+                    ]
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if patch_annotations_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch annotations failed, status: " + patch_annotations_response.status.description)
+
+```
+{% endtab %}
+
 {% tab title="gRPC Java" %}
 ```java
 import java.util.List;
@@ -1448,38 +1483,6 @@ stub.PatchAnnotations(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
-```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-patch_annotations_response = stub.PatchAnnotations(
-    service_pb2.PatchAnnotationsRequest(
-        action="merge",  # Supported actions: overwrite, merge, remove.
-        annotations=[
-            resources_pb2.Annotation(
-                input_id="{YOUR_INPUT_ID}",
-                id="{YOUR_ANNOTATION_ID}",
-                data=resources_pb2.Data(
-                    concepts=[
-                        resources_pb2.Concept(id="apple", value=1.)  # 1 means true, this concept is present.
-                    ]
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if patch_annotations_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Patch annotations failed, status: " + patch_annotations_response.status.description)
-
-```
-{% endtab %}
-
 {% tab title="cURL" %}
 ```text
 # Value of 1 means true, this concept is present.
@@ -1512,9 +1515,48 @@ curl -X PATCH \
 
 #### Update annotation with concepts in a region
 
-When update annotation with region, you should provide region id if you are not intent to change the region. 
+When you update an annotation with a region, you should provide the `region ID` if you do not intend to change the region.
 
 {% tabs %}
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+patch_annotations_response = stub.PatcchAnnotations(
+    service_pb2.PatchAnnotationsRequest(
+        action="merge",  # Supported actions: overwrite, merge, remove.
+        annotations=[
+            resources_pb2.Annotation(
+                input_id="{YOUR_INPUT_ID}",
+                id="{YOUR_ANNOTATION_ID}",
+                data=resources_pb2.Data(
+                    regions=[
+                        resources_pb2.Region(
+                            id="{REGION_ID}" ,  # this should be the region id of this annotation before patch
+                            data=resources_pb2.Data(
+                                concepts=[
+                                    resources_pb2.Concept(id="tree", value=1.),  # 1 means true, this concept is present.
+                                ]
+                            )
+                        )
+                    ]
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if patch_annotations_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch annotations failed, status: " + patch_annotations_response.status.description)
+
+```
+{% endtab %}
+
 {% tab title="gRPC Java" %}
 ```java
 import java.util.List;
@@ -1598,45 +1640,6 @@ stub.PatchAnnotations(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
-```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-patch_annotations_response = stub.PatcchAnnotations(
-    service_pb2.PatchAnnotationsRequest(
-        action="merge",  # Supported actions: overwrite, merge, remove.
-        annotations=[
-            resources_pb2.Annotation(
-                input_id="{YOUR_INPUT_ID}",
-                id="{YOUR_ANNOTATION_ID}",
-                data=resources_pb2.Data(
-                    regions=[
-                        resources_pb2.Region(
-                            id="{REGION_ID}" ,  # this should be the region id of this annotation before patch
-                            data=resources_pb2.Data(
-                                concepts=[
-                                    resources_pb2.Concept(id="tree", value=1.),  # 1 means true, this concept is present.
-                                ]
-                            )
-                        )
-                    ]
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if patch_annotations_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Patch annotations failed, status: " + patch_annotations_response.status.description)
-
-```
-{% endtab %}
-
 {% tab title="cURL" %}
 ```text
 # Value of 1 means true, this concept is present.
@@ -1679,6 +1682,36 @@ curl -X PATCH \
 You can update an annotation status if you have the privilege to do so.
 
 {% tabs %}
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_pb2, status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+patch_annotations_response = stub.PatchAnnotations(
+    service_pb2.PatchAnnotationsRequest(
+        action="merge",  # Supported actions: overwrite, merge, remove.
+        annotations=[
+            resources_pb2.Annotation(
+                input_id="{YOUR_INPUT_ID}",
+                id="{YOUR_ANNOTATION_ID}",
+                status=status_pb2.Status(
+                    code=status_code_pb2.ANNOTATION_SUCCESS
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if patch_annotations_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch annotations failed, status: " + patch_annotations_response.status.description)
+
+```
+{% endtab %}
+
 {% tab title="gRPC Java" %}
 ```java
 import java.util.List;
@@ -1743,36 +1776,6 @@ stub.PatchAnnotations(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
-```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_pb2, status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-patch_annotations_response = stub.PatchAnnotations(
-    service_pb2.PatchAnnotationsRequest(
-        action="merge",  # Supported actions: overwrite, merge, remove.
-        annotations=[
-            resources_pb2.Annotation(
-                input_id="{YOUR_INPUT_ID}",
-                id="{YOUR_ANNOTATION_ID}",
-                status=status_pb2.Status(
-                    code=status_code_pb2.ANNOTATION_SUCCESS
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if patch_annotations_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Patch annotations failed, status: " + patch_annotations_response.status.description)
-
-```
-{% endtab %}
-
 {% tab title="cURL" %}
 ```text
 curl -X PATCH \
@@ -1798,11 +1801,32 @@ curl -X PATCH \
 
 ### Delete annotations
 
-#### Delete Annotation By Input Id and Annotation Id
+#### Delete Annotation By Input ID and Annotation ID
 
-You can delete a single annotation by input Id and annotation Id.
+You can delete a single annotation by input ID and annotation ID.
 
 {% tabs %}
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+delete_annotation_response = stub.DeleteAnnotation(
+    service_pb2.DeleteAnnotationRequest(
+        input_id="{YOUR_INPUT_ID}",
+        annotation_id="{YOUR_ANNOTATION_ID}"
+    ),
+    metadata=metadata
+)
+
+if delete_annotation_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Delete annotation failed, status: " + delete_annotation_response.status.description)
+```
+{% endtab %}
+
 {% tab title="gRPC Java" %}
 ```java
 import com.clarifai.grpc.api.*;
@@ -1848,27 +1872,6 @@ stub.DeleteAnnotation(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
-```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-delete_annotation_response = stub.DeleteAnnotation(
-    service_pb2.DeleteAnnotationRequest(
-        input_id="{YOUR_INPUT_ID}",
-        annotation_id="{YOUR_ANNOTATION_ID}"
-    ),
-    metadata=metadata
-)
-
-if delete_annotation_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Delete annotation failed, status: " + delete_annotation_response.status.description)
-```
-{% endtab %}
-
 {% tab title="cURL" %}
 ```text
 curl -X DELETE \
@@ -1878,11 +1881,32 @@ curl -X DELETE \
 {% endtab %}
 {% endtabs %}
 
-#### Bulk Delete Annotations By Input Ids and Annotation Ids
+#### Bulk Delete Annotations By Input Ids and Annotation IDs
 
-You can delete multiple annotations in one API call. You need to provide a list of input ids and a list of annotation Ids. Number of input Ids has to match number of annotation Ids.
+You can delete multiple annotations in one API call. You need to provide a list of input IDs and a list of annotation IDs. The number of input IDs has to match number of annotation IDs.
 
 {% tabs %}
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+delete_annotations_response = stub.DeleteAnnotations(
+    service_pb2.DeleteAnnotationsRequest(
+        input_ids=["{YOUR_INPUT_ID_1}", "{YOUR_INPUT_ID_2}"],
+        annotation_id=["{YOUR_ANNOTATION_ID_1}", "{YOUR_ANNOTATION_ID_2}"]
+    ),
+    metadata=metadata
+)
+
+if delete_annotations_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Delete annotations failed, status: " + delete_annotations_response.status.description)
+```
+{% endtab %}
+
 {% tab title="gRPC Java" %}
 ```java
 import com.clarifai.grpc.api.*;
@@ -1930,27 +1954,6 @@ stub.DeleteAnnotations(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
-```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-delete_annotations_response = stub.DeleteAnnotations(
-    service_pb2.DeleteAnnotationsRequest(
-        input_ids=["{YOUR_INPUT_ID_1}", "{YOUR_INPUT_ID_2}"],
-        annotation_id=["{YOUR_ANNOTATION_ID_1}", "{YOUR_ANNOTATION_ID_2}"]
-    ),
-    metadata=metadata
-)
-
-if delete_annotations_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Delete annotations failed, status: " + delete_annotations_response.status.description)
-```
-{% endtab %}
-
 {% tab title="cURL" %}
 ```text
 curl -X DELETE \
@@ -1965,11 +1968,31 @@ curl -X DELETE \
 {% endtab %}
 
 
-#### Bulk Delete all annotations By Input Ids
+#### Bulk delete all annotations By Input IDs
 
 To delete all annotations of a given input, you just need to set input ID(s). This will delete all annotations for these input(s) EXCEPT input level annotations.
 
 {% tabs %}
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+delete_annotations_response = stub.DeleteAnnotations(
+    service_pb2.DeleteAnnotationsRequest(
+        input_ids=["{YOUR_INPUT_ID_1}", "{YOUR_INPUT_ID_2}"]
+    ),
+    metadata=metadata
+)
+
+if delete_annotations_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Delete annotations failed, status: " + delete_annotations_response.status.description)
+```
+{% endtab %}
+
 {% tab title="gRPC Java" %}
 ```java
 import com.clarifai.grpc.api.*;
@@ -2011,26 +2034,6 @@ stub.DeleteAnnotations(
         }
     }
 );
-```
-{% endtab %}
-
-{% tab title="gRPC Python" %}
-```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-delete_annotations_response = stub.DeleteAnnotations(
-    service_pb2.DeleteAnnotationsRequest(
-        input_ids=["{YOUR_INPUT_ID_1}", "{YOUR_INPUT_ID_2}"]
-    ),
-    metadata=metadata
-)
-
-if delete_annotations_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Delete annotations failed, status: " + delete_annotations_response.status.description)
 ```
 {% endtab %}
 
