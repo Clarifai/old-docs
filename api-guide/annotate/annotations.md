@@ -157,7 +157,7 @@ curl -X POST \
 {% endtab %}
 {% endtabs %}
 
-#### Label new bounding boxes in an image
+#### Label New Bounding Boxes in an Image
 
 You can label a new bounding box by providing bounding box coordinates.
 
@@ -464,7 +464,7 @@ curl -X POST \
 {% endtabs %}
 
 
-#### Label existing regions in an Image
+#### Label Existing Regions in an Image
 
 When you add an input, detection models (such as `Face Detection` or `General Detection`) will detect regions in your image where there appear to be relevant objects. You can check these detected regions by listing model's annotations. Your labels should be contained within `Region.Data`. Each annotation can have only 1 region. If you want to label multiple regions, It is possible to label multiple annotations in a single API call.
 
@@ -704,7 +704,7 @@ curl -X POST \
 {% endtab %}
 {% endtabs %}
 
-#### Label images with differen `user id` and `status`
+#### Label Images with Different `user_id` and `status`.
 
 Each annotation is tied to a user or a model in your workflow. By default, when a user posts an annotation, this user is the owner of the annotation. Sometimes however, you might want to post an annotation as other user, for example in Labeler product, when assigning an image, an annotation is created with another user_id (and status `PENDING`).
 
@@ -823,13 +823,13 @@ curl -X POST \
 {% endtab %}
 {% endtabs %}
 
-### List annotations
+### List Annotations
 
 You can get a list of annotations within your app with a GET call. Annotations will be returned from oldest to newest.
 
 These requests are paginated. By default each page will return 20 annotations.
 
-#### List all labeled annotations in your app
+#### List All Labeled Annotations in Your App
 
 To list all you labeled annotations.
 
@@ -917,7 +917,7 @@ curl -X GET \
 {% endtab %}
 {% endtabs %}
 
-#### List all annotations in your app
+#### List All Annotations in Your App
 
 List all annotations, including models created.
 
@@ -1004,7 +1004,7 @@ curl -X GET \
 {% endtab %}
 {% endtabs %}
 
-#### List annotations by Input IDs
+#### List Annotations by Input IDs
 
 To list all labeled annotations for certain input (one or several), provide a list of input IDs.
 
@@ -1094,9 +1094,9 @@ curl -X GET \
 {% endtab %}
 {% endtabs %}
 
-#### List labeled annotations by `input IDs` and `annotation IDs`
+#### List Labeled Annotations by Input IDs and Annotation IDs
 
-You can list annotations by both `input IDs` and `annotation IDs`. Number of input Ids and annotation Ids should be the same.
+You can list annotations by both input IDs and annotation IDs. Number of input IDs and annotation IDs should be the same.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -1192,7 +1192,7 @@ curl -X GET \
 {% endtabs %}
 
 
-#### List annotations by user IDs
+#### List Annotations by User IDs
 
 An annotation is created by either a user or a model. You can list annotations created by specific user(s).
 
@@ -1280,7 +1280,7 @@ curl -X GET \
 {% endtabs %}
 
 
-#### List annotations by model version Ids
+#### List Annotations by Model Version IDs
 
 An annotation is created by either a user or a model. For example if your workflow has a detection model, when you add input, the model will detect objects in your input. You can see these  objects by listing the annotations created detection model. You can also label these regions by using `Post annotation` with the region id returned from this call.
 
@@ -1371,11 +1371,11 @@ curl -X GET \
 {% endtabs %}
 
 
-### Update annotations
+### Update Annotations
 
 Changing annotation data is possible. Update supports overwrite, merge, remove actions. You can update from 1 up to 128 annotations in a single API call.
 
-#### Update annotation with concepts
+#### Update Annotation with Concepts
 
 Update an annotation of a image with a new concept, or to change a concept value from true to false (or vice versa).
 
@@ -1513,9 +1513,9 @@ curl -X PATCH \
 {% endtab %}
 {% endtabs %}
 
-#### Update annotation with concepts in a region
+#### Update Annotation with Concepts in a Region
 
-When you update an annotation with a region, you should provide the `region ID` if you do not intend to change the region.
+When you update an annotation with a region, you should provide the region ID if you do not intend to change the region.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -1677,7 +1677,7 @@ curl -X PATCH \
 {% endtab %}
 {% endtabs %}
 
-#### Update annotation status
+#### Update Annotation Status
 
 You can update an annotation status if you have the privilege to do so.
 
@@ -1799,9 +1799,9 @@ curl -X PATCH \
 {% endtab %}
 {% endtabs %}
 
-### Delete annotations
+### Delete Annotations
 
-#### Delete Annotation By Input ID and Annotation ID
+#### Delete Annotation by Input ID and Annotation ID
 
 You can delete a single annotation by input ID and annotation ID.
 
@@ -1881,7 +1881,7 @@ curl -X DELETE \
 {% endtab %}
 {% endtabs %}
 
-#### Bulk Delete Annotations By Input Ids and Annotation IDs
+#### Bulk Delete Annotations by Input Ids and Annotation IDs
 
 You can delete multiple annotations in one API call. You need to provide a list of input IDs and a list of annotation IDs. The number of input IDs has to match number of annotation IDs.
 
@@ -1968,7 +1968,7 @@ curl -X DELETE \
 {% endtab %}
 
 
-#### Bulk delete all annotations By Input IDs
+#### Bulk Delete All Annotations by Input IDs
 
 To delete all annotations of a given input, you just need to set input ID(s). This will delete all annotations for these input(s) EXCEPT input level annotations.
 

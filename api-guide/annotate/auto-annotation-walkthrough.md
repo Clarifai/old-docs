@@ -1,9 +1,9 @@
-# Active Learning Auto Annotation Walkthrough
+# Auto Annotation Walkthrough
 
 This tutorial demonstrates how auto-annotation workflows can be configured in the Clarifai API. Inputs are automatically annotated with concepts and assigned `SUCCESS` status by leveraging the high confidence predictions of a model, and when the model is unsure, the annotation is going to be written as you with `PENDING` status. This enables you to scale up your annotation process while ensuring quality standards by including a backstop of human reveiw.
 
 
-### Create concepts
+### Create Concepts
 
 Create the concepts that we'll be using in our model. In this tutorial we'll create the following concepts: `people`, `man` and `adult`.
 
@@ -134,7 +134,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/concepts' \
 {% endtab %}
 {% endtabs %}
 
-### Link the concepts
+### Link Concepts
 
 Link the newly created concepts with concepts in the Clarifai/Main General model.
 
@@ -261,9 +261,9 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/concepts/{YOUR_M
 {% endtab %}
 {% endtabs %}
 
-### Create a mapper model
+### Create a Concept Mapper Model
 
-We're going to create a mapper model that translates the concepts from the General model to our new concepts. The model will map the concepts as synonyms. Hypernyms and hyponyms are supported as well.
+We're going to create a concept mapper model that translates the concepts from the General model to our new concepts. The model will map the concepts as synonyms. Hypernyms and hyponyms are supported as well.
 
 We'll be setting the `knowledge_graph_id` value to be empty.
 
@@ -404,7 +404,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 {% endtab %}
 {% endtabs %}
 
-### Create a "greater than" Concept Thresholder model
+### Create a "Greater Than" Concept Thresholder Model
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -593,7 +593,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 {% endtabs %}
 
 
-### Create a "less than" Concept Thresholder model
+### Create a "Less Than" Concept Thresholder Model
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -781,7 +781,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 {% endtab %}
 {% endtabs %}
 
-### Create a "write success as me" Annotation Writer model
+### Create a "Write Success as Me" Annotation Writer Model
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -927,7 +927,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 {% endtab %}
 {% endtabs %}
 
-### Create a "write pending as me" Annotation Writer model
+### Create a "Write Pending as Me" Annotation Writer Model
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -1040,7 +1040,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 {% endtab %}
 {% endtabs %}
 
-### Create the workflow
+### Create the Workflow
 
 We will now joint all the models together into a single workflow.
 
@@ -1525,7 +1525,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
 {% endtab %}
 {% endtabs %}
 
-### Make the new workflow your app's default
+### Make the New Workflow your App's Default
 
 Make this the default workflow in the app, so it will run every time we add an input and execute the auto annotation process.
 
@@ -1628,7 +1628,7 @@ curl -X PATCH 'https://api.clarifai.com/v2/users/me/apps' \
 {% endtab %}
 {% endtabs %}
 
-### Add an image
+### Add an Image
 
 Adding the image will trigger the default workflow.
 
@@ -1749,7 +1749,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/inputs' \
 {% endtab %}
 {% endtabs %}
 
-### List annotations
+### List Annotations
 
 Now you can list annotations with your user id to see the annotations created by your workflow.
 
