@@ -190,7 +190,7 @@ SingleModelResponse postModelsResponse = stub.postModels(
             .setId("petsID")
             .setOutputInfo(
                 OutputInfo.newBuilder().setData(
-                    Data.newBuilder().addConcepts(Concept.newBuilder().setId("boscoe"))
+                    Data.newBuilder().addConcepts(Concept.newBuilder().setId("charlie"))
                 )
             )
     ).build()
@@ -212,7 +212,7 @@ stub.PostModels(
             {
                 id: "petsID",
                 output_info: {
-                    data: {concepts: [{id: "boscoe"}]},
+                    data: {concepts: [{id: "charlie"}]},
                 }
             }
         ]
@@ -246,7 +246,7 @@ post_models_response = stub.PostModels(
                 id="petsID",
                 output_info=resources_pb2.OutputInfo(
                     data=resources_pb2.Data(
-                        concepts=[resources_pb2.Concept(id="boscoe", value=1)]
+                        concepts=[resources_pb2.Concept(id="charlie", value=1)]
                     ),
                 )
             )
@@ -265,7 +265,7 @@ if post_models_response.status.code != status_code_pb2.SUCCESS:
 app.models.create(
   "petsID",
   [
-    { "id": "boscoe" }
+    { "id": "charlie" }
   ]
 ).then(
   function(response) {
@@ -283,7 +283,7 @@ app.models.create(
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 
-model = app.models.create('petsID', concepts=['boscoe'])
+model = app.models.create('petsID', concepts=['charlie'])
 ```
 {% endtab %}
 
@@ -291,7 +291,7 @@ model = app.models.create('petsID', concepts=['boscoe'])
 ```java
 client.createModel("petsID")
     .withOutputInfo(ConceptOutputInfo.forConcepts(
-        Concept.forID("boscoe")
+        Concept.forID("charlie")
     ))
     .executeSync();
 ```
@@ -314,7 +314,7 @@ namespace YourNamespace
 
             await client.CreateModel(
                     "petsID",
-                    concepts: new List<Concept> {new Concept("boscoe")})
+                    concepts: new List<Concept> {new Concept("charlie")})
                 .ExecuteAsync();
         }
     }
@@ -365,13 +365,10 @@ curl -X POST \
         "data": {
           "concepts": [
             {
-              "id": "boscoe"
+              "id": "charlie",
+              "value": 1
             }
           ]
-        },
-        "output_config": {
-          "concepts_mutually_exclusive": false,
-          "closed_environment":false
         }
       }
     }
@@ -401,7 +398,7 @@ MultiModelResponse patchModelsResponse = stub.patchModels(
                 .setId("petsID")
                 .setOutputInfo(
                     OutputInfo.newBuilder().setData(
-                        Data.newBuilder().addConcepts(Concept.newBuilder().setId("boscoe"))
+                        Data.newBuilder().addConcepts(Concept.newBuilder().setId("charlie"))
                     )
                 )
         )
@@ -425,7 +422,7 @@ stub.PatchModels(
         models: [
             {
                 id: "petsID",
-                output_info: {data: {concepts: [{id: "boscoe"}]}}
+                output_info: {data: {concepts: [{id: "charlie"}]}}
             }
         ]
     },
@@ -459,7 +456,7 @@ patch_models_response = stub.PatchModels(
                 id="petsID",
                 output_info=resources_pb2.OutputInfo(
                     data=resources_pb2.Data(
-                        concepts=[resources_pb2.Concept(id="boscoe")]
+                        concepts=[resources_pb2.Concept(id="charlie")]
                     ),
                 )
             )
@@ -483,7 +480,7 @@ app.models.initModel({model_id}).then(function(model) {
 });
 
 function updateModel(model) {
-  model.mergeConcepts({"id": "boscoe"}).then(
+  model.mergeConcepts({"id": "charlie"}).then(
     function(response) {
       // do something with response
     },
@@ -501,7 +498,7 @@ from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 
 model = app.models.get('{model_id}')
-model.add_concepts(['boscoe'])
+model.add_concepts(['charlie'])
 ```
 {% endtab %}
 
@@ -598,12 +595,12 @@ curl -X PATCH \
   {
     "models": [
       {
-        "id": "{model_id}",
+        "id": "petsID",
         "output_info": {
           "data": {
             "concepts": [
               {
-                "id": "dogs"
+                "id": "charlie"
               }
             ]
           }
@@ -638,7 +635,7 @@ MultiModelResponse patchModelsResponse = stub.patchModels(
                 .setId("petsID")
                 .setOutputInfo(
                     OutputInfo.newBuilder().setData(
-                        Data.newBuilder().addConcepts(Concept.newBuilder().setId("boscoe"))
+                        Data.newBuilder().addConcepts(Concept.newBuilder().setId("charlie"))
                     )
                 )
         )
@@ -662,7 +659,7 @@ stub.PatchModels(
         models: [
             {
                 id: "petsID",
-                output_info: {data: {concepts: [{id: "boscoe"}]}}
+                output_info: {data: {concepts: [{id: "charlie"}]}}
             }
         ]
     },
@@ -696,7 +693,7 @@ patch_models_response = stub.PatchModels(
                 id="petsID",
                 output_info=resources_pb2.OutputInfo(
                     data=resources_pb2.Data(
-                        concepts=[resources_pb2.Concept(id="boscoe")]
+                        concepts=[resources_pb2.Concept(id="charlie")]
                     ),
                 )
             )
@@ -720,7 +717,7 @@ app.models.initModel({model_id}).then(function(model) {
 });
 
 function updateModel(model) {
-  model.deleteConcepts({"id": "boscoe"}).then(
+  model.deleteConcepts({"id": "charlie"}).then(
     function(response) {
       // do something with response
     },
@@ -738,7 +735,7 @@ from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 
 model = app.models.get('{model_id}')
-model.delete_concepts(['boscoe'])
+model.delete_concepts(['charlie'])
 ```
 {% endtab %}
 
@@ -836,12 +833,12 @@ curl -X PATCH \
   {
     "models": [
       {
-        "id": "{model_id}",
+        "id": "petsID",
         "output_info": {
           "data": {
             "concepts": [
               {
-                "id": "dogs"
+                "id": "charlie"
               }
             ]
           }
@@ -855,167 +852,7 @@ curl -X PATCH \
 {% endtab %}
 {% endtabs %}
 
-### Update Concept Name
 
-The code below showcases how to update a concept's name given its id.
-
-{% tabs %}
-{% tab title="gRPC Java" %}
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-MultiConceptResponse patchConceptsResponse = stub.patchConcepts(
-    PatchConceptsRequest.newBuilder()
-        .setAction("overwrite")  // The only supported action right now is overwrite.
-        .addConcepts(Concept.newBuilder().setId("boscoe").setName("Boscoe Name"))
-        .build()
-);
-
-if (patchConceptsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Patch concepts failed, status: " + patchConceptsResponse.getStatus());
-}
-```
-{% endtab %}
-
-{% tab title="gRPC NodeJS" %}
-```js
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-stub.PatchConcepts(
-    {
-        action: "overwrite",  // The only supported action right now is overwrite
-        concepts: [{id: "boscoe", name: "Boscoe Name"}]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Patch concepts failed, status: " + response.status.description);
-        }
-    }
-);
-```
-{% endtab %}
-
-{% tab title="gRPC Python" %}
-```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-patch_concepts_response = stub.PatchConcepts(
-    service_pb2.PatchConceptsRequest(
-        action="overwrite",  # The only supported action right now is overwrite.
-        concepts=[resources_pb2.Concept(id="boscoe", name="Boscoe Name")]
-    ),
-    metadata=metadata
-)
-
-if patch_concepts_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Patch concept failed, status: " + patch_concepts_response.status.description)
-```
-{% endtab %}
-
-{% tab title="js" %}
-```javascript
-** Coming Soon
-```
-{% endtab %}
-
-{% tab title="python" %}
-```python
-from clarifai.rest import ClarifaiApp
-app = ClarifaiApp(api_key='YOUR_API_KEY')
-
-app.concepts.update(concept_id='concept_id', concept_name='new_concept_name')
-```
-{% endtab %}
-
-{% tab title="java" %}
-```java
-** Coming Soon
-```
-{% endtab %}
-
-{% tab title="csharp" %}
-```csharp
-using System.Threading.Tasks;
-using Clarifai.API;
-using Clarifai.DTOs.Predictions;
-
-namespace YourNamespace
-{
-    public class YourClassName
-    {
-        public static async Task Main()
-        {
-            var client = new ClarifaiClient("YOUR_API_KEY");
-
-            await client.ModifyConcepts(
-                    new Concept("{concept-id}", name: "{new-concept-name}"))
-                .ExecuteAsync();
-        }
-    }
-}
-```
-{% endtab %}
-
-{% tab title="objective-c" %}
-```text
-** Coming Soon
-```
-{% endtab %}
-
-{% tab title="php" %}
-```php
-use Clarifai\API\ClarifaiClient;
-use Clarifai\DTOs\Predictions\Concept;
-
-$client = new ClarifaiClient('YOUR_API_KEY');
-
-$response = $client->modifyConcepts((new Concept('CONCEPT'))->withName('UPDATED_CONCEPT_NAME'))
-    ->executeSync();
-
-if ($response->isSuccessful()) {
-    echo "Response is successful.\n";
-} else {
-    echo "Response is not successful. Reason: \n";
-    echo $response->status()->description() . "\n";
-    echo $response->status()->errorDetails() . "\n";
-    echo "Status code: " . $response->status()->statusCode();
-}
-```
-{% endtab %}
-
-{% tab title="cURL" %}
-```text
-curl -X PATCH \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "concepts": [
-      {
-        "id": "{concept_id}",
-        "name": "{new_concept_name}"
-      }
-      ],
-    "action": "overwrite"
-  }'\
-  https://api.clarifai.com/v2/concepts
-```
-{% endtab %}
-{% endtabs %}
 
 ### Update Model Name and Configuration
 
@@ -1249,9 +1086,10 @@ curl -X PATCH \
   {
     "models": [
       {
-        "id": "MODEL_ID",
+        "id": "petsID",
         "name": "newname",
         "output_info": {
+          "data": {"concepts": [{"id": "birds"}, {"id": "hurd"}]},
           "output_config": {
             "concepts_mutually_exclusive": true,
             "closed_environment": true
@@ -1266,9 +1104,86 @@ curl -X PATCH \
 {% endtab %}
 {% endtabs %}
 
+
+## Get
+
+### List Model Types
+
+Learn about available model types and their hyperparameters. This endpoint lists all the possible models that are creatable (when creatable=true), or in general in the platform (the others ones have creatable=false).
+
+{% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiModelTypeResponse listModelTypesResponse = stub.listModelTypes(ListModelTypesRequest.newBuilder().build());
+
+for (ModelType modelType : listModelTypesResponse.getModelTypesList()) {
+    System.out.println(modelType);
+}
+```
+{% endtab %}
+
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.ListModelTypes(
+    {
+        page: 1,
+        per_page: 500
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Received status: " + response.status.description + "\n" + response.status.details);
+        }
+
+        for (const model_type of response.model_types) {
+            console.log(model_type)
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2, resources_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+response = stub.ListModelTypes(service_pb2.ListModelTypesRequest(), metadata=metadata)
+
+for model_type in response.model_types:
+  print(model_type)
+```
+{% endtab %}
+
+
+{% tab title="cURL" %}
+```text
+curl -X GET 'https://api.clarifai.com/v2/models/types?per_page=20&page=1' \
+    -H 'Authorization: Key YOUR_API_KEY'
+```
+{% endtab %}
+{% endtabs %}
+
 ### Get Models
 
-To get a list of all models including models you've created as well as [public models]():
+To get a list of all models including models you've created as well as [Clarifai models](api-guide/model/public-models.md):
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -1600,7 +1515,7 @@ if ($response->isSuccessful()) {
 ```text
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/{model_id}
+  https://api.clarifai.com/v2/models/petsID
 ```
 {% endtab %}
 {% endtabs %}
@@ -1781,7 +1696,7 @@ if ($response->isSuccessful()) {
 ```text
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/{model_id}/output_info
+  https://api.clarifai.com/v2/models/petsID/output_info
 ```
 {% endtab %}
 {% endtabs %}
@@ -1962,7 +1877,7 @@ if ($response->isSuccessful()) {
 ```text
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/{model_id}/versions
+  https://api.clarifai.com/v2/models/petsID/versions
 ```
 {% endtab %}
 {% endtabs %}
@@ -2145,7 +2060,7 @@ if ($response->isSuccessful()) {
 ```text
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/{model_id}/versions/{version_id}
+  https://api.clarifai.com/v2/models/petsID/versions/{YOUR_MODEL_VERSION_ID}
 ```
 {% endtab %}
 {% endtabs %}
@@ -2302,7 +2217,7 @@ namespace YourNamespace
 ```text
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/{model_id}/inputs
+  https://api.clarifai.com/v2/models/petsID/inputs
 ```
 {% endtab %}
 {% endtabs %}
@@ -2470,7 +2385,7 @@ namespace YourNamespace
 ```text
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/{model_id}/versions/{version_id}/inputs
+  https://api.clarifai.com/v2/models/petsID/versions/{YOUR_MODEL_VERSION_ID}/inputs
 ```
 {% endtab %}
 {% endtabs %}
@@ -2621,7 +2536,7 @@ if ($response->isSuccessful()) {
 ```text
 curl -X DELETE \
   -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/{model_id}
+  https://api.clarifai.com/v2/models/petsID
 ```
 {% endtab %}
 {% endtabs %}
@@ -2795,7 +2710,7 @@ if ($response->isSuccessful()) {
 ```text
 curl -X DELETE \
   -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/{model_id}/versions/{version_id}
+  https://api.clarifai.com/v2/models/petsID/versions/{YOUR_MODEL_VERSION_ID}
 ```
 {% endtab %}
 {% endtabs %}
@@ -3121,7 +3036,7 @@ if ($response->isSuccessful()) {
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
-  https://api.clarifai.com/v2/models/{model_id}/versions
+  https://api.clarifai.com/v2/models/petsID/versions
 ```
 {% endtab %}
 {% endtabs %}
@@ -3371,7 +3286,10 @@ curl -X POST \
       }
     ]
   }'\
-  https://api.clarifai.com/v2/models/{model_id}/outputs
+  https://api.clarifai.com/v2/models/petsID/outputs
+
+# Model version defaults to latest. If you want to specify the model version, use this URL:
+# https://api.clarifai.com/v2/models/petsID/versions/{YOUR_MODEL_VERSION_ID}/outputs
 ```
 {% endtab %}
 {% endtabs %}
@@ -3573,7 +3491,7 @@ curl -X POST \
   -d '
   {
     "model_query": {
-      "name": "general-v1.3",
+      "name": "gen*",
       "type": "concept"
     }
   }'\
