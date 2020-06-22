@@ -120,7 +120,7 @@ for concept in output.data.concepts:
 ```javascript
 app.models.initModel({id: Clarifai.GENERAL_MODEL, version: "aa7f35c01e0642fda5cf400f543e7c40"})
       .then(generalModel => {
-        return generalModel.predict("@@sampleTrain");
+        return generalModel.predict("ENTER_URL_HERE");
       })
       .then(response => {
         var concepts = response['outputs'][0]['data']['concepts']
@@ -134,7 +134,7 @@ from clarifai.rest import ClarifaiApp
 
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 model = app.public_models.general_model
-response = model.predict_by_url('@@sampleTrain')
+response = model.predict_by_url('ENTER_URL_HERE')
 ```
 {% endtab %}
 
@@ -144,7 +144,7 @@ ConceptModel model = client.getDefaultModels().generalModel();
     ModelVersion modelVersion = model.getVersionByID("the-version").executeSync().get();
 
     ClarifaiResponse<List<ClarifaiOutput<Prediction>>> response = client.predict(model.id())
-        .withInputs(ClarifaiInput.forImage("@@sampleTrain"))
+        .withInputs(ClarifaiInput.forImage("ENTER_URL_HERE"))
         .withVersion("aa7f35c01e0642fda5cf400f543e7c40")
         .executeSync();
 ```
@@ -168,7 +168,7 @@ namespace YourNamespace
                     Client.PublicModels.GeneralModel.ModelID,
                     new List<IClarifaiInput>
                     {
-                        new ClarifaiURLImage("@@sampleTrain"),
+                        new ClarifaiURLImage("ENTER_URL_HERE"),
                         new ClarifaiURLImage("the-url-2")
                     },
                     "aa7f35c01e0642fda5cf400f543e7c40")
@@ -181,7 +181,7 @@ namespace YourNamespace
 
 {% tab title="objective-c" %}
 ```text
-ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"@@sampleTrain"];
+ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"ENTER_URL_HERE"];
 [_app getModelByName:@"general-v1.3" completion:^(ClarifaiModel *model, NSError *error) {
     [model predictOnImages:@[image]
                 completion:^(NSArray<ClarifaiSearchResult *> *outputs, NSError *error) {
@@ -202,7 +202,7 @@ $client = new ClarifaiClient('YOUR_API_KEY');
 
 $model = $client->publicModels()->generalModel();
 
-$input = new ClarifaiURLImage("@@sampleTrain");
+$input = new ClarifaiURLImage("ENTER_URL_HERE");
 $response = $model->predict($input)
     ->withModelVersionID("aa7f35c01e0642fda5cf400f543e7c40")
     ->executeSync();

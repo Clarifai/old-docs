@@ -254,8 +254,8 @@ if ($response-> isSuccessful()) {
 
 {% tab title="cURL" %}
 ```text
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
+curl -X POST https://api.clarifai.com/v2/inputs \
+  -H "Authorization: Key {{YOUR_API_KEY}}" \
   -H "Content-Type: application/json" \
   -d '
   {
@@ -301,8 +301,7 @@ curl -X POST \
         }
       }
     ]
-  }'\
-  https://api.clarifai.com/v2/inputs
+  }'
 ```
 {% endtab %}
 {% endtabs %}
