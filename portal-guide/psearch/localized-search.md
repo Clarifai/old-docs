@@ -1,8 +1,10 @@
-Localized search is powerful because
+# Localized Search
+
+With visual search, you can find images in your application based on their visual similarity with other images. Visual search leverages the same embedding structure that is used to power image classification and detection models, but does not require the step of defining concepts and training your model. Visual search organizes your data based on the similarity of visual characteristics alone.
+
+With localized search,
 
 
-
-We are extremely excited to be offering the next step in the evolution of our visual search in the form of localized search. With our visual search offering, users can find images in their application based on the similarity between images.
 
 Doing visual search on our Platform is as simple as clicking a button. Consider the following application which is being used to classify various kinds of vehicles such as bike, bus, car, etc. If I wanted to search images that were similar to a bike, I would do the following
 
