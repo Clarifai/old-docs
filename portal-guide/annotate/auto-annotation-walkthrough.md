@@ -1,11 +1,13 @@
 # Auto Annotation Walkthrough
 
-This tutorial demonstrates how auto-annotation workflows can be configured in the Clarifai API. Inputs are automatically annotated with concepts and assigned `SUCCESS` status by leveraging the high confidence predictions of a model, and when the model is unsure, the annotation is going to be written as you with `PENDING` status. This enables you to scale up your annotation process while ensuring quality standards by including a backstop of human reveiw.
+This tutorial demonstrates how auto-annotation workflows can be configured within Clarifai Portal.
+
+Inputs are automatically annotated with concepts and assigned `SUCCESS` status by leveraging the high confidence predictions of a model, and when the model is unsure, the annotation is going to be written as you with `PENDING` status. This enables you to scale up your annotation process while ensuring quality standards by including a backstop of human review.
 
 
 ### Create Concepts, Label and Train a Custom Model
 
-Create the concepts that we'll be using in our model. In this tutorial we'll create the following concepts: `people`, `man` and `adult`.
+To begin, create your application and upload your inputs.
 
 ![](../../images/create_auto_annotation_demo.jpg)
 
@@ -13,16 +15,23 @@ Create the concepts that we'll be using in our model. In this tutorial we'll cre
 
 ![](../../images/add_inputs_auto_demo.jpg)
 
+Create the concepts that we'll be using in our model, by clicking create new concept in the lefthand sidebar. In this tutorial we'll create concepts that describe people based on activities they do in the park: `walker`, `runner`, `bike_rider`, `rollerblader` and `stroller`.
+
 ![](../../images/create_concepts_auto_a.jpg)
 
 ![](../../images/label_inputs_aa.jpg)
 
+### Navigate to the Model Gallery
+
+Now it is time to create some custom models.
+
 ![](../../images/model_gallery.jpg)
 
-
-### Create a "greater than" Concept Thresholder model
+### Create a Context-Based Classifier
 
 ![](../../images/create_cbc_aa.jpg)
+
+### Create a "greater than" Concept Thresholder model
 
 ![](../../images/train_cbc_aa.jpg)
 
@@ -66,8 +75,8 @@ Adding the image will trigger the default workflow.
 ![](../../images/add_additional_inputs.jpg)
 
 
-### List annotations
+### View Annotations in Explorer
 
-Now you can list annotations with your user id to see the annotations created by your workflow.
+Now you can view your annotations in Explorer. Just drag your mouse over the "tag" icon to see annotations associated with the image.
 
 ![](../../images/aa_inputs.jpg)
