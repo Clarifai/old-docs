@@ -31,7 +31,7 @@ Using Google/GitHub to sign-up for a Clarifai account is very simple as shown in
 ### GitHub
 After clicking the “Sign in with GitHub” button user will be redirected to the Authorisation page:
 
-![sign-on](../images/SSO options.png)
+![sign-on](../../images/sso-options.png)
 
 
 If he presses Authorize Clarifai green button he will be directed back to portal, where he will be logged in. If he did not have an account before it will be created and he has to accept the privacy policy and terms:
