@@ -48,6 +48,7 @@ Once you have authorized the account via GitHub, you will get an email that look
 You can click the Revoke Access button to disconnect your Clarifai and GitHub account. 
 
 If you click the link in the email, you can click it and revoke access to Clarifai through your GitHub account. 
+
 ![Revoke-account](../../images/github-edit .png)
 
 ## Google
