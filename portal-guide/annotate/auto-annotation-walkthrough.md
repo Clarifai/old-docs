@@ -13,11 +13,15 @@ To begin, create your application and upload your inputs.
 
 ![](../../images/auto_annotation_app_details.jpg)
 
+Upload files from your computer, or add image and video URLs.
+
 ![](../../images/add_inputs_auto_demo.jpg)
 
 Create the concepts that we'll be using in our model, by clicking create new concept in the lefthand sidebar. In this tutorial we'll create concepts that describe people based on activities they do in the park: `walker`, `runner`, `bike_rider`, `rollerblader` and `stroller`.
 
 ![](../../images/create_concepts_auto_a.jpg)
+
+Label your inputs with the appropriate concepts by clicking the checkmark box.
 
 ![](../../images/label_inputs_aa.jpg)
 
