@@ -29,12 +29,14 @@ Using Google/GitHub to sign-up for a Clarifai account is very simple as shown in
 
 
 ### GitHub
-After clicking the “Sign in with GitHub” button user will be redirected to the Authorisation page:
+1. After clicking the “Sign in with GitHub” button users will be redirected to the Authorisation page:
 
 ![sign-on](../../images/sso-options.png)
 
 
-If he presses Authorize Clarifai green button he will be directed back to portal, where he will be logged in. If he did not have an account before it will be created and he has to accept the privacy policy and terms:
+2. Once you press Authorize Clarifai, your account will be created with the user's GitHub account. You will be then asked to consent to the [GDPR Privacy Policy](https://www.clarifai.com/privacy-policy) as shown below.
+
+![Confirmation of GDPR](../../images/confirmation.png)
 
 
 After Authorising their account with GitHub the user will be sent an email by GitHub that looks something like this:
