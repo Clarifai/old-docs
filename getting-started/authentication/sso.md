@@ -28,24 +28,36 @@ Nowadays almost everyone has one or more Google account(s). This universal avail
 Using Google/GitHub to sign-up for a Clarifai account is very simple as shown in the below screenshots.
 
 
-### GitHub
-1. After clicking the “Sign in with GitHub” button users will be redirected to the Authorisation page:
+## GitHub
+1. Click the “Sign in with GitHub” button users will be redirected to the Authorisation page:
 
 ![sign-on](../../images/sso-options.png)
 
 
-2. Once you press Authorize Clarifai, your account will be created with the user's GitHub account. You will be then asked to consent to the [GDPR Privacy Policy](https://www.clarifai.com/privacy-policy) as shown below.
+2. Once you press Authorize Clarifai, your account will be created with the user's GitHub account. You will be then asked to consent to the [GDPR-Privacy-Policy](https://www.clarifai.com/privacy-policy) as shown below.
 
-![Confirmation of GDPR](../../images/confirmation.png)
+![Confirmation-of-GDPR](../../images/confirmation.png)
 
+3. **Congrats. You are now a Clarifai User.**
 
-After Authorising their account with GitHub the user will be sent an email by GitHub that looks something like this:
+** How to revoke the permission via GitHub. ** 
 
+Once you have authorized the account via GitHub, you will get an email that looks like the screenshot below.
+![GitHub-email](../../images/confirmation_email.png)
 
-The link in the email will take user to his/her security page, where he/she can Revoke access to our application. This means that when they want to sign in a gain with GitHub to the Portal they have to authorise again.
+If you click the link in the email, you can click it and revoke access to Clarifai through your GitHub account. 
+![Revoke-account](../../images/github-edit .png)
 
+## Google
 
+1. Click the “Sign in with Google button users will be redirected to the Authorisation page:
 
-Google
+![sign-on](../../images/sso-options.png)
+
+2. Choose the account to use for creating your Clarifai Account. 
+![choose-account](../../images/choose_account.png)
+
+3. Consent to the [GDPR-Privacy-Policy](https://www.clarifai.com/privacy-policy) as shown below.
+![Confirmation-of-GDPR](../../images/confirmation.png)
 
 
