@@ -2,8 +2,6 @@
 
 ## What is Social SSO?
 
-In general, Single Sign On (SSO) allows the clients to manage the users outside of the built-in application. 
-
 Similar to Single Sign On (SSO), Social Login allows users to access systems with login credentials that already exist on other social platforms. It’s simple and convenient and it will let Clarifai users utilize social logins for Google and GitHub. These social Sign On were used primarily because it enhances the user experience of Open Social - no need to fill out the sign-up forms or remember another password. 
 
 
@@ -29,16 +27,16 @@ Using Google/GitHub to sign-up for a Clarifai account is very simple as shown in
 
 
 ## GitHub
-1. Click the “Sign in with GitHub” button users will be redirected to the Authorisation page:
+1. Click the “Sign in with GitHub” button and you will be redirected to the Authorisation page:
 
 ![sign-on](../../images/sso-options.png)
 
 
-2. Once you press Authorize Clarifai, your account will be created with the user's GitHub account. You will be then asked to consent to the [GDPR-Privacy-Policy](https://www.clarifai.com/privacy-policy) as shown below.
+2. Once you press Authorize Clarifai, your account will be created with your GitHub account. You will be then asked to consent to the [GDPR-Privacy-Policy](https://www.clarifai.com/privacy-policy) as shown below.
 
 ![Confirmation-of-GDPR](../../images/confirmation.png)
 
-3. Congrats. You are now a Clarifai User.
+3. Congratulations. You are now a Clarifai User.
 
 ## How to revoke the permission via GitHub.
 
@@ -53,7 +51,7 @@ If you click the link in the email, you can click it and revoke access to Clarif
 
 ## Google
 
-1. Click the “Sign in with Google button users will be redirected to the Authorisation page:
+1. Click the “Sign in with Google button and you will be redirected to the Authorization page:
 
 ![sign-on](../../images/sso-options.png)
 
@@ -62,5 +60,7 @@ If you click the link in the email, you can click it and revoke access to Clarif
 
 3. Consent to the [GDPR-Privacy-Policy](https://www.clarifai.com/privacy-policy) as shown below.
 ![Confirmation-of-GDPR](../../images/confirmation.png)
+
+
 
 
