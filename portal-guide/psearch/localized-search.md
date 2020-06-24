@@ -1,6 +1,6 @@
 # Localized Search
 
-With visual search, you can find images in your application based on their visual similarity with other images. Visual search leverages the same embedding structure that is used to power image classification and detection models, but does not require the step of defining concepts and training your model. Visual search organizes your data based on the similarity of visual characteristics alone.
+With visual search, you can find images in your application based on their visual similarity with other images. Visual search leverages the same embedding structure that is used to power image classification and detection models, but does not require concepts and training. Visual search organizes your data based on the similarity of visual characteristics alone.
 
 With localized search,
 
