@@ -38,12 +38,14 @@ Using Google/GitHub to sign-up for a Clarifai account is very simple as shown in
 
 ![Confirmation-of-GDPR](../../images/confirmation.png)
 
-3. **Congrats. You are now a Clarifai User.**
+3. Congrats. You are now a Clarifai User.
 
-** How to revoke the permission via GitHub. ** 
+## How to revoke the permission via GitHub.
 
 Once you have authorized the account via GitHub, you will get an email that looks like the screenshot below.
 ![GitHub-email](../../images/confirmation_email.png)
+
+You can click the Revoke Access button to disconnect your Clarifai and GitHub account. 
 
 If you click the link in the email, you can click it and revoke access to Clarifai through your GitHub account. 
 ![Revoke-account](../../images/github-edit .png)
