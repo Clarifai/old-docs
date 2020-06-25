@@ -2,8 +2,11 @@
 
 This tutorial demonstrates how auto-annotation workflows can be configured within Clarifai Portal.
 
-Inputs are automatically annotated with concepts and assigned `SUCCESS` status by leveraging the high confidence predictions of a model, and when the model is unsure, the annotation is going to be written as you with `PENDING` status. This enables you to scale up your annotation process while ensuring quality standards by including a backstop of human review.
+With auto-annotation, you can use the predictions of your AI model to label your inputs. Auto-annotation can help to speed up the process of preparing training data. The basic idea behind auto annotation is that when your model predictions are confident, you can have your data automatically labeled, and when your predictions are less-than-confident, you can have your input sent to a human being for review.
 
+This enables you to scale up your annotation process while ensuring quality standards by including a backstop of human review.
+
+![](../../images/auto_annotation.jpg)
 
 ### Create Concepts, Label and Train a Custom Model
 
