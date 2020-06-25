@@ -4,7 +4,7 @@
 
 The API is built around a simple idea. You send inputs \(images\) to the service and it returns predictions. In addition to receiving predictions on inputs, you can also index inputs and their predictions to later search against. You can also index inputs with concepts to later train your own model.
 
-When you add an input to your app, the base workflow of your app runs, computing the outputs from all the models in that workflow and indexes those outputs. Those indexed outputs are what incur the indexing fee monthly, and enablessearch and training on top of the outputs of the base workflow models.
+When you add an input to your app, the base workflow of your app runs, computing the outputs from all the models in that workflow and indexes those outputs. Those indexed outputs are what incur the indexing fee monthly, and enable search and training on top of the outputs of the base workflow models.
 
 ### Add Inputs
 
@@ -190,7 +190,8 @@ curl -X POST \
       {
         "data": {
           "image": {
-            "url": "https://samples.clarifai.com/metro-north.jpg"
+            "url": "https://samples.clarifai.com/metro-north.jpg",
+            "allow_duplicate_url": true
           }
         }
       }
@@ -670,18 +671,20 @@ curl -X POST \
       {
         "data": {
           "image": {
-            "url": "https://samples.clarifai.com/metro-north.jpg"
+            "url": "https://samples.clarifai.com/metro-north.jpg",
+            "allow_duplicate_url": true
           }
         },
-        "id": "{id1}"
+        "id": "train1"
       },
       {
         "data": {
           "image": {
-            "url": "https://samples.clarifai.com/puppy.jpeg"
+            "url": "https://samples.clarifai.com/puppy.jpeg",
+            "allow_duplicate_url": true
           }
         },
-        "id": "{id2}"
+        "id": "puppy1"
       }
     ]
   }'\
@@ -718,7 +721,7 @@ MultiInputResponse postInputsResponse = stub.postInputs(
                 )
                 .addConcepts(
                     Concept.newBuilder()
-                        .setId("boscoe")
+                        .setId("charlie")
                         .setValue(1f)
                 )
         )
@@ -740,7 +743,7 @@ stub.PostInputs(
     {
         inputs: [{data: {
             image: {url: "https://samples.clarifai.com/puppy.jpeg", allow_duplicate_url: true},
-            concepts: [{id: "boscoe", value: 1.}]
+            concepts: [{id: "charlie", value: 1.}]
         }}]
     },
     metadata,
@@ -774,7 +777,7 @@ post_inputs_response = stub.PostInputs(
                         url="https://samples.clarifai.com/puppy.jpeg",
                         allow_duplicate_url=True
                     ),
-                    concepts=[resources_pb2.Concept(id="boscoe", value=1.)]
+                    concepts=[resources_pb2.Concept(id="charlie", value=1.)]
                 )
             )
         ]
@@ -793,7 +796,7 @@ app.inputs.create({
   url: "https://samples.clarifai.com/puppy.jpeg",
   concepts: [
     {
-      id: "boscoe",
+      id: "charlie",
       value: true
     }
   ]
@@ -816,20 +819,20 @@ from clarifai.rest import Image as ClImage
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 
 # add by url
-app.inputs.create_image_from_url("https://samples.clarifai.com/puppy.jpeg", concepts=['boscoe'])
+app.inputs.create_image_from_url("https://samples.clarifai.com/puppy.jpeg", concepts=['charlie'])
 
 # add by base64 bytes
-app.inputs.create_image_from_base64(base64_bytes, concepts=['boscoe'])
+app.inputs.create_image_from_base64(base64_bytes, concepts=['charlie'])
 
 # add by raw bytes
-app.inputs.create_image_from_bytes(raw_bytes, concepts=['boscoe'])
+app.inputs.create_image_from_bytes(raw_bytes, concepts=['charlie'])
 
 # add by local file
-app.inputs.create_image_from_filename(local_filename, concepts=['boscoe'])
+app.inputs.create_image_from_filename(local_filename, concepts=['charlie'])
 
 # add multiple with concepts
-img1 = ClImage(url="https://samples.clarifai.com/puppy.jpeg", concepts=['boscoe'], not_concepts=['our_wedding'])
-img2 = ClImage(url="https://samples.clarifai.com/wedding.jpg", concepts=['our_wedding'], not_concepts=['cat','boscoe'])
+img1 = ClImage(url="https://samples.clarifai.com/puppy.jpeg", concepts=['charlie'], not_concepts=['our_wedding'])
+img2 = ClImage(url="https://samples.clarifai.com/wedding.jpg", concepts=['our_wedding'], not_concepts=['cat','charlie'])
 
 app.inputs.bulk_create_images([img1, img2])
 ```
@@ -841,7 +844,7 @@ client.addInputs()
     .plus(ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpeg")
         .withConcepts(
             // To mark a concept as being absent, chain `.withValue(false)`
-            Concept.forID("boscoe")
+            Concept.forID("charlie")
         )
     )
     .executeSync();
@@ -868,7 +871,7 @@ namespace YourNamespace
                     new ClarifaiURLImage(
                         "https://samples.clarifai.com/puppy.jpeg",
                         // To mark a concept as being absent, use negativeConcepts
-                        positiveConcepts: new List<Concept> {new Concept("boscoe")}))
+                        positiveConcepts: new List<Concept> {new Concept("charlie")}))
                 .ExecuteAsync();
         }
     }
@@ -922,12 +925,13 @@ curl -X POST \
       {
         "data": {
           "image": {
-            "url": "https://samples.clarifai.com/puppy.jpeg"
+            "url": "https://samples.clarifai.com/puppy.jpeg",
+            "allow_duplicate_url": true
           },
           "concepts":[
             {
-              "id": "boscoe",
-              "value": true
+              "id": "charlie",
+              "value": 1
             }
           ]
         }
@@ -1158,10 +1162,7 @@ curl -X POST \
             "url": "https://samples.clarifai.com/puppy.jpeg",
             "allow_duplicate_url": true
           },
-          "metadata": {
-            "key": "value",
-            "list":[1,2,3]
-          }
+          "metadata": {"id": "id001", "type": "animal", "size": 100}
         }
       }
     ]
@@ -1171,7 +1172,7 @@ curl -X POST \
 {% endtab %}
 {% endtabs %}
 
-### Get inputs
+### List inputs
 
 You can list all the inputs \(images\) you have previously added either for [search](https://github.com/Clarifai/docs/tree/5882f46bd17affcd85ed3e2ec98f4d6f355b58a9/advanced-searches.md) or [train](https://github.com/Clarifai/docs/tree/5882f46bd17affcd85ed3e2ec98f4d6f355b58a9/train.md).
 
@@ -1342,7 +1343,155 @@ if ($response->isSuccessful()) {
 ```text
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/inputs
+  https://api.clarifai.com/v2/inputs?page=1&per_page=10
+```
+{% endtab %}
+{% endtabs %}
+
+
+### List inputs (streaming)
+
+Another method for listing inputs which was built to scalably list app's inputs in an iterative / streaming fashion. `StreamInputs` will return `per_page` number of inputs from a certain input onward, controlled by the optional `last_id` parameter (defaults to the first input).
+
+By default, the stream will return inputs from oldest to newest. Set the `descending` field to true to reverse that order.
+
+{% tabs %}
+{% tab title="gRPC Java" %}
+```java
+import java.util.List;
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+// To start from beginning, do not provide the last ID parameter.
+MultiInputResponse firstStreamInputsResponse = stub.streamInputs(
+    StreamInputsRequest.newBuilder()
+        .setPerPage(10)
+        .build()
+);
+
+if (firstStreamInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Stream inputs failed, status: " + firstStreamInputsResponse.getStatus());
+}
+
+System.out.println("First response (starting from the first input):");
+List<Input> inputs = firstStreamInputsResponse.getInputsList();
+for (Input input : inputs) {
+    System.out.println("\t" + input.getId());
+}
+
+String lastId = inputs.get(inputs.size() - 1).getId();
+
+// Set last ID to get the next set of inputs. The returned inputs will not include the last ID input.
+MultiInputResponse secondStreamInputsResponse = stub.streamInputs(
+    StreamInputsRequest.newBuilder()
+        .setLastId(lastId)
+        .setPerPage(10)
+        .build()
+);
+
+if (secondStreamInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Stream inputs failed, status: " + secondStreamInputsResponse.getStatus());
+}
+
+System.out.println(String.format("Second response (first input is the one following input ID %s)", lastId));
+for (Input input : secondStreamInputsResponse.getInputsList()) {
+    System.out.println("\t" + input.getId());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.StreamInputs(
+    {
+        per_page: 10
+    },
+    metadata,
+    (err, firstResponse) => {
+        if (err) {
+            done(err);
+            return;
+        }
+
+        if (firstResponse.status.code !== 10000) {
+            done(new Error("Received status: " + firstResponse.status.description + "\n" + firstResponse.status.details));
+            return;
+        }
+
+        console.log("First response (starting from the first input):");
+        for (const input of firstResponse.inputs) {
+            console.log("\t" + input.id);
+        }
+
+        const lastId = firstResponse.inputs[firstResponse.inputs.length - 1].id;
+        stub.StreamInputs(
+            {
+                last_id: lastId,
+                per_page: 10
+            },
+            metadata,
+            (err, secondResponse) => {
+                if (err) {
+                    done(err);
+                    return;
+                }
+
+                if (secondResponse.status.code !== 10000) {
+                    done(new Error("Received status: " + secondResponse.status.description + "\n" + secondResponse.status.details));
+                    return;
+                }
+
+                console.log("Second response (first input is the one following input ID " + lastId + ")");
+                for (const input of secondResponse.inputs) {
+                    console.log("\t" + input.id);
+                }
+
+                done();
+            }
+        );
+    }
+);
+```
+{% endtab %}
+
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+# To start from beginning, do not provide the last_id parameter.
+stream_inputs_response = stub.StreamInputs(
+    service_pb2.StreamInputsRequest(per_page=10),
+    metadata=metadata
+)
+
+if stream_inputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Stream inputs failed, status: " + stream_inputs_response.status.description)
+
+print("First response (starting from the first input):")
+for input_object in stream_inputs_response.inputs:
+    print("\t" + input_object.id)
+
+last_id = stream_inputs_response.inputs[-1].id
+
+# Set last_id to get the next set of inputs. The returned inputs will not include the last_id input.
+stream_inputs_response = stub.StreamInputs(
+    service_pb2.StreamInputsRequest(per_page=10, last_id=last_id),
+    metadata=metadata
+)
+
+print(f"Second response (first input is the one following input ID {last_id}):")
+for input_object in stream_inputs_response.inputs:
+    print("\t" + input_object.id)
 ```
 {% endtab %}
 {% endtabs %}
@@ -1503,7 +1652,7 @@ if ($response->isSuccessful()) {
 ```text
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/inputs/{id}
+  https://api.clarifai.com/v2/inputs/{YOUR_INPUT_ID}
 ```
 {% endtab %}
 {% endtabs %}
@@ -1898,6 +2047,9 @@ if ($response->isSuccessful()) {
 
 {% tab title="cURL" %}
 ```text
+# Value of 1 means true, this concept is present.
+# Value of 0 means false, this concept is not present.
+# Supported actions: overwrite, merge, remove.
 curl -X PATCH \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -1905,16 +2057,16 @@ curl -X PATCH \
   {
     "inputs": [
       {
-        "id": "{id}",
+        "id": "{YOUR_INPUT_ID}",
         "data": {
           "concepts": [
             {
               "id": "tree",
-              "value": true
+              "value": 1
             },
             {
               "id": "water",
-              "value": false
+              "value": 0
             }
           ]
         }
@@ -2152,6 +2304,9 @@ ClarifaiConcept *newConcept = [[ClarifaiConcept alloc] initWithConceptID:@"tree"
 
 {% tab title="cURL" %}
 ```text
+# Value of 1 means true, this concept is present.
+# Value of 0 means false, this concept is not present.
+# Supported actions: overwrite, merge, remove.
 curl -X PATCH \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -2159,31 +2314,31 @@ curl -X PATCH \
   {
     "inputs": [
       {
-        "id": "{id1}",
+        "id": "{YOUR_INPUT_ID_1}",
         "data": {
           "concepts": [
             {
               "id": "tree",
-              "value": true
+              "value": 1
             },
             {
               "id": "water",
-              "value": false
+              "value": 0
             }
           ]
         }
       },
       {
-        "id": "{id2}",
+        "id": "{YOUR_INPUT_ID_2}",
         "data": {
           "concepts": [
             {
-              "id": "tree",
-              "value": true
+              "id": "animal",
+              "value": 1
             },
             {
-              "id": "water",
-              "value": false
+              "id": "fruit",
+              "value": 0
             }
           ]
         }
@@ -2419,6 +2574,8 @@ if ($response->isSuccessful()) {
 
 {% tab title="cURL" %}
 ```text
+# We're removing the concept, so there's no need to specify
+# the concept value.
 curl -X PATCH \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -2426,11 +2583,10 @@ curl -X PATCH \
   {
     "inputs": [
       {
-        "id":"{{asset_id}}",
+        "id":"{YOUR_INPUT_ID}",
         "data": {
             "concepts":[
-                {"id":"mattid2", "value":true},
-                {"id":"ferrari", "value":false}
+                {"id":"water"}
             ]
         }
       }
@@ -2645,6 +2801,8 @@ ClarifaiConcept *concept = [[ClarifaiConcept alloc] initWithConceptName:@"cute c
 
 {% tab title="cURL" %}
 ```text
+# We're removing the concept, so there's no need to specify
+# the concept value.
 curl -X PATCH \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -2652,27 +2810,27 @@ curl -X PATCH \
   {
     "inputs": [
       {
-        "id": "{id1}",
+        "id": "{YOUR_INPUT_ID_1}",
         "data": {
           "concepts":[
             {
-              "id": "mattid2"
+              "id": "tree"
             },
             {
-              "id": "ferrari"
+              "id": "water"
             }
           ]
         }
       },
       {
-        "id": "{id2}",
+        "id": "{YOUR_INPUT_ID_2}",
         "data": {
           "concepts":[
             {
-              "id": "mattid2"
+              "id": "animal"
             },
             {
-              "id": "ferrari"
+              "id": "fruit"
             }
           ]
         }
@@ -2833,7 +2991,7 @@ if ($response->isSuccessful()) {
 ```text
 curl -X DELETE \
   -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/inputs/<INPUT_ID>
+  https://api.clarifai.com/v2/inputs/{YOUR_INPUT_ID}
 ```
 {% endtab %}
 {% endtabs %}
@@ -2993,7 +3151,7 @@ curl -X DELETE \
   -H "Content-Type: application/json" \
   -d '
   {
-    "ids":["INPUT_ID1","INPUT_ID2"]
+    "ids":["{YOUR_INPUT_ID_1}","{YOUR_INPUT_ID_2}"]
   }'\
   https://api.clarifai.com/v2/inputs
 ```
@@ -3151,10 +3309,9 @@ curl -X DELETE \
   -H "Content-Type: application/json" \
   -d '
   {
-    "delete_all":true
+    "delete_all": true
   }'\
   https://api.clarifai.com/v2/inputs
 ```
 {% endtab %}
 {% endtabs %}
-

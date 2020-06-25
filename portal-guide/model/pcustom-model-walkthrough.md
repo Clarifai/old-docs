@@ -1,23 +1,37 @@
 # Custom model walkthrough
 
-First make sure that you have created an application and uploaded some images.
+To set up a new model, you will need to head over to the [Applications page](https://portal.clarifai.com/apps) through your account. Start by creating your new application.
 
-Just navigate to Explorer and click the "+" button next to "No Concepts".
+![](../../images/create_an_application.jpg)
 
-![](../../images/plus_button.jpg)
+Click "View in Explorer", or click the "eye" icon in the lefthand sidebar.
 
-Type in the name of a new concept and click "Add".
+![](../../images/view_in_explorer.jpg)
 
-![](../../images/create_concpet.jpg)
+Add your inputs. Just click "browse your files" or paste image URLs in the space provided.
 
-Select an image that you would like to annotate.
+![](../../images/Add_inputs.jpg)
 
-![](../../images/select_image.jpg)
+Click on an image. You can create new concepts and label your images in the right hand sidebar.
 
-Click the check mark and then click train.
+![](../../images/create_concepts_and_label.jpg)
 
-![](../../images/label_and_train.jpg)
+Navigate to Model Mode and select your model. Click on the "four squares" icon on the lefthand sidebar.
 
-That's it! You have created a new custom model and you can instantly use your new concept as a search term.
+![](../../images/model_gallery.jpg)
 
-![](../../images/ready_to_search.jpg)
+Click "Create Custom Model" to choose a model template. You can filter your results by:
+
+* **Model Type** You can choose "Trainable" (machine learning), or "Non-Trainable" (fixed-function) models.
+* **Input** Inputs currently accept Embeddings, Concepts, Image, Image or Video, Region Images, or Region Concepts.
+* **Output** Outputs currently return Clusters, Color, Concepts, Embeddings, Region Embeddings, Region Concepts, Region Images, or Region Text.
+
+![](../../images/create_custom_model.jpg)
+
+For this example we choose a context-based classifier that can use a pre-trained Clarifai Model. From here we name the model, and add concepts that we have created. The available parameters vary based on the type of model that you choose. When you have configured the model the way you like it, click the "Create Model" button at the bottom of the page.
+
+![](../../images/create_context_based_classifier.jpg)
+
+Finally, click the blue "Train Model" button in the upper righthand corner of the screen. Once it is trained you can put it to work by [adding it to your workflows](https://docs.clarifai.com/portal-guide/workflows).
+
+![](../../images/train_model.jpg)
