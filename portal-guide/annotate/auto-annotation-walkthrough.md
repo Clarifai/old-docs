@@ -1,10 +1,10 @@
 # Auto Annotation Walkthrough
 
-This tutorial demonstrates how auto-annotation workflows can be configured within Clarifai Portal.
+This tutorial demonstrates how auto-annotation workflows can be configured within Clarifai Portal. With auto-annotation, you can use model predictions to label your inputs. Auto-annotation can help you to prepare training data, or assign other useful labels and metadata to your inputs.
 
-With auto-annotation, you can use the predictions of your AI model to label your inputs. Auto-annotation can help to speed up the process of preparing training data. The basic idea behind auto annotation is that when your model predictions are confident, you can have your data automatically labeled, and when your predictions are less-than-confident, you can have your input sent to a human being for review.
+When a concept is predicted by a model, it is predicted with a confidence score between 0 and 1. When your model predictions are confident (close to 1), you can have your data automatically labeled with that concept. When your predictions are less-than-confident, you can have your input sent to a human being for review.
 
-This enables you to scale up your annotation process while ensuring quality standards by including a backstop of human review.
+This enables you to speed-up and scale-up your annotation process while ensuring quality standards.
 
 ![](../../images/auto_annotation.jpg)
 
@@ -20,7 +20,7 @@ Upload files from your computer, or add image and video URLs.
 
 ![](../../images/add_inputs_auto_demo.jpg)
 
-Create the concepts that we'll be using in our model, by clicking create new concept in the lefthand sidebar. In this tutorial we'll create concepts that describe people based on activities they do in the park: `walker`, `runner`, `bike_rider`, `rollerblader` and `stroller`.
+Create the concepts that you would like to use for your model. Click create new concept in the lefthand sidebar. In this tutorial we'll create concepts that describe people based on activities they do in the park: `walker`, `runner`, `bike_rider`, `rollerblader` and `stroller`.
 
 ![](../../images/create_concepts_auto_a.jpg)
 
@@ -36,31 +36,34 @@ Now it is time to create some custom models.
 
 ### Create a Context-Based Classifier
 
-![](../../images/create_cbc_aa.jpg)
+A Context-Based Classifier lets you create a custom classification model that will predict the custom concepts you have created. Choose a `DISPLAY NAME` and click in the `OUTPUT_INFO.DATA.CONCEPTS` box to select the concepts that you would like included in your model.
 
-### Create a "greater than" Concept Thresholder model
+![](../../images/create_cbc_aa.jpg)
 
 ![](../../images/train_cbc_aa.jpg)
 
+### Create `GREATER THAN` and `LESS THAN` Concept Thresholder models
 
-### Create a "less than" Concept Thresholder model
+Concept Thresholders help you route your data based on the confidence of your predictions. Choose a `DISPLAY NAME` and add the concepts you would like to route under the `OUTPUT_INFO.DATA` heading. You can choose separate concept thresholds for each of your custom concepts. Create one model with high `CONCEPT THRESHOLDS` and select `GREATER_THAN` under `OUTPUT_INFO.PARAMS.CONCEPT_THRESHOLD_TYPE`. Create another model with low `CONCEPT THRESHOLDS` and select `LESS_THAN` under `OUTPUT_INFO.PARAMS.CONCEPT_THRESHOLD_TYPE`. The `LESS_THAN` model will help you screen out concepts that are predicted with very low confidence.
 
 ![](../../images/concept_thresholder.jpg)
 
 
-### Create a "write success as me" Annotation Writer model
+### Create a `WRITE SUCCESS` and `WRITE PENDING` Annotation Writer models
+
+The Annotation Writer writes each annotation with a specific concept, status and user. Create one Annotation Writer that will write the annotation with the `ANNOTATION_SUCCESS` status and choose the user (possibly yourself) under `OUTPUT_INFO.PARAMS.ANNOTATION_USER_ID`. Create  a second Annotation Writer that will write with the `ANNOTATION_PENDING` status.
 
 ![](../../images/annotation_writer.jpg)
 
 
-
 ### Create the workflow
 
-We will now join all the models together into a single workflow.
+We will now join all the models together into a single workflow. In the Clarifai platform, the outputs from one model can be used as inputs to another model. Different models accept and produce different types of inputs and outputs.
 
-Every input will be predicted by General Embed model to generate embedding. The output of the embed model (embeddings) will be sent to general concept to predict concept and cluster model. Then the concept model's output (a list of concepts) will be sent to concept mapper model which maps Clarifai concept to your concept, `people`, `man` and `adult` in this case. Then the mapped concepts will be sent to both concept thresholds models (`GREATER THAN` and `LESS THAN`). `GREATER THAN` model will filter out the concept if it lower than corresponding value you defined in model and send the final concept list to `write success as me` model which labels the input with these concepts (your app concepts only) as you with `success` status. You can train or search on these concepts immediately. The `LESS THAN` model will filter out the concept if it is higher than the corresponding value you defined and send the final concept list to `write pending as me` model which labels the input with these concepts (your app concepts only) as you with `pending` status.
+The Context-Based Classifier will return list of concepts for each of your inputs. These inputs will then be sent to the Concept Thresholder models. `GREATER THAN` model will filter out the concept if it lower than the threshold and send the final concept list to `WRITE SUCCESS` model. Concepts will then be written to the input with `SUCCESS` status. You can train or search on these concepts immediately.
 
-The model IDs and model version IDs from the public `clarifai/main` application are fixed, so they are already hard-coded in the code examples below. It's possible to use other public model or model version IDs.
+The `LESS THAN` model will filter out the concept if it is higher than the corresponding value you defined and send the final concept list to `WRITE PENDING`. Concepts will then be written to the input with `PENDING` status.
+
 
 ![](../../images/create_workflow_aa.jpg)
 
@@ -75,9 +78,9 @@ Make this the default workflow in the app, so it will run every time we add an i
 ![](../../images/set_as_default.jpg)
 
 
-### Add an image
+### Add new images
 
-Adding the image will trigger the default workflow.
+Adding new images will trigger the default workflow in your app.
 
 ![](../../images/add_additional_inputs.jpg)
 

@@ -1,6 +1,90 @@
+# Changelog 6.3
+
+|New Feature    |Improvement|Bug Fix|Enterprise Only|
+|:-:|:-:|:-:|:-:|
+|![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
+
+## Applications
+|Status     |Details                                |
+|-----------|---------------------------------------|
+|![](/images/improvement.jpg)|Send collaborator emails asynchronously|
+|![](/images/bug.jpg)            |NLP bug fixes for non-text apps        |
+
+## Inputs
+|Status     |Details                                |
+|-----------|---------------------------------------|
+|![](/images/improvement.jpg)|Consolidated input related status codes |
+|![](/images/improvement.jpg)|Add frame.id to API as well as track.id |
+|![](/images/bug.jpg)            |Granted select permission to clarifairead|
+
+## Annotate
+|Status     |Details                                |
+|-----------|---------------------------------------|
+|![](/images/new_feature.jpg)    |Added list annotations filter status        |
+|![](/images/improvement.jpg)|Added concept selection for tasks        |
+|![](/images/improvement.jpg)|post/patch annotations request now allow setting status|
+|![](/images/improvement.jpg)|Changed task form options               |
+|![](/images/improvement.jpg)|Set annotation status to awaiting for review if the authorized user is not app owner|
+|![](/images/improvement.jpg)|Return only input_level annotation in input.data|
+|![](/images/bug.jpg)            |Drawing annotations: wrong embed model version id. Fixed|
+|![](/images/bug.jpg)            |Eliminated error if no annotation to be deleted|
+|![](/images/bug.jpg)            |Create one annotation for each bbox    |
+
+## Model
+|Status     |Details                                |
+|-----------|---------------------------------------|
+|![](/images/new_feature.jpg)    |Added support for adding and training on text in the platform|
+|![](/images/new_feature.jpg)    |Created a NLP mock prediction endpoint |
+|![](/images/improvement.jpg)|Created test set to evaluate quick trained models or k-fold if no test search is specified|
+|![](/images/improvement.jpg)|Added vocab_id for demographics model concepts |
+|![](/images/improvement.jpg)|Fixed sorting of A.G.E. concepts in golang for demographics model so we don't chop off sets of them |
+|![](/images/improvement.jpg)|Deprecated Face from javascript Client  |
+|![](/images/improvement.jpg)|Deprecated Face from Java Client        |
+|![](/images/bug.jpg)            |Confusion matrix predicted/true are swapped in evaluation results. Fixed|
+|![](/images/bug.jpg)            |Explorer Image/Text Joint embedding     |
+|![](/images/bug.jpg)            |Fixed selectEmbedModelVersionId in detection apps|
+|![](/images/bug.jpg)            |Fixed generalModel imports and optimized video click handlers with useCallback hooks|
+
+## Search
+|Status     |Details                                |
+|-----------|---------------------------------------|
+|![](/images/improvement.jpg)|Persisted the saved search used in train a model version|
+|![](/images/bug.jpg)            |Created log for annotation/search request/response |
+|![](/images/bug.jpg)            |Region Searches within Search Bar still use crop coordinates instead of base64 bytes. Fixed|
+
+## Portal
+|Status     |Details                                |
+|-----------|---------------------------------------|
+|![](/images/new_feature.jpg)    |Created new Single Image View and Image Tools|
+|![](/images/new_feature.jpg)    |Enabled Display Text Thumbnails in App Grid View and App Details View|
+|![](/images/new_feature.jpg)    |Text Thumbnails display in Portal/Search Bar disabled|
+|![](/images/new_feature.jpg)    |Enabled View Text Assets in Portal's Image View|
+|![](/images/new_feature.jpg)    |Added Text Inputs To Explorer Apps       |
+|![](/images/new_feature.jpg)    |Imported new icons for Labeler Image Tools into the style guide|
+|![](/images/improvement.jpg)|Added login tracking to analytics package in Portal|
+|![](/images/improvement.jpg)|Allowed pasting into the add inputs text area and clear the text box after clicking submit|
+|![](/images/bug.jpg)            |Search bar not visible. Fixed                 |
+|![](/images/bug.jpg)            |Removed all instances of worker_id from Explorer|
+|![](/images/bug.jpg)            |Fixed popover left/right overflow        |
+|![](/images/bug.jpg)            |Disabled all search by click handlers in Portal for Text Apps|
+|![](/images/bug.jpg)            |Click Search button icons on Thumbs not working for localized search. Fixed|
+|![](/images/bug.jpg)            |Fixed details page header missing description|
+|![](/images/bug.jpg)            |Fixed demo font syntax          |
+
+## Workflow
+|Status     |Details                                |
+|-----------|---------------------------------------|
+|![](/images/new_feature.jpg)    |Added a Range Slider to filter Workflow Predictions by Value|
+|![](/images/improvement.jpg)|Updated Face workflow to include the detect faces as concepts for search|
+
+
+
+
+
+
 # Changelog 6.2
 
-|New Feature|Improvement|Bug Fix|Enterprise Only
+|New Feature    |Improvement|Bug Fix|Enterprise Only|
 |:-:|:-:|:-:|:-:|
 |![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
 
@@ -89,7 +173,7 @@
 
 # Changelog 6.1
 
-|New Feature|Improvement|Bug Fix|Enterprise Only
+|New Feature    |Improvement|Bug Fix|Enterprise Only|
 |:-:|:-:|:-:|:-:|
 |![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
 
@@ -137,7 +221,7 @@
 
 # Changelog 6.0
 
-|New Feature|Improvement|Bug Fix|Enterprise Only
+|New Feature    |Improvement|Bug Fix|Enterprise Only|
 |:-:|:-:|:-:|:-:|
 |![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
 
@@ -236,7 +320,7 @@
 
 # Changelog 5.11
 
-|New Feature|Improvement|Bug Fix|Enterprise Only
+|New Feature    |Improvement|Bug Fix|Enterprise Only|
 |:-:|:-:|:-:|:-:|
 |![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
 
@@ -343,7 +427,7 @@
 
 
 # Changelog 5.10
-|New Feature|Improvement|Bug Fix|Enterprise Only
+|New Feature    |Improvement|Bug Fix|Enterprise Only|
 |:-:|:-:|:-:|:-:|
 |![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
 

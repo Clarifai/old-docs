@@ -1,6 +1,10 @@
 # Auto Annotation Walkthrough
 
-This tutorial demonstrates how auto-annotation workflows can be configured in the Clarifai API. Inputs are automatically annotated with concepts and assigned `SUCCESS` status by leveraging the high confidence predictions of a model, and when the model is unsure, the annotation is going to be written as you with `PENDING` status. This enables you to scale up your annotation process while ensuring quality standards by including a backstop of human reveiw.
+This tutorial demonstrates how auto-annotation workflows can be configured in the Clarifai API. With auto-annotation, you can use model predictions to label your inputs. Auto-annotation can help you to prepare training data, or assign other useful labels and metadata to your inputs.
+
+When a concept is predicted by a model, it is predicted with a confidence score between 0 and 1. When your model predictions are confident (close to 1), you can have your data automatically labeled with that concept. When your predictions are less-than-confident, you can have your input sent to a human being for review.
+
+This enables you to speed-up and scale-up your annotation process while ensuring quality standards.
 
 
 ### Create Concepts

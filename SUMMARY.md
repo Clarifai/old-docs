@@ -70,6 +70,7 @@
   * [Languages](portal-guide/concept/languages.md)
 * [Annotate](portal-guide/annotate/README.md)
   * [Positive and Negative Annotations](portal-guide/annotate/positive-and-negative-annotations.md)
+  * [Auto Annotation Walkthrough](portal-guide/annotate/auto-annotation-walkthrough.md)
 * [Model](portal-guide/model/README.md)
   * [Clarifai Models](portal-guide/model/clarifai-models.md)
   * [Custom Model Walkthrough](portal-guide/model/pcustom-model-walkthrough.md)
