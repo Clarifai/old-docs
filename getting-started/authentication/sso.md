@@ -61,6 +61,3 @@ If you click the link in the email, you can click it and revoke access to Clarif
 3. Consent to the [GDPR-Privacy-Policy](https://www.clarifai.com/privacy-policy) as shown below.
 ![Confirmation-of-GDPR](../../images/confirmation.png)
 
-
-
-
