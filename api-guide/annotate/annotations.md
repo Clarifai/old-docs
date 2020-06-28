@@ -922,6 +922,7 @@ curl -X GET \
 List all annotations, including models created.
 
 {% tabs %}
+
 {% tab title="gRPC Python" %}
 ```python
 from clarifai_grpc.grpc.api import service_pb2
@@ -931,7 +932,7 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 # https://docs.clarifai.com/api-guide/api-overview
 
 list_annotations_response = stub.ListAnnotations(
-    service_pb2.ListAnnotationsRequest(list_all_annotations=True, per_page=10),
+    service_pb2.ListAnnotationsRequest(per_page=10, list_all_annotations=True),
     metadata=metadata
 )
 
@@ -942,6 +943,7 @@ for annotation_object in list_annotations_response.annotations:
     print(annotation_object)
 ```
 {% endtab %}
+
 
 {% tab title="gRPC Java" %}
 ```java

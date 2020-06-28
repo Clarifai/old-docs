@@ -2,7 +2,7 @@
 
 The Clarifai Knowledge Graph lets you map your custom concepts to a common set of concepts understood by all applications on the Clarifai platform. The knowledge graph makes it possible to link data across multiple custom and pre-built models in a meaningful way.
 
-The Knowledge Graph uses Clarifai's concept mapping model to establish a hierarchical relationship between your concepts. and to uses three different *predicates* to organize your concepts: hypernyms, hyponyms, and synonyms.
+The Knowledge Graph uses Clarifai's concept mapping model to establish a hierarchical relationship between your concepts. Concept relationships are organized by three different *predicates*: hypernyms, hyponyms, and synonyms.
 
 **Hyponym** represents an 'is a kind of' relation. The following relationship: 'honey' (subject), 'hyponym' (predicate), 'food' (object) is more easily be read as 'honey' 'is a kind of' 'food'.
 
@@ -11,7 +11,7 @@ The Knowledge Graph uses Clarifai's concept mapping model to establish a hierarc
 **Synonym** The 'synonym' relation defines two concepts that essential mean the same thing. This is more like a "is" relationship. So for example a 'synonym' relationship could be: "puppy" is "pup" The reverse is also true once the former is added so: "pup" is "puppy" will appear in queries as well.
 
 
-You can create these mappings in your application with a few easy steps.  
+You can create these mappings in your application with a few easy steps.
 
 1. Consider the following application that has four concepts: beverages, smoothie, breakfast, and french_toast. You can use the Knowledge Graph to create hierarchical relationships between the concepts.
 
