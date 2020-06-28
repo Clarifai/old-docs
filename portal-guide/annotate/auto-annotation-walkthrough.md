@@ -36,7 +36,7 @@ Now it is time to create some custom models.
 
 ### Create a Context-Based Classifier
 
-A Context-Based Classifier lets you create a custom classification model that will predict the custom concepts you have created. Choose a `DISPLAY NAME` and click in the `OUTPUT_INFO.DATA.CONCEPTS` box to select the concepts that you would like included in your model.
+A Context-Based Classifier lets you create a custom classification model that will predict the concepts you have created. Choose a `DISPLAY NAME` and click in the `OUTPUT_INFO.DATA.CONCEPTS` box to select the concepts that you would like included in your model. Finally, click "Create Model" and then click "Train Model" in the next page.
 
 ![](../../images/create_cbc_aa.jpg)
 
@@ -44,7 +44,7 @@ A Context-Based Classifier lets you create a custom classification model that wi
 
 ### Create `GREATER THAN` and `LESS THAN` Concept Thresholder models
 
-Concept Thresholders help you route your data based on the confidence of your predictions. Choose a `DISPLAY NAME` and add the concepts you would like to route under the `OUTPUT_INFO.DATA` heading. You can choose separate concept thresholds for each of your custom concepts. Create one model with high `CONCEPT THRESHOLDS` and select `GREATER_THAN` under `OUTPUT_INFO.PARAMS.CONCEPT_THRESHOLD_TYPE`. Create another model with low `CONCEPT THRESHOLDS` and select `LESS_THAN` under `OUTPUT_INFO.PARAMS.CONCEPT_THRESHOLD_TYPE`. The `LESS_THAN` model will help you screen out concepts that are predicted with very low confidence.
+Concept Thresholders help you route your data based on the confidence of your predictions. Choose a `DISPLAY NAME` and add the concepts you would like to route under the `OUTPUT_INFO.DATA` heading. You can choose separate concept thresholds for each of your custom concepts. Create one model with high `CONCEPT THRESHOLDS` and select `GREATER_THAN` under `OUTPUT_INFO.PARAMS.CONCEPT_THRESHOLD_TYPE`. Create a second Concept Thresholder model with low `CONCEPT THRESHOLDS` and select `LESS_THAN` under `OUTPUT_INFO.PARAMS.CONCEPT_THRESHOLD_TYPE`. The `LESS_THAN` model will help you screen out concepts that are predicted with very low confidence.
 
 ![](../../images/concept_thresholder.jpg)
 
@@ -62,7 +62,7 @@ We will now join all the models together into a single workflow. In the Clarifai
 
 The Context-Based Classifier will return list of concepts for each of your inputs. These inputs will then be sent to the Concept Thresholder models. `GREATER THAN` model will filter out the concept if it lower than the threshold and send the final concept list to `WRITE SUCCESS` model. Concepts will then be written to the input with `SUCCESS` status. You can train or search on these concepts immediately.
 
-The `LESS THAN` model will filter out the concept if it is higher than the corresponding value you defined and send the final concept list to `WRITE PENDING`. Concepts will then be written to the input with `PENDING` status.
+The `LESS THAN` model will filter out the concepts with low prediction scores. The remaining concept list will be sent to `WRITE PENDING`. Concepts will then be written to the input with `PENDING` status.
 
 
 ![](../../images/create_workflow_aa.jpg)
