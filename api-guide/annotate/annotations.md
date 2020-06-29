@@ -1523,7 +1523,7 @@ curl -X PATCH \
 
 #### Update Annotation with Concepts in a Region
 
-When you update region data, you should nested new data in region.data with region ID set to current region ID if you do not intend to change/remove the region.
+When you update region data, you must nest this new data within region.data. Set the region_id to the current region_id if you do not want to change or remove this region.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
