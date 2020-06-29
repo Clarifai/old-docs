@@ -1,10 +1,8 @@
 # Auto Annotation Walkthrough
 
-This tutorial demonstrates how auto-annotation workflows can be configured in the Clarifai API. With auto-annotation, you can use model predictions to label your inputs. Auto-annotation can help you to prepare training data, or assign other useful labels and metadata to your inputs.
+This tutorial demonstrates how auto-annotation workflows can be configured in the Clarifai API. With auto-annotation, you can use model predictions to label your inputs. Auto-annotation can help you to prepare training data, or assign other useful labels and metadata to your inputs. Since models are doing most of the work of annotating your data, this enables you to speed-up and scale-up your annotation process while ensuring quality standards, typically reducing human effort of labelling data by orders of magnitude. And since this is built into our APIs it seamlessly integrates with all the search, training and prediction functionality of the Clarifai platforam.
 
-When a concept is predicted by a model, it is predicted with a confidence score between 0 and 1. When your model predictions are confident (close to 1), you can have your data automatically labeled with that concept. When your predictions are less-than-confident, you can have your input sent to a human being for review.
-
-This enables you to speed-up and scale-up your annotation process while ensuring quality standards.
+When a concept is predicted by a model, it is predicted with a confidence score between 0 and 1. In this walkthrough we will leverage that score in our workflow so that when your model predictions are confident (close to 1), you can have your data automatically labeled with that concept. When your predictions are less-than-confident, you can have your input sent to a human being for review.
 
 
 ### Create Concepts
@@ -269,7 +267,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/concepts/{YOUR_M
 
 We're going to create a concept mapper model that translates the concepts from the General model to our new concepts. The model will map the concepts as synonyms. Hypernyms and hyponyms are supported as well.
 
-We'll be setting the `knowledge_graph_id` value to be empty.
+We'll be setting the `knowledge_graph_id` value to be empty. If you wanted to define a subset of relationships in your app to be related to each other you can provide the `knowledge_graph_id` to each concept relation and then provide that `knowledge_graph_id` as input to this model as well which will only follow relationships in that subset of your app's knowledge graph.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -282,8 +280,8 @@ from google.protobuf.struct_pb2 import Struct
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
-model_metadata = Struct()
-model_metadata.update({
+params = Struct()
+params.update({
     "knowledge_graph_id": ""
 })
 
@@ -295,11 +293,9 @@ post_models_response = stub.PostModels(
         models=[
             resources_pb2.Model(
                 id="synonym-model-id",
+                model_type_id="concept-synonym-mapper",
                 output_info=resources_pb2.OutputInfo(
-                    type="concept-synonym-mapper",
-                    output_config=resources_pb2.OutputConfig(
-                        model_metadata=model_metadata
-                    )
+                    params=params,
                 )
             ),
         ]
@@ -320,7 +316,7 @@ import com.clarifai.grpc.api.status.*;
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
-Struct.Builder modelMetadata = Struct.newBuilder()
+Struct.Builder params = Struct.newBuilder()
     .putFields("knowledge_graph_id", Value.newBuilder().setStringValue("").build());
 
 SingleModelResponse postModelsResponse = stub.postModels(
@@ -329,12 +325,10 @@ SingleModelResponse postModelsResponse = stub.postModels(
       .addModels(
           Model.newBuilder()
               .setId("synonym-model-id")
+              .setModelTypeId("concept-synonym-mapper")
               .setOutputInfo(
                   OutputInfo.newBuilder()
-                      .setType("concept-synonym-mapper")
-                      .setOutputConfig(
-                          OutputConfig.newBuilder().setModelMetadata(modelMetadata)
-                      )
+                      .setParams(params)
               )
       )
       .build()
@@ -351,7 +345,7 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
-const model_metadata = {
+const params = {
     knowledge_graph_id: ""
 }
 
@@ -363,11 +357,9 @@ stub.PostModels(
         models: [
             {
                 id: "synonym-model-id",
+                model_type_id: "concept-synonym-mapper"
                 output_info: {
-                    type: "concept-synonym-mapper",
-                    output_config: {
-                        model_metadata: model_metadata
-                    }
+                    params: params,
                 }
             },
         ]
@@ -394,12 +386,10 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
     --data-raw '{
         "model": {
             "id": "synonym-model-id",
+            "model_type_id": "concept-synonym-mapper",
             "output_info": {
-                "type": "concept-synonym-mapper",
-                "output_config": {
-                    "model_metadata": {
-                        "knowledge_graph_id": ""
-                    }
+                "params": {
+                    "knowledge_graph_id": ""
                 }
             }
         }
@@ -410,6 +400,8 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 
 ### Create a "Greater Than" Concept Thresholder Model
 
+This model will allow any predictions >= the concept values defined in the model to be output from this model.
+
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
@@ -419,8 +411,8 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
-model_metadata = Struct()
-model_metadata.update({
+params = Struct()
+params.update({
     "concept_threshold_type": resources_pb2.GREATER_THAN
 })
 
@@ -432,8 +424,8 @@ post_models_response = stub.PostModels(
         models=[
             resources_pb2.Model(
                 id="greater-than-model-id",
+                model_type_id="concept-threshold",
                 output_info=resources_pb2.OutputInfo(
-                    type="concept-threshold",
                     data=resources_pb2.Data(
                         concepts=[
                             resources_pb2.Concept(id="peopleID", value=0.5),
@@ -441,9 +433,7 @@ post_models_response = stub.PostModels(
                             resources_pb2.Concept(id="adultID", value=0.95),
                         ]
                     ),
-                    output_config=resources_pb2.OutputConfig(
-                        model_metadata=model_metadata
-                    )
+                    params=params
                 )
             ),
         ]
@@ -464,7 +454,7 @@ import com.clarifai.grpc.api.status.*;
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
-Struct.Builder modelMetadata = Struct.newBuilder()
+Struct.Builder params = Struct.newBuilder()
   .putFields(
       "concept_threshold_type",
       Value.newBuilder().setNumberValue(ValueComparator.GREATER_THAN_VALUE).build()
@@ -476,9 +466,9 @@ SingleModelResponse postModelsResponse = stub.postModels(
       .addModels(
           Model.newBuilder()
               .setId("greater-than-model-id")
+              .setModelTypeId("concept-threshold")
               .setOutputInfo(
                   OutputInfo.newBuilder()
-                      .setType("concept-threshold")
                       .setData(
                           Data.newBuilder()
                               .addConcepts(
@@ -497,9 +487,7 @@ SingleModelResponse postModelsResponse = stub.postModels(
                                       .setValue(0.95f)
                               )
                       )
-                      .setOutputConfig(
-                          OutputConfig.newBuilder().setModelMetadata(modelMetadata)
-                      )
+                      .setParams(params)
               )
       )
       .build()
@@ -516,7 +504,7 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
-const model_metadata = {
+const params = {
     concept_threshold_type: "GREATER_THAN"
 }
 
@@ -528,8 +516,8 @@ stub.PostModels(
         models: [
             {
                 id: "greater-than-model-id",
+                model_type_id: "concept-threshold",
                 output_info: {
-                    type: "concept-threshold",
                     data: {
                         concepts: [
                             {id: "peopleID", value: 0.5},
@@ -537,10 +525,8 @@ stub.PostModels(
                             {id: "adultID", value: 0.95}
                         ]
                     },
-                    output_config: {
-                        model_metadata: model_metadata
-                    }
-                }
+                },
+                params: params
             }
         ]
     },
@@ -566,8 +552,8 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
     --data-raw '{
         "model": {
             "id": "greater-than-model-id",
+            "model_type_id": "concept-threshold",
             "output_info": {
-                "type": "concept-threshold",
                 "data": {
                     "concepts": [
                         {
@@ -584,10 +570,8 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
                         }
                     ]
                 },
-                "output_config": {
-                    "model_metadata": {
-                        "concept_threshold_type": 1
-                    }
+                "params": {
+                    "concept_threshold_type": 1
                 }
             }
         }
@@ -599,6 +583,8 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 
 ### Create a "Less Than" Concept Thresholder Model
 
+This model will allow any predictions < the concept values defined in the model to be output from this model.
+
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
@@ -608,8 +594,8 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
-model_metadata = Struct()
-model_metadata.update({
+params = Struct()
+params.update({
     "concept_threshold_type": resources_pb2.LESS_THAN
 })
 
@@ -621,8 +607,8 @@ post_models_response = stub.PostModels(
         models=[
             resources_pb2.Model(
                 id="less-than-model-id",
+                model_type_id="concept-threshold",
                 output_info=resources_pb2.OutputInfo(
-                    type="concept-threshold",
                     data=resources_pb2.Data(
                         concepts=[
                             resources_pb2.Concept(id="peopleID", value=0.5),
@@ -630,9 +616,7 @@ post_models_response = stub.PostModels(
                             resources_pb2.Concept(id="adultID", value=0.95),
                         ]
                     ),
-                    output_config=resources_pb2.OutputConfig(
-                        model_metadata=model_metadata
-                    )
+                    params=params
                 )
             ),
         ]
@@ -653,7 +637,7 @@ import com.clarifai.grpc.api.status.*;
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
-Struct.Builder modelMetadata = Struct.newBuilder()
+Struct.Builder params = Struct.newBuilder()
     .putFields(
         "concept_threshold_type",
         Value.newBuilder().setNumberValue(ValueComparator.LESS_THAN_VALUE).build()
@@ -665,9 +649,9 @@ SingleModelResponse postModelsResponse = stub.postModels(
       .addModels(
           Model.newBuilder()
               .setId("less-than-model-id")
+              .setModelTypeId("concept-threshold")
               .setOutputInfo(
                   OutputInfo.newBuilder()
-                      .setType("concept-threshold")
                       .setData(
                           Data.newBuilder()
                               .addConcepts(
@@ -686,9 +670,7 @@ SingleModelResponse postModelsResponse = stub.postModels(
                                       .setValue(0.95f)
                               )
                       )
-                      .setOutputConfig(
-                          OutputConfig.newBuilder().setModelMetadata(modelMetadata)
-                      )
+                      .setParams(params)
               )
       )
       .build()
@@ -705,7 +687,7 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
-const model_metadata = {
+const params = {
     concept_threshold_type: "LESS_THAN"
 }
 
@@ -717,8 +699,8 @@ stub.PostModels(
         models: [
             {
                 id: "less-than-model-id",
+                model_type_id: "concept-threshold",
                 output_info: {
-                    type: "concept-threshold",
                     data: {
                         concepts: [
                             {id: "peopleID", value: 0.5},
@@ -726,9 +708,7 @@ stub.PostModels(
                             {id: "adultID", value: 0.95}
                         ]
                     },
-                    output_config: {
-                        model_metadata: model_metadata
-                    }
+                    params: params
                 }
             }
         ]
@@ -755,8 +735,8 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
     --data-raw '{
         "model": {
             "id": "less-than-model-id",
+            "model_type_id": "concept-threshold",
             "output_info": {
-                "type": "concept-threshold",
                 "data": {
                     "concepts": [
                         {
@@ -773,10 +753,8 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
                         }
                     ]
                 },
-                "output_config": {
-                    "model_metadata": {
-                        "concept_threshold_type": 3
-                    }
+                "params": {
+                    "concept_threshold_type": 3
                 }
             }
         }
@@ -787,6 +765,8 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 
 ### Create a "Write Success as Me" Annotation Writer Model
 
+Any incoming Data object full of concepts, regions, etc. will be writtent by this model to the database as an annotation with ANNOTATION_SUCCESS status as if the app owner did the work themself.
+
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
@@ -796,8 +776,8 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
-model_metadata = Struct()
-model_metadata.update({
+params = Struct()
+params.update({
     "annotation_status": status_code_pb2.ANNOTATION_SUCCESS,
     "annotation_user_id": "{YOUR_USER_ID}"
 })
@@ -810,11 +790,9 @@ post_models_response = stub.PostModels(
         models=[
             resources_pb2.Model(
                 id="write-success-model-id",
+                model_type_id="annotation-writer",
                 output_info=resources_pb2.OutputInfo(
-                    type="annotation-writer",
-                    output_config=resources_pb2.OutputConfig(
-                        model_metadata=model_metadata
-                    )
+                    params=params
                 )
             ),
         ]
@@ -835,7 +813,7 @@ import com.clarifai.grpc.api.status.*;
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
-Struct.Builder modelMetadata = Struct.newBuilder()
+Struct.Builder params = Struct.newBuilder()
     .putFields(
         "annotation_status", Value.newBuilder().setNumberValue(StatusCode.ANNOTATION_SUCCESS_VALUE).build()
     )
@@ -850,12 +828,10 @@ SingleModelResponse postModelsResponse = stub.postModels(
       .addModels(
           Model.newBuilder()
               .setId("write-success-as-me-id")
+              .setModelTypeId("annotation-writer")
               .setOutputInfo(
                   OutputInfo.newBuilder()
-                      .setType("annotation-writer")
-                      .setOutputConfig(
-                          OutputConfig.newBuilder().setModelMetadata(modelMetadata)
-                      )
+                      .setParams(params)
               )
       )
       .build()
@@ -872,7 +848,7 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
-const model_metadata = {
+const params = {
     annotation_status: "ANNOTATION_SUCCESS",
     annotation_user_id: "{YOUR_USER_ID}"
 }
@@ -885,11 +861,9 @@ stub.PostModels(
         models: [
             {
                 id: "write-success-model-id",
+                model_type_id: "annotation-writer",
                 output_info: {
-                    type: "annotation-writer",
-                    output_config: {
-                        model_metadata: model_metadata
-                    }
+                    params: params
                 }
             }
         ]
@@ -916,13 +890,11 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
     --data-raw '{
         "model": {
             "id": "write-success-as-me",
+            "model_type_id": "annotation-writer",
             "output_info": {
-                "type": "annotation-writer",
-                "output_config": {
-                    "model_metadata": {
-                        "annotation_status": 24150,
-                        "annotation_user_id": "{YOUR_USER_ID}"
-                    }
+                "params": {
+                    "annotation_status": 24150,
+                    "annotation_user_id": "{YOUR_USER_ID}"
                 }
             }
         }
@@ -933,6 +905,8 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 
 ### Create a "Write Pending as Me" Annotation Writer Model
 
+Any incoming Data object full of concepts, regions, etc. will be written by this model to the database as an annotation with ANNOTATION_PENDING status as if the app owner did the work themself but needs further review so is marked pending.
+
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
@@ -942,8 +916,8 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
-model_metadata = Struct()
-model_metadata.update({
+params = Struct()
+params.update({
     "annotation_status": status_code_pb2.ANNOTATION_PENDING,
     "annotation_user_id": "{YOUR_USER_ID}"
 })
@@ -956,11 +930,9 @@ post_models_response = stub.PostModels(
         models=[
             resources_pb2.Model(
                 id="write-pending-model-id",
+                model_type_id="annotation-writer",
                 output_info=resources_pb2.OutputInfo(
-                    type="annotation-writer",
-                    output_config=resources_pb2.OutputConfig(
-                        model_metadata=model_metadata
-                    )
+                    params=params
                 )
             ),
         ]
@@ -981,7 +953,7 @@ import com.clarifai.grpc.api.status.*;
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
-Struct.Builder modelMetadata = Struct.newBuilder()
+Struct.Builder params = Struct.newBuilder()
     .putFields(
         "annotation_status", Value.newBuilder().setNumberValue(StatusCode.ANNOTATION_PENDING_VALUE).build()
     )
@@ -996,12 +968,10 @@ SingleModelResponse postModelsResponse = stub.postModels(
       .addModels(
           Model.newBuilder()
               .setId("write-pending-as-me-id")
+              .setModelTypeId("annotation-writer")
               .setOutputInfo(
                   OutputInfo.newBuilder()
-                      .setType("annotation-writer")
-                      .setOutputConfig(
-                          OutputConfig.newBuilder().setModelMetadata(modelMetadata)
-                      )
+                      .setParams(params)
               )
       )
       .build()
@@ -1029,13 +999,11 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
     --data-raw '{
         "model": {
             "id": "write-pending-as-me",
+            "model_type_id": "annotation-writer",
             "output_info": {
-                "type": "annotation-writer",
-                "output_config": {
-                    "model_metadata": {
-                        "annotation_status": 24151,
-                        "annotation_user_id": "{YOUR_USER_ID}"
-                    }
+                "params": {
+                    "annotation_status": 24151,
+                    "annotation_user_id": "{YOUR_USER_ID}"
                 }
             }
         }
@@ -1046,11 +1014,11 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 
 ### Create the Workflow
 
-We will now join all the models together into a single workflow.
+We will now connect all the models together into a single workflow.
 
-Every input will be predicted by General Embed model to generate embedding. The output of the embed model (embeddings) will be sent to general concept to predict concept and cluster model. Then the concept model's output (a list of concepts) will be sent to concept mapper model which maps Clarifai concept to your concept, `people`, `man` and `adult` in this case. Then the mapped concepts will be sent to both concept thresholds models (`GREATER THAN` and `LESS THAN`). `GREATER THAN` model will filter out the concept if it lower than corresponding value you defined in model and send the final concept list to `write success as me` model which labels the input with these concepts (your app concepts only) as you with `success` status. You can train or search on these concepts immediately. The `LESS THAN` model will filter out the concept if it is higher than the corresponding value you defined and send the final concept list to `write pending as me` model which labels the input with these concepts (your app concepts only) as you with `pending` status.
+Every input will be predicted by General Embed model to generate embeddings. The output of the embed model (embeddings) will be sent to general concept to predict concept and cluster model. Then the concept model's output (a list of concepts with prediction values) will be sent to concept mapper model which maps Clarifai concepts to your concepts within your app, `people`, `man` and `adult` in this case. Then the mapped concepts will be sent to both concept thresholds models (`GREATER THAN` and `LESS THAN`). `GREATER THAN` model will filter out the concepts that are lower than corresponding value you defined in model and send the remaining concept list to `write success as me` model which labels the input with these concepts (your app concepts only) as you with `success` status. You can train or search on these concepts immediately. The `LESS THAN` model will filter out concepts that are higher than the corresponding value you defined in the model and send the remaining concept list to `write pending as me` model which labels the input with these concepts (your app concepts only) as you with `pending` status.
 
-The model IDs and model version IDs from the public `clarifai/main` application are fixed, so they are already hard-coded in the code examples below. It's possible to use other public model or model version IDs.
+The model IDs and model version IDs from the public `clarifai/main` application are fixed to the latest version at the time of this writing (check GET /models for an always up to date list of available models), so they are already hard-coded in the code examples below. It's possible to use other public model or model version IDs.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -1531,7 +1499,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
 
 ### Make the New Workflow your App's Default
 
-Make this the default workflow in the app, so it will run every time we add an input and execute the auto annotation process.
+Make this the default workflow in the app, so it will run every time we add an input and execute the auto annotation process. If the workflow is not the default workflow of your app you can still use PostWorkflowResults on new inputs to check that you configured the workflow graph and your models properly but the data will not be written to the DB. This is recommended before making it your default workflow and adding inputs to you app.
 
 {% tabs %}
 {% tab title="gRPC Python" %}

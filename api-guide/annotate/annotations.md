@@ -10,13 +10,15 @@ Once your input is successfully indexed, you can add additional annotations such
 
 You can label your inputs by calling the `POST /annotations` endpoint. For example, you can add concept(s) to an image, draw a bounding box, or label concept(s) in a video frame.
 
-When you add an annotation, the app's default workflow will not run by default. This means that the annotation will not be immediately available for training of your custom model or for visual search. To make it available, you need to provide `embed_model_version_id` field. This field specifies how to apply the annotation to your input and when to use the annotation. The field `embed_model_version_id` should be set to your app's default workflow embed model version ID. It is recommended to provide this field on each add annotation call.
+When you add an annotation, the app's default workflow will not run by default. This means that the annotation will not be immediately available for training of your custom model or for visual search. To make the annotation available for AI based search and training, you need to provide `embed_model_version_id` field. This field specifies how to associate the annotation for your input to one of the embedding models in your default workflow. When associated during patching then we know how to index it for training and visual search, therefore if your use case includes those features it is recommended to provide this field on each add annotation call.
 
 You can add from 1 up to 128 annotations in a single API call.
 
-Each annotation should contain at most one region. If it is a video, each annotation should contain 1 frame. If there are multiple regions in a frame you want to label, you can add multiple annotations and each annotation will be contained the same frame but a different region.
+Each annotation should contain at most one region. If it is a video, each annotation should contain 1 frame. If there are multiple regions in a frame you want to label, you can add multiple annotations for each regoin  and each annotation will be contained within the same frame but a different region.
 
-#### Label images with concepts
+#### Annotate images with concepts
+
+To annotate a concept present anywhere in an image:
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -157,7 +159,7 @@ curl -X POST \
 {% endtab %}
 {% endtabs %}
 
-#### Label New Bounding Boxes in an Image
+#### Annotate New Bounding Boxes in an Image
 
 You can label a new bounding box by providing bounding box coordinates.
 
@@ -464,9 +466,9 @@ curl -X POST \
 {% endtabs %}
 
 
-#### Label Existing Regions in an Image
+#### Annotate Existing Regions in an Image
 
-When you add an input, detection models (such as `Face Detection` or `General Detection`) will detect regions in your image where there appear to be relevant objects. You can check these detected regions by listing model's annotations. Your labels should be contained within `Region.Data`. Each annotation can have only 1 region. If you want to label multiple regions, It is possible to label multiple annotations in a single API call.
+When you add an input, detection models (such as `Face Detection` or `General Detection`) will detect regions in your image where there appear to be relevant objects. You can check these detected regions by listing model's annotations. Your labels should be contained within `Region.Data`. Each annotation can have only 1 region. If you want to label multiple regions, it is possible to label multiple annotations in a single API call.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -704,11 +706,11 @@ curl -X POST \
 {% endtab %}
 {% endtabs %}
 
-#### Label Images with Different `user_id` and `status`.
+#### Annotate Images with Different `user_id` and `status`.
 
-Each annotation is tied to a user or a model in your workflow. By default, when a user posts an annotation, this user is the owner of the annotation. Sometimes however, you might want to post an annotation as other user, for example in Labeler product, when assigning an image, an annotation is created with another user_id (and status `PENDING`).
+Each annotation is tied to a user or a model in your workflow. By default, when a user posts an annotation, this user is the owner of the annotation. Sometimes however, you might want to post an annotation as other user, for example, when assigning an image to another user, an annotation can be created with another user_id (and status `PENDING`).
 
-Note only app owner can post an annotation with other user's `user_id`.
+Note: only the app owner can post an annotation with other user's `user_id`, collaborators cannot.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -829,11 +831,11 @@ You can get a list of annotations within your app with a GET call. Annotations w
 
 These requests are paginated. By default each page will return 20 annotations.
 
-#### List All Labeled Annotations in Your App
+#### List All User Created Annotations in Your App
 
-To list all you labeled annotations.
+To list all your user labelled annotations.
 
-Note this will not show annotations by models in your worfklow. To include model created annotations, you need to set `list_all_annotations` to `True`.
+Note this will not show annotations by models in your worfklow. To include model created annotations, you need to set `list_all_annotations` to `true`.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -1006,11 +1008,11 @@ curl -X GET \
 {% endtab %}
 {% endtabs %}
 
-#### List Annotations by Input IDs
+#### List User Created Annotations by Input IDs
 
-To list all labeled annotations for certain input (one or several), provide a list of input IDs.
+To list all user created annotations for certain input (one or several), provide a list of input IDs.
 
-Note this will not show annotations by models in your worfklow. To include model created annotations, you need to set `list_all_annotations` to `True`.
+Note: this will not show annotations by models in your worfklow. To include model created annotations, you need to set `list_all_annotations` to `true`.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -1096,9 +1098,9 @@ curl -X GET \
 {% endtab %}
 {% endtabs %}
 
-#### List Labeled Annotations by Input IDs and Annotation IDs
+#### List Annotations by Input IDs and Annotation IDs
 
-You can list annotations by both input IDs and annotation IDs. Number of input IDs and annotation IDs should be the same.
+You can list annotations by both input IDs and annotation IDs. Number of input IDs and annotation IDs should be the same. Since we are finding annotatieon by IDs this will match any user or model created annotations.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -1196,7 +1198,7 @@ curl -X GET \
 
 #### List Annotations by User IDs
 
-An annotation is created by either a user or a model. You can list annotations created by specific user(s).
+An annotation is created by either a user or a model. You can list annotations created by specific user(s) by provider their user IDs.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -1284,7 +1286,7 @@ curl -X GET \
 
 #### List Annotations by Model Version IDs
 
-An annotation is created by either a user or a model. For example if your workflow has a detection model, when you add input, the model will detect objects in your input. You can see these  objects by listing the annotations created detection model. You can also label these regions by using `Post annotation` with the region id returned from this call.
+An annotation is created by either a user or a model. For example if your workflow has a detection model, when you add input, the model will detect objects in your input. You can see these detected objects by listing the annotations created detection model. You can also label these regions by using `Post annotation` with the region id returned from this call.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -1972,7 +1974,7 @@ curl -X DELETE \
 
 #### Bulk Delete All Annotations by Input IDs
 
-To delete all annotations of a given input, you just need to set input ID(s). This will delete all annotations for these input(s) EXCEPT input level annotations.
+To delete all annotations of a given input, you just need to set input ID(s). This will delete all annotations for these input(s) EXCEPT input level annotations which only get deleted if you delete the inputs themselves.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
