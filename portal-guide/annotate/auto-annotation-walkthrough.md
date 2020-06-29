@@ -73,7 +73,7 @@ The `LESS THAN` model will filter out the concepts with low prediction scores. T
 
 ### Make the new workflow your app's default
 
-Make this the default workflow in the app, so it will run every time we add an input and execute the auto annotation process.
+Make this the default workflow in the app, so it will run every time we add an input and execute the auto annotation process. If the workflow is not the default workflow of your app you can still use PostWorkflowResults on new inputs to check that you configured the workflow graph and your models properly but the data will not be written to the DB. This is recommended before making it your default workflow and adding inputs to you app.
 
 ![](../../images/set_as_default.jpg)
 
