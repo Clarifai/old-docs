@@ -1377,7 +1377,11 @@ curl -X GET \
 
 ### Update Annotations
 
-Changing annotation data is possible. Update supports overwrite, merge, remove actions. You can update from 1 up to 128 annotations in a single API call.
+Changing annotation data is possible by PATCHing exisitng annotations.
+
+Generally speaking, you should send PATCH when you want to change the data you have posted, for example, change the concept from positive to negative or adjusting the bbounding box cooridnates. If you want to adding more tags, you can always POST new annotations. There is no limit on how many annotations an input can have.
+
+Update supports overwrite, merge, remove actions. You can update from 1 up to 128 annotations in a single API call.
 
 #### Update Annotation with Concepts
 
@@ -1519,7 +1523,7 @@ curl -X PATCH \
 
 #### Update Annotation with Concepts in a Region
 
-When you update an annotation with a region, you should provide the region ID if you do not intend to change the region.
+When you update region data, you should nested new data in region.data with region ID set to current region ID if you do not intend to change/remove the region.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -1681,9 +1685,201 @@ curl -X PATCH \
 {% endtab %}
 {% endtabs %}
 
+#### Update Annotation Region Coordinates
+
+You can update region bounding boxes coordinates. When changing the region, you should use `overwrite` action. With `overwrite` action, you need to provide any data you want to keep in this annotation.
+
+{% tabs %}
+{% tab title="gRPC Python" %}
+```python
+from clarifai_grpc.grpc.api import service_pb2
+from clarifai_grpc.grpc.api.status import status_code_pb2
+
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
+
+patch_annotations_response = stub.PatcchAnnotations(
+    service_pb2.PatchAnnotationsRequest(
+        action="overwrite",
+        annotations=[
+            resources_pb2.Annotation(
+                input_id="{YOUR_INPUT_ID}",
+                id="{YOUR_ANNOTATION_ID}",
+                data=resources_pb2.Data(
+                    regions=[
+                        resources_pb2.Region(
+                            region_info=resources_pb2.RegionInfo(
+                                bounding_box=resources_pb2.BoundingBox(        # move bounding bbox to a new cooridnates
+                                    top_row=0.5,
+                                    left_col=0.5,
+                                    bottom_row=0.8,
+                                    right_col=0.8
+                                )
+                            ),
+                            data=resources_pb2.Data(    # need to provde tags you previously labeled since this is overwrite action
+                                concepts=[
+                                    resources_pb2.Concept(id="bike", value=1.),  # 1 means true, this concept is present.
+                                ]
+                            )
+                        )
+                    ]
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if patch_annotations_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Patch annotations failed, status: " + patch_annotations_response.status.description)
+
+```
+{% endtab %}
+
+{% tab title="gRPC Java" %}
+```java
+import java.util.List;
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+MultiAnnotationResponse patchAnnotationsResponse = stub.patchAnnotations(
+    PatchAnnotationsRequest.newBuilder()
+        .setAction("overwrite")
+        .addAnnotations(
+            Annotation.newBuilder()
+                .setInputId("{YOUR_INPUT_ID}")
+                .setId("{YOUR_ANNOTATION_ID}")
+                .setData(
+                    Data.newBuilder().addRegions(
+                        Region.newBuilder()
+                            .setRegionInfo(
+                                RegionInfo.newBuilder()
+                                    .setBoundingBox(        // move bounding box to a new cooridnates
+                                        BoundingBox.newBuilder()
+                                            .setTopRow(0.5f)
+                                            .setLeftCol(0.5f)
+                                            .setBottomRow(0.8f)
+                                            .setRightCol(0.8f)
+                                            .build()
+                                    )
+                                    .build()
+                            )
+                            .setData(
+                                Data.newBuilder()
+                                    .addConcepts(
+                                        Concept.newBuilder()
+                                            .setId("bike")
+                                            .setValue(1f)  // 1 means true, this concept is present.
+                                            .build()
+                                    )
+                            ).build()
+                    ).build()
+                )
+                .build()
+    ).build()
+);
+
+if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Patch annotations failed, status: " + patchAnnotationsResponse.getStatus());
+}
+
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```js
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview
+
+stub.PatchAnnotations(
+    {
+        action: "overwrite",
+        annotations: [
+            {
+                input_id: "{YOUR_INPUT_ID}",
+                id: "{YOUR_ANNOTATION_ID}",
+                data: {
+                    regions: [
+                        {
+                            region_info: {
+                                bounding_box: {        // move bounding box to a new coordiates
+                                    top_row: 0.5,
+                                    left_col: 0.5,
+                                    bottom_row: 0.8
+                                    right_col: 0.8
+                                }
+                            }
+                            // 1 means true, this concept is present.
+                            // 0 means false, this concept is not present.
+                            data: {
+                                concepts: [
+                                    {id: "bike", value: 1},
+                                ]
+                            },
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            throw new Error("Patch annotations failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+{% tab title="cURL" %}
+```text
+# Value of 1 means true, this concept is present.
+# region id should be the region id of this annotation before patch
+curl -X PATCH \
+  -H "Authorization: Key YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '
+  {
+    "annotations": [
+      {
+        "input_id": "{YOUR_INPUT_ID}",
+        "id": "{YOUR_ANNOTATION_ID}",
+        "data": {
+          "regions": [
+            {
+              "id": "{REGION_ID}",
+              "data": {
+                "concepts": [
+                  {
+                    "id": "apple",
+                    "value": 1
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "action":"merge"
+}'\
+  https://api.clarifai.com/v2/annotations
+```
+{% endtab %}
+{% endtabs %}
+
+
 #### Update Annotation Status
 
-You can update an annotation status if you have the privilege to do so.
+You can update an annotation status.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
