@@ -14,7 +14,7 @@
 |Status     |Details                                |
 |-----------|---------------------------------------|
 |![](/images/improvement.jpg)|Consolidated input related status codes |
-|![](/images/improvement.jpg)|Add frame.id to API as well as track.id |
+|![](/images/improvement.jpg)|Add frame.id to API as well as region.track_id |
 |![](/images/bug.jpg)            |Granted select permission to clarifairead|
 
 ## Annotate
@@ -22,7 +22,7 @@
 |-----------|---------------------------------------|
 |![](/images/new_feature.jpg)    |Added list annotations filter status        |
 |![](/images/improvement.jpg)|Added concept selection for tasks        |
-|![](/images/improvement.jpg)|post/patch annotations request now allow setting status|
+|![](/images/improvement.jpg)|Post/Patch annotations request now allow setting status|
 |![](/images/improvement.jpg)|Changed task form options               |
 |![](/images/improvement.jpg)|Set annotation status to awaiting for review if the authorized user is not app owner|
 |![](/images/improvement.jpg)|Return only input_level annotation in input.data|
