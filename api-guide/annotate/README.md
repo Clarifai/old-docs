@@ -9,3 +9,7 @@ Annotations are similar to predictions, in that both are concerned with the conc
 People make annotations about concepts,
 Models make predictions about concepts
 {% endhint %}
+
+{% hint style="info" %}
+For step-by-step guides, visit API [Walkthroughs](../walkthroughs).
+{% endhint %}

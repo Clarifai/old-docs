@@ -7,3 +7,7 @@ Clarifai provides many different models that understand the world differently. T
 {% hint style="info" %}
 A model contains a group of concepts. A model will only see the concepts it contains.
 {% endhint %}
+
+{% hint style="info" %}
+For step-by-step guides, visit API [Walkthroughs](../walkthroughs).
+{% endhint %}
