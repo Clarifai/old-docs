@@ -1377,7 +1377,7 @@ curl -X GET \
 
 ### Update Annotations
 
-Changing annotation data is possible by PATCHing exisitng annotations.
+Changing annotation data is possible by PATCHing exisitng annotations. Currently Application Owner can change any user created annotations. Collaborators do not allowed to change other collaborator's annotation. 
 
 Generally speaking, you should send PATCH when you want to change the data you have posted, for example, change the concept from positive to negative or adjusting the bbounding box cooridnates. If you want to adding more tags, you can always POST new annotations. There is no limit on how many annotations an input can have.
 
