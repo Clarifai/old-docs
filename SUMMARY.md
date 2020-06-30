@@ -34,10 +34,10 @@
   * [Search by Concept](api-guide/concept/search-by-concept.md)
   * [Knowledge Graph](api-guide/concept/knowledge_graph.md)
 * [Annotations](api-guide/annotate/README.md)
+  * [Annotations](api-guide/annotate/annotations.md)
   * [Positive and Negative Annotations](api-guide/annotate/positive-and-negative-annotations.md)
 * [Model](api-guide/model/README.md)
   * [Clarifai Models](api-guide/model/clarifai-models.md)
-  * [Custom Model Walkthrough](api-guide/model/custom-model-walkthrough.md)
   * [Create, Get, Update, Delete](api-guide/model/create-get-update-and-delete.md)
   * [Deep Training](api-guide/model/deep-training.md)
   * [Evaluate](portal-guide/model/evaluate/README.md)
@@ -57,6 +57,9 @@
   * [Filter](api-guide/search/filter.md)
   * [Combine or Negate](api-guide/search/combine-or-negate.md)
   * [Saved Searches](api-guide/search/saved_searches.md)
+* [Walkthroughs](api-guide/walkthroughs/README.md)
+  * [Custom Models](api-guide/walkthroughs/custom-model-walkthrough.md)
+  * [Auto Annotation](api-guide/walkthroughs/auto-annotation-walkthrough.md)
 
 ## Portal Guide
 
@@ -70,7 +73,6 @@
   * [Positive and Negative Annotations](portal-guide/annotate/positive-and-negative-annotations.md)
 * [Model](portal-guide/model/README.md)
   * [Clarifai Models](portal-guide/model/clarifai-models.md)
-  * [Custom Model Walkthrough](portal-guide/model/pcustom-model-walkthrough.md)
   * [Deep Training](portal-guide/model/deep-training.md)
   * [Evaluate](portal-guide/model/evaluate/README.md)
     * [Interpreting Evaluations](portal-guide/model/evaluate/interpreting-evaluations.md)
@@ -82,7 +84,9 @@
   * [Filter](portal-guide/psearch/pfilter.md)
   * [Combine or Negate](portal-guide/psearch/pcombine_or_negate.md)
   * [Saved Searches](portal-guide/psearch/psaved_searches.md)
-
+* [Walkthroughs](portal-guide/walkthroughs/README.md)
+  * [Custom Models](portal-guide/walkthroughs/pcustom-model-walkthrough.md)
+  * [Auto Annotation](portal-guide/walkthroughs/auto-annotation-walkthrough.md)
 
 ## Product Updates
 

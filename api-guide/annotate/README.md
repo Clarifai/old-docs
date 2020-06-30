@@ -5,7 +5,5 @@ Annotations \(sometimes called "labels"\) are how we "teach" machines to recogni
 ![](../../images/annotate.jpg)
 
 {% hint style="info" %}
-Annotations are similar to predictions, in that both are concerned with the concepts that your model can recognize. There is one important distinction to keep in mind:
-People make annotations about concepts,
-Models make predictions about concepts
+For step-by-step guides, visit API [Walkthroughs](../walkthroughs).
 {% endhint %}
