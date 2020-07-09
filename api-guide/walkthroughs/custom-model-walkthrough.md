@@ -28,7 +28,7 @@ MultiInputResponse postInputsResponse = stub.postInputs(
                                 .setUrl("https://samples.clarifai.com/puppy.jpeg")
                                 .setAllowDuplicateUrl(true)
                         )
-                        .addConcepts(Concept.newBuilder().setId("boscoe").setValue(1))
+                        .addConcepts(Concept.newBuilder().setId("charlie").setValue(1))
                         .addConcepts(Concept.newBuilder().setId("our_wedding").setValue(0))
                 )
         )
@@ -42,7 +42,7 @@ MultiInputResponse postInputsResponse = stub.postInputs(
                                 .setAllowDuplicateUrl(true)
                         )
                         .addConcepts(Concept.newBuilder().setId("our_wedding").setValue(1))
-                        .addConcepts(Concept.newBuilder().setId("boscoe").setValue(0))
+                        .addConcepts(Concept.newBuilder().setId("charlie").setValue(0))
                         .addConcepts(Concept.newBuilder().setId("cat").setValue(0))
                 )
         )
@@ -71,13 +71,13 @@ stub.PostInputs(
             {
                 data: {
                     image: {url: "https://samples.clarifai.com/puppy.jpeg", allow_duplicate_url: true},
-                    concepts: [{id: "boscoe", value: 1}, {id: "our_wedding", value: 0}]
+                    concepts: [{id: "charlie", value: 1}, {id: "our_wedding", value: 0}]
                 }
             },
             {
                 data: {
                     image: {url: "https://samples.clarifai.com/wedding.jpg", allow_duplicate_url: true},
-                    concepts: [{id: "our_wedding", value: 1}, {id: "boscoe", value: 0}, {id: "cat", value: 0}]
+                    concepts: [{id: "our_wedding", value: 1}, {id: "charlie", value: 0}, {id: "cat", value: 0}]
                 }
             },
         ]
@@ -119,7 +119,7 @@ post_inputs_response = stub.PostInputs(
                         allow_duplicate_url=True
                     ),
                     concepts=[
-                        resources_pb2.Concept(id="boscoe", value=1),
+                        resources_pb2.Concept(id="charlie", value=1),
                         resources_pb2.Concept(id="our_wedding", value=0),
                     ]
                 )
@@ -132,7 +132,7 @@ post_inputs_response = stub.PostInputs(
                     ),
                     concepts=[
                         resources_pb2.Concept(id="our_wedding", value=1),
-                        resources_pb2.Concept(id="boscoe", value=0),
+                        resources_pb2.Concept(id="charlie", value=0),
                         resources_pb2.Concept(id="cat", value=0),
                     ]
                 )
@@ -157,7 +157,7 @@ app.inputs.create({
   url: "https://samples.clarifai.com/puppy.jpeg",
   concepts: [
     {
-      id: "boscoe",
+      id: "charlie",
       value: true
     }
   ]
@@ -173,8 +173,8 @@ from clarifai.rest import Image as ClImage
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 
 # add multiple images with concepts
-img1 = ClImage(url="https://samples.clarifai.com/puppy.jpeg", concepts=['boscoe'], not_concepts=['our_wedding'])
-img2 = ClImage(url="https://samples.clarifai.com/wedding.jpg", concepts=['our_wedding'], not_concepts=['cat','boscoe'])
+img1 = ClImage(url="https://samples.clarifai.com/puppy.jpeg", concepts=['charlie'], not_concepts=['our_wedding'])
+img2 = ClImage(url="https://samples.clarifai.com/wedding.jpg", concepts=['our_wedding'], not_concepts=['cat','charlie'])
 
 app.inputs.bulk_create_images([img1, img2])
 ```
@@ -185,7 +185,7 @@ app.inputs.bulk_create_images([img1, img2])
 client.addInputs()
     .plus(
         ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpeg")
-            .withConcepts(Concept.forID("boscoe"))
+            .withConcepts(Concept.forID("charlie"))
     )
     .executeSync();
 ```
@@ -210,7 +210,7 @@ namespace YourNamespace
             await client.AddInputs(
                     new ClarifaiURLImage(
                         "https://samples.clarifai.com/puppy.jpeg",
-                        positiveConcepts: new List<Concept> {new Concept(id: "boscoe")}))
+                        positiveConcepts: new List<Concept> {new Concept(id: "charlie")}))
                 .ExecuteAsync();
         }
     }
@@ -238,7 +238,7 @@ $client = new ClarifaiClient('YOUR_API_KEY');
 $response = $client->addInputs(
         (new ClarifaiURLImage('https://samples.clarifai.com/puppy.jpeg'))
         ->withAllowDuplicateUrl(true)
-        ->withPositiveConcepts([new Concept('boscoe')]))
+        ->withPositiveConcepts([new Concept('charlie')]))
     ->executeSync();
 
 if ($response-> isSuccessful()) {
@@ -263,12 +263,39 @@ curl -X POST \
       {
         "data": {
           "image": {
-            "url": "https://samples.clarifai.com/puppy.jpeg"
+            "url": "https://samples.clarifai.com/puppy.jpeg",
+            "allow_duplicate_url": true
           },
           "concepts":[
             {
-              "id": "boscoe",
-              "value": true
+              "id": "charlie",
+              "value": 1
+            },
+            {
+              "id": "our_wedding",
+              "value": 0
+            }
+          ]
+        }
+      },
+      {
+        "data": {
+          "image": {
+            "url": "https://samples.clarifai.com/wedding.jpg",
+            "allow_duplicate_url": true
+          },
+          "concepts":[
+            {
+              "id": "our_wedding",
+              "value": 1
+            },
+            {
+              "id": "charlie",
+              "value": 0
+            },
+            {
+              "id": "cat",
+              "value": 0
             }
           ]
         }
@@ -298,8 +325,8 @@ curl -X POST \
         },
         "concepts": [
           {
-            "id": "boscoe",
-            "name": "boscoe",
+            "id": "charlie",
+            "name": "charlie",
             "app_id": "f09abb8a57c041cbb94759ebb0cf1b0d",
             "value": 1
           }
@@ -338,7 +365,7 @@ SingleModelResponse postModelsResponse = stub.postModels(
             .setOutputInfo(
                 OutputInfo.newBuilder()
                     .setData(
-                        Data.newBuilder().addConcepts(Concept.newBuilder().setId("boscoe"))
+                        Data.newBuilder().addConcepts(Concept.newBuilder().setId("charlie"))
                     )
                     .setOutputConfig(
                         OutputConfig.newBuilder()
@@ -366,7 +393,7 @@ stub.PostModels(
             {
                 id: "pets",
                 output_info: {
-                    data: {concepts: [{id: "boscoe"}]},
+                    data: {concepts: [{id: "charlie"}]},
                     output_config: {concepts_mutually_exclusive: false, closed_environment: false}
                 }
             }
@@ -401,7 +428,7 @@ post_models_response = stub.PostModels(
                 id="pets",
                 output_info=resources_pb2.OutputInfo(
                     data=resources_pb2.Data(
-                        concepts=[resources_pb2.Concept(id="boscoe", value=1)]
+                        concepts=[resources_pb2.Concept(id="charlie", value=1)]
                     ),
                     output_config=resources_pb2.OutputConfig(
                         concepts_mutually_exclusive=False,
@@ -424,7 +451,7 @@ if post_models_response.status.code != status_code_pb2.SUCCESS:
 app.models.create(
   "pets",
   [
-    { "id": "boscoe" }
+    { "id": "charlie" }
   ]
 ).then(
   function(response) {
@@ -442,7 +469,7 @@ app.models.create(
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 
-model = app.models.create('pets', concepts=['boscoe'])
+model = app.models.create('pets', concepts=['charlie'])
 ```
 {% endtab %}
 
@@ -450,7 +477,7 @@ model = app.models.create('pets', concepts=['boscoe'])
 ```java
 client.createModel("pets")
     .withOutputInfo(ConceptOutputInfo.forConcepts(
-        Concept.forID("boscoe")
+        Concept.forID("charlie")
     ))
     .executeSync();
 ```
@@ -473,7 +500,7 @@ namespace YourNamespace
 
             await client.CreateModel(
                     "pets",
-                    concepts: new List<Concept> {new Concept("boscoe")})
+                    concepts: new List<Concept> {new Concept("charlie")})
                 .ExecuteAsync();
         }
     }
@@ -498,7 +525,7 @@ use Clarifai\DTOs\Predictions\Concept;
 $client = new ClarifaiClient('YOUR_API_KEY');
 
 $response = $client->createModel('pets')
-    ->withConcepts([new Concept('boscoe')])
+    ->withConcepts([new Concept('charlie')])
     ->executeSync();
 
 if ($response-> isSuccessful()) {
@@ -525,7 +552,7 @@ curl -X POST \
         "data": {
           "concepts": [
             {
-              "id": "boscoe"
+              "id": "charlie"
             }
           ]
         },
@@ -747,7 +774,7 @@ if ($response-> isSuccessful()) {
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
-  https://api.clarifai.com/v2/models/<model_id>/versions
+  https://api.clarifai.com/v2/models/pets/versions
 ```
 {% endtab %}
 {% endtabs %}
@@ -876,7 +903,7 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
         model_id="pets",
-        version_id="673896e7965b4aefa00496325b2aaa97",  # This is optional. Defaults to the latest model version.
+        version_id="{YOUR_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
         inputs=[
             resources_pb2.Input(
                 data=resources_pb2.Data(
@@ -1028,7 +1055,7 @@ curl -X POST \
       }
     ]
   }'\
-  https://api.clarifai.com/v2/models/<model_id>/versions/<model_version_id>/outputs
+  https://api.clarifai.com/v2/models/pets/versions/{YOUR_MODEL_VERSION_ID}/outputs
 ```
 {% endtab %}
 {% endtabs %}
@@ -1082,8 +1109,8 @@ curl -X POST \
       "data": {
         "concepts": [
           {
-            "id": "boscoe",
-            "name": "boscoe",
+            "id": "charlie",
+            "name": "charlie",
             "app_id": "f09abb8a57c041cbb94759ebb0cf1b0d",
             "value": 0.98308545
           }

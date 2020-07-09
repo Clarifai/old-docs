@@ -1,6 +1,227 @@
+# Changelog 6.3
+
+|New Feature    |Improvement|Bug Fix|Enterprise Only|
+|:-:|:-:|:-:|:-:|
+|![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
+
+## Applications
+|Status     |Details                                |
+|-----------|---------------------------------------|
+|![](/images/improvement.jpg)|Send collaborator emails asynchronously|
+|![](/images/bug.jpg)            |NLP bug fixes for non-text apps        |
+
+## Inputs
+|Status     |Details                                |
+|-----------|---------------------------------------|
+|![](/images/improvement.jpg)|Consolidated input related status codes |
+|![](/images/improvement.jpg)|Add frame.id to API as well as region.track_id |
+|![](/images/bug.jpg)            |Granted select permission to clarifairead|
+
+## Annotate
+|Status     |Details                                |
+|-----------|---------------------------------------|
+|![](/images/new_feature.jpg)    |Added list annotations filter status        |
+|![](/images/improvement.jpg)|Added concept selection for tasks        |
+|![](/images/improvement.jpg)|Post/Patch annotations request now allow setting status|
+|![](/images/improvement.jpg)|Changed task form options               |
+|![](/images/improvement.jpg)|Set annotation status to awaiting for review if the authorized user is not app owner|
+|![](/images/improvement.jpg)|Return only input_level annotation in input.data|
+|![](/images/bug.jpg)            |Drawing annotations: wrong embed model version id. Fixed|
+|![](/images/bug.jpg)            |Eliminated error if no annotation to be deleted|
+|![](/images/bug.jpg)            |Create one annotation for each bbox    |
+
+## Model
+|Status     |Details                                |
+|-----------|---------------------------------------|
+|![](/images/new_feature.jpg)    |Added support for adding and training on text in the platform|
+|![](/images/new_feature.jpg)    |Created a NLP mock prediction endpoint |
+|![](/images/improvement.jpg)|Created test set to evaluate quick trained models or k-fold if no test search is specified|
+|![](/images/improvement.jpg)|Added vocab_id for demographics model concepts |
+|![](/images/improvement.jpg)|Fixed sorting of A.G.E. concepts in golang for demographics model so we don't chop off sets of them |
+|![](/images/improvement.jpg)|Deprecated Face from javascript Client  |
+|![](/images/improvement.jpg)|Deprecated Face from Java Client        |
+|![](/images/bug.jpg)            |Confusion matrix predicted/true are swapped in evaluation results. Fixed|
+|![](/images/bug.jpg)            |Explorer Image/Text Joint embedding     |
+|![](/images/bug.jpg)            |Fixed selectEmbedModelVersionId in detection apps|
+|![](/images/bug.jpg)            |Fixed generalModel imports and optimized video click handlers with useCallback hooks|
+
+## Search
+|Status     |Details                                |
+|-----------|---------------------------------------|
+|![](/images/improvement.jpg)|Persisted the saved search used in train a model version|
+|![](/images/bug.jpg)            |Created log for annotation/search request/response |
+|![](/images/bug.jpg)            |Region Searches within Search Bar still use crop coordinates instead of base64 bytes. Fixed|
+
+## Portal
+|Status     |Details                                |
+|-----------|---------------------------------------|
+|![](/images/new_feature.jpg)    |Created new Single Image View and Image Tools|
+|![](/images/new_feature.jpg)    |Enabled Display Text Thumbnails in App Grid View and App Details View|
+|![](/images/new_feature.jpg)    |Text Thumbnails display in Portal/Search Bar disabled|
+|![](/images/new_feature.jpg)    |Enabled View Text Assets in Portal's Image View|
+|![](/images/new_feature.jpg)    |Added Text Inputs To Explorer Apps       |
+|![](/images/new_feature.jpg)    |Imported new icons for Labeler Image Tools into the style guide|
+|![](/images/improvement.jpg)|Added login tracking to analytics package in Portal|
+|![](/images/improvement.jpg)|Allowed pasting into the add inputs text area and clear the text box after clicking submit|
+|![](/images/bug.jpg)            |Search bar not visible. Fixed                 |
+|![](/images/bug.jpg)            |Removed all instances of worker_id from Explorer|
+|![](/images/bug.jpg)            |Fixed popover left/right overflow        |
+|![](/images/bug.jpg)            |Disabled all search by click handlers in Portal for Text Apps|
+|![](/images/bug.jpg)            |Click Search button icons on Thumbs not working for localized search. Fixed|
+|![](/images/bug.jpg)            |Fixed details page header missing description|
+|![](/images/bug.jpg)            |Fixed demo font syntax          |
+
+## Workflow
+|Status     |Details                                |
+|-----------|---------------------------------------|
+|![](/images/new_feature.jpg)    |Added a Range Slider to filter Workflow Predictions by Value|
+|![](/images/improvement.jpg)|Updated Face workflow to include the detect faces as concepts for search|
+
+
+
+
+
+
+# Changelog 6.2
+
+|New Feature    |Improvement|Bug Fix|Enterprise Only|
+|:-:|:-:|:-:|:-:|
+|![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
+
+## Accounts
+|Status         |Details                                                                                              |
+|---------------|-----------------------------------------------------------------------------------------------------|
+|![](/images/improvement.jpg)    |Updated Privacy Policy URL                                                                            |
+|![](/images/bug.jpg)            |Fixed panic error in Signup
+
+## Applications
+|Status         |Details                                                                                              |
+|---------------|-----------------------------------------------------------------------------------------------------|
+|![](/images/improvement.jpg)    |Ensured collectors are deleted when apps are deleted                                                  |
+|![](/images/bug.jpg)            |View In Explorer button missing in app details. Fixed                                                       |
+|![](/images/bug.jpg)            |Fixed failed to generate thumbnail                                                                     |
+|![](/images/bug.jpg)            |Fixed app duplication error when getting worker                                                        |
+|![](/images/bug.jpg)            |Deleted collaborator should also mark application_worker to deleted. Fixed                            |
+
+## Inputs
+|Status         |Details                                                                                              |
+|---------------|-----------------------------------------------------------------------------------------------------|
+|![](/images/bug.jpg)            |Inputs count stuck at > 0 after delete all, with all inputs seemingly deleted                        |
+
+## Label
+|Status         |Details                                                                                              |
+|---------------|-----------------------------------------------------------------------------------------------------|
+|![](/images/new_feature.jpg)   |Task view UI for workers                                                                             |
+|![](/images/new_feature.jpg)   |Create task manager page and task creation page                                                      |
+|![](/images/new_feature.jpg)    |New Icon for Task Manager/Task Viewer                                                                |
+|![](/images/bug.jpg)            |Fixed POST annotations call on frontend to use correct embed model                                     |
+|![](/images/bug.jpg)            |Post annotations should include embed_model_version_id. Fixed                                               |
+
+## Model
+|Status         |Details                                                                                              |
+|---------------|-----------------------------------------------------------------------------------------------------|
+|![](/images/new_feature.jpg)    |Added Apparel Detection to Demo App                                                                    |
+|![](/images/new_feature.jpg)  |Created UI for creating knowledge graph concept relations relations                                                            |
+|![](/images/new_feature.jpg)   |Create annotation writer model to write annotations to DB                                            |
+|![](/images/improvement.jpg)    |Pass and use test and train data queries to trainer                                                  |
+|![](/images/improvement.jpg)    |Added migration to upgrade old model_type in DB                                                        |
+|![](/images/improvement.jpg)    |Depredated Face from Python client                                                                    |
+|![](/images/improvement.jpg)    |Unified the TypeExt and Type fields in model object.                                                   |
+|![](/images/improvement.jpg)    |Deprecated facedetect* model types.                                                                   |
+|![](/images/improvement.jpg)    |Unified FaceEmbedModel and DetectEmbedModel                                                            |
+|![](/images/improvement.jpg)    |Converted face.Identity responses to concepts like other detection models to be consistent             |
+|![](/images/bug.jpg)            |Fixed demo font syntax                                                                                 |
+|![](/images/bug.jpg)            |Video Timeline does not display on the demo app                                                      |
+|![](/images/bug.jpg)            |Fixed Range Slider Value/Text in Apparel Detection Demo                                                |
+|![](/images/bug.jpg)            |Fixed demographics model to return embeddings and work with auto-annotate                              |
+|![](/images/bug.jpg)            |Adding collaborator model counter-intuitively requires ENTER in order to enable the submit button. Fixed|
+
+## Predict
+|Status         |Details                                                                                              |
+|---------------|-----------------------------------------------------------------------------------------------------|
+|![](/images/improvement.jpg)    |Validated that concept relation doesn't already exist on POST relations                               |
+|![](/images/bug.jpg)            |Prediction requests are being fired too frequently instead of using cache. Fixed                     |
+|![](/images/bug.jpg)            |postModelOutputs is not called for newly labeled assets without a manual refresh                     |
+
+## Search
+|Status         |Details                                                                                              |
+|---------------|-----------------------------------------------------------------------------------------------------|
+|![](/images/improvement.jpg)    |Return annotations posted by user in search results                                                  |
+|![](/images/bug.jpg)            |Search by region not working for face detection. Fixed                                               |
+|![](/images/bug.jpg)            |Make “save” search button internal only                                                              |
+|![](/images/bug.jpg)            |Saved Searches in Portal use the incorrect user ID                                                   |
+|![](/images/bug.jpg)            |Fix crop search from single image view for faces/detections                                          |
+
+## Portal
+|Status         |Details                                                                                              |
+|---------------|-----------------------------------------------------------------------------------------------------|
+|![](/images/new_feature.jpg)    |UI for collector crud                                                                                |
+|![](/images/improvement.jpg)    |Deprecate Face from Portal                                                                           |
+|![](/images/improvement.jpg)    |Improve tabs UI                                                                                      |
+|![](/images/bug.jpg)            |Video Predictions are failing in Portal                                                              |
+|![](/images/bug.jpg)            |Fixed broken font syntax                                                                               |
+
+## Workflow
+|Status         |Details                                                                                              |
+|---------------|-----------------------------------------------------------------------------------------------------|
+|![](/images/improvement.jpg)    |Video detection workflow prediction support                                                          |
+|![](/images/new_feature.jpg)    |Public general v1.5 workflow                                                                         |
+|![](/images/bug.jpg)            |Allow Patching to existing public workflow                                                           |
+|![](/images/bug.jpg)            |Can not train LOPQ if app base workflow is face. Fixed                                               |
+
+
+
+# Changelog 6.1
+
+|New Feature    |Improvement|Bug Fix|Enterprise Only|
+|:-:|:-:|:-:|:-:|
+|![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
+
+## Clients
+|Status|Details|
+|-|-------|
+|![](/images/improvement.jpg)|Remove Feedback endpoints from Python client                                                     |
+|![](/images/improvement.jpg)|Remove Feedback endpoints from Java client                                                       |
+|![](/images/improvement.jpg)|Remove Feedback endpoints from Javascript client                                                 |
+|![](/images/improvement.jpg)|Remove Feedback endpoints from Portal/demo                                                       |
+|![](/images/improvement.jpg)|Remove image.crop field from Python API client                                                   |
+|![](/images/improvement.jpg)|Remove image.crop field from Java API client                                                     |
+|![](/images/improvement.jpg)|Remove image.crop field from Javascript API client
+
+## Model
+|Status|Details|
+|-|-------|
+|![](/images/new_feature.jpg) |Added detection evaluation in platform                                                                 |
+|![](/images/new_feature.jpg)|Introduce concept mapping model that uses the knowledge graph relations, creating a path for users to eventually benefit from pool of networked data
+|![](/images/bug.jpg)|Fix a bug that caused the new face predictions to have a huge performance drop                                   |
+|![](/images/bug.jpg)|Train and eval worker didn't invalidate model related cache. Fixed                               |
+|![](/images/bug.jpg)|Fix bug in deleting a concept relation by ID                                                     |
+
+## Portal
+|Status|Details|
+|-|-------|
+|![](/images/new_feature.jpg)|Bulk labelling can now be done from Explorer mode grid view.|
+|![](/images/improvement.jpg)|Show Check/X on custom detection model predictions in Portal                                     |
+|![](/images/improvement.jpg)|Allow multi concepts per bbox
+|![](/images/bug.jpg)|Negative tags not visible in Portal. Fixed
+
+## Predict
+|Status|Details|
+|-|-------|
+|![](/images/improvement.jpg)|Remove extra round trip to storage in predict pathway                                            |
+|![](/images/improvement.jpg)|Remove the image.crop argument during predict and POST /inputs calls to simplify the API         |
+|![](/images/improvement.jpg)|Add region predictions from custom models to detections in videos
+
+## Search
+|Status|Details|
+|-|-------|
+|![](/images/new_feature.jpg) |Implement search by annotation.status in backend                                                 |
+|![](/images/improvement.jpg)|Connect saved searches and annotation status
+
+
 # Changelog 6.0
 
-|New Feature|Improvement|Bug Fix|Enterprise Only
+|New Feature    |Improvement|Bug Fix|Enterprise Only|
 |:-:|:-:|:-:|:-:|
 |![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
 
@@ -51,7 +272,6 @@
 |-|-------|
 |![](/images/improvement.jpg)|Evaluate new face embedding model workflow end to end for optimal performance
 |![](/images/improvement.jpg)|Validate that concept.app_id shouldn't be set when creating/patching models
-|![](/images/improvement.jpg)|Introduce concept mapping model that uses the knowledge graph relations, creating a path for users to eventually benefit from pool of networked data
 |![](/images/improvement.jpg)|Add new predicate to knowledge graph for "relates_to" to represent synonyms
 |![](/images/bug.jpg)|Model training lag. Fixed
 |![](/images/bug.jpg)|Model has missing inputs. Fixed
@@ -92,16 +312,15 @@
 ## Search
 |Status|Details|
 |-|-------|
-|![](/images/new_feature.jpg) |	Add file upload input button to explorer search bar, simplifying the UX for file uploads
+|![](/images/new_feature.jpg) |Add file upload input button to explorer search bar, simplifying the UX for file uploads
 |![](/images/new_feature.jpg) |Filter custom facial recognition bboxes using a sliding bar, adding easy thresholding to custom facial recognition models
 |![](/images/improvement.jpg)|Search Bar allows file upload
 |![](/images/improvement.jpg)|Remove Explorer App Overflow Menu for improved UX
 
 
-
 # Changelog 5.11
 
-|New Feature|Improvement|Bug Fix|Enterprise Only
+|New Feature    |Improvement|Bug Fix|Enterprise Only|
 |:-:|:-:|:-:|:-:|
 |![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
 
@@ -195,7 +414,7 @@
 |-|-------|
 |![](/images/new_feature.jpg)|Add click to search metadata attributes in image details sidebar
 |![](/images/new_feature.jpg)|Implement visual search in another app as a model type you can add to a workflow
-|![](/images/bug.jpg)|Search bar missing in some cases. Fixed   
+|![](/images/bug.jpg)|Search bar missing in some cases. Fixed
 |![](/images/bug.jpg)|Region Searches within Search Bar still use crop coordinates instead of base64 bytes. Fixed
 |![](/images/bug.jpg)|Click Search button icons on Thumbs not working for localized search. Fixed
 |![](/images/bug.jpg)|Disable all search by click handlers in Portal for Text Apps
@@ -208,7 +427,7 @@
 
 
 # Changelog 5.10
-|New Feature|Improvement|Bug Fix|Enterprise Only
+|New Feature    |Improvement|Bug Fix|Enterprise Only|
 |:-:|:-:|:-:|:-:|
 |![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
 
@@ -269,7 +488,7 @@
 |![](/images/new_feature.jpg)|Created evaluation metrics for custom facial recognition in backend for improved facial recognition performance
 |![](/images/improvement.jpg)|Topological sort for workflows for scheduling a sequence based on dependencies
 |![](/images/improvement.jpg)|Cleaned up duplicate models in workflow model list
-|![](/images/improvement.jpg)|Deployed public general v1.5 in concept model
+|![](/images/improvement.jpg)|Deployed clarifai/main general v1.5 in concept model
 |![](/images/improvement.jpg)|Create Pixel Training Hyperparameter Help Guide
 |![](/images/improvement.jpg)|Improved accuracy of annotation counts, improving the user experience when annotating inputs
 |![](/images/bug.jpg)|If an image is tagged with a concept that is not in the model, training fails due to KeyError, this is fixed
