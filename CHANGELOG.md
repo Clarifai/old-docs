@@ -1,6 +1,146 @@
-# Changelog 6.3
+# Changelog 6.4
 
 |New Feature    |Improvement|Bug Fix|Enterprise Only|
+|:-:|:-:|:-:|:-:|
+|![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
+
+## Applications
+
+|Status     |Details                                                 |
+|-----------|--------------------------------------------------------|
+|![](/images/improvement.jpg)|Improved responsiveness of collaborations tab in /apps  |
+|![](/images/improvement.jpg)|Enabled list collaborators to list deleted collaborators|
+|![](/images/bug.jpg)            |Login Form breaks app. Fixed                            |
+|![](/images/bug.jpg)            |Deleting an app no longer redirects to /apps            |
+|![](/images/bug.jpg)            |Can’t create models in new app. Fixed                   |
+
+## Inputs
+
+|Status     |Details                                                 |
+|-----------|--------------------------------------------------------|
+|![](/images/bug.jpg)            |.webp files not working when sent as base64             |
+
+## Annotate
+
+|Status     |Details                                                 |
+|-----------|--------------------------------------------------------|
+|![](/images/new_feature.jpg)    |MVP of labeler single image view functionality          |
+|![](/images/new_feature.jpg)    |Support detection tasks                                 |
+|![](/images/improvement.jpg)|Detection Labeler: Color Coded Concepts                 |
+|![](/images/improvement.jpg)|Add workflow_id to task creation and show AI predictions to verify in labeler mode|
+|![](/images/new_feature.jpg)    |Split tasks admin view into tabs                        |
+|![](/images/improvement.jpg)|Add visual sections to task form                        |
+|![](/images/improvement.jpg)|Add default queries for "all inputs" and "all unlabelled inputs" in task create view|
+|![](/images/improvement.jpg)|Autocomplete annotation user                            |
+|![](/images/new_feature.jpg)    |Implement Classification Task Review Logic              |
+|![](/images/new_feature.jpg)    |Implement Review Process into tasks                     |
+|![](/images/improvement.jpg)|Introduce stats collection APIs for worker stats        |
+|![](/images/new_feature.jpg)    |Implement APIs for polygon region support               |
+|![](/images/new_feature.jpg)    |Incorporate image filters for labelling                 |
+|![](/images/improvement.jpg)|Update image tool icons                                 |
+|![](/images/new_feature.jpg)    |Ability to zoom in on images                            |
+|![](/images/improvement.jpg)|Remove ‘alt’ from hotkeys, just use letters and arrows  |
+|![](/images/new_feature.jpg)    |Label to draw box in video frame using frame bytes      |
+|![](/images/improvement.jpg)|Display videos in labeler                               |
+|![](/images/improvement.jpg)|Add video fps field for tasks                           |
+|![](/images/improvement.jpg)|Draw Bounding Boxes in Labeler Detection Videos         |
+|![](/images/improvement.jpg)|Add video controls for video in labeler                 |
+|![](/images/bug.jpg)            |Fix Classification Annotation                           |
+|![](/images/bug.jpg)            |Video annotation deletion. Fixed                        |
+|![](/images/bug.jpg)            |AI Assist Predictions did not show for General workflow classification task. Fixed|
+|![](/images/bug.jpg)            |Fix Classification video annotation                     |
+|![](/images/bug.jpg)            |Display video in classification tasks                   |
+|![](/images/bug.jpg)            |Fix Labeler input urls                                  |
+|![](/images/bug.jpg)            |Fix Annotation creation for video                       |
+|![](/images/bug.jpg)            |Fix Labeler post calls                                  |
+|![](/images/bug.jpg)            |Detection Labeler: fix zoom                             |
+|![](/images/bug.jpg)            |Fixed image cropper task description                    |
+|![](/images/bug.jpg)            |Fix concept threshold creation                          |
+|![](/images/bug.jpg)            |Set annotation status ‘success’                         |
+|![](/images/bug.jpg)            |Restrict tasks to only the assigned users               |
+|![](/images/bug.jpg)            |Add validation to TaskForm’s concept field              |
+|![](/images/bug.jpg)            |Display human tags for human box as child               |
+
+## Model
+
+|Status     |Details                                                 |
+|-----------|--------------------------------------------------------|
+|![](/images/new_feature.jpg)    |Convert Deep Trained Model to Embedding Model for Use as "Base Workflow" |
+|![](/images/new_feature.jpg)    |Classification predictions for AI assistance            |
+|![](/images/new_feature.jpg)    |Merge this detection and custom model prediction sections for detection models|
+|![](/images/improvement.jpg)|Video labelling UI for classification.                  |
+|![](/images/improvement.jpg)|Remove the non-creatable types from model mode          |
+|![](/images/improvement.jpg)|Improve the create classifier / detector view options in model mode|
+|![](/images/improvement.jpg)|Add deep training options in model mode                 |
+|![](/images/improvement.jpg)|Update random sampling model to have a slider           |
+
+## Predict
+
+|Status     |Details                                                 |
+|-----------|--------------------------------------------------------|
+|![](/images/bug.jpg)            |Fixed public concept rank                               |
+
+## Search
+
+|Status     |Details                                                 |
+|-----------|--------------------------------------------------------|
+|![](/images/new_feature.jpg)    |Support detection evaluations in PostAnnotationSearchMetrics|
+|![](/images/new_feature.jpg)    |Support nlp search (only filtering)                     |
+|![](/images/new_feature.jpg)    |Add evaluations between two saved search label sets     |
+|![](/images/improvement.jpg)|Fix labeler search amount                               |
+|![](/images/bug.jpg)            |Error:  "Cannot search over `annotations`" when clicking a general app. Fixed|
+|![](/images/bug.jpg)            |Model name and details is not populated upon model creation in model mode|
+|![](/images/bug.jpg)            |Fix annotation search when accessing the LabelerPage    |
+|![](/images/bug.jpg)            |Search by annotation_info should not return the embed annotation. Fixed|
+|![](/images/bug.jpg)            |Search for metadata in detection apps doesn't work. Fixed|
+
+## Portal
+
+|Status     |Details                                                 |
+|-----------|--------------------------------------------------------|
+|![](/images/new_feature.jpg)    |Create Dual Range Slider                                |
+|![](/images/new_feature.jpg)    |Enable patching the default workflow from Portal and error if needs reindex|
+|![](/images/new_feature.jpg)    |Allow drawing bounding boxes on paused video frames     |
+|![](/images/improvement.jpg)|Add scopes for collaborators and metrics to Portal      |
+|![](/images/improvement.jpg)|Allow up to 15-20x zoom level for really large images.  |
+|![](/images/improvement.jpg)|Allow selection the embed_model_version_id from Portal when creating a model|
+|![](/images/bug.jpg)            |Fix inconsistent fps between uploading video and predicting video|
+|![](/images/bug.jpg)            |Missing frame time. Fixed                               |
+|![](/images/bug.jpg)            |Model annotations not appearing in Explorer. Fixed      |
+|![](/images/bug.jpg)            |When creating the auto annotation workflow editing the workflow crashes Portal|
+|![](/images/bug.jpg)            |Fix image tools state                                   |
+
+## Workflow
+
+|Status     |Details                                                 |
+|-----------|--------------------------------------------------------|
+|![](/images/improvement.jpg)|CreateWorkflow model improvements                       |
+|![](/images/improvement.jpg)|Allow custom concept models in the default app workflows|
+|![](/images/improvement.jpg)|Add a "Make a Copy" or "Copy to New Workflow" button for each workflow|
+|![](/images/improvement.jpg)|Allow patching the default workflow in Portal           |
+|![](/images/improvement.jpg)|Show the default workflow in the list of workflows for the app|
+|![](/images/improvement.jpg)|Validate patching of default workflow is compatible in backend|
+|![](/images/bug.jpg)            |Large workflow name causes overlap in app details view. Fixed|
+|![](/images/bug.jpg)            |Portal crashes if page reloads during workflow add/edit. Fixed|
+|![](/images/bug.jpg)            |Detection workflow recompute also predict detect-concept|
+|![](/images/bug.jpg)            |Allow detect-concept models to be added to workflows    |
+|![](/images/bug.jpg)            |Patch workflow create worker                            |
+|![](/images/bug.jpg)            |Fix validation of inputs in workflows                   |
+|![](/images/bug.jpg)            |Fix workflow embed_join_annotation_id issue             |
+
+## Clients
+
+|Status     |Details                                                 |
+|-----------|--------------------------------------------------------|
+|![](/images/improvement.jpg)|Clean up private API client repos                       |
+|![](/images/bug.jpg)            |Remove public workflows from Python client              |
+
+
+
+
+# Changelog 6.3
+
+|New Feature    |![](/images/improvement.jpg)|Bug Fix|Enterprise Only|
 |:-:|:-:|:-:|:-:|
 |![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
 

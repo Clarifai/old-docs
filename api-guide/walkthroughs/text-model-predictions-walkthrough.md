@@ -1,31 +1,43 @@
+# Bulk Text Model Predictions Walkthrough
 
+This walkthrough is designed to help you run bulk Text model predictions on a `.csv` file of text entries. Text models work very similarly to visual models in our platform. Please refer to the [custom model walkthrough](/custom-model-walkthrough.md) for more information about building custom models. Just keep in mind that for text models, you will provide text inputs, instead of image URLs.
 
-A script designed for running bulk NLP model predictions on a .csv file of text entries.
+## You will need
 
-Mandatory:
-- a csv file with a "text" column; additional columns will be included/returned in the output file
-- a Clarifai API KEY
-- the model id of the NLP model that you wish to predict with
-- the specific model version id for the above NLP model
+- A CSV file with a "text" column; additional columns will be included/returned in the output file
+- A Clarifai API KEY
+- The model id of the Text model that you wish to predict with
+- The specific model version id for the above Text model
 
-Optional/Default:
-- the "top n" number of results to be returned from the model predictions. default 3. [1-200]
-- the batch size or number of inputs to send in per predict call. default 32. max 128.
+## Optional/Default
+- The "top n" number of results to be returned from the model predictions. The default is 3. [1-200]
+- The batch size or number of inputs to send in per predict call. The default is 32. The max is 128.
 
-Example usage:
+## Example usage:
 
-python nlp_model_predicts --csv_file CSVFILE --api_key API_KEY --model_id MODEL_ID --model_version MODEL_VERSION
+```python
+python Text_model_predicts --csv_file CSVFILE --api_key API_KEY --model_id MODEL_ID --model_version MODEL_VERSION
+```
 
-Example input CSV file:
-text,random_column_1
-"The quick brown fox something something.",perhaps_some_metadata
-"The lazy dog is...",some_other_metadata
-Example output CSV file:
-text,random_column_1,predict_1_concept,predict_1_value
-"The quick brown fox something something.",perhaps_some_metadata,predicted_concept,0.8731359
-"The lazy dog is...",some_other_metadata,predicted_concept,0.98218
+## Example input CSV file:
+```text
+text, random_column_1
+"The quick brown fox ...", perhaps_some_metadata
+"The lazy dog is...", some_other_metadata
+```
+
+## Example output CSV file:
+
+```text
+text, random_column_1, predict_1_concept, predict_1_value
+"The quick brown fox ...", perhaps_some_metadata, predicted_concept, 0.8731359
+"The lazy dog is...", some_other_metadata, predicted_concept, 0.98218
 '''
+```
 
+
+## Python script for bulk Text model predictions
+```python
 from __future__ import absolute_import, division, print_function
 
 import argparse
@@ -100,7 +112,7 @@ def get_predict(dataframe, stub, model_id, model_version, auth_metadata, top_n):
 def main():
   parser = argparse.ArgumentParser(
       description=
-      'Given a csv file with a "text" column and model credentials, provide NLP model predictions.'
+      'Given a csv file with a "text" column and model credentials, provide Text model predictions.'
   )
   parser.add_argument('--api_key', required=True, help='the app\'s api key', type=str)
   parser.add_argument('--csv_file', required=True, help='csv file with urls', type=str)
@@ -132,3 +144,4 @@ def main():
   output_name = os.path.splitext(args.csv_file)[0] + '_results.csv'
   predicted_data.to_csv(output_name, index=False)
   print('Results saved to {}'.format(output_name))
+```

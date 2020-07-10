@@ -60,6 +60,8 @@
 * [Walkthroughs](api-guide/walkthroughs/README.md)
   * [Custom Models](api-guide/walkthroughs/custom-model-walkthrough.md)
   * [Auto Annotation](api-guide/walkthroughs/auto-annotation-walkthrough.md)
+  * [Text Classification](api-guide/walkthroughs/text-model-predictions-walkthrough.md)
+  * [Visual Text Recognition](api-guide/walkthroughs/visual-text-recognition-walkthrough.md)
 
 ## Portal Guide
 
@@ -87,6 +89,8 @@
 * [Walkthroughs](portal-guide/walkthroughs/README.md)
   * [Custom Models](portal-guide/walkthroughs/pcustom-model-walkthrough.md)
   * [Auto Annotation](portal-guide/walkthroughs/auto-annotation-walkthrough.md)
+  * [Text Classification](portal-guide/walkthroughs/custom-text-walkthrough.md)
+  * [Visual Text Recognition](portal-guide/walkthroughs/visual-text-recognition-walkthrough.md)
 
 ## Product Updates
 
