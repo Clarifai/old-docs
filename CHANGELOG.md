@@ -18,7 +18,7 @@
 
 |Status     |Details                                                 |
 |-----------|--------------------------------------------------------|
-|![](/images/bug.jpg)            |.webp files not working when sent as base64             |
+|![](/images/bug.jpg)            |Fixed .webp files not working when sent as base64             |
 
 ## Annotate
 
@@ -136,11 +136,9 @@
 |![](/images/bug.jpg)            |Remove public workflows from Python client              |
 
 
-
-
 # Changelog 6.3
 
-|New Feature    |![](/images/improvement.jpg)|Bug Fix|Enterprise Only|
+|New Feature    |Improvement|Bug Fix|Enterprise Only|
 |:-:|:-:|:-:|:-:|
 |![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
 
