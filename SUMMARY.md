@@ -59,6 +59,7 @@
   * [Saved Searches](api-guide/search/saved_searches.md)
 * [Walkthroughs](api-guide/walkthroughs/README.md)
   * [Custom Models](api-guide/walkthroughs/custom-model-walkthrough.md)
+  * [Custom Text Model](api-guide/walkthroughs/custom-text-model-walkthrough.md)
   * [Auto Annotation](api-guide/walkthroughs/auto-annotation-walkthrough.md)
   * [Text Classification](api-guide/walkthroughs/text-model-predictions-walkthrough.md)
   * [Visual Text Recognition](api-guide/walkthroughs/visual-text-recognition-walkthrough.md)
