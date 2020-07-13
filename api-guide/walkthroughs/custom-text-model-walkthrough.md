@@ -21,6 +21,7 @@ For authentication, we'll for now use the Personal Access Token, which is able t
 
 {% tabs %}
 {% tab title="gRPC Python" %}
+```python
 pat_metadata = (('authorization', 'Key {YOUR_PERSONAL_ACCESS_TOKEN}'),)
 
 post_apps_response = stub.PostApps(
@@ -42,6 +43,7 @@ user_id = post_apps_response.apps[0].user_id
 
 if post_apps_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Failed response, status: " + str(post_apps_response.status))
+```
 {% endtab %}
 {% endtabs %}
 
@@ -54,6 +56,7 @@ See at the bottom of the code example that we put the API key into a metadata tu
 
 {% tabs %}
 {% tab title="gRPC Python" %}
+```python
 post_keys_response = stub.PostKeys(
     service_pb2.PostKeysRequest(
         keys=[
@@ -76,6 +79,7 @@ if post_keys_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Failed response, status: " + str(post_keys_response.status))
 
 api_key_metadata = (('authorization', 'Key ' + post_keys_response.keys[0].id),)
+```
 {% endtab %}
 {% endtabs %}
 
@@ -88,6 +92,7 @@ The text can be added either directly (it's called raw), or from a URL.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
+```python
 positive_raw_texts = [
     "Marie is a published author.",
     "In three years, everyone will be happy.",
@@ -141,6 +146,7 @@ post_inputs_response = stub.PostInputs(
 
 if post_inputs_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Failed response, status: " + str(post_inputs_response.status))
+```
 {% endtab %}
 {% endtabs %}
 
@@ -151,6 +157,7 @@ Let's now wait for all the inputs to download.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
+```python
 while True:
     list_inputs_response = stub.ListInputs(
         service_pb2.ListInputsRequest(page=1, per_page=100),
@@ -181,6 +188,7 @@ while True:
         print("All inputs have been successfully downloaded.")
         break
     time.sleep(2)
+```
 {% endtab %}
 {% endtabs %}
 
@@ -192,6 +200,7 @@ Now we can create a custom model that's going to be using the concepts `positive
 
 {% tabs %}
 {% tab title="gRPC Python" %}
+```python
 post_models_response = stub.PostModels(
     service_pb2.PostModelsRequest(
         models=[
@@ -214,6 +223,7 @@ post_models_response = stub.PostModels(
 
 if post_models_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Failed response, status: " + str(post_models_response.status))
+```
 {% endtab %}
 {% endtabs %}
 
@@ -223,6 +233,7 @@ Let's train the model, making it learn from the inputs, so we can later use it t
 
 {% tabs %}
 {% tab title="gRPC Python" %}
+```python
 post_model_versions_response = stub.PostModelVersions(
     service_pb2.PostModelVersionsRequest(model_id="my-text-model"),
     metadata=api_key_metadata
@@ -230,6 +241,7 @@ post_model_versions_response = stub.PostModelVersions(
 
 if post_model_versions_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Failed response, status: " + str(post_model_versions_response.status))
+```
 {% endtab %}
 {% endtabs %}
 
@@ -242,6 +254,7 @@ Each model training produces a new model version. See on the bottom of the code 
 
 {% tabs %}
 {% tab title="gRPC Python" %}
+```python
 while True:
     get_model_response = stub.GetModel(
         service_pb2.GetModelRequest(model_id="my-text-model"),
@@ -269,6 +282,7 @@ while True:
         )
 
 model_version_id = get_model_response.model.model_version.id
+```
 {% endtab %}
 {% endtabs %}
 
@@ -279,6 +293,7 @@ Now we can use the new custom model to predict new text examples.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
+```python
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
         model_id="my-text-model",
@@ -302,6 +317,7 @@ for output in post_model_outputs_response.outputs:
     print(f"The following concepts were predicted for the input `{val}`:")
     for concept in output.data.concepts:
         print(f"\t{concept.name}: {concept.value:.2f}")
+```
 {% endtab %}
 {% endtabs %}
 
@@ -312,6 +328,7 @@ Let's now test the performance of the model by using model evaluation. See the [
 
 {% tabs %}
 {% tab title="gRPC Python" %}
+```python
 post_model_version_metrics = stub.PostModelVersionMetrics(
     service_pb2.PostModelVersionMetricsRequest(
         model_id="my-text-model",
@@ -322,6 +339,7 @@ post_model_version_metrics = stub.PostModelVersionMetrics(
 
 if post_model_version_metrics.status.code != status_code_pb2.SUCCESS:
     raise Exception("Failed response, status: " + str(post_model_version_metrics.status))
+```
 {% endtab %}
 {% endtabs %}
 
@@ -332,6 +350,7 @@ Model evaluation takes some time, depending on the amount of data in our model. 
 
 {% tabs %}
 {% tab title="gRPC Python" %}
+```python
 while True:
     get_model_version_metrics_response = stub.GetModelVersionMetrics(
         service_pb2.GetModelVersionMetricsRequest(
@@ -372,5 +391,6 @@ while True:
 
 print("The model metrics response object:")
 print(get_model_version_metrics_response)
+```
 {% endtab %}
 {% endtabs %}
