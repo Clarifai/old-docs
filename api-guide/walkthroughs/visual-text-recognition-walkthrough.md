@@ -1,12 +1,18 @@
-# Visual Text Recognition Walkthrough
+# Visual Text Recognition (VTR) Walkthrough
 
-Visual text recognition helps you understand text in images and videos.
+Visual text recognition helps you convert typed, handwritten or printed text in images and videos into machine-encoded text. You can input a scanned document, a photo of a document, a scene-photo (such as the text on signs and billboards), or text superimposed on an image (such as in a meme) and output the words and individual characters present in the images. VTR lets you "digitize" text so that it can be edited, searched, stored, displayed and analyzed.
 
-Visual text detection and recognition models need to be configured in a workflow so that you can understand text in your images. You will add these three models to your workflow:
+[img]
+
+## How VTR works
+
+VTR works by first detecting the location of text in your photos or video frames, then cropping the region where the text is present, and then finally running a specialized classification model that will extract text from the cropped image. To accomplish these different tasks, you will need to configure a workflow. You will then add these three models to your workflow:
 
 * **Visual Text Detection**
 * **1.0 Cropper**
 * **Visual Text Recognition**
+
+## Building a VTR workflow
 
 {% tabs %}
 {% tab title="gRPC Python" %}
