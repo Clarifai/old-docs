@@ -2,6 +2,10 @@
 
 Text models can be trained to understand the meaning of text passages. We offer a general text embedding model, as well as a specialized text moderation model. This walkthrough shows you how to create a custom text model from our text embedding model.
 
+<figure class="video_container">
+  <iframe src="https://youtu.be/-blQVbccAF0" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
+
 ## Create an app
 
 Create a new application and select “Text” as your default workflow.
@@ -20,7 +24,7 @@ You can upload your text directly from a `.csv` file. This means you can work wi
 
 ![](../../images/csv_template.jpg)
 
-Next, add your text data. At a minimum, you should add text to the `input.data.text.raw` field. You can add one concept per column to the `input.data.concepts[i].id` fields. For the `input.data.concepts[i].value` column, there are two options: enter the number `1` if the concept *is* present in the input, enter the value `0` if the concept is *not* present in the input (a negative example). If no value is entered, a default value of `1` will be assigned to your input.
+Next, add your text data. At a minimum, you should add text to the `input.data.text.raw` field. You can add one concept per column to the `input.data.concepts[*].id` fields. For the `input.data.concepts[*].value` column, there are two options: enter the number `1` if the concept *is* present in the input, enter the value `0` if the concept is *not* present in the input (a negative example). If no value is entered, a default value of `1` will be assigned to your input.
 
 You can add columns for as many concepts as you like, and you can add new columns to add values for any other values supported by the API:
 

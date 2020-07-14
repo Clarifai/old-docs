@@ -17,3 +17,6 @@
 * GIF
 * 3GPP
 
+## Text
+
+* Plain text
