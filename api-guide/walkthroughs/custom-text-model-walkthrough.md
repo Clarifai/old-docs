@@ -39,10 +39,10 @@ post_apps_response = stub.PostApps(
 # You may print the response to see what the structure and the data of the response is.
 # print(post_apps_response)
 
-user_id = post_apps_response.apps[0].user_id
-
 if post_apps_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Failed response, status: " + str(post_apps_response.status))
+
+user_id = post_apps_response.apps[0].user_id
 ```
 {% endtab %}
 {% endtabs %}
@@ -158,6 +158,8 @@ Let's now wait for all the inputs to download.
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
+import time
+
 while True:
     list_inputs_response = stub.ListInputs(
         service_pb2.ListInputsRequest(page=1, per_page=100),
@@ -255,6 +257,8 @@ Each model training produces a new model version. See on the bottom of the code 
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
+import time
+
 while True:
     get_model_response = stub.GetModel(
         service_pb2.GetModelRequest(model_id="my-text-model"),
@@ -324,7 +328,7 @@ for output in post_model_outputs_response.outputs:
 
 ## Start model evaluation
 
-Let's now test the performance of the model by using model evaluation. See the [the Model Evaluation page](../../api-guide/model/evaluate) to learn more.
+Let's now test the performance of the model by using model evaluation. See the [the Model Evaluation page](https://docs.clarifai.com/portal-guide/model/evaluate) to learn more.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -351,6 +355,8 @@ Model evaluation takes some time, depending on the amount of data in our model. 
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
+import time
+
 while True:
     get_model_version_metrics_response = stub.GetModelVersionMetrics(
         service_pb2.GetModelVersionMetricsRequest(
