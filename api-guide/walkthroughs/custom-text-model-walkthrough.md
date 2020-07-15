@@ -324,7 +324,7 @@ for output in post_model_outputs_response.outputs:
 
 ## Start model evaluation
 
-Let's now test the performance of the model by using model evaluation. See the [the Model Evaluation page](../../api-guide/model/evaluate) to learn more.
+Let's now test the performance of the model by using model evaluation. See the [the Model Evaluation page](https://docs.clarifai.com/portal-guide/model/evaluate) to learn more.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
