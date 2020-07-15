@@ -39,10 +39,10 @@ post_apps_response = stub.PostApps(
 # You may print the response to see what the structure and the data of the response is.
 # print(post_apps_response)
 
-user_id = post_apps_response.apps[0].user_id
-
 if post_apps_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Failed response, status: " + str(post_apps_response.status))
+
+user_id = post_apps_response.apps[0].user_id
 ```
 {% endtab %}
 {% endtabs %}
