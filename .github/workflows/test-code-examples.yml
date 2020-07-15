@@ -18,6 +18,8 @@ jobs:
         cd tests
         pip install -r requirements.txt
     - name: Run code examples tests
+      env:
+        TEST_RUNNER_PAT: ${{ secrets.TEST_RUNNER_PAT }}
       run: |
         cd tests
         python run_code_examples_tests.py
