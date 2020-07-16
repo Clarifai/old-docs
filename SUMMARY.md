@@ -15,6 +15,8 @@
   * [Personal Access Tokens](getting-started/authentication/personal-access-tokens.md)
   * [Scopes](getting-started/authentication/scopes.md)
   * [Authorize](getting-started/authentication/authorize.md)
+  * [Secure Hosting](getting-started/authentication/secure-hosting.md)
+  * [SSO](getting-started/authentication/SSO.md)
 * [Glossary](getting-started/glossary.md)
 
 ## API Guide
@@ -87,6 +89,7 @@
   * [Filter](portal-guide/psearch/pfilter.md)
   * [Combine or Negate](portal-guide/psearch/pcombine_or_negate.md)
   * [Saved Searches](portal-guide/psearch/psaved_searches.md)
+  * [Visual Search](portal-guide/psearch/visual-search.md)
 * [Walkthroughs](portal-guide/walkthroughs/README.md)
   * [Custom Models](portal-guide/walkthroughs/pcustom-model-walkthrough.md)
   * [Auto Annotation](portal-guide/walkthroughs/auto-annotation-walkthrough.md)

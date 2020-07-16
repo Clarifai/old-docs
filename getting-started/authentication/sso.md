@@ -30,7 +30,7 @@ If you click the link in the email, you can click it and revoke access to Clarif
 
 ### Google
 
-1. Click the “Sign in with Google button and you will be redirected to the Authorization page:
+1. Click the “Sign in with Google" button and you will be redirected to the Authorization page:
 
 ![sign-on](../../images/sso-options.png)
 

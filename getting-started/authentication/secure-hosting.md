@@ -15,6 +15,6 @@ Once you logout, without the proper token, the image URLs will not be able to be
 
 ## How Your Image is Retrieved
 
-The image serving service will read image from S3, via S3 API, other than S3 web URLs.
+The image serving service will read your image from S3, via the S3 API. S3 web URLs are not used.
 
 You can fetch images via the image serving service, only with a proper authorized token issued upon a successful login.
