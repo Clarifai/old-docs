@@ -22,7 +22,7 @@ SingleModelResponse postModelsResponse = stub.postModels(
             .setId("petsID")
             .setOutputInfo(
                 OutputInfo.newBuilder().setData(
-                    Data.newBuilder().addConcepts(Concept.newBuilder().setId("charlie"))
+                    Data.newBuilder().addConcepts(Concept.newBuilder().setId("boscoe"))
                 )
             )
     ).build()
@@ -44,7 +44,7 @@ stub.PostModels(
             {
                 id: "petsID",
                 output_info: {
-                    data: {concepts: [{id: "charlie"}]},
+                    data: {concepts: [{id: "boscoe"}]},
                 }
             }
         ]
@@ -78,7 +78,7 @@ post_models_response = stub.PostModels(
                 id="petsID",
                 output_info=resources_pb2.OutputInfo(
                     data=resources_pb2.Data(
-                        concepts=[resources_pb2.Concept(id="charlie", value=1)]
+                        concepts=[resources_pb2.Concept(id="boscoe", value=1)]
                     ),
                 )
             )
@@ -97,7 +97,7 @@ if post_models_response.status.code != status_code_pb2.SUCCESS:
 app.models.create(
   "petsID",
   [
-    { "id": "charlie" }
+    { "id": "boscoe" }
   ]
 ).then(
   function(response) {
@@ -115,7 +115,7 @@ app.models.create(
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 
-model = app.models.create('petsID', concepts=['charlie'])
+model = app.models.create('petsID', concepts=['boscoe'])
 ```
 {% endtab %}
 
@@ -123,7 +123,7 @@ model = app.models.create('petsID', concepts=['charlie'])
 ```java
 client.createModel("petsID")
     .withOutputInfo(ConceptOutputInfo.forConcepts(
-        Concept.forID("charlie")
+        Concept.forID("boscoe")
     ))
     .executeSync();
 ```
@@ -146,7 +146,7 @@ namespace YourNamespace
 
             await client.CreateModel(
                     "petsID",
-                    concepts: new List<Concept> {new Concept("charlie")})
+                    concepts: new List<Concept> {new Concept("boscoe")})
                 .ExecuteAsync();
         }
     }
@@ -197,7 +197,7 @@ curl -X POST \
         "data": {
           "concepts": [
             {
-              "id": "charlie",
+              "id": "boscoe",
               "value": 1
             }
           ]
