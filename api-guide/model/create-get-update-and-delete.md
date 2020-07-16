@@ -2,178 +2,10 @@
 
 ### Create Model
 
-You can create your own model and train it with your own images and concepts. Once you train it to see how you would like it to see, you can then use that model to make predictions.
+To create a model, you need to specify the model's name and other required fields (which depend on the model). Specifying the ID is optional.
 
-When you create a model you give it a name and an id. If you don't supply an id, one will be created for you.
+Below, we create a classifier model with one initial concept. You can always add and remove concepts later.
 
-{% tabs %}
-{% tab title="gRPC Java" %}
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-SingleModelResponse postModelsResponse = stub.postModels(
-    PostModelsRequest.newBuilder().addModels(
-        Model.newBuilder().setId("petsID")
-    ).build()
-);
-
-if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
-}
-```
-{% endtab %}
-
-{% tab title="gRPC NodeJS" %}
-```js
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-stub.PostModels(
-    {
-        models: [
-            {
-                id: "petsID",
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post models failed, status: " + response.status.description);
-        }
-    }
-);
-```
-{% endtab %}
-
-{% tab title="gRPC Python" %}
-```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-post_models_response = stub.PostModels(
-    service_pb2.PostModelsRequest(
-        models=[
-            resources_pb2.Model(
-                id="petsID"
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_models_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post models failed, status: " + post_models_response.status.description)
-```
-{% endtab %}
-
-{% tab title="js" %}
-```javascript
-app.models.create("petsID").then(
-  function(response) {
-    // do something with response
-  },
-  function(err) {
-    // there was an error
-  }
-);
-```
-{% endtab %}
-
-{% tab title="python" %}
-```python
-from clarifai.rest import ClarifaiApp
-app = ClarifaiApp(api_key='YOUR_API_KEY')
-
-app.models.create('petsID')
-```
-{% endtab %}
-
-{% tab title="java" %}
-```java
-client.createModel("petsID").executeSync();
-```
-{% endtab %}
-
-{% tab title="csharp" %}
-```csharp
-using System.Threading.Tasks;
-using Clarifai.API;
-
-namespace YourNamespace
-{
-    public class YourClassName
-    {
-        public static async Task Main()
-        {
-            var client = new ClarifaiClient("YOUR_API_KEY");
-
-            await client.CreateModel("petsID")
-                .ExecuteAsync();
-        }
-    }
-}
-```
-{% endtab %}
-
-{% tab title="objective-c" %}
-```text
-[_app createModel:nil name:@"petsModel" modelID:@"petsID" conceptsMutuallyExclusive:NO closedEnvironment:NO completion:^(ClarifaiModel *model, NSError *error) {
-    NSLog(@"model: %@", model);
-}];
-```
-{% endtab %}
-
-{% tab title="php" %}
-```php
-use Clarifai\API\ClarifaiClient;
-
-$client = new ClarifaiClient('YOUR_API_KEY');
-
-$response = $client->createModel('{model_id}')
-    ->executeSync();
-
-if ($response->isSuccessful()) {
-    echo "Response is successful.\n";
-} else {
-    echo "Response is not successful. Reason: \n";
-    echo $response->status()->description() . "\n";
-    echo $response->status()->errorDetails() . "\n";
-    echo "Status code: " . $response->status()->statusCode();
-}
-```
-{% endtab %}
-
-{% tab title="cURL" %}
-```text
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "model": {
-      "id": "petsID"
-    }
-  }'\
-  https://api.clarifai.com/v2/models
-```
-{% endtab %}
-{% endtabs %}
-
-### Create Model With Concepts
-
-You can also create a model and initialize it with the concepts it will contain. You can always add and remove concepts later.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -190,7 +22,7 @@ SingleModelResponse postModelsResponse = stub.postModels(
             .setId("petsID")
             .setOutputInfo(
                 OutputInfo.newBuilder().setData(
-                    Data.newBuilder().addConcepts(Concept.newBuilder().setId("charlie"))
+                    Data.newBuilder().addConcepts(Concept.newBuilder().setId("boscoe"))
                 )
             )
     ).build()
@@ -212,7 +44,7 @@ stub.PostModels(
             {
                 id: "petsID",
                 output_info: {
-                    data: {concepts: [{id: "charlie"}]},
+                    data: {concepts: [{id: "boscoe"}]},
                 }
             }
         ]
@@ -246,7 +78,7 @@ post_models_response = stub.PostModels(
                 id="petsID",
                 output_info=resources_pb2.OutputInfo(
                     data=resources_pb2.Data(
-                        concepts=[resources_pb2.Concept(id="charlie", value=1)]
+                        concepts=[resources_pb2.Concept(id="boscoe", value=1)]
                     ),
                 )
             )
@@ -265,7 +97,7 @@ if post_models_response.status.code != status_code_pb2.SUCCESS:
 app.models.create(
   "petsID",
   [
-    { "id": "charlie" }
+    { "id": "boscoe" }
   ]
 ).then(
   function(response) {
@@ -283,7 +115,7 @@ app.models.create(
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
 
-model = app.models.create('petsID', concepts=['charlie'])
+model = app.models.create('petsID', concepts=['boscoe'])
 ```
 {% endtab %}
 
@@ -291,7 +123,7 @@ model = app.models.create('petsID', concepts=['charlie'])
 ```java
 client.createModel("petsID")
     .withOutputInfo(ConceptOutputInfo.forConcepts(
-        Concept.forID("charlie")
+        Concept.forID("boscoe")
     ))
     .executeSync();
 ```
@@ -314,7 +146,7 @@ namespace YourNamespace
 
             await client.CreateModel(
                     "petsID",
-                    concepts: new List<Concept> {new Concept("charlie")})
+                    concepts: new List<Concept> {new Concept("boscoe")})
                 .ExecuteAsync();
         }
     }
@@ -365,7 +197,7 @@ curl -X POST \
         "data": {
           "concepts": [
             {
-              "id": "charlie",
+              "id": "boscoe",
               "value": 1
             }
           ]

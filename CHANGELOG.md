@@ -42,6 +42,7 @@
 |![](/images/improvement.jpg)|Make existing model details view configurable by model type.                  |
 |![](/images/bug.jpg)            |Edit model should only contain the fields related to the selected model. Fixed|
 |![](/images/bug.jpg)            |NLP frontend text input is covered entirely blue when selected. Fixed.        |
+|![](/images/bug.jpg)            |Enforce fields in post/patch models to adhere to model types. Fixed.        |
 
 
 ## Predict
