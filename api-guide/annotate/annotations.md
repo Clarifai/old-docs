@@ -23,9 +23,6 @@ To annotate a concept present anywhere in an image:
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -166,9 +163,6 @@ You can label a new bounding box by providing bounding box coordinates.
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -473,9 +467,6 @@ When you add an input, detection models (such as `Face Detection` or `General De
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -715,9 +706,6 @@ Note: only the app owner can post an annotation with other user's `user_id`, col
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_pb2, status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -840,9 +828,6 @@ Note this will not show annotations by models in your worfklow. To include model
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -927,9 +912,6 @@ List all annotations, including models created.
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -1017,9 +999,6 @@ Note: this will not show annotations by models in your worfklow. To include mode
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -1105,9 +1084,6 @@ You can list annotations by both input IDs and annotation IDs. Number of input I
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -1203,9 +1179,6 @@ An annotation is created by either a user or a model. You can list annotations c
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -1291,9 +1264,6 @@ An annotation is created by either a user or a model. For example if your workfl
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -1390,9 +1360,6 @@ Update an annotation of a image with a new concept, or to change a concept value
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -1528,9 +1495,6 @@ When you update region data, you must nest this new data within region.data. Set
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -1692,9 +1656,6 @@ You can update region bounding boxes coordinates. When changing the region, you 
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -1884,9 +1845,6 @@ You can update an annotation status.
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_pb2, status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -2008,9 +1966,6 @@ You can delete a single annotation by input ID and annotation ID.
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -2088,9 +2043,6 @@ You can delete multiple annotations in one API call. You need to provide a list 
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -2175,9 +2127,6 @@ To delete all annotations of a given input, you just need to set input ID(s). Th
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 

@@ -12,9 +12,6 @@ Create the concepts that we'll be using in our model. In this tutorial we'll cre
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -150,9 +147,6 @@ Your model's concept IDs are the ones you created in the previous step: `peopleI
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -272,9 +266,6 @@ We'll be setting the `knowledge_graph_id` value to be empty. If you wanted to de
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 from google.protobuf.struct_pb2 import Struct
 
 # Insert here the initialization code as outlined on this page:
@@ -405,9 +396,6 @@ This model will allow any predictions >= the concept values defined in the model
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -588,9 +576,6 @@ This model will allow any predictions < the concept values defined in the model 
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -770,9 +755,6 @@ Any incoming Data object full of concepts, regions, etc. will be writtent by thi
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -910,9 +892,6 @@ Any incoming Data object full of concepts, regions, etc. will be written by this
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -1023,9 +1002,6 @@ The model IDs and model version IDs from the public `clarifai/main` application 
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -1504,9 +1480,6 @@ Make this the default workflow in the app, so it will run every time we add an i
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -1607,9 +1580,6 @@ Adding the image will trigger the default workflow.
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -1728,9 +1698,6 @@ Now you can list annotations with your user id to see the annotations created by
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 

@@ -6,7 +6,6 @@ To create a model, you need to specify the model's name and other required field
 
 Below, we create a classifier model with one initial concept. You can always add and remove concepts later.
 
-
 {% tabs %}
 {% tab title="gRPC Java" %}
 ```java
@@ -65,9 +64,6 @@ stub.PostModels(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -274,9 +270,6 @@ stub.PatchModels(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -511,9 +504,6 @@ stub.PatchModels(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -763,9 +753,6 @@ stub.PatchModels(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -991,9 +978,6 @@ stub.ListModelTypes(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -1069,9 +1053,6 @@ stub.ListModels(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -1235,9 +1216,6 @@ stub.GetModel(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -1406,9 +1384,6 @@ stub.GetModelOutputInfo(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -1591,9 +1566,6 @@ stub.ListModelVersions(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -1770,9 +1742,6 @@ stub.GetModelVersion(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -1954,9 +1923,6 @@ stub.ListModelInputs(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -2116,9 +2082,6 @@ stub.ListModelInputs(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -2270,9 +2233,6 @@ stub.DeleteModel(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -2425,9 +2385,6 @@ stub.DeleteModelVersion(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -2595,9 +2552,6 @@ stub.DeleteModels(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -2751,9 +2705,6 @@ stub.PostModelVersions(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -2951,9 +2902,6 @@ stub.PostModelOutputs(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -3194,9 +3142,6 @@ stub.PostModelsSearches(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 

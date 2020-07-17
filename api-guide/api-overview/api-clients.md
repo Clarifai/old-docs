@@ -116,8 +116,8 @@ pip install clarifai-grpc
 ##############################################################################
 
 from clarifai_grpc.channel.clarifai_channel import ClarifaiChannel
-from clarifai_grpc.grpc.api import service_pb2_grpc, service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
+from clarifai_grpc.grpc.api import resources_pb2, service_pb2, service_pb2_grpc
+from clarifai_grpc.grpc.api.status import status_pb2, status_code_pb2
 
 # Construct one of the channels you want to use
 channel = ClarifaiChannel.get_json_channel()

@@ -94,9 +94,6 @@ stub.PostSearches(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -420,9 +417,6 @@ stub.PostSearches(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -781,9 +775,6 @@ stub.PostSearches(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -1096,9 +1087,6 @@ stub.PostSearches(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -1252,9 +1240,6 @@ stub.PostSearches(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
@@ -1536,9 +1521,6 @@ stub.PostSearches(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview
 
