@@ -15,68 +15,15 @@ For debugging purposes, each response returned by a method call can be printed t
 
 ## Create a new application
 
-We'll first create a new application to which we'll later be posting our training inputs. The default application's workflow that we we'll be selecting is going to be "Text". By selecting this base workflow, all custom models that we'll later be creating inside this application will be based of the Clarifai's default Text model.
+The first step is manual: in the Clarifai Portal, [create an new application](https://docs.clarifai.com/getting-started/applications/create-an-application) with **Text** selected as the Base Workflow.
 
-For authentication, we'll for now use the Personal Access Token, which is able to do operations such as creating a new application and afterward, a new API key.
-
-{% tabs %}
-{% tab title="gRPC Python" %}
-```python
-pat_metadata = (('authorization', 'Key {YOUR_PERSONAL_ACCESS_TOKEN}'),)
-
-post_apps_response = stub.PostApps(
-    service_pb2.PostAppsRequest(
-        apps=[
-            resources_pb2.App(
-                id="my-text-to-concept-app",
-                default_workflow_id="Text"
-            )
-        ]
-    ),
-    metadata=pat_metadata
-)
-
-# You may print the response to see what the structure and the data of the response is.
-# print(post_apps_response)
-
-if post_apps_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Failed response, status: " + str(post_apps_response.status))
-
-user_id = post_apps_response.apps[0].user_id
-```
-{% endtab %}
-{% endtabs %}
-
-
-## Create a new API key
-
-API keys are tied to specific applications. Now that we have an application, let's create its API key. Since the API key will only to be able to operate on this application, it reduces the risk if the key is lost/stolen, and it avoids us specifying which application should be used in every method call (which is what we'd have to do if we kept using the PAT).
-
-See at the bottom of the code example that we put the API key into a metadata tuple. We'll be using this metadata (and the API key) from now on for all the code examples that follow.
+Afterward, copy the newly-created application's *API key* and set it in the variable below. This variable is going to be used, for authorization purposes, by all Clarifai API calls that follow.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
 ```python
-post_keys_response = stub.PostKeys(
-    service_pb2.PostKeysRequest(
-        keys=[
-            resources_pb2.Key(
-                description="All permissions",
-                scopes=["All"],
-                apps=[
-                    resources_pb2.App(
-                        id="my-text-to-concept-app",
-                        user_id=user_id
-                    )
-                ]
-            )
-        ]
-    ),
-    metadata=pat_metadata
-)
-
-if post_keys_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Failed response, status: " + str(post_keys_response.status))
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview
 
 api_key_metadata = (('authorization', 'Key ' + post_keys_response.keys[0].id),)
 ```
@@ -143,6 +90,9 @@ post_inputs_response = stub.PostInputs(
     ),
     metadata=api_key_metadata
 )
+
+# You may print the response to see what the structure and the data of the response is.
+# print(post_inputs_response)
 
 if post_inputs_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Failed response, status: " + str(post_inputs_response.status))
