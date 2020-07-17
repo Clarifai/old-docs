@@ -8,7 +8,6 @@
 
 |Status     |Details                                                                       |
 |-----------|------------------------------------------------------------------------------|
-|![](/images/new_feature.jpg)    |Research/Design TLS signing solutions                                         |
 |![](/images/bug.jpg)            |Can't Access Main Apps Page with invalid collaborators. Fixed.                |
 |![](/images/bug.jpg)            |Unable to create new Application (General Detection). Fixed.                  |
 |![](/images/bug.jpg)            |`application_sharing` scopes field should be `json` instead of `jsonb`. Fixed.|
@@ -69,44 +68,15 @@
 
 |Status     |Details                                                                       |
 |-----------|------------------------------------------------------------------------------|
-|![](/images/bug.jpg)            |Return to Log in                                                              |
+|![](/images/bug.jpg)            |"Return to Log in " doesn't redirect to login page. Fixed.|
 |![](/images/bug.jpg)            |Clicking on image, or Explorer Mode with images that contain geo coordinates crashed the app.|
 |![](/images/improvement.jpg)|Portal model predicts use hosted URL when available instead of normal URL.    |
 |![](/images/bug.jpg)            |When selecting a concept and going to the next image the concept checkbox won't stay selected. Fixed|
 |![](/images/improvement.jpg)|Allow multi-select from explorer grid view and add metadata.                  |
-|![](/images/improvement.jpg)|Improve Labeler mode window resizing.                                         |
-|![](/images/improvement.jpg)|W and E hotkeys for image labelling to go left/right.                         |
-|![](/images/bug.jpg)            |Polygon annotations break Explorer. Fixed.                                    |
-|![](/images/bug.jpg)            |Polygons regions don’t appear when panning and zooming. Fixed.                |
-|![](/images/improvement.jpg)|Allow users to create concepts on task create view.                           |
-|![](/images/bug.jpg)            |Fixed task list item count query.                                             |
-|![](/images/improvement.jpg)|Integrate and utilise new CRUD endpoints in Portal.                           |
+|![](/images/improvement.jpg)|Integrate and utilize new CRUD endpoints in Portal.                           |
 |![](/images/new_feature.jpg)    |Allow for pasted text to keep formatting in the text box.                     |
 |![](/images/bug.jpg)            |Prediction threshold slider custom model predicts without base workflow annotations. Fixed|
 |![](/images/improvement.jpg)|Strings without spacing format properly in Explorer's Asset Grid View         |
-|![](/images/improvement.jpg)|Utilising new task endpoints to Create tasks and integrate to show tasks in Portal.|
-|![](/images/bug.jpg)            |LabelerPage refresh error. Fixed.                                             |
-|![](/images/bug.jpg)            |Should not be allowed to create a task with no concepts if my app has no concepts. Fixed.|
-|![](/images/bug.jpg)            |Unknown page Error. Complete interpolation of an object doesn't show bbox. Complete tracking of a box will disappear from the video. Fixed.|
-|![](/images/bug.jpg)            |Fixed carousel padding.                                                       |
-|![](/images/bug.jpg)            |Labeler board showing wrong task type. Fixed.                                 |
-|![](/images/improvement.jpg)|Integrate worker/reviewer side of Labeler.                                    |
-|![](/images/improvement.jpg)|Add 'name' field to new Tasks.                                                |
-|![](/images/bug.jpg)            |Create annotations while creating task.                                       |
-|![](/images/bug.jpg)            |Carousel thumbnails not showing up in Labeler. Fixed.                         |
-|![](/images/improvement.jpg)|No image clearing/loading indicator in Labeler. Fixed.                        |
-|![](/images/bug.jpg)            |Use name field for tasks in Labeler administration.                           |
-|![](/images/bug.jpg)            |Bulk labeling value does not update in store upon labeling. Fixed.            |
-|![](/images/improvement.jpg)|Record time per annotation and per input to /stats/values in Labeler mode of Portal. |
-|![](/images/improvement.jpg)|Query and display stats across workers per task for time and count of annotations. |
-|![](/images/bug.jpg)            |Concept autocomplete in Labeler task creation is showing clarifai/main concepts. Fixed.|
-|![](/images/new_feature.jpg)    |Implement polygon task type in Labeler.                                       |
-|![](/images/bug.jpg)            |Applying filters in Portal breaks bulk labeling / unlabeling. Fixed.          |
-|![](/images/bug.jpg)            |Unable to bulk-label annotations. Fixed.                                      |
-|![](/images/improvement.jpg)|Change submit to "Complete Task" in Labeler page and add progress bar as it's working.|
-|![](/images/improvement.jpg)|Allow Patching region annotations in Labeler mode.                            |
-|![](/images/improvement.jpg)|Add AI assist thresholding.                                                   |
-|![](/images/improvement.jpg)|Add ability to set annotation_info in the annotation writer                   |
 |![](/images/bug.jpg)            |`annotation_info` should be a valid JSON in Model Mode. Fixed.                |
 
 ## Workflow
@@ -272,7 +242,7 @@
 
 # Changelog 6.3
 
-|New Feature    |![](/images/improvement.jpg)|Bug Fix|Enterprise Only|
+|New Feature    |Improvement|Bug Fix|Enterprise Only|
 |:-:|:-:|:-:|:-:|
 |![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
 
@@ -445,7 +415,7 @@
 
 # Changelog 6.1
 
-|New Feature    |![](/images/improvement.jpg)|Bug Fix|Enterprise Only|
+|New Feature    |Improvement|Bug Fix|Enterprise Only|
 |:-:|:-:|:-:|:-:|
 |![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
 
@@ -493,7 +463,7 @@
 
 # Changelog 6.0
 
-|New Feature    |![](/images/improvement.jpg)|Bug Fix|Enterprise Only|
+|New Feature    |Improvement|Bug Fix|Enterprise Only|
 |:-:|:-:|:-:|:-:|
 |![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
 
@@ -592,7 +562,7 @@
 
 # Changelog 5.11
 
-|New Feature    |![](/images/improvement.jpg)|Bug Fix|Enterprise Only|
+|New Feature    |Improvement|Bug Fix|Enterprise Only|
 |:-:|:-:|:-:|:-:|
 |![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
 
@@ -699,7 +669,7 @@
 
 
 # Changelog 5.10
-|New Feature    |![](/images/improvement.jpg)|Bug Fix|Enterprise Only|
+|New Feature    |Improvement|Bug Fix|Enterprise Only|
 |:-:|:-:|:-:|:-:|
 |![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
 
