@@ -4,9 +4,9 @@ With visual search, you can search for images in your application based on their
 
 Just keep in mind that visual search is not an "objective" measure of visual similarity. Visual search uses a model *embedding* to measure visual similarity. The embedding can be thought of as your model's "feature identifier". If you train your model on images of human faces, it will understand features like eyes, ears, noses and mouths; if you train your model on images of houses, it will understand features like windows, roofs and doors.
 
-## Basic Visual Search
+## Full Scene Visual Search
 
-To perform a visual search, just navigate to Explorer and click the magnifying glass icon in the bottom righthand corner of an image.
+To perform a visual search that uses an entire image as an input (the "full scene"), just navigate to Explorer and click the magnifying glass icon in the bottom righthand corner of an image.
 
 ![](../../images/magnify_glass.jpg)
 
@@ -36,17 +36,17 @@ One common use for localized search is searching for images of specific people. 
 
 ## Visual Search in Video
 
-You can also use localized search with video. Each frame of video is treated like an individual image. You can view detections and search with detected regions just like with still photos.
+You can also use full scene and localized search with video. Each frame of video is treated like an individual image. You can view detections and search with detected regions just like with still photos.
 
 ![](../../images/local_magnify_video.jpg)
 
-#### The Timeline
+### The Timeline
 
 When you search a region of a video, Explorer will display all still images and video frames that contain visually similar images to the region that you searched with. When you click on a frame of a video, the whole video will open in a timeline view. From here, and sections of video that contain visually similar images will be highlighted in green.
 
 ![](../../images/search_timeline.jpg)
 
-#### Refine search
+### Refine search
 
 When working with a mix of video and still images in an application, you have the ability to refine your search results. You can choose to only view still images or only view videos in your search results. You can also choose detection thresholds, so that you can control how visually similar images will have to be to be returned in your search results.
 
