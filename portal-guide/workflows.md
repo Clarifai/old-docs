@@ -35,7 +35,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 PostWorkflowResultsResponse postWorkflowResultsResponse = stub.postWorkflowResults(
     PostWorkflowResultsRequest.newBuilder()
@@ -75,7 +75,7 @@ for (Output output : results.getOutputsList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostWorkflowResults(
     {
@@ -115,7 +115,7 @@ stub.PostWorkflowResults(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_workflow_results_response = stub.PostWorkflowResults(
     service_pb2.PostWorkflowResultsRequest(

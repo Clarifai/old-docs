@@ -9,7 +9,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiWorkflowResponse postWorkflowsResponse = stub.postWorkflows(
     PostWorkflowsRequest.newBuilder().addWorkflows(
@@ -45,7 +45,7 @@ if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostWorkflows(
     {
@@ -92,7 +92,7 @@ stub.PostWorkflows(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_workflows_response = stub.PostWorkflows(
     service_pb2.PostWorkflowsRequest(
@@ -178,7 +178,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 PostWorkflowResultsResponse postWorkflowResultsResponse = stub.postWorkflowResults(
     PostWorkflowResultsRequest.newBuilder()
@@ -214,7 +214,7 @@ for (Output output : results.getOutputsList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostWorkflowResults(
     {
@@ -258,7 +258,7 @@ stub.PostWorkflowResults(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_workflow_results_response = stub.PostWorkflowResults(
     service_pb2.PostWorkflowResultsRequest(
@@ -324,7 +324,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiWorkflowResponse listWorkflowsResponse = stub.listWorkflows(ListWorkflowsRequest.newBuilder().build());
 
@@ -346,7 +346,7 @@ for (Workflow workflow : listWorkflowsResponse.getWorkflowsList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.ListWorkflows(
     {},
@@ -376,7 +376,7 @@ stub.ListWorkflows(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 list_workflows_response = stub.ListWorkflows(
     service_pb2.ListWorkflowsRequest(),
@@ -416,7 +416,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 SingleWorkflowResponse getWorkflowResponse = stub.getWorkflow(
     GetWorkflowRequest.newBuilder()
@@ -441,7 +441,7 @@ for (WorkflowNode workflowNode : workflow.getNodesList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.GetWorkflow(
     {
@@ -472,7 +472,7 @@ stub.GetWorkflow(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 get_workflow_response = stub.GetWorkflow(
     service_pb2.GetWorkflowRequest(
@@ -516,7 +516,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiWorkflowResponse patchWorkflowsResponse = stub.patchWorkflows(
     PatchWorkflowsRequest.newBuilder()
@@ -563,7 +563,7 @@ if (patchWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PatchWorkflows(
     {
@@ -620,7 +620,7 @@ stub.PatchWorkflows(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 patch_workflows_response = stub.PatchWorkflows(
     service_pb2.PatchWorkflowsRequest(
@@ -732,7 +732,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 BaseResponse deleteWorkflowResponse = stub.deleteWorkflow(
     DeleteWorkflowRequest.newBuilder()
@@ -749,7 +749,7 @@ if (deleteWorkflowResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.DeleteWorkflow(
     {
@@ -772,7 +772,7 @@ stub.DeleteWorkflow(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 delete_workflow_response = stub.DeleteWorkflow(
     service_pb2.DeleteWorkflowRequest(
@@ -808,7 +808,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 BaseResponse deleteWorkflowsResponse = stub.deleteWorkflows(
     DeleteWorkflowsRequest.newBuilder()
@@ -825,7 +825,7 @@ if (deleteWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.DeleteWorkflows(
     {
@@ -848,7 +848,7 @@ stub.DeleteWorkflows(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 delete_workflows_response = stub.DeleteWorkflows(
     service_pb2.DeleteWorkflowsRequest(

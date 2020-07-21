@@ -66,7 +66,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 Struct.Builder trainInfoParams = Struct.newBuilder()
     .putFields(
@@ -110,7 +110,7 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostModels(
     {
@@ -160,7 +160,7 @@ stub.PostModels(
 from google.protobuf.struct_pb2 import Struct
 
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 train_params = Struct()
 train_params.update(
@@ -242,7 +242,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 Struct.Builder trainInfoParams = Struct.newBuilder()
     .putFields(
@@ -286,7 +286,7 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostModels(
     {
@@ -333,7 +333,7 @@ stub.PostModels(
 from google.protobuf.struct_pb2 import Struct
 
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 train_params = Struct()
 train_params.update(
@@ -414,7 +414,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 Struct.Builder trainInfoParams = Struct.newBuilder()
     .putFields(
@@ -458,7 +458,7 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostModels(
     {
@@ -503,7 +503,7 @@ stub.PostModels(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 from google.protobuf.struct_pb2 import Struct
 
@@ -588,7 +588,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiWorkflowResponse postWorkflowsResponse = stub.postWorkflows(
   PostWorkflowsRequest.newBuilder()
@@ -633,7 +633,7 @@ if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostWorkflows(
     {
@@ -684,7 +684,7 @@ stub.PostWorkflows(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_workflows_response = stub.PostWorkflows(
     service_pb2.PostWorkflowsRequest(
@@ -777,7 +777,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiAppResponse patchAppsResponse = stub.patchApps(
     PatchAppsRequest.newBuilder()
@@ -798,7 +798,7 @@ if (patchAppsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PatchApps(
     {
@@ -828,7 +828,7 @@ stub.PatchApps(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 patch_apps_response = stub.PatchApps(
     service_pb2.PatchAppsRequest(

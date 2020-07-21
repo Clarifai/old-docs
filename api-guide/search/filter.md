@@ -59,7 +59,7 @@ import com.clarifai.grpc.api.status.*;
 import com.google.protobuf.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiSearchResponse postSearchesResponse = stub.postSearches(
     PostSearchesRequest.newBuilder().setQuery(
@@ -91,7 +91,7 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostSearches(
     {
@@ -133,7 +133,7 @@ stub.PostSearches(
 from google.protobuf.struct_pb2 import Struct
 
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 search_metadata = Struct()
 search_metadata.update({"type": "animal"})
@@ -362,7 +362,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiInputResponse postInputsResponse = stub.postInputs(
     PostInputsRequest.newBuilder().addInputs(
@@ -393,7 +393,7 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostInputs(
     {
@@ -428,7 +428,7 @@ stub.PostInputs(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_inputs_response = stub.PostInputs(
     service_pb2.PostInputsRequest(
@@ -590,7 +590,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiSearchResponse postSearchesResponse = stub.postSearches(
     PostSearchesRequest.newBuilder().setQuery(
@@ -631,7 +631,7 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostSearches(
     {
@@ -678,7 +678,7 @@ stub.PostSearches(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_searches_response = stub.PostSearches(
     service_pb2.PostSearchesRequest(
@@ -875,7 +875,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiSearchResponse postSearchesResponse = stub.postSearches(
     PostSearchesRequest.newBuilder().setQuery(
@@ -920,7 +920,7 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostSearches(
     {
@@ -973,7 +973,7 @@ stub.PostSearches(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_searches_response = stub.PostSearches(
     service_pb2.PostSearchesRequest(

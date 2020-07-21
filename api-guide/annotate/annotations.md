@@ -24,7 +24,7 @@ To annotate a concept present anywhere in an image:
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_annotations_response = stub.PostAnnotations(
     service_pb2.PostAnnotationsRequest(
@@ -57,7 +57,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiAnnotationResponse postAnnotationsResponse = stub.postAnnotations(
     PostAnnotationsRequest.newBuilder().addAnnotations(
@@ -90,7 +90,7 @@ if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostAnnotations(
     {
@@ -164,7 +164,7 @@ You can label a new bounding box by providing bounding box coordinates.
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_annotations_response = stub.PostAnnotations(
     service_pb2.PostAnnotationsRequest(
@@ -234,7 +234,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiAnnotationResponse postAnnotationsResponse = stub.postAnnotations(
     PostAnnotationsRequest.newBuilder().addAnnotations(
@@ -315,7 +315,7 @@ if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostAnnotations(
     {
@@ -468,7 +468,7 @@ When you add an input, detection models (such as `Face Detection` or `General De
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_annotations_response = stub.PostAnnotations(
     service_pb2.PostAnnotationsRequest(
@@ -524,7 +524,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiAnnotationResponse postAnnotationsResponse = stub.postAnnotations(
     PostAnnotationsRequest.newBuilder().addAnnotations(
@@ -581,7 +581,7 @@ if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostAnnotations(
     {
@@ -707,7 +707,7 @@ Note: only the app owner can post an annotation with other user's `user_id`, col
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_annotations_response = stub.PostAnnotations(
     service_pb2.PostAnnotationsRequest(
@@ -737,7 +737,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiAnnotationResponse postAnnotationsResponse = stub.postAnnotations(
     PostAnnotationsRequest.newBuilder().addAnnotations(
@@ -763,7 +763,7 @@ if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostAnnotations(
     {
@@ -829,7 +829,7 @@ Note this will not show annotations by models in your worfklow. To include model
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 list_annotations_response = stub.ListAnnotations(
     service_pb2.ListAnnotationsRequest(per_page=10),
@@ -851,7 +851,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiAnnotationResponse listAnnotationsResponse = stub.listAnnotations(
     ListAnnotationsRequest.newBuilder()
@@ -873,7 +873,7 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.ListAnnotations(
     {page: 1, per_page: 10},
@@ -913,7 +913,7 @@ List all annotations, including models created.
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 list_annotations_response = stub.ListAnnotations(
     service_pb2.ListAnnotationsRequest(per_page=10, list_all_annotations=True),
@@ -936,7 +936,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiAnnotationResponse listAnnotationsResponse = stub.listAnnotations(
     ListAnnotationsRequest.newBuilder()
@@ -959,7 +959,7 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.ListAnnotations(
     {list_all_annotations: true, page: 1, per_page: 10},
@@ -1000,7 +1000,7 @@ Note: this will not show annotations by models in your worfklow. To include mode
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 list_annotations_response = stub.ListAnnotations(
     service_pb2.ListAnnotationsRequest(input_ids=["{YOUR_INPUT_ID_1}". "{YOUR_INPUT_ID_2}"], per_page=10),
@@ -1022,7 +1022,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiAnnotationResponse listAnnotationsResponse = stub.listAnnotations(
     ListAnnotationsRequest.newBuilder()
@@ -1046,7 +1046,7 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.ListAnnotations(
     {input_ids: ["{YOUR_INPUT_ID_2}", "{YOUR_INPUT_ID_2}"], page: 1, per_page: 10},
@@ -1085,7 +1085,7 @@ You can list annotations by both input IDs and annotation IDs. Number of input I
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 list_annotations_response = stub.ListAnnotations(
     service_pb2.ListAnnotationsRequest(
@@ -1111,7 +1111,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiAnnotationResponse listAnnotationsResponse = stub.listAnnotations(
     ListAnnotationsRequest.newBuilder()
@@ -1136,7 +1136,7 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.ListAnnotations(
     {
@@ -1180,7 +1180,7 @@ An annotation is created by either a user or a model. You can list annotations c
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 list_annotations_response = stub.ListAnnotations(
     service_pb2.ListAnnotationsRequest(user_ids=["{USER_ID_1}", "{USER_ID_2}"], per_page=10),
@@ -1202,7 +1202,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiAnnotationResponse listAnnotationsResponse = stub.listAnnotations(
     ListAnnotationsRequest.newBuilder()
@@ -1225,7 +1225,7 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.ListAnnotations(
     {user_ids: ["{USER_ID_1}", "{USER_ID_2}"], page: 1, per_page: 10},
@@ -1265,7 +1265,7 @@ An annotation is created by either a user or a model. For example if your workfl
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 list_annotations_response = stub.ListAnnotations(
     service_pb2.ListAnnotationsRequest(
@@ -1290,7 +1290,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiAnnotationResponse listAnnotationsResponse = stub.listAnnotations(
     ListAnnotationsRequest.newBuilder()
@@ -1313,7 +1313,7 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.ListAnnotations(
     {model_version_ids: ["{MODEL_VERSION_ID_1}", "{MODEL_VERSION_ID_2}"], page: 1, per_page: 10},
@@ -1361,7 +1361,7 @@ Update an annotation of a image with a new concept, or to change a concept value
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 patch_annotations_response = stub.PatchAnnotations(
     service_pb2.PatchAnnotationsRequest(
@@ -1394,7 +1394,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiAnnotationResponse patchAnnotationsResponse = stub.patchAnnotations(
     PatchAnnotationsRequest.newBuilder()
@@ -1425,7 +1425,7 @@ if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PatchAnnotations(
     {
@@ -1496,7 +1496,7 @@ When you update region data, you must nest this new data within region.data. Set
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 patch_annotations_response = stub.PatcchAnnotations(
     service_pb2.PatchAnnotationsRequest(
@@ -1536,7 +1536,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiAnnotationResponse patchAnnotationsResponse = stub.patchAnnotations(
     PatchAnnotationsRequest.newBuilder()
@@ -1573,7 +1573,7 @@ if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PatchAnnotations(
     {
@@ -1657,7 +1657,7 @@ You can update region bounding boxes coordinates. When changing the region, you 
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 patch_annotations_response = stub.PatcchAnnotations(
     service_pb2.PatchAnnotationsRequest(
@@ -1704,7 +1704,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiAnnotationResponse patchAnnotationsResponse = stub.patchAnnotations(
     PatchAnnotationsRequest.newBuilder()
@@ -1753,7 +1753,7 @@ if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PatchAnnotations(
     {
@@ -1846,7 +1846,7 @@ You can update an annotation status.
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 patch_annotations_response = stub.PatchAnnotations(
     service_pb2.PatchAnnotationsRequest(
@@ -1877,7 +1877,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiAnnotationResponse patchAnnotationsResponse = stub.patchAnnotations(
     PatchAnnotationsRequest.newBuilder()
@@ -1905,7 +1905,7 @@ if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PatchAnnotations(
     {
@@ -1967,7 +1967,7 @@ You can delete a single annotation by input ID and annotation ID.
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 delete_annotation_response = stub.DeleteAnnotation(
     service_pb2.DeleteAnnotationRequest(
@@ -1988,7 +1988,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 BaseResponse deleteAnnotationResponse = stub.deleteAnnotation(
     DeleteAnnotationRequest.newBuilder()
@@ -2006,7 +2006,7 @@ if (deleteAnnotationResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.DeleteAnnotation(
     {
@@ -2044,7 +2044,7 @@ You can delete multiple annotations in one API call. You need to provide a list 
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 delete_annotations_response = stub.DeleteAnnotations(
     service_pb2.DeleteAnnotationsRequest(
@@ -2065,7 +2065,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 BaseResponse deleteAnnotationsResponse = stub.deleteAnnotations(
     DeleteAnnotationsRequest.newBuilder()
@@ -2085,7 +2085,7 @@ if (deleteAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.DeleteAnnotations(
     {
@@ -2128,7 +2128,7 @@ To delete all annotations of a given input, you just need to set input ID(s). Th
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 delete_annotations_response = stub.DeleteAnnotations(
     service_pb2.DeleteAnnotationsRequest(
@@ -2148,7 +2148,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 BaseResponse deleteAnnotationsResponse = stub.deleteAnnotations(
     DeleteAnnotationsRequest.newBuilder()
@@ -2166,7 +2166,7 @@ if (deleteAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.DeleteAnnotations(
     {

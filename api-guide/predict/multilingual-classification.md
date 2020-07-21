@@ -13,7 +13,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
     PostModelOutputsRequest.newBuilder()
@@ -52,7 +52,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostModelOutputs(
     {
@@ -87,7 +87,7 @@ stub.PostModelOutputs(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
@@ -453,7 +453,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiConceptResponse postConceptsSearchesResponse = stub.postConceptsSearches(
     PostConceptsSearchesRequest.newBuilder()
@@ -479,7 +479,7 @@ for (Concept concept : postConceptsSearchesResponse.getConceptsList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostConceptsSearches(
     {
@@ -507,7 +507,7 @@ stub.PostConceptsSearches(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_concepts_searches_response = stub.PostConceptsSearches(
     service_pb2.PostConceptsSearchesRequest(

@@ -15,7 +15,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
     PostModelOutputsRequest.newBuilder()
@@ -48,7 +48,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostModelOutputs(
     {
@@ -83,7 +83,7 @@ stub.PostModelOutputs(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
@@ -431,7 +431,7 @@ import java.io.File;
 import java.nio.file.Files;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
     PostModelOutputsRequest.newBuilder()
@@ -467,7 +467,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 const fs = require("fs");
 const imageBytes = fs.readFileSync("{YOUR_IMAGE_FILE_LOCATION}");
@@ -505,7 +505,7 @@ stub.PostModelOutputs(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 with open("{YOUR_IMAGE_FILE_LOCATION}", "rb") as f:
     file_bytes = f.read()

@@ -9,7 +9,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiInputResponse listInputsResponse = stub.listInputs(
     ListInputsRequest.newBuilder()
@@ -31,7 +31,7 @@ for (Input input : listInputsResponse.getInputsList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.ListInputs(
     {page: 2, per_page: 20},
@@ -56,7 +56,7 @@ stub.ListInputs(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 list_inputs_response = stub.ListInputs(
     service_pb2.ListInputsRequest(page=2, per_page=20),

@@ -9,7 +9,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiInputResponse postInputsResponse = stub.postInputs(
     PostInputsRequest.newBuilder()
@@ -60,7 +60,7 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 const fs = require("fs");
 const imageBytes = fs.readFileSync("{YOUR_IMAGE_FILE_LOCATION}");
@@ -102,7 +102,7 @@ stub.PostInputs(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 with open("{YOUR_IMAGE_FILE_LOCATION}", "rb") as f:
     file_bytes = f.read()

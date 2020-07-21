@@ -25,7 +25,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiConceptRelationResponse postConceptRelationsResponse = stub.postConceptRelations(
     PostConceptRelationsRequest.newBuilder()
@@ -51,7 +51,7 @@ if (postConceptRelationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostConceptRelations(
     {
@@ -85,7 +85,7 @@ stub.PostConceptRelations(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_concept_relation_response = stub.PostConceptRelations(
     service_pb2.PostConceptRelationsRequest(
@@ -139,7 +139,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiConceptRelationResponse listConceptRelationsResponse = stub.listConceptRelations(
     ListConceptRelationsRequest.newBuilder()
@@ -167,7 +167,7 @@ for (ConceptRelation relation : listConceptRelationsResponse.getConceptRelations
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.ListConceptRelations(
     {
@@ -198,7 +198,7 @@ stub.ListConceptRelations(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 list_concept_relation_response = stub.ListConceptRelations(
     service_pb2.ListConceptRelationsRequest(
@@ -240,7 +240,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 BaseResponse deleteConceptRelationsResponse = stub.deleteConceptRelations(
     DeleteConceptRelationsRequest.newBuilder()
@@ -261,7 +261,7 @@ if (deleteConceptRelationsResponse.getStatus().getCode() != StatusCode.SUCCESS) 
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.DeleteConceptRelations(
     {
@@ -290,7 +290,7 @@ stub.DeleteConceptRelations(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 delete_concept_relation_response = stub.DeleteConceptRelations(
     service_pb2.DeleteConceptRelationsRequest(

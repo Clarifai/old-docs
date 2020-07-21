@@ -22,7 +22,7 @@ VTR works by first detecting the location of text in your photos or video frames
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_workflows_response = stub.PostWorkflows(
     service_pb2.PostWorkflowsRequest(
@@ -84,7 +84,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiWorkflowResponse postWorkflowsResponse = stub.postWorkflows(
   PostWorkflowsRequest.newBuilder()
@@ -143,7 +143,7 @@ if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostWorkflows(
     {

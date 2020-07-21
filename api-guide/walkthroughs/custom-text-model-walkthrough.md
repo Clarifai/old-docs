@@ -23,7 +23,7 @@ Afterward, copy the newly-created application's *API key* and set it in the vari
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 api_key_metadata = (('authorization', 'Key ' + post_keys_response.keys[0].id),)
 ```

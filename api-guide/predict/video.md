@@ -21,7 +21,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
     PostModelOutputsRequest.newBuilder()
@@ -57,7 +57,7 @@ for (Frame frame : output.getData().getFramesList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostModelOutputs(
     {
@@ -95,7 +95,7 @@ stub.PostModelOutputs(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
@@ -1594,7 +1594,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
     PostModelOutputsRequest.newBuilder()
@@ -1633,7 +1633,7 @@ for (Frame frame : output.getData().getFramesList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 const fs = require("fs");
 const videoBytes = fs.readFileSync("{YOUR_VIDEO_FILE_LOCATION}");
@@ -1674,7 +1674,7 @@ stub.PostModelOutputs(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 with open("{YOUR_VIDEO_FILE_LOCATION}", "rb") as f:
     file_bytes = f.read()
