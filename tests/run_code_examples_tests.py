@@ -87,7 +87,8 @@ if __name__ == "__main__":
   PAT = os.environ["TEST_RUNNER_PAT"]
 
   file_paths = [
-    "walkthroughs/custom-text-model-walkthrough.md"
+    # TODO: App/key creation needs to be added to this test code runner.
+    # "walkthroughs/custom-text-model-walkthrough.md"
   ]
 
   init_code = read_init_code()
