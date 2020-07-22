@@ -1,9 +1,11 @@
+# Create, Get and Update Concepts  
+
 Within your app you can create concpets, modify them after creation an get them from yoru app. We currently do not support deleting concepts since they are such an integral tie across almost all other data structures in the platform like inputs, models, searches, etc.
 
 You will find that some of our endpoints have additional information returned from the clarifai/main app which contains our pre-trained models but also a large knowledge graph we've assembled over the years.
 
-### Create
-#### Add Concepts
+## Create
+### Add Concepts
 
 To create a new concept in you app you POST the concept with an id and name. You can also post more than one concept in the same API by sending a list of concepts.
 
@@ -92,8 +94,8 @@ curl -X POST \
 
 
 
-### Get
-#### Get Concept by ID
+## Get
+### Get Concept by ID
 
 You can get a singular concept by it's ID.
 
@@ -172,7 +174,7 @@ curl -X GET \
 {% endtabs %}
 
 
-#### List concepts
+### List concepts
 
 You can get a list of concepts within your app with a GET call. This call supports [pagination](../api-overview/pagination.md)
 
@@ -246,8 +248,8 @@ curl -X GET \
 {% endtabs %}
 
 
-### Update
-#### Update Concept Name
+## Update
+### Update Concept Name
 
 The code below showcases how to update a concept's name given its id by using the "overwrite" action. You can also patch multiple concepts by sending a list of concepts.
 
