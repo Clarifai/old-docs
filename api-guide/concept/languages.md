@@ -53,7 +53,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiConceptResponse listConceptLanguagesResponse = stub.listConceptLanguages(
     ListConceptLanguagesRequest.newBuilder()
@@ -70,7 +70,7 @@ if (listConceptLanguagesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.ListConceptLanguages(
     {
@@ -92,11 +92,8 @@ stub.ListConceptLanguages(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 list_concept_languages_response = stub.ListConceptLanguages(
     service_pb2.ListConceptLanguagesRequest(
@@ -133,7 +130,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiConceptResponse getConceptLanguageResponse = stub.getConceptLanguage(
     ListConceptLanguageRequest.newBuilder()
@@ -151,7 +148,7 @@ if (getConceptLanguageResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.GetConceptLanguage(
     {
@@ -174,11 +171,8 @@ stub.GetConceptLanguage(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 get_concept_language_response = stub.GetConceptLanguage(
     service_pb2.GetConceptLanguageRequest(
@@ -215,7 +209,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiConceptResponse postConceptLanguageResponse = stub.postConceptLanguage(
     PostConceptLanguageRequest.newBuilder()
@@ -233,7 +227,7 @@ if (postConceptLanguageResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostConceptLanguage(
     {
@@ -261,11 +255,8 @@ stub.PostConceptLanguage(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 get_concept_language_response = stub.PostConceptLanguage(
     service_pb2.PostConceptLanguageRequest(
@@ -306,7 +297,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiConceptResponse patchConceptLanguageResponse = stub.patchConceptLanguage(
     PatchConceptLanguageRequest.newBuilder()
@@ -325,7 +316,7 @@ if (patchConceptLanguageResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PatchConceptLanguage(
     {
@@ -354,11 +345,8 @@ stub.PatchConceptLanguage(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 get_concept_language_response = stub.PatchConceptLanguage(
     service_pb2.PatchConceptLanguageRequest(

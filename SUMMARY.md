@@ -62,6 +62,7 @@
 * [Walkthroughs](api-guide/walkthroughs/README.md)
   * [Custom Models](api-guide/walkthroughs/custom-model-walkthrough.md)
   * [Custom Text Model](api-guide/walkthroughs/custom-text-model-walkthrough.md)
+  * [Custom KNN Face Classifier Workflow](api-guide/walkthroughs/knn-face-classifier-workflow-walkthrough.md)
   * [Batch Predict CSV on Custom Text Model](api-guide/walkthroughs/batch-predict-csv-on-custom-text-model.md)
   * [Auto Annotation](api-guide/walkthroughs/auto-annotation-walkthrough.md)
   * [Visual Text Recognition](api-guide/walkthroughs/visual-text-recognition-walkthrough.md)

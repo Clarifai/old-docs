@@ -17,7 +17,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.StatusCode;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
     PostModelOutputsRequest.newBuilder()
@@ -60,7 +60,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostModelOutputs(
     {
@@ -95,11 +95,8 @@ stub.PostModelOutputs(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
@@ -353,7 +350,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
     PostModelOutputsRequest.newBuilder()
@@ -391,7 +388,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostModelOutputs(
     {
@@ -425,11 +422,8 @@ stub.PostModelOutputs(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
@@ -677,7 +671,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
     PostModelOutputsRequest.newBuilder()
@@ -716,7 +710,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostModelOutputs(
     {
@@ -750,11 +744,8 @@ stub.PostModelOutputs(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
@@ -1034,7 +1025,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
     PostModelOutputsRequest.newBuilder()
@@ -1067,7 +1058,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostModelOutputs(
     {
@@ -1101,11 +1092,8 @@ stub.PostModelOutputs(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
