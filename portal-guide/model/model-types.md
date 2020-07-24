@@ -1,6 +1,6 @@
 # Model Types
 
-This page describes some important model types that you should know when working with the Clarifai platform. Please keep in mind that this is an overview of the general categories of models available to you. New models are created all the time, and for the most up-to-date list of available models, visit Model Mode in Portal.
+This page describes some important model types that you should know when working with the Clarifai platform. Please keep in mind that this is an overview of the general categories of models available to you. New models are created all the time. For the most up-to-date list of available models, visit Model Mode in Portal.
 
 ## Classification
 
@@ -8,11 +8,13 @@ Classification is the most important model type to know about. Predicts and then
 
 Example Use Case:
 
-e created a model for a large resale retailer looking to find and remove listings for illegal objects and substances across thousands of listings with UGC data. A detection model allows that retailer to quickly find listings that breach their contract, and remove them from the site.
+A large retailer looking to find and remove listings for illegal objects and substances across thousands of listings that include user-generated data. A detection model allows the retailer to quickly find listings that are in violation of their community rules, and remove them from the site.
 
 ## Detection
 
 Given a scenario, allows a user to find an object or image. Requires bounding box data | “The giraffe is located at xyz point in the image”
+
+Detection models only apply to visual models.
 
 ## Embedding
 
