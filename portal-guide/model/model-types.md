@@ -4,24 +4,31 @@ This page describes some important model types that you should know when working
 
 ## Classification
 
-Classification is the most important model type to know about. Predicts and then assigns classification of an object | “This is an image of a giraffe”
+Classification models help you answer the question "What" or "Who" is in your data. Classification models understand the world in terms of [concepts](https://docs.clarifai.com/api-guide/concepts). Models can come pre-trained to recognize concepts, or you can create your own custom models to recognize custom concepts.
 
-Example Use Case:
+Example use case:
 
-A large retailer looking to find and remove listings for illegal objects and substances across thousands of listings that include user-generated data. A detection model allows the retailer to quickly find listings that are in violation of their community rules, and remove them from the site.
+A large retailer looking to find and remove listings for illegal objects and substances across thousands of listings that include user-generated data. A classification model allows the retailer to quickly find listings that are in violation of their community rules, and remove them from the site.
 
 ## Detection
 
-Given a scenario, allows a user to find an object or image. Requires bounding box data | “The giraffe is located at xyz point in the image”
+Detection models answer the question "Where" are objects in your data. Detectors can come pre-trained to detect specific objects, or you can train your own custom detectors to detect your own custom list of objects.
 
-Detection models only apply to visual models.
+Example use case:
+
+
 
 ## Embedding
 
+Embedding models don't answer a specific question. Instead, embedding models contain the
+
 The "learnings" from machine learning models can be saved and transferred to new models, or used for other forms of visual analysis. This is what the Embedding model type is all about. Embeddings can provide the foundations for new custom models, or can be used to power visual search.
+
+
 
 ## Deep Trained Models
 
+Use deep trained models when you want to build models that have their own custom embeddings, concepts and/or detections.
 
 
 ## Models that modify, connect or extend other models
