@@ -16,13 +16,17 @@ Detection models answer the question "Where" are objects in your data. Detectors
 
 Example use case:
 
-
+A roofing company wants to provide insurance companies and customers with a consistent way of evaluating roof damage. This company captures images of roofs with a drone, and then feeds the images into a detection model. The detection model can then locate and classify specific areas of damage on the roofs.
 
 ## Embedding
 
-Embedding models don't answer a specific question. Instead, embedding models contain the
+Embedding models don't answer a specific question. Instead, they help you work with something that is a little more abstract: the underlying *structure* of a classification or detection model. In fact, you can think of an embedding model as a classification or detection model with the concepts removed, because in many cases this is exactly what an embedding model is. Embedding models are important because they help you transfer the learnings from existing models to your own custom models. This means that you can come up with your own set of custom concepts and quickly train a new model with relatively few training samples.
 
-The "learnings" from machine learning models can be saved and transferred to new models, or used for other forms of visual analysis. This is what the Embedding model type is all about. Embeddings can provide the foundations for new custom models, or can be used to power visual search.
+
+Embeddings also provide a fast and efficient way to search your data based on *visual similarity*.
+
+Example use case:
+
 
 
 
@@ -40,7 +44,6 @@ The context-based classifier
 ### Cluster
 
 Allows a user to detect an object or subject in different scenarios and settings, and then define the object. DST is not required for training these kinds of models because they are built by our Field Engineering and Backend teams. | “I will use this image of a giraffe to find other giraffes”
-
 
 
 ### Fixed-Function Operators
