@@ -40,7 +40,7 @@ Deep training gives you the power to tune the hyperparameters that affect “how
 * **detection_score_threshold** Only bounding boxes with a detection score above this threshold will be returned.
 * **image_size** The size of images used for training. Images are scaled for efficient processing, and a lower number will take up less memory and run faster. A higher number will have more pixel information to train on and will increase accuracy.
 * **init_epochs** The initial number of epochs before the first step/change in the **lrate**.
-* **logreg** Set to True to use **logistic regression**, set to False to use **softmax** (for binary classification).
+* **logreg** Choose either "Logistic Regression" or "Softmax" as the activation function of the output layer. The default setting, 1, corresponds to Logistic Regression and will allow for multiple True concepts (i.e. P > 0.5) to be predicted for a given input. Conversely, specify a value of 0 to implement Softmax if your concepts should be treated as "mutually exclusive" (i.e. only one concept could be correctly ascribed to a given input). This will result in each prediction output representing a discrete probability distribution (i.e. all predicted values sum to 1).
 * **lrate** The learning rate is a tuning parameter in an optimization algorithm that determines the step size at each iteration while moving toward a minimum of a loss function.
 * **num_epochs** An epoch is defined as one-pass over the entire dataset. If you increase it, it will take longer to train but it could make the model more robust.
 * **num_items_per_epoch** The number of training examples per "epoch". An epoch would be defined as one-pass over this amount of examples.
