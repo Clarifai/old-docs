@@ -25,7 +25,7 @@ A roofing company wants to provide insurance companies and customers with a cons
 Embedding models don't answer a specific question. Instead, they help you work with something that is a little more abstract: the underlying *structure* of a classification or detection model. In fact, you can think of an embedding model as a classification or detection model with the concepts removed, because in many cases this is exactly what an embedding model is. Embedding models are important because they help you transfer the learnings from existing models to your own custom models. This means that you can come up with your own set of custom concepts and quickly train a new model with relatively few training samples.
 
 {% hint style="info" %}
-Embeddings also provide a fast and efficient way to search your data based on *visual similarity*.
+Embeddings also can be combined with cluster models to provide a fast and efficient way to search your data based on *visual similarity*.
 {% endhint %}
 
 Example use case:
@@ -48,7 +48,7 @@ The Context-Based Classifier is the key to transfer learning and custom model bu
 
 ### Cluster
 
-Allows a user to detect an object or subject in different scenarios and settings, and then define the object. DST is not required for training these kinds of models because they are built by our Field Engineering and Backend teams. | “I will use this image of a giraffe to find other giraffes”
+Cluster models work with Embedding models so that you can perform visual searches. Cluster models are able to use the mathematical structure of a model's embedding to determine which images are "clustered together" in the embedding space. This means that you can search for visually similar people or objects in your dataset quickly and easily, without the need for labeling and training custom concepts.
 
 
 ### Fixed-Function Operators
