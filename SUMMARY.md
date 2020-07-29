@@ -42,7 +42,7 @@
   * [Deep Training](api-guide/model/deep-training.md)
   * [Evaluate](portal-guide/model/evaluate/README.md)
     * [Interpreting Evaluations](portal-guide/model/evaluate/interpreting-evaluations.md)
-* [Workflows](api-guide/workflows.md)
+* [Workflows](api-guide/README.md)
   * [Create, Get, Update, Delete](api-guide/workflows/create-get-update-delete.md)
   * [Input Nodes](api-guide/workflows/input_nodes.md)
   * [Workflow Predict](api-guide/workflows/workflow-predict.md)
