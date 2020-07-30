@@ -30,15 +30,15 @@ Embeddings also can be combined with cluster models to provide a fast and effici
 
 Example use case:
 
-
-
+A security company wants to use face verification as part of their two-factor identification system. They would begin by using Clarifai's face embedding model, and then training this model to recognize the identities of permitted individuals. They would simply upload images of the people that want to identify, add individual names as concepts, and train the new model using a *Context-Based Classifier*.
 
 ### Deep Trained Models
 
 Use deep trained models when you are working with highly specialized data, or you want to push the accuracy of your model to its limits for a specific use case. Deep training builds a custom neural network for your application from the ground-up. This means that your model can become an expert in recognizing the unique set of visual features that is important in your data set.
 
+Example use case:
 
-
+A radiology laboratory is training a model to detect COVID-19 in patients based on their chest x-rays. They need to push model accuracy to its absolute limit to reduce false positives. Their dataset is also highly specialized and technical in nature. They would typically choose to a deep trained model to get the best results.
 
 ## Models that modify, connect or extend other models
 
@@ -46,11 +46,22 @@ Use deep trained models when you are working with highly specialized data, or yo
 
 The Context-Based Classifier is the key to transfer learning and custom model building on the Clarifai platform. The context based classifier can learn new concepts and create new custom models out of existing models.
 
+Example use case:
+
+A retailer wants to train a model that can recognize their apparel in use on social media. They would use a context-based classifier in conjunction with Clarifai's apparel model to train a new custom model that will recognize clothing items produced by their brand.
+
 ### Cluster
 
 Cluster models work with Embedding models so that you can perform visual searches. Cluster models are able to use the mathematical structure of a model's embedding to determine which images are "clustered together" in the embedding space. This means that you can search for visually similar people or objects in your dataset quickly and easily, without the need for labeling and training custom concepts.
 
+Example use case:
+
+An online retailer wants to suggest relevant products based on visual similarity to products that customers have previously purchased. They would use a cluster model together with an embedding model, and perform a "visual search" on their catalog to identify similar items.
 
 ### Fixed-Function Operators
 
-Fixed-Function Operators are "non-trainable models" that help you connect, direct, and network your models when they are connected in a workflow.
+Fixed-Function Operators are "non-trainable models" that help you connect, direct, and network your models in a workflow. Some of our most popular operators are used for random sampling, routing based on predictions and image cropping. 
+
+Example use case:
+
+A customer wants to automatically tag images based on AI predictions. They would might connect a classification model with a "Concept Thresholder" model to determine which images are labeled and which ones are not.
