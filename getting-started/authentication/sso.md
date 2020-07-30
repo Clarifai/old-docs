@@ -1,6 +1,6 @@
 # Using Social SSO (Single Sign On) with Clarifai
 
-Similar to Single Sign On (SSO), Social SSO Login allows you to access Clarifai with login credentials that already exist on other social platforms. It’s simple and convenient and it will let Clarifai users utilize social logins for Google and GitHub. No need to fill out the sign-up forms or remember another password.
+Social SSO Login is a simple and convenient way to access Clarifai with login credentials that already exist on other social platforms. Clarifai users  can currently login with their Google or GitHub accounts. No need to fill out the sign-up forms or remember another password.
 
 
 ## How to use SSO?
