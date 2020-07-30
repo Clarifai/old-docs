@@ -1,5 +1,9 @@
 # Custom Text Models Walkthrough
 
+<figure class="video_container">
+  <iframe src="https://youtu.be/-blQVbccAF0" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
+
 Text models can be trained to understand the meaning of text passages. We offer a general text embedding model, as well as a specialized text moderation model. This walkthrough shows you how to create a custom text model from our text embedding model.
 
 ## Create an app
