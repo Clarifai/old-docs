@@ -1,7 +1,6 @@
 # Rank
 
-Rank Order your search results with the intuitive insights of AI. Your model can identify concepts in your data and rank your search results by how confident it is that a given concept is present. You can even rank search results by how similar one input is to another input or region of the input model detected.
-The search results will return the input but also the annotation whhihch inclludes theh region.
+Rank Order your search results with the intuitive insights of AI. Your model can identify concepts in your data and rank your search results by how confident it is that a given concept is present. You can even rank search results by how similar one input is to another input or region of the input model detected. The search results will return the input but also the annotation which includes the region.
 
 ##  Search By Concepts
 
@@ -577,7 +576,7 @@ curl -X POST \
 
 ### By concept in another language
 
-Concepts that have a translation into another langauge can be searched for in that language, even without having the default language for your app being in that language. This uses Clarifai's knowledge graph to lookup the translation and then perform the search. For example, if you app is in english and you want to search for "dog" in Japanese, then you could search wiht `language="ja"` and `name="犬"`.
+Concepts that have a translation into another language can be searched for in that language, even without having the default language for your app being in that language. This uses Clarifai's knowledge graph to lookup the translation and then perform the search. For example, if you app is in english and you want to search for "dog" in Japanese, then you could search with `language="ja"` and `name="犬"`.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -1222,5 +1221,3 @@ curl -X POST \
 ```
 {% endtab %}
 {% endtabs %}
-
-

@@ -172,7 +172,7 @@ curl -X POST \
 
 ## By User ID
 
-If you have collaborators in you app and they helped you annotate your inputs, you can also filter annotations by user id. 
+If you have collaborators in your app and they helped you annotate your inputs, you can also filter annotations by user id.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
