@@ -1,6 +1,6 @@
 # Combine or negate
 
-You can also combine searches. Unlike our legacy search, in annotation search, `Filter` and `Rank` is a list of `Annotation` objects. Filtered annotations will be ANDed. When you combine both `Filter` and `Rank`, filter will be applied before ranking annotations. This is important because on large applications the filtering can speedup the 
+You can also combine searches. Unlike our legacy search, in annotation search, `Filter` and `Rank` is a list of `Annotation` objects. Filtered annotations will be ANDed. When you combine both `Filter` and `Rank`, filter will be applied before ranking annotations. This is important because on large applications the filtering can speedup the overall query drastically before doing a ranking by limiting the result set. 
 
 {% tabs %}
 {% tab title="gRPC Java" %}
