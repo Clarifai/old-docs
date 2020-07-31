@@ -1,5 +1,7 @@
 # Filter
 
+You can filter and customize your search results to find exactly what you want. Filtering helps you reduce the amount of data returned in search results by removing irrelevant content, or by allowing you to select a specific subset of your data. 
+
 ## By Custom Concepts
 
 After you [annotate inputs with custom concepts](../data-management/annotations.md#annotate-images-with-concepts), you can filter by concepts.
