@@ -1,8 +1,8 @@
-# Create, get and update
+# Create, Get, Update, Delete
 
 ### Create Model
 
-To create a model, you need to specify the model's name and other required fields (which depend on the model). Specifying the ID is optional.
+To create a model, you need to specify the model's name and other required fields \(which depend on the model\). Specifying the ID is optional.
 
 Below, we create a classifier model with one initial concept. You can always add and remove concepts later.
 
@@ -33,7 +33,7 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -240,7 +240,7 @@ if (patchModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -474,7 +474,7 @@ if (patchModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -674,8 +674,6 @@ curl -X PATCH \
 {% endtab %}
 {% endtabs %}
 
-
-
 ### Update Model Name and Configuration
 
 Here we will change the model name to 'newname' and the model's configuration to have concepts\_mutually\_exclusive=true and closed\_environment=true.
@@ -719,7 +717,7 @@ if (patchModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -923,12 +921,11 @@ curl -X PATCH \
 {% endtab %}
 {% endtabs %}
 
-
 ## Get
 
 ### List Model Types
 
-Learn about available model types and their hyperparameters. This endpoint lists all the possible models that are creatable (when creatable=true), or in general in the platform (the others ones have creatable=false).
+Learn about available model types and their hyperparameters. This endpoint lists all the possible models that are creatable \(when creatable=true\), or in general in the platform \(the others ones have creatable=false\).
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -947,9 +944,8 @@ for (ModelType modelType : listModelTypesResponse.getModelTypesList()) {
 ```
 {% endtab %}
 
-
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -988,7 +984,6 @@ for model_type in response.model_types:
 ```
 {% endtab %}
 
-
 {% tab title="cURL" %}
 ```text
 curl -X GET 'https://api.clarifai.com/v2/models/types?per_page=20&page=1' \
@@ -999,7 +994,7 @@ curl -X GET 'https://api.clarifai.com/v2/models/types?per_page=20&page=1' \
 
 ### Get Models
 
-To get a list of all models including models you've created as well as [Clarifai models](api-guide/model/public-models.md):
+To get a list of all models including models you've created as well as [Clarifai models](https://github.com/Clarifai/docs/tree/1c1d25cdd43190c38a2edb313297c0d566b3a0e3/api-guide/model/api-guide/model/public-models.md):
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -1027,7 +1022,7 @@ for (Model model : models) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -1191,7 +1186,7 @@ System.out.println(model);
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -1359,7 +1354,7 @@ System.out.println(model);
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -1540,7 +1535,7 @@ for (ModelVersion modelVersion : modelVersions) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -1717,7 +1712,7 @@ System.out.println(modelVersion);
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -1897,7 +1892,7 @@ for (Input input : inputs) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -2053,7 +2048,7 @@ for (Input input : inputs) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -2211,7 +2206,7 @@ if (deleteModelResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -2243,7 +2238,6 @@ delete_model_response = stub.DeleteModel(
 
 if delete_model_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Delete model failed, status: " + delete_model_response.status.description)
-
 ```
 {% endtab %}
 
@@ -2360,7 +2354,7 @@ if (deleteModelVersionResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -2530,7 +2524,7 @@ if (deleteModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -2683,7 +2677,7 @@ System.out.println("New model version ID: " + modelVersionId);
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -2866,7 +2860,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -3110,7 +3104,7 @@ for (Model model : models) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -3276,3 +3270,4 @@ curl -X POST \
 ```
 {% endtab %}
 {% endtabs %}
+

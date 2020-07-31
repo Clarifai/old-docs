@@ -1,4 +1,4 @@
-# Prediction parameters
+# Prediction Parameters
 
 You can set additional parameters to gain flexibility in the predict operation.
 
@@ -58,7 +58,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -386,7 +386,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -708,7 +708,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -1056,7 +1056,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -1255,3 +1255,4 @@ curl -X POST \
 ```
 {% endtab %}
 {% endtabs %}
+

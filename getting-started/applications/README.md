@@ -4,4 +4,5 @@ You can think of applications as AI projects. Your data, annotations, models, pr
 
 Applications include a variety of resources and provide control over access to those resources. Access to each application can be controlled using one, or more App-Specific API Keys. You can learn more about [authentication](https://docs.clarifai.com/getting-started/authentication) in the next section.
 
-![](../../images/applications.jpg)
+![](../../.gitbook/assets/applications.jpg)
+

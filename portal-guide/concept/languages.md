@@ -1,3 +1,5 @@
+# Languages
+
 ## Multilingual support in Clarifai
 
 The Clarifai API supports many languages in addition to English. These are represented as translations of the names of concepts so that when you search by concept name or get predictions from a model's concepts you can utilize the language of your choice.
@@ -36,4 +38,5 @@ The currently supported languages are listed below.
 
 When you create a new Application, you must specify a default language. This will be the default language concepts are returned in when you do not explicitly set a language in an API request. You cannot change the default language. You can however change languages per request.
 
-![create new app](../../images/create-new-app-new.png)
+![create new app](../../.gitbook/assets/create-new-app-new%20%281%29.png)
+

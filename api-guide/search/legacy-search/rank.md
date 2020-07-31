@@ -49,7 +49,7 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -331,7 +331,7 @@ curl -X POST \
 
 ### By Custom Concepts
 
-After you have [added inputs with concepts](../data-management/inputs.md#add-inputs-with-concepts), you can search by those concepts.
+After you have [added inputs with concepts](https://github.com/Clarifai/docs/tree/1c1d25cdd43190c38a2edb313297c0d566b3a0e3/api-guide/search/data-management/inputs.md#add-inputs-with-concepts), you can search by those concepts.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -372,7 +372,7 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -715,7 +715,7 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -996,7 +996,6 @@ https://api.clarifai.com/v2/searches
 {% endtab %}
 {% endtabs %}
 
-
 ### By concept in another language
 
 Concepts that have a translation into another langauge can be searched for in that language, even without having the default language for your app being in that language. This uses Clarifai's knowledge graph to lookup the translation and then perform the search. For example, if you app is in english and you want to search for "dog" in Japanese, then you could search wiht `language="ja"` and `name="犬"`.
@@ -1041,7 +1040,7 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -1153,7 +1152,6 @@ curl -X POST \
 {% endtab %}
 {% endtabs %}
 
-
 ## By Image
 
 You can use images to search through your collection. The API will return ranked results based on how similar the results are to the image you provided in your query.
@@ -1197,7 +1195,7 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -1480,7 +1478,7 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -1684,3 +1682,4 @@ curl -X POST \
 ```
 {% endtab %}
 {% endtabs %}
+

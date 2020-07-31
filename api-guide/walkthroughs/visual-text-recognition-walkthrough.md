@@ -1,11 +1,11 @@
-# Visual Text Recognition (VTR) Walkthrough
+# Visual Text Recognition
 
-Visual text recognition helps you convert printed text in images and videos into machine-encoded text. You can input a scanned document, a photo of a document, a scene-photo (such as the text on signs and billboards), or text superimposed on an image (such as in a meme) and output the words and individual characters present in the images. VTR lets you "digitize" text so that it can be edited, searched, stored, displayed and analyzed.
+Visual text recognition helps you convert printed text in images and videos into machine-encoded text. You can input a scanned document, a photo of a document, a scene-photo \(such as the text on signs and billboards\), or text superimposed on an image \(such as in a meme\) and output the words and individual characters present in the images. VTR lets you "digitize" text so that it can be edited, searched, stored, displayed and analyzed.
 
-![](../../images/vtr.jpg)
+![](../../.gitbook/assets/vtr.jpg)
 
 {% hint style="info" %}
-Please note: The current version of our VTR model is not designed for use with handwritten text, or documents with tightly-packed text (like you might see on the page of a novel, for example).
+Please note: The current version of our VTR model is not designed for use with handwritten text, or documents with tightly-packed text \(like you might see on the page of a novel, for example\).
 {% endhint %}
 
 ## How VTR works
@@ -141,7 +141,7 @@ if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -260,3 +260,4 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
 ```
 {% endtab %}
 {% endtabs %}
+

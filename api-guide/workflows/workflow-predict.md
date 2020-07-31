@@ -1,11 +1,10 @@
-
-## Workflow Predict
+# Workflow Predict
 
 The Workflow Predict API allows you to predict using 1 or more model\(s\), regardless of them being Clarifai or custom, within a single API call. The max number of inputs processed at once with any given workflow is 32.
 
 Now that you have that all set up, you will be able to predict under a workflow using the `POST /v2/workflows/{workflow_id}/results` endpoint. Your `{workflow-id}` currently is whatever you set as your ID. Then as far as your request body, nothing has changed with how you would normally do a predict. In the response body, you will see a `results` object and each object will be the response from the models in the same ordering from the workflow you set up.
 
-![Image showing the Portal&apos;s workflow prediction results](../../images/preview-workflows-new.png)
+![Image showing the Portal&apos;s workflow prediction results](../../.gitbook/assets/preview-workflows-new%20%282%29.png)
 
 You can also use the Explorer in Clarifai Portal to see the results of your workflow's predictions on a given input.
 
@@ -54,7 +53,7 @@ for (Output output : results.getOutputsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -502,3 +501,4 @@ https://api.clarifai.com/v2/workflows/{YOUR_WORKFLOW_ID}/results
 ```
 {% endtab %}
 {% endtabs %}
+

@@ -1,4 +1,4 @@
-# Combine or negate
+# Combine or Negate
 
 You can also combine searches using AND.
 
@@ -56,7 +56,7 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 

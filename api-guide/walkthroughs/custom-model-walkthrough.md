@@ -1,8 +1,8 @@
-# Custom model walkthrough
+# Custom Models
 
 You do not need many images to get started. We recommend starting with 10 and adding more as needed. Before you train your first model you will have needed to [create an application](../../getting-started/applications/#create-an-application) and select a [base workflow](../../getting-started/applications/#base-workflow).
 
-![](../../images/illustration-training.png)
+![](../../.gitbook/assets/illustration-training%20%282%29.png)
 
 ## Add images with concepts
 
@@ -61,7 +61,7 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -380,7 +380,7 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -628,7 +628,7 @@ System.out.println("New model version ID: " + modelVersionId);
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -807,7 +807,7 @@ curl -X POST \
 
 ## Predict with the model
 
-Now that we have a trained model we can start making predictions with it. In our predict call we specify three items. The `model id`, `model version id` (optional, defaults to the latest trained version) and the `input` we want a prediction for.
+Now that we have a trained model we can start making predictions with it. In our predict call we specify three items. The `model id`, `model version id` \(optional, defaults to the latest trained version\) and the `input` we want a prediction for.
 
 _Note: you can repeat the above steps as often as you like. By adding more images with concepts and training, you can get the model to predict exactly how you want it to._
 
@@ -849,7 +849,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -1110,3 +1110,4 @@ curl -X POST \
 ```
 {% endtab %}
 {% endtabs %}
+
