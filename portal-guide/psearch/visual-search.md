@@ -36,6 +36,8 @@ One common use for localized search is searching for images of specific people. 
 
 ## Visual Search in Video
 
+**Now available for early access preview. Contact customer support for additional information**
+
 You can also use full scene and localized search with video. Each frame of video is treated like an individual image. You can view detections and search with detected regions just like with still photos.
 
 ![](../../images/local_magnify_video.jpg)
