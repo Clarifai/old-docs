@@ -1077,7 +1077,7 @@ curl -X POST \
 
 ### By Input ID
 
-If the input has been indexed, we can use the input ID. If there are multiple embeddings, for example multiple regions, we will average the embeddings.
+If the input has been indexed, we can use the input ID. If there are multiple embeddings (for example multiple regions), we will average the embeddings.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
