@@ -15,7 +15,6 @@
   * [Personal Access Tokens](getting-started/authentication/personal-access-tokens.md)
   * [Scopes](getting-started/authentication/scopes.md)
   * [Authorize](getting-started/authentication/authorize.md)
-  * [Secure Hosting](getting-started/authentication/secure-hosting.md)
   * [SSO](getting-started/authentication/SSO.md)
 * [Glossary](getting-started/glossary.md)
 
