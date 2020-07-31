@@ -54,7 +54,7 @@
   * [Multilingual Classification](api-guide/predict/multilingual-classification.md)
 * [Search](api-guide/search/README.md)
   * [Index Images for Search](api-guide/search/index-images-for-search.md)
-  * [Search](api-guide/search/README.md)
+  * [Search](api-guide/search/sesarh/README.md)
     * [Combine or Negate](api-guide/search/search/combine-or-negate.md)
     * [Filter](api-guide/search/search/filter.md)
     * [Rank](api-guide/search/search/rank.md)
@@ -105,4 +105,3 @@
 
 * [Upcoming API Changes](product-updates/upcoming-api-changes.md)
 * [Changelog](product-updates/changelog.md)
-
