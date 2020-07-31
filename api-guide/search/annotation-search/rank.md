@@ -20,18 +20,20 @@ import com.clarifai.grpc.api.status.*;
 // https://docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder().addRanks(
-            Rank.newBuilder().setAnnotation(
-                Annotation.newBuilder().setData(
-                        Data.newBuilder().addConcepts(  // You can search by multiple concepts.
-                        Concept.newBuilder()
-                            .setId("people")  // You could search by concept Name as well.
-                            .setValue(1f)  // Value of 0 will search for images that don't have the concept.
+    PostAnnotationsSearchesRequest.newBuilder().addSearches(
+        Search.newBuilder().setQuery(
+            Query.newBuilder().addRanks(
+                Rank.newBuilder().setAnnotation(
+                    Annotation.newBuilder().setData(
+                            Data.newBuilder().addConcepts(  // You can search by multiple concepts.
+                            Concept.newBuilder()
+                                .setId("people")  // You could search by concept Name as well.
+                                .setValue(1f)  // Value of 0 will search for images that don't have the concept.
+                        )
                     )
                 )
             )
-        )
+        )    
     )
     .build()
 );
@@ -54,22 +56,26 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 
 stub.PostAnnotationsSearches(
     {
-        query: {
-            ranks: [
-                {
-                    annotation: {
-                        data: {
-                            concepts: [  // You can search by multiple concepts.
-                                {
-                                    id: "people",  // You could search by concept Name as well.
-                                    value: 1  // Value of 0 will search for images that don't have the concept
+        searches: [
+            {
+                query: {
+                    ranks: [
+                        {
+                            annotation: {
+                                data: {
+                                    concepts: [  // You can search by multiple concepts.
+                                        {
+                                            id: "people",  // You could search by concept Name as well.
+                                            value: 1  // Value of 0 will search for images that don't have the concept
+                                        }
+                                    ]
                                 }
-                            ]
+                            }
                         }
-                    }
+                    ]
                 }
-            ]
-        }
+            }
+        ]
     },
     metadata,
     (err, response) => {
@@ -100,22 +106,26 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
-        query=resources_pb2.Query(
-            ranks=[
-                resources_pb2.Rank(
-                    annotation=resources_pb2.Annotation(
-                        data=resources_pb2.Data(
-                            concepts=[  # You can search by multiple concepts.
-                                resources_pb2.Concept(
-                                    id="people",  # You could search by concept Name as well.
-                                    value=1  # Value of 0 will search for images that don't have the concept.
+        searches = [
+            resources_pb2.Search(
+                query=resources_pb2.Query(
+                    ranks=[
+                        resources_pb2.Rank(
+                            annotation=resources_pb2.Annotation(
+                                data=resources_pb2.Data(
+                                    concepts=[  # You can search by multiple concepts.
+                                        resources_pb2.Concept(
+                                            id="people",  # You could search by concept Name as well.
+                                            value=1  # Value of 0 will search for images that don't have the concept.
+                                        )
+                                    ]
                                 )
-                            ]
+                            )
                         )
-                    )
+                    ]
                 )
-            ]
-        )
+            )
+        ]
     ),
     metadata=metadata
 )
@@ -141,22 +151,26 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -d '
   {
-    "query": {
-      "ranks": [
-        {
-          "annotation": {
-            "data": {
-              "concepts": [
-                {
-                  "id":"people",
-                  "value": 1
+    "searches": [
+      {
+        "query": {
+        "ranks": [
+            {
+            "annotation": {
+                "data": {
+                "concepts": [
+                    {
+                    "id":"people",
+                    "value": 1
+                    }
+                ]
                 }
-              ]
             }
-          }
+            }
+        ]
         }
-      ]
-    }
+      }
+    ]
   }'\
   https://api.clarifai.com/v2/annnotations/searches
 ```
@@ -177,18 +191,20 @@ import com.clarifai.grpc.api.status.*;
 // https://docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder().addRanks(
-            Rank.newBuilder().setAnnotation(
-                Annotation.newBuilder().setData(
-                        Data.newBuilder().addConcepts(  // You can search by multiple concepts.
-                        Concept.newBuilder()
-                            .setId("people")  // You could search by concept Name as well.
-                            .setValue(1f)  // Value of 0 will search for images that don't have the concept.
+    PostAnnotationsSearchesRequest.newBuilder().addSearches(
+        Search.newBuilder().setQuery(
+            Query.newBuilder().addRanks(
+                Rank.newBuilder().setAnnotation(
+                    Annotation.newBuilder().setData(
+                            Data.newBuilder().addConcepts(  // You can search by multiple concepts.
+                            Concept.newBuilder()
+                                .setId("people")  // You could search by concept Name as well.
+                                .setValue(1f)  // Value of 0 will search for images that don't have the concept.
+                        )
                     )
                 )
             )
-        )
+        )    
     )
     .build()
 );
@@ -211,22 +227,26 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 
 stub.PostAnnotationsSearches(
     {
-        query: {
-            ranks: [
-                {
-                    annotation: {
-                        data: {
-                            concepts: [  // You can search by multiple concepts.
-                                {
-                                    id: "people",  // You could search by concept Name as well.
-                                    value: 1  // Value of 0 will search for images that don't have the concept
+        searches: [
+            {
+                query: {
+                    ranks: [
+                        {
+                            annotation: {
+                                data: {
+                                    concepts: [  // You can search by multiple concepts.
+                                        {
+                                            id: "people",  // You could search by concept Name as well.
+                                            value: 1  // Value of 0 will search for images that don't have the concept
+                                        }
+                                    ]
                                 }
-                            ]
+                            }
                         }
-                    }
+                    ]
                 }
-            ]
-        }
+            }
+        ]
     },
     metadata,
     (err, response) => {
@@ -257,22 +277,26 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
-        query=resources_pb2.Query(
-            ranks=[
-                resources_pb2.Rank(
-                    annotation=resources_pb2.Annotation(
-                        data=resources_pb2.Data(
-                            concepts=[  # You can search by multiple concepts.
-                                resources_pb2.Concept(
-                                    id="people",  # You could search by concept Name as well.
-                                    value=1  # Value of 0 will search for images that don't have the concept.
+        searches = [
+            resources_pb2.Search(
+                query=resources_pb2.Query(
+                    ranks=[
+                        resources_pb2.Rank(
+                            annotation=resources_pb2.Annotation(
+                                data=resources_pb2.Data(
+                                    concepts=[  # You can search by multiple concepts.
+                                        resources_pb2.Concept(
+                                            id="people",  # You could search by concept Name as well.
+                                            value=1  # Value of 0 will search for images that don't have the concept.
+                                        )
+                                    ]
                                 )
-                            ]
+                            )
                         )
-                    )
+                    ]
                 )
-            ]
-        )
+            )
+        ]
     ),
     metadata=metadata
 )
@@ -298,22 +322,26 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -d '
   {
-    "query": {
-      "ranks": [
-        {
-          "annotation": {
-            "data": {
-              "concepts": [
-                {
-                  "id":"people",
-                  "value": 1
+    "searches": [
+      {
+        "query": {
+        "ranks": [
+            {
+            "annotation": {
+                "data": {
+                "concepts": [
+                    {
+                    "id":"people",
+                    "value": 1
+                    }
+                ]
                 }
-              ]
             }
-          }
+            }
+        ]
         }
-      ]
-    }
+      }
+    ]
   }'\
   https://api.clarifai.com/v2/annnotations/searches
 ```
@@ -336,29 +364,31 @@ import com.clarifai.grpc.api.status.*;
 // Here we search for images which we labeled with "cat" and for which the General prediction model does not find
 // a "dog" concept.
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder().addRanks(
-            Rank.newBuilder().setAnnotation(
-                Annotation.newBuilder().setData(
-                        Data.newBuilder().addConcepts(  // You can search by multiple concepts.
-                        Concept.newBuilder()
-                            .setId("cat")  // You could search by concept Name as well.
-                            .setValue(1f)  // Value of 0 will search for images that don't have the concept.
+    PostAnnotationsSearchesRequest.newBuilder().addSearches(
+        Search.newBuilder().setQuery(
+            Query.newBuilder().addRanks(
+                Rank.newBuilder().setAnnotation(
+                    Annotation.newBuilder().setData(
+                            Data.newBuilder().addConcepts(  // You can search by multiple concepts.
+                            Concept.newBuilder()
+                                .setId("cat")  // You could search by concept Name as well.
+                                .setValue(1f)  // Value of 0 will search for images that don't have the concept.
+                        )
                     )
                 )
             )
-        )
-        .addRanks(
-            Rank.newBuilder().setAnnotation(
-                Annotation.newBuilder().setData(
-                        Data.newBuilder().addConcepts(  // You can search by multiple concepts.
-                        Concept.newBuilder()
-                            .setId("dog")  // You could search by concept Name as well.
-                            .setValue(0f)  // Value of 0 will search for images that don't have the concept.
+            .addRanks(
+                Rank.newBuilder().setAnnotation(
+                    Annotation.newBuilder().setData(
+                            Data.newBuilder().addConcepts(  // You can search by multiple concepts.
+                            Concept.newBuilder()
+                                .setId("dog")  // You could search by concept Name as well.
+                                .setValue(0f)  // Value of 0 will search for images that don't have the concept.
+                        )
                     )
                 )
             )
-        )
+        )    
     )
     .build()
 );
@@ -384,33 +414,37 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 
 stub.PostAnnotationsSearches(
     {
-        query: {
-            ranks: [
-                {
-                    annotation: {
-                        data: {
-                            concepts: [  // You can search by multiple concepts.
-                                {
-                                    id: "cat",  // You could search by concept Name as well.
-                                    value: 1  // Value of 0 will search for images that don't have the concept
+        searches: [
+            {
+                query: {
+                    ranks: [
+                        {
+                            annotation: {
+                                data: {
+                                    concepts: [  // You can search by multiple concepts.
+                                        {
+                                            id: "cat",  // You could search by concept Name as well.
+                                            value: 1  // Value of 0 will search for images that don't have the concept
+                                        }
+                                    ]
                                 }
-                            ]
-                        }
-                    }
-                }, {
-                    annotation: {
-                        data: {
-                            concepts: [  // You can search by multiple concepts.
-                                {
-                                    id: "dog",  // You could search by concept Name as well.
-                                    value: 0  // Value of 0 will search for images that don't have the concept
+                            }
+                        }, {
+                            annotation: {
+                                data: {
+                                    concepts: [  // You can search by multiple concepts.
+                                        {
+                                            id: "dog",  // You could search by concept Name as well.
+                                            value: 0  // Value of 0 will search for images that don't have the concept
+                                        }
+                                    ]
                                 }
-                            ]
+                            }
                         }
-                    }
+                    ]
                 }
-            ]
-        }
+            }
+        ]
     },
     metadata,
     (err, response) => {
@@ -444,34 +478,38 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
-        query=resources_pb2.Query(
-            ranks=[
-                resources_pb2.Rank(
-                    annotation=resources_pb2.Annotation(
-                        data=resources_pb2.Data(
-                            concepts=[  # You can search by multiple concepts.
-                                resources_pb2.Concept(
-                                    id="cat",  # You could search by concept Name as well.
-                                    value=1  # Value of 0 will search for images that don't have the concept.
+        searches = [
+            resources_pb2.Search(
+                query=resources_pb2.Query(
+                    ranks=[
+                        resources_pb2.Rank(
+                            annotation=resources_pb2.Annotation(
+                                data=resources_pb2.Data(
+                                    concepts=[  # You can search by multiple concepts.
+                                        resources_pb2.Concept(
+                                            id="cat",  # You could search by concept Name as well.
+                                            value=1  # Value of 0 will search for images that don't have the concept.
+                                        )
+                                    ]
                                 )
-                            ]
-                        )
-                    )
-                ),
-                resources_pb2.Rank(
-                    annotation=resources_pb2.Annotation(
-                        data=resources_pb2.Data(
-                            concepts=[  # You can search by multiple concepts.
-                                resources_pb2.Concept(
-                                    id="dog",  # You could search by concept Name as well.
-                                    value=0  # Value of 0 will search for images that don't have the concept.
+                            )
+                        ),
+                        resources_pb2.Rank(
+                            annotation=resources_pb2.Annotation(
+                                data=resources_pb2.Data(
+                                    concepts=[  # You can search by multiple concepts.
+                                        resources_pb2.Concept(
+                                            id="dog",  # You could search by concept Name as well.
+                                            value=0  # Value of 0 will search for images that don't have the concept.
+                                        )
+                                    ]
                                 )
-                            ]
+                            )
                         )
-                    )
+                    ]
                 )
-            ]
-        )
+            )
+        ]
     ),
     metadata=metadata
 )
@@ -500,33 +538,37 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -d '
   {
-    "query": {
-      "ranks": [
-        {
-          "annotation": {
-            "data": {
-              "concepts": [
-                {
-                  "id":"cat",
-                  "value": 1
+    "searches": [
+      {
+        "query": {
+        "ranks": [
+            {
+            "annotation": {
+                "data": {
+                "concepts": [
+                    {
+                    "id":"cat",
+                    "value": 1
+                    }
+                ]
                 }
-              ]
             }
-          }
-        }, {   
-          "annotation": {
-            "data": {
-              "concepts": [
-                {
-                  "id":"dog",
-                  "value": 0
+            }, {   
+            "annotation": {
+                "data": {
+                "concepts": [
+                    {
+                    "id":"dog",
+                    "value": 0
+                    }
+                ]
                 }
-              ]
             }
-          }
+            }
+        ]
         }
-      ]
-    }
+      }
+    ]
   }'\
   https://api.clarifai.com/v2/annnotations/searches
 ```
@@ -547,19 +589,21 @@ import com.clarifai.grpc.api.status.*;
 // https://docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder().addRanks(
-            Rank.newBuilder().setAnnotation(
-                Annotation.newBuilder().setData(
-                        Data.newBuilder().addConcepts(  // You can search by multiple concepts.
-                        Concept.newBuilder()
-                            .setName("犬")  // You could search by concept ID as well.
-                            .setLanguage("ja") // japanese
-                            .setValue(1f)  // Value of 0 will search for images that don't have the concept.
+    PostAnnotationsSearchesRequest.newBuilder().addSearches(
+        Search.newBuilder().setQuery(
+            Query.newBuilder().addRanks(
+                Rank.newBuilder().setAnnotation(
+                    Annotation.newBuilder().setData(
+                            Data.newBuilder().addConcepts(  // You can search by multiple concepts.
+                            Concept.newBuilder()
+                                .setName("犬")  // You could search by concept ID as well.
+                                .setLanguage("ja") // japanese
+                                .setValue(1f)  // Value of 0 will search for images that don't have the concept.
+                        )
                     )
                 )
             )
-        )
+        )    
     )
     .build()
 );
@@ -582,23 +626,27 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 
 stub.PostAnnotationsSearches(
     {
-        query: {
-            ranks: [
-                {
-                    annotation: {
-                        data: {
-                            concepts: [  // You can search by multiple concepts.
-                                {
-                                    name: "犬",  // You could search by concept Id as well.
-                                    language: "ja", // japanese
-                                    value: 1  // Value of 0 will search for images that don't have the concept
+        searches: [
+            {
+                query: {
+                    ranks: [
+                        {
+                            annotation: {
+                                data: {
+                                    concepts: [  // You can search by multiple concepts.
+                                        {
+                                            name: "犬",  // You could search by concept Id as well.
+                                            language: "ja", // japanese
+                                            value: 1  // Value of 0 will search for images that don't have the concept
+                                        }
+                                    ]
                                 }
-                            ]
+                            }
                         }
-                    }
+                    ]
                 }
-            ]
-        }
+            }
+        ]
     },
     metadata,
     (err, response) => {
@@ -629,23 +677,27 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
-        query=resources_pb2.Query(
-            ranks=[
-                resources_pb2.Rank(
-                    annotation=resources_pb2.Annotation(
-                        data=resources_pb2.Data(
-                            concepts=[  # You can search by multiple concepts.
-                                resources_pb2.Concept(
-                                    name="犬",  # You could search by concept ID as well.
-                                    language="ja", # japanese
-                                    value=1  # Value of 0 will search for images that don't have the concept.
+        searches = [
+            resources_pb2.Search(
+                query=resources_pb2.Query(
+                    ranks=[
+                        resources_pb2.Rank(
+                            annotation=resources_pb2.Annotation(
+                                data=resources_pb2.Data(
+                                    concepts=[  # You can search by multiple concepts.
+                                        resources_pb2.Concept(
+                                            name="犬",  # You could search by concept ID as well.
+                                            language="ja", # japanese
+                                            value=1  # Value of 0 will search for images that don't have the concept.
+                                        )
+                                    ]
                                 )
-                            ]
+                            )
                         )
-                    )
+                    ]
                 )
-            ]
-        )
+            )
+        ]
     ),
     metadata=metadata
 )
@@ -671,23 +723,27 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -d '
   {
-    "query": {
-      "ranks": [
-        {
-          "annotation": {
-            "data": {
-              "concepts": [
-                {
-                  "name":"犬",
-                  "language": "ja",
-                  "value": 1
+    "searches": [
+      {
+        "query": {
+        "ranks": [
+            {
+            "annotation": {
+                "data": {
+                "concepts": [
+                    {
+                    "name":"犬",
+                    "language": "ja",
+                    "value": 1
+                    }
+                ]
                 }
-              ]
             }
-          }
+            }
+        ]
         }
-      ]
-    }
+      }
+    ]
   }'\
   https://api.clarifai.com/v2/annnotations/searches
 ```
@@ -710,17 +766,19 @@ import com.clarifai.grpc.api.status.*;
 // https://docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder().addRanks(
-            Rank.newBuilder().setAnnotation(
-                Annotation.newBuilder().setData(
-                    Data.newBuilder().setImage(
-                        Image.newBuilder()
-                            .setUrl("{YOUR_IMAGE_URL}")
+    PostAnnotationsSearchesRequest.newBuilder().addSearches(
+        Search.newBuilder().setQuery(
+            Query.newBuilder().addRanks(
+                Rank.newBuilder().setAnnotation(
+                    Annotation.newBuilder().setData(
+                        Data.newBuilder().setImage(
+                            Image.newBuilder()
+                                .setUrl("{YOUR_IMAGE_URL}")
+                        )
                     )
                 )
             )
-        )
+        )    
     )
     .build()
 );
@@ -743,19 +801,23 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 
 stub.PostAnnotationsSearches(
     {
-        query: {
-            ranks: [
-                {
-                    annotation: {
-                        data: {
-                            image: {
-                                url: "{YOUR_IMAGE_URL}"
+        searches: [
+            {
+            query: {
+                ranks: [
+                    {
+                        annotation: {
+                            data: {
+                                image: {
+                                    url: "{YOUR_IMAGE_URL}"
+                                }
                             }
                         }
                     }
-                }
-            ]
-        }
+                ]
+            }
+            }
+        ]
     },
     metadata,
     (err, response) => {
@@ -786,19 +848,23 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
-        query=resources_pb2.Query(
-            ranks=[
-                resources_pb2.Rank(
-                    annotation=resources_pb2.Annotation(
-                        data=resources_pb2.Data(
-                            image=resources_pb2.Image(
-                                url="{YOUR_IMAGE_URL}"
+        searches = [
+            resources_pb2.Search(
+                query=resources_pb2.Query(
+                    ranks=[
+                        resources_pb2.Rank(
+                            annotation=resources_pb2.Annotation(
+                                data=resources_pb2.Data(
+                                    image=resources_pb2.Image(
+                                        url="{YOUR_IMAGE_URL}"
+                                    )
+                                )
                             )
                         )
-                    )
+                    ]
                 )
-            ]
-        )
+            )
+        ]
     ),
     metadata=metadata
 )
@@ -819,19 +885,23 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -d '
   {
-    "query": {
-      "ranks": [
-        {
-          "annotation": {
-            "data": {
-              "image": {
-                "url": "{YOUR_IMAGE_URL}"
-              }
+    "searches": [
+      {
+        "query": {
+        "ranks": [
+            {
+            "annotation": {
+                "data": {
+                "image": {
+                    "url": "{YOUR_IMAGE_URL}"
+                }
+                }
             }
-          }
+            }
+        ]
         }
-      ]
-    }
+      }
+    ]
   }'\
   https://api.clarifai.com/v2/annnotations/searches
 ```
@@ -855,19 +925,22 @@ import java.nio.file.Files;
 // https://docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder().addRanks(
-            Rank.newBuilder().setAnnotation(
-                Annotation.newBuilder().setData(
-                    Data.newBuilder().setImage(
-                        Image.newBuilder()
-                            .setBase64(ByteString.copyFrom(Files.readAllBytes(
-                                new File("{YOUR_IMAGE_LOCATION}").toPath()
-                            )))
+    PostAnnotationsSearchesRequest.newBuilder().addSearches(
+        Search.newBuilder().setQuery(
+            Query.newBuilder().addRanks(
+                Rank.newBuilder().setAnnotation(
+                    Annotation.newBuilder().setData(
+                        Data.newBuilder().setImage(
+                            Image.newBuilder()
+                                .setBase64(ByteString.copyFrom(Files.readAllBytes(
+                                    new File("{YOUR_IMAGE_LOCATION}").toPath()
+                                ))
+                            )
+                        )
                     )
                 )
             )
-        )
+        )    
     )
     .build()
 );
@@ -893,19 +966,23 @@ const imageBytes = fs.readFileSync("{YOUR_IMAGE_LOCATION}");
 
 stub.PostAnnotationsSearches(
     {
-        query: {
-            ranks: [
-                {
-                    annotation: {
-                        data: {
-                            image: {
-                                base64: imageBytess
+        searches: [
+            {
+                query: {
+                    ranks: [
+                        {
+                            annotation: {
+                                data: {
+                                    image: {
+                                        base64: imageBytess
+                                    }
+                                }
                             }
                         }
-                    }
+                    ]
                 }
-            ]
-        }
+            }
+        ]
     },
     metadata,
     (err, response) => {
@@ -939,19 +1016,23 @@ with open("{YOUR_IMAGE_LOCATION}", "rb") as f:
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
-        query=resources_pb2.Query(
-            ranks=[
-                resources_pb2.Rank(
-                    annotation=resources_pb2.Annotation(
-                        data=resources_pb2.Data(
-                            image=resources_pb2.Image(
-                                base64=file_bytes
+        searches = [
+            resources_pb2.Search(
+                query=resources_pb2.Query(
+                    ranks=[
+                        resources_pb2.Rank(
+                            annotation=resources_pb2.Annotation(
+                                data=resources_pb2.Data(
+                                    image=resources_pb2.Image(
+                                        base64=file_bytes
+                                    )
+                                )
                             )
                         )
-                    )
+                    ]
                 )
-            ]
-        )
+            )
+        ]
     ),
     metadata=metadata
 )
@@ -972,19 +1053,23 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -d '
   {
-    "query": {
-      "ranks": [
-        {
-          "annotation": {
-            "data": {
-              "image": {
-                "base64": '"`base64 /home/user/image.jpeg`"'"
-              }
+    "searches": [
+      {
+        "query": {
+        "ranks": [
+            {
+            "annotation": {
+                "data": {
+                "image": {
+                    "base64": '"`base64 /home/user/image.jpeg`"'"
+                }
+                }
             }
-          }
+            }
+        ]
         }
-      ]
-    }
+      }
+    ]
   }'\
   https://api.clarifai.com/v2/annnotations/searches
 ```
@@ -1005,12 +1090,14 @@ import com.clarifai.grpc.api.status.*;
 // https://docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder().addRanks(
-            Rank.newBuilder().setAnnotation(
-                Annotation.newBuilder().setInputId("{input_id}")    
+    PostAnnotationsSearchesRequest.newBuilder().addSearches(
+        Search.newBuilder().setQuery(
+            Query.newBuilder().addRanks(
+                Rank.newBuilder().setAnnotation(
+                    Annotation.newBuilder().setInputId("{input_id}")    
+                )
             )
-        )
+        )    
     )
     .build()
 );
@@ -1033,15 +1120,19 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 
 stub.PostAnnotationsSearches(
     {
-        query: {
-            ranks: [
-                {
-                    annotation: {
-                        input_id: "{input_ids}"
-                    }
+        searches: [
+            {
+                query: {
+                    ranks: [
+                        {
+                            annotation: {
+                                input_id: "{input_ids}"
+                            }
+                        }
+                    ]
                 }
-            ]
-        }
+            }
+        ]
     },
     metadata,
     (err, response) => {
@@ -1072,19 +1163,23 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
-        query=resources_pb2.Query(
-            ranks=[
-                resources_pb2.Rank(
-                    annotation=resources_pb2.Annotation(
-                        data=resources_pb2.Data(
-                            image=resources_pb2.Image(
-                                input_id="{input_ids}"
+        searches = [
+            resources_pb2.Search(
+                query=resources_pb2.Query(
+                    ranks=[
+                        resources_pb2.Rank(
+                            annotation=resources_pb2.Annotation(
+                                data=resources_pb2.Data(
+                                    image=resources_pb2.Image(
+                                        input_id="{input_ids}"
+                                    )
+                                )
                             )
                         )
-                    )
+                    ]
                 )
-            ]
-        )
+            )
+        ]
     ),
     metadata=metadata
 )
@@ -1105,19 +1200,23 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -d '
   {
-    "query": {
-      "ranks": [
-        {
-          "annotation": {
-            "data": {
-              "image": {
-                "url": "{YOUR_IMAGE_URL}"
+    "searches": [
+      {
+        "query": {
+          "ranks": [
+            {
+              "annotation": {
+                "data": {
+                  "image": {
+                    "url": "{YOUR_IMAGE_URL}"
+                  }
+                }
               }
             }
-          }
+          ]
         }
-      ]
-    }
+      }
+    ]
   }'\
   https://api.clarifai.com/v2/annnotations/searches
 ```

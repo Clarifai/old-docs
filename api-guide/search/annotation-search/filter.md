@@ -14,18 +14,20 @@ import com.clarifai.grpc.api.status.*;
 // https://docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder().AddFilters(
-            Filter.newBuilder().setAnnotation(
-                Annotation.newBuilder().setData(
-                        Data.newBuilder().addConcepts(  // You can search by multiple concepts.
-                        Concept.newBuilder()
-                            .setId("people")  // You could search by concept Name as well.
-                            .setValue(1f)  // Value of 0 will search for images that don't have the concept.
+    PostAnnotationsSearchesRequest.newBuilder().addSearches(
+        Search.newBuilder().setQuery(
+            Query.newBuilder().addFilters(
+                Filter.newBuilder().setAnnotation(
+                    Annotation.newBuilder().setData(
+                            Data.newBuilder().addConcepts(  // You can search by multiple concepts.
+                            Concept.newBuilder()
+                                .setId("people")  // You could search by concept Name as well.
+                                .setValue(1f)  // Value of 0 will search for images that don't have the concept.
+                        )
                     )
                 )
             )
-        )
+        )    
     )
     .build()
 );
@@ -48,22 +50,26 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 
 stub.PostAnnotationsSearches(
     {
-        query: {
-            filters: [
-                {
-                    annotation: {
-                        data: {
-                            concepts: [  // You can search by multiple concepts.
-                                {
-                                    id: "people",  // You could search by concept Name as well.
-                                    value: 1  // Value of 0 will search for images that don't have the concept
+        searches: [
+            {
+                query: {
+                    filters: [
+                        {
+                            annotation: {
+                                data: {
+                                    concepts: [  // You can search by multiple concepts.
+                                        {
+                                            id: "people",  // You could search by concept Name as well.
+                                            value: 1  // Value of 0 will search for images that don't have the concept
+                                        }
+                                    ]
                                 }
-                            ]
+                            }
                         }
-                    }
+                    ]
                 }
-            ]
-        }
+            }
+        ]
     },
     metadata,
     (err, response) => {
@@ -94,22 +100,26 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
-        query=resources_pb2.Query(
-            filters=[
-                resources_pb2.Filter(
-                    annotation=resources_pb2.Annotation(
-                        data=resources_pb2.Data(
-                            concepts=[  # You can search by multiple concepts.
-                                resources_pb2.Concept(
-                                    id="people",  # You could search by concept Name as well.
-                                    value=1  # Value of 0 will search for images that don't have the concept.
+        searches = [
+            resources_pb2.Search(
+                query=resources_pb2.Query(
+                    filters=[
+                        resources_pb2.Filter(
+                            annotation=resources_pb2.Annotation(
+                                data=resources_pb2.Data(
+                                    concepts=[  # You can search by multiple concepts.
+                                        resources_pb2.Concept(
+                                            id="people",  # You could search by concept Name as well.
+                                            value=1  # Value of 0 will search for images that don't have the concept.
+                                        )
+                                    ]
                                 )
-                            ]
+                            )
                         )
-                    )
+                    ]
                 )
-            ]
-        )
+            )
+        ]
     ),
     metadata=metadata
 )
@@ -135,22 +145,25 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -d '
   {
-    "query": {
-      "filters": [
-        {
-          "annotation": {
-            "data": {
-              "concepts": [
-                {
-                  "id":"people",
-                  "value": 1
-                }
-              ]
+    "searches": [{
+      "query": {
+        "filters": [
+          {
+            "annotation": {
+              "data": {
+                "concepts": [
+                  {
+                    "id":"people",
+                    "value": 1
+                  }
+                ]
+              }
             }
           }
-        }
-      ]
-    }
+        ]
+      }
+    }]
+
   }'\
   https://api.clarifai.com/v2/annnotations/searches
 ```
@@ -171,12 +184,14 @@ import com.clarifai.grpc.api.status.*;
 // https://docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder().AddFilters(
-            Filter.newBuilder().setAnnotation(
-                Annotation.newBuilder().setUserId("{user_id}")
+    PostAnnotationsSearchesRequest.newBuilder().addSearches(
+        Search.newBuilder().setQuery(
+            Query.newBuilder().addFilters(
+                Filter.newBuilder().setAnnotation(
+                    Annotation.newBuilder().setUserId("{user_id}")
+                )
             )
-        )
+        )    
     )
     .build()
 );
@@ -199,15 +214,20 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 
 stub.PostAnnotationsSearches(
     {
-        query: {
-            filters: [
-                {
-                    annotation: {
-                        user_id: "{user_id}"
-                    }
+        searches: [
+            {
+                query: {
+                    filters: [
+                        {
+                            annotation: {
+                                user_id: "{user_id}"
+                            }
+                        }
+                    ]
                 }
-            ]
-        }
+            }
+        ]
+
     },
     metadata,
     (err, response) => {
@@ -238,15 +258,19 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
-        query=resources_pb2.Query(
-            filters=[
-                resources_pb2.Filter(
-                    annotation=resources_pb2.Annotation(
-                        user_id="{user_id}"
-                    )
-                )
-            ]
-        )
+        searches = [
+            resources_pb2.Search(
+                query=resources_pb2.Query(
+                    filters=[
+                        resources_pb2.Filter(
+                            annotation=resources_pb2.Annotation(
+                                user_id="{user_id}"
+                            )
+                        )
+                    ]
+                )       
+            )
+        ]
     ),
     metadata=metadata
 )
@@ -272,15 +296,17 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -d '
   {
-    "query": {
-      "filters": [
-        {
-          "annotation": {
-            "user_id": "{user_id}"
+    "searches": [{
+      "query": {
+        "filters": [
+          {
+            "annotation": {
+              "user_id": "{user_id}"
+            }
           }
-        }
-      ]
-    }
+        ]
+      }
+    }]
   }'\
   https://api.clarifai.com/v2/annnotations/searches
 ```
@@ -299,17 +325,19 @@ import com.clarifai.grpc.api.status.*;
 // https://docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder().AddFilters(
-            Filter.newBuilder().setAnnotation(
-                Annotation.newBuilder()
-                .setStatus(
-                    Status.newBuilder()
-                        .setCodeValue(StatusCode.ANNOTATION_SUCCESS_VALUE)
-                        .build()
+    PostAnnotationsSearchesRequest.newBuilder().addSearches(
+        Search.newBuilder().setQuery(
+            Query.newBuilder().addFilters(
+                Filter.newBuilder().setAnnotation(
+                    Annotation.newBuilder()
+                    .setStatus(
+                        Status.newBuilder()
+                            .setCodeValue(StatusCode.ANNOTATION_SUCCESS_VALUE)
+                            .build()
+                    )
                 )
             )
-        )
+        )    
     )
     .build()
 );
@@ -332,17 +360,21 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 
 stub.PostAnnotationsSearches(
     {
-        query: {
-            filters: [
-                {
-                    annotation: {
-                        status: {
-                            code: 24150
+        searches: [
+            {
+                query: {
+                    filters: [
+                        {
+                            annotation: {
+                                status: {
+                                    code: 24150
+                                }
+                            }
                         }
-                    }
+                    ]
                 }
-            ]
-        }
+            }
+        ]
     },
     metadata,
     (err, response) => {
@@ -373,17 +405,21 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
-        query=resources_pb2.Query(
-            filters=[
-                resources_pb2.Filter(
-                    annotation=resources_pb2.Annotation(
-                        status=status_pb2.Status(
-                            code=status_code_pb2.ANNOTATION_SUCCESS
+        searches = [
+            resources_pb2.Search(
+                query=resources_pb2.Query(
+                    filters=[
+                        resources_pb2.Filter(
+                            annotation=resources_pb2.Annotation(
+                                status=status_pb2.Status(
+                                    code=status_code_pb2.ANNOTATION_SUCCESS
+                                )
+                            )
                         )
-                    )
+                    ]
                 )
-            ]
-        )
+            )
+        ]
     ),
     metadata=metadata
 )
@@ -409,17 +445,19 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -d '
   {
-    "query": {
-      "filters": [
-        {
-          "annotation": {
-            "status": {
-              "code": "ANNOTATION_SUCCESS"
-            }          
+    "searches": [{
+      "query": {
+        "filters": [
+          {
+            "annotation": {
+              "status": {
+                "code": "ANNOTATION_SUCCESS"
+              }          
+            }
           }
-        }
-      ]
-    }
+        ]
+      }
+    }]
   }'\
   https://api.clarifai.com/v2/annnotations/searches
 ```
@@ -588,26 +626,28 @@ import com.clarifai.grpc.api.status.*;
 // https://docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder().AddFilters(
-            Filter.newBuilder().setAnnotation(
-                Annotation.newBuilder().setData(
-                        Data.newBuilder().setGeo(
-                            Geo.newBuilder()
-                                .setGeoPoint(
-                                    GeoPoint.newBuilder()
-                                        .setLongitude(-29)
-                                        .setLatitude(40)
-                                )
-                                .setGeoLimit(
-                                    GeoLimit.newBuilder()
-                                        .setType("withinKilometers")
-                                        .setValue(150.0f)
-                                )
-                        )
+    PostAnnotationsSearchesRequest.newBuilder().addSearches(
+        Search.newBuilder().setQuery(
+            Query.newBuilder().addFilters(
+                Filter.newBuilder().setAnnotation(
+                    Annotation.newBuilder().setData(
+                            Data.newBuilder().setGeo(
+                                Geo.newBuilder()
+                                    .setGeoPoint(
+                                        GeoPoint.newBuilder()
+                                            .setLongitude(-29)
+                                            .setLatitude(40)
+                                    )
+                                    .setGeoLimit(
+                                        GeoLimit.newBuilder()
+                                            .setType("withinKilometers")
+                                            .setValue(150.0f)
+                                    )
+                            )
+                    )
                 )
             )
-        )
+        )    
     )
     .build()
 );
@@ -630,26 +670,30 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 
 stub.PostAnnotationsSearches(
     {
-        query: {
-            filters: [
-                {
-                    annotation: {
-                        data: {
-                            geo: {
-                                geo_point: {
-                                    longitude: -29,
-                                    latitude: 40
-                                },
-                                geo_limit: {
-                                    type: "withinKilometers",
-                                    value: 150.0
+        searches: [
+            {
+                query: {
+                    filters: [
+                        {
+                            annotation: {
+                                data: {
+                                    geo: {
+                                        geo_point: {
+                                            longitude: -29,
+                                            latitude: 40
+                                        },
+                                        geo_limit: {
+                                            type: "withinKilometers",
+                                            value: 150.0
+                                        }
+                                    }
                                 }
                             }
                         }
-                    }
+                    ]
                 }
-            ]
-        }
+            }
+        ]
     },
     metadata,
     (err, response) => {
@@ -680,26 +724,30 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
-        query=resources_pb2.Query(
-            filters=[
-                resources_pb2.Filter(
-                    annotation=resources_pb2.Annotation(
-                        data=resources_pb2.Data(
-                            geo=resources_pb2.Geo(
-                                geo_point=resources_pb2.GeoPoint(
-                                    longitude=-29.0,
-                                    latitude=40.0,
-                                ),
-                                geo_limit=resources_pb2.GeoLimit(
-                                    type="withinKilometers",
-                                    value=150.0
+        searches = [
+            resources_pb2.Search(
+                query=resources_pb2.Query(
+                    filters=[
+                        resources_pb2.Filter(
+                            annotation=resources_pb2.Annotation(
+                                data=resources_pb2.Data(
+                                    geo=resources_pb2.Geo(
+                                        geo_point=resources_pb2.GeoPoint(
+                                            longitude=-29.0,
+                                            latitude=40.0,
+                                        ),
+                                        geo_limit=resources_pb2.GeoLimit(
+                                            type="withinKilometers",
+                                            value=150.0
+                                        )
+                                    )
                                 )
                             )
                         )
-                    )
+                    ]
                 )
-            ]
-        )
+            )
+        ]
     ),
     metadata=metadata
 )
@@ -725,26 +773,30 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -d '
   {
-    "query": {
-      "filters": [
-        {
-          "annotation": {
-            "data": {
-              "geo": {
-                "geo_point": {
-                  "longitude": -29.0,
-                  "latitude": 40.0
-                },
-                "geo_limit": {
-                  "type": "withinKilometers",
-                  "value": 150
+    "searches": [
+      {
+        "query": {
+          "filters": [
+            {
+            "annotation": {
+                "data": {
+                "geo": {
+                    "geo_point": {
+                    "longitude": -29.0,
+                    "latitude": 40.0
+                    },
+                    "geo_limit": {
+                    "type": "withinKilometers",
+                    "value": 150
+                    }
                 }
               }
             }
           }
+        ]
         }
-      ]
-    }
+      }
+    ]
   }'\
   https://api.clarifai.com/v2/annnotations/searches
 ```
@@ -763,30 +815,32 @@ import com.clarifai.grpc.api.status.*;
 // https://docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder().AddFilters(
-            Filter.newBuilder().setAnnotation(
-                Annotation.newBuilder().setData(
-                        Data.newBuilder().setGeo(
-                            Geo.newBuilder()
-                                .addGeoBox(
-                                    GeoBoxedPoint.newBuilder().setGeoPoint(
-                                        GeoPoint.newBuilder()
-                                            .setLongitude(-31)
-                                            .setLatitude(42)
+    PostAnnotationsSearchesRequest.newBuilder().addSearches(
+        Search.newBuilder().setQuery(
+            Query.newBuilder().addFilters(
+                Filter.newBuilder().setAnnotation(
+                    Annotation.newBuilder().setData(
+                            Data.newBuilder().setGeo(
+                                Geo.newBuilder()
+                                    .addGeoBox(
+                                        GeoBoxedPoint.newBuilder().setGeoPoint(
+                                            GeoPoint.newBuilder()
+                                                .setLongitude(-31)
+                                                .setLatitude(42)
+                                        )
                                     )
-                                )
-                                .addGeoBox(
-                                    GeoBoxedPoint.newBuilder().setGeoPoint(
-                                        GeoPoint.newBuilder()
-                                            .setLongitude(-29)
-                                            .setLatitude(39)
-                                    ).build()
-                                )
-                        )
+                                    .addGeoBox(
+                                        GeoBoxedPoint.newBuilder().setGeoPoint(
+                                            GeoPoint.newBuilder()
+                                                .setLongitude(-29)
+                                                .setLatitude(39)
+                                        ).build()
+                                    )
+                            )
+                    )
                 )
             )
-        )
+        )    
     )
     .build()
 );
@@ -809,32 +863,36 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 
 stub.PostAnnotationsSearches(
     {
-        query: {
-            filters: [
-                {
-                    annotation: {
-                        data: {
-                            geo: {
-                                geo_box: [
-                                    {
-                                        geo_point: {
-                                            longitude: -31,
-                                            latitude: 42
-                                        }
-                                    },
-                                    {
-                                        geo_point: {
-                                            longitude: -29,
-                                            latitude: 39
-                                        }
+        searches: [
+            {
+                query: {
+                    filters: [
+                        {
+                            annotation: {
+                                data: {
+                                    geo: {
+                                        geo_box: [
+                                            {
+                                                geo_point: {
+                                                    longitude: -31,
+                                                    latitude: 42
+                                                }
+                                            },
+                                            {
+                                                geo_point: {
+                                                    longitude: -29,
+                                                    latitude: 39
+                                                }
+                                            }
+                                        ]
                                     }
-                                ]
+                                }
                             }
                         }
-                    }
+                    ]
                 }
-            ]
-        }
+            }
+        ]
     },
     metadata,
     (err, response) => {
@@ -865,32 +923,36 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
-        query=resources_pb2.Query(
-            filters=[
-                resources_pb2.Filter(
-                    annotation=resources_pb2.Annotation(
-                        data=resources_pb2.Data(
-                            geo=resources_pb2.Geo(
-                                geo_box=[
-                                    resources_pb2.GeoBoxedPoint(
-                                        geo_point=resources_pb2.GeoPoint(
-                                            longitude=-31.0,
-                                            latitude=42.0,
-                                        ),
-                                    ),
-                                    resources_pb2.GeoBoxedPoint(
-                                        geo_point=resources_pb2.GeoPoint(
-                                            longitude=-29.0,
-                                            latitude=39.0,
-                                        ),
-                                    ),
-                                ]
+        searches = [
+            resources_pb2.Search(
+                query=resources_pb2.Query(
+                    filters=[
+                        resources_pb2.Filter(
+                            annotation=resources_pb2.Annotation(
+                                data=resources_pb2.Data(
+                                    geo=resources_pb2.Geo(
+                                        geo_box=[
+                                            resources_pb2.GeoBoxedPoint(
+                                                geo_point=resources_pb2.GeoPoint(
+                                                    longitude=-31.0,
+                                                    latitude=42.0,
+                                                ),
+                                            ),
+                                            resources_pb2.GeoBoxedPoint(
+                                                geo_point=resources_pb2.GeoPoint(
+                                                    longitude=-29.0,
+                                                    latitude=39.0,
+                                                ),
+                                            ),
+                                        ]
+                                    )
+                                )
                             )
                         )
-                    )
+                    ]
                 )
-            ]
-        )
+            )
+        ]
     ),
     metadata=metadata
 )
@@ -916,32 +978,36 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -d '
   {
-    "query": {
-      "filters": [
-        {
-          "annotation": {
-            "data": {
-              "geo": {
-                "geo_box": [
-                  {
-                    "geo_point": {
-                      "latitude": 42,
-                      "longitude": -31
+    "searches": [
+      {
+        "query": {
+        "filters": [
+            {
+            "annotation": {
+                "data": {
+                "geo": {
+                    "geo_box": [
+                    {
+                        "geo_point": {
+                        "latitude": 42,
+                        "longitude": -31
+                        }
+                    },
+                    {
+                        "geo_point": {
+                        "latitude": 39,
+                        "longitude": -29
+                        }
                     }
-                  },
-                  {
-                    "geo_point": {
-                      "latitude": 39,
-                      "longitude": -29
-                    }
-                  }
-                ]
-              }
+                    ]
+                }
+                }
             }
-          }
-        }
-      ]
-    }
+            }
+        ]
+        }       
+      }
+    ]
   }'\
   https://api.clarifai.com/v2/annnotations/searches
 ```
@@ -1009,17 +1075,19 @@ import com.clarifai.grpc.api.status.*;
 // https://docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder().AddFilters(
-            Filter.newBuilder().setAnnotation(
-                Annotation.newBuilder().setData(
-                    Data.newBuilder().setMetadata(
-                        Struct.newBuilder()
-                            .putFields("type", Value.newBuilder().setStringValue("animal").build())
+    PostAnnotationsSearchesRequest.newBuilder().addSearches(
+        Search.newBuilder().setQuery(
+            Query.newBuilder().addFilters(
+                Filter.newBuilder().setAnnotation(
+                    Annotation.newBuilder().setData(
+                        Data.newBuilder().setMetadata(
+                            Struct.newBuilder()
+                                .putFields("type", Value.newBuilder().setStringValue("animal").build())
+                        )
                     )
                 )
             )
-        )
+        )    
     )
     .build()
 );
@@ -1042,19 +1110,23 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 
 stub.PostAnnotationsSearches(
     {
-        query: {
-            filters: [
-                {
-                    annotation: {
-                        data: {
-                            metadata: {
-                                "type": "animal"
+        searches: [
+            {
+                query: {
+                    filters: [
+                        {
+                            annotation: {
+                                data: {
+                                    metadata: {
+                                        "type": "animal"
+                                    }
+                                }
                             }
                         }
-                    }
+                    ]
                 }
-            ]
-        }
+            }
+        ]
     },
     metadata,
     (err, response) => {
@@ -1089,17 +1161,21 @@ search_metadata.update({"type": "animal"})
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
-        query=resources_pb2.Query(
-            filters=[
-                resources_pb2.Filter(
-                    annotation=resources_pb2.Annotation(
-                        data=resources_pb2.Data(
-                            metadata=search_metadata
+        searches = [
+            resources_pb2.Search(
+                query=resources_pb2.Query(
+                    filters=[
+                        resources_pb2.Filter(
+                            annotation=resources_pb2.Annotation(
+                                data=resources_pb2.Data(
+                                    metadata=search_metadata
+                                )
+                            )
                         )
-                    )
+                    ]
                 )
-            ]
-        )
+            )
+        ]
     ),
     metadata=metadata
 )
@@ -1125,19 +1201,23 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -d '
   {
-    "query": {
-      "filters": [
-        {
-          "annotation": {
-            "data": {
-              "metadata": {
-                "type": "animal"
-              }
+    "searches": [
+      {
+        "query": {
+        "filters": [
+            {
+            "annotation": {
+                "data": {
+                "metadata": {
+                    "type": "animal"
+                }
+                }
             }
-          }
+            }
+        ]
         }
-      ]
-    }
+      }
+    ]
   }'\
   https://api.clarifai.com/v2/annnotations/searches
 ```
@@ -1159,15 +1239,17 @@ import com.clarifai.grpc.api.status.*;
 // https://docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder().AddFilters(
-            Filter.newBuilder().setAnnotation(
-                Annotation.newBuilder().setAnnotationInfo(
-                    Struct.newBuilder()
-                        .putFields("type", Value.newBuilder().setStringValue("animal").build())
+    PostAnnotationsSearchesRequest.newBuilder().addSearches(
+        Search.newBuilder().setQuery(
+            Query.newBuilder().addFilters(
+                Filter.newBuilder().setAnnotation(
+                    Annotation.newBuilder().setAnnotationInfo(
+                        Struct.newBuilder()
+                            .putFields("type", Value.newBuilder().setStringValue("animal").build())
+                    )
                 )
             )
-        )
+        )    
     )
     .build()
 );
@@ -1190,17 +1272,21 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 
 stub.PostAnnotationsSearches(
     {
-        query: {
-            filters: [
-                {
-                    annotation: {
-                        annotation_info: {
-                            "type": "animal"
+        searches: [
+            {
+                query: {
+                    filters: [
+                        {
+                            annotation: {
+                                annotation_info: {
+                                    "type": "animal"
+                                }
+                            }
                         }
-                    }
+                    ]
                 }
-            ]
-        }
+            }
+        ]
     },
     metadata,
     (err, response) => {
@@ -1235,15 +1321,19 @@ search_annotation_info.update({"type": "animal"})
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
-        query=resources_pb2.Query(
-            filters=[
-                resources_pb2.Filter(
-                    annotation=resources_pb2.Annotation(
-                        annotation_info=search_annotation_info
-                    )
+        searches = [
+            resources_pb2.Search(
+                query=resources_pb2.Query(
+                    filters=[
+                        resources_pb2.Filter(
+                            annotation=resources_pb2.Annotation(
+                                annotation_info=search_annotation_info
+                            )
+                        )
+                    ]
                 )
-            ]
-        )
+            )
+        ]
     ),
     metadata=metadata
 )
@@ -1269,17 +1359,21 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -d '
   {
-    "query": {
-      "filters": [
-        {
-          "annotation": {
-            "annotation_info": {
-            "type": "animal"
+    "searches": [
+      {
+        "query": {
+        "filters": [
+            {
+            "annotation": {
+                "annotation_info": {
+                "type": "animal"
+                }
             }
-          }
+            }
+        ]
         }
-      ]
-    }
+      }
+    ]
   }'\
   https://api.clarifai.com/v2/annnotations/searches
 ```
