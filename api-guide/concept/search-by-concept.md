@@ -9,7 +9,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiConceptResponse postConceptsSearchesResponse = stub.postConceptsSearches(
     PostConceptsSearchesRequest.newBuilder()
@@ -35,7 +35,7 @@ for (Concept concept : postConceptsSearchesResponse.getConceptsList()) {
 {% tab title="gRPC NodeJS" %}
 ```js
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostConceptsSearches(
     {
@@ -62,11 +62,8 @@ stub.PostConceptsSearches(
 
 {% tab title="gRPC Python" %}
 ```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_concepts_searches_response = stub.PostConceptsSearches(
     service_pb2.PostConceptsSearchesRequest(

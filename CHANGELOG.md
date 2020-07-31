@@ -1,3 +1,107 @@
+# Changelog 6.5
+
+|New Feature    |Improvement|Bug Fix|Enterprise Only|
+|:-:|:-:|:-:|:-:|
+|![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
+
+## Applications
+
+|Status     |Details                                                                       |
+|-----------|------------------------------------------------------------------------------|
+|![](/images/bug.jpg)            |Can't Access Main Apps Page with invalid collaborators. Fixed.                |
+|![](/images/bug.jpg)            |Unable to create new Application (General Detection). Fixed.                  |
+|![](/images/bug.jpg)            |`application_sharing` scopes field should be `json` instead of `jsonb`. Fixed.|
+
+## Inputs
+
+|Status     |Details                                                                       |
+|-----------|------------------------------------------------------------------------------|
+|![](/images/bug.jpg)            |Pasting long text makes Uploader unusable due to lack of scrolling. Fixed.    |
+|![](/images/improvement.jpg)|Support uploading text containing emojis.                                     |
+
+## Annotate
+
+|Status     |Details                                                                       |
+|-----------|------------------------------------------------------------------------------|
+|![](/images/improvement.jpg)|Integrate and Implement task deletion using new endpoints.                    |
+|![](/images/improvement.jpg)|Implement /tasks CRUD in API.                                                 |
+|![](/images/improvement.jpg)|Allow annotation writer model to set the `task_id` in `annotation_info`.      |
+|![](/images/improvement.jpg)|Make polygons a separate task type.                                           |
+|![](/images/improvement.jpg)|Add empty CRUD endpoints for tasks.                                           |
+
+## Model
+
+|Status     |Details                                                                       |
+|-----------|------------------------------------------------------------------------------|
+|![](/images/bug.jpg)            |`vocab_id` doesn't appear in the returned object for demographics model. Fixed.|
+|![](/images/bug.jpg)            |`segment-concept` model types are no longer returning the segmentation mask. Fixed.|
+|![](/images/bug.jpg)            |NLP text input does not scroll when longer than viewport height. Fixed.       |
+|![](/images/bug.jpg)            |Clear text inputs after upload.                                               |
+|![](/images/improvement.jpg)|Improve the "TextFile" React Component for NLP.                               |
+|![](/images/improvement.jpg)|Make existing model details view configurable by model type.                  |
+|![](/images/bug.jpg)            |Edit model should only contain the fields related to the selected model. Fixed|
+|![](/images/bug.jpg)            |NLP frontend text input is covered entirely blue when selected. Fixed.        |
+|![](/images/bug.jpg)            |Enforce fields in post/patch models to adhere to model types. Fixed.        |
+
+
+## Predict
+
+|Status     |Details                                                                       |
+|-----------|------------------------------------------------------------------------------|
+|![](/images/bug.jpg)            |Fixed fps issue for video predictions.                                        |
+|![](/images/bug.jpg)            |Validate `stat_value_agg_type`.                                               |
+
+## Search
+
+|Status     |Details                                                                       |
+|-----------|------------------------------------------------------------------------------|
+|![](/images/bug.jpg)            |Dropdown Search Help Menu no longer displays in the search bar. Fixed.        |
+|![](/images/new_feature.jpg)    |Video thumbs have relevant timestamp in search.                               |
+|![](/images/improvement.jpg)|Added adjustable search results threshold.                                    |
+|![](/images/new_feature.jpg)    |Search over multi-embed workflows.                                            |
+|![](/images/new_feature.jpg)    |Added search on input level.                                                  |
+|![](/images/improvement.jpg)|Improved search query by using multi join.                                    |
+|![](/images/bug.jpg)            |Fixed panic in list saved searches endpoint.                                  |
+|![](/images/bug.jpg)            |Input metadata search from table not working. Fixed.                          |
+
+## Portal
+
+|Status     |Details                                                                       |
+|-----------|------------------------------------------------------------------------------|
+|![](/images/bug.jpg)            |"Return to Log in " doesn't redirect to login page. Fixed.|
+|![](/images/bug.jpg)            |Clicking on image, or Explorer Mode with images that contain geo coordinates crashed the app.|
+|![](/images/improvement.jpg)|Portal model predicts use hosted URL when available instead of normal URL.    |
+|![](/images/bug.jpg)            |When selecting a concept and going to the next image the concept checkbox won't stay selected. Fixed|
+|![](/images/improvement.jpg)|Allow multi-select from explorer grid view and add metadata.                  |
+|![](/images/improvement.jpg)|Integrate and utilize new CRUD endpoints in Portal.                           |
+|![](/images/new_feature.jpg)    |Allow for pasted text to keep formatting in the text box.                     |
+|![](/images/bug.jpg)            |Prediction threshold slider custom model predicts without base workflow annotations. Fixed|
+|![](/images/improvement.jpg)|Strings without spacing format properly in Explorer's Asset Grid View         |
+|![](/images/bug.jpg)            |`annotation_info` should be a valid JSON in Model Mode. Fixed.                |
+
+## Workflow
+
+|Status     |Details                                                                       |
+|-----------|------------------------------------------------------------------------------|
+|![](/images/bug.jpg)            |Hide the "add text" section of the add inputs modal for non text workflows.   |
+|![](/images/improvement.jpg)|Validate that all nodes in workflows list their inputs based on type.         |
+|![](/images/new_feature.jpg)    |Add NLP to Workflows List                                                     |
+|![](/images/improvement.jpg)|Generalize the iterations over regions/frames in workflow code.               |
+|![](/images/new_feature.jpg)    |Add ability to "make a copy" of public_workflows.                             |
+|![](/images/improvement.jpg)|Allow indexing embedding from detect -> crop -> embed style workflows.        |
+|![](/images/improvement.jpg)|Allow setting input nodes for all users, not just @clarifai.com users.        |
+|![](/images/improvement.jpg)|Allow non-internal users setting input node when creating workflows.          |
+|![](/images/bug.jpg)            |Create/Patch workflow uncaught exception.                                     |
+
+## Clients
+
+|Status     |Details                                                                       |
+|-----------|------------------------------------------------------------------------------|
+|![](/images/improvement.jpg)|Update docs.clarifai.com to reflect our current API clients including grpc clients. |
+
+
+
+
 # Changelog 6.4
 
 |New Feature    |Improvement|Bug Fix|Enterprise Only|
@@ -222,7 +326,7 @@
 
 # Changelog 6.2
 
-|New Feature    |Improvement|Bug Fix|Enterprise Only|
+|New Feature    |Improvement |Bug Fix|Enterprise Only|
 |:-:|:-:|:-:|:-:|
 |![](/images/new_feature.jpg)|![](/images/improvement.jpg)|![](/images/bug.jpg)|![](/images/enterprise.jpg)
 
