@@ -22,7 +22,7 @@ You can upload your text directly from a `.csv` file. This means you can work wi
 
 ![](../../.gitbook/assets/csv_template.jpg)
 
-Next, add your text data. At a minimum, you should add text to the `input.data.text.raw` field. You can add one concept per column to the `input.data.concepts[i].id` fields. For the `input.data.concepts[i].value` column, there are two options: enter the number `1` if the concept _is_ present in the input, enter the value `0` if the concept is _not_ present in the input \(a negative example\). If no value is entered, a default value of `1` will be assigned to your input.
+Next, add your text data. At a minimum, you should add text to the `input.data.text.raw` field. You can add one concept per column to the `input.data.concepts[*].id` fields. For the `input.data.concepts[*].value` column, there are two options: enter the number `1` if the concept *is* present in the input, enter the value `0` if the concept is *not* present in the input (a negative example). If no value is entered, a default value of `1` will be assigned to your input.
 
 You can add columns for as many concepts as you like, and you can add new columns to add values for any other values supported by the API:
 
@@ -78,4 +78,3 @@ Click “Train Model” in the upper right hand corner of the screen.
 Navigate to “Explorer Mode” and “Add Inputs”. Add some new text inputs, and then navigate back to “Explorer Mode”
 
 You will see custom concept predictions in the right hand sidebar when you click on an individual input.
-

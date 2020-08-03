@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Introduction](introduction.md)
+* [Welcome](introduction.md)
 
 ## Getting Started
 
@@ -30,7 +30,7 @@
   * [Create, Get, Update, Delete](api-guide/inputs/create-get-update-delete.md)
   * [Supported Formats](api-guide/inputs/supported-formats.md)
 * [Concepts](api-guide/concepts/README.md)
-  * [Create, Get, Update](api-guide/concepts/concepts.md)
+  * [Create, Get, Update](api-guide/concepts/create-get-update.md)
   * [Languages](api-guide/concepts/languages.md)
   * [Search by Concept](api-guide/concepts/search-by-concept.md)
   * [Knowledge Graph](api-guide/concepts/knowledge_graph.md)

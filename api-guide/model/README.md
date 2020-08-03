@@ -8,7 +8,10 @@ Clarifai provides many different models that understand the world differently. T
 A model contains a group of concepts. A model will only see the concepts it contains.
 {% endhint %}
 
+To work with models in Portal, click on the Model Mode tab. From here you can create, edit and workflow your models.
+
+![](../../images/model_mode.jpg)
+
 {% hint style="info" %}
 For step-by-step guides, visit API [Walkthroughs](https://github.com/Clarifai/docs/tree/2a43e94fc3a04b1637d6277b8b41c16d70e6e36b/api-guide/walkthroughs/README.md).
 {% endhint %}
-
