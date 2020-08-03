@@ -1,4 +1,4 @@
-### Authorize API Calls
+# Authorize
 
 After creating your `API Key`, you are ready to make API calls. If you are using a client, authentication will be handled for you. If you are using the REST API, you will need to add the `Authorization` header as described in the cURL example.
 
@@ -66,3 +66,4 @@ curl -X POST \
 {% endtabs %}
 
 If the API Key does not have the required scope\(s\) to execute a given request, you will get an error message reporting the missing scopes and/or endpoints that your key needs to execute this request.
+

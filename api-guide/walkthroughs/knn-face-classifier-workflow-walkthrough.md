@@ -1,6 +1,6 @@
-# KNN Face Classifier Workflow Walkthrough
+# Custom KNN Face Classifier Workflow
 
-Let's say you want to build a face recognition system that is able to differentiate between persons of whom you only have a few samples (per person). Machine learning models generally require a large inputs dataset to be able to classify the inputs well.
+Let's say you want to build a face recognition system that is able to differentiate between persons of whom you only have a few samples \(per person\). Machine learning models generally require a large inputs dataset to be able to classify the inputs well.
 
 When a large dataset is the luxury you do not have, we recommend using our **KNN Classifier Model** which uses K nearest neighbor search and plurality voting amongst the nearest neighbors to classify new instances. It's recommended when you only have a small dataset like one input per concept.
 
@@ -8,20 +8,17 @@ In this walkthorugh, you'll learn how to create a KNN classifier that's going to
 
 > Note: Each of the steps below can also be done manually on [the Clarifai Portal](https://portal.clarifai.com/).
 
-
 ## Create a new application
 
 The first step is manual: in the Clarifai Portal, [create an new application](https://docs.clarifai.com/getting-started/applications/create-an-application) with **Face** selected as the Base Workflow.
 
-Afterward, copy the newly-created application's *API key* and set it as metadata (see the initialization code). This variable is going to be used, for authorization purposes, by all Clarifai API calls that follow.
-
+Afterward, copy the newly-created application's _API key_ and set it as metadata \(see the initialization code\). This variable is going to be used, for authorization purposes, by all Clarifai API calls that follow.
 
 ## Add images
 
 Add images that contain the faces you want to use as a training set.
 
 Since the application's base model is Face, after adding an image, faces are automatically located and are available to be annotated.
-
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -57,11 +54,9 @@ if post_inputs_response.status.code != status_code_pb2.SUCCESS:
 {% endtab %}
 {% endtabs %}
 
-
 ## Wait for upload & map IDs to URLs
 
-Now we'll wait for all the images to finish uploading, and then create a dictionary mapping from an input ID to the URL.
-This will help us to annotate the proper image in the next step.
+Now we'll wait for all the images to finish uploading, and then create a dictionary mapping from an input ID to the URL. This will help us to annotate the proper image in the next step.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -103,7 +98,6 @@ input_id_to_url = {inp.id: inp.data.image.url for inp in list_inputs_response.in
 {% endtab %}
 {% endtabs %}
 
-
 ## List the annotations
 
 Let's now print all the regions that the Face base model detected on our images.
@@ -140,13 +134,11 @@ for annotation in list_annotations_response.annotations:
 {% endtab %}
 {% endtabs %}
 
-
-
 ## Post new annotations
 
 Let's use the above information to add annotations, in the form of a concept, to the detected face regions.
 
-Input below the IDs from the previous call, and choose your concept ID and name that you want to annotate the region with (you may want to use e.g. person's name).
+Input below the IDs from the previous call, and choose your concept ID and name that you want to annotate the region with \(you may want to use e.g. person's name\).
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -186,8 +178,6 @@ if post_annotations_response.status.code != status_code_pb2.SUCCESS:
 {% endtab %}
 {% endtabs %}
 
-
-
 ## Create a KNN model
 
 Let's now create a KNN model using the concept IDs that were added above. The model type ID should be set to `knn-concept`.
@@ -220,8 +210,6 @@ if post_models_response.status.code != status_code_pb2.SUCCESS:
 ```
 {% endtab %}
 {% endtabs %}
-
-
 
 ## Create a workflow
 
@@ -267,7 +255,6 @@ if post_workflows_response.status.code != status_code_pb2.SUCCESS:
 {% endtab %}
 {% endtabs %}
 
-
 ## Predict
 
 We're going to run a prediction on the workflow created above.
@@ -306,3 +293,4 @@ for output in result.outputs:
 ```
 {% endtab %}
 {% endtabs %}
+

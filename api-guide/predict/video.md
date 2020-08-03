@@ -55,7 +55,7 @@ for (Frame frame : output.getData().getFramesList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -1631,7 +1631,7 @@ for (Frame frame : output.getData().getFramesList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -2127,3 +2127,4 @@ curl -X POST \
 ```
 {% endtab %}
 {% endtabs %}
+

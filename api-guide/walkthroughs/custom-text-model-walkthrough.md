@@ -1,4 +1,4 @@
-# Custom text model walkthrough
+# Custom Text Model
 
 The Clarifai API has the ability not only to learn concepts from images and videos, but from text as well.
 
@@ -8,16 +8,15 @@ The steps below can all be done via [the Clarifai's portal](https://portal.clari
 
 The examples below map directly to any of our other gRPC clients.
 
-The walkthrough assumes you have already created your Clarifai's user account and the [Personal Access Token](https://portal.clarifai.com/settings/authentication). Also, first set up the gRPC Python client together with the initial code, see [Client Installation Instructions](../../api-guide/api-overview/api-clients#client-installation-instructions).
+The walkthrough assumes you have already created your Clarifai's user account and the [Personal Access Token](https://portal.clarifai.com/settings/authentication). Also, first set up the gRPC Python client together with the initial code, see [Client Installation Instructions](https://github.com/Clarifai/docs/tree/1c1d25cdd43190c38a2edb313297c0d566b3a0e3/api-guide/api-overview/api-clients/README.md#client-installation-instructions).
 
 For debugging purposes, each response returned by a method call can be printed to the console, and its entire data and structure will be shown verbosely.
-
 
 ## Create a new application
 
 The first step is manual: in the Clarifai Portal, [create an new application](https://docs.clarifai.com/getting-started/applications/create-an-application) with **Text** selected as the Base Workflow.
 
-Afterward, copy the newly-created application's *API key* and set it in the variable below. This variable is going to be used, for authorization purposes, by all Clarifai API calls that follow.
+Afterward, copy the newly-created application's _API key_ and set it in the variable below. This variable is going to be used, for authorization purposes, by all Clarifai API calls that follow.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -30,12 +29,11 @@ api_key_metadata = (('authorization', 'Key ' + post_keys_response.keys[0].id),)
 {% endtab %}
 {% endtabs %}
 
-
 ## Add a batch of texts
 
-We'll now add several text inputs that we will later use as a training data in our custom model. The idea is that we'll create a model which can differentiate between positive and negative sentences (in a grammatical sense). We'll mark each input with one of the two concepts: `positive` or `negative`.
+We'll now add several text inputs that we will later use as a training data in our custom model. The idea is that we'll create a model which can differentiate between positive and negative sentences \(in a grammatical sense\). We'll mark each input with one of the two concepts: `positive` or `negative`.
 
-The text can be added either directly (it's called raw), or from a URL.
+The text can be added either directly \(it's called raw\), or from a URL.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -100,7 +98,6 @@ if post_inputs_response.status.code != status_code_pb2.SUCCESS:
 {% endtab %}
 {% endtabs %}
 
-
 ## Wait for inputs to download
 
 Let's now wait for all the inputs to download.
@@ -144,11 +141,9 @@ while True:
 {% endtab %}
 {% endtabs %}
 
-
 ## Create a custom model
 
-Now we can create a custom model that's going to be using the concepts `positive` and `negative`. All inputs (in our application) associated with these two concepts will be used as a training data, once we actually train the model.
-
+Now we can create a custom model that's going to be using the concepts `positive` and `negative`. All inputs \(in our application\) associated with these two concepts will be used as a training data, once we actually train the model.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -197,12 +192,11 @@ if post_model_versions_response.status.code != status_code_pb2.SUCCESS:
 {% endtab %}
 {% endtabs %}
 
-
 ## Wait for model training to complete
 
 Let's wait for the model training to complete.
 
-Each model training produces a new model version. See on the bottom of the code example, that we put the model version ID into its own variable. We'll be using it below to specify which specific model version we want to use (since a model can have multiple versions).
+Each model training produces a new model version. See on the bottom of the code example, that we put the model version ID into its own variable. We'll be using it below to specify which specific model version we want to use \(since a model can have multiple versions\).
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -240,7 +234,6 @@ model_version_id = get_model_response.model.model_version.id
 {% endtab %}
 {% endtabs %}
 
-
 ## Predict on new inputs
 
 Now we can use the new custom model to predict new text examples.
@@ -275,7 +268,6 @@ for output in post_model_outputs_response.outputs:
 {% endtab %}
 {% endtabs %}
 
-
 ## Start model evaluation
 
 Let's now test the performance of the model by using model evaluation. See the [the Model Evaluation page](https://docs.clarifai.com/portal-guide/model/evaluate) to learn more.
@@ -296,7 +288,6 @@ if post_model_version_metrics.status.code != status_code_pb2.SUCCESS:
 ```
 {% endtab %}
 {% endtabs %}
-
 
 ## Wait for model evaluation results
 
@@ -350,3 +341,4 @@ print(get_model_version_metrics_response)
 ```
 {% endtab %}
 {% endtabs %}
+

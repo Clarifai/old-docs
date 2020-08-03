@@ -4,12 +4,12 @@ Below is a script that can be used to run prediction in a batch on text/sentence
 
 To start, you'll need to create your own Custom Text Model, either via [our Portal](https://docs.clarifai.com/portal-guide/walkthroughs/pcustom-model-walkthrough) or [using the API](https://docs.clarifai.com/api-guide/walkthroughs/custom-model-walkthrough).
 
-Make sure to record the model ID, version ID that you want to use (each model gets one after being successfully trained), and the API key of the application in which the model exists.
+Make sure to record the model ID, version ID that you want to use \(each model gets one after being successfully trained\), and the API key of the application in which the model exists.
 
 This script assumes that you have a CSV file which has one column named "text" where the text you want to run predictions on is. It'll output another CSV file containing the predicted concepts for each text, together with confidence values.
 
 {% tabs %}
-{% tab title="nlp_model_predicts.py" %}
+{% tab title="nlp\_model\_predicts.py" %}
 ```python
 """
 A script designed for running bulk NLP model predictions on a .csv file of text entries.
@@ -157,14 +157,13 @@ if __name__ == '__main__':
 {% endtab %}
 {% endtabs %}
 
-
 ## Example Usage
 
 Let's say you have the following CSV file, and want to predict, for each text in a row, whether the sentence is grammatically positive or negative. You first build a custom text model that was created to map text into two concepts: "positive" and "negative. See our [Custom Text Model walkthrough](https://docs.clarifai.com/api-guide/walkthroughs/custom-text-model-walkthrough) on how to do that via our API.
 
 {% tabs %}
-{% tab title="my_data.csv" %}
-```
+{% tab title="my\_data.csv" %}
+```text
 number,text
 1,"We have never been to Asia, nor have we visited Africa."
 2,"I am never at home on Sundays."
@@ -175,15 +174,15 @@ number,text
 
 With that, you can run the script on the CSV file in the following manner, which will produce a new CSV file.
 
-```
+```text
 python nlp_model_predicts.py --api_key YOUR_API_KEY --model_id YOUR_MODEL_ID --model_version YOUR_MODEL_VERSION_ID --csv_file my_data.csv --top_n 2
 ```
 {% endtab %}
 {% endtabs %}
 
 {% tabs %}
-{% tab title="my_data_results.csv" %}
-```
+{% tab title="my\_data\_results.csv" %}
+```text
 text,predict_1_concept,predict_1_value,predict_2_concept,predict_2_value
 "We have never been to Asia, nor have we visited Africa.",negative,1.000,positive,0.000
 I am never at home on Sundays.,negative,1.000,positive,0.000
@@ -193,3 +192,4 @@ The waitress was not amused when he ordered green eggs and ham.,negative,1.000,p
 ```
 {% endtab %}
 {% endtabs %}
+

@@ -1,4 +1,6 @@
-### Create
+# Create, Get, Update, Delete
+
+## Create
 
 To create a new custom workflow, specify a list of model IDs that are to be included in the workflow. Each model ID also requires a specific model version ID, since a model can have several versions.
 
@@ -43,7 +45,7 @@ if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -166,8 +168,7 @@ curl -X POST 'https://api.clarifai.com/v2/workflows' \
 {% endtab %}
 {% endtabs %}
 
-
-### Workflow Predict
+## Workflow Predict
 
 Predict using a workflow. The response will contain the predictions each model in the workflow returns for the input.
 
@@ -212,7 +213,7 @@ for (Output output : results.getOutputsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -311,9 +312,9 @@ curl -X POST 'https://api.clarifai.com/v2/workflows/my-custom-workflow/results' 
 {% endtab %}
 {% endtabs %}
 
+## Get
 
-### Get
-#### Get all workflows in an app
+### Get all workflows in an app
 
 Return all custom workflows in your app.
 
@@ -344,7 +345,7 @@ for (Workflow workflow : listWorkflowsResponse.getWorkflowsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -404,8 +405,7 @@ curl -X GET 'https://api.clarifai.com/v2/workflows' \
 {% endtab %}
 {% endtabs %}
 
-
-#### Get a workflow by a specific ID
+### Get a workflow by a specific ID
 
 Returns information about a specific workflow.
 
@@ -439,7 +439,7 @@ for (WorkflowNode workflowNode : workflow.getNodesList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -501,9 +501,9 @@ curl -X GET 'https://api.clarifai.com/v2/workflows/my-custom-workflow' \
 {% endtab %}
 {% endtabs %}
 
+## Update
 
-### Update
-#### Patch workflow
+### Patch workflow
 
 Ability to change the workflow, that is to change the models of which the workflow consists.
 
@@ -561,7 +561,7 @@ if (patchWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -716,12 +716,9 @@ curl -X PATCH 'https://api.clarifai.com/v2/workflows' \
 {% endtab %}
 {% endtabs %}
 
+## Delete
 
-
-
-
-### Delete
-#### Delete workflow by ID
+### Delete workflow by ID
 
 Delete a specific workflow.
 
@@ -747,7 +744,7 @@ if (deleteWorkflowResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -795,11 +792,11 @@ curl -X DELETE 'https://api.clarifai.com/v2/workflows/my-custom-workflow \
 {% endtab %}
 {% endtabs %}
 
-#### Delete all workflows
+### Delete all workflows
 
 Deletes all custom workflows.
 
-> Note: instead of "delete_all" it's possible to specify a list of workflow IDs to be deleted, using the `ids` field.
+> Note: instead of "delete\_all" it's possible to specify a list of workflow IDs to be deleted, using the `ids` field.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -823,7 +820,7 @@ if (deleteWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -873,3 +870,4 @@ curl -X DELETE 'https://api.clarifai.com/v2/workflows' \
 ```
 {% endtab %}
 {% endtabs %}
+

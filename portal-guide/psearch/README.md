@@ -4,4 +4,5 @@ AI models can be used to power search. Our API automatically indexes your inputs
 
 With our transfer learning technology, your model can learn new concepts in seconds or minutes, and then Clarifai's patented search technology can be used to search for this concept immediately, without the need for reindexing.
 
-![](../../images/ready_to_search.jpg)
+![](../../.gitbook/assets/ready_to_search%20%282%29.jpg)
+
