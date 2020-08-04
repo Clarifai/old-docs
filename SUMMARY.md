@@ -83,6 +83,7 @@
   * [Positive and Negative Annotations](portal-guide/annotate/positive-and-negative-annotations.md)
 * [Model](portal-guide/model/README.md)
   * [Clarifai Models](portal-guide/model/clarifai-models.md)
+  * [Model Types](portal-guide/model/model-types.md)
   * [Deep Training](portal-guide/model/deep-training.md)
   * [Evaluate](portal-guide/model/evaluate/README.md)
     * [Interpreting Evaluations](portal-guide/model/evaluate/interpreting-evaluations.md)
