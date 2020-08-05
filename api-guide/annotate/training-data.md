@@ -4,9 +4,11 @@ AI requires high quality training data. Training data is used to "teach" AI mode
 
 ## Quality and quantity
 
+
+
 ## Organize your data in a way that AI can understand
 
-A training set refers to the data that is used as positive inputs for concepts in a model. A “good” training set will set the model to make predictions as closely to the world as the user sees it as possible.  
+A training set refers to the data that is used as inputs for concepts in a model. A “good” training set will set the model to make predictions as closely to the world as the user sees it as possible.  
 
 Data quality
 
@@ -19,6 +21,16 @@ More data means more examples from your model to learn from.
 
 
 
-Example: For Guinness Beer’s “Perfect Pint” model, the client had a few thousand images of professionally photographed pints of beer in different stages of pour appearance on bar tops, taken in daylight. The model was meant to see a photo of a pint of beer, and return a judgement on how the pint of beer looks compared to the “perfect” looking pint of beer.
+### A cautionary tale: The importance of representative data
 
-Unfortunately, because the images used to initially train the model did not look qualitatively similar to the user generated data and the user data was photographed in more scenarios than bars, the model needed improvement in the form of 1) more data to capture the breadth of scenarios, and 2) data that reflected the quality of smartphone cameras. After applying these changes, the model performance improved.
+An international beer company wanted to build a “Perfect Pint” model as part of a promotional campaign. The model was meant to analyze a photo of a pint of beer, and judge how well it had been poured and presented (this particular brand puts a strong emphasis on the importance of pouring beer with the ideal amount of "head", or foam, on top).
+
+The client had a few thousand images of professionally photographed pints of beer to use as training data. The images represented their beer in different stages of pour appearance on bar tops, taken in daylight and/or professional lighting.  
+
+The initial version of their model struggled to perform effectively in production. Even though their training data provided many examples of the object that they wanted to analyze, the qualitative appearance of their training data did not capture the appearance of their beer in diverse real-world environments.
+
+They needed to provide training data that captured:
+1) The breadth of real world scenarios
+2) The quality of user generated images
+
+After applying these changes, the model performance improved.
