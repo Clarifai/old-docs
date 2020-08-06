@@ -36,6 +36,7 @@
   * [Knowledge Graph](api-guide/concepts/knowledge_graph.md)
 * [Annotations](api-guide/annotate/README.md)
   * [Annotations](api-guide/annotate/annotations.md)
+  * [Training Data](portal-guide/annotate/training-data.md)
   * [Positive and Negative Annotations](api-guide/annotate/positive-and-negative-annotations.md)
 * [Model](api-guide/model/README.md)
   * [Clarifai Models](api-guide/model/clarifai-models.md)

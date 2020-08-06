@@ -1,37 +1,38 @@
 # Training Data
 
-AI requires high quality training data. Training data is used to "teach" AI models how to understand the world. Models
+Your custom AI solution will require training data. Training data is used to "teach" AI models how to understand the world. A good set of training data will result in a model that will make accurate predictions on data in real-world scenarios. There are two basic considerations to keep in mind when building a training dataset: quantity and quality.
 
-## The Basics: Quality and Quantity
+## Data Quantity
 
-A training set refers to the data that is used as inputs for concepts in a model. A “good” training set will set the model to make predictions as closely to the world as the user sees it as possible.
+When it comes to training AI models, more training data is generally better. More data means more examples from your model to learn from, and helps you improve the accuracy of your model.
 
+### How many inputs does my model need?
 
-### Data quality
+This is one of the most common questions that comes up when building a new model. Unfortunately, there are no hard and fast rules about the number of inputs that will be required for your particular use case. But as a general rule, if you are training a custom model on top of a Clarifai Model, you will need much less training data (typically tens to tens-of-thousands of inputs), than if you are building a "deep trained model" (typically thousands to millions of inputs).
 
-* Visually adheres to concept descriptions laid out in a taxonomy
-
-Ideal/Not Ideal inputs defined
-
-Create a visual dictionary of what each concept’s training data will and will not be trained for.  Determine resolution and image size for optimal data
-
-* Inputs are representative of the expected data for your model’s intended use case
-
-UGC Optimized
-
-UGC stands for “User Generated Content”. We need to make sure the training and test data matches the reality of the use-case. Your evaluation test set should be a reflection of this.
-
-### Data quantity
-
-* More data means more examples from your model to learn from
+### Bias
 
 Bias occurs when the scope of your training data is too narrow. If you only see green apples, you’ll assume that all apples are green and think red apples were another kind of fruit. If the training data contains only a small number of examples, it’ll react accordingly, taking it as truth. Small datasets make for a smaller worldview.
 
+## Data Quality
+
+Models that perform well tend to be trained on data that is unique and photographed in a consistent way.
+
+For best results, train your model with data that:
+
+* Adheres to concept descriptions laid out in a taxonomy
+* Represents the reality of the use-case
+* Has visually noticeable qualities - something that is not too subtle for humans to pick up on AND something that can be picked up through the noise of a photo.
+
+Models that tend to perform poorly:
+
+* Trained on data with inconsistent compositions
+* Photos require outside context (relationships to people in portraits, etc)
+* Subject matter is subtle. Keep in mind, the model has no concept of language, so in essence, “what you see is what you get”.
+* Training set is cast too wide. If you train a concept of too many different kinds of images, and they are all visually different, the training set will become noisy. This will make it difficult for the model to find the visually distinct qualities to learn from, resulting in high levels of "variance".
 
 {% hint style="info" %}
-### A cautionary tale: The importance of representative data
-
-[img]
+### Cautionary Tale: The importance of representative data when working with User-Generated Content(USG)
 
 An international beer company wanted to build a “Perfect Pint” model as part of a promotional campaign. The model was meant to analyze a photo of a pint of beer, and judge how well it had been poured and presented (this particular brand puts a strong emphasis on the importance of pouring beer with the ideal amount of "head", or foam, on top).
 
@@ -47,44 +48,31 @@ After applying these changes, the model performance improved.
 {% endhint %}
 
 
+### Semantic Clarity (The importance of "of" vs "in")
 
+When labeling an image, try to avoid labeling what is "in" the image, instead you will get better results if you label what the photo is "of". In cases where there are multiple objects in a scene, use a detector model, and label the detected regions separately.
 
+{% hint style="info" %}
 
-## Semantic clarity (The importance of "Is" vs "Of")
+### Cautionary Tale: False positive in wedding imagery
 
-Visually Distinct
+Here is an example of an image of a married couple, which had a false positive prediction for a person holding a bouquet of flowers, even though there is no bouquet in the photo. What’s going on here?
 
-Look for visually noticeable qualities - trying to recognize something that is not too subtle for humans to pick up on AND something that can be picked up through the noise of a photo. Also look for whether or not those noticeable qualities are distinct enough to be repeatable across inputs.
+![](../../images/false_positive.png)
 
-Variance, on the other hand, occurs when your training set is cast too wide. If you train a concept of too many different kinds of images, and they are all visually different, the training set will become noisy. This will make it difficult for the model to find the visually distinct qualities to learn from.
+All of these images were labeled with ‘Bouquet-floral_Holding’:
 
-Semantically clear
+![](../../images/bouquet.png)
 
-Make sure the labels for concepts reflect what the photo is of, not just what is in the photo.
+In this instance, the image in question has:
 
+* A veiled bride
+* The Bride & Groom kissing/their heads close together
+* Greenery over their heads
+* Large, recognizable flowers
 
-## Training Data Checklist
+The model sees the combination all of these individual things in lots of photos labeled ‘Bouquet_Floral_Holding’, and thus, that is the top result.
 
+One way to fix this is to narrow the training data for ‘Bouquet_Floral_Holding’ to images in which the bouquet is focal point, rather than any instance of the bouquet being held. This way, the model can focus on the anchoring theme/object within the dataset more easily.
 
-
-
-
-Remember to set aside Evaluation data at the start of each project. A split of 80% Training Data to 20% Evaluation data should be good to start.
-
-
-
-
-
-Assets
-
-Have model versions and API Keys on-hand for testing and for running scripts, if applicable
-
-Labels
-
-Keep track of the number of images labeled, either via JIRA or docs.
-
-
-
-## Gathering and cleaning data
-
-## Building a visual dictionary
+{% endhint %}
