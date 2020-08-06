@@ -2,18 +2,31 @@
 
 AI requires high quality training data. Training data is used to "teach" AI models how to understand the world. Models
 
-## Organize your data in a way that AI can understand
+## The Basics: Quality and Quantity
 
 A training set refers to the data that is used as inputs for concepts in a model. A “good” training set will set the model to make predictions as closely to the world as the user sees it as possible.
+
 
 ### Data quality
 
 * Visually adheres to concept descriptions laid out in a taxonomy
+
+Ideal/Not Ideal inputs defined
+
+Create a visual dictionary of what each concept’s training data will and will not be trained for.  Determine resolution and image size for optimal data
+
 * Inputs are representative of the expected data for your model’s intended use case
+
+UGC Optimized
+
+UGC stands for “User Generated Content”. We need to make sure the training and test data matches the reality of the use-case. Your evaluation test set should be a reflection of this.
 
 ### Data quantity
 
 * More data means more examples from your model to learn from
+
+Bias occurs when the scope of your training data is too narrow. If you only see green apples, you’ll assume that all apples are green and think red apples were another kind of fruit. If the training data contains only a small number of examples, it’ll react accordingly, taking it as truth. Small datasets make for a smaller worldview.
+
 
 {% hint style="info" %}
 ### A cautionary tale: The importance of representative data
@@ -33,25 +46,34 @@ They needed to provide training data that captured:
 After applying these changes, the model performance improved.
 {% endhint %}
 
-## Training Data Checklist
 
+
+
+
+## Semantic clarity (The importance of "Is" vs "Of")
 
 Visually Distinct
 
 Look for visually noticeable qualities - trying to recognize something that is not too subtle for humans to pick up on AND something that can be picked up through the noise of a photo. Also look for whether or not those noticeable qualities are distinct enough to be repeatable across inputs.
 
-Ideal/Not Ideal inputs defined
-
-Create a visual dictionary of what each concept’s training data will and will not be trained for.  Determine resolution and image size for optimal data
-Remember to set aside Evaluation data at the start of each project. A split of 80% Training Data to 20% Evaluation data should be good to start.
+Variance, on the other hand, occurs when your training set is cast too wide. If you train a concept of too many different kinds of images, and they are all visually different, the training set will become noisy. This will make it difficult for the model to find the visually distinct qualities to learn from.
 
 Semantically clear
 
 Make sure the labels for concepts reflect what the photo is of, not just what is in the photo.
 
-UGC Optimized
 
-UGC stands for “User Generated Content”. We need to make sure the training and test data matches the reality of the use-case. Your evaluation test set should be a reflection of this.
+## Training Data Checklist
+
+
+
+
+
+Remember to set aside Evaluation data at the start of each project. A split of 80% Training Data to 20% Evaluation data should be good to start.
+
+
+
+
 
 Assets
 
@@ -60,17 +82,6 @@ Have model versions and API Keys on-hand for testing and for running scripts, if
 Labels
 
 Keep track of the number of images labeled, either via JIRA or docs.
-
-
-## Common Problems in Model Performance
-
-Bias occurs when the scope of your training data is too narrow. If you only see green apples, you’ll assume that all apples are green and think red apples were another kind of fruit. If the training data contains only a small number of examples, it’ll react accordingly, taking it as truth. Small datasets make for a smaller worldview.
-
-Variance, on the other hand, occurs when your training set is cast too wide. If you train a concept of too many different kinds of images, and they are all visually different, the training set will become noisy. This will make it difficult for the model to find the visually distinct qualities to learn from.
-
-
-
-
 
 
 
