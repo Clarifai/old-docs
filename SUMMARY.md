@@ -52,6 +52,8 @@
   * [Video](api-guide/predict/video.md)
   * [Prediction Parameters](api-guide/predict/prediction-parameters.md)
   * [Multilingual Classification](api-guide/predict/multilingual-classification.md)
+* [Collectors](api-guide/collectors/README.md)
+  * [Collectors](api-guide/collectors/collectors.md)
 * [Search](api-guide/search/README.md)
   * [Index Images for Search](api-guide/search/index-images-for-search.md)
   * [Search](api-guide/search/sesarh/README.md)
