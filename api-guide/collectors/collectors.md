@@ -11,8 +11,7 @@ The collector takes several parameters:
   This workflow uses the original input to the model as input to the workflow so that you can run additional models as well on that input to decide whether to queue the model or not.
   If the workflow output has any field that is non-empty then it will be passed on to POST /inputs to the destination app.
   Optional, but at least one (pre-queue or post-queue) workflow ID is required.
-- The caller user ID from whom we want to collect the inputs (leave it a blank string to collect from any caller predicting against the model).
-- The model ID, and a its model version ID, should belong to the model from where you want to collect. When the caller predicts an input against that model, the input is going to be collected.
+- The model ID, and its model version ID, should belong to the model from where you want to collect. When the user predicts an input against that model, the input is going to be collected.
 - The app ID and user ID where the model is located. If using a publicly available model, the model user and app ID should be `clarifai` and `main`, respectively. Otherwise the IDs should belong to the user who created the model.
 - An API key ID using which the inputs are is going to be added.
 
@@ -153,7 +152,6 @@ curl -X POST 'https://api.clarifai.com/v2/collectors' \
             "post_queue_workflow_id": "{YOUR_POST_QUEUE_WORKFLOW_ID}",
             "collector_source": {
                 "api_post_model_outputs_collector_source": {
-                    "caller_user_id": "",
                     "model_user_id": "{YOUR_MODEL_USER_ID]",
                     "model_app_id": "{YOUR_MODEL_APP_ID}",
                     "model_id": "{YOUR_MODEL_ID}",
