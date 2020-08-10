@@ -1,3 +1,5 @@
+# Label Types
+
 Labeler provides three basic label types for your images and videos. These label types provide increasing levels of granularity to support the needs of your specific use case.
 
 ## Classification
