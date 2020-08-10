@@ -1,65 +1,115 @@
 # Interpreting Evaluations
 
-## Interpreting Results
+![](../../../.gitbook/assets/eval-results-new%20%282%29.png)
 
-![](../../../.gitbook/assets/eval-results-new%20%282%29.png) Once the Model Evaluation is complete, you’ll be able to view the evaluation results in the [Portal here](https://clarifai.com/apps)
+Once the Model Evaluation is complete, you’ll be able to view the evaluation results in Portal.
 
-We suggest that you start by looking at the Concept by Concept Probabilities Results and the Summary Table to get a sense of the overall model prediction performance and identify the high-performing and low-performing concepts. Afterwards, hone in on the Selection Details of the False Positives and False Negatives to identify any biases, if any, in how the model is predicting, and to correct any inputs that are mislabeled
+We suggest that you start by looking at the Concept by Concept Probabilities Results and the Summary Table to get a sense of the overall model prediction performance and identify the high-performing and low-performing concepts. Afterwards, hone-in on the Selection Details of the False Positives and False Negatives to identify any biases, if any, in how the model is predicting, and to correct any inputs that are mislabeled
 
 Generally, you’ll be looking at results that represent either a\) the average across K splits, or b\) the test set of a single split, which is about 1/K of your original training set. Note that a single split will be capped at 1,000 inputs.
 
-### Model Analysis
+## Model Analysis
 
-#### Model Accuracy Score
+### Model Accuracy Score
 
-![model eval results](../../../.gitbook/assets/model-score-new%20%282%29.png) Model Accuracy Score is the highest level metric for your model’s prediction performance. It is defined as the macro average of the areas under the receiver operating characteristic curve for every concept. This metric does not depend on the Prediction Threshold. This metric is an average across K splits.
+![model eval results](../../../.gitbook/assets/model-score-new%20%282%29.png)
+
+Model Accuracy Score is the highest level metric for your model’s prediction performance. It is defined as the macro average of the areas under the receiver operating characteristic curve for every concept. This metric does not depend on the Prediction Threshold. This metric is an average across K splits.
 
 A score of 1 represents a perfect model; a score of .5 represents a worthless model. As a general rule of thumb, a score above .9 is considered good.
 
 Note that we discourage users from making a final assessment of the model accuracy based on the Model Accuracy Score only.
 
-### Concept Analysis
+## Concept Analysis
 
-#### Prediction Threshold
+### Prediction Threshold
 
-![prediction threshold](../../../.gitbook/assets/prediction-threshold-new%20%282%29.png) Probability threshold determines the model’s predictions. The default threshold is .5. The input is predicted as \(i.e. “counts” as\) as a concept, such as “dog”, only if the prediction probability for “dog” is higher than the set threshold, for example, 0.5. You can adjust the threshold depending on how ‘strict’ you want your classification to be.
+![prediction threshold](../../../.gitbook/assets/prediction-threshold-new%20%282%29.png)
+
+Probability threshold determines the model’s predictions. The default threshold is .5. The input is predicted as \(i.e. “counts” as\) as a concept, such as “dog”, only if the prediction probability for “dog” is higher than the set threshold, for example, 0.5. You can adjust the threshold depending on how ‘strict’ you want your classification to be.
 
 All prediction binary metrics, such as True Positives, False Negatives, and False Positives, and Total Predicted, Recall Rate, Precision Rate, depend on this threshold.
 
-#### Evaluation Summary
+{% hint style="info" %}
+#### Choosing a Prediction Threshold
 
-![model eval summary](../../../.gitbook/assets/eval-summary-table%20%282%29.png) This table summarizes the numerical evaluation results for every concept. For every concept, it calculates:
+A threshold is the “sweet spot” numerical score that is dependent on the objective of your prediction for *recall* and/or *precision*. In practice, there are multiple ways to define “accuracy” when it comes to machine learning, and the threshold is the number we use to gauge for our preferences.
 
-**K-Split Average**
+You might be wondering how you should set your classification threshold, once you are ready to use it to predict out-of-sample data. This is more of a business decision, in that you have to decide whether you would rather minimize your False Positive Rate or maximize your True Positive Rate.
 
-1. **ROC AUC \(Concept Accuracy Score\):** concept’s prediction performance score, defined the area under the receiver operating characteristic curve. A score of 1 represents a perfect model; a score of .5 represents a worthless model. As a general rule of thumb, a score above .9 is considered good. Note: ROC AUC is not dependent on the prediction threshold.
+If our model is used to predict concepts that lead to a high-stakes decision, like a diagnosis of a disease or moderation for safety, we might consider a few false positives as forgivable (better to be safe than sorry!). In this case, we might want high precision.
 
-**1-Split**
+If our model is used to predict concepts that lead to a suggestion or flexible outcome, we might want high recall so that the model can allow for exploration.
 
-1. **Total Labeled:** Total number of inputs that were originally labeled as the concept in the test set. Total Labeled is the sum of True Positives \(correct\) and False Negatives \(incorrect\). Note: Total Labeled is not dependent on the prediction threshold.
-2. **Total Predicted:** Total number of inputs that were predicted as the concept in the test set. This means these inputs were predicted as a concept with probability greater than the prediction threshold value. Total Predicted is the sum of True Positives \(correct\) and False Positives \(incorrect\).
-3. **True Positives \(TP\):** Number of inputs that were correctly predicted as the concept they were actually labeled. Also known as “hits”. \(E.g. These are the images that were labeled as “dog” and were predicted as “dog”\)
-4. **False Negatives \(FN\):** Number of inputs that were not predicted as the concept they were actually labeled. Also known as “misses”. \(E.g. These are the images that were labeled as “dog” but were not predicted as “dog”\)
-5. **False Positives \(FP\):** Number of inputs that were predicted as the concept, but they were not labeled as the concept. Also known as “false alarms”. \(E.g. These are the images that were predicted as “dog” but were not labeled as “dog”\)
-6. **Recall Rate:** proportion of the images labeled as the concept that were predicted as the concept. It is calculated as True Positives divided by Total Labeled. Also known as “sensitivity” or “true positive rate”.
-7. **Precision Rate:** proportion of the images predicted as a concept that had been actually labeled as the concept. It is calculated as True Positives divided by Total Predicted. Also known as “positive predictive value”.
+In either scenario, we will want to make sure our model is trained and tested with data that best reflects is use-case.
 
-#### Concept by Concept Results \(Advanced\)
+Once we have determined the goal of our model (high precision or high recall), we can use test data that our model has never seen before to evaluate how well our model predicts according to the standards we have set.
+{% endhint %}
 
-This section has a concept by concept matrix. Note that this is not a confusion matrix; we recommend that you read this through before interpreting the data.
 
-In general, the matrix is meant to be read by fixing each row. Each row represents a subset of the test set that was actually labeled as a particular concept. For this subset, each cell across the row represents either
+### Evaluation Summary
 
-1. The number of inputs that were predicted as a concept \(i.e. “counts”\), or
-2. The average prediction probability for each concept, noted by the column name, for all inputs in this subset, across all K splits  \(i.e. “probabilities”\).
+![model eval summary](../../../.gitbook/assets/eval-summary-table%20%282%29.png)
 
-Concepts that co-occur, or are similar, may form a visual cluster on the matrix. On the other hand, exclusive or dissimilar concepts should not form a cluster.
+This table summarizes the numerical evaluation results for every concept. For every concept, it calculates:
 
-**Counts \(1-Split\)** ![concept by concept results](../../../.gitbook/assets/cxc-result%20%282%29.png) Each row represents the subset of the test set that were actually labeled as a concept, e.g. “dog”. As you go across the row, each cell shows the number of times those images were predicted as each concept, noted by the column name.
+#### K-Split Average
+
+**ROC AUC \(Concept Accuracy Score\)**: The concept’s prediction performance score, defined by the area under the Receiver Operating Characteristic curve. This score gives us an idea of how well we have separated our different classes, or concepts.
+
+![](../../../images/roc_auc.png)
+
+A score of 1 represents a perfect model; a score of .5 represents a poor model. As a general rule of thumb, a score above .9 is considered good. Note: ROC AUC is not dependent on the prediction threshold.
+
+ROC AUC is generated by plotting the True Positive Rate (y-axis) against the False Positive Rate (x-axis) as you vary the threshold for assigning observations to a given class. The AUC, or Area Under the Curve of these points is (arguably) the best way to summarize a model’s performance in a single number.
+
+You can think of AUC as representing the probability that a classifier will rank a randomly chosen positive observation higher than a randomly chosen negative observation, and thus it is a useful metric even for datasets with highly unbalanced classes. A score of 1 represents a perfect model; a score of .5 represents a model that would be no better than random guessing, and this wouldn’t be suitable for predictions and should be re-trained. Note: ROC AUC is not dependent on the prediction threshold.
+
+
+#### 1-Split
+
+**Total Labeled:** Total number of inputs that were originally labeled as the concept in the test set. Total Labeled is the sum of True Positives \(correct\) and False Negatives \(incorrect\). Note: Total Labeled is not dependent on the prediction threshold.
+
+**Total Predicted:** Total number of inputs that were predicted as the concept in the test set. This means these inputs were predicted as a concept with probability greater than the prediction threshold value. Total Predicted is the sum of True Positives \(correct\) and False Positives \(incorrect\).
+
+**True Positives \(TP\):** Number of inputs that were correctly predicted as the concept they were actually labeled. Also known as “hits”. \(E.g. These are the images that were labeled as “dog” and were predicted as “dog”\)
+
+**False Negatives \(FN\):** Number of inputs that were not predicted as the concept they were actually labeled. Also known as “misses”. \(E.g. These are the images that were labeled as “dog” but were not predicted as “dog”\)
+
+**False Positives \(FP\):** Number of inputs that were predicted as the concept, but they were not labeled as the concept. Also known as “false alarms”. \(E.g. These are the images that were predicted as “dog” but were not labeled as “dog”\)
+
+**Recall Rate:** proportion of the images labeled as the concept that were predicted as the concept. It is calculated as True Positives divided by Total Labeled. Also known as “sensitivity” or “true positive rate”.
+
+**Precision Rate:** proportion of the images predicted as a concept that had been actually labeled as the concept. It is calculated as True Positives divided by Total Predicted. Also known as “positive predictive value”.
+
+### Concept by Concept Results
+
+A concept-by-concept matrix is a graphic flattening of data to show what has been labeled for a concept. This tool is another way of visualizing the performance of a model. It allows us to review where we see true positives, or correctly predicted inputs (the diagonal row). Simply put, this is an excellent tool for telling us where our model gets things right or wrong.
+
+Each row represents the subset of the test set that were actually labeled as a concept, e.g. “dog”. As you go across the row, each cell shows the number of times those images were predicted as each concept, noted by the column name.
+
+![](../../../images/concept_by_concept.png)
+
+This matrix helps you understand:
+
+* **Accuracy**: Overall, how often is the model correct?
+* **Misclassification Rate**: Overall, how often is it wrong?
+* **True Positive Rate**: When it's actually yes, how often does it predict yes?
+* **False Positive Rate**: When it's actually no, how often does it predict yes?
+* **Specificity**: When it's actually no, how often does it predict no?
+* **Precision**: When it predicts yes, how often is it correct?
+* **Prevalence**: How often does the yes condition actually occur in our sample?
+
+#### Counts \(1-Split\)
+![concept by concept results](../../../.gitbook/assets/cxc-result%20%282%29.png)
+
+The "count" is the the number of inputs that were predicted as a concept.
+
+Each row represents the subset of the test set that were actually labeled as a concept, e.g. “dog”. As you go across the row, each cell shows the number of times those images were predicted as each concept, noted by the column name.
 
 The diagonal cells represent True Positives, i.e. correctly predicted inputs. You’d want this number to be as close to the Total Labeled as possible.
 
-Depending on how your model was trained, the off-diagonal cells could include both correct and incorrect predictions. In a non-mutually exclusive concepts environment, you can label an image with more than 1 concept. For example, an image is labeled as both “dog” and “cat”, this image would be counted in both “dog” row and “cat” row. If the model correctly predicts this image to be both “dog” and “cat”, then this input will be counted in both on and off-diagonal cells.
+Depending on how your model was trained, the off-diagonal cells could include both correct and incorrect predictions. In a non-mutually exclusive concepts environment, you can label an image with more than 1 concept. For example, an image is labeled as both “hamburger” and “sandwich”, this image would be counted in both “hamburger” row and “sandwich” row. If the model correctly predicts this image to be both “hamburger” and “sandwich”, then this input will be counted in both on and off-diagonal cells.
 
 Few things to note:
 
@@ -68,7 +118,12 @@ Few things to note:
 3. You can click on each cell to view the actual prediction results for every input that was counted in this cell.
 4. This represents the test set data of a single split.
 
-**Probabilities \(K-Split Average\)** ![concept by concept five split results](../../../.gitbook/assets/cxc-5split%20%282%29.png) Each row represents the subset of the test set that were actually labeled as a concept, e.g. “dog”. As you go across the row, each cell shows the average prediction probability for each concept, noted by the column name, for all inputs in this subset. In short, the cell shows the average prediction probability for a concept given the images labeled as a concept.
+
+#### Probabilities \(K-Split Average\)
+
+![concept by concept five split results](../../../.gitbook/assets/cxc-5split%20%282%29.png)
+
+Each row represents the subset of the test set that were actually labeled as a concept, e.g. “dog”. As you go across the row, each cell shows the average prediction probability for each concept, noted by the column name, for all inputs in this subset. In short, the cell shows the average prediction probability for a concept given the images labeled as a concept.
 
 Few things to note:
 
@@ -76,56 +131,35 @@ Few things to note:
 2. You can click on each cell to view the actual prediction results for every input that were used to calculate this cell.
 3. This represents the average across all K splits.
 
-### Input Analysis
 
-#### Selection Details
+#### Co-occurrence
 
-![not expanded](../../../.gitbook/assets/not-expanded-new%20%282%29.png) This Selection Details table shows the input-level details of the selection you made on the Summary Table or Concept by Concept Results. It shows the image input and prediction probabilities for a specific concept.
+![](../../../images/co-occur.png)
+
+Concepts that co-occur, or are similar, may appear as cluster on the matrix. In this sample matrix for a food model trained to predict the cooking preparation for foods, we see a cluster around ‘Gratin’ and ‘Baked’. Without context of what these concepts mean or how the training data appears, we can assume that the training data looks very similar, and it is (‘Gratin’ IS a variant of baked preparation, only with cheese). And so, clusters aren’t necessarily a bad thing, sometimes they are absolutely correct if the subject matter is naturally similar.
+
+#### Noise
+
+![](../../../images/noise.png)
+
+**1-2 Concept model (left)** : Hair Volume is graded as it appears from root to tip, either voluminous, or not voluminous
+**1-4 Concept model (right)** : Hair Volume is tiered depending on where it exists from the root, ends of the hair and hair length. Level 4 is the most distinct because it is dependent on the shortest hair length.
+
+The matrix on the right is an example of a noisy matrix, compared to the binary model on the left, which has a more clearly defined diagonal line. Concepts trained with data that is too similar, too subtle to differentiate, or labeled across different concepts, will muddle the distinction between concepts, and will not form a clean diagonal line in a confusion matrix. In this case, the model on the left would be considered the ideal concept distinction.
+
+
+## Input Analysis
+
+### Selection Details
+
+![not expanded](../../../.gitbook/assets/not-expanded-new%20%282%29.png)
+
+This Selection Details table shows the input-level details of the selection you made on the Summary Table or Concept by Concept Results. It shows the image input and prediction probabilities for a specific concept.
 
 Note: the prediction probabilities on this table may seem different from your actual model’s probabilities. The reason is that all the evaluation results are based on the new model that was built for evaluation purposes during the cross validation process.
 
-#### Expanded Selection Details
+### Expanded Selection Details
 
-![expanded](../../../.gitbook/assets/expanded-new%20%282%29.png) You can click on the expand button to view the prediction probabilities for every concept for each image. The blue dot denotes the concept\(s\) the input was actually labeled, i.e. true positives. The red dot denotes the concept\(s\) that the input was not labeled.
+![expanded](../../../.gitbook/assets/expanded-new%20%282%29.png)
 
-## Improving your Model
-
-The evaluation metrics are meant to help you diagnose the quality of your model. Your model may belong to one or more of many categories, including, but not limited to:
-
-1. Good model with all great concepts.
-2. OK model with a few bad concepts.
-3. Bad model: with all bad concepts.
-4. Biased model: the model is consistently picking up certain visual cues other than what you’d like to pick up. This is sometimes obvious to pick up in the
-
-   Portal here
-
-   &lt;/a&gt;.
-
-5. Model with Variance: there is no consistency in the way the model is predicting on inputs.
-
-### Possible Areas of Improvement
-
-The performance of your model depends on the performance of each concept, which is trained on a set of inputs. We’d recommend that you look at both inputs and concepts when diagnosing areas of improvement.
-
-**Inputs**
-
-1. Diversity: try to include all perspectives of the concept, e.g. include all angles of a “dog”, if you’re building a “dog” concept.
-2. Strong positives: Images that are the true representation of your concept.
-3. Training data should be representative of the real world data -- avoid making models where the data is too ‘easy’, i.e. unrealistic set of data.
-4. Number: minimum 50 inputs per concept; more inputs the better.
-5. File dimensions: minimum 512px x 512px.
-
-**Concepts**
-
-1. Concepts: avoid concepts that do not rely on visual cues within the image. Also, current custom training does not perform well on training to identify faces.
-2. Labels: check to see if any inputs are labeled with wrong concepts.
-
-### Tips
-
-When improving your model, there is no one-size-fits-all answer. Here are some tips to keep in mind:
-
-1. Although we use ROC AUC as a general top-level ‘score’ for both concept and model, we do not recommend that you rely on 1 metric only to draw your final conclusion on your model performance.
-2. Refer to both Concepts by Concepts Results as well as Selection Details to get a better grasp of your model.
-3. When interpreting the evaluation results, keep in mind the nature of your model. Specifically, pay attention to whether or not you have labeled the inputs with more than 1 concept \(i.e. non-mutually exclusive concepts environment\), vs. only 1 concept per image.
-4. Remember, the rule of diminishing returns may also apply to training models. After a certain point, the changes may not make a big difference in the model quality.
-
+You can click on the expand button to view the prediction probabilities for every concept for each image. The blue dot denotes the concept\(s\) the input was actually labeled, i.e. true positives. The red dot denotes the concept\(s\) that the input was not labeled.
