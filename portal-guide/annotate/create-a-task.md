@@ -22,7 +22,7 @@ Concepts are the words that you are labeling your data with. Concepts can be any
 
 ## Input Sources
 
-You can choose "All inputs", which will include all inputs from your dataset, or you can choose any one of your [Saved Searches](https://docs.clarifai.com/v/v6.1/portal-guide/psearch/psaved_searches).
+You can choose "All inputs", which will include all inputs from your dataset, or you can choose any one of your [Saved Searches](../psearch/psaved_searches).
 
 By saving your searches, you can slice and dice your dataset, and configure dynamic and static types of datasets. You can also create highly customized filters to your data, by adding metadata and searching by metadata filtering.
 
@@ -43,7 +43,7 @@ All labels will be automatically marked with a "Success" status and can be immed
 
 Labels will be marked with a "Pending Review" status until the assigned reviewer approves them. These labels cannot be used to train new models until approved.
 
-### Consensus
+### Consensus (Coming soon!)
 
 Consensus review will mark labels with "Success" status in cases where multiple reviewers provide the same label.
 
