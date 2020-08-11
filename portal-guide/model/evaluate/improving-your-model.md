@@ -6,7 +6,7 @@ The evaluation metrics are meant to help you diagnose the quality of your model.
 2. OK model with a few bad concepts.
 3. Bad model with all bad concepts.
 4. Biased model: the model is consistently picking up certain visual cues other than what you’d like to pick up.
-5. Model with Variance: there is no consistency in the way the model is predicting on inputs.
+5. Model with variance: there is no consistency in the way the model is predicting on inputs.
 
 ## Possible Areas of Improvement
 

@@ -45,8 +45,3 @@ Choose to only ingest inputs from a specified user, or anyone who posts new inpu
 ### Source
 
 Select the model that you would like to collect from, and the collector will automatically post the new inputs to your app. Simply enter your model name, or model ID number. You can select the model that you would like to collect from in the drop down menu.
-
-
-{% hint style="info" %}
-Collectors are designed to generalize to collect data from different types of sources (not just model predictions). Please contact customer support for more information.
-{% endhint %}
