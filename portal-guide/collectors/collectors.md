@@ -2,7 +2,7 @@
 
 Collectors capture input data for your app. They enable you to pipe in data from production models automatically, and are the key to unlocking many platform training capabilities like active learning. Collectors are available with Essential and Enterprise plans to help you manage data ingestion at scale.
 
-You can create app-level collectors to monitor specific models and specify sampling rules for triggering data ingestion. Collectors can only collect data from apps where you are the app owner. 
+You can create app-level collectors to monitor specific models and specify sampling rules for triggering data ingestion. Collectors can only collect data from apps where you are the app owner.
 
 
 ## Creating a new collector
@@ -43,10 +43,6 @@ At least one (pre-queue or post-queue) workflow ID is required. The input to thi
 Select the API key that you would like to use to allow new inputs to be posted to your app. This is the post-queue workflow ID of the workflow to run to after the collector is processing the queued input. This API key must have the PostInputs scope, since it grants the collector the authority to POST inputs to your app.
 
 This workflow uses the original input to the model as input to the workflow so that you can run additional models as well on that input to decide whether to queue the model or not. If the workflow output has any field that is non-empty then it will be passed on to POST /inputs to the destination app. At least one (pre-queue or post-queue) workflow ID is required.
-
-### Caller
-
-Choose to only ingest inputs from a specified user, or anyone who posts new inputs to a model.  The user is referred to as the "caller" since they are making API calls as they post new inputs to their model. Just input the caller's user ID, or select "Any caller" to accept inputs from anyone posting new inputs to the model.
 
 
 ### Source

@@ -31,11 +31,6 @@ Select the API key that you would like to use to allow new inputs to be posted t
 
 This workflow uses the original input to the model as input to the workflow so that you can run additional models as well on that input to decide whether to queue the model or not. If the workflow output has any field that is non-empty then it will be passed on to POST /inputs to the destination app. At least one (pre-queue or post-queue) workflow ID is required.
 
-### Caller
-
-Choose to only ingest inputs from a specified user, or anyone who posts new inputs to a model.  The user is referred to as the "caller" since they are making API calls as they post new inputs to their model. Just input the caller's user ID, or select "Any caller" to accept inputs from anyone posting new inputs to the model.
-
-
 ### Source
 
 Select the model that you would like to collect from, and the collector will automatically post the new inputs to your app. Simply enter your model name, or model ID number. When the user predicts an input against this model, the input is going to be collected.
