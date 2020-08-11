@@ -8,6 +8,7 @@ The evaluation metrics are meant to help you diagnose the quality of your model.
 4. Biased model: the model is consistently picking up certain visual cues other than what you’d like to pick up.
 5. Model with variance: there is no consistency in the way the model is predicting on inputs.
 
+
 ## Possible Areas of Improvement
 
 The performance of your model depends on the performance of each concept, which is trained on a set of inputs. We’d recommend that you look at both inputs and concepts when diagnosing areas of improvement.
