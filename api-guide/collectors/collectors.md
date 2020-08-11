@@ -1,24 +1,47 @@
 # Collectors
 
-The collector takes several parameters:
-- The collector's ID and description are of your own choosing.
-- The pre-queue workflow ID of the workflow to run inline in model predict calls.
-  It should only have very fast and light-weight models in it as it will effect the speed of the predictions being made.
-  This workflow's purpose is to filter down the inputs to queue for the collector to process.
-  The input to this workflow is going to be the OUTPUT of the model.
-  Optional, but at least one (pre-queue or post-queue) workflow ID is required.
-- The post-queue workflow ID of the workflow to run to after the collector is processing the queued input.
-  This workflow uses the original input to the model as input to the workflow so that you can run additional models as well on that input to decide whether to queue the model or not.
-  If the workflow output has any field that is non-empty then it will be passed on to POST /inputs to the destination app.
-  Optional, but at least one (pre-queue or post-queue) workflow ID is required.
-- The model ID, and its model version ID, should belong to the model from where you want to collect. When the user predicts an input against that model, the input is going to be collected.
-- The app ID and user ID where the model is located. If using a publicly available model, the model user and app ID should be `clarifai` and `main`, respectively. Otherwise the IDs should belong to the user who created the model.
-- An API key ID using which the inputs are is going to be added.
+Collectors capture input data for your app. They enable you to pipe in data from production models automatically, and are the key to unlocking many platform training capabilities like active learning. Collectors are available with Essential and Enterprise plans to help you manage data ingestion at scale.
 
-A possible pre-queue workflow would be one that does:
-1. random sampling (i.e. it collects a random subset of predicted inputs), then
-2. knowledge graph mapping from public General model concepts to a custom model, then
-2. concept thresholding.
+You can create app-level collectors to monitor specific models and specify sampling rules for triggering data ingestion.
+
+## Collector Parameters
+### Collector ID
+Give your collector a useful and descriptive name.
+
+### Description
+Provide additional details about your collector.
+
+### Pre-queue workflow
+
+In many scenarios, you will only want to ingest a sample, or subset of a given data source into your app. Pre-queue workflows allow you to pre-process your inputs so that you can sample and filter your new data before it is ever added to your app. Pre-queue workflows allow you to specify sampling rules for triggering data ingestion. Common pre-queue workflows are designed to:
+
+* Randomly sample inputs
+* Filter inputs by metadata
+* Filter inputs with a maximum probability below a given threshold
+* Filter inputs with a minimum probability above a given threshold
+* Filter specific concept probabilities above a given threshold
+* Knowledge graph mapping from public General model concepts to a custom model
+
+At least one (pre-queue or post-queue) workflow ID is required. The input to this workflow is going to be the OUTPUT of the model. We recommend that you use fast and light-weight models in it as it will effect the speed of the predictions being made.
+
+
+### Post Inputs key
+
+Select the API key that you would like to use to allow new inputs to be posted to your app. This is the post-queue workflow ID of the workflow to run to after the collector is processing the queued input. This API key must have the PostInputs scope, since it grants the collector the authority to POST inputs to your app.
+
+This workflow uses the original input to the model as input to the workflow so that you can run additional models as well on that input to decide whether to queue the model or not. If the workflow output has any field that is non-empty then it will be passed on to POST /inputs to the destination app. At least one (pre-queue or post-queue) workflow ID is required.
+
+### Caller
+
+Choose to only ingest inputs from a specified user, or anyone who posts new inputs to a model.  The user is referred to as the "caller" since they are making API calls as they post new inputs to their model. Just input the caller's user ID, or select "Any caller" to accept inputs from anyone posting new inputs to the model.
+
+
+### Source
+
+Select the model that you would like to collect from, and the collector will automatically post the new inputs to your app. Simply enter your model name, or model ID number. When the user predicts an input against this model, the input is going to be collected.
+
+The app ID and user ID where the model is located. If using a publicly available model, the model user and app ID should be `clarifai` and `main`, respectively. Otherwise the IDs should belong to the user who created the model. An API key ID using which the inputs are is going to be added.
+
 
 See also the [Auto Annotation walkthrough](https://docs.clarifai.com/api-guide/walkthroughs/auto-annotation-walkthrough).
 

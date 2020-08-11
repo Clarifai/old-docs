@@ -12,10 +12,16 @@ Provide annotation for an entire image, or single frame of video. To classify an
 
 Provide annotation within a single box-shaped region of an image or video. To use bounding box detection, you must start with a workflow that offers detection capabilities. From here you can label detected regions, or draw your own bounding boxes for labeling.
 
+### Detection for Still Images
+
 ![Bounding box detection for still image](../../images/detector_label.jpg)
+
+### Detection for Video
 
 ![Bounding box detection for video](../../images/video_detector.jpg)
 
-## Polygon Detection (Coming Soon!)
+## Polygon Detection
 
 Provide annotation within any polygon-shaped region of an image or video.
+
+![](../../images/polygon.jpg)

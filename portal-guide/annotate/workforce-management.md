@@ -1,8 +1,8 @@
-# Workforce Management
+# Task Administration & Workforce Management
 
 Labeler provides a variety of workforce management tools that help your company to distribute and manage labeling tasks. In labeling mode, you can view all related tasks, activities and statistics for your application.
 
-![](../../images/workforce_management.jpg)
+![](../../images/review.jpg)
 
 ## All tasks
 
@@ -18,8 +18,7 @@ A listing of all tasks to be reviewed by the current user of the app.
 
 ## Stats
 
-Stats provide performance metrics for your team
-
+Stats provide performance metrics for your team.
 
 **Select time** - Choose the time interval that you would like to use to measure performance (hour, day, week, month, year)
 

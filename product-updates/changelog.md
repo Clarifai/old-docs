@@ -1,5 +1,19 @@
 # Changelog
 
+## Changelog 6.6
+
+| New Feature | Improvement | Bug Fix | Enterprise Only |
+| :---: | :---: | :---: | :---: |
+| ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | ![](../.gitbook/assets/bug%20%28248%29.jpg) | ![](../.gitbook/assets/enterprise%20%2810%29.jpg) |
+
+
+
+
+
+
+
+# Changelog
+
 ## Changelog 6.5
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |
@@ -797,4 +811,3 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Portal not showing the correct number of results in concept search. Fixed. |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Left/right arrows in single image view don't switch between images with regions. Fixed |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed carousel thumbnail clicks wiping query params / trigger new search |
-

@@ -2,6 +2,8 @@
 
 Labeler provides special tools for working with images and video.
 
+![](../../images/label_bounding_box.jpg)
+
 ## Images
 
 ### Brightness, saturation and color inversion
@@ -12,20 +14,29 @@ Labeler provides special tools for working with images and video.
 
 You can enhance the visibility of your photos with image adjustments. Image adjustments can be combined. Just click reset to return to the original version of your input.
 
-### Image Keyboard shortcuts
-
-![](../../images/keyboard_shortcuts.jpg)
-#### B - Brightness
-#### S - Saturation
-#### I - Inversion
-
-
 ### Zoom and pan
 
 ![](../../images/zoom.jpg)
 ![](../../images/pan.jpg)
 
 Powerful zoom and panning features allow you to closely inspect specific regions of an image. Just click reset to return to 100% zoom.
+
+
+## Shortcuts
+
+![](../../images/shortcuts.jpg)
+
+### General Keyboard shortcuts
+
+* Left arrow - Previous input
+* Right arrow - Next input
+* Enter - Submit label
+
+### Image Keyboard shortcuts
+
+* B - Brightness
+* S - Saturation
+* I - Inversion
 
 
 ## Video
@@ -39,16 +50,7 @@ Interpolation allows you to quickly label multiple frames of video with the same
 
 ### Video Keyboard shortcuts
 
-![](../../images/keyboard_shortcuts.jpg)
-#### Q - Start of video
-#### W - Scrub backward
-#### E - Scrub forward
-#### R - End of video
-
-
-### General Keyboard shortcuts
-
-![](../../images/keyboard_shortcuts.jpg)
-#### Left arrow - Previous input
-#### Right arrow - Next input
-#### Enter - Submit label
+* Q - Start of video
+* W - Scrub backward
+* E - Scrub forward
+* R - End of video
