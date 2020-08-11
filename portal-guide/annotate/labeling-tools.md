@@ -1,5 +1,7 @@
 # Labeling Tools
 
+{% embed url="https://youtu.be/5bg51zyebC0" caption="Clarifai Labeler: Labeling for Bounding Box Detection" %}
+
 Labeler provides special tools for working with images and video.
 
 ![](../../images/label_bounding_box.jpg)
