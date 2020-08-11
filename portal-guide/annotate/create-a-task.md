@@ -1,3 +1,5 @@
+# Create a Labeling Task
+
 Tasks enable you delegate labeling jobs to your team.
 
 ## Task types

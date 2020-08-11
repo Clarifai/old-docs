@@ -1,3 +1,5 @@
+# Workforce Management
+
 Labeler provides a variety of workforce management tools that help your company to distribute and manage labeling tasks. In labeling mode, you can view all related tasks, activities and statistics for your application.
 
 ![](../../images/workforce_management.jpg)

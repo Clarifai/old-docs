@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Introduction](introduction.md)
+* [Welcome](introduction.md)
 
 ## Getting Started
 
@@ -30,12 +30,13 @@
   * [Create, Get, Update, Delete](api-guide/inputs/create-get-update-delete.md)
   * [Supported Formats](api-guide/inputs/supported-formats.md)
 * [Concepts](api-guide/concepts/README.md)
-  * [Create, Get, Update](api-guide/concepts/concepts.md)
+  * [Create, Get, Update](api-guide/concepts/create-get-update.md)
   * [Languages](api-guide/concepts/languages.md)
   * [Search by Concept](api-guide/concepts/search-by-concept.md)
   * [Knowledge Graph](api-guide/concepts/knowledge_graph.md)
 * [Annotations](api-guide/annotate/README.md)
   * [Annotations](api-guide/annotate/annotations.md)
+  * [Training Data](portal-guide/annotate/training-data.md)
   * [Positive and Negative Annotations](api-guide/annotate/positive-and-negative-annotations.md)
 * [Model](api-guide/model/README.md)
   * [Clarifai Models](api-guide/model/clarifai-models.md)
@@ -43,6 +44,7 @@
   * [Deep Training](api-guide/model/deep-training.md)
   * [Evaluate](api-guide/model/evaluate/README.md)
     * [Interpreting Evaluations](api-guide/model/evaluate/interpreting-evaluations.md)
+    * [Improving Your Model](portal-guide/model/evaluate/improving-your-model.md)
 * [Workflows](api-guide/workflows/README.md)
   * [Create, Get, Update, Delete](api-guide/workflows/create-get-update-delete.md)
   * [Input Nodes](api-guide/workflows/input_nodes.md)
@@ -83,9 +85,11 @@
   * [Positive and Negative Annotations](portal-guide/annotate/positive-and-negative-annotations.md)
 * [Model](portal-guide/model/README.md)
   * [Clarifai Models](portal-guide/model/clarifai-models.md)
+  * [Model Types](portal-guide/model/model-types.md)
   * [Deep Training](portal-guide/model/deep-training.md)
   * [Evaluate](portal-guide/model/evaluate/README.md)
     * [Interpreting Evaluations](portal-guide/model/evaluate/interpreting-evaluations.md)
+    * [Improving Your Model](portal-guide/model/evaluate/improving-your-model.md)
 * [Workflows](portal-guide/workflows/README.md)
   * [Input Nodes](portal-guide/workflows/input-nodes.md)
 * [Predict](portal-guide/ppredict.md)
