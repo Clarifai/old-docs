@@ -8,9 +8,10 @@ Clarifai offers a platform for the complete AI lifecycle. Whether you have one i
 
 Clarifai offers you two powerful ways to integrate AI within your technology stack.
 
-[![](/images/api.jpg) **Clarifai API**](https://docs.clarifai.com/api-guide/api-overview) - Our code-based interface designed for integration within your software applications. Our API offers clients in many popular programming languages.
+[![](/images/api.jpg) **Clarifai API**](../api-guide/api-overview) - Our code-based interface designed for integration within your software applications. Our API offers clients in many popular programming languages.
 
-[![](/images/icon_portal.jpg) **Clarifai Portal**](https://docs.clarifai.com/portal-guide/portal_overview) - Our custom user interface (UI) designed specifically for your AI projects. Portal makes it fast and easy to label data, build and train models, and connect these models into workflows.
+[![](/images/icon_portal.jpg) **Clarifai Portal**](../portal-guide/portal_overview) - Our custom user interface (UI) designed specifically for your AI projects. Portal makes it fast and easy to label data, build and train models, and connect these models into workflows.
+
 
 
 ## Create and organize your AI projects
@@ -21,8 +22,9 @@ Clarifai offers you two powerful ways to integrate AI within your technology sta
 
 Applications are the basic containers for your AI projects. You can create as many applications as you want, and applications can be duplicated or shared with collaborators.
 
-[![](/images/api.jpg) Applications API](https://docs.clarifai.com/getting-started/applications) /
-[![](/images/icon_portal.jpg) Applications in Portal](https://docs.clarifai.com/getting-started/applications)
+
+[![](/images/api.jpg) Applications API](../getting-started/applications) /
+[![](/images/icon_portal.jpg) Applications in Portal](../getting-started/applications)
 
 
 ### Annotate
@@ -31,8 +33,9 @@ Applications are the basic containers for your AI projects. You can create as ma
 
 Annotations \(sometimes called "labels"\) are how we "teach" machines to learn new ideas. When you want to create a custom model for your business, you do this by training this model to recognize the concepts that you have annotated on your training data.
 
-[![](/images/api.jpg) Annotation API](https://docs.clarifai.com/api-guide/annotate) /
-[![](/images/icon_portal.jpg) Annotation with Portal](https://docs.clarifai.com/portal-guide/annotate)
+[![](/images/api.jpg) Annotation API](../api-guide/annotate) /
+[![](/images/icon_portal.jpg) Annotation with Portal](../portal-guide/annotate)
+
 
 
 ### Model
@@ -41,8 +44,10 @@ Annotations \(sometimes called "labels"\) are how we "teach" machines to learn n
 
 Models are where the "thinking" happens in your AI application. Clarifai supports a variety of different [types of models](https://docs.clarifai.com/portal-guide/model/model-types.md), including "machine learning" models that can learn new things from your training data and fixed-function model operators that help you control the way that your models interact.
 
-[![](/images/api.jpg) Model API](https://docs.clarifai.com/api-guide/model) /
-[![](/images/icon_portal.jpg) Model with Portal](https://docs.clarifai.com/portal-guide/model)
+
+[![](/images/api.jpg) Model API](../api-guide/model) /
+[![](/images/icon_portal.jpg) Model with Portal](../portal-guide/model)
+
 
 
 ### Workflows
@@ -51,8 +56,10 @@ Models are where the "thinking" happens in your AI application. Clarifai support
 
 Workflows allow you to link multiple models together so that you can build complex and creative solutions. Clarifai models are designed so that the outputs from one model can be used as the inputs in another model.
 
-[![](/images/api.jpg) Workflows API](https://docs.clarifai.com/api-guide/workflows) /
-[![](/images/icon_portal.jpg) Workflows with Portal](https://docs.clarifai.com/portal-guide/workflows)
+
+[![](/images/api.jpg) Workflows API](../api-guide/workflows) /
+[![](/images/icon_portal.jpg) Workflows with Portal](../portal-guide/workflows)
+
 
 
 ### Predict
@@ -61,8 +68,10 @@ Workflows allow you to link multiple models together so that you can build compl
 
 Predictions are the basic "output" of machine learning models. Predictions are returned as a list of concepts with corresponding probabilities that tell you how confident your model is with a given prediction.
 
-[![](/images/api.jpg) Predict API](https://docs.clarifai.com/api-guide/predict) /
-[![](/images/icon_portal.jpg) Predict with Portal](https://docs.clarifai.com/portal-guide/ppredict)
+
+[![](/images/api.jpg) Predict API](../api-guide/predict) /
+[![](/images/icon_portal.jpg) Predict with Portal](../portal-guide/ppredict)
+
 
 
 ### Search
@@ -71,5 +80,7 @@ Predictions are the basic "output" of machine learning models. Predictions are r
 
 Clarifai's patented technology automatically indexes your media for search. Concepts in your models can be used as search terms. You can also search with images to find similar images. We offer numerous search types that can be combined to filter and sort your data.
 
-[![](/images/api.jpg) Search API](https://docs.clarifai.com/api-guide/predict) /
-[![](/images/icon_portal.jpg) Search with Portal](https://docs.clarifai.com/portal-guide/psearch)
+
+[![](/images/api.jpg) Search API](../api-guide/predict) /
+[![](/images/icon_portal.jpg) Search with Portal](../portal-guide/psearch)
+
