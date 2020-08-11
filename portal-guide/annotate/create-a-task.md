@@ -1,5 +1,7 @@
 # Create a Labeling Task
 
+{% embed url="https://youtu.be/7AQLsVq5RLQ" caption="Clarifai Labeler: Creating Tasks" %}
+
 Tasks enable you delegate labeling jobs to your team.
 
 ![](../../images/task_overview.jpg)

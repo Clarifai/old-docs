@@ -14,6 +14,8 @@ A listing of all tasks assigned to the current user of the app.
 
 ## For Review
 
+{% embed url="https://youtu.be/Py2NuRNicTY" caption="Clarifai Labeler: Review Work" %}
+
 A listing of all tasks to be reviewed by the current user of the app.
 
 ## Stats
