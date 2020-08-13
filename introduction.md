@@ -1,6 +1,6 @@
 # Welcome
 
-Clarifai offers a platform for the complete AI lifecycle. Whether you have one input or billions, you are only steps away from using artificial intelligence to power your business applications.
+Clarifai offers an end-to-end platform for the complete AI lifecycle. Whether you have one input or billions, you are only steps away from using artificial intelligence to power your business applications.
 
 ## Get started with a few clicks, or a few lines of code.
 
@@ -83,4 +83,3 @@ Clarifai's patented technology automatically indexes your media for search. Conc
 
 [![](/images/api.jpg) Search API](../api-guide/predict) /
 [![](/images/icon_portal.jpg) Search with Portal](../portal-guide/psearch)
-
