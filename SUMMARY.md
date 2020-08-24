@@ -38,6 +38,8 @@
   * [Annotations](api-guide/annotate/annotations.md)
   * [Training Data](api-guide/annotate/training-data.md)
   * [Positive and Negative Annotations](api-guide/annotate/positive-and-negative-annotations.md)
+  * [Tasks](api-guide/task/create-get-update-delete.md)
+  * [Task Annotations](api-guide/task/annotations.md)
 * [Model](api-guide/model/README.md)
   * [Clarifai Models](api-guide/model/clarifai-models.md)
   * [Model Types](portal-guide/model/model-types.md)

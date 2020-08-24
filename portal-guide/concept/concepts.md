@@ -1,6 +1,6 @@
 # Create, Get, Update, Delete
 
-Within your app you can create concpets, modify them after creation an get them from yoru app. We currently do not support deleting concepts since they are such an integral tie across almost all other data structures in the platform like inputs, models, searches, etc.
+Within your app you can create concepts, modify them after creation an get them from your app. We currently do not support deleting concepts since they are such an integral tie across almost all other data structures in the platform like inputs, models, searches, etc.
 
 You will find that some of our endpoints have additional information returned from the clarifai/main app which contains our pre-trained models but also a large knowledge graph we've assembled over the years.
 
@@ -8,7 +8,7 @@ You will find that some of our endpoints have additional information returned fr
 
 ### Add Concepts
 
-To create a new concept in you app you POST the concept with an id and name. You can also post more than one concept in the same API by sending a list of concepts.
+To create a new concept in you app you `POST` the concept with an id and name. You can also post more than one concept in the same API by sending a list of concepts.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -94,7 +94,7 @@ curl -X POST \
 
 ### Get Concept by ID
 
-You can get a singular concept by it's ID.
+You can get a singular concept by its ID.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -169,7 +169,7 @@ curl -X GET \
 
 ### List concepts
 
-You can get a list of concepts within your app with a GET call. This call supports [pagination](../../api-guide/api-overview/pagination.md)
+You can get a list of concepts within your app with a `GET` call. This call supports [pagination](../../api-guide/api-overview/pagination.md).
 
 {% tabs %}
 {% tab title="gRPC Java" %}
