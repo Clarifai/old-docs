@@ -99,14 +99,15 @@ The previous tasks were created with full worker strategy.
 }
 ```
 
-In this case, each worker will work on all inputs selected in the input source.
-If you wish the work to be distributed between workers, then you can selected the partitioned worker strategy.
+In case of `FULL` worker strategy, each worker will work on all inputs selected in the input source.
+
+If you wish the work to be distributed between workers, then you can select the `PARTITIONED` worker strategy.
 
 In the following example:
 * there are two workers
-* each input will be assigned to 1 worker
-* the first worker will get 90% of inputs
-* the second worker will get 10% of inputs
+* `workers_per_input`: each input will be assigned to 1 worker
+* `weights.{{user_id1}}`: the first worker will get 90% of inputs
+* `weights.{{user_id2}}`: the second worker will get 10% of inputs
 
 {% tabs %}
 {% tab title="cURL" %}
@@ -163,7 +164,9 @@ The previous tasks were created with no review or manual review strategy.
 }
 ```
 
-We recommend to create tasks with consensus review, i.e. when all the workers label an input in the same way, it will be automatically be approved, with no need for the reviewer to spend time to check. In this way, the reviewer will be able to focus on the inputs where the workers don't agree.
+We recommend to create tasks with `CONSENSUS` review strategy. When enough workers label an input in the same way, it will automatically be approved, with no need for the reviewer to spend time to check. In this way, the reviewer will be able to focus on the inputs where the workers don't agree.
+
+Note that an approval threshold must be set. For example, in case of 3 workers and `approval_threshold` set to 2, if an input is labeled in the same way by 2 workers, they form a majority and the group reaches a consensus.
 
 {% tabs %}
 {% tab title="cURL" %}
@@ -179,13 +182,14 @@ curl -X POST \
                 "name": "Annotate {{concept_id}}",
                 "worker": {
                     "strategy": "PARTITIONED",
-                    "user_ids": ["{{user_id1}}", "{{user_id2}}"],
+                    "user_ids": ["{{user_id1}}", "{{user_id2}}", "{{user_id3}}"],
                     "partitioned_strategy_info": {
                         "type": "WEIGHTED",
                         "workers_per_input": 1,
                         "weights": {
                             "{{user_id1}}": 1,
-                            "{{user_id2}}": 1
+                            "{{user_id2}}": 1,
+                            "{{user_id3}}": 1
                         }
                     }
                 },
@@ -199,10 +203,10 @@ curl -X POST \
                 "review": {
                     "strategy": "CONSENSUS",
                     "consensus_strategy_info": {
-                        "quorum_necessary_for_approval": 2
+                        "approval_threshold": 2
                     },
                     "user_ids": [
-                        "{{user_id3}}"
+                        "{{user_id4}}"
                     ]
                 }
             }
@@ -318,7 +322,7 @@ curl -X PATCH \
                 "review": {
                     "strategy": "CONSENSUS",
                     "consensus_strategy_info": {
-                        "quorum_necessary_for_approval": 2
+                        "approval_threshold": 2
                     },
                     "user_ids": [
                         "{{user_id3}}"
