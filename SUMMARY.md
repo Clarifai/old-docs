@@ -42,7 +42,7 @@
   * [Task Annotations](api-guide/task/annotations.md)
 * [Model](api-guide/model/README.md)
   * [Clarifai Models](api-guide/model/clarifai-models.md)
-  * [Model Types](portal-guide/model/model-types.md)
+  * [Model Types](api-guide/model/model-types.md)
   * [Create, Get, Update, Delete](api-guide/model/create-get-update-and-delete.md)
   * [Deep Training](api-guide/model/deep-training.md)
   * [Evaluate](api-guide/model/evaluate/README.md)

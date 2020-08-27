@@ -2,7 +2,10 @@
 
 Clarifai offers a wide variety of models that can be used as standalone solutions, or as the building blocks for your own custom business solution.
 
-This page describes some important model types that you should know when working with the Clarifai platform. Please keep in mind that this is an overview of the general categories of models available to you and that new models are created all the time. For the most up-to-date list of available models, visit Model Mode in Portal. A listing of available models will be dynamically generated for you based on the selected user profile and filters that allow you to sort models by model type, inputs, and outputs.
+This page describes some important model types that you should know when working with the Clarifai platform. Please keep in mind that this is an overview of the general categories of models available to you and that new models are created all the time. For a listing of the models available to you:
+
+* Make a `GET` call to `/models/types` api. The api responds with all available model types.
+* You can then choose any one of the model types and make a `POST` request to the `/models` api with the payload specified in the response for the chosen model type.
 
 ## Trainable Models
 
