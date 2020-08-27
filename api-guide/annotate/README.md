@@ -5,6 +5,7 @@ Annotations \(sometimes called "labels"\) are how we "teach" machines to recogni
 ![](../../.gitbook/assets/annotate%20%281%29.jpg)
 
 {% hint style="info" %}
-For step-by-step guides, visit API [Walkthroughs](https://github.com/Clarifai/docs/tree/2a43e94fc3a04b1637d6277b8b41c16d70e6e36b/api-guide/walkthroughs/README.md).
-{% endhint %}
+## Data Labeling Services
 
+Clarifai offers fully managed data annotation services for creating high-quality training datasets. Scale your AI initiatives quickly with high-quality, human-annotated data. You can find out more [here](https://www.clarifai.com/data-annotation-services).
+{% endhint %}
