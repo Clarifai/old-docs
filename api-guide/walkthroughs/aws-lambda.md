@@ -146,7 +146,7 @@ aws lambda add-permission \
 {% endtab %}
 {% endtabs %}
 
-We will send a `PostModelsOuptut` call to the lambda function and the data payload you should expect is `PostModelsOutputRequest` with the previous model's output in workflow. The response will look like this:
+We will send a `PostModelsOuptut` call to the lambda function and the data payload you should expect is `PostModelsOutputRequest` with the previous model's output in workflow. The response protobuffer is configured like this:
 
 {% tabs %}
 ```
