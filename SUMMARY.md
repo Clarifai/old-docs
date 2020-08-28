@@ -16,6 +16,7 @@
   * [Scopes](getting-started/authentication/scopes.md)
   * [Authorize](getting-started/authentication/authorize.md)
   * [SSO](getting-started/authentication/sso.md)
+  * [2FA](getting-started/authentication/2-factor-authentication.md)
 * [Glossary](getting-started/glossary.md)
 
 ## API Guide
