@@ -126,7 +126,8 @@ Test out your function with some data:
 {% endtab %}
 {% endtabs %}
 
-Add the clarifai AWS account to have permission to invoke your function:
+
+Add the Clarifai AWS account to have permission to invoke your function:
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -144,3 +145,20 @@ aws lambda add-permission \
 ```
 {% endtab %}
 {% endtabs %}
+
+We will send a `PostModelsOuptut` call to the lambda function and the data payload you should expect is `PostModelsOutputRequest` with the previous model's output in workflow. The response will look like this:
+
+{% tabs %}
+{% tab title="gRPC Python" %}
+```
+
+type AWSLambdaResponse struct {
+	StatusCode int64                    `json:"statusCode"`
+	Body       string                   `json:"body"`
+	Response   *api.MultiOutputResponse `json:"response"`
+}
+```
+{% endtab %}
+{% endtabs %}
+
+In the `statusCode` field you should expect a value of 200 if the lambda call is successful. In the `response` field you can expect a response in the form of a json object from `MultiOutputResponse`. We will then send the data returned from this object to the next model in your workflow.
