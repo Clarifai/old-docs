@@ -149,16 +149,16 @@ aws lambda add-permission \
 We will send a `PostModelsOuptut` call to the lambda function and the data payload you should expect is `PostModelsOutputRequest` with the previous model's output in workflow. The response will look like this:
 
 {% tabs %}
-{% tab title="gRPC Python" %}
 ```
-
-type AWSLambdaResponse struct {
-	StatusCode int64                    `json:"statusCode"`
-	Body       string                   `json:"body"`
-	Response   *api.MultiOutputResponse `json:"response"`
+message AWSLambdaResponse {
+  // expect 200. if not 200, we will not continue processing
+  uint32 StatusCode = 1;
+  // not used
+  string body = 2;
+  // response from lambda call.
+  MultiOutputResponse response = 3;
 }
 ```
-{% endtab %}
 {% endtabs %}
 
-In the `statusCode` field you should expect a value of 200 if the lambda call is successful. In the `response` field you can expect a response in the form of a json object from `MultiOutputResponse`. We will then send the data returned from this object to the next model in your workflow.
+In the `statusCode` field we are expecting a 200 if the lambda call is successful. In the `response` field the response is sent in the form of a json object from `MultiOutputResponse`. We will then send the data returned from this object to the next model in your workflow.
