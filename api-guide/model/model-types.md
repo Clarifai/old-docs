@@ -9,7 +9,7 @@ This page describes some important model types that you should know when working
 
 ## Trainable Models
 
-### Classification
+### Visual-Classifier
 
 Classification models help you answer the question "What" or "Who" is in your data. Classification models understand the world in terms of [concepts](https://docs.clarifai.com/api-guide/concepts). Models can come pre-trained to recognize concepts, or you can create your own custom models to recognize custom concepts.
 
@@ -18,7 +18,7 @@ _Example use case:
 A large retailer looking to find and remove listings for illegal objects and substances across thousands of listings that include user-generated data. A classification model allows the retailer to quickly find listings that are in violation of their community rules, and remove them from the site._
 
 
-### Detection
+### Visual-Detector
 
 Detection models answer the question "Where" are objects in your data. Detectors can come pre-trained to detect specific objects, or you can train your own custom detectors to detect your own custom list of objects.
 
@@ -28,7 +28,7 @@ _Example use case:
 A roofing company wants to provide insurance companies and customers with a consistent way of evaluating roof damage. This company captures images of roofs with a drone, and then feeds the images into a detection model. The detection model can then locate and classify specific areas of damage on the roofs._
 
 
-### Embedding
+### Embedding-Classifier
 
 Embedding models don't answer a specific question. Instead, they help you work with something that is a little more abstract: the underlying _structure_ of a classification or detection model. In fact, you can think of an embedding model as a classification or detection model with the concepts removed, because in many cases this is exactly what an embedding model is. Embedding models are important because they help you transfer the learnings from existing models to your own custom models. This means that you can come up with your own set of custom concepts and quickly train a new model with relatively few training samples.
 
@@ -40,8 +40,9 @@ _Example use case:
 
 A security company wants to use face verification as part of their two-factor identification system. They would begin by using Clarifai's face embedding model, and then training this model to recognize the identities of permitted individuals. They would simply upload images of the people that want to identify, add individual names as concepts, and train the new model using a **Context-Based Classifier**._
 
+## Custom Models
 
-### Deep Trained Models
+### Deep Trained Models (Visual Classifier, Visual Detector, Visual Embedder)
 
 Use deep trained models when you are working with highly specialized data, or you want to push the accuracy of your model to its limits for a specific use case. Deep training builds a custom neural network for your application from the ground-up. This means that your model can become an expert in recognizing the unique set of visual features that is important in your data set.
 
@@ -59,7 +60,7 @@ _Example use case:
 A retailer wants to train a model that can recognize their apparel in use on social media. They would use a context-based classifier in conjunction with Clarifai's apparel model to train a new custom model that will recognize clothing items produced by their brand._
 
 
-### Cluster
+### Clusterer
 
 Cluster models work with Embedding models so that you can perform visual searches. Cluster models are able to use the mathematical structure of a model's embedding to determine which images are "clustered together" in the embedding space. This means that you can search for visually similar people or objects in your dataset quickly and easily, without the need for labeling and training custom concepts.
 
