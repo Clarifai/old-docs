@@ -45,7 +45,7 @@ curl -X POST \
 
 ### Assigned Task
 
-A task should be assigned to a list of users. These users will do work, so they're also called workers. A task may also be assigned to a list of users for review.
+A task should be assigned to a list of users. These users will do the work, so they're also called workers. A task may also be assigned to a list of users for review.
 
 {% tabs %}
 {% tab title="cURL" %}
