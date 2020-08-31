@@ -4,7 +4,7 @@ The tasks are a powerful tool which can help your team to annotate inputs from y
 
 ## Create
 
-To create a new task in you app you `POST` the task information to `v2/task` endpoint.
+To create a new task in your app you `POST` the task information to `v2/task` endpoint.
 
 ### Non-Assigned Task
 
