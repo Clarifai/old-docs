@@ -31,6 +31,96 @@ You can create workflows out of any Clarifai Models or custom models that you ha
 The The following is an example of how to build a workflow with multiple connected nodes. Note that model IDs and model version IDs from the public `clarifai/main` application are fixed, so they are already hard-coded in the code examples below. It is possible to use other public model or model version IDs.
 
 {% tabs %}
+{% tab title="gRPC Python" %}
+```python
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+post_workflows_response = stub.PostWorkflows(
+    service_pb2.PostWorkflowsRequest(
+        user_app_id=resources_pb2.UserAppIDSet(
+            app_id="cdd79189eb6f44049b6c5b58f14a87e6"
+        ),
+        workflows=[
+            resources_pb2.Workflow(
+                id="auto-annotation-workflow-id",
+                nodes=[
+                    resources_pb2.WorkflowNode(
+                        id="general-embed",
+                        model=resources_pb2.Model(
+                            id="bbb5f41425b8468d9b7a554ff10f8581",
+                            model_version=resources_pb2.ModelVersion(
+                                id="bb186755eda04f9cbb6fe32e816be104"
+                            )
+                        )
+                    ),
+                    resources_pb2.WorkflowNode(
+                        id="general-concept",
+                        model=resources_pb2.Model(
+                            id="aaa03c23b3724a16a56b629203edc62c",
+                            model_version=resources_pb2.ModelVersion(
+                                id="aa7f35c01e0642fda5cf400f543e7c40"
+                            )
+                        )
+                    ),
+                    resources_pb2.WorkflowNode(
+                        id="general-cluster",
+                        model=resources_pb2.Model(
+                            id="cccbe437d6e54e2bb911c6aa292fb072",
+                            model_version=resources_pb2.ModelVersion(
+                                id="cc2074cff6dc4c02b6f4e1b8606dcb54"
+                            )
+                        ),
+                    ),
+                    resources_pb2.WorkflowNode(
+                        id="mapper",
+                        model=resources_pb2.Model(
+                            id="synonym-model-id",
+                            model_version=resources_pb2.ModelVersion(
+                                id="{YOUR_SYNONYM_MODEL_VERSION_ID}"
+                            )
+                        ),
+                        node_inputs=[
+                            resources_pb2.NodeInput(node_id="general-concept")
+                        ]
+                    ),
+                    resources_pb2.WorkflowNode(
+                        id="greater-than",
+                        model=resources_pb2.Model(
+                            id="greater-than-model-id",
+                            model_version=resources_pb2.ModelVersion(
+                                id="{YOUR_GREATER_THAN_MODEL_VERSION_ID}"
+                            )
+                        ),
+                        node_inputs=[
+                            resources_pb2.NodeInput(node_id="mapper")
+                        ]
+                    ),
+                    resources_pb2.WorkflowNode(
+                        id="less-than",
+                        model=resources_pb2.Model(
+                            id="less-than-model-id",
+                            model_version=resources_pb2.ModelVersion(
+                                id="{YOUR_LESS_THAN_MODEL_VERSION_ID}"
+                            )
+                        ),
+                        node_inputs=[
+                            resources_pb2.NodeInput(node_id="mapper")
+                        ]
+                    ),
+                ]
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_workflows_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post workflows failed, status: " + post_workflows_response.status.description)
+```
+{% endtab %}
+
+
 {% tab title="gRPC Java" %}
 ```java
 import com.clarifai.grpc.api.*;
@@ -226,94 +316,6 @@ stub.PostWorkflows(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_workflows_response = stub.PostWorkflows(
-    service_pb2.PostWorkflowsRequest(
-        user_app_id=resources_pb2.UserAppIDSet(
-            app_id="cdd79189eb6f44049b6c5b58f14a87e6"
-        ),
-        workflows=[
-            resources_pb2.Workflow(
-                id="auto-annotation-workflow-id",
-                nodes=[
-                    resources_pb2.WorkflowNode(
-                        id="general-embed",
-                        model=resources_pb2.Model(
-                            id="bbb5f41425b8468d9b7a554ff10f8581",
-                            model_version=resources_pb2.ModelVersion(
-                                id="bb186755eda04f9cbb6fe32e816be104"
-                            )
-                        )
-                    ),
-                    resources_pb2.WorkflowNode(
-                        id="general-concept",
-                        model=resources_pb2.Model(
-                            id="aaa03c23b3724a16a56b629203edc62c",
-                            model_version=resources_pb2.ModelVersion(
-                                id="aa7f35c01e0642fda5cf400f543e7c40"
-                            )
-                        )
-                    ),
-                    resources_pb2.WorkflowNode(
-                        id="general-cluster",
-                        model=resources_pb2.Model(
-                            id="cccbe437d6e54e2bb911c6aa292fb072",
-                            model_version=resources_pb2.ModelVersion(
-                                id="cc2074cff6dc4c02b6f4e1b8606dcb54"
-                            )
-                        ),
-                    ),
-                    resources_pb2.WorkflowNode(
-                        id="mapper",
-                        model=resources_pb2.Model(
-                            id="synonym-model-id",
-                            model_version=resources_pb2.ModelVersion(
-                                id="{YOUR_SYNONYM_MODEL_VERSION_ID}"
-                            )
-                        ),
-                        node_inputs=[
-                            resources_pb2.NodeInput(node_id="general-concept")
-                        ]
-                    ),
-                    resources_pb2.WorkflowNode(
-                        id="greater-than",
-                        model=resources_pb2.Model(
-                            id="greater-than-model-id",
-                            model_version=resources_pb2.ModelVersion(
-                                id="{YOUR_GREATER_THAN_MODEL_VERSION_ID}"
-                            )
-                        ),
-                        node_inputs=[
-                            resources_pb2.NodeInput(node_id="mapper")
-                        ]
-                    ),
-                    resources_pb2.WorkflowNode(
-                        id="less-than",
-                        model=resources_pb2.Model(
-                            id="less-than-model-id",
-                            model_version=resources_pb2.ModelVersion(
-                                id="{YOUR_LESS_THAN_MODEL_VERSION_ID}"
-                            )
-                        ),
-                        node_inputs=[
-                            resources_pb2.NodeInput(node_id="mapper")
-                        ]
-                    ),
-                ]
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_workflows_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post workflows failed, status: " + post_workflows_response.status.description)
-```
-{% endtab %}
 
 {% tab title="cURL" %}
 ```text
@@ -402,3 +404,207 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
 {% endtab %}
 {% endtabs %}
 
+
+### Suppressing the output from nodes
+
+It is possible to turn the outputs from given nodes in your workflow on and off with the `supress_output` endpoint.
+
+
+{% tabs %}
+{% tab title="gRPC Python" %}
+```python
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+post_workflows_response = stub.PostWorkflows(
+    service_pb2.PostWorkflowsRequest(
+        user_app_id=resources_pb2.UserAppIDSet(
+            app_id="cdd79189eb6f44049b6c5b58f14a87e6"
+        ),
+        workflows=[
+            resources_pb2.Workflow(
+                id="predict-cluster-only",
+                nodes=[
+                    resources_pb2.WorkflowNode(
+                        id="general-embed",
+                        model=resources_pb2.Model(
+                            id="bbb5f41425b8468d9b7a554ff10f8581",
+                            model_version=resources_pb2.ModelVersion(
+                                id="bb186755eda04f9cbb6fe32e816be104"
+                            )
+                        ),
+                        suppress_output = True                      
+                    ),
+                    resources_pb2.WorkflowNode(
+                        id="general-cluster",
+                        model=resources_pb2.Model(
+                            id="cccbe437d6e54e2bb911c6aa292fb072",
+                            model_version=resources_pb2.ModelVersion(
+                                id="cc2074cff6dc4c02b6f4e1b8606dcb54"
+                            )
+                        ),
+                        node_inputs=[
+                            resources_pb2.NodeInput(node_id="general-concept")
+                        ]
+                    ),
+                ]
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_workflows_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post workflows failed, status: " + post_workflows_response.status.description)
+```
+{% endtab %}
+
+{% tab title="gRPC Java" %}
+```java
+import com.clarifai.grpc.api.*;
+import com.clarifai.grpc.api.status.*;
+
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+MultiWorkflowResponse postWorkflowsResponse = stub.postWorkflows(
+  PostWorkflowsRequest.newBuilder()
+      .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
+      .addWorkflows(
+          Workflow.newBuilder()
+              .setId("auto-annotation-workflow-id")
+              .addNodes(
+                  WorkflowNode.newBuilder()
+                      .setId("general-embed")
+                      .setModel(
+                          Model.newBuilder()
+                              .setId("bbb5f41425b8468d9b7a554ff10f8581")
+                              .setModelVersion(
+                                  ModelVersion.newBuilder()
+                                      .setId("bb186755eda04f9cbb6fe32e816be104")
+                              )
+                      )
+              )
+              .addNodes(
+                  WorkflowNode.newBuilder()
+                      .setId("general-cluster")
+                      .setModel(
+                          Model.newBuilder()
+                              .setId("cccbe437d6e54e2bb911c6aa292fb072")
+                              .setModelVersion(
+                                  ModelVersion.newBuilder()
+                                      .setId("cc2074cff6dc4c02b6f4e1b8606dcb54")
+                              )
+                      )
+                      .addNodeInputs(NodeInput.newBuilder().setNodeId("general-cluster"))
+              )
+      )
+      .build()
+);
+
+if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+    throw new RuntimeException("Post workflows failed, status: " + postWorkflowsResponse.getStatus());
+}
+```
+{% endtab %}
+
+{% tab title="gRPC NodeJS" %}
+```javascript
+// Insert here the initialization code as outlined on this page:
+// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+stub.PostWorkflows(
+    {
+        user_app_id: {
+            app_id: "{YOUR_APP_ID}"
+        },
+        workflows: [
+            {
+                id: "predict-cluster-only",
+                nodes: [
+                    {
+                        id: "general-embed",
+                        model: {
+                            id: "bbb5f41425b8468d9b7a554ff10f8581",
+                            model_version: {
+                                id: "bb186755eda04f9cbb6fe32e816be104"
+                            }
+                        }
+                        suppress_output: true;
+                    },                  
+                    {
+                        id: "general-cluster",
+                        model: {
+                            id: "cccbe437d6e54e2bb911c6aa292fb072",
+                            model_version: {
+                                id: "cc2074cff6dc4c02b6f4e1b8606dcb54"
+                            }
+                        },
+                        node_inputs: [
+                            {node_id: "mapper"}
+                        ]
+                    },
+                ]
+            }
+        ]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        if (response.status.code !== 10000) {
+            console.log(response.status);
+            throw new Error("Post workflows failed, status: " + response.status.description);
+        }
+    }
+);
+```
+{% endtab %}
+
+
+
+{% tab title="cURL" %}
+```text
+POST /v2/workflows HTTP/1.1
+Host: https://api-dev.clarifai.com
+Content-Type: application/json
+Authorization: Key f897095e22b144f482b9a13a2151e5bd
+
+{
+  "workflows": [
+    {
+      "id": "predict-cluster-only",
+      "nodes": [
+        {
+          "id": "general-embed",
+          "model": {
+            "id": "bbb5f41425b8468d9b7a554ff10f8581",
+            "model_version": {
+              "id": "bb186755eda04f9cbb6fe32e816be104"
+            }
+          },
+          "suppress_output": true
+        },
+        {
+          "id": "general-cluster",
+          "node_inputs": [
+            {
+              "node_id": "general-embed"
+            }
+          ],
+          "model": {
+            "id": "cccbe437d6e54e2bb911c6aa292fb072",
+            "model_version": {
+              "id": "cc2074cff6dc4c02b6f4e1b8606dcb54"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+{% endtab %}
+{% endtabs %}
