@@ -12,9 +12,11 @@ The gRPC clients below are currently available and we'll be adding more as time 
 
 | Available gRPC Clients |
 | :--- |
+| [Clarifai gRPC Python](https://github.com/Clarifai/clarifai-python-grpc/) |
 | [Clarifai gRPC Java](https://github.com/Clarifai/clarifai-java-grpc/) |
 | [Clarifai gRPC NodeJS](https://github.com/Clarifai/clarifai-nodejs-grpc) |
-| [Clarifai gRPC Python](https://github.com/Clarifai/clarifai-python-grpc/) |
+| [Clarifai gRPC C#](https://github.com/Clarifai/clarifai-csharp-grpc/) |
+| [Clarifai gRPC PHP](https://github.com/Clarifai/clarifai-php-grpc/) |
 
 ## Manually-built Clients \(deprecated\)
 
@@ -316,4 +318,3 @@ $client = new ClarifaiClient('YOUR_API_KEY');
 ```
 {% endtab %}
 {% endtabs %}
-

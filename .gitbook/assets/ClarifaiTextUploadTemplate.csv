@@ -1,0 +1,2 @@
+input.data.text.raw,input.data.concepts[0].id,input.data.concepts[0].value,input.data.concepts[1].id,input.data.concepts[1].value,
+"If your text includes commas, wrap it in double quotes. Also do not add spaces between different cells",conceptName,1,otherConceptName,0,

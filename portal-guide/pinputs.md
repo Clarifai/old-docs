@@ -28,3 +28,7 @@ You can add metadata to images directly from explorer. Just click on a single im
 
 ![](../.gitbook/assets/fall_collection%20%281%29.jpg)
 
+{% hint style="info" %}
+* 128 is the maximum number of images that can be sent at once
+* Each image should be less than 20MB
+{% endhint %}

@@ -22,7 +22,7 @@ Concepts are the words that you are labeling your data with. Concepts can be any
 
 ## Input Sources
 
-You can choose "All inputs", which will include all inputs from your dataset, or you can choose any one of your [Saved Searches](../psearch/psaved_searches).
+You can choose "All inputs", which will include all inputs from your dataset, or you can choose any one of your [Saved Searches](../psearch/psaved_searches.md).
 
 By saving your searches, you can slice and dice your dataset, and configure dynamic and static types of datasets. You can also create highly customized filters to your data, by adding metadata and searching by metadata filtering.
 
@@ -61,4 +61,4 @@ Enable AI-assisted workflow predictions in your labeling project. You must first
 
 ## Video FPS
 
-Select your preferred video sample rate.
+Select your preferred video sample rate. This is the integer value that represents the number of frames that we can capture per second. We do not currently sample video at fractional frame rates.  
