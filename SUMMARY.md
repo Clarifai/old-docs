@@ -82,7 +82,7 @@
 ## Portal Guide
 
 * [Portal Overview](portal-guide/portal_overview.md)
-* [Data](portal-guide/data.md)
+* [Data](portal-guide/data/README.md.md)
   * [Collectors](portal-guide/data/collectors/README.md)
     * [Collectors](portal-guide/data/collectors/collectors.md)
 * [Concepts](portal-guide/concept/README.md)
