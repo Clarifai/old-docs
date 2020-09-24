@@ -1,6 +1,6 @@
 # Data Labeling Services
 
-You don't need to hire, train and manage your own labeling team. With Clarifai's Data Labeling Services you can start your project right away and have the work taken care of by Clarifai's dedicated team of expert labelers.
+You don't need to hire, train and manage your own labeling team. With Clarifai's Data Labeling Services you can start your project right away and have the work taken care of by Clarifai's dedicated team of expert labelers. This service is available to Essential and Professional Plan customers. 
 
 ## How to get started
 
