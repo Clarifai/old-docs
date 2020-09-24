@@ -407,8 +407,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
 
 ### Suppressing the output from nodes
 
-It is possible to turn the outputs from given nodes in your workflow on and off with the `suppress_output` endpoint. This can be helpful when you want to hide outputs for expensive return values like image crops or embedding. By default, this endpoint will be on when used, just switch the boolean value to false to turn it off. 
-
+It is possible to turn the outputs from given nodes in your workflow on and off with the `suppress_output` endpoint. This can be helpful when you want to hide outputs for expensive return values like image crops or embedding. By default, this endpoint will be set to false, meaning that we do not suppress any model's output. 
 
 {% tabs %}
 {% tab title="gRPC Python" %}
