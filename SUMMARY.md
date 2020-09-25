@@ -28,8 +28,8 @@
   * [Pagination](api-guide/api-overview/pagination.md)
   * [Patching](api-guide/api-overview/patching.md)
 * [Data](api-guide/data/README.md)
-  * [Inputs](api-guide/data/inputs/README.md)
-    * [Create, Get, Update, Delete](api-guide/data/inputs/create-get-update-delete.md)
+  * [Supported Formats](api-guide/data/supported-formats.md)
+  * [Create, Get, Update, Delete](api-guide/data/create-get-update-delete.md)
   * [Collectors](api-guide/data/collectors/README.md)
     * [Collectors](api-guide/data/collectors/collectors.md)
 * [Concepts](api-guide/concepts/README.md)
@@ -82,7 +82,9 @@
 ## Portal Guide
 
 * [Portal Overview](portal-guide/portal_overview.md)
-* [Data](portal-guide/data/README.md.md)
+* [Data](portal-guide/data/README.md)
+  * [Supported Formats](portal-guide/data/supported-formats.md)
+  * [CSV and TSV](portal-guide/data/csv-and-tsv.md)
   * [Collectors](portal-guide/data/collectors/README.md)
     * [Collectors](portal-guide/data/collectors/collectors.md)
 * [Concepts](portal-guide/concept/README.md)
@@ -117,6 +119,10 @@
   * [Auto Annotation](portal-guide/walkthroughs/auto-annotation-walkthrough.md)
   * [Text Classification](portal-guide/walkthroughs/custom-text-walkthrough.md)
   * [Visual Text Recognition](portal-guide/walkthroughs/visual-text-recognition-walkthrough.md)
+
+## Product Updates
+
+* [Data Labeling Services](portal-guide/data-labeling-services/README.md)
 
 ## Product Updates
 
