@@ -122,7 +122,7 @@
 
 ## Product Updates
 
-* [Data Labeling Services](portal-guide/data-labeling-services/README.md)
+  * [Data Labeling Services](portal-guide/data-labeling-services/README.md)
 
 ## Product Updates
 
