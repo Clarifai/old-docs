@@ -120,9 +120,9 @@
   * [Text Classification](portal-guide/walkthroughs/custom-text-walkthrough.md)
   * [Visual Text Recognition](portal-guide/walkthroughs/visual-text-recognition-walkthrough.md)
 
-## Product Updates
+## Data Labeling Services
 
-  * [Data Labeling Services](portal-guide/data-labeling-services/README.md)
+  * [Data Labeling Services](data-labeling-services/README.md)
 
 ## Product Updates
 
