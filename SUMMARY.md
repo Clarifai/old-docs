@@ -23,7 +23,6 @@
 
 * [API overview](api-guide/api-overview/README.md)
   * [API Clients](api-guide/api-overview/api-clients.md)
-  * [API Technical References](api-guide/api-overview/api-technical-references.md)
   * [Status Codes](api-guide/api-overview/status-codes.md)
   * [Pagination](api-guide/api-overview/pagination.md)
   * [Patching](api-guide/api-overview/patching.md)
