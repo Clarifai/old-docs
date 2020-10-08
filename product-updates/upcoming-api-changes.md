@@ -11,6 +11,7 @@ We will continue to update this page regularly, so a good way to always stay up 
 | Date | Change |
 | :--- | :--- |
 | October 16, 2020. 9:00am ET | **Deprecation of Demographics Model**  To reduce the risk of race bias in our own models, we have constructed a new approach to visual recognition of race. We've also divided age, race and gender recognition into separate models, and then packaged the models into a new public Demographics Workflow. This new approach provides much more flexibility, and makes outputs easier to parse. We will be retiring the current demographics model on October 16th, 2020. Please reference this [blog post](https://www.clarifai.com/blog/new-demographics-workflow), and our [API documentation](https://docs.clarifai.com/api-guide/api-overview) for more information about how you can update your code to take advantage of the new workflow.  |
+| October 20, 2020. 9:00am ET | **Model Training Do Not Wait For Inputs To Be Processed**  Currently, when we train a context-based classifier model, we wait for all inputs to be added to your app before a model version is created and processed, with a 1 hour training timeout. In the future, we will use any available inputs and annotations that are available at the time a model version is created for training. If the input is pending or in progress, those inputs and associated annotations will not be used for training. You can use https://api.clarifai.com/v2/inputs/status to check input counts for each status.   |
 
 ## Completed Changes
 
