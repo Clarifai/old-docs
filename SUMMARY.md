@@ -128,3 +128,13 @@
 
 * [Upcoming API Changes](product-updates/upcoming-api-changes.md)
 * [Changelog](product-updates/changelog.md)
+  * [Changelog 6.8](product-updates/changelog/changelog6_8.md)
+  * [Changelog 6.7](product-updates/changelog/changelog6_7.md)
+  * [Changelog 6.6](product-updates/changelog/changelog6_6.md)
+  * [Changelog 6.5](product-updates/changelog/changelog6_5.md)
+  * [Changelog 6.4](product-updates/changelog/changelog6_4.md)
+  * [Changelog 6.3](product-updates/changelog/changelog6_3.md)
+  * [Changelog 6.2](product-updates/changelog/changelog6_2.md)
+  * [Changelog 6.1](product-updates/changelog/changelog6_1.md)
+  * [Changelog 6.0](product-updates/changelog/changelog6_0.md)
+  * [Changelog 5.11](product-updates/changelog/changelog5_11.md)
