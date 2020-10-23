@@ -10,7 +10,7 @@ Clarifai offers you two powerful ways to integrate AI within your technology sta
 
 [![](/images/api.jpg) **Clarifai API**](../api-guide/api-overview) - Our code-based interface designed for integration within your software applications. Our API offers clients in many popular programming languages.
 
-[![](/images/icon_portal.jpg) **Clarifai Portal**](../portal-guide/portal_overview) - Our custom user interface (UI) designed specifically for your AI projects. Portal makes it fast and easy to label data, build and train models, and connect these models into workflows.
+[![](/images/icon_portal.jpg) **Clarifai Portal**](https://docs.clarifai.com/portal-guide/portal_overview) - Our custom user interface (UI) designed specifically for your AI projects. Portal makes it fast and easy to label data, build and train models, and connect these models into workflows.
 
 
 
@@ -83,4 +83,3 @@ Clarifai's patented technology automatically indexes your media for search. Conc
 
 [![](/images/api.jpg) Search API](../api-guide/predict) /
 [![](/images/icon_portal.jpg) Search with Portal](../portal-guide/psearch)
-
