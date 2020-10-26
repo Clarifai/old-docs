@@ -1,6 +1,6 @@
 # Data Labeling Services
 
-You don't need to hire, train and manage your own labeling team. With Clarifai's Data Labeling Services you can start your project right away and have the work taken care of by Clarifai's dedicated team of expert labelers. This service is available to Essential and Professional Plan customers. 
+You don't need to hire, train and manage your own labeling team. With Clarifai's Data Labeling Services you can start your project right away and have the work taken care of by Clarifai's dedicated team of expert labelers. This service is available to Essential and Professional Plan customers.
 
 ## How to get started
 
@@ -8,7 +8,7 @@ You don't need to hire, train and manage your own labeling team. With Clarifai's
 * Go to the [Data](../portal-guide/data/README.md) tab on the lefthand side of the screen and upload your inputs.
 * Go to the Labeler tab on the lefthand side of the screen and click Create New Task.
 
-(![](../.gitbook/assets/neworder.jpg)
+(![](../.gitbook/assets/neworder.jpg))
 
 ## Task Name and Instructions
 
@@ -34,4 +34,4 @@ By saving your searches, you can slice and dice your dataset, and configure dyna
 
 Here just click on "Use Clarifai's Labelers", choose your "Delivery Speed" and click "Place Order".
 
-(![](../.gitbook/assets/workforce.jpg)
+(![](../.gitbook/assets/workforce.jpg))

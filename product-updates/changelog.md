@@ -10,8 +10,8 @@
 ### Labeler
 |Status     |Details                                                                                                                                        |
 |-----------|-----------------------------------------------------------------------------------------------------------------------------------------------|
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Use single LabelerToolbar for all labelers, make shared using Context                                                                          |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Remove all computation from components, move to selectors for perf                                                                             |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Use single LabelerToolbar for all labelers, make shared using Context                                                                          |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Remove all computation from components, move to selectors for perf                                                                             |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Fixed carousel scroll behavior                                                                                                                 |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Added button to add collaborator when adding reviewer                                                                                          |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Post incorrect bounding box. Fixed                                                                                                             |
@@ -19,10 +19,10 @@
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Add Grid Review UI to Review Page                                                                                                              |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Panning while playing a video renders rects incorrectly. Fixed                                                                                 |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Navigation from the task creation page if task creation fails. Fixed                                                                           |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Konva: Image filters                                                                                                                           |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Konva: Drawing rects                                                                                                                           |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Konva: Drawing polygons                                                                                                                        |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Smaller shapes should supersede zIndex values if they are engulfed by larger ones                                                              |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Konva: Image filters                                                                                                                           |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Konva: Drawing rects                                                                                                                           |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Konva: Drawing polygons                                                                                                                        |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Smaller shapes should supersede zIndex values if they are engulfed by larger ones                                                              |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Region selectors inefficient and running on each call, bypassing reselect memoization. Fixed                                                   |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |v2 interpolation: app crash on reload. Fixed                                                                                                   |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |CSS issue causing VideoControls to be inaccessible to mouse. Fixed                                                                             |
@@ -53,13 +53,13 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |[P3] In all tasks view, only app owner should see edit/delete icons                                                                            |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Carousel blocks input visibility (not just video controls). Fixed                                                                              |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |In labeler UI carousel, show a check for any input that was submitted, and gray it out slightly. Fixed                                         |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Separate annotation sagas + standardise request batching code (for v2 store)                                                                   |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Separate annotation sagas + standardise request batching code (for v2 store)                                                                   |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |When creating a task in an app w/ no concepts, “Select all concepts” should not be checked by default. There are no concepts created yet. Fixed|
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Update task status on task list                                                                                                                |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Deleting an annotation in reviewer deletes all annotations. Fixed                                                                              |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Too many scrollbars in sidebar. Fixed                                                                                                          |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Partition worker strategy Error. Fixed                                                                                                         |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Integrate feature gating with LaaS.                                                                                                            |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Integrate feature gating with LaaS.                                                                                                            |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Panning state not in sync with drawing/moving. Fixed                                                                                           |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Have to click the + button 2 times to make it work. Fixed                                                                                      |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Dragging mouse outside of the canvas while drawing leaves the drawing in inconsistent state. Fixed                                             |
@@ -86,63 +86,63 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Bounding Boxes and Concepts inconsistent during video playback {Usability}. Fixed                                                              |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Change Labeler to use getHostedAssetUrl. Fixed                                                                                                 |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Enable drawing even if annotations haven't loaded. Fixed                                                                                       |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Use new feature flags at frontend & Labeler for all                                                                                            |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Use new feature flags at frontend & Labeler for all                                                                                            |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Can't add Iris workers to LaaS order. Fixed                                                                                                    |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Instructions shouldn't be false while editing. Fixed                                                                                           |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Labelers/Reviewers should not see "--" when the task does not have AI Assist enabled. Fixed                                                    |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Carousel should show some visual feedback when an input has been rejected                                                                      |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Carousel should show some visual feedback when an input has been rejected                                                                      |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Carousel flickers and re-renders images when submitting annotations. Fixed                                                                     |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Add loading indicator to labeler view when fetching data                                                                                       |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Add loading indicator to labeler view when fetching data                                                                                       |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Moving a polygon to the edge of the input causes it to patch outside the allowed range. Fixed                                                  |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Wrong worker_per_input field. Fixed                                                                                                            |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Hide other regions during interpolation. Fixed                                                                                                 |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Concepts Tasks: Cannot read property 'id' of undefined. Fixed                                                                                  |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Carousel should show some visual feedback when an input has been skipped                                                                       |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Carousel should show some visual feedback when an input has been skipped                                                                       |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Polygon points are sometimes too small to click. fixed                                                                                         |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Send embed model id for image annotations. Fixed                                                                                               |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Skipping/Submitting annotations causes unnecessary rerenders of the entire carousel (all thumbs). Fixed                                        |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Get an error when submitting an input in a classification task. Fixed                                                                          |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Improve concept creation process for new apps that you want to label                                                                           |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Improve concept creation process for new apps that you want to label                                                                           |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Labeler Reviewer No longer renders assets. Fixed                                                                                               |
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Add "Orders" section to task list admin view                                                                                                   |
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Add checkbox to task creation for LaaS Orders                                                                                                  |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |List name field instead of id fields in task lists. Fixed                                                                                      |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Set task error code and error description if task annotations pipeline fails                                                                   |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Set task error code and error description if task annotations pipeline fails                                                                   |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Label task submit error: Malformed or invalid request. Fixed                                                                                   |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Label video - playback control issue fixed                                                                                                     |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Hovering annotations in sidebar of Labeler, should highlight the region in the image.                                                          |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Hovering annotations in sidebar of Labeler, should highlight the region in the image.                                                          |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Jumping Boxes during video interpolation. Fixed                                                                                                |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Polygon rendering in Labeler v2                                                                                                                |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Virtual scrolling input carousel                                                                                                               |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Polygon rendering in Labeler v2                                                                                                                |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Virtual scrolling input carousel                                                                                                               |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |LabelOrders not fetched when refresh at /labeler page. Fixed                                                                                   |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Lock Edit feature for LaasOrders other than pending orders                                                                                     |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Account for system states (inputId, taskID) between heartbeats and account for them in canvas interaction manager                              |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Cleanup labelerv2 state on unmount                                                                                                             |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|V2 Rendering Video Regions                                                                                                                     |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|V2 Video Interpolation                                                                                                                         |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Labeler saga to process all remaining actions on input change & before user exits                                                              |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Lock Edit feature for LaasOrders other than pending orders                                                                                     |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Account for system states (inputId, taskID) between heartbeats and account for them in canvas interaction manager                              |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Cleanup labelerv2 state on unmount                                                                                                             |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|V2 Rendering Video Regions                                                                                                                     |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|V2 Video Interpolation                                                                                                                         |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Labeler saga to process all remaining actions on input change & before user exits                                                              |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Sometimes, bounding box values on Transformer go in the negative, Fixed                                                                        |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Task Form: Convert fps -> sample_ms                                                                                                            |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Let Clarifai user permissions for status & ETA change                                                                                          |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Implement clarifai user journey for LaaS                                                                                                       |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Seperate LaaS order tasks from simple labeling tasks.                                                                                          |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Edit task functionality for clarifai user                                                                                                      |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Include Order Task in "assigned to me" and "for review"                                                                                        |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Let Clarifai user permissions for status & ETA change                                                                                          |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Implement clarifai user journey for LaaS                                                                                                       |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Seperate LaaS order tasks from simple labeling tasks.                                                                                          |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Edit task functionality for clarifai user                                                                                                      |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Include Order Task in "assigned to me" and "for review"                                                                                        |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Regions disappeared in sidebar. Fixed                                                                                                          |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Implement a way for Clarifai users to review Order tasks                                                                                       |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Video Rendering Sync with FPS                                                                                                                  |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Reconcile V1 and V2 video frame index                                                                                                          |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Convert incorrectly created fps to sampleMs                                                                                                    |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Better signposting of task instruction preview panel                                                                                           |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Implement a way for Clarifai users to review Order tasks                                                                                       |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Video Rendering Sync with FPS                                                                                                                  |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Reconcile V1 and V2 video frame index                                                                                                          |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Convert incorrectly created fps to sampleMs                                                                                                    |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Better signposting of task instruction preview panel                                                                                           |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Reset Button doesn't work. Fixed                                                                                                               |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Can't go back from Labeler UI. Fixed                                                                                                           |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Collaborators can not add collaborators. Fixed                                                                                                 |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Labeler: Add both index and time to all video annotations                                                                                      |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Labeler: Add both index and time to all video annotations                                                                                      |
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Implement polygon drawing                                                                                                                      |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Toolbar Next & Previous button issue fixed                                                                                                     |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Worker filters don't work in review grid sidebar. Fixed                                                                                        |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Fixed styling/layout of progress bar in the grid review page                                                                                   |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Add "select all" link next to each concept heading in the grid                                                                                 |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Add "select all" link next to each concept heading in the grid                                                                                 |
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Integrate order task with current implementation for reviewer and worker                                                                       |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Modify Labelerv2 sagas to be compatible with listening to polygon events                                                                       |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Instructions editor should not show toolbar toggle, when in preview mode. Fixed                                                                |
@@ -165,12 +165,12 @@
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Make gRPC C# client                                                                  |
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Make gRPC PHP client                                                                 |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Feedback for malinformend CSV formats                                                |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Make PostKeys and PatchKeys support apps->user_id set to "me"                        |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Make PostKeys and PatchKeys support apps->user_id set to "me"                        |
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Add automated testing of documentation code examples                                 |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|change to getHostedAssetUrl to support returning both video thumbnails and video urls|
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Prepare clients for the secure gRPC channel                                          |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Update the gRPC copying code with C#, PHP                                            |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Use sendgrid template for email                                                      |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|change to getHostedAssetUrl to support returning both video thumbnails and video urls|
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Prepare clients for the secure gRPC channel                                          |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Update the gRPC copying code with C#, PHP                                            |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Use sendgrid template for email                                                      |
 
 
 ### Model
@@ -179,10 +179,10 @@
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Add AWS Lambda to model mode                                                         |
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Add AWS Lambda model type to API                                                     |
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Put Fairface model in production                                                     |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Append landmark and pose annotations to Fairface dataset                             |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Append landmark and pose annotations to Fairface dataset                             |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Fix empty status response                                                            |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Miscellaneous Fixes on Object Counter and KNN                                        |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Allow empty statusCallbackURL and entityStatusCallbackURL                            |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Allow empty statusCallbackURL and entityStatusCallbackURL                            |
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Smart Reply                                                                          |
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Remove isInternalUser Selector from Text Features                                    |
 
@@ -191,9 +191,9 @@
 |Status     |Details                                                                              |
 |-----------|-------------------------------------------------------------------------------------|
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Editing the Empty workflow throws an error in portal. Fixed                          |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Add Filtering By Concepts for Text workflows                                         |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Add supress_output field option to each workflow node in create workflow view        |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Add workflows tab to model gallery                                                   |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Add Filtering By Concepts for Text workflows                                         |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Add supress_output field option to each workflow node in create workflow view        |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Add workflows tab to model gallery                                                   |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Allow reindexing to different workflow without having a shared workflow node (with the old one)|
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |No response when "Update workflow" button is pressed. Fixed                          |
 
@@ -201,25 +201,25 @@
 ### Portal
 |Status     |Details                                                                              |
 |-----------|-------------------------------------------------------------------------------------|
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Refactor Sidebar ✅/❌ functionality to sagas                                          |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Combine Tool components                                                              |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Refactor Sidebar ✅/❌ functionality to sagas                                          |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Combine Tool components                                                              |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Cannot add card. Something went wrong. Fixed                                         |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |DOMEX face app using face detect. Clicking on any image causes portal to crash. Fixed|
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |App in staging, crashing when using pause/play with video. Fixed                     |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Improve algorithm for grouping annotations and predictions in explorer.              |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Improve algorithm for grouping annotations and predictions in explorer.              |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |N "Predicted Bounding Boxes" toggle button only works after clicking twice           |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Show track ID for videos in explorer                                                 |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Use ModelType to validate args and persist default values with model versions.       |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Update create workflows page design                                                  |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Add sortable columns when in list view of model mode. Fixed                          |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Add pagination to the list of collaborations on app list page of Portal.             |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Adopt same tabs everywhere in portal                                                 |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Display user_id in user's profile page of portal.                                    |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Use fully qualified urls throughout portal                                           |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Expose the delete button in explorer single input view                               |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Show track ID for videos in explorer                                                 |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Use ModelType to validate args and persist default values with model versions.       |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Update create workflows page design                                                  |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Add sortable columns when in list view of model mode. Fixed                          |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Add pagination to the list of collaborations on app list page of Portal.             |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Adopt same tabs everywhere in portal                                                 |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Display user_id in user's profile page of portal.                                    |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Use fully qualified urls throughout portal                                           |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Expose the delete button in explorer single input view                               |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Adding new concepts to classification apps disappear from Single Image View until refresh. Fixed|
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Fix CSS styling of Text Assets for Single Image View                                 |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Image terminology in eval page                                                       |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Fix CSS styling of Text Assets for Single Image View                                 |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Image terminology in eval page                                                       |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Empty workflow breaks explorer workflow dropdown. Fixed                              |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Fix create model range selector min/max values                                       |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Model gallery in model mode fails when you click on any concept model with a concept not found message. Fixed|
@@ -234,9 +234,9 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Remove unnecessary field from model details page. Fixed                              |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Slider for Explorer prediction confidence doesn't apply to all the workflow nodes. Fixed|
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Sending embed_model_version_id on all model types but that's not valid. Fixed        |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Memoize sorted detection annotations and custom model predictions to prevent UI lag  |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Modify the way users navigate to the model details page                              |
- ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Fix collector mode to filter by user, then app, then models, then model versions.    |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Memoize sorted detection annotations and custom model predictions to prevent UI lag  |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Modify the way users navigate to the model details page                              |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Fix collector mode to filter by user, then app, then models, then model versions.    |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg)       |Image carousel does not scroll to the currently selected text input being viewed     |
 
 

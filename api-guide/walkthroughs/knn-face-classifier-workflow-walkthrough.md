@@ -31,7 +31,7 @@ import time
 # Insert here the URLs of the images
 image_urls = [
     "{YOUR_IMAGE_URL_1}",
-    "{YOUR_IMAGE_URL_2}
+    "{YOUR_IMAGE_URL_2}"
 ]
 post_inputs_response = stub.PostInputs(
     service_pb2.PostInputsRequest(
