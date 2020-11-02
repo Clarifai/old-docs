@@ -1,4 +1,4 @@
-# API technical references
+# API Technical References
 
 ## gRPC Java
 
@@ -35,3 +35,4 @@
 ## PHP
 
 [github.com/Clarifai/clarifai-php](https://github.com/Clarifai/clarifai-php)
+
