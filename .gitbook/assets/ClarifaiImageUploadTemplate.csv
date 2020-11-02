@@ -1,0 +1,2 @@
+input.data.image.url,input.data.concepts[0].id,input.data.concepts[0].value,input.data.concepts[1].id,input.data.concepts[1].value,
+If your images are accessible by URL include the link here,conceptName,1,otherConceptName,0,

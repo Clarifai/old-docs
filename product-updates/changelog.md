@@ -1,214 +1,214 @@
 # Changelog
 
-## Changelog 6.6
+## Changelog
+
+### Changelog 6.6
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |
 | :---: | :---: | :---: | :---: |
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | ![](../.gitbook/assets/bug%20%28248%29.jpg) | ![](../.gitbook/assets/enterprise%20%2810%29.jpg) |
 
+#### API
 
-### API
-|Status     |Details                                    |
-|-----------|-------------------------------------------|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Integrate Python functions service with API|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|List available model types through API     |
+| Status | Details |
+| :--- | :--- |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Integrate Python functions service with API |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | List available model types through API |
 
-### Model
-|Status     |Details                                    |
-|-----------|-------------------------------------------|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Fix video error from new face cluster model in staging env|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|21312 Ground truth data caseids must be nonempty and unique. Fixed|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Update deep training to list the ModelTypes|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Move model_metadata to better place in protos. |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Generalize the domex-visual-searcher model type|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|List available model types from backend services that provide models.
+#### Model
 
-### Portal
+| Status | Details |
+| :--- | :--- |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fix video error from new face cluster model in staging env |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | 21312 Ground truth data caseids must be nonempty and unique. Fixed |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Update deep training to list the ModelTypes |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Move model\_metadata to better place in protos. |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Generalize the domex-visual-searcher model type |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | List available model types from backend services that provide models. |
 
-|Status     |Details                                    |
-|-----------|-------------------------------------------|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Fixed bug in submitting finished Labeler Task|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Select all concepts checkbox can be de-synced from actual concepts badges. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Disable Create Task button if not app owner|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Search by task_id returns incorrect data   |
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Removed model creation from concept creation action in portal|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Video scrubber cannot be moved. Fixed      |
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Fixed ability to delete interpolation tracks (you can only delete frames at this time).|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Worker ids used instead of names in report overview in stats view. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Y-axis on labels created stats page is wrong. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|In task creation, adding concepts should be simple to click all the options right away. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Toggling concept visibility doesn't affect previously hidden child region. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Leftover                                   |
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|If reviewer is not a collaborator, UI sends empty reviewer id back instead of raising error. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Bounding box disappears on resizing. Fixed |
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|While adjusting bounding box, it creates an additional bounding box over no object. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Using Play button brings up "Oops" page. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Error on opening Video Labeler. Fixed      |
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Labeler sidebar interaction bugs and unresponsiveness (due to lack of optimistic UI). Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Newly drawn object disappears from canvas after drawing, and reappears after API response. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Infinite loading in Labeler Mode for app without any inputs. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Use name field for tasks in Labeler admin. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Clicking labeler icon crashes. Fixed       |
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Moving bounding box around repeatedly creates a race condition, shows error notification and duplicate box. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Explorer inputs stale state. Fixed         |
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Diagnose issues affecting overall hanging/speed/performance of Labeler|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Carousel thumbnails not showing up in Labeler. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Not able to create overlapping bounding boxes. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|When user adds mass metadata in Explorer, the UI says success but metadata does not persist. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Create annotations while creating task. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Labeler board showing wrong task type. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Polygon annotations break Explorer. Fixed  |
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Concept autocomplete in Labeler task creation is showing clarifai/main concepts. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Should not be allowed to create a task with no concepts if my app has no concepts. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Fixed image tools state                    |
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Restricted tasks to only the assigned users|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Add validation to TaskForm’s concept field |
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Removed all instances of worker_id from Explorer|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Create one annotation for each bbox        |
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|98011 panic on ListTasks. Fixed            |
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|App names no longer display in Explorer. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Empty Annotations are not displaying after drawing a new bounding box until after refreshing the page. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Drawing a new bounding box in Explorer after previously labeling a region display an error. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Video search results do not play at the most relevant video time. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Change text upload UI to support moderation workflow|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Change object key lookup in boundingBoxContainer to use lodash/get|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Submitting Task for Review break Portal. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Labeling a region on an asset with multiple detected regions will put the child annotation in the wrong group in Explorer's sidebar. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|ConvertToBoundingBoxRegion function breaks Explorer when annotation information has not loaded at time of render. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Video Frame Annotating in Explorer throws errors. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|When drawing a new bounding box, Base64 string for video annotations shows the wrong regions. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Fixe 10MB issue with video uploads         |
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Detection Regions and Indexes are thrown off on video assets. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Video Search Results still on showing Inputs. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|DetailsPageHeader adds 2.25rem margin to the DetailsPageBody. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Video Interpolation in Labeler breaks dev. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Redux is no longer calculating the sample_ms rate, preventing bounding boxes from rendering. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Fixed video pause error when navigating between videos|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|ImagePile in Labeler Task View does not display image thumbs due to extraneous object nesting. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Remove warning error from console for immutable passed in props to SearchGrid.js|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Post annotation to detection region should use region id in portal. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Delete app button in app details takes you to blank page. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Incorrect bbox/label numbers displayed in image. Fixed|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Multiple video thumbs selected in search results when selecting one thumb. Fixed|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Improve Labeler mode window resizing.      |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|W and E hotkeys for image labelling to go left/right. |
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Polygon annotations break Explorer. Fixed. |
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Polygons regions don’t appear when panning and zooming. Fixed. |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Allow users to create concepts on task create view.|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Fixed task list item count query.          |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Utilising new task endpoints to Create tasks and integrate to show tasks in Portal.|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|LabelerPage refresh error. Fixed.          |
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Should not be allowed to create a task with no concepts if my app has no concepts. Fixed.|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Unknown page Error. Complete interpolation of an object doesn't show bbox. Complete tracking of a box will disappear from the video. Fixed.|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Fixed carousel padding.                    |
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Labeler board showing wrong task type. Fixed.|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Integrate worker/reviewer side of Labeler. |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Add 'name' field to new Tasks.             |
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Create annotations while creating task.    |
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Carousel thumbnails not showing up in Labeler. Fixed.|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|No image clearing/loading indicator in Labeler. Fixed.|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Use name field for tasks in Labeler administration.|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Bulk labeling value does not update in store upon labeling. Fixed.|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Record time per annotation and per input to /stats/values in Labeler mode of Portal. |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Query and display stats across workers per task for time and count of annotations. |
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Concept autocomplete in Labeler task creation is showing clarifai/main concepts. Fixed.|
-| ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Implement polygon task type in Labeler.    |
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Applying filters in Portal breaks bulk labeling / unlabeling. Fixed.|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|Unable to bulk-label annotations. Fixed.   |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Change submit to "Complete Task" in Labeler page and add progress bar as it's working.|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Allow Patching region annotations in Labeler mode. |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Add AI assist thresholding.                |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Add ability to set annotation_info in the annotation writer|
-| ![](../.gitbook/assets/bug%20%28248%29.jpg)|`annotation_info` should be a valid JSON in Model Mode. Fixed.|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Upgrade gulp and node to latest version for testing-library support|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Write PropType declarations for componens/ConceptListTable|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Enable collapse behavior in sidebar concepts|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Create atomic reusable  sidebar components |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Integrate React Testing Library            |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Konva: Image centering, zooming, panning   |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Move toolbar logic to react context        |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Refactor TaskForm related thunks to sagas  |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|[Rearch]Scaffold Labeler Redux in a new nested state slice & Implement Sagas|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|[P2] Task id is used in dropdown of stats tasks rather than task.name|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|[P0]Show taskId at task list               |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Move region visibility state to its own React Context|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Get sidebar list data directly from redux  |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|[P1] Don't hide task form if error occurs  |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Remove delay of annotation request         |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Remove animation for showing concepts on right side|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Perf: only fetch input predictions/annotations if user stays on image, not while navigating|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Get Labeler internal features ready for internal users|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Offload annotation creation to backend     |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|allow reviewers update annotations         |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|No image clearing/loading indicator in Labeler|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Controls for resizing bounding boxes need to be more visible|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Fabric rendering to be real-time; sync from API in background|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|make tasks endpoint public                 |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|list task by worker id/reviewer id         |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Add 'name' field to new Tasks              |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Integrate worker/reviewer side of labeller |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Integrate and Implement task deletion using new endpoints|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Utilising new task endpoints to Create tasks and integrate to show tasks at portal|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Integrate and utilise new CRUD endpoints in portal|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Allow users to create concepts on task create view|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Add empty CRUD endpoints for tasks         |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Make polygons a separate task type         |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Add AI assist thresholding                 |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|W and E hotkeys for image labelling to go left/right. |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Improve labeler mode window resizing.      |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Allow Patching region annotations in labeler mode. |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|crank up internal message size to handle larger videos with more outputs|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Introduce stats collection APIs for worker stats. |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Implement /tasks CRUD in API.              |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Add frame.id to API as well as track id.   |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Remove ‘alt’ from hotkeys, just use letters and arrows straight up|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Update image tool icons                    |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Add support for fields under ENUM values during model creation|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Implement Dynamic model types              |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Ungrouped Annotations/New Annotation Regions should display at the top of Explorer's Detections List|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Change explorer to use sample_ms instead from network response instead of deducing the value|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Hide Workflow List Elements if below Range Slider value|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Modify Annotating from Custom Model Predictions to post new annotations.|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Update model mode with new designs         |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Refactor ImageUtils.js file to individual functions instead of one object|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Added threshold search result in Portal    |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Update media player icons                  |
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Display timestamp bar in Explorer grid view for video results|
-| ![](../.gitbook/assets/improvement%20%2883%29.jpg)|Concept relation should autocomplete concept name|
-| ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Send email to workers when they are added to task|
-| ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Assigning a worker or reviewer to a task sends an email|
-| ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Apps with empty workflow should allow all task types (concepts, bounding box, polygon) during task creation|
-| ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Edit Task feature                          |
-| ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Support consensus review settings          |
-| ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Support detection tasks                    |
-| ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Create new Single Image View and Image Tools|
-| ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Task view UI for workers                   |
-| ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Introduce AWAITING_REVIEW status for annotations|
-| ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Split tasks admin view into tabs           |
-| ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Test out idea behind tasks as saved searches and POST /annotations iterations|
-| ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Implement search by annotation.status in backend|
-| ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Search by images or video type in the right hand side bar of explorer's grid view|
-| ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Video Crop Region Search                   |
-| ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|video thumbs display relevant frame in search|
+#### Portal
 
+| Status | Details |
+| :--- | :--- |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed bug in submitting finished Labeler Task |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Select all concepts checkbox can be de-synced from actual concepts badges. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Disable Create Task button if not app owner |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Search by task\_id returns incorrect data |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Removed model creation from concept creation action in portal |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Video scrubber cannot be moved. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed ability to delete interpolation tracks \(you can only delete frames at this time\). |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Worker ids used instead of names in report overview in stats view. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Y-axis on labels created stats page is wrong. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | In task creation, adding concepts should be simple to click all the options right away. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Toggling concept visibility doesn't affect previously hidden child region. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Leftover |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | If reviewer is not a collaborator, UI sends empty reviewer id back instead of raising error. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Bounding box disappears on resizing. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | While adjusting bounding box, it creates an additional bounding box over no object. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Using Play button brings up "Oops" page. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Error on opening Video Labeler. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Labeler sidebar interaction bugs and unresponsiveness \(due to lack of optimistic UI\). Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Newly drawn object disappears from canvas after drawing, and reappears after API response. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Infinite loading in Labeler Mode for app without any inputs. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Use name field for tasks in Labeler admin. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Clicking labeler icon crashes. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Moving bounding box around repeatedly creates a race condition, shows error notification and duplicate box. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Explorer inputs stale state. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Diagnose issues affecting overall hanging/speed/performance of Labeler |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Carousel thumbnails not showing up in Labeler. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Not able to create overlapping bounding boxes. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | When user adds mass metadata in Explorer, the UI says success but metadata does not persist. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Create annotations while creating task. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Labeler board showing wrong task type. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Polygon annotations break Explorer. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Concept autocomplete in Labeler task creation is showing clarifai/main concepts. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Should not be allowed to create a task with no concepts if my app has no concepts. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed image tools state |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Restricted tasks to only the assigned users |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Add validation to TaskForm’s concept field |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Removed all instances of worker\_id from Explorer |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Create one annotation for each bbox |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | 98011 panic on ListTasks. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | App names no longer display in Explorer. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Empty Annotations are not displaying after drawing a new bounding box until after refreshing the page. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Drawing a new bounding box in Explorer after previously labeling a region display an error. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Video search results do not play at the most relevant video time. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Change text upload UI to support moderation workflow |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Change object key lookup in boundingBoxContainer to use lodash/get |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Submitting Task for Review break Portal. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Labeling a region on an asset with multiple detected regions will put the child annotation in the wrong group in Explorer's sidebar. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | ConvertToBoundingBoxRegion function breaks Explorer when annotation information has not loaded at time of render. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Video Frame Annotating in Explorer throws errors. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | When drawing a new bounding box, Base64 string for video annotations shows the wrong regions. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixe 10MB issue with video uploads |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Detection Regions and Indexes are thrown off on video assets. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Video Search Results still on showing Inputs. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | DetailsPageHeader adds 2.25rem margin to the DetailsPageBody. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Video Interpolation in Labeler breaks dev. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Redux is no longer calculating the sample\_ms rate, preventing bounding boxes from rendering. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed video pause error when navigating between videos |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | ImagePile in Labeler Task View does not display image thumbs due to extraneous object nesting. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Remove warning error from console for immutable passed in props to SearchGrid.js |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Post annotation to detection region should use region id in portal. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Delete app button in app details takes you to blank page. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Incorrect bbox/label numbers displayed in image. Fixed |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Multiple video thumbs selected in search results when selecting one thumb. Fixed |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Improve Labeler mode window resizing. |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | W and E hotkeys for image labelling to go left/right. |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Polygon annotations break Explorer. Fixed. |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Polygons regions don’t appear when panning and zooming. Fixed. |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Allow users to create concepts on task create view. |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed task list item count query. |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Utilising new task endpoints to Create tasks and integrate to show tasks in Portal. |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | LabelerPage refresh error. Fixed. |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Should not be allowed to create a task with no concepts if my app has no concepts. Fixed. |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Unknown page Error. Complete interpolation of an object doesn't show bbox. Complete tracking of a box will disappear from the video. Fixed. |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed carousel padding. |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Labeler board showing wrong task type. Fixed. |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Integrate worker/reviewer side of Labeler. |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Add 'name' field to new Tasks. |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Create annotations while creating task. |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Carousel thumbnails not showing up in Labeler. Fixed. |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | No image clearing/loading indicator in Labeler. Fixed. |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Use name field for tasks in Labeler administration. |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Bulk labeling value does not update in store upon labeling. Fixed. |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Record time per annotation and per input to /stats/values in Labeler mode of Portal. |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Query and display stats across workers per task for time and count of annotations. |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Concept autocomplete in Labeler task creation is showing clarifai/main concepts. Fixed. |
+| ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | Implement polygon task type in Labeler. |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Applying filters in Portal breaks bulk labeling / unlabeling. Fixed. |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | Unable to bulk-label annotations. Fixed. |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Change submit to "Complete Task" in Labeler page and add progress bar as it's working. |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Allow Patching region annotations in Labeler mode. |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Add AI assist thresholding. |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Add ability to set annotation\_info in the annotation writer |
+| ![](../.gitbook/assets/bug%20%28248%29.jpg) | `annotation_info` should be a valid JSON in Model Mode. Fixed. |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Upgrade gulp and node to latest version for testing-library support |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Write PropType declarations for componens/ConceptListTable |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Enable collapse behavior in sidebar concepts |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Create atomic reusable  sidebar components |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Integrate React Testing Library |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Konva: Image centering, zooming, panning |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Move toolbar logic to react context |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Refactor TaskForm related thunks to sagas |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | \[Rearch\]Scaffold Labeler Redux in a new nested state slice & Implement Sagas |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | \[P2\] Task id is used in dropdown of stats tasks rather than task.name |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | \[P0\]Show taskId at task list |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Move region visibility state to its own React Context |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Get sidebar list data directly from redux |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | \[P1\] Don't hide task form if error occurs |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Remove delay of annotation request |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Remove animation for showing concepts on right side |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Perf: only fetch input predictions/annotations if user stays on image, not while navigating |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Get Labeler internal features ready for internal users |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Offload annotation creation to backend |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | allow reviewers update annotations |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | No image clearing/loading indicator in Labeler |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Controls for resizing bounding boxes need to be more visible |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Fabric rendering to be real-time; sync from API in background |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | make tasks endpoint public |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | list task by worker id/reviewer id |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Add 'name' field to new Tasks |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Integrate worker/reviewer side of labeller |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Integrate and Implement task deletion using new endpoints |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Utilising new task endpoints to Create tasks and integrate to show tasks at portal |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Integrate and utilise new CRUD endpoints in portal |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Allow users to create concepts on task create view |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Add empty CRUD endpoints for tasks |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Make polygons a separate task type |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Add AI assist thresholding |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | W and E hotkeys for image labelling to go left/right. |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Improve labeler mode window resizing. |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Allow Patching region annotations in labeler mode. |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | crank up internal message size to handle larger videos with more outputs |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Introduce stats collection APIs for worker stats. |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Implement /tasks CRUD in API. |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Add frame.id to API as well as track id. |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Remove ‘alt’ from hotkeys, just use letters and arrows straight up |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Update image tool icons |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Add support for fields under ENUM values during model creation |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Implement Dynamic model types |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Ungrouped Annotations/New Annotation Regions should display at the top of Explorer's Detections List |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Change explorer to use sample\_ms instead from network response instead of deducing the value |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Hide Workflow List Elements if below Range Slider value |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Modify Annotating from Custom Model Predictions to post new annotations. |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Update model mode with new designs |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Refactor ImageUtils.js file to individual functions instead of one object |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Added threshold search result in Portal |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Update media player icons |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Display timestamp bar in Explorer grid view for video results |
+| ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Concept relation should autocomplete concept name |
+| ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | Send email to workers when they are added to task |
+| ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | Assigning a worker or reviewer to a task sends an email |
+| ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | Apps with empty workflow should allow all task types \(concepts, bounding box, polygon\) during task creation |
+| ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | Edit Task feature |
+| ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | Support consensus review settings |
+| ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | Support detection tasks |
+| ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | Create new Single Image View and Image Tools |
+| ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | Task view UI for workers |
+| ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | Introduce AWAITING\_REVIEW status for annotations |
+| ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | Split tasks admin view into tabs |
+| ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | Test out idea behind tasks as saved searches and POST /annotations iterations |
+| ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | Implement search by annotation.status in backend |
+| ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | Search by images or video type in the right hand side bar of explorer's grid view |
+| ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | Video Crop Region Search |
+| ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | video thumbs display relevant frame in search |
 
-### Workflows
+#### Workflows
 
-|Status     |Details                                    |
-|-----------|-------------------------------------------|
-| ![](../.gitbook/assets/new_feature%20%2852%29.jpg)|Display workflow detection predictions on the main/large image in Portal|
+| Status | Details |
+| :--- | :--- |
+| ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | Display workflow detection predictions on the main/large image in Portal |
 
+## Changelog
 
-
-# Changelog
-
-## Changelog 6.5
+### Changelog 6.5
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |
 | :---: | :---: | :---: | :---: |
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | ![](../.gitbook/assets/bug%20%28248%29.jpg) | ![](../.gitbook/assets/enterprise%20%2810%29.jpg) |
 
-### Applications
+#### Applications
 
 | Status | Details |
 | :--- | :--- |
@@ -216,14 +216,14 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Unable to create new Application \(General Detection\). Fixed. |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | `application_sharing` scopes field should be `json` instead of `jsonb`. Fixed. |
 
-### Inputs
+#### Inputs
 
 | Status | Details |
 | :--- | :--- |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Pasting long text makes Uploader unusable due to lack of scrolling. Fixed. |
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Support uploading text containing emojis. |
 
-### Annotate
+#### Annotate
 
 | Status | Details |
 | :--- | :--- |
@@ -233,7 +233,7 @@
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Make polygons a separate task type. |
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Add empty CRUD endpoints for tasks. |
 
-### Model
+#### Model
 
 | Status | Details |
 | :--- | :--- |
@@ -247,14 +247,14 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | NLP frontend text input is covered entirely blue when selected. Fixed. |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Enforce fields in post/patch models to adhere to model types. Fixed. |
 
-### Predict
+#### Predict
 
 | Status | Details |
 | :--- | :--- |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed fps issue for video predictions. |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Validate `stat_value_agg_type`. |
 
-### Search
+#### Search
 
 | Status | Details |
 | :--- | :--- |
@@ -267,7 +267,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed panic in list saved searches endpoint. |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Input metadata search from table not working. Fixed. |
 
-### Portal
+#### Portal
 
 | Status | Details |
 | :--- | :--- |
@@ -282,7 +282,7 @@
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Strings without spacing format properly in Explorer's Asset Grid View |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | `annotation_info` should be a valid JSON in Model Mode. Fixed. |
 
-### Workflow
+#### Workflow
 
 | Status | Details |
 | :--- | :--- |
@@ -296,19 +296,19 @@
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Allow non-internal users setting input node when creating workflows. |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Create/Patch workflow uncaught exception. |
 
-### Clients
+#### Clients
 
 | Status | Details |
 | :--- | :--- |
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Update docs.clarifai.com to reflect our current API clients including grpc clients. |
 
-## Changelog 6.4
+### Changelog 6.4
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |
 | :---: | :---: | :---: | :---: |
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | ![](../.gitbook/assets/bug%20%28248%29.jpg) | ![](../.gitbook/assets/enterprise%20%2810%29.jpg) |
 
-### Applications
+#### Applications
 
 | Status | Details |
 | :--- | :--- |
@@ -318,13 +318,13 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Deleting an app no longer redirects to /apps |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Can’t create models in new app. Fixed |
 
-### Inputs
+#### Inputs
 
 | Status | Details |
 | :--- | :--- |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed .webp files not working when sent as base64 |
 
-### Annotate
+#### Annotate
 
 | Status | Details |
 | :--- | :--- |
@@ -365,7 +365,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Add validation to TaskForm’s concept field |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Display human tags for human box as child |
 
-### Model
+#### Model
 
 | Status | Details |
 | :--- | :--- |
@@ -378,13 +378,13 @@
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Add deep training options in model mode |
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Update random sampling model to have a slider |
 
-### Predict
+#### Predict
 
 | Status | Details |
 | :--- | :--- |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed public concept rank |
 
-### Search
+#### Search
 
 | Status | Details |
 | :--- | :--- |
@@ -398,7 +398,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Search by annotation\_info should not return the embed annotation. Fixed |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Search for metadata in detection apps doesn't work. Fixed |
 
-### Portal
+#### Portal
 
 | Status | Details |
 | :--- | :--- |
@@ -414,7 +414,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | When creating the auto annotation workflow editing the workflow crashes Portal |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fix image tools state |
 
-### Workflow
+#### Workflow
 
 | Status | Details |
 | :--- | :--- |
@@ -432,27 +432,27 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fix validation of inputs in workflows |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fix workflow embed\_join\_annotation\_id issue |
 
-### Clients
+#### Clients
 
 | Status | Details |
 | :--- | :--- |
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Clean up private API client repos |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Remove public workflows from Python client |
 
-## Changelog 6.3
+### Changelog 6.3
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |
 | :---: | :---: | :---: | :---: |
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | ![](../.gitbook/assets/bug%20%28248%29.jpg) | ![](../.gitbook/assets/enterprise%20%2810%29.jpg) |
 
-### Applications
+#### Applications
 
 | Status | Details |
 | :--- | :--- |
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Send collaborator emails asynchronously |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | NLP bug fixes for non-text apps |
 
-### Inputs
+#### Inputs
 
 | Status | Details |
 | :--- | :--- |
@@ -460,7 +460,7 @@
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Add frame.id to API as well as region.track\_id |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Granted select permission to clarifairead |
 
-### Annotate
+#### Annotate
 
 | Status | Details |
 | :--- | :--- |
@@ -474,7 +474,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Eliminated error if no annotation to be deleted |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Create one annotation for each bbox |
 
-### Model
+#### Model
 
 | Status | Details |
 | :--- | :--- |
@@ -490,7 +490,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed selectEmbedModelVersionId in detection apps |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed generalModel imports and optimized video click handlers with useCallback hooks |
 
-### Search
+#### Search
 
 | Status | Details |
 | :--- | :--- |
@@ -498,7 +498,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Created log for annotation/search request/response |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Region Searches within Search Bar still use crop coordinates instead of base64 bytes. Fixed |
 
-### Portal
+#### Portal
 
 | Status | Details |
 | :--- | :--- |
@@ -518,27 +518,27 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed details page header missing description |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed demo font syntax |
 
-### Workflow
+#### Workflow
 
 | Status | Details |
 | :--- | :--- |
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | Added a Range Slider to filter Workflow Predictions by Value |
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Updated Face workflow to include the detect faces as concepts for search |
 
-## Changelog 6.2
+### Changelog 6.2
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |
 | :---: | :---: | :---: | :---: |
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | ![](../.gitbook/assets/bug%20%28248%29.jpg) | ![](../.gitbook/assets/enterprise%20%2810%29.jpg) |
 
-### Accounts
+#### Accounts
 
 | Status | Details |
 | :--- | :--- |
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Updated Privacy Policy URL |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed panic error in Signup |
 
-### Applications
+#### Applications
 
 | Status | Details |
 | :--- | :--- |
@@ -548,13 +548,13 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed app duplication error when getting worker |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Deleted collaborator should also mark application\_worker to deleted. Fixed |
 
-### Inputs
+#### Inputs
 
 | Status | Details |
 | :--- | :--- |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Inputs count stuck at &gt; 0 after delete all, with all inputs seemingly deleted |
 
-### Label
+#### Label
 
 | Status | Details |
 | :--- | :--- |
@@ -564,7 +564,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed POST annotations call on frontend to use correct embed model |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Post annotations should include embed\_model\_version\_id. Fixed |
 
-### Model
+#### Model
 
 | Status | Details |
 | :--- | :--- |
@@ -584,7 +584,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed demographics model to return embeddings and work with auto-annotate |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Adding collaborator model counter-intuitively requires ENTER in order to enable the submit button. Fixed |
 
-### Predict
+#### Predict
 
 | Status | Details |
 | :--- | :--- |
@@ -592,7 +592,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Prediction requests are being fired too frequently instead of using cache. Fixed |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | postModelOutputs is not called for newly labeled assets without a manual refresh |
 
-### Search
+#### Search
 
 | Status | Details |
 | :--- | :--- |
@@ -602,7 +602,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Saved Searches in Portal use the incorrect user ID |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fix crop search from single image view for faces/detections |
 
-### Portal
+#### Portal
 
 | Status | Details |
 | :--- | :--- |
@@ -612,7 +612,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Video Predictions are failing in Portal |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed broken font syntax |
 
-### Workflow
+#### Workflow
 
 | Status | Details |
 | :--- | :--- |
@@ -621,13 +621,13 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Allow Patching to existing public workflow |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Can not train LOPQ if app base workflow is face. Fixed |
 
-## Changelog 6.1
+### Changelog 6.1
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |
 | :---: | :---: | :---: | :---: |
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | ![](../.gitbook/assets/bug%20%28248%29.jpg) | ![](../.gitbook/assets/enterprise%20%2810%29.jpg) |
 
-### Clients
+#### Clients
 
 | Status | Details |
 | :--- | :--- |
@@ -639,7 +639,7 @@
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Remove image.crop field from Java API client |
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Remove image.crop field from Javascript API client |
 
-### Model
+#### Model
 
 | Status | Details |
 | :--- | :--- |
@@ -649,7 +649,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Train and eval worker didn't invalidate model related cache. Fixed |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fix bug in deleting a concept relation by ID |
 
-### Portal
+#### Portal
 
 | Status | Details |
 | :--- | :--- |
@@ -658,7 +658,7 @@
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Allow multi concepts per bbox |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Negative tags not visible in Portal. Fixed |
 
-### Predict
+#### Predict
 
 | Status | Details |
 | :--- | :--- |
@@ -666,27 +666,27 @@
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Remove the image.crop argument during predict and POST /inputs calls to simplify the API |
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Add region predictions from custom models to detections in videos |
 
-### Search
+#### Search
 
 | Status | Details |
 | :--- | :--- |
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | Implement search by annotation.status in backend |
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Connect saved searches and annotation status |
 
-## Changelog 6.0
+### Changelog 6.0
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |
 | :---: | :---: | :---: | :---: |
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | ![](../.gitbook/assets/bug%20%28248%29.jpg) | ![](../.gitbook/assets/enterprise%20%2810%29.jpg) |
 
-### Accounts
+#### Accounts
 
 | Status | Details |
 | :--- | :--- |
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Remove country field from signup form, simplifying new customer signups |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Essential Plan User can't add collaborators. Fixed |
 
-### API
+#### API
 
 | Status | Details |
 | :--- | :--- |
@@ -694,7 +694,7 @@
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | Introduce new [Java gRPC API client](https://docs.clarifai.com/api-guide/api-overview), enabling new features and performance enhancements across API |
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Update API key type for "app\_specific" for app-specific keys to be more clear to users |
 
-### Applications
+#### Applications
 
 | Status | Details |
 | :--- | :--- |
@@ -702,7 +702,7 @@
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | \[Frontend\] Enable "Copy Application" from collaborated apps, making it easy to duplicate and build upon existing applications |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Program to clean internal apps crashing. Fixed |
 
-### Data Management
+#### Data Management
 
 | Status | Details |
 | :--- | :--- |
@@ -713,7 +713,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | "Download Failed" error when uploading images. Fixed |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Issue with post inputs key being a PAT in a collector. Fixed |
 
-### Annotate
+#### Annotate
 
 | Status | Details |
 | :--- | :--- |
@@ -721,7 +721,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Bounding Boxes and Cropped Regions aren't displaying on Videos with default runtime config. Fixed |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Insert annotations and related data in batch to improve performance |
 
-### Model
+#### Model
 
 | Status | Details |
 | :--- | :--- |
@@ -736,13 +736,13 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | frame\_info time off by a factor of 10 for general detection model. Fixed |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Detection Models throw error at end of video due to invalid index lookup. Fixed |
 
-### Workflow
+#### Workflow
 
 | Status | Details |
 | :--- | :--- |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Deleting a workflow should clear or update localStorage. Fixed |
 
-### Portal
+#### Portal
 
 | Status | Details |
 | :--- | :--- |
@@ -756,7 +756,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Custom facial recognition Predict Boxes not displaying. Fixed |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Adding inputs in explorer redirects to explorer view with flashing images. Fixed |
 
-### Predict
+#### Predict
 
 | Status | Details |
 | :--- | :--- |
@@ -764,7 +764,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Custom model predictions not displaying. Fixed |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Custom model detections not displaying. Fixed |
 
-### Search
+#### Search
 
 | Status | Details |
 | :--- | :--- |
@@ -773,13 +773,13 @@
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Search Bar allows file upload |
 | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | Remove Explorer App Overflow Menu for improved UX |
 
-## Changelog 5.11
+### Changelog 5.11
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |
 | :---: | :---: | :---: | :---: |
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | ![](../.gitbook/assets/bug%20%28248%29.jpg) | ![](../.gitbook/assets/enterprise%20%2810%29.jpg) |
 
-### Accounts
+#### Accounts
 
 | Status | Details |
 | :--- | :--- |
@@ -790,7 +790,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | When email link to verify my email address clicked, still see "verify your email" banner. Fixed |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) ![](../.gitbook/assets/enterprise%20%2810%29.jpg) | API services do not function once Queue goes down and comes back up. Fixed. This makes on premise deployments more resilient to power failures. |
 
-### Applications
+#### Applications
 
 | Status | Details |
 | :--- | :--- |
@@ -808,7 +808,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Missing `Apps_Get` scope in session token auth caused creation of keys to fail temporarily. Fixed |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | List of missing scopes is not correct in error messages. Fixed |
 
-### Data Management
+#### Data Management
 
 | Status | Details |
 | :--- | :--- |
@@ -825,7 +825,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | No Prompt when uploading an image to Explorer through URL. Fixed |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Properly return error if `AddAssets` failed to insert into database |
 
-### Annotate
+#### Annotate
 
 | Status | Details |
 | :--- | :--- |
@@ -838,7 +838,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | The Add Positives / Add Negatives buttons on a Concept details view breaks portal |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Custom facial recognition bboxes on grid view do not correlate. Fixed |
 
-### Model
+#### Model
 
 | Status | Details |
 | :--- | :--- |
@@ -861,7 +861,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Prevent users from evaluating models that are not trainable |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed node ID validation logic in Bug in workflows |
 
-### Predict
+#### Predict
 
 | Status | Details |
 | :--- | :--- |
@@ -870,7 +870,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Video spire tests are not running correctly. Fixed |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Video processing fails with 'caseids' error. fixed |
 
-### Search
+#### Search
 
 | Status | Details |
 | :--- | :--- |
@@ -887,13 +887,13 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | TypeError: Cannot read 'get' of undefined when clicking image thumbnails in Explorer search bar. Fixed |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Explorer Visibility in small resolution screen improved |
 
-## Changelog 5.10
+### Changelog 5.10
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |
 | :---: | :---: | :---: | :---: |
 | ![](../.gitbook/assets/new_feature%20%2852%29.jpg) | ![](../.gitbook/assets/improvement%20%2883%29.jpg) | ![](../.gitbook/assets/bug%20%28248%29.jpg) | ![](../.gitbook/assets/enterprise%20%2810%29.jpg) |
 
-### Accounts
+#### Accounts
 
 | Status | Details |
 | :--- | :--- |
@@ -904,7 +904,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed flaky email verification integration test to provide more stability to sign-up process |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed a link to a non-public version of our API used for development purposes which led to a lot of login issues for users who landed there |
 
-### Applications
+#### Applications
 
 | Status | Details |
 | :--- | :--- |
@@ -917,7 +917,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed issue with concept counts in some apps |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Clicking pencil icon to edit an API Key in Portal crashed apps. Fixed |
 
-### Data Management
+#### Data Management
 
 | Status | Details |
 | :--- | :--- |
@@ -944,7 +944,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Delete Image Button doesn't work in some scenarios |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed support for webp image format so it is available again |
 
-### Annotate
+#### Annotate
 
 | Status | Details |
 | :--- | :--- |
@@ -974,7 +974,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed issues with color models failing for a short period of time |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed list of models available to workflows to only show a single General model |
 
-### Predict
+#### Predict
 
 | Status | Details |
 | :--- | :--- |
@@ -989,7 +989,7 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Face Detection backends were running out of memory for some predictions, this has been resolved |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Return more descriptive error msg for post metric endpoint |
 
-### Search
+#### Search
 
 | Status | Details |
 | :--- | :--- |
@@ -999,3 +999,4 @@
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Portal not showing the correct number of results in concept search. Fixed. |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Left/right arrows in single image view don't switch between images with regions. Fixed |
 | ![](../.gitbook/assets/bug%20%28248%29.jpg) | Fixed carousel thumbnail clicks wiping query params / trigger new search |
+
