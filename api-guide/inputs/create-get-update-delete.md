@@ -1,4 +1,4 @@
-# Inputs
+# Create, Get, Update, Delete
 
 ## Inputs
 
@@ -10,7 +10,7 @@ When you add an input to your app, the base workflow of your app runs, computing
 
 You can add inputs one by one or in bulk. If you do send bulk, you are limited to sending 128 inputs at a time.
 
-**Important: adding inputs is an asynchronous operation.** That means it will process indexing of your inputs through your default workflow in the background, which can take some time. In order to check the status of each input you add, see the section on [Get Input by ID](inputs.md#get-input-by-id) to look for status 30000 \(INPUT\_IMAGE\_DOWNLOAD\_SUCCESS\) status code on each input to know when it's successfully been indexed.
+**Important: adding inputs is an asynchronous operation.** That means it will process indexing of your inputs through your default workflow in the background, which can take some time. In order to check the status of each input you add, see the section on [Get Input by ID](https://github.com/Clarifai/docs/tree/2a43e94fc3a04b1637d6277b8b41c16d70e6e36b/api-guide/inputs/inputs.md#get-input-by-id) to look for status 30000 \(INPUT\_IMAGE\_DOWNLOAD\_SUCCESS\) status code on each input to know when it's successfully been indexed.
 
 #### Add an input using a publicly accessible URL
 
@@ -42,7 +42,7 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -238,7 +238,7 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -461,7 +461,7 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -540,7 +540,11 @@ if post_inputs_response.status.code != status_code_pb2.SUCCESS:
 ```
 {% endtab %}
 
+{% tab %}
 % tab title="js" %}
+{% endtab %}
+
+{% tab %}
 ```javascript
 app.inputs.create([
   {
@@ -735,7 +739,7 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -994,7 +998,7 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -1207,7 +1211,7 @@ for (Input input : listInputsResponse.getInputsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -1348,10 +1352,9 @@ curl -X GET \
 {% endtab %}
 {% endtabs %}
 
+### List inputs \(streaming\)
 
-### List inputs (streaming)
-
-Another method for listing inputs which was built to scalably list app's inputs in an iterative / streaming fashion. `StreamInputs` will return `per_page` number of inputs from a certain input onward, controlled by the optional `last_id` parameter (defaults to the first input).
+Another method for listing inputs which was built to scalably list app's inputs in an iterative / streaming fashion. `StreamInputs` will return `per_page` number of inputs from a certain input onward, controlled by the optional `last_id` parameter \(defaults to the first input\).
 
 By default, the stream will return inputs from oldest to newest. Set the `descending` field to true to reverse that order.
 
@@ -1404,7 +1407,7 @@ for (Input input : secondStreamInputsResponse.getInputsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -1525,7 +1528,7 @@ System.out.println(input);
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -1684,7 +1687,7 @@ System.out.println(inputCount);
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -1864,7 +1867,7 @@ if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -2141,7 +2144,7 @@ if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -2392,7 +2395,7 @@ if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -2654,7 +2657,7 @@ if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -2869,7 +2872,7 @@ if (deleteInputResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -3023,7 +3026,7 @@ if (listInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -3184,7 +3187,7 @@ if (listInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -3315,3 +3318,4 @@ curl -X DELETE \
 ```
 {% endtab %}
 {% endtabs %}
+

@@ -1,11 +1,10 @@
-# Auto Annotation Walkthrough
+# Auto Annotation
 
 This tutorial demonstrates how auto-annotation workflows can be configured in the Clarifai API. With auto-annotation, you can use model predictions to label your inputs. Auto-annotation can help you to prepare training data, or assign other useful labels and metadata to your inputs. Since models are doing most of the work of annotating your data, this enables you to speed-up and scale-up your annotation process while ensuring quality standards, typically reducing human effort of labelling data by orders of magnitude. And since this is built into our APIs it seamlessly integrates with all the search, training and prediction functionality of the Clarifai platform.
 
-When a concept is predicted by a model, it is predicted with a confidence score between 0 and 1. In this walkthrough we will leverage that score in our workflow so that when your model predictions are confident (close to 1), you can have your data automatically labeled with that concept. When your predictions are less-than-confident, you can have your input sent to a human being for review.
+When a concept is predicted by a model, it is predicted with a confidence score between 0 and 1. In this walkthrough we will leverage that score in our workflow so that when your model predictions are confident \(close to 1\), you can have your data automatically labeled with that concept. When your predictions are less-than-confident, you can have your input sent to a human being for review.
 
-
-### Create Concepts
+## Create Concepts
 
 Create the concepts that we'll be using in our model. In this tutorial we'll create the following concepts: `people`, `man` and `adult`.
 
@@ -73,7 +72,7 @@ if (postConceptsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -136,14 +135,15 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/concepts' \
 {% endtab %}
 {% endtabs %}
 
-### Link Concepts
+## Link Concepts
 
 Link the newly created concepts with concepts in the Clarifai/Main General model.
 
 Run the code below three times, once for each concept created previously. The concept IDs of the clarifai/main General models are the following:
-- `ai_l8TKp2h5` - the people concept,
-- `ai_dxSG2s86` - the man concept,
-- `ai_VPmHr5bm` - the adult concept.
+
+* `ai_l8TKp2h5` - the people concept,
+* `ai_dxSG2s86` - the man concept,
+* `ai_VPmHr5bm` - the adult concept.
 
 Your model's concept IDs are the ones you created in the previous step: `peopleID`, `manID`, and `adultID`.
 
@@ -203,12 +203,11 @@ MultiConceptRelationResponse postConceptRelationsResponse = stub.postConceptRela
 if (postConceptRelationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Post concept relations failed, status: " + postConceptRelationsResponse.getStatus());
 }
-
 ```
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -263,7 +262,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/concepts/{YOUR_M
 {% endtab %}
 {% endtabs %}
 
-### Create a Concept Mapper Model
+## Create a Concept Mapper Model
 
 We're going to create a concept mapper model that translates the concepts from the General model to our new concepts. The model will map the concepts as synonyms. Hypernyms and hyponyms are supported as well.
 
@@ -341,7 +340,7 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -398,9 +397,9 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 {% endtab %}
 {% endtabs %}
 
-### Create a "Greater Than" Concept Thresholder Model
+## Create a "Greater Than" Concept Thresholder Model
 
-This model will allow any predictions >= the concept values defined in the model to be output from this model.
+This model will allow any predictions &gt;= the concept values defined in the model to be output from this model.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -500,7 +499,7 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -580,10 +579,9 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 {% endtab %}
 {% endtabs %}
 
+## Create a "Less Than" Concept Thresholder Model
 
-### Create a "Less Than" Concept Thresholder Model
-
-This model will allow any predictions < the concept values defined in the model to be output from this model.
+This model will allow any predictions &lt; the concept values defined in the model to be output from this model.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -683,7 +681,7 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -763,9 +761,9 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 {% endtab %}
 {% endtabs %}
 
-### Create a "Write Success as Me" Annotation Writer Model
+## Create a "Write Success as Me" Annotation Writer Model
 
-Any incoming Data object full of concepts, regions, etc. will be writtent by this model to the database as an annotation with ANNOTATION_SUCCESS status as if the app owner did the work themself.
+Any incoming Data object full of concepts, regions, etc. will be writtent by this model to the database as an annotation with ANNOTATION\_SUCCESS status as if the app owner did the work themself.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -844,7 +842,7 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -903,9 +901,9 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 {% endtab %}
 {% endtabs %}
 
-### Create a "Write Pending as Me" Annotation Writer Model
+## Create a "Write Pending as Me" Annotation Writer Model
 
-Any incoming Data object full of concepts, regions, etc. will be written by this model to the database as an annotation with ANNOTATION_PENDING status as if the app owner did the work themself but needs further review so is marked pending.
+Any incoming Data object full of concepts, regions, etc. will be written by this model to the database as an annotation with ANNOTATION\_PENDING status as if the app owner did the work themself but needs further review so is marked pending.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -984,10 +982,9 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
-
 ```
 {% endtab %}
 
@@ -1012,13 +1009,13 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 {% endtab %}
 {% endtabs %}
 
-### Create the Workflow
+## Create the Workflow
 
 We will now connect all the models together into a single workflow.
 
-Every input will be predicted by General Embed model to generate embeddings. The output of the embed model (embeddings) will be sent to general concept to predict concept and cluster model. Then the concept model's output (a list of concepts with prediction values) will be sent to concept mapper model which maps Clarifai concepts to your concepts within your app, `people`, `man` and `adult` in this case. Then the mapped concepts will be sent to both concept thresholds models (`GREATER THAN` and `LESS THAN`). `GREATER THAN` model will filter out the concepts that are lower than corresponding value you defined in model and send the remaining concept list to `write success as me` model which labels the input with these concepts (your app concepts only) as you with `success` status. You can train or search on these concepts immediately. The `LESS THAN` model will filter out concepts that are higher than the corresponding value you defined in the model and send the remaining concept list to `write pending as me` model which labels the input with these concepts (your app concepts only) as you with `pending` status.
+Every input will be predicted by General Embed model to generate embeddings. The output of the embed model \(embeddings\) will be sent to general concept to predict concept and cluster model. Then the concept model's output \(a list of concepts with prediction values\) will be sent to concept mapper model which maps Clarifai concepts to your concepts within your app, `people`, `man` and `adult` in this case. Then the mapped concepts will be sent to both concept thresholds models \(`GREATER THAN` and `LESS THAN`\). `GREATER THAN` model will filter out the concepts that are lower than corresponding value you defined in model and send the remaining concept list to `write success as me` model which labels the input with these concepts \(your app concepts only\) as you with `success` status. You can train or search on these concepts immediately. The `LESS THAN` model will filter out concepts that are higher than the corresponding value you defined in the model and send the remaining concept list to `write pending as me` model which labels the input with these concepts \(your app concepts only\) as you with `pending` status.
 
-The model IDs and model version IDs from the public `clarifai/main` application are fixed to the latest version at the time of this writing (check GET /models for an always up to date list of available models), so they are already hard-coded in the code examples below. It's possible to use other public model or model version IDs.
+The model IDs and model version IDs from the public `clarifai/main` application are fixed to the latest version at the time of this writing \(check GET /models for an always up to date list of available models\), so they are already hard-coded in the code examples below. It's possible to use other public model or model version IDs.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -1263,7 +1260,7 @@ if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -1497,7 +1494,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
 {% endtab %}
 {% endtabs %}
 
-### Make the New Workflow your App's Default
+## Make the New Workflow your App's Default
 
 Make this the default workflow in the app, so it will run every time we add an input and execute the auto annotation process. If the workflow is not the default workflow of your app you can still use PostWorkflowResults on new inputs to check that you configured the workflow graph and your models properly but the data will not be written to the DB. This is recommended before making it your default workflow and adding inputs to you app.
 
@@ -1553,7 +1550,7 @@ if (patchAppsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -1600,7 +1597,7 @@ curl -X PATCH 'https://api.clarifai.com/v2/users/me/apps' \
 {% endtab %}
 {% endtabs %}
 
-### Add an Image
+## Add an Image
 
 Adding the image will trigger the default workflow.
 
@@ -1667,7 +1664,7 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -1721,7 +1718,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/inputs' \
 {% endtab %}
 {% endtabs %}
 
-### List Annotations
+## List Annotations
 
 Now you can list annotations with your user id to see the annotations created by your workflow.
 
@@ -1780,7 +1777,7 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -1815,7 +1812,7 @@ stub.ListAnnotations(
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
   https://api.clarifai.com/v2/annotations?user_ids={YOUR_USER_ID}
-
 ```
 {% endtab %}
 {% endtabs %}
+

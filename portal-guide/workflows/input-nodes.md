@@ -30,13 +30,13 @@ You can create workflows out of any Clarifai Models or custom models that you ha
 
 Click the "four squares" icon on the lefthand sidebar to enter Model Mode.
 
-![](../../images/model_mode.jpg)
+![](../../.gitbook/assets/model_mode.jpg)
 
 ### Create the custom models that you need
 
 Click the blue `Create Custom Model` button at the top righthand corner of the screen to create any custom models that you might need for your app.
 
-![](../../images/create_custom_model.jpg)
+![](../../.gitbook/assets/create_custom_model.jpg)
 
 ### Create your workflow
 
@@ -44,16 +44,17 @@ Click the blue `Create Custom Workflow` button at the top righthand corner of th
 
 You can filter the available models by using the dropdown menus on the lefthand side of the screen. Change the user dropdown menu to "Clarifai" to view Clarifai Models.
 
-![](../../images/create_workflow.jpg)
+![](../../.gitbook/assets/create_workflow.jpg)
 
 ### Connect your nodes
 
 Finally you will need to connect the `Input Nodes` in your workflow. You can link your models to any models that precede them in the graph. Click "Create Workflow" and then you are ready to get started!
 
-![](../../images/connect_nodes.jpg)
+![](../../.gitbook/assets/connect_nodes.jpg)
 
 ### Update your base workflow
 
 To activate your new workflow in your app, head back to the "App Overview" page, and change your `Base Workflow` to the new workflow that you have just created and click the checkbox.
 
-![](../../images/change_base_workflow.jpg)
+![](../../.gitbook/assets/change_base_workflow.jpg)
+

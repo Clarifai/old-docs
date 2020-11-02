@@ -1,4 +1,4 @@
-# Status codes
+# Status Codes
 
 All of our API endpoints return back a status code and description with details of the status. A full list of those status codes is shown below. If a status comes back that you do not see below, please reach out to support@clarifai.com
 
