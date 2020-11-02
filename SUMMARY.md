@@ -10,7 +10,7 @@
   * [Base Workflows](getting-started/applications/base-workflows.md)
   * [Application Settings](getting-started/applications/application-settings.md)
   * [Collaboration](getting-started/applications/collaboration.md)
-* [Authentication](getting-started/authentication.md)
+* [Authentication](getting-started/authentication/README.md)
   * [App-Specific API Keys](getting-started/authentication/app-specific-api-keys.md)
   * [Personal Access Tokens](getting-started/authentication/personal-access-tokens.md)
   * [Scopes](getting-started/authentication/scopes.md)
@@ -66,4 +66,5 @@
 ## Product Updates
 
 * [Upcoming API Changes](product-updates/upcoming-api-changes.md)
-* [Changelog](CHANGELOG.md)
+* [Changelog](product-updates/changelog.md)
+
