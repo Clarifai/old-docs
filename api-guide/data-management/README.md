@@ -4,4 +4,5 @@ Our platform enables you to store, analyze, search, and slice-and-dice your data
 
 You can upload images from your computer, publicly accessible URLs, or file bytes. If you are sending file bytes, you must use base64 encoding.
 
-![](../../images/photopanel_custom_model.jpg)
+![](../../.gitbook/assets/photopanel_custom_model%20%281%29.jpg)
+
