@@ -23,7 +23,6 @@
 
 * [API overview](api-guide/api-overview/README.md)
   * [API Clients](api-guide/api-overview/api-clients.md)
-  * [API Technical References](api-guide/api-overview/api-technical-references.md)
   * [Status Codes](api-guide/api-overview/status-codes.md)
   * [Pagination](api-guide/api-overview/pagination.md)
   * [Patching](api-guide/api-overview/patching.md)
@@ -127,4 +126,16 @@
 ## Product Updates
 
 * [Upcoming API Changes](product-updates/upcoming-api-changes.md)
-* [Changelog](product-updates/changelog.md)
+* [Changelog](product-updates/changelog/README.md)
+  * [Release 6.9](product-updates/changelog/release69.md)
+  * [Release 6.8](product-updates/changelog/release68.md)
+  * [Release 6.7](product-updates/changelog/release67.md)
+  * [Release 6.6](product-updates/changelog/release66.md)
+  * [Release 6.5](product-updates/changelog/release65.md)
+  * [Release 6.4](product-updates/changelog/release64.md)
+  * [Release 6.3](product-updates/changelog/release63.md)
+  * [Release 6.2](product-updates/changelog/release62.md)
+  * [Release 6.1](product-updates/changelog/release61.md)
+  * [Release 6.0](product-updates/changelog/release60.md)
+  * [Release 5.11](product-updates/changelog/release511.md)
+  * [Release 5.10](product-updates/changelog/release510.md)
