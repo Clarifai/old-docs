@@ -40,7 +40,7 @@ Deep training gives you the power to tune the hyperparameters that affect “how
 * **detection\_score\_threshold** Only bounding boxes with a detection score above this threshold will be returned.
 * **image\_size** The size of images used for training. Images are scaled for efficient processing, and a lower number will take up less memory and run faster. A higher number will have more pixel information to train on and will increase accuracy.
 * **init\_epochs** The initial number of epochs before the first step/change in the **lrate**.
-* **logreg** Choose either "Logistic Regression" or "Softmax" as the activation function of the output layer. The default setting, 1, corresponds to Logistic Regression and will allow for multiple True concepts (i.e. P > 0.5) to be predicted for a given input. Conversely, specify a value of 0 to implement Softmax if your concepts should be treated as "mutually exclusive" (i.e. only one concept could be correctly assigned to a given input). This will result in each prediction output representing a discrete probability distribution (i.e. all predicted values sum to 1).
+* **logreg** Choose either "Logistic Regression" or "Softmax" as the activation function of the output layer. The default setting, 1, corresponds to Logistic Regression and will allow for multiple True concepts \(i.e. P &gt; 0.5\) to be predicted for a given input. Conversely, specify a value of 0 to implement Softmax if your concepts should be treated as "mutually exclusive" \(i.e. only one concept could be correctly assigned to a given input\). This will result in each prediction output representing a discrete probability distribution \(i.e. all predicted values sum to 1\).
 * **lrate** The learning rate is a tuning parameter in an optimization algorithm that determines the step size at each iteration while moving toward a minimum of a loss function.
 * **num\_epochs** An epoch is defined as one-pass over the entire dataset. If you increase it, it will take longer to train but it could make the model more robust.
 * **num\_items\_per\_epoch** The number of training examples per "epoch". An epoch would be defined as one-pass over this amount of examples.
@@ -87,3 +87,4 @@ When you choose your your deep training template you will see the hyperparameter
 ![](../../.gitbook/assets/create_dt_model.jpg)
 
 Once you have created your new model you can add it to your [workflows](https://docs.clarifai.com/portal-guide/workflows) so that you can use it in your app.
+

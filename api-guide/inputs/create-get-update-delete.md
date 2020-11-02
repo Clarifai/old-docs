@@ -690,7 +690,7 @@ curl -X POST \
 
 ### Add inputs with concepts
 
-If you would like to add an input with concepts, you can do so like this. Concepts play an important role in creating your own models using your own concepts. You can learn more about [creating your own models](https://github.com/Clarifai/docs/tree/5882f46bd17affcd85ed3e2ec98f4d6f355b58a9/train.md) above. Concepts also help you search for inputs. You can [learn more about search](../search/) here.
+If you would like to add an input with concepts, you can do so like this. Concepts play an important role in creating your own models using your own concepts. You can learn more about [creating your own models](https://github.com/Clarifai/docs/tree/5882f46bd17affcd85ed3e2ec98f4d6f355b58a9/train.md) above. Concepts also help you search for inputs. You can [learn more about search]() here.
 
 When you add a concept to an input, you need to indicate whether the concept is present in the image or if it is not present.
 
