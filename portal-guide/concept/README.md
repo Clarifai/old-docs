@@ -8,3 +8,4 @@ Concepts are entities in the world that you want to search over, recognize, anno
 * Avoid special characters and spaces
 * Avoid long concept names. Typically 1-3 word concepts are best.
 {% endhint %}
+

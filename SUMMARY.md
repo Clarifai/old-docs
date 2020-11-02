@@ -49,7 +49,7 @@
   * [Deep Training](api-guide/model/deep-training.md)
   * [Evaluate](api-guide/model/evaluate/README.md)
     * [Interpreting Evaluations](api-guide/model/evaluate/interpreting-evaluations.md)
-    * [Improving Your Model](portal-guide/model/evaluate/improving-your-model.md)
+    * [Improving Your Model](api-guide/model/evaluate/improving-your-model.md)
 * [Workflows](api-guide/workflows/README.md)
   * [Create, Get, Update, Delete](api-guide/workflows/create-get-update-delete.md)
   * [Input Nodes](api-guide/workflows/input_nodes.md)
@@ -61,15 +61,15 @@
   * [Multilingual Classification](api-guide/predict/multilingual-classification.md)
 * [Search](api-guide/search/README.md)
   * [Index Images for Search](api-guide/search/index-images-for-search.md)
-  * [Search](api-guide/search/sesarh/README.md)
+  * [Search](api-guide/search/search/README.md)
     * [Combine or Negate](api-guide/search/search/combine-or-negate.md)
     * [Filter](api-guide/search/search/filter.md)
     * [Rank](api-guide/search/search/rank.md)
-  * [Legacy Search](api-guide/search/README.md)
-    * [Combine or Negate](api-guide/search/legacy-search/combine-or-negate.md)
-    * [Filter](api-guide/search/legacy-search/filter.md)
-    * [Rank](api-guide/search/legacy-search/rank.md)
-    * [Saved Searches](api-guide/search/legacy-search/saved_searches.md)
+  * [Legacy Search](api-guide/search/search-1/README.md)
+    * [Combine or Negate](api-guide/search/search-1/combine-or-negate.md)
+    * [Filter](api-guide/search/search-1/filter.md)
+    * [Rank](api-guide/search/search-1/rank.md)
+    * [Saved Searches](api-guide/search/search-1/saved_searches.md)
 * [Walkthroughs](api-guide/walkthroughs/README.md)
   * [Custom Models](api-guide/walkthroughs/custom-model-walkthrough.md)
   * [Custom Text Model](api-guide/walkthroughs/custom-text-model-walkthrough.md)
@@ -80,7 +80,7 @@
 
 ## Portal Guide
 
-* [Portal Overview](portal-guide/portal_overview.md)
+* [Portal Overview](portal-guide/portal-overview.md)
 * [Data](portal-guide/data/README.md)
   * [Supported Formats](portal-guide/data/supported-formats.md)
   * [CSV and TSV](portal-guide/data/csv-and-tsv.md)
@@ -95,7 +95,7 @@
   * [Label Types](portal-guide/annotate/label-types.md)
   * [Labeling Tools](portal-guide/annotate/labeling-tools.md)
   * [Workforce Management](portal-guide/annotate/workforce-management.md)
-  * [Training Data](api-guide/annotate/training-data.md)
+  * [Training Data](portal-guide/annotate/training-data.md)
   * [Positive and Negative Annotations](portal-guide/annotate/positive-and-negative-annotations.md)
 * [Model](portal-guide/model/README.md)
   * [Clarifai Models](portal-guide/model/clarifai-models.md)
@@ -121,7 +121,7 @@
 
 ## Data Labeling Services
 
-  * [Data Labeling Services](data-labeling-services/README.md)
+* [Data Labeling Services](data-labeling-services/data-labeling-services.md)
 
 ## Product Updates
 
@@ -139,3 +139,4 @@
   * [Release 6.0](product-updates/changelog/release60.md)
   * [Release 5.11](product-updates/changelog/release511.md)
   * [Release 5.10](product-updates/changelog/release510.md)
+

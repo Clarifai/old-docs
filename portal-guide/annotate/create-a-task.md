@@ -1,10 +1,10 @@
-# Create a Labeling Task
+# Create a Task
 
 {% embed url="https://youtu.be/7AQLsVq5RLQ" caption="Clarifai Labeler: Creating Tasks" %}
 
 Tasks enable you delegate labeling jobs to your team.
 
-![](../../images/task_overview.jpg)
+![](../../.gitbook/assets/task_overview.jpg)
 
 ## Task Name and Instructions
 
@@ -35,6 +35,7 @@ You can assign work to a worker, or group of workers. Simply add the worker emai
 Manually assign work to a specific person, or have work randomly assigned to workers from a group of collaborators. By selecting "Full", all inputs will be assigned to each worker. By selecting "Partition" you will be able to break up your labeling task amongst your workers.
 
 ## Review Strategy
+
 ### None
 
 All labels will be automatically marked with a "Success" status and can be immediately used to train your new model.
@@ -43,7 +44,7 @@ All labels will be automatically marked with a "Success" status and can be immed
 
 Labels will be marked with a "Pending Review" status until the assigned reviewer approves them. These labels cannot be used to train new models until approved.
 
-### Consensus (Coming soon!)
+### Consensus \(Coming soon!\)
 
 Consensus review will mark labels with "Success" status in cases where multiple reviewers provide the same label.
 
@@ -61,4 +62,5 @@ Enable AI-assisted workflow predictions in your labeling project. You must first
 
 ## Video FPS
 
-Select your preferred video sample rate. This is the integer value that represents the number of frames that we can capture per second. We do not currently sample video at fractional frame rates.  
+Select your preferred video sample rate. This is the integer value that represents the number of frames that we can capture per second. We do not currently sample video at fractional frame rates.
+

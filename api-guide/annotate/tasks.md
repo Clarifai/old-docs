@@ -1,4 +1,4 @@
-# Create, Get, Update, Delete
+# Tasks
 
 The tasks are a powerful tool which can help your team to annotate inputs from your application.
 
@@ -23,18 +23,18 @@ curl -X POST \
               "type": "CONCEPTS_CLASSIFICATION",
               "name": "Annotate {{concept_id}}",
               "worker": {
-              	"strategy": "FULL"
+                  "strategy": "FULL"
               },
-          	"concept_ids": [
-          		"{{concept_id}}"
-          	],
-          	"input_source": {
-          		"type": "ALL_INPUTS"
-          	},
-          	"sample_ms": 1000,
-          	"review": {
-          		"strategy": "NONE"
-          	}
+              "concept_ids": [
+                  "{{concept_id}}"
+              ],
+              "input_source": {
+                  "type": "ALL_INPUTS"
+              },
+              "sample_ms": 1000,
+              "review": {
+                  "strategy": "NONE"
+              }
           }
       ]
   }'\
@@ -89,11 +89,11 @@ curl -X POST \
 {% endtab %}
 {% endtabs %}
 
-
 ## Task with Partitioned Worker Strategy
 
 The previous tasks were created with full worker strategy.
-```json
+
+```javascript
 {
     "strategy": "FULL"
 }
@@ -104,6 +104,7 @@ In case of `FULL` worker strategy, each worker will work on all inputs selected 
 If you wish the work to be distributed between workers, then you can select the `PARTITIONED` worker strategy.
 
 In the following example:
+
 * there are two workers
 * `workers_per_input`: each input will be assigned to 1 worker
 * `weights.{{user_id1}}`: the first worker will get 90% of inputs
@@ -152,13 +153,15 @@ curl -X POST \
 {% endtabs %}
 
 Notes:
-* It is not required for the weights to add up to 100. For example, the weights [9, 1] are equivalent with weights [90, 10].
+
+* It is not required for the weights to add up to 100. For example, the weights \[9, 1\] are equivalent with weights \[90, 10\].
 * The partitioning is approximate. This means that the number of assigned inputs to each worker may have a small error margin, but it will be close to the assigned weight percentage.
 
 ## Task with Consensus Review
 
 The previous tasks were created with no review or manual review strategy.
-```json
+
+```javascript
 {
   "strategy": "MANUAL"
 }
@@ -236,7 +239,7 @@ curl -X GET \
 
 ### List All Tasks
 
-You can get a list of tasks within your app with a `GET` call. This call supports [pagination](../../api-guide/api-overview/pagination.md).
+You can get a list of tasks within your app with a `GET` call. This call supports [pagination](../api-overview/pagination.md).
 
 {% tabs %}
 {% tab title="cURL" %}
@@ -278,7 +281,6 @@ curl -X GET \
 ```
 {% endtab %}
 {% endtabs %}
-
 
 ## Update
 
@@ -359,3 +361,4 @@ curl -X DELETE \
 ```
 {% endtab %}
 {% endtabs %}
+

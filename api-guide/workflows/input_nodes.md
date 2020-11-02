@@ -120,7 +120,6 @@ if post_workflows_response.status.code != status_code_pb2.SUCCESS:
 ```
 {% endtab %}
 
-
 {% tab title="gRPC Java" %}
 ```java
 import com.clarifai.grpc.api.*;
@@ -316,7 +315,6 @@ stub.PostWorkflows(
 ```
 {% endtab %}
 
-
 {% tab title="cURL" %}
 ```text
 curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
@@ -404,10 +402,9 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
 {% endtab %}
 {% endtabs %}
 
-
 ### Suppressing the output from nodes
 
-It is possible to turn the outputs from given nodes in your workflow on and off with the `suppress_output` endpoint. This can be helpful when you want to hide outputs for expensive return values like image crops or embedding. By default, this endpoint will be set to false, meaning that we do not suppress any model's output. 
+It is possible to turn the outputs from given nodes in your workflow on and off with the `suppress_output` endpoint. This can be helpful when you want to hide outputs for expensive return values like image crops or embedding. By default, this endpoint will be set to false, meaning that we do not suppress any model's output.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -562,8 +559,6 @@ stub.PostWorkflows(
 ```
 {% endtab %}
 
-
-
 {% tab title="cURL" %}
 ```text
 POST /v2/workflows HTTP/1.1
@@ -607,3 +602,4 @@ Authorization: Key f897095e22b144f482b9a13a2151e5bd
 ```
 {% endtab %}
 {% endtabs %}
+

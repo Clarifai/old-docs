@@ -6,3 +6,4 @@ Upload your inputs into the Clarifai platform for data labeling, training new mo
 * 128 is the maximum number of images that can be sent at once
 * Each image should be less than 20MB
 {% endhint %}
+

@@ -20,3 +20,4 @@
 ## The API supports the following text formats:
 
 * Plain text
+
