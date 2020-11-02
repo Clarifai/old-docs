@@ -1,4 +1,4 @@
-# Saved Searches
+# Saved searches
 
 With saved searches you can capture your search results at a given point in time, and record the inputs, annotations, search parameters and models that you are running through the platform. Saved searches help you to:
 
@@ -16,20 +16,20 @@ curl --location --request POST 'https://api.clarifai.com/v2/searches/' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Key {{key}}' \
 --data-raw '{
-	"searches": [{
-    	"query": {
-    		"ands": [{
-	        	"annotation":{
-	            	"annotation_info": {
-	                	"asset_set": ["set1", "set2"]
-	            	}
-	        	}
-	        }]
-		},
-    	"save": true,
-    	"id": "dataset-1589318146",
-    	"name": "Dataset #1589318146"
-	}]
+    "searches": [{
+        "query": {
+            "ands": [{
+                "annotation":{
+                    "annotation_info": {
+                        "asset_set": ["set1", "set2"]
+                    }
+                }
+            }]
+        },
+        "save": true,
+        "id": "dataset-1589318146",
+        "name": "Dataset #1589318146"
+    }]
 }
 '
 ```
@@ -67,3 +67,4 @@ curl --location --request POST 'https://api.clarifai.com/v2/searches/{{search_id
 {% endtabs %}
 
 Saved searches are extremely helpful when testing out multiple versions of a model, or collaborating with a team. Just save your search, and refer back to it any time.
+

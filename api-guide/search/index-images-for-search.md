@@ -57,8 +57,9 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 }
 ```
 {% endtab %}
+
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -97,7 +98,6 @@ stub.PostInputs(
 );
 ```
 {% endtab %}
-
 
 {% tab title="gRPC Python" %}
 ```python

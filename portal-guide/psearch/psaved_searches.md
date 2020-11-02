@@ -1,4 +1,4 @@
-# Saved Searches
+# Saved searches
 
 With saved searches you can capture your search results at a given point in time, and record the inputs, annotations, search parameters and models that you are running through the platform. Saved searches help you to:
 
@@ -9,11 +9,11 @@ With saved searches you can capture your search results at a given point in time
 
 ## Click save in the search bar
 
-![](../../images/saved_search.jpg)
+![](../../.gitbook/assets/saved_search%20%281%29.jpg)
 
 ## Name your search
 
-![](../../images/name_search.jpg)
+![](../../.gitbook/assets/name_search%20%281%29.jpg)
 
 ### Preserve Search Results
 
@@ -23,4 +23,5 @@ You have the option to preserve the current search results as they are. Adding o
 
 You can access your saved search by navigating to the "Saved Searches" section at the top of the sidebar.
 
-![](../../images/saved_searches_list.jpg)
+![](../../.gitbook/assets/saved_searches_list%20%281%29.jpg)
+
