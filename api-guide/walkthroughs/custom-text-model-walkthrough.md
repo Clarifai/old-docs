@@ -1,4 +1,4 @@
-# Custom text model walkthrough
+# Custom Text Model
 
 The Clarifai API has the ability not only to learn concepts from images and videos, but from text as well.
 
@@ -8,10 +8,9 @@ The steps below can all be done via [the Clarifai's portal](https://portal.clari
 
 The examples below map directly to any of our other gRPC clients.
 
-The walkthrough assumes you have already created your Clarifai's user account and the [Personal Access Token](https://portal.clarifai.com/settings/authentication). Also, first set up the gRPC Python client together with the initial code, see [Client Installation Instructions](../../api-guide/api-overview/api-clients#client-installation-instructions).
+The walkthrough assumes you have already created your Clarifai's user account and the [Personal Access Token](https://portal.clarifai.com/settings/authentication). Also, first set up the gRPC Python client together with the initial code, see [Client Installation Instructions](https://github.com/Clarifai/docs/tree/8313dad774bd49a71c2902f8ed80c6e011ae4012/api-guide/api-overview/api-clients/README.md#client-installation-instructions).
 
 For debugging purposes, each response returned by a method call can be printed to the console, and its entire data and structure will be shown verbosely.
-
 
 ## Create a new application
 
@@ -47,12 +46,11 @@ if post_apps_response.status.code != status_code_pb2.SUCCESS:
 {% endtab %}
 {% endtabs %}
 
-
 ## Create a new API key
 
-API keys are tied to specific applications. Now that we have an application, let's create its API key. Since the API key will only to be able to operate on this application, it reduces the risk if the key is lost/stolen, and it avoids us specifying which application should be used in every method call (which is what we'd have to do if we kept using the PAT).
+API keys are tied to specific applications. Now that we have an application, let's create its API key. Since the API key will only to be able to operate on this application, it reduces the risk if the key is lost/stolen, and it avoids us specifying which application should be used in every method call \(which is what we'd have to do if we kept using the PAT\).
 
-See at the bottom of the code example that we put the API key into a metadata tuple. We'll be using this metadata (and the API key) from now on for all the code examples that follow.
+See at the bottom of the code example that we put the API key into a metadata tuple. We'll be using this metadata \(and the API key\) from now on for all the code examples that follow.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -83,12 +81,11 @@ api_key_metadata = (('authorization', 'Key ' + post_keys_response.keys[0].id),)
 {% endtab %}
 {% endtabs %}
 
-
 ## Add a batch of texts
 
-We'll now add several text inputs that we will later use as a training data in our custom model. The idea is that we'll create a model which can differentiate between positive and negative sentences (in a grammatical sense). We'll mark each input with one of the two concepts: `positive` or `negative`.
+We'll now add several text inputs that we will later use as a training data in our custom model. The idea is that we'll create a model which can differentiate between positive and negative sentences \(in a grammatical sense\). We'll mark each input with one of the two concepts: `positive` or `negative`.
 
-The text can be added either directly (it's called raw), or from a URL.
+The text can be added either directly \(it's called raw\), or from a URL.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -150,7 +147,6 @@ if post_inputs_response.status.code != status_code_pb2.SUCCESS:
 {% endtab %}
 {% endtabs %}
 
-
 ## Wait for inputs to download
 
 Let's now wait for all the inputs to download.
@@ -192,11 +188,9 @@ while True:
 {% endtab %}
 {% endtabs %}
 
-
 ## Create a custom model
 
-Now we can create a custom model that's going to be using the concepts `positive` and `negative`. All inputs (in our application) associated with these two concepts will be used as a training data, once we actually train the model.
-
+Now we can create a custom model that's going to be using the concepts `positive` and `negative`. All inputs \(in our application\) associated with these two concepts will be used as a training data, once we actually train the model.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -245,12 +239,11 @@ if post_model_versions_response.status.code != status_code_pb2.SUCCESS:
 {% endtab %}
 {% endtabs %}
 
-
 ## Wait for model training to complete
 
 Let's wait for the model training to complete.
 
-Each model training produces a new model version. See on the bottom of the code example, that we put the model version ID into its own variable. We'll be using it below to specify which specific model version we want to use (since a model can have multiple versions).
+Each model training produces a new model version. See on the bottom of the code example, that we put the model version ID into its own variable. We'll be using it below to specify which specific model version we want to use \(since a model can have multiple versions\).
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -286,7 +279,6 @@ model_version_id = get_model_response.model.model_version.id
 {% endtab %}
 {% endtabs %}
 
-
 ## Predict on new inputs
 
 Now we can use the new custom model to predict new text examples.
@@ -321,10 +313,9 @@ for output in post_model_outputs_response.outputs:
 {% endtab %}
 {% endtabs %}
 
-
 ## Start model evaluation
 
-Let's now test the performance of the model by using model evaluation. See the [the Model Evaluation page](../../api-guide/model/evaluate) to learn more.
+Let's now test the performance of the model by using model evaluation. See the [the Model Evaluation page](https://github.com/Clarifai/docs/tree/8313dad774bd49a71c2902f8ed80c6e011ae4012/api-guide/model/evaluate/README.md) to learn more.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -342,7 +333,6 @@ if post_model_version_metrics.status.code != status_code_pb2.SUCCESS:
 ```
 {% endtab %}
 {% endtabs %}
-
 
 ## Wait for model evaluation results
 
@@ -394,3 +384,4 @@ print(get_model_version_metrics_response)
 ```
 {% endtab %}
 {% endtabs %}
+

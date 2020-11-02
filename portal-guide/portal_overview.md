@@ -1,4 +1,4 @@
-# Portal overview
+# Portal Overview
 
 Portal is a user interface makes the world’s most advanced AI technology accessible to anyone. Portal offers powerful tools for the full AI lifecycle. Portal provides a seamless, end-to-end AI workspace that you can use to manage your data, annotate your inputs, build custom AI models, search, sort and organize you AI projects.
 
@@ -6,4 +6,5 @@ Portal is a user interface makes the world’s most advanced AI technology acces
 Anything that you can do in Portal, you can also do directly with our API. If you want to build powerful UIs, you can do so with our API.
 {% endhint %}
 
-![](../images/portal_med_tones.jpg)
+![](../.gitbook/assets/portal_med_tones%20%282%29.jpg)
+

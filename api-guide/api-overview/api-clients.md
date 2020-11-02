@@ -2,21 +2,16 @@
 
 ## gRPC Clients
 
-For new projects, we recommend using one of the auto-generated clients built using [gRPC](https://grpc.io/). These
-clients may offer better performance since they use a gRPC channel where the network transfer of the
-data is optimized. The data is serialized with [Protocol Buffers](https://developers.google.com/protocol-buffers/).
+For new projects, we recommend using one of the auto-generated clients built using [gRPC](https://grpc.io/). These clients may offer better performance since they use a gRPC channel where the network transfer of the data is optimized. The data is serialized with [Protocol Buffers](https://developers.google.com/protocol-buffers/).
 
-Since the gRPC clients are auto-generated, they will always have the latest available Clarifai API
-feature-set.
+Since the gRPC clients are auto-generated, they will always have the latest available Clarifai API feature-set.
 
-It's possible to make these clients using the standard HTTP+JSON channel, while enjoying a better
-auto-completion support in most IDEs (compared to building and parsing JSON directly), and easily
-being able to switch to using a gRPC channel when/if desired.
+It's possible to make these clients using the standard HTTP+JSON channel, while enjoying a better auto-completion support in most IDEs \(compared to building and parsing JSON directly\), and easily being able to switch to using a gRPC channel when/if desired.
 
 The gRPC clients below are currently available and we'll be adding more as time goes on.
 
 | Available gRPC Clients |
-| ----------------- |
+| :--- |
 | [Clarifai gRPC Java](https://github.com/Clarifai/clarifai-java-grpc/) |
 | [Clarifai gRPC NodeJS](https://github.com/Clarifai/clarifai-nodejs-grpc) |
 | [Clarifai gRPC Python](https://github.com/Clarifai/clarifai-python-grpc/) |
@@ -24,22 +19,23 @@ The gRPC clients below are currently available and we'll be adding more as time 
 ## Manually-built Clients
 
 | Available Clients |
-| ----------------- |
-| [Clarifai C#](https://github.com/Clarifai/clarifai-csharp) |
+| :--- |
+| [Clarifai C\#](https://github.com/Clarifai/clarifai-csharp) |
 | [Clarifai Java](https://github.com/Clarifai/clarifai-java) |
-| [Clarifai JavaScript](https://github.com/Clarifai/clarifai-javascript) ([Reference Docs](https://sdk.clarifai.com/js/latest/index.html)) |
+| [Clarifai JavaScript](https://github.com/Clarifai/clarifai-javascript) \([Reference Docs](https://sdk.clarifai.com/js/latest/index.html)\) |
 | [Clarifai PHP](https://github.com/Clarifai/clarifai-php) |
-| [Clarifai Python](https://github.com/Clarifai/clarifai-python) ([Reference Docs](https://clarifai-python.readthedocs.io/en/latest/index.html)) |
+| [Clarifai Python](https://github.com/Clarifai/clarifai-python) \([Reference Docs](https://clarifai-python.readthedocs.io/en/latest/index.html)\) |
 
 ## Client Installation Instructions
 
 The key to be used as authorization can be either:
-- an API key, which is tied to a certain application, or
-- a Personal Access Token (PAT), which is tied to a user.
+
+* an API key, which is tied to a certain application, or
+* a Personal Access Token \(PAT\), which is tied to a user.
 
 Since a user can own multiple applications, using a PAT is more powerful. However, using a PAT also means that you need to specify the application ID to which the request should be applied.
 
-With most endpoints you can freely choose whether to use an API key or a PAT. In this documentation, some code examples use one and some the other. But certain endpoints support only PAT (e.g. creating a new application or a new API key).
+With most endpoints you can freely choose whether to use an API key or a PAT. In this documentation, some code examples use one and some the other. But certain endpoints support only PAT \(e.g. creating a new application or a new API key\).
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -79,7 +75,7 @@ V2Grpc.V2BlockingStub stub = V2Grpc.newBlockingStub(channel)
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 ///////////////////////////////////////////////////////////////////////////////
 // Installation
 ///////////////////////////////////////////////////////////////////////////////
@@ -320,3 +316,4 @@ $client = new ClarifaiClient('YOUR_API_KEY');
 ```
 {% endtab %}
 {% endtabs %}
+

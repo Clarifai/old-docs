@@ -2,19 +2,19 @@
 
 ## Annotations
 
-Annotations (also known as labels) describe your inputs. When you add inputs to your app, we will create an input level annotation for each input. This input level annotation contains any data you provided in `POST /inputs` call. Models in your default workflow can also write annotations.
+Annotations \(also known as labels\) describe your inputs. When you add inputs to your app, we will create an input level annotation for each input. This input level annotation contains any data you provided in `POST /inputs` call. Models in your default workflow can also write annotations.
 
 Once your input is successfully indexed, you can add additional annotations such as concepts and bounding boxes.
 
 ### Add Annotations
 
-You can label your inputs by calling the `POST /annotations` endpoint. For example, you can add concept(s) to an image, draw a bounding box, or label concept(s) in a video frame.
+You can label your inputs by calling the `POST /annotations` endpoint. For example, you can add concept\(s\) to an image, draw a bounding box, or label concept\(s\) in a video frame.
 
 When you add an annotation, the app's default workflow will not run by default. This means that the annotation will not be immediately available for training of your custom model or for visual search. To make the annotation available for AI based search and training, you need to provide `embed_model_version_id` field. This field specifies how to associate the annotation for your input to one of the embedding models in your default workflow. When associated during patching then we know how to index it for training and visual search, therefore if your use case includes those features it is recommended to provide this field on each add annotation call.
 
 You can add from 1 up to 128 annotations in a single API call.
 
-Each annotation should contain at most one region. If it is a video, each annotation should contain 1 frame. If there are multiple regions in a frame you want to label, you can add multiple annotations for each regoin  and each annotation will be contained within the same frame but a different region.
+Each annotation should contain at most one region. If it is a video, each annotation should contain 1 frame. If there are multiple regions in a frame you want to label, you can add multiple annotations for each regoin and each annotation will be contained within the same frame but a different region.
 
 #### Annotate images with concepts
 
@@ -49,7 +49,6 @@ post_annotations_response = stub.PostAnnotations(
 
 if post_annotations_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Post annotations failed, status: " + post_annotations_response.status.description)
-
 ```
 {% endtab %}
 
@@ -86,12 +85,11 @@ MultiAnnotationResponse postAnnotationsResponse = stub.postAnnotations(
 if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Post annotations failed, status: " + postAnnotationsResponse.getStatus());
 }
-
 ```
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -229,7 +227,6 @@ post_annotations_response = stub.PostAnnotations(
 
 if post_annotations_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Post annotations failed, status: " + post_annotations_response.status.description)
-
 ```
 {% endtab %}
 
@@ -314,12 +311,11 @@ MultiAnnotationResponse postAnnotationsResponse = stub.postAnnotations(
 if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Post annotations failed, status: " + postAnnotationsResponse.getStatus());
 }
-
 ```
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -465,10 +461,9 @@ curl -X POST \
 {% endtab %}
 {% endtabs %}
 
-
 #### Annotate Existing Regions in an Image
 
-When you add an input, detection models (such as `Face Detection` or `General Detection`) will detect regions in your image where there appear to be relevant objects. You can check these detected regions by listing model's annotations. Your labels should be contained within `Region.Data`. Each annotation can have only 1 region. If you want to label multiple regions, it is possible to label multiple annotations in a single API call.
+When you add an input, detection models \(such as `Face Detection` or `General Detection`\) will detect regions in your image where there appear to be relevant objects. You can check these detected regions by listing model's annotations. Your labels should be contained within `Region.Data`. Each annotation can have only 1 region. If you want to label multiple regions, it is possible to label multiple annotations in a single API call.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -522,7 +517,6 @@ post_annotations_response = stub.PostAnnotations(
 
 if post_annotations_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Post annotations failed, status: " + post_annotations_response.status.description)
-
 ```
 {% endtab %}
 
@@ -583,12 +577,11 @@ MultiAnnotationResponse postAnnotationsResponse = stub.postAnnotations(
 if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Post annotations failed, status: " + postAnnotationsResponse.getStatus());
 }
-
 ```
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -708,7 +701,7 @@ curl -X POST \
 
 #### Annotate Images with Different `user_id` and `status`.
 
-Each annotation is tied to a user or a model in your workflow. By default, when a user posts an annotation, this user is the owner of the annotation. Sometimes however, you might want to post an annotation as other user, for example, when assigning an image to another user, an annotation can be created with another user_id (and status `PENDING`).
+Each annotation is tied to a user or a model in your workflow. By default, when a user posts an annotation, this user is the owner of the annotation. Sometimes however, you might want to post an annotation as other user, for example, when assigning an image to another user, an annotation can be created with another user\_id \(and status `PENDING`\).
 
 Note: only the app owner can post an annotation with other user's `user_id`, collaborators cannot.
 
@@ -738,7 +731,6 @@ post_annotations_response = stub.PostAnnotations(
 
 if post_annotations_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Post annotations failed, status: " + post_annotations_response.status.description)
-
 ```
 {% endtab %}
 
@@ -768,12 +760,11 @@ MultiAnnotationResponse postAnnotationsResponse = stub.postAnnotations(
 if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Post annotations failed, status: " + postAnnotationsResponse.getStatus());
 }
-
 ```
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -886,7 +877,7 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -924,7 +915,6 @@ curl -X GET \
 List all annotations, including models created.
 
 {% tabs %}
-
 {% tab title="gRPC Python" %}
 ```python
 from clarifai_grpc.grpc.api import service_pb2
@@ -945,7 +935,6 @@ for annotation_object in list_annotations_response.annotations:
     print(annotation_object)
 ```
 {% endtab %}
-
 
 {% tab title="gRPC Java" %}
 ```java
@@ -975,7 +964,7 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -1010,7 +999,7 @@ curl -X GET \
 
 #### List User Created Annotations by Input IDs
 
-To list all user created annotations for certain input (one or several), provide a list of input IDs.
+To list all user created annotations for certain input \(one or several\), provide a list of input IDs.
 
 Note: this will not show annotations by models in your worfklow. To include model created annotations, you need to set `list_all_annotations` to `true`.
 
@@ -1065,7 +1054,7 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -1158,7 +1147,7 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -1195,10 +1184,9 @@ curl -X GET \
 {% endtab %}
 {% endtabs %}
 
-
 #### List Annotations by User IDs
 
-An annotation is created by either a user or a model. You can list annotations created by specific user(s) by provider their user IDs.
+An annotation is created by either a user or a model. You can list annotations created by specific user\(s\) by provider their user IDs.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -1250,7 +1238,7 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -1282,7 +1270,6 @@ curl -X GET \
 ```
 {% endtab %}
 {% endtabs %}
-
 
 #### List Annotations by Model Version IDs
 
@@ -1341,7 +1328,7 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -1374,7 +1361,6 @@ curl -X GET \
 {% endtab %}
 {% endtabs %}
 
-
 ### Update Annotations
 
 Changing annotation data is possible by PATCHing exisitng annotations. The application owner can change any user-created annotations. Collaborators are not allowed to change annotations made by other collaborators.
@@ -1385,7 +1371,7 @@ Update supports overwrite, merge, remove actions. You can update from 1 up to 12
 
 #### Update Annotation with Concepts
 
-Update an annotation of a image with a new concept, or to change a concept value from true to false (or vice versa).
+Update an annotation of a image with a new concept, or to change a concept value from true to false \(or vice versa\).
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -1416,7 +1402,6 @@ patch_annotations_response = stub.PatchAnnotations(
 
 if patch_annotations_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Patch annotations failed, status: " + patch_annotations_response.status.description)
-
 ```
 {% endtab %}
 
@@ -1451,12 +1436,11 @@ MultiAnnotationResponse patchAnnotationsResponse = stub.patchAnnotations(
 if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Patch annotations failed, status: " + patchAnnotationsResponse.getStatus());
 }
-
 ```
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -1523,7 +1507,7 @@ curl -X PATCH \
 
 #### Update Annotation with Concepts in a Region
 
-When you update region data, you must nest this new data within region.data. Set the region_id to the current region_id if you do not want to change or remove this region.
+When you update region data, you must nest this new data within region.data. Set the region\_id to the current region\_id if you do not want to change or remove this region.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -1561,7 +1545,6 @@ patch_annotations_response = stub.PatcchAnnotations(
 
 if patch_annotations_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Patch annotations failed, status: " + patch_annotations_response.status.description)
-
 ```
 {% endtab %}
 
@@ -1602,12 +1585,11 @@ MultiAnnotationResponse patchAnnotationsResponse = stub.patchAnnotations(
 if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Patch annotations failed, status: " + patchAnnotationsResponse.getStatus());
 }
-
 ```
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -1732,7 +1714,6 @@ patch_annotations_response = stub.PatcchAnnotations(
 
 if patch_annotations_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Patch annotations failed, status: " + patch_annotations_response.status.description)
-
 ```
 {% endtab %}
 
@@ -1785,12 +1766,11 @@ MultiAnnotationResponse patchAnnotationsResponse = stub.patchAnnotations(
 if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Patch annotations failed, status: " + patchAnnotationsResponse.getStatus());
 }
-
 ```
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -1876,7 +1856,6 @@ curl -X PATCH \
 {% endtab %}
 {% endtabs %}
 
-
 #### Update Annotation Status
 
 You can update an annotation status.
@@ -1908,7 +1887,6 @@ patch_annotations_response = stub.PatchAnnotations(
 
 if patch_annotations_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Patch annotations failed, status: " + patch_annotations_response.status.description)
-
 ```
 {% endtab %}
 
@@ -1940,12 +1918,11 @@ MultiAnnotationResponse patchAnnotationsResponse = stub.patchAnnotations(
 if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("patch annotations failed, status: " + patchAnnotationsResponse.getStatus());
 }
-
 ```
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -2049,7 +2026,7 @@ if (deleteAnnotationResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -2086,7 +2063,7 @@ curl -X DELETE \
 You can delete multiple annotations in one API call. You need to provide a list of input IDs and a list of annotation IDs. The number of input IDs has to match number of annotation IDs.
 
 {% tabs %}
-{% tab title="gRPC Python" %}
+
 ```python
 from clarifai_grpc.grpc.api import service_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
@@ -2105,9 +2082,7 @@ delete_annotations_response = stub.DeleteAnnotations(
 if delete_annotations_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Delete annotations failed, status: " + delete_annotations_response.status.description)
 ```
-{% endtab %}
 
-{% tab title="gRPC Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -2128,10 +2103,8 @@ if (deleteAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Delete annotations failed, status: " + deleteAnnotationsResponse.getStatus());
 }
 ```
-{% endtab %}
 
-{% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -2152,9 +2125,7 @@ stub.DeleteAnnotations(
     }
 );
 ```
-{% endtab %}
 
-{% tab title="cURL" %}
 ```text
 curl -X DELETE \
   -H "Authorization: Key YOUR_API_KEY" \
@@ -2165,12 +2136,10 @@ curl -X DELETE \
   }'\
   https://api.clarifai.com/v2/annotations
 ```
-{% endtab %}
-
 
 #### Bulk Delete All Annotations by Input IDs
 
-To delete all annotations of a given input, you just need to set input ID(s). This will delete all annotations for these input(s) EXCEPT input level annotations which only get deleted if you delete the inputs themselves.
+To delete all annotations of a given input, you just need to set input ID\(s\). This will delete all annotations for these input\(s\) EXCEPT input level annotations which only get deleted if you delete the inputs themselves.
 
 {% tabs %}
 {% tab title="gRPC Python" %}
@@ -2215,7 +2184,7 @@ if (deleteAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -2249,3 +2218,4 @@ curl -X DELETE \
 ```
 {% endtab %}
 {% endtabs %}
+

@@ -1,6 +1,6 @@
-# Multilingual classification
+# Multilingual Classification
 
-The Clarifai API supports [many languages in addition to English](../concept/languages.md). When making a [predict api request](./), you can pass in the language you would like the concepts returned in. When you create a new Application, you must specify a default language which will be the language of the returned concepts if not specified in the predict request.
+The Clarifai API supports [many languages in addition to English](../concepts/languages.md). When making a [predict api request](./), you can pass in the language you would like the concepts returned in. When you create a new Application, you must specify a default language which will be the language of the returned concepts if not specified in the predict request.
 
 ## Example Predict API Request
 
@@ -50,7 +50,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -480,7 +480,7 @@ for (Concept concept : postConceptsSearchesResponse.getConceptsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -676,3 +676,4 @@ curl -X POST \
 ```
 {% endtab %}
 {% endtabs %}
+

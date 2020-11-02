@@ -2,7 +2,7 @@
 
 ## By Custom Metadata
 
-After you have [added inputs with custom metadata](../data-management/inputs.md#add-inputs-with-custom-metadata), you can search by that metadata.
+After you have [added inputs with custom metadata](https://github.com/Clarifai/docs/tree/8313dad774bd49a71c2902f8ed80c6e011ae4012/api-guide/data-management/inputs.md#add-inputs-with-custom-metadata), you can search by that metadata.
 
 Below is an example of searching over custom metadata. You can exact match any `key`: `value` pair no matter how nested it is. For example, if the metadata on an input is:
 
@@ -89,7 +89,7 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -393,7 +393,7 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -634,7 +634,7 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
@@ -926,7 +926,7 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 {% endtab %}
 
 {% tab title="gRPC NodeJS" %}
-```js
+```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview
 
