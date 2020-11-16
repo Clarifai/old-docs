@@ -8,7 +8,7 @@ You don't need to hire, train and manage your own labeling team. With Clarifai's
 * Go to the [Data](../portal-guide/data/) tab on the lefthand side of the screen and upload your inputs.
 * Go to the Labeler tab on the lefthand side of the screen and click Create New Task.
 
-\(![](../.gitbook/assets/neworder.jpg)\)
+![](../.gitbook/assets/neworder.jpg)
 
 ## Task Name and Instructions
 
@@ -34,5 +34,5 @@ By saving your searches, you can slice and dice your dataset, and configure dyna
 
 Here just click on "Use Clarifai's Labelers", choose your "Delivery Speed" and click "Place Order".
 
-\(![](../.gitbook/assets/workforce.jpg)\)
+![](../.gitbook/assets/workforce.jpg)
 
