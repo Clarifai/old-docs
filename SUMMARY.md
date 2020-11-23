@@ -15,7 +15,6 @@
   * [Personal Access Tokens](getting-started/authentication/personal-access-tokens.md)
   * [Scopes](getting-started/authentication/scopes.md)
   * [Authorize](getting-started/authentication/authorize.md)
-  * [SSO](getting-started/authentication/sso.md)
   * [2FA](getting-started/authentication/2-factor-authentication.md)
 * [Glossary](getting-started/glossary.md)
 
@@ -23,6 +22,7 @@
 
 * [API overview](api-guide/api-overview/README.md)
   * [API Clients](api-guide/api-overview/api-clients.md)
+  * [Using Postman with Clarifai APIs](api-guide/api-overview/using-postman-with-clarifai-apis.md)
   * [Status Codes](api-guide/api-overview/status-codes.md)
   * [Pagination](api-guide/api-overview/pagination.md)
   * [Patching](api-guide/api-overview/patching.md)
