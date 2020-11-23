@@ -1,3 +1,7 @@
+---
+description: This is a page about performing task annotations with the Clarifai API.
+---
+
 # Task Annotations
 
 In order to keep track of each user's work assigned to a task, all the annotations of this user related to this task should be linked to the task id.
