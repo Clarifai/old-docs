@@ -1,6 +1,4 @@
-# Release 6.9
-
-## Changelog 6.8
+# Changelog 6.9
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |
 | :---: | :---: | :---: | :---: |

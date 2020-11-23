@@ -127,7 +127,7 @@
 
 * [Upcoming API Changes](product-updates/upcoming-api-changes.md)
 * [Changelog](product-updates/changelog/README.md)
-  * [Release 6.9](product-updates/changelog/release610.md)
+  * [Release 6.10](product-updates/changelog/release610.md)
   * [Release 6.9](product-updates/changelog/release69.md)
   * [Release 6.8](product-updates/changelog/release68.md)
   * [Release 6.7](product-updates/changelog/release67.md)
