@@ -29,8 +29,8 @@
 | ![](../../.gitbook/assets/new_feature%20%2852%29.jpg) | Search By Region button on video thunbnails |
 | ![](../../.gitbook/assets/new_feature%20%2852%29.jpg) | Clicking see all within image details sidebar of the visual search across apps should render all of the search results in explorer's asset grid view |
 | ![](../../.gitbook/assets/new_feature%20%2852%29.jpg) | clicking see all from image details sidebar opens refine search search bar in explorer's asset grid view |
-| ![](../../.gitbook/assets/new_feature%20%2852%29.jpg) | Add getSeekedVideoFrame onMouseOver to visual search results of  |
-| ![](../../.gitbook/assets/new_feature%20%2852%29.jpg) | Add video timestamps to video search results within the  |
+| ![](../../.gitbook/assets/new_feature%20%2852%29.jpg) | Add getSeekedVideoFrame onMouseOver to visual search results of |
+| ![](../../.gitbook/assets/new_feature%20%2852%29.jpg) | Add video timestamps to video search results within the |
 | ![](../../.gitbook/assets/new_feature%20%2852%29.jpg) | Add search across apps to Image View righthand sidebar |
 | ![](../../.gitbook/assets/new_feature%20%2852%29.jpg) | Add select app in "Refine Search" righthand sidebar |
 | ![](../../.gitbook/assets/new_feature%20%2852%29.jpg) | Search for annotation.status in Explorer search bar. |
