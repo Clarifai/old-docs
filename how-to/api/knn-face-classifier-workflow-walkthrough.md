@@ -1,3 +1,7 @@
+---
+description: Use facial recognition to identify individual people.
+---
+
 # Custom KNN Face Classifier Workflow
 
 Let's say you want to build a face recognition system that is able to differentiate between persons of whom you only have a few samples \(per person\). Machine learning models generally require a large inputs dataset to be able to classify the inputs well.

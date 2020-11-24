@@ -1,3 +1,7 @@
+---
+description: Learn about model prediction parameters.
+---
+
 # Prediction Parameters
 
 You can set additional parameters to gain flexibility in the predict operation.

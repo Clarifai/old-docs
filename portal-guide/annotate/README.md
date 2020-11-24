@@ -1,3 +1,7 @@
+---
+description: Label your data.
+---
+
 # Scribe Label
 
 Annotations \(also known as "labels"\) are how you prepare training data to "teach" your models to recognize new concepts. Labeled training data is a key ingredient to any custom AI solution.

@@ -1,3 +1,7 @@
+---
+description: Enjoy the convenience of working with spreadsheet data.
+---
+
 # CSV and TSV
 
 You can upload your text directly from a `.csv` \([comma separated values](https://en.wikipedia.org/wiki/Comma-separated_values)\) or `.tsv` \([tab separated values](https://en.wikipedia.org/wiki/Tab-separated_values)\) file. This means you can work with your favorite spreadsheet software or text editor when preparing your data for upload. This can be especially useful when you want to upload inputs and concepts at the same time. Just use the provided "CSV template" to get started.

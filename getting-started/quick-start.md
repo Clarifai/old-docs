@@ -1,3 +1,9 @@
+---
+description: >-
+  Get up and running with the world's most powerful AI platform in a matter of
+  minutes.
+---
+
 # Quick Start
 
 Ready to start building your own AI application? This guide will get you up and running in less than five minutes.

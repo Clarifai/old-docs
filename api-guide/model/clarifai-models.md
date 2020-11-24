@@ -1,3 +1,7 @@
+---
+description: 'Pre-built, pre-trained, pre-optimized models that work right out of the box.'
+---
+
 # Clarifai Models
 
 Our model library is constantly growing and developing. To learn more about available models, you can browse our [Model Gallery](https://www.clarifai.com/models), view available models in Portal's Model Mode \(Just navigate to Model Mode in Portal, click "Create Workflow" and select "clarifai" under "USER". You will see a list of all available pre-built models for your app\), or use the "Get" commands outlined in the API Guide.

@@ -1,3 +1,7 @@
+---
+description: Create applications to work with AI models on Clarifai.
+---
+
 # Applications
 
 You can think of applications as AI projects. Your data, annotations, models, predictions and searches are contained within applications. You can create as many applications as you want and can edit or delete them as you see fit.

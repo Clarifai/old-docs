@@ -1,3 +1,7 @@
+---
+description: Connect the knowledge of different models.
+---
+
 # Knowledge Graph
 
 The Clarifai Knowledge Graph lets you map your custom concepts to a common set of concepts understood by all applications on the Clarifai platform. The knowledge graph makes it possible to link data across multiple custom and pre-built models in a meaningful way.

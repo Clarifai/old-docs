@@ -1,3 +1,7 @@
+---
+description: Iterate upon and improve your models.
+---
+
 # Improving Your Model
 
 The evaluation metrics are meant to help you diagnose the quality of your model. Your model may belong to one or more of many categories, including, but not limited to:

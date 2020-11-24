@@ -1,3 +1,7 @@
+---
+description: Sort your search results from most similar to least similar.
+---
+
 # Rank
 
 ## Search by predictions

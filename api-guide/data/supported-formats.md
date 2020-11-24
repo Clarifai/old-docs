@@ -1,3 +1,7 @@
+---
+description: 'Clarifai works with the most popular image, video and text formats.'
+---
+
 # Supported Formats
 
 ## The API supports the following image formats:

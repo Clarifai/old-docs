@@ -1,3 +1,7 @@
+---
+description: Understanding positive and negative labels.
+---
+
 # Positive and Negative Annotations
 
 When annotating your data, you have the option of providing both positive and negative labels for your concepts. Here is how your model interprets the labels that you add.

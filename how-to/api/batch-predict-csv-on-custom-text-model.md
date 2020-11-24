@@ -1,3 +1,7 @@
+---
+description: Enjoy the convenience of working with CSV files and text.
+---
+
 # Batch Predict CSV on Custom Text Model
 
 Below is a script that can be used to run prediction in a batch on text/sentences stored in a CSV file, using your custom text model.

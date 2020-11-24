@@ -1,3 +1,7 @@
+---
+description: Manage your model training jobs.
+---
+
 # Create, Get, Update, Delete
 
 ### Create Model

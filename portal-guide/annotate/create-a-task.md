@@ -1,3 +1,7 @@
+---
+description: Manage and delegate your labeling work with tasks.
+---
+
 # Create a Task
 
 {% embed url="https://youtu.be/7AQLsVq5RLQ" caption="Clarifai Labeler: Creating Tasks" %}

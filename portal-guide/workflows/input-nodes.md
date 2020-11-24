@@ -1,3 +1,7 @@
+---
+description: Connect your models together.
+---
+
 # Input Nodes
 
 The outputs from one model can be used as the inputs in another model. This allows you to link together the models in a graph. Linking models helps you build sophisticated AI solutions, that can zero-in on a specific use case.

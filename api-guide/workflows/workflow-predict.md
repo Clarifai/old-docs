@@ -1,3 +1,7 @@
+---
+description: Make model predictions in your workflows.
+---
+
 # Workflow Predict
 
 The Workflow Predict API allows you to predict using 1 or more model\(s\), regardless of them being Clarifai or custom, within a single API call. The max number of inputs processed at once with any given workflow is 32.

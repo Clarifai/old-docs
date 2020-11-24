@@ -1,6 +1,8 @@
-# Languages
+---
+description: Multilingual support in Clarifai.
+---
 
-## Multilingual support in Clarifai
+# Languages
 
 The Clarifai API supports many languages in addition to English. These are represented as translations of the names of concepts so that when you search by concept name or get predictions from a model's concepts you can utilize the language of your choice.
 

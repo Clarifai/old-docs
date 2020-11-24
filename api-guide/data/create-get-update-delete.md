@@ -1,3 +1,7 @@
+---
+description: Manage the data in your app.
+---
+
 # Create, Get, Update, Delete
 
 ## Inputs

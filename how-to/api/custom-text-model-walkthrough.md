@@ -1,3 +1,7 @@
+---
+description: Develop your own custom text classifier.
+---
+
 # Custom Text Model
 
 The Clarifai API has the ability not only to learn concepts from images and videos, but from text as well.

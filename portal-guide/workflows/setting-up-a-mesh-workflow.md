@@ -1,3 +1,7 @@
+---
+description: Learn the basics of setting up a new workflow.
+---
+
 # Setting Up a Mesh Workflow
 
 Workflows are a graph of computation that encompass one or more Clarifai or Custom model\(s\). Every workflow is attached to one of your applications. Under each workflow, you will see a list of the Clarifai Models and all custom models in that application when selecting models to add to your workflow. With Workflow Predict, you will be able to run your business logic on one efficient tool.

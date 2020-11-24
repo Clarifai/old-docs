@@ -1,3 +1,7 @@
+---
+description: Understand your videos with the power of AI.
+---
+
 # Video
 
 With a video input, the Predict API response will return a list of predicted concepts for every frame of a video. By default, video is processed at 1 frame per second \(but this is configurable in the predict request\). This means you will receive a list of concepts for every second of your video.

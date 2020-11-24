@@ -1,3 +1,7 @@
+---
+description: 'The Clarifai platform supports the most common image, video and text formats.'
+---
+
 # Supported Formats
 
 ## The API supports the following image formats:

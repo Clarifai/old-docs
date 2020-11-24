@@ -2,7 +2,7 @@
 description: Search helps you sort and filter your datasets.
 ---
 
-# Rank, Filter, Combine or Negate
+# Search Overview
 
 You can send inputs \(as a url or bytes\) and once indexed, you can search for images by concept, image, or many advanced search parameters. When you `POST /inputs`, your base workflow is used to index your inputs, and this index enables search over the outputs of the models in your workflow.
 

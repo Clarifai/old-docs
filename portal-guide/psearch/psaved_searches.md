@@ -1,3 +1,7 @@
+---
+description: Slice and dice your datasets with saved searches.
+---
+
 # Saved Searches
 
 With saved searches you can capture your search results at a given point in time, and record the inputs, annotations, search parameters and models that you are running through the platform. Saved searches help you to:

@@ -1,3 +1,7 @@
+---
+description: Get a head start with your data.
+---
+
 # Base Workflows
 
 The Base Workflow includes one prebuilt Clarifai Model that provides the basic structure for indexing your data. The Base Workflow gives you a "head start" when working with your data, by pre-indexing your inputs for search and by providing a default embedding for your custom models. Your base workflow is what makes your data sortable and searchable as soon as it is uploaded. 

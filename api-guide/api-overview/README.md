@@ -1,3 +1,7 @@
+---
+description: Incorporate powerful AI technology in your application with the Clarifai API.
+---
+
 # API overview
 
 The Clarifai API \(Application Programming Interface\) is the interface that allows clients and servers to “talk” to each other. This is for “software to software” communication, and it is useful for programmatically implementing Clarifai's AI technology within your own products and tools. The API acts as a sort of “gatekeeper” to our software that translates clients like Python, Node and Java. These clients are used to make requests, which the API translates to commands that the software can understand.

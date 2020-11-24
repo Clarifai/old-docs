@@ -1,3 +1,7 @@
+---
+description: Build a powerful and flexible application for classifying text passages.
+---
+
 # Text Classification
 
 {% embed url="https://youtu.be/-blQVbccAF0" caption="Natural Language Processing with Clarifai" %}

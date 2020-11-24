@@ -1,3 +1,7 @@
+---
+description: Label your data.
+---
+
 # Annotations
 
 ## Annotations

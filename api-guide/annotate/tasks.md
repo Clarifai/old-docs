@@ -1,3 +1,7 @@
+---
+description: Group your labeling work into tasks that can be delegated.
+---
+
 # Tasks
 
 The tasks are a powerful tool which can help your team to annotate inputs from your application.

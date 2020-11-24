@@ -1,3 +1,7 @@
+---
+description: Learn about the labeling tools that are available to you in Scribe.
+---
+
 # Labeling Tools
 
 {% embed url="https://youtu.be/5bg51zyebC0" caption="Clarifai Labeler: Labeling for Bounding Box Detection" %}

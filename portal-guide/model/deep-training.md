@@ -1,3 +1,7 @@
+---
+description: Train the entire graph for your custom model.
+---
+
 # Deep Training
 
 Clarifai offers a variety of prebuilt models that are designed to help you build AI solutions quickly and efficiently. Clarifai Models are the recommended starting point for many users because they offer incredibly fast training times when you customize them using the "Context-Based Classifier" type in Portal's Model Mode.

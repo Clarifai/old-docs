@@ -1,3 +1,7 @@
+---
+description: Multilingual predictions.
+---
+
 # Multilingual Classification
 
 The Clarifai API supports [many languages in addition to English](../concepts/languages.md). When making a [predict api request](./), you can pass in the language you would like the concepts returned in. When you create a new Application, you must specify a default language which will be the language of the returned concepts if not specified in the predict request.

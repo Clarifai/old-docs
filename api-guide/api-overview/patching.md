@@ -1,3 +1,7 @@
+---
+description: Patch data in your applications.
+---
+
 # Patching
 
 We designed PATCH to work over multiple resources at the same time \(bulk\) and be flexible enough for all your needs to minimize round trips to the server. Therefore it might seem a little different to any PATCH you've seen before, but it's not complicated. All three actions that are supported do overwrite by default, but have special behaviour for lists of objects \(for example lists of concepts\).

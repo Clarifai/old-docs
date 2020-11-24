@@ -1,3 +1,7 @@
+---
+description: Learn about some of the most important model types on the Clarifai platform.
+---
+
 # Model Types
 
 Clarifai offers a wide variety of models that can be used as standalone solutions, or as the building blocks for your own custom business solution.

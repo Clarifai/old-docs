@@ -1,3 +1,7 @@
+---
+description: Learn about model evaluation tools.
+---
+
 # Evaluate
 
 Now that you've successfully trained the model, you may want to test its performance before using it in the production environment. The Model Evaluation tool allows you to perform a cross validation on a specified model version. Once the evaluation is complete, you’ll be able to view various metrics that will inform the model’s performance.

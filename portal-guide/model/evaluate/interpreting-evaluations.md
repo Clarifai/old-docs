@@ -1,3 +1,7 @@
+---
+description: Learn to interpret model evaluations.
+---
+
 # Interpreting Evaluations
 
 ![](../../../.gitbook/assets/eval-results-new%20%282%29.png)

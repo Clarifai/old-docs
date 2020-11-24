@@ -1,3 +1,7 @@
+---
+description: Use AI to index your images based on semantic similarity.
+---
+
 # Index Images for Search
 
 To get started with search, you must first add images to the search index. You can add one or more images to the index at a time. You can supply an image either with a publicly accessible URL or by directly sending image bytes. You can send up to 128 images in one API call.

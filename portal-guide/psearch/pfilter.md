@@ -1,3 +1,7 @@
+---
+description: Reduce noise by filtering out unwanted data.
+---
+
 # Filter
 
 ## Filter by metadata

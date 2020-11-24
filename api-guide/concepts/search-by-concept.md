@@ -1,3 +1,7 @@
+---
+description: Search based on specific words.
+---
+
 # Search by Concept
 
 You can search for concepts by `name`, even in a different `language` using the concept searches endpoint:

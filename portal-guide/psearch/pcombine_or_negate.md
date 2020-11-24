@@ -1,3 +1,7 @@
+---
+description: Add or subtract items from your search query.
+---
+
 # Combine or Negate
 
 ## Negate search criteria
