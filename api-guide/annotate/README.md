@@ -1,8 +1,14 @@
-# Annotate
+---
+description: >-
+  Scribe helps you to label your data so that you can create training data for
+  your new models.
+---
+
+# Scribe Label
 
 Annotations \(sometimes called "labels"\) are how we "teach" machines to recognize concepts. When you want to create a custom model for your business, you do this by training this model to recognize the concepts that you have annotated on your sample data.
 
-![](../../.gitbook/assets/annotate%20%281%29.jpg)
+![](../../.gitbook/assets/scribe.svg)
 
 {% hint style="info" %}
 ## Data Labeling Services

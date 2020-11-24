@@ -1,4 +1,4 @@
-# Data
+# Data Mode
 
 Upload your inputs into the Clarifai platform for data labeling, training new models, search, or predictions. The platform can upload images, video and text from URLs or from a local directory.
 

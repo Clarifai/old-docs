@@ -1,6 +1,11 @@
-# Welcome
+---
+description: >-
+  Clarifai provides a complete platform to deploy, maintain, and manage your AI
+  models. Whether you have one input or billions, you are only steps away from
+  using AI to power your business applications.
+---
 
-Clarifai offers a platform for the complete AI lifecycle. Whether you have one input or billions, you are only steps away from using artificial intelligence to power your business applications.
+# Welcome
 
 ## Get started with a few clicks, or a few lines of code.
 
