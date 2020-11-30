@@ -7,7 +7,6 @@
 * [Quick Start](getting-started/quick-start.md)
 * [Applications](getting-started/applications/README.md)
   * [Create an Application](getting-started/applications/create-an-application.md)
-  * [Base Workflows](getting-started/applications/base-workflows.md)
   * [Application Settings](getting-started/applications/application-settings.md)
   * [Collaboration](getting-started/applications/collaboration.md)
 * [Authentication](getting-started/authentication/README.md)
