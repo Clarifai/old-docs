@@ -8,13 +8,13 @@ description: Learn about the labeling tools that are available to you in Scribe.
 
 Labeler provides special tools for working with images and video.
 
-![](../../.gitbook/assets/label_bounding_box.jpg)
+![](../../.gitbook/assets/label_bounding_box%20%281%29.jpg)
 
 ## Images
 
 ### Brightness, saturation and color inversion
 
-![](../../.gitbook/assets/brightness.jpg) ![](../../.gitbook/assets/saturation.jpg) ![](../../.gitbook/assets/invert.jpg)
+![](../../.gitbook/assets/brightness.jpg) ![](../../.gitbook/assets/saturation.jpg) ![](../../.gitbook/assets/invert%20%281%29.jpg)
 
 You can enhance the visibility of your photos with image adjustments. Image adjustments can be combined. Just click reset to return to the original version of your input.
 
@@ -26,7 +26,7 @@ Powerful zoom and panning features allow you to closely inspect specific regions
 
 ## Shortcuts
 
-![](../../.gitbook/assets/shortcuts.jpg)
+![](../../.gitbook/assets/shortcuts%20%281%29.jpg)
 
 ### General Keyboard shortcuts
 
@@ -48,7 +48,7 @@ Labeler enables you to work with detections over time
 
 Interpolation allows you to quickly label multiple frames of video with the same concept. Simply select the interpolation icon and draw a bounding box around the object that you would like to label. Then scrub the video player to a new point in the video and move and adjust the bounding box to the new location of the object. Interpolation will automatically draw a series of bounding boxes between them.
 
-![](../../.gitbook/assets/interpolation.jpg)
+![](../../.gitbook/assets/interpolation%20%281%29.jpg)
 
 ### Video Keyboard shortcuts
 

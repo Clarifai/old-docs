@@ -125,7 +125,7 @@
 
 ## Data Labeling Services
 
-* [Data Labeling Services](data-labeling-services/data-labeling-services.md)
+* [Scribe LabelForce](data-labeling-services/data-labeling-services.md)
 
 ## Product Updates
 
