@@ -8,3 +8,8 @@ redirects:
   developer/guide/train: ./getting-started.md
   advanced/models: ./api-guide/model/clarifai-models.md
   api-guide/inputs: ./api-guide/data/README.md
+  api-guide/inputs/create-get-update-delete: ./api-guide/data/create-get-update-delete.md
+  portal-guide/model/model-types.md: ./portal-guide/model/model-types.md
+  portal-guide/pdata_management: ./portal-guide/data/README.md
+  portal-guide/portal_overview: ./portal-guide/portal-overview/readme.md
+  v/v6.8/portal-guide/data/csv-and-tsv: ./portal-guide/data/csv-and-tsv.md
