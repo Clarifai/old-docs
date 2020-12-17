@@ -13,3 +13,4 @@ redirects:
   portal-guide/pdata_management: ./portal-guide/data/README.md
   portal-guide/portal_overview: ./portal-guide/portal-overview/readme.md
   v/v6.8/portal-guide/data/csv-and-tsv: ./portal-guide/data/csv-and-tsv.md
+  api-guide/walkthroughs: ./how-to/api/readme.md
