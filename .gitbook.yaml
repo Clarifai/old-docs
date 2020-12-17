@@ -13,5 +13,12 @@ redirects:
   portal-guide/pdata_management: ./portal-guide/data/README.md
   portal-guide/portal_overview: ./portal-guide/portal-overview/readme.md
   v/v6.8/portal-guide/data/csv-and-tsv: ./portal-guide/data/csv-and-tsv.md
-  api-guide/walkthroughs/custom-model-walkthrough: ./how-to/api
-  portal-guide/walkthroughs: ./how-to/portal
+  api-guide/search/search:	./api-guide/search.md
+  api-guide/walkthroughs: ./how-to/api/readme.md
+  api-guide/walkthroughs/custom-model-walkthrough: ./how-to/api/custom-model-walkthrough.md
+  api-guide/walkthroughs/custom-text-model-walkthrough: ./how-to/api/custom-text-model-walkthrough.md
+  api-guide/walkthroughs/visual-text-recognition-walkthrough: ./how-to/api/visual-text-recognition-walkthrough.md
+  getting-started/authentication/sso: ./getting-started/authentication/readme.md
+  portal-guide/collectors/collectors: ./portal-guide/data/collectors.md
+  portal-guide/data/collectors/collectors: ./portal-guide/data/collectors.md
+  portal-guide/walkthroughs: ./how-to/portal/readme.md
