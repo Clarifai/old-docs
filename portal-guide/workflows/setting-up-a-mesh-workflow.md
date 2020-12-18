@@ -14,7 +14,7 @@ This won't have any impact on the price you are charged per call. You will still
 
 To set up a workflow, you will need to head over to the [Applications page](https://portal.clarifai.com/apps) through your account. From there, you will need to select which application you want to create the workflow under.
 
-![AI Applications](../../.gitbook/assets/application-screen-new%20%282%29.png)
+![AI Applications](../../.gitbook/assets/application-screen-new%20%282%29%20%281%29.png)
 
 Then click on the model mode icon in the lefthand sidebar. From here, click the "Create Workflow" button at the top righthand corner of the screen.
 

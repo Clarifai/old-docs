@@ -8,7 +8,7 @@ description: Learn about the labeling tools that are available to you in Scribe.
 
 Labeler provides special tools for working with images and video.
 
-![](../../.gitbook/assets/label_bounding_box%20%281%29.jpg)
+![](../../.gitbook/assets/label_bounding_box%20%281%29%20%281%29.jpg)
 
 ## Images
 
@@ -26,7 +26,7 @@ Powerful zoom and panning features allow you to closely inspect specific regions
 
 ## Shortcuts
 
-![](../../.gitbook/assets/shortcuts%20%281%29.jpg)
+![](../../.gitbook/assets/shortcuts.jpg)
 
 ### General Keyboard shortcuts
 
