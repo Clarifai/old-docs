@@ -13,7 +13,7 @@ redirects:
   portal-guide/pdata_management: ./portal-guide/data/README.md
   portal-guide/portal_overview: ./portal-guide/portal-overview/readme.md
   v/v6.8/portal-guide/data/csv-and-tsv: ./portal-guide/data/csv-and-tsv.md
-  api-guide/search/search:	./api-guide/search
+  api-guide/search/search:	./api-guide/search/rank-filter-combine-or-negate.md
   api-guide/walkthroughs: ./how-to/api
   api-guide/walkthroughs/custom-model-walkthrough: ./how-to/api/custom-model-walkthrough.md
   api-guide/walkthroughs/custom-text-model-walkthrough: ./how-to/api/custom-text-model-walkthrough.md
