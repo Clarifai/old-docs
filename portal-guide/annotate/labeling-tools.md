@@ -48,7 +48,7 @@ Labeler enables you to work with detections over time
 
 Interpolation allows you to quickly label multiple frames of video with the same concept. Simply select the interpolation icon and draw a bounding box around the object that you would like to label. Then scrub the video player to a new point in the video and move and adjust the bounding box to the new location of the object. Interpolation will automatically draw a series of bounding boxes between them.
 
-![](../../.gitbook/assets/interpolation%20%281%29.jpg)
+![](../../.gitbook/assets/interpolation%20%281%29%20%281%29.jpg)
 
 ### Video Keyboard shortcuts
 
