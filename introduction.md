@@ -37,7 +37,7 @@ Annotations \(sometimes called "labels"\) are how we "teach" machines to learn n
 
 ### Enlight Train
 
-![](.gitbook/assets/model_mode%20%285%29%20%285%29%20%287%29%20%282%29.jpg)
+![](.gitbook/assets/model_mode%20%285%29%20%285%29%20%287%29%20%287%29%20%282%29.jpg)
 
 Models are where the "thinking" happens in your AI application. Clarifai supports a variety of different [types of models,](https://docs.clarifai.com/portal-guide/model/model-types) including "machine learning" models that can learn new things from your training data and fixed-function model operators that help you control the way that your models interact.
 
@@ -53,7 +53,7 @@ Workflows allow you to link multiple models together so that you can build compl
 
 ### Armada Predict
 
-![](.gitbook/assets/predictions%20%282%29%20%282%29%20%281%29.jpg)
+![](.gitbook/assets/predictions%20%282%29%20%282%29%20%282%29%20%281%29.jpg)
 
 Predictions are the basic "output" of machine learning models. Predictions are returned as a list of concepts with corresponding probabilities that tell you how confident your model is with a given prediction.
 
