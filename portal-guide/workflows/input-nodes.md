@@ -34,13 +34,13 @@ You can create workflows out of any Clarifai Models or custom models that you ha
 
 Click the "four squares" icon on the lefthand sidebar to enter Model Mode.
 
-![](../../.gitbook/assets/model_mode%20%285%29%20%285%29%20%285%29.jpg)
+![](../../.gitbook/assets/model_mode%20%285%29%20%285%29%20%287%29%20%285%29.jpg)
 
 ### Create the custom models that you need
 
 Click the blue `Create Custom Model` button at the top righthand corner of the screen to create any custom models that you might need for your app.
 
-![](../../.gitbook/assets/create_custom_model%20%281%29%20%282%29%20%281%29.jpg)
+![](../../.gitbook/assets/create_custom_model%20%281%29%20%282%29%20%282%29%20%281%29.jpg)
 
 ### Create your workflow
 
