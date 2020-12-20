@@ -40,7 +40,7 @@ The currently supported languages are listed below.
 
 When you create a new Application, you must specify a default language. This will be the default language concepts are returned in when you do not explicitly set a language in an API request. You cannot change the default language. You can however change languages per request.
 
-![create new app](../../.gitbook/assets/create-new-app-new%20%282%29%20%282%29%20%284%29.png)
+![create new app](../../.gitbook/assets/create-new-app-new%20%282%29%20%282%29%20%284%29%20%286%29.png)
 
 ## List language translations by concept ID
 
