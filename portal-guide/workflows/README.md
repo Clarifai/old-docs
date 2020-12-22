@@ -10,11 +10,11 @@ This won't have any impact on the price you are charged per call. You will still
 
 To set up a workflow, you will need to head over to the [Applications page](https://portal.clarifai.com/apps) through your account. From there, you will need to select which application you want to create the workflow under.
 
-![AI Applications](../../.gitbook/assets/application-screen-new%20%281%29.png)
+![AI Applications](../../.gitbook/assets/application-screen-new%20%282%29%20%281%29.png)
 
 Then click on the model mode icon in the lefthand sidebar. From here, click the "Create Workflow" button at the top righthand corner of the screen.
 
-![AI model gallery](../../.gitbook/assets/create-workflow-new%20%281%29.png)
+![AI model gallery](../../.gitbook/assets/create-workflow-new%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
 
 ### Create a Workflow
 
@@ -38,5 +38,5 @@ For Clarifai Models, you will be able to use the latest version. For your custom
 
 You can add up to 20 models to a single workflow. Once you have finished adding everything, press the "Save Workflow" button and that will save the state of your workflow. Now you are ready to predict using your brand new workflow. You can edit a workflow at any time.
 
-![Create a workflow](../../.gitbook/assets/my-workflow-new%20%281%29.png)
+![Create a workflow](../../.gitbook/assets/my-workflow-new%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.png)
 
