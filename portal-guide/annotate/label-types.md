@@ -6,7 +6,7 @@ Labeler provides three basic label types for your images and videos. These label
 
 Provide annotation for an entire image, or single frame of video. To classify an image just create your concepts, click on the concepts in the right-hand sidebar and click submit.
 
-![](../../.gitbook/assets/classification_label.jpg)
+![](../../.gitbook/assets/classification_label%20%281%29.jpg)
 
 ## Bounding Box Detection
 
