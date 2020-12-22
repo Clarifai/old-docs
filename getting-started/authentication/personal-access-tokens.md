@@ -17,3 +17,4 @@ Select authentication:
 And click on "Create a Personal Access Token"
 
 ![create-pat](../../.gitbook/assets/create_pat%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%281%29.jpg)
+

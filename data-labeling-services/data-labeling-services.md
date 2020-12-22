@@ -8,11 +8,16 @@ You don't need to hire, train and manage your own labeling team. With Clarifai's
 
 ## 3 Easy Steps to Placing an Order for Scribe LabelForce 
 
-1. Create a new app or start with an existing project.
-2. Go to the [Data](../portal-guide/data/) tab on the lefthand side of the screen and upload your inputs. Currently we provide labeling services for image and video data. You can find out more about supported data types [here](https://docs.clarifai.com/api-guide/data/supported-formats). 
-3. Go to the Labeler tab on the lefthand side of the screen and click Create New Task. 
+1. A Clarifai platform account is required to submit Labeling orders. If you’ve never used our platform before, you can sign up for a [free Community account here.](https://portal.clarifai.com/signup)
+2. An Application will need to be created to contain the data you’ll want to have labeled. After electing to Create a New Application from the [Applications Gallery](https://portal.clarifai.com/apps), you’ll be asked to configure your application—including specifying a name and [Base Workflow.](https://docs.clarifai.com/api-guide/workflows/base-workflows)
+3. Go to the [Data](../portal-guide/data/) tab on the lefthand side of the screen and upload your inputs, or programmatically via the [AddInputs API-endpoint](https://docs.clarifai.com/api-guide/data/create-get-update-delete#add-inputs). Currently we provide labeling services for image and video data. You can find out more about supported data types [here](https://docs.clarifai.com/api-guide/data/supported-formats). 
+4. Go to the Labeler tab on the lefthand side of the screen and click Create Order in the upper righthand corner of the screen. 
 
-![](../.gitbook/assets/neworder.jpg)
+![Create an order for Scribe LabelForce](../.gitbook/assets/create-order.jpg)
+
+From here you will be taken to a form where you can enter the details of your labeling order. Once your order is placed you will receive a confirmation email. Once your order is placed we will validate your instructions and get started. 
+
+![Scribe LabelForce form](../.gitbook/assets/new-order.jpg)
 
 ## Task Name and Instructions
 
@@ -36,7 +41,7 @@ By saving your searches, you can slice and dice your dataset, and configure dyna
 
 ## Work Force
 
-Here just click on "Use Clarifai's Labelers", choose your "Delivery Speed" and click "Place Order".
+Here just click on "Use Clarifai's Labelers", choose your "Delivery Speed" and click "Place Order". We will validate your labeling instructions and get started right away. Once your labeling task is complete, you will be able to review the results in [Explorer](https://portal.clarifai.com/). You will be billed at the end of your billing cycle. 
 
-![](../.gitbook/assets/workforce.jpg)
+![Take advantage of special promotional pricing on LabelForce](../.gitbook/assets/standard-promo.jpg)
 

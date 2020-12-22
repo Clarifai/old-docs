@@ -103,7 +103,6 @@
   * [Workforce Management](portal-guide/annotate/workforce-management.md)
   * [Training Data](portal-guide/annotate/training-data.md)
   * [Positive and Negative Annotations](portal-guide/annotate/positive-and-negative-annotations.md)
-  * [Review](portal-guide/annotate/review.md)
 * [Enlight Train](portal-guide/model/README.md)
   * [Training Basics](portal-guide/model/training-basics.md)
   * [Clarifai Models](portal-guide/model/clarifai-models.md)
@@ -132,7 +131,7 @@
 
 * [Upcoming API Changes](product-updates/upcoming-api-changes.md)
 * [Changelog](product-updates/changelog/README.md)
-  * [Release 6.11](product-updates/changelog/release611.md)  
+  * [Release 6.11](product-updates/changelog/release611.md)
   * [Release 6.10](product-updates/changelog/release610.md)
   * [Release 6.9](product-updates/changelog/release69.md)
   * [Release 6.8](product-updates/changelog/release68.md)
@@ -146,3 +145,4 @@
   * [Release 6.0](product-updates/changelog/release60.md)
   * [Release 5.11](product-updates/changelog/release511.md)
   * [Release 5.10](product-updates/changelog/release510.md)
+

@@ -58,7 +58,7 @@ When labeling an image, try to avoid labeling what is "in" the image, instead yo
 
 Here is an example of an image of a married couple, which had a false positive prediction for a person holding a bouquet of flowers, even though there is no bouquet in the photo. What’s going on here?
 
-![](../../.gitbook/assets/false_positive%20%289%29%20%2810%29%20%287%29%20%285%29.png)
+![](../../.gitbook/assets/false_positive%20%289%29%20%2810%29%20%287%29%20%281%29%20%285%29.png)
 
 All of these images were labeled with ‘Bouquet-floral\_Holding’:
 
