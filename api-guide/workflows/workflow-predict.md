@@ -4,7 +4,7 @@ The Workflow Predict API allows you to predict using 1 or more model\(s\), regar
 
 Now that you have that all set up, you will be able to predict under a workflow using the `POST /v2/workflows/{workflow_id}/results` endpoint. Your `{workflow-id}` currently is whatever you set as your ID. Then as far as your request body, nothing has changed with how you would normally do a predict. In the response body, you will see a `results` object and each object will be the response from the models in the same ordering from the workflow you set up.
 
-![Image showing the Portal&apos;s workflow prediction results](../../.gitbook/assets/preview-workflows-new%20%282%29.png)
+![Image showing the Portal&apos;s workflow prediction results](../../.gitbook/assets/preview-workflows-new%20%282%29%20%282%29%20%282%29%20%283%29%20%283%29%20%283%29.png)
 
 You can also use the Explorer in Clarifai Portal to see the results of your workflow's predictions on a given input.
 
