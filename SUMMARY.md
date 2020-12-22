@@ -103,6 +103,7 @@
   * [Workforce Management](portal-guide/annotate/workforce-management.md)
   * [Training Data](portal-guide/annotate/training-data.md)
   * [Positive and Negative Annotations](portal-guide/annotate/positive-and-negative-annotations.md)
+  * [Review](portal-guide/annotate/review.md)
 * [Enlight Train](portal-guide/model/README.md)
   * [Training Basics](portal-guide/model/training-basics.md)
   * [Clarifai Models](portal-guide/model/clarifai-models.md)
