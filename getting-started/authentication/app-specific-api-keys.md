@@ -8,7 +8,7 @@ You have fine-grained control over the data exposed through your app. You can co
 
 Just navigate to the app management page and click "Create an API Key"
 
-![](../../.gitbook/assets/apikey-screen.png)
+![](../../.gitbook/assets/apikey-screen%20%282%29%20%282%29%20%283%29%20%282%29%20%283%29.png)
 
 ## Create an API Key programmatically
 
