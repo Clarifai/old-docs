@@ -4,7 +4,7 @@
 
 Tasks enable you delegate labeling jobs to your team.
 
-![](../../.gitbook/assets/task_overview.jpg)
+![](../../.gitbook/assets/task_overview%20%281%29%20%281%29%20%281%29.jpg)
 
 ## Task Name and Instructions
 
