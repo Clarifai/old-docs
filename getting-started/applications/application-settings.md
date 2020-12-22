@@ -4,7 +4,7 @@
 
 If at any point you'd like to change the application name, add/remove API Keys, and modify Workflow management for Predict, you may do so by visiting the application details page and changing the values.
 
-![](../../.gitbook/assets/edit_application%20%281%29.jpg)
+![](../../.gitbook/assets/edit_application%20%282%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29.jpg)
 
 ## Delete an Application
 
