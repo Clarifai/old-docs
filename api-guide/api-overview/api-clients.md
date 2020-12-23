@@ -6,13 +6,7 @@ description: Clients in the most popular languages.
 
 ## gRPC Clients
 
-For new projects, we recommend using one of the auto-generated clients built using [gRPC](https://grpc.io/). These clients may offer better performance since they use a gRPC channel where the network transfer of the data is optimized. The data is serialized with [Protocol Buffers](https://developers.google.com/protocol-buffers/).
-
-Since the gRPC clients are auto-generated, they will always have the latest available Clarifai API feature-set.
-
-It's possible to make these clients using the standard HTTP+JSON channel, while enjoying a better auto-completion support in most IDEs \(compared to building and parsing JSON directly\), and easily being able to switch to using a gRPC channel when/if desired.
-
-The gRPC clients below are currently available and we'll be adding more as time goes on.
+To use the Clariafi API, we recommend either using HTTP+JSON directly, or one of the new Clarifai API clients that are build using [gRPC](https://grpc.io/). These clients offer increased performance compared to both HTTP+JSON and the legacy clients, since networking and data serialization are optimized.
 
 | Available gRPC Clients |
 | :--- |
