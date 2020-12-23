@@ -69,9 +69,7 @@ import com.clarifai.grpc.api.*;
 import io.grpc.Channel;
 
 
-// Construct one of the channels you want to use
-Channel channel = ClarifaiChannel.INSTANCE.getJsonChannel();
-Channel channel = ClarifaiChannel.INSTANCE.getInsecureGrpcChannel();
+Channel channel = ClarifaiChannel.INSTANCE.getGrpcChannel();
 
 // Note: You can also use a secure (encrypted) ClarifaiChannel.INSTANCE.getGrpcChannel() however
 // it is currently not supported in the latest gRPC version.
@@ -96,9 +94,7 @@ npm install clarifai-nodejs-grpc
 const {ClarifaiStub} = require("clarifai-nodejs-grpc");
 const grpc = require("@grpc/grpc-js");
 
-// Construct one of the stubs you want to use
-const stub = ClarifaiStub.json();
-const stub = ClarifaiStub.insecureGrpc();
+const stub = ClarifaiStub.grpc();
 
 // This will be used by every Clarifai endpoint call.
 const metadata = new grpc.Metadata();
@@ -122,9 +118,7 @@ from clarifai_grpc.channel.clarifai_channel import ClarifaiChannel
 from clarifai_grpc.grpc.api import resources_pb2, service_pb2, service_pb2_grpc
 from clarifai_grpc.grpc.api.status import status_pb2, status_code_pb2
 
-# Construct one of the channels you want to use
-channel = ClarifaiChannel.get_json_channel()
-channel = ClarifaiChannel.get_insecure_grpc_channel()
+channel = ClarifaiChannel.get_grpc_channel()
 
 # Note: You can also use a secure (encrypted) ClarifaiChannel.get_grpc_channel() however
 # it is currently not possible to use it with the latest gRPC version
