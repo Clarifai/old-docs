@@ -16,7 +16,7 @@ You can create app-level collectors to monitor specific models and specify sampl
 
 Collectors help you to feed your models with real-world training data. This data can be taken from models that you have already deployed to production. Just create a collector within your app and set it up to ingest data from another model when new inputs are "posted" to this model.
 
-![](../../.gitbook/assets/create_new_collector.jpg)
+![Create a new collector](../../.gitbook/assets/create_new_collector.jpg)
 
 ## Collectors
 
@@ -58,4 +58,3 @@ This workflow uses the original input to the model as input to the workflow so t
 Select the model that you would like to collect from, and the collector will automatically post the new inputs to your app. Simply enter your model name, or model ID number. You can select the model that you would like to collect from in the drop down menu. When the user predicts an input against this model, the input is going to be collected.
 
 The app ID and user ID where the model is located. If using a publicly available model, the model user and app ID should be `clarifai` and `main`, respectively. Otherwise the IDs should belong to the user who created the model. An API key ID using which the inputs are is going to be added.
-

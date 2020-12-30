@@ -90,6 +90,7 @@
 * [Portal Overview](portal-guide/portal-overview.md)
 * [Data Mode](portal-guide/data/README.md)
   * [Supported Formats](portal-guide/data/supported-formats.md)
+  * [Bulk Labeling](portal-guide/data/bulk-labeling.md)
   * [CSV and TSV](portal-guide/data/csv-and-tsv.md)
   * [Collectors](portal-guide/data/collectors.md)
 * [Concepts](portal-guide/concept/README.md)
