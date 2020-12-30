@@ -42,7 +42,7 @@ Powerful zoom and panning features allow you to closely inspect specific regions
 
 ## Video
 
-Labeler enables you to work with detections over time
+Labeler provides powerful tools for labeling video. When working with video, you can leverage video interpolation tools to quickly label thousands of individual frames of video. This rapid labeling technique makes video an excellent source of training data, even if you want your model to primarily analyze still images. You can QuickTrain and DeepTrain models on video data that has been labeled in Scribe. 
 
 ### Interpolation
 
@@ -56,4 +56,3 @@ Interpolation allows you to quickly label multiple frames of video with the same
 * W - Scrub backward
 * E - Scrub forward
 * R - End of video
-
