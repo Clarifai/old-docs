@@ -39,8 +39,8 @@ Here are installation instructions for three of our most commonly used clients. 
 
 The key to be used as authorization can be either:
 
-* an API key, which is tied to a certain application, or
-* a Personal Access Token \(PAT\), which is tied to a user.
+* An API key, which is tied to a certain application, or
+* A Personal Access Token \(PAT\), which is tied to a user.
 
 Since a user can own multiple applications, using a PAT is more powerful. However, using a PAT also means that you need to specify the application ID to which the request should be applied.
 
