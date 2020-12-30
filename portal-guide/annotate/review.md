@@ -14,7 +14,9 @@ When you create a new task, you can chose between two review strategies:
 
 ## Manual Review
 
-We recommend manual review when you need to spot check your labeler work, or when you want to review each individual input that a labeler has worked on. Just select "Manual" under Review Strategy. Adjusting the sample size will give you a subset of the total labeled dataset, so that you can spot check your labeler's work. You will also need to select a reviewer for your task, this can be you or another one of your collaborators.
+We recommend manual review when you need to spot check your labeler work, or when you want to review each individual input that a labeler has worked on. Just select "Manual" under Review Strategy. Adjusting the sample size will give you a subset of the total labeled dataset, so that you can spot check your labeler's work. Please note that if you select a sample size that is less than 100%, you will not be able to approve or reject individual labels in
+
+You will also need to select a reviewer for your task, this can be you or another one of your collaborators.
 
 ![manual review strategy](../../.gitbook/assets/manual-review-strategy.jpg)
 
@@ -28,6 +30,6 @@ Consensus review is a fantastic tool if your labeling task involves multiple lab
 
 ![consensus review strategy](../../.gitbook/assets/consensus-review-strategy.jpg)
 
-You will see a "worker" tab in the righthand sidebar when reviewing labels. Any time the annotations of more than one worker agree you will see a double check mark next to the concept. You can approve labels that have been added by one worker, or even reject the labels of all of your workers if the labels do not meet your quality standards. 
+You will see a "worker" tab in the righthand sidebar when reviewing labels. Any time the annotations of more than one worker agree you will see a double check mark next to the concept. You can approve labels that have been added by one worker, or even reject the labels of all of your workers if the labels do not meet your quality standards.
 
 ![consensus review](../../.gitbook/assets/consensus-review.jpg)
