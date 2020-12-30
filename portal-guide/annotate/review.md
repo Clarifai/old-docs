@@ -14,15 +14,29 @@ When you create a new task, you can chose between two review strategies:
 
 ## Manual Review
 
-We recommend manual review when you need to spot check your labeler work, or when you want to review each individual input that a labeler has worked on. Just select "Manual" under Review Strategy. Adjusting the sample size will give you a subset of the total labeled dataset, so that you can spot check your labeler's work. Please note that if you select a sample size that is less than 100%, you will not be able to approve or reject individual labels in
+Manual review lets you either spot check your labeler work, or review each individual input that a labeler has worked on. Just select "Manual" under Review Strategy. You will also need to select a reviewer for your task, this can be you or another one of your collaborators.
 
-You will also need to select a reviewer for your task, this can be you or another one of your collaborators.
+{% hint style="info" %}
+Adjusting the sample size will give you a subset of the total labeled dataset for review. This is so that you can get an impression of your labeler's work, and then approve or reject their entire labeling task based on this impression. Please note that if you select a sample size that is less than 100%, you will not be able to approve or reject individual labels.
+{% endhint %}
 
 ![manual review strategy](../../.gitbook/assets/manual-review-strategy.jpg)
 
 When you click on your review tasks under the review tab, you will be taken to a view where you can review and approve each labeled input. You can add additional annotations yourself in this view.
 
+![manual review strategy](../../.gitbook/assets/manual-review-strategy.jpg)
+
+### Input View
+
+From the input view, you can view each labeled input in a large view port. Individual annotations are highlighted for each bounding box and each image. Corresponding labels are outlined in righthand sidebar, where you can add, edit, or delete annotations.
+
 ![manual review](../../.gitbook/assets/manual-review.jpg)
+
+### Annotator View
+
+In the annotator view, you will be able to view multiple labeled inputs at once, and accept or reject labels in bulk. You can toggle back and forth between the labels created by your individual labelers. Labeled inputs are grouped by concept for convenience.
+
+![annotator view](../../.gitbook/assets/annotator-view.jpg)
 
 ## Consensus Review
 
