@@ -33,6 +33,10 @@ To use the Clariafi API, we recommend either using HTTP+JSON directly, or one of
 
 ## Client Installation Instructions
 
+Here are installation instructions for three of our most commonly used clients. For information on installing our other clients, please follow the links above.
+
+### Authorization keys
+
 The key to be used as authorization can be either:
 
 * an API key, which is tied to a certain application, or
