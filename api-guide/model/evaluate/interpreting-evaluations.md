@@ -16,7 +16,7 @@ Generally, you’ll be looking at results that represent either a\) the average 
 
 #### Model Accuracy Score
 
-![model eval results](../../../.gitbook/assets/model-score-new%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%281%29.png) Model Accuracy Score is the highest level metric for your model’s prediction performance. It is defined as the macro average of the areas under the receiver operating characteristic curve for every concept. This metric does not depend on the Prediction Threshold. This metric is an average across K splits.
+![model eval results](../../../.gitbook/assets/model-score-new%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%283%29.png) Model Accuracy Score is the highest level metric for your model’s prediction performance. It is defined as the macro average of the areas under the receiver operating characteristic curve for every concept. This metric does not depend on the Prediction Threshold. This metric is an average across K splits.
 
 A score of 1 represents a perfect model; a score of .5 represents a worthless model. As a general rule of thumb, a score above .9 is considered good.
 
@@ -59,7 +59,7 @@ In general, the matrix is meant to be read by fixing each row. Each row represen
 
 Concepts that co-occur, or are similar, may form a visual cluster on the matrix. On the other hand, exclusive or dissimilar concepts should not form a cluster.
 
-**Counts \(1-Split\)** ![concept by concept results](../../../.gitbook/assets/cxc-result%20%282%29%20%282%29.png) Each row represents the subset of the test set that were actually labeled as a concept, e.g. “dog”. As you go across the row, each cell shows the number of times those images were predicted as each concept, noted by the column name.
+**Counts \(1-Split\)** ![concept by concept results](../../../.gitbook/assets/cxc-result%20%282%29%20%285%29.png) Each row represents the subset of the test set that were actually labeled as a concept, e.g. “dog”. As you go across the row, each cell shows the number of times those images were predicted as each concept, noted by the column name.
 
 The diagonal cells represent True Positives, i.e. correctly predicted inputs. You’d want this number to be as close to the Total Labeled as possible.
 
@@ -72,7 +72,7 @@ Few things to note:
 3. You can click on each cell to view the actual prediction results for every input that was counted in this cell.
 4. This represents the test set data of a single split.
 
-**Probabilities \(K-Split Average\)** ![concept by concept five split results](../../../.gitbook/assets/cxc-5split%20%282%29%20%282%29%20%283%29%20%284%29%20%283%29.png) Each row represents the subset of the test set that were actually labeled as a concept, e.g. “dog”. As you go across the row, each cell shows the average prediction probability for each concept, noted by the column name, for all inputs in this subset. In short, the cell shows the average prediction probability for a concept given the images labeled as a concept.
+**Probabilities \(K-Split Average\)** ![concept by concept five split results](../../../.gitbook/assets/cxc-5split%20%282%29%20%282%29%20%283%29%20%284%29%20%283%29%20%281%29.png) Each row represents the subset of the test set that were actually labeled as a concept, e.g. “dog”. As you go across the row, each cell shows the average prediction probability for each concept, noted by the column name, for all inputs in this subset. In short, the cell shows the average prediction probability for a concept given the images labeled as a concept.
 
 Few things to note:
 
@@ -90,7 +90,7 @@ Note: the prediction probabilities on this table may seem different from your ac
 
 #### Expanded Selection Details
 
-![expanded](../../../.gitbook/assets/expanded-new%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%281%29.png) You can click on the expand button to view the prediction probabilities for every concept for each image. The blue dot denotes the concept\(s\) the input was actually labeled, i.e. true positives. The red dot denotes the concept\(s\) that the input was not labeled.
+![expanded](../../../.gitbook/assets/expanded-new%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%281%29.png) You can click on the expand button to view the prediction probabilities for every concept for each image. The blue dot denotes the concept\(s\) the input was actually labeled, i.e. true positives. The red dot denotes the concept\(s\) that the input was not labeled.
 
 ## Improving your Model
 

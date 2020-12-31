@@ -20,7 +20,6 @@ To use the Clariafi API, we recommend either using HTTP+JSON directly, or one of
 | [Clarifai gRPC Go](https://github.com/Clarifai/clarifai-go-grpc) |
 | [Clarifai gRPC C++](https://github.com/Clarifai/clarifai-cpp-grpc) |
 
-
 ## Manually-built Clients \(deprecated\)
 
 | Available Clients |
@@ -131,6 +130,5 @@ const metadata = new grpc.Metadata();
 metadata.set("authorization", "Key {YOUR_CLARIFAI_API_KEY}");
 ```
 {% endtab %}
-
-
 {% endtabs %}
+

@@ -67,3 +67,4 @@ Enable AI-assisted workflow predictions in your labeling project. You must first
 ## Video FPS
 
 Select your preferred video sample rate. This is the integer value that represents the number of frames that we can capture per second. We do not currently sample video at fractional frame rates.
+

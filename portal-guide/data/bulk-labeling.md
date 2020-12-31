@@ -39,3 +39,4 @@ You can "Add geodata to selected".
 Once labeled with geodata, you can view your input on the world map under the righthand tab called "Geographical Data"
 
 ![geodata tab](../../.gitbook/assets/geoDataTab.jpg)
+
