@@ -1,10 +1,12 @@
 ---
 description: >-
-  Use Clarifai models or your own custom models to provide assistance in your
+  Use Clarifai Models or your own custom models to provide assistance in your
   labeling tasks.
 ---
 
 # AI Assist
+
+![AI Assist for efficient data labeling](../../.gitbook/assets/ai-assist.jpg)
 
 Speed up your labeling workflows with AI Assist. AI assist assigns concepts automatically for faster dataset annotation.
 
@@ -12,11 +14,11 @@ To activate AI Assist, just create a new labeling task and toggle the "Enable AI
 
 ## Custom Workflow
 
-By selecting a custom workflow AI Assist will offer predictions made by your custom model.
+By selecting a custom workflow AI Assist will offer predictions made by your custom model. In order to take advantage of a custom workflow you will already need to have labeled some data and trained a custom model. If you are starting a labeling project from scratch you will need to start with a Clarifai Workflow. 
 
 ## Clarifai Workflow
 
-By choosing a Clarfai workflow, AI Assist will make predictions based on one of Clarifai's Public Models. AI Assist will automatically recognize concepts in your application that map to existing Clarifai concepts. You will see these concepts outlined in green in the "Mapped concepts" section.
+By choosing a Clarifai workflow, AI Assist will make predictions based on one of Clarifai's Public Models. AI Assist will automatically recognize concepts in your application that map to existing Clarifai concepts. You will see these concepts outlined in green in the "Mapped concepts" section.
 
 ![label text](../../.gitbook/assets/aiAssistClarifai.jpg)
 
