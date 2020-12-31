@@ -90,6 +90,7 @@
 * [Portal Overview](portal-guide/portal-overview.md)
 * [Data Mode](portal-guide/data/README.md)
   * [Supported Formats](portal-guide/data/supported-formats.md)
+  * [Bulk Labeling](portal-guide/data/bulk-labeling.md)
   * [CSV and TSV](portal-guide/data/csv-and-tsv.md)
   * [Collectors](portal-guide/data/collectors.md)
 * [Concepts](portal-guide/concept/README.md)
@@ -100,7 +101,9 @@
   * [Create a Task](portal-guide/annotate/create-a-task.md)
   * [Label Types](portal-guide/annotate/label-types.md)
   * [Labeling Tools](portal-guide/annotate/labeling-tools.md)
+  * [AI Assist](portal-guide/annotate/ai-assist.md)
   * [Workforce Management](portal-guide/annotate/workforce-management.md)
+  * [Review](portal-guide/annotate/review.md)
   * [Training Data](portal-guide/annotate/training-data.md)
   * [Positive and Negative Annotations](portal-guide/annotate/positive-and-negative-annotations.md)
 * [Enlight Train](portal-guide/model/README.md)
@@ -131,6 +134,7 @@
 
 * [Upcoming API Changes](product-updates/upcoming-api-changes.md)
 * [Changelog](product-updates/changelog/README.md)
+  * [Release 7.0](product-updates/changelog/release70.md)
   * [Release 6.11](product-updates/changelog/release611.md)
   * [Release 6.10](product-updates/changelog/release610.md)
   * [Release 6.9](product-updates/changelog/release69.md)
@@ -145,4 +149,3 @@
   * [Release 6.0](product-updates/changelog/release60.md)
   * [Release 5.11](product-updates/changelog/release511.md)
   * [Release 5.10](product-updates/changelog/release510.md)
-

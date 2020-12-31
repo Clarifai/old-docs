@@ -4,7 +4,7 @@ description: Manage and delegate your labeling work with tasks.
 
 # Create a Task
 
-{% embed url="https://youtu.be/7AQLsVq5RLQ" caption="Clarifai Labeler: Creating Tasks" %}
+{% embed url="https://youtu.be/7AQLsVq5RLQ" caption="Clarifai Scribe: Creating Tasks" %}
 
 Tasks enable you delegate labeling jobs to your team.
 
@@ -67,4 +67,3 @@ Enable AI-assisted workflow predictions in your labeling project. You must first
 ## Video FPS
 
 Select your preferred video sample rate. This is the integer value that represents the number of frames that we can capture per second. We do not currently sample video at fractional frame rates.
-

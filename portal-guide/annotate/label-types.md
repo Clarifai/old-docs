@@ -4,7 +4,7 @@ description: Learn about the different types of labels that are possible with Sc
 
 # Label Types
 
-Labeler provides three basic label types for your images and videos. These label types provide increasing levels of granularity to support the needs of your specific use case.
+Scribe provides three basic label types for your images and videos. These label types provide increasing levels of granularity to support the needs of your specific use case.
 
 ## Classification
 
@@ -29,4 +29,3 @@ Provide annotation within a single box-shaped region of an image or video. To us
 Provide annotation within any polygon-shaped region of an image or video.
 
 ![](../../.gitbook/assets/polygon.jpg)
-
