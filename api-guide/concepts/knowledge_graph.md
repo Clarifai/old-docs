@@ -319,25 +319,25 @@ You can create these mappings in your application with a few easy steps.
 
 1. Consider the following application that has four concepts: beverages, smoothie, breakfast, and french\_toast. You can use the Knowledge Graph to create hierarchical relationships between the concepts.
 
-![](../../.gitbook/assets/kg1%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
+![](../../.gitbook/assets/kg1%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.png)
 
 1. You can link concepts as hierarchical by going to the details of either of the concepts. In the shown application, french\_toast falls under breakfast. You can link them by accessing the View Details section of either concept.
 
-![](../../.gitbook/assets/kg2%20%282%29%20%282%29%20%283%29%20%283%29%20%282%29.png)
+![](../../.gitbook/assets/kg2%20%282%29%20%282%29%20%283%29%20%283%29%20%282%29%20%281%29.png)
 
 1. Once, in the details dashboard, you can link breakfast as a hypernym to french\_toast under the Input Relations menu.
 
-![](../../.gitbook/assets/kg3%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
+![](../../.gitbook/assets/kg3%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29.png)
 
 1. Once you list breakfast as a hypernym to french\_toast, it will set french\_toast as a hyponym to breakfast automatically.
 
-![](../../.gitbook/assets/kg4%20%281%29%20%283%29%20%283%29%20%283%29%20%283%29%20%282%29.png)
+![](../../.gitbook/assets/kg4%20%281%29%20%283%29%20%283%29%20%283%29%20%283%29%20%282%29%20%284%29.png)
 
 1. This process can be used to create similar relationships between beverages and smoothie. Beverages will be listed as a hypernym to smoothie.
 
-![](../../.gitbook/assets/kg5%20%282%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29.png)
+![](../../.gitbook/assets/kg5%20%282%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%287%29.png)
 
 1. By doing this, smoothie will be listed as a hyponym to beverages automatically.
 
-![](../../.gitbook/assets/kg6%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
+![](../../.gitbook/assets/kg6%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
 
