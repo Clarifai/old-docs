@@ -6,7 +6,7 @@ description: Expert data labeling services.
 
 You don't need to hire, train and manage your own labeling team. With Clarifai's Data Labeling Services you can start your project right away and have the work taken care of by Clarifai's dedicated team of expert labelers. This service is available to Essential and Professional Plan customers.
 
-## 3 Easy Steps to Placing an Order for Scribe LabelForce 
+## 3 Easy Steps to Placing an Order for Scribe LabelForce
 
 1. Create a new app or start with an existing project.
 2. Go to the [Data](../portal-guide/data/) tab on the lefthand side of the screen and upload your inputs. Currently we provide labeling services for image and video data. You can find out more about supported data types [here](https://docs.clarifai.com/api-guide/data/supported-formats). 
