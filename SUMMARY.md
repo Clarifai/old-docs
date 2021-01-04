@@ -15,6 +15,7 @@
   * [Scopes](getting-started/authentication/scopes.md)
   * [Authorize](getting-started/authentication/authorize.md)
   * [2FA](getting-started/authentication/2-factor-authentication.md)
+  * [Roll-Based Access Control](getting-started/authentication/rbac.md)
 * [Glossary](getting-started/glossary.md)
 
 ## How-To
@@ -149,4 +150,3 @@
   * [Release 6.0](product-updates/changelog/release60.md)
   * [Release 5.11](product-updates/changelog/release511.md)
   * [Release 5.10](product-updates/changelog/release510.md)
-
