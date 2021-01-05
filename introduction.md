@@ -53,7 +53,7 @@ Workflows allow you to link multiple models together so that you can build compl
 
 ### Armada Predict
 
-![](.gitbook/assets/predictions%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.jpg)
+![](.gitbook/assets/predictions%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%284%29%20%281%29.jpg)
 
 Predictions are the basic "output" of machine learning models. Predictions are returned as a list of concepts with corresponding probabilities that tell you how confident your model is with a given prediction.
 

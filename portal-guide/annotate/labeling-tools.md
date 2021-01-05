@@ -8,13 +8,13 @@ description: Learn about the labeling tools that are available to you in Scribe.
 
 Scribe provides special tools for working with images and video.
 
-![label bounding box](../../.gitbook/assets/label_bounding_box%20%281%29%20%281%29.jpg)
+![Easily label images with bounding boxes](../../.gitbook/assets/label_bounding_box%20%281%29%20%283%29%20%281%29.jpg)
 
 ## Images
 
 ### Brightness, saturation and color inversion
 
-![invert colors](../../.gitbook/assets/brightness.jpg) ![](../../.gitbook/assets/saturation.jpg) ![](../../.gitbook/assets/invert%20%281%29.jpg)
+![invert colors](../../.gitbook/assets/brightness.jpg) ![](../../.gitbook/assets/saturation.jpg) ![](../../.gitbook/assets/invert%20%283%29%20%282%29.jpg)
 
 You can enhance the visibility of your photos with image adjustments. Image adjustments can be combined. Just click reset to return to the original version of your input.
 
@@ -26,7 +26,7 @@ Powerful zoom and panning features allow you to closely inspect specific regions
 
 ## Shortcuts
 
-![scribe shortcuts](../../.gitbook/assets/shortcuts.jpg)
+![Scribe offers many helpful shortcuts for faster data labeling](../../.gitbook/assets/shortcuts.jpg)
 
 ### General Keyboard shortcuts
 
@@ -48,7 +48,7 @@ Scribe provides powerful tools for labeling video. When working with video, you 
 
 Interpolation allows you to quickly label multiple frames of video with the same concept. Simply select the interpolation icon and draw a bounding box around the object that you would like to label. Then scrub the video player to a new point in the video and move and adjust the bounding box to the new location of the object. Interpolation will automatically draw a series of bounding boxes between them.
 
-![video interpolation](../../.gitbook/assets/interpolation%20%281%29%20%281%29%20%281%29.jpg)
+![Label multiple frames of video with video interpolation](../../.gitbook/assets/interpolation%20%281%29%20%281%29%20%281%29.jpg)
 
 ### Video Keyboard shortcuts
 
@@ -59,7 +59,9 @@ Interpolation allows you to quickly label multiple frames of video with the same
 
 ## Text
 
-Scribe makes it easy to label your text data. You can review text inputs in the same view that you would reveiw images for classification tasks.
+Scribe makes it easy to label your text data. You can review text inputs in the same view that you would review images for classification tasks.
 
-![label text](../../.gitbook/assets/label-text.jpg)
+![Label text data in Scribe](../../.gitbook/assets/label-text.jpg)
+
+
 

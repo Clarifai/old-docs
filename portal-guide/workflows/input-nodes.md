@@ -40,7 +40,7 @@ Click the "four squares" icon on the lefthand sidebar to enter Model Mode.
 
 Click the blue `Create Custom Model` button at the top righthand corner of the screen to create any custom models that you might need for your app.
 
-![](../../.gitbook/assets/create_custom_model%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%284%29.jpg)
+![](../../.gitbook/assets/create_custom_model%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%284%29.jpg)
 
 ### Create your workflow
 
@@ -60,5 +60,5 @@ Finally you will need to connect the `Input Nodes` in your workflow. You can lin
 
 To activate your new workflow in your app, head back to the "App Overview" page, and change your `Base Workflow` to the new workflow that you have just created and click the checkbox.
 
-![](../../.gitbook/assets/change_base_workflow%20%282%29.jpg)
+![](../../.gitbook/assets/change_base_workflow%20%283%29%20%282%29.jpg)
 

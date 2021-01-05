@@ -8,7 +8,7 @@ description: Manage and delegate your labeling work with tasks.
 
 Tasks enable you delegate labeling jobs to your team.
 
-![](../../.gitbook/assets/task_overview%20%281%29%20%281%29.jpg)
+![Create a task and start labeling](../../.gitbook/assets/task_overview%20%281%29%20%281%29.jpg)
 
 ## Task Name and Instructions
 
