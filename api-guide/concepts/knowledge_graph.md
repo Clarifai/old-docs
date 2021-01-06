@@ -336,7 +336,7 @@ You can create these mappings in your application with a few easy steps.
 
 1. Once, in the details dashboard, you can link breakfast as a hypernym to french\_toast under the Input Relations menu.
 
-![](../../.gitbook/assets/kg3%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%285%29.png)
+![](../../.gitbook/assets/kg3%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%285%29.png)
 
 1. Once you list breakfast as a hypernym to french\_toast, it will set french\_toast as a hyponym to breakfast automatically.
 
@@ -344,9 +344,9 @@ You can create these mappings in your application with a few easy steps.
 
 1. This process can be used to create similar relationships between beverages and smoothie. Beverages will be listed as a hypernym to smoothie.
 
-![](../../.gitbook/assets/kg5%20%282%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%284%29.png)
+![](../../.gitbook/assets/kg5%20%282%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29%20%284%29.png)
 
 1. By doing this, smoothie will be listed as a hyponym to beverages automatically.
 
-![](../../.gitbook/assets/kg6%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%286%29.png)
+![](../../.gitbook/assets/kg6%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%286%29%20%286%29.png)
 
