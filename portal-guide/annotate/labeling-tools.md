@@ -4,13 +4,13 @@
 
 Labeler provides special tools for working with images and video.
 
-![](../../.gitbook/assets/label_bounding_box%20%281%29.jpg)
+![](../../.gitbook/assets/label_bounding_box%20%281%29%20%283%29.jpg)
 
 ## Images
 
 ### Brightness, saturation and color inversion
 
-![](../../.gitbook/assets/brightness.jpg) ![](../../.gitbook/assets/saturation.jpg) ![](../../.gitbook/assets/invert%20%282%29.jpg)
+![](../../.gitbook/assets/brightness.jpg) ![](../../.gitbook/assets/saturation.jpg) ![](../../.gitbook/assets/invert%20%283%29%20%281%29.jpg)
 
 You can enhance the visibility of your photos with image adjustments. Image adjustments can be combined. Just click reset to return to the original version of your input.
 
