@@ -12,21 +12,21 @@ This enables you to speed-up and scale-up your annotation process while ensuring
 
 To begin, create your application and upload your inputs.
 
-![](../../.gitbook/assets/create_auto_annotation_demo%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.jpg)
+![](../../.gitbook/assets/create_auto_annotation_demo%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%284%29%20%282%29.jpg)
 
 ![](../../.gitbook/assets/auto_annotation_app_details.jpg)
 
 Upload files from your computer, or add image and video URLs.
 
-![](../../.gitbook/assets/add_inputs_auto_demo%20%281%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%284%29.jpg)
+![](../../.gitbook/assets/add_inputs_auto_demo%20%281%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%285%29%20%284%29.jpg)
 
 Create the concepts that you would like to use for your model. Click create new concept in the lefthand sidebar. In this tutorial we'll create concepts that describe people based on activities they do in the park: `walker`, `runner`, `bike_rider`, `rollerblader` and `stroller`.
 
-![](../../.gitbook/assets/create_concepts_auto_a%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29.jpg)
+![](../../.gitbook/assets/create_concepts_auto_a%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%284%29%20%283%29.jpg)
 
 Label your inputs with the appropriate concepts by clicking the checkmark box.
 
-![](../../.gitbook/assets/label_inputs_aa%20%281%29%20%281%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29.jpg)
+![](../../.gitbook/assets/label_inputs_aa%20%281%29%20%281%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%285%29%20%281%29.jpg)
 
 ## Navigate to the Model Gallery
 
@@ -38,9 +38,9 @@ Now it is time to create some custom models.
 
 A Context-Based Classifier lets you create a custom classification model that will predict the concepts you have created. Choose a `DISPLAY NAME` and click in the `OUTPUT_INFO.DATA.CONCEPTS` box to select the concepts that you would like included in your model. Finally, click "Create Model" and then click "Train Model" in the next page.
 
-![](../../.gitbook/assets/create_cbc_aa%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.jpg)
+![](../../.gitbook/assets/create_cbc_aa%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29.jpg)
 
-![](../../.gitbook/assets/train_cbc_aa%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.jpg)
+![](../../.gitbook/assets/train_cbc_aa%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%284%29%20%281%29.jpg)
 
 ## Create `GREATER THAN` and `LESS THAN` Concept Thresholder models
 
@@ -52,7 +52,7 @@ Concept Thresholders help you route your data based on the confidence of your pr
 
 The Annotation Writer writes each annotation with a specific concept, status and user. Create one Annotation Writer that will write the annotation with the `ANNOTATION_SUCCESS` status and choose the user \(possibly yourself\) under `OUTPUT_INFO.PARAMS.ANNOTATION_USER_ID`. Create a second Annotation Writer that will write with the `ANNOTATION_PENDING` status.
 
-![](../../.gitbook/assets/annotation_writer%20%281%29%20%281%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%282%29.jpg)
+![](../../.gitbook/assets/annotation_writer%20%281%29%20%281%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%284%29%20%282%29.jpg)
 
 ## Create the workflow
 
@@ -62,7 +62,7 @@ The Context-Based Classifier will return list of concepts for each of your input
 
 The `LESS THAN` model will filter out the concepts with low prediction scores. The remaining concept list will be sent to `WRITE PENDING`. Concepts will then be written to the input with `PENDING` status.
 
-![](../../.gitbook/assets/create_workflow_aa%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.jpg)
+![](../../.gitbook/assets/create_workflow_aa%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%284%29.jpg)
 
 ![](../../.gitbook/assets/connect_nodes_aa%20%283%29.jpg)
 
@@ -70,13 +70,13 @@ The `LESS THAN` model will filter out the concepts with low prediction scores. T
 
 Make this the default workflow in the app, so it will run every time we add an input and execute the auto annotation process. If the workflow is not the default workflow of your app you can still use PostWorkflowResults on new inputs to check that you configured the workflow graph and your models properly but the data will not be written to the DB. This is recommended before making it your default workflow and adding inputs to you app.
 
-![](../../.gitbook/assets/set_as_default%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%284%29.jpg)
+![](../../.gitbook/assets/set_as_default%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%284%29%20%284%29.jpg)
 
 ## Add new images
 
 Adding new images will trigger the default workflow in your app.
 
-![](../../.gitbook/assets/add_additional_inputs%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.jpg)
+![](../../.gitbook/assets/add_additional_inputs%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%284%29%20%282%29.jpg)
 
 ## View Annotations in Explorer
 
