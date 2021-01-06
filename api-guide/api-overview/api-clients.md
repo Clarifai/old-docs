@@ -120,8 +120,7 @@ npm install clarifai-nodejs-grpc
 // Initialize client
 ///////////////////////////////////////////////////////////////////////////////
 
-const {ClarifaiStub} = require("clarifai-nodejs-grpc");
-const grpc = require("@grpc/grpc-js");
+const {ClarifaiStub, grpc} = require("clarifai-nodejs-grpc");
 
 const stub = ClarifaiStub.grpc();
 
