@@ -4,7 +4,7 @@ Annotations \(also known as "labels"\) are how you prepare training data to "tea
 
 Clarifai Labeler offers custom tools for labeling image and video datasets, and helps you delegate and manage labeling projects of any size.
 
-![](../../.gitbook/assets/annotate%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.jpg)
+![](../../.gitbook/assets/annotate%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.jpg)
 
 {% hint style="info" %}
 ## Data Labeling Services
