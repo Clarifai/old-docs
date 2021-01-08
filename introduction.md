@@ -33,15 +33,15 @@ Applications are the basic containers for your AI projects. You can create as ma
 
 Annotations \(sometimes called "labels"\) are how we "teach" machines to learn new ideas. When you want to create a custom model for your business, you do this by training this model to recognize the concepts that you have annotated on your training data.
 
-[![](.gitbook/assets/api%20%284%29%20%2812%29.jpg) Annotation API](api-guide/annotate/) / [![](.gitbook/assets/icon_portal%20%2813%29%20%289%29%20%283%29%20%2817%29.jpg) Annotation with Portal](portal-guide/annotate/)
+[![](.gitbook/assets/api%20%284%29%20%2812%29.jpg) Annotation API](api-guide/annotate/) / [![](.gitbook/assets/icon_portal%20%2813%29%20%289%29%20%283%29%20%2824%29.jpg) Annotation with Portal](portal-guide/annotate/)
 
 ### Model
 
-![](.gitbook/assets/model_mode%20%285%29%20%285%29%20%287%29%20%287%29%20%283%29%20%282%29.jpg)
+![](.gitbook/assets/model_mode%20%285%29%20%285%29%20%287%29%20%287%29%20%283%29%20%284%29.jpg)
 
 Models are where the "thinking" happens in your AI application. Clarifai supports a variety of different [types of models](https://docs.clarifai.com/portal-guide/model/model-types.md), including "machine learning" models that can learn new things from your training data and fixed-function model operators that help you control the way that your models interact.
 
-[![](.gitbook/assets/api%20%284%29%20%288%29.jpg) Model API](api-guide/model/) / [![](.gitbook/assets/icon_portal%20%2813%29%20%289%29%20%283%29%20%2824%29.jpg) Model with Portal](portal-guide/model/)
+[![](.gitbook/assets/api%20%284%29%20%288%29.jpg) Model API](api-guide/model/) / [![](.gitbook/assets/icon_portal%20%2813%29%20%289%29%20%283%29%20%2831%29.jpg) Model with Portal](portal-guide/model/)
 
 ### Workflows
 
@@ -53,11 +53,11 @@ Workflows allow you to link multiple models together so that you can build compl
 
 ### Predict
 
-![](.gitbook/assets/predictions%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%284%29%20%284%29.jpg)
+![](.gitbook/assets/predictions%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%284%29.jpg)
 
 Predictions are the basic "output" of machine learning models. Predictions are returned as a list of concepts with corresponding probabilities that tell you how confident your model is with a given prediction.
 
-[![](.gitbook/assets/api%20%284%29.jpg) Predict API](api-guide/predict/) / [![](.gitbook/assets/icon_portal%20%2813%29%20%289%29%20%283%29%20%2815%29.jpg) Predict with Portal](https://github.com/Clarifai/docs/tree/b4d75d8274dc9af9b2cfc5c92933e4431f9bfcef/portal-guide/ppredict/README.md)
+[![](.gitbook/assets/api%20%284%29.jpg) Predict API](api-guide/predict/) / [![](.gitbook/assets/icon_portal%20%2813%29%20%289%29%20%283%29%20%2822%29.jpg) Predict with Portal](https://github.com/Clarifai/docs/tree/b4d75d8274dc9af9b2cfc5c92933e4431f9bfcef/portal-guide/ppredict/README.md)
 
 ### Search
 
@@ -65,5 +65,5 @@ Predictions are the basic "output" of machine learning models. Predictions are r
 
 Clarifai's patented technology automatically indexes your media for search. Concepts in your models can be used as search terms. You can also search with images to find similar images. We offer numerous search types that can be combined to filter and sort your data.
 
-[![](.gitbook/assets/api%20%284%29%20%286%29.jpg) Search API](api-guide/predict/) / [![](.gitbook/assets/icon_portal%20%2813%29%20%289%29%20%283%29%20%2832%29.jpg) Search with Portal](portal-guide/psearch/)
+[![](.gitbook/assets/api%20%284%29%20%286%29.jpg) Search API](api-guide/predict/) / [![](.gitbook/assets/icon_portal%20%2813%29%20%289%29%20%283%29%20%2839%29.jpg) Search with Portal](portal-guide/psearch/)
 

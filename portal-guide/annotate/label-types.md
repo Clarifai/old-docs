@@ -14,7 +14,7 @@ Provide annotation within a single box-shaped region of an image or video. To us
 
 ### Detection for Still Images
 
-![Bounding box detection for still image](../../.gitbook/assets/detector_label%20%283%29.jpg)
+![Bounding box detection for still image](../../.gitbook/assets/detector_label.jpg)
 
 ### Detection for Video
 

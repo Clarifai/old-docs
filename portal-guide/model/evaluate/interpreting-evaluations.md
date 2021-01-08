@@ -1,6 +1,6 @@
 # Interpreting Evaluations
 
-![](../../../.gitbook/assets/eval-results-new%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%286%29.png)
+![](../../../.gitbook/assets/eval-results-new%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29.png)
 
 Once the Model Evaluation is complete, you’ll be able to view the evaluation results in Portal.
 
@@ -12,7 +12,7 @@ Generally, you’ll be looking at results that represent either a\) the average 
 
 ### Model Accuracy Score
 
-![model eval results](../../../.gitbook/assets/model-score-new%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%283%29%20%281%29.png)
+![model eval results](../../../.gitbook/assets/model-score-new%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%281%29.png)
 
 Model Accuracy Score is the highest level metric for your model’s prediction performance. It is defined as the macro average of the areas under the receiver operating characteristic curve for every concept. This metric does not depend on the Prediction Threshold. This metric is an average across K splits.
 
@@ -48,7 +48,7 @@ Once we have determined the goal of our model \(high precision or high recall\),
 
 ### Evaluation Summary
 
-![model eval summary](../../../.gitbook/assets/eval-summary-table%20%282%29%20%282%29%20%283%29%20%285%29%20%285%29%20%285%29%20%285%29%20%287%29%20%281%29.png)
+![model eval summary](../../../.gitbook/assets/eval-summary-table%20%282%29%20%282%29%20%283%29%20%285%29%20%285%29%20%285%29%20%285%29%20%281%29.png)
 
 This table summarizes the numerical evaluation results for every concept. For every concept, it calculates:
 
@@ -86,7 +86,7 @@ A concept-by-concept matrix is a graphic flattening of data to show what has bee
 
 Each row represents the subset of the test set that were actually labeled as a concept, e.g. “dog”. As you go across the row, each cell shows the number of times those images were predicted as each concept, noted by the column name.
 
-![](../../../.gitbook/assets/concept_by_concept%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%283%29.png)
+![](../../../.gitbook/assets/concept_by_concept%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29.png)
 
 This matrix helps you understand:
 
@@ -100,7 +100,7 @@ This matrix helps you understand:
 
 #### Counts \(1-Split\)
 
-![concept by concept results](../../../.gitbook/assets/cxc-result%20%282%29%20%282%29.png)
+![concept by concept results](../../../.gitbook/assets/cxc-result%20%282%29%20%284%29.png)
 
 The "count" is the the number of inputs that were predicted as a concept.
 
@@ -155,7 +155,7 @@ Note: the prediction probabilities on this table may seem different from your ac
 
 ### Expanded Selection Details
 
-![expanded](../../../.gitbook/assets/expanded-new%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%282%29%20%283%29.png)
+![expanded](../../../.gitbook/assets/expanded-new%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%283%29.png)
 
 You can click on the expand button to view the prediction probabilities for every concept for each image. The blue dot denotes the concept\(s\) the input was actually labeled, i.e. true positives. The red dot denotes the concept\(s\) that the input was not labeled.
 
