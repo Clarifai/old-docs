@@ -60,7 +60,7 @@ Click on an input and add new concepts in the right hand sidebar. Just click in 
 
 ## Navigate to Model Mode
 
-![](../../.gitbook/assets/model_mode%20%285%29%20%285%29%20%287%29%20%287%29%20%283%29%20%284%29.jpg)
+![](../../.gitbook/assets/model_mode%20%285%29%20%285%29%20%287%29%20%287%29%20%283%29%20%287%29.jpg)
 
 ## Select Context-based Classifier
 

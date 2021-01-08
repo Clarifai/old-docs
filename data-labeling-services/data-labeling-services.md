@@ -43,5 +43,5 @@ By saving your searches, you can slice and dice your dataset, and configure dyna
 
 Here just click on "Use Clarifai's Labelers", choose your "Delivery Speed" and click "Place Order". We will validate your labeling instructions and get started right away. Once your labeling task is complete, you will be able to review the results in [Explorer](https://portal.clarifai.com/). You will be billed at the end of your billing cycle.
 
-![Take advantage of special promotional pricing on LabelForce](../.gitbook/assets/standard-promo%20%281%29.jpg)
+![Take advantage of special promotional pricing on LabelForce](../.gitbook/assets/standard-promo.jpg)
 

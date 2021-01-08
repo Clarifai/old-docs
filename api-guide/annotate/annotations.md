@@ -2022,7 +2022,7 @@ curl -X DELETE \
 You can delete multiple annotations in one API call. You need to provide a list of input IDs and a list of annotation IDs. The number of input IDs has to match number of annotation IDs.
 
 {% tabs %}
-
+{% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -2038,7 +2038,9 @@ delete_annotations_response = stub.DeleteAnnotations(
 if delete_annotations_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Delete annotations failed, status: " + delete_annotations_response.status.description)
 ```
+{% endtab %}
 
+{% tab title="gRPC Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -2059,7 +2061,9 @@ if (deleteAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Delete annotations failed, status: " + deleteAnnotationsResponse.getStatus());
 }
 ```
+{% endtab %}
 
+{% tab title="gRPC NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -2081,8 +2085,10 @@ stub.DeleteAnnotations(
     }
 );
 ```
+{% endtab %}
 
-```text
+{% tab title="cURL" %}
+```bash
 curl -X DELETE \
   -H "Authorization: Key YOUR_API_KEY" \
   -d '
@@ -2092,6 +2098,8 @@ curl -X DELETE \
   }'\
   https://api.clarifai.com/v2/annotations
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Bulk Delete All Annotations by Input IDs
 

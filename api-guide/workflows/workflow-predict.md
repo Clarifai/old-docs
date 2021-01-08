@@ -8,7 +8,7 @@ The Workflow Predict API allows you to predict using 1 or more model\(s\), regar
 
 Now that you have that all set up, you will be able to predict under a workflow using the `POST /v2/workflows/{workflow_id}/results` endpoint. Your `{workflow-id}` currently is whatever you set as your ID. Then as far as your request body, nothing has changed with how you would normally do a predict. In the response body, you will see a `results` object and each object will be the response from the models in the same ordering from the workflow you set up.
 
-![Image showing the Portal&apos;s workflow prediction results](../../.gitbook/assets/preview-workflows-new%20%282%29%20%282%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%285%29%20%285%29.png)
+![Image showing the Portal&apos;s workflow prediction results](../../.gitbook/assets/preview-workflows-new%20%282%29%20%282%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%285%29.png)
 
 You can also use the Explorer in Clarifai Portal to see the results of your workflow's predictions on a given input.
 
@@ -130,110 +130,6 @@ for output in results.outputs:
     print("Predicted concepts for the model `%s`" % model.name)
     for concept in output.data.concepts:
         print("\t%s %.2f" % (concept.name, concept.value))
-```
-{% endtab %}
-
-{% tab title="js" %}
-```javascript
-app.workflow.predict('{workflow-id}', "https://samples.clarifai.com/metro-north.jpg").then(
-    function(response){
-      // Do something with response
-    },
-    function(err){
-      // There was an error
-    }
-);
-```
-{% endtab %}
-
-{% tab title="python" %}
-```python
-from clarifai.rest import ClarifaiApp
-from clarifai.rest import Workflow
-
-app = ClarifaiApp(api_key='YOUR_API_KEY')
-workflow = Workflow(app.api, workflow_id="YOUR_WORKFLOW_ID")
-
-response = workflow.predict_by_url('https://samples.clarifai.com/metro-north.jpg')
-```
-{% endtab %}
-
-{% tab title="java" %}
-```java
-client.workflowPredict("{workflow-id}")
-        .withInputs(ClarifaiInput.forImage("https://samples.clarifai.com/metro-north.jpg"))
-        .executeSync();
-```
-{% endtab %}
-
-{% tab title="csharp" %}
-```csharp
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Clarifai.API;
-using Clarifai.DTOs.Inputs;
-
-namespace YourNamespace
-{
-    public class YourClassName
-    {
-        public static async Task Main()
-        {
-            var client = new ClarifaiClient("YOUR_API_KEY");
-
-            await client.WorkflowPredict(
-                    "{workflow-id}",
-                    new List<IClarifaiInput>
-                    {
-                        new ClarifaiURLImage("https://samples.clarifai.com/puppy.jpeg")
-                    })
-                .ExecuteAsync();
-        }
-    }
-}
-```
-{% endtab %}
-
-{% tab title="objective-c" %}
-```text
-// Coming Soon
-```
-{% endtab %}
-
-{% tab title="php" %}
-```php
-use Clarifai\API\ClarifaiClient;
-use Clarifai\DTOs\Inputs\ClarifaiURLImage;
-use Clarifai\DTOs\Predictions\Concept;
-use Clarifai\DTOs\Workflows\WorkflowPredictResult;
-
-$client = new ClarifaiClient('YOUR_API_KEY');
-
-$response = $client->workflowPredict('your-workflow-id',
-        new ClarifaiURLImage('https://samples.clarifai.com/puppy.jpeg'))
-    ->executeSync();
-
-if ($response-> isSuccessful()) {
-    echo "Response is successful.\n";
-
-    /** @var WorkflowPredictResult $workflowResult */
-    $workflowResult = $response->get();
-
-    echo "Predicted concepts:\n";
-    /** @var Concept $concept */
-    foreach ($workflowResult->workflowResult()->predictions() as $output) {
-        echo 'Predictions for output ' . $output->id() . "\n";
-        /** @var Concept $concept */
-        foreach ($output->data() as $concept) {
-            echo "\t" . $concept->name() . ': ' . $concept->value() . "\n";
-        }
-    }
-} else {
-    echo "Response is not successful. Reason: \n";
-    echo $response->status()->description() . "\n";
-    echo $response->status()->errorDetails() . "\n";
-    echo "Status code: " . $response->status()->statusCode();
-}
 ```
 {% endtab %}
 
