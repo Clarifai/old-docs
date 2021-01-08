@@ -13,7 +13,7 @@ With saved searches you can capture your search results at a given point in time
 
 ## Click save in the search bar
 
-![](../../.gitbook/assets/saved_search%20%282%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%285%29%20%285%29.jpg)
+![](../../.gitbook/assets/saved_search%20%282%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%285%29.jpg)
 
 ## Name your search
 
@@ -27,5 +27,5 @@ You have the option to preserve the current search results as they are. Adding o
 
 You can access your saved search by navigating to the "Saved Searches" section at the top of the sidebar.
 
-![](../../.gitbook/assets/saved_searches_list%20%282%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%285%29%20%283%29.jpg)
+![](../../.gitbook/assets/saved_searches_list%20%282%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29.jpg)
 
