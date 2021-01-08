@@ -2,15 +2,15 @@
 
 To set up a new model, you will need to head over to the [Applications page](https://portal.clarifai.com/apps) through your account. Start by creating your new application.
 
-![](../../.gitbook/assets/create_an_application%20%283%29.jpg)
+![](../../.gitbook/assets/create_an_application.jpg)
 
 Click "View in Explorer", or click the "eye" icon in the lefthand sidebar.
 
-![](../../.gitbook/assets/view_in_explorer%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%284%29.jpg)
+![](../../.gitbook/assets/view_in_explorer%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.jpg)
 
 Add your inputs. Just click "browse your files" or paste image URLs in the space provided.
 
-![](../../.gitbook/assets/Add_inputs%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29.jpg)
+![](../../.gitbook/assets/Add_inputs%20%282%29%20%282%29%20%282%29%20%282%29%20%284%29.jpg)
 
 Click on an image. You can create new concepts and label your images in the right hand sidebar.
 
@@ -18,7 +18,7 @@ Click on an image. You can create new concepts and label your images in the righ
 
 Navigate to Model Mode and select your model. Click on the "four squares" icon on the lefthand sidebar.
 
-![](../../.gitbook/assets/model_gallery%20%281%29%20%283%29%20%283%29%20%282%29%20%285%29.jpg)
+![](../../.gitbook/assets/model_gallery%20%281%29%20%283%29%20%283%29%20%282%29%20%287%29.jpg)
 
 Click "Create Custom Model" to choose a model template. You can filter your results by:
 
@@ -26,7 +26,7 @@ Click "Create Custom Model" to choose a model template. You can filter your resu
 * **Input** Inputs currently accept Embeddings, Concepts, Image, Image or Video, Region Images, or Region Concepts.
 * **Output** Outputs currently return Clusters, Color, Concepts, Embeddings, Region Embeddings, Region Concepts, Region Images, or Region Text.
 
-![](../../.gitbook/assets/create_custom_model%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%283%29.jpg)
+![](../../.gitbook/assets/create_custom_model%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29.jpg)
 
 For this example we choose a context-based classifier that can use a pre-trained Clarifai Model. From here we name the model, and add concepts that we have created. The available parameters vary based on the type of model that you choose. When you have configured the model the way you like it, click the "Create Model" button at the bottom of the page.
 
@@ -34,5 +34,5 @@ For this example we choose a context-based classifier that can use a pre-trained
 
 Finally, click the blue "Train Model" button in the upper righthand corner of the screen. Once it is trained you can put it to work by [adding it to your workflows](https://docs.clarifai.com/portal-guide/workflows).
 
-![](../../.gitbook/assets/train_model%20%283%29%20%282%29.jpg)
+![](../../.gitbook/assets/train_model%20%283%29.jpg)
 
