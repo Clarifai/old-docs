@@ -62,3 +62,4 @@ Interpolation allows you to quickly label multiple frames of video with the same
 Scribe makes it easy to label your text data. You can review text inputs in the same view that you would reveiw images for classification tasks.
 
 ![label text](../../.gitbook/assets/label-text.jpg)
+

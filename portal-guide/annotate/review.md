@@ -7,10 +7,11 @@ description: Review the work performed by your labelers.
 Clarifai provides many useful tools and features to help you manage your labeling workforce and review their work for quality control and training purposes.
 
 When you create a new task, you can chose between two review strategies:
+
 * **Manual Review** - Review and approve each labeled input individually.
 * **Consensus Review** - If you have multiple labelers who are each labeling the same inputs, you can use consensus review to help automate the process of reviewing your labelers work. Consensus review will automatically identify cases where your reviewers agree on a given label, so that you can quickly approve labels where multiple labelers agree.
 
-![tasks for review](../../.gitbook/assets/tasks-for-review.jpg)
+![tasks for review](https://github.com/Clarifai/docs/tree/7e99cb3b97df935e4b39bee27cb9ae0ecb3c8c67/.gitbook/assets/tasks-for-review.jpg)
 
 ## Manual Review
 
@@ -47,3 +48,4 @@ Consensus review is a fantastic tool if your labeling task involves multiple lab
 You will see a "worker" tab in the righthand sidebar when reviewing labels. Any time the annotations of more than one worker agree you will see a double check mark next to the concept. You can approve labels that have been added by one worker, or even reject the labels of all of your workers if the labels do not meet your quality standards.
 
 ![consensus review](../../.gitbook/assets/consensus-review.jpg)
+

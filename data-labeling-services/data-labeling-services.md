@@ -4,7 +4,7 @@ description: Expert data labeling services.
 
 # Scribe LabelForce
 
-You don't need to hire, train and manage your own labeling team. With Clarifai's Data Labeling Services you can start your project right away and have the work taken care of by Clarifai's dedicated team of expert labelers. 
+You don't need to hire, train and manage your own labeling team. With Clarifai's Data Labeling Services you can start your project right away and have the work taken care of by Clarifai's dedicated team of expert labelers.
 
 ## 3 Easy Steps to Placing an Order for Scribe LabelForce
 
@@ -44,3 +44,4 @@ By saving your searches, you can slice and dice your dataset, and configure dyna
 Here just click on "Use Clarifai's Labelers", choose your "Delivery Speed" and click "Place Order". We will validate your labeling instructions and get started right away. Once your labeling task is complete, you will be able to review the results in [Explorer](https://portal.clarifai.com/). You will be billed at the end of your billing cycle.
 
 ![Take advantage of special promotional pricing on LabelForce](../.gitbook/assets/standard-promo.jpg)
+

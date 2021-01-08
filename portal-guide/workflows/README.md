@@ -11,7 +11,3 @@ Use Mesh Workflows to process complex logic, gain insights and build targeted so
 
 ![](../../.gitbook/assets/mesh.svg)
 
-
-
-
-

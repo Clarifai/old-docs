@@ -29,3 +29,4 @@ Provide annotation within a single box-shaped region of an image or video. To us
 Provide annotation within any polygon-shaped region of an image or video.
 
 ![](../../.gitbook/assets/polygon.jpg)
+

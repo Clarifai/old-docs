@@ -1,5 +1,7 @@
 ---
-description: Use Clarifai models or your own custom models to provide assistance in your labeling tasks.
+description: >-
+  Use Clarifai models or your own custom models to provide assistance in your
+  labeling tasks.
 ---
 
 # AI Assist
@@ -41,3 +43,4 @@ Once a task is created your labelers can review and label your inputs. Labels wi
 ![label text](../../.gitbook/assets/aiAssistConceptThreshold.jpg)
 
 Labelers can also add, remove, or change their own labels.
+
