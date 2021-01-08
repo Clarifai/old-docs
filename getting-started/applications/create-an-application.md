@@ -4,7 +4,7 @@ To create an application, head on over to the [applications page](https://portal
 
 ## Create an application in Portal
 
-![](../../.gitbook/assets/create-new-app-new%20%282%29%20%282%29%20%284%29%20%286%29%20%286%29%20%286%29%20%286%29%20%283%29%20%2810%29.png)
+![](../../.gitbook/assets/create-new-app-new%20%282%29%20%282%29%20%284%29%20%286%29%20%286%29%20%286%29%20%286%29%20%2810%29.png)
 
 {% hint style="info" %}
 You can also set the default language so that you can create, train and search on concepts in your own language. Please keep in mind that pre-trained model concepts currently only work in English.
@@ -33,5 +33,5 @@ curl --location --request POST 'https://api.clarifai.com/v2/users/{{user_id}}/ap
 
 You can also create an application by cloning an existing application. Cloning an existing application can be a great way to start a new project, or branch and existing one. We’ve made cloning easy with a simple interface in Portal. Just click “Create a copy” in the bottom-right corner of your app on the app management page.
 
-![](../../.gitbook/assets/app_duplication%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%284%29%20%282%29.jpg)
+![](../../.gitbook/assets/app_duplication%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%282%29.jpg)
 

@@ -20,5 +20,5 @@ Click the check mark and then click train.
 
 That's it! You have created a new custom model and you can instantly use your new concept as a search term.
 
-![](../../.gitbook/assets/ready%20to%20search%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.jpg)
+![](../../.gitbook/assets/ready%20to%20search%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.jpg)
 
