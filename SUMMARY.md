@@ -35,8 +35,8 @@
 
 ## API Guide
 
-* [API overview](api-guide/api-overview/README.md)
-  * [API Clients](api-guide/api-overview/api-clients.md)
+* [Clarifai API](api-guide/api-overview/README.md)
+  * [Clarifai API Clients](api-guide/api-overview/api-clients.md)
   * [Using Postman with Clarifai APIs](api-guide/api-overview/using-postman-with-clarifai-apis.md)
   * [Status Codes](api-guide/api-overview/status-codes.md)
   * [Pagination](api-guide/api-overview/pagination.md)

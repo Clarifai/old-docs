@@ -1,8 +1,8 @@
 ---
-description: Clients in the most popular languages.
+description: Clarifai API provides clients in the most popular languages.
 ---
 
-# API Clients
+# Clarifai API Clients
 
 ## gRPC Clients
 
