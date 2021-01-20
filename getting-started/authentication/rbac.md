@@ -16,25 +16,25 @@ Currently RBAC is available to our on-premise enterprise customers only. RBAC is
 
 The administrator of the client will have the full permission on their account, and be able to create, assign and define roles for their own users. User management is one of the core features of organization administrators.
 
-![user creation managment](https://github.com/Clarifai/docs/tree/55903ddf6a1156c8847c57c0957f3300734ef13a/.gitbook/assets/userCreationManagment.png)
+![](../../.gitbook/assets/usercreationmanagment.png)
 
 ### View Users
 
 Under the users view, it lists the users in the organization. User’s full name, user ID, email, number of teams they are associated with, system role, and the 2nd-factor authentication status are listed.
 
-![view the users](https://github.com/Clarifai/docs/tree/55903ddf6a1156c8847c57c0957f3300734ef13a/.gitbook/assets/view-the-users.png)
+![](../../.gitbook/assets/view-the-users.png)
 
 ### Create New Users
 
 The administrator can create a new user under the user management section. This is a straightforward way for the administrator to provision new users to the system. First Name, Last Name, Email and the Password will be needed to create a new user into the system.
 
-![create new users](https://github.com/Clarifai/docs/tree/55903ddf6a1156c8847c57c0957f3300734ef13a/.gitbook/assets/create-new-users.png)
+![](../../.gitbook/assets/create-new-users.png)
 
 ### Edit Users
 
 On this page, the administrator is able to change the name and the email for the users.
 
-![edit users](https://github.com/Clarifai/docs/tree/55903ddf6a1156c8847c57c0957f3300734ef13a/.gitbook/assets/edit-the-users.png)
+![](../../.gitbook/assets/edit-the-users.png)
 
 ## Team Management
 
@@ -44,7 +44,7 @@ Team is a holder for a group of users with the same permission settings to the C
 
 The Administrator is able to see the Teams menu item from the left menu bar.
 
-![list teams](https://github.com/Clarifai/docs/tree/55903ddf6a1156c8847c57c0957f3300734ef13a/.gitbook/assets/list-teams.png)
+![](../../.gitbook/assets/list-teams.png)
 
 The listing view gives an overview of all the users within the Name, ID, and Date of Creation. Administrator can also search by keyword.
 
