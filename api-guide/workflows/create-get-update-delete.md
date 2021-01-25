@@ -187,31 +187,35 @@ import com.clarifai.grpc.api.status.*;
 
 PostWorkflowResultsResponse postWorkflowResultsResponse = stub.postWorkflowResults(
     PostWorkflowResultsRequest.newBuilder()
-        .setWorkflowId("my-custom-workflow")
+        .setWorkflowId("{YOUR_WORKFLOW_ID}")
         .addInputs(
             Input.newBuilder().setData(
                 Data.newBuilder().setImage(
-                    Image.newBuilder()
-                        .setUrl("https://portal.clarifai.com/cms-assets/20180320212157/food-001.jpg")
+                    Image.newBuilder().setUrl(
+                        "https://samples.clarifai.com/metro-north.jpg"
+                    )
                 )
             )
-        ).build()
+        )
+        .build()
 );
 
 if (postWorkflowResultsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post workflow results failed, status: " + postWorkflowResultsResponse.getStatus());
+  throw new RuntimeException("Post workflow results failed, status: " + postWorkflowResultsResponse.getStatus());
 }
 
-// Since we have one input, one output will exist here.
+// We'll get one WorkflowResult for each input we used above. Because of one input, we have here
+// one WorkflowResult.
 WorkflowResult results = postWorkflowResultsResponse.getResults(0);
 
-// One output is present for each model in the workflow.
+// Each model we have in the workflow will produce one output.
 for (Output output : results.getOutputsList()) {
-    System.out.println("Predicted concepts for model: " + output.getModel().getName());
+    Model model = output.getModel();
+
+    System.out.println("Predicted concepts for the model `" + model.getName() + "`:");
     for (Concept concept : output.getData().getConceptsList()) {
-        System.out.printf("%s %.2f%n", concept.getName(), concept.getValue());
+        System.out.printf("\t%s %.2f%n", concept.getName(), concept.getValue());
     }
-    System.out.println();
 }
 ```
 {% endtab %}
@@ -223,15 +227,9 @@ for (Output output : results.getOutputsList()) {
 
 stub.PostWorkflowResults(
     {
-        workflow_id: "my-custom-workflow",
+        workflow_id: "{YOUR_WORKFLOW_ID}",
         inputs: [
-            {
-                data: {
-                    image: {
-                        url: "https://portal.clarifai.com/cms-assets/20180320212157/food-001.jpg"
-                    }
-                }
-            }
+            {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
         ]
     },
     metadata,
@@ -244,16 +242,18 @@ stub.PostWorkflowResults(
             throw new Error("Post workflow results failed, status: " + response.status.description);
         }
 
-        // Since we have one input, one output will exist here.
-        const result = response.results[0]
+        // We'll get one WorkflowResult for each input we used above. Because of one input, we have here
+        // one WorkflowResult.
+        const results = response.results[0];
 
-        // One output is present for each model in the workflow.
-        for (const output of result.outputs) {
-            console.log("Predicted concepts for model: " + output.model.name);
+        // Each model we have in the workflow will produce one output.
+        for (const output of results.outputs) {
+            const model = output.model;
+
+            console.log("Predicted concepts for the model `" + model.name + "`:");
             for (const concept of output.data.concepts) {
                 console.log("\t" + concept.name + " " + concept.value);
             }
-            console.log();
         }
     }
 );
@@ -267,51 +267,53 @@ stub.PostWorkflowResults(
 
 post_workflow_results_response = stub.PostWorkflowResults(
     service_pb2.PostWorkflowResultsRequest(
-      workflow_id="my-custom-workflow",
-      inputs=[
-        resources_pb2.Input(
-          data=resources_pb2.Data(
-            image=resources_pb2.Image(
-              url="https://portal.clarifai.com/cms-assets/20180320212157/food-001.jpg"
+        workflow_id="{YOUR_WORKFLOW_ID}",
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/metro-north.jpg"
+                    )
+                )
             )
-          )
-        )
-      ]
+        ]
     ),
     metadata=metadata
 )
-
 if post_workflow_results_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Post workflow results failed, status: " + post_workflow_results_response.status.description)
 
-# Since we have one input, one output will exist here.
-result = post_workflow_results_response.results[0]
+# We'll get one WorkflowResult for each input we used above. Because of one input, we have here
+# one WorkflowResult.
+results = post_workflow_results_response.results[0]
 
-# One output is present for each model in the workflow.
-for output in result.outputs:
-  print("Predicted concepts for model: " + output.model.name)
-  for concept in output.data.concepts:
-    print("\t%s %.2f" % (concept.name, concept.value))
-  print()
+# Each model we have in the workflow will produce one output.
+for output in results.outputs:
+    model = output.model
+
+    print("Predicted concepts for the model `%s`" % model.name)
+    for concept in output.data.concepts:
+        print("\t%s %.2f" % (concept.name, concept.value))
 ```
 {% endtab %}
 
 {% tab title="cURL" %}
 ```text
-curl -X POST 'https://api.clarifai.com/v2/workflows/my-custom-workflow/results' \
-    -H 'Content-Type: application/json' \
-    -H 'Authorization: Key YOUR_API_KEY' \
-    --data-raw '{
-        "inputs": [
-            {
-                "data": {
-                    "image": {
-                        "url": "https://portal.clarifai.com/cms-assets/20180320212157/food-001.jpg"
-                    }
-                }
-            }
-        ]
-    }'
+curl -X POST \
+  -H 'authorization: Key YOUR_API_KEY' \
+  -H 'content-type: application/json' \
+  -d '{
+    "inputs": [
+        {
+          "data": {
+            "image": {
+              "url": "https://samples.clarifai.com/metro-north.jpg"
+          }
+        }
+      }
+    ]
+}'\
+https://api.clarifai.com/v2/workflows/{YOUR_WORKFLOW_ID}/results
 ```
 {% endtab %}
 {% endtabs %}
