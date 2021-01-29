@@ -14,7 +14,7 @@ To set up a workflow, you will need to head over to the [Applications page](http
 
 Then click on the model mode icon in the lefthand sidebar. From here, click the "Create Workflow" button at the top righthand corner of the screen.
 
-![AI model gallery](../../.gitbook/assets/create-workflow-new%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.png)
+![AI model gallery](../../.gitbook/assets/create-workflow-new%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%284%29%20%281%29.png)
 
 ### Create a Workflow
 
