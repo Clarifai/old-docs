@@ -8,13 +8,13 @@ description: Learn about the labeling tools that are available to you in Scribe.
 
 Scribe provides special tools for working with images and video.
 
-![label bounding box](../../.gitbook/assets/label_bounding_box%20%281%29%20%281%29.jpg)
+![label bounding box](../../.gitbook/assets/label_bounding_box%20%281%29%20%284%29.jpg)
 
 ## Images
 
 ### Brightness, saturation and color inversion
 
-![invert colors](../../.gitbook/assets/brightness.jpg) ![](../../.gitbook/assets/saturation.jpg) ![](../../.gitbook/assets/invert%20%281%29.jpg)
+![invert colors](../../.gitbook/assets/brightness.jpg) ![](../../.gitbook/assets/saturation.jpg) ![](../../.gitbook/assets/invert%20%284%29.jpg)
 
 You can enhance the visibility of your photos with image adjustments. Image adjustments can be combined. Just click reset to return to the original version of your input.
 
