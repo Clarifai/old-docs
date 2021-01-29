@@ -4,7 +4,7 @@
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |
 | :---: | :---: | :---: | :---: |
-| ![](../.gitbook/assets/new_feature%20%281%29%20%281%29.jpg) | ![](../.gitbook/assets/improvement%20%2819%29%20%285%29.jpg) | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%286%29.jpg) | ![](../.gitbook/assets/enterprise%20%2818%29%20%2816%29%20%281%29.jpg) |
+| ![](../.gitbook/assets/new_feature%20%281%29%20%281%29.jpg) | ![](../.gitbook/assets/improvement%20%2819%29%20%285%29.jpg) | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%286%29.jpg) | ![](../.gitbook/assets/enterprise%20%2818%29%20%2816%29%20%281%29%20%282%29.jpg) |
 
 ### Accounts
 
@@ -105,7 +105,7 @@
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |
 | :---: | :---: | :---: | :---: |
-| ![](../.gitbook/assets/new_feature%20%281%29%20%281%29.jpg) | ![](../.gitbook/assets/improvement%20%2819%29%20%285%29.jpg) | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%286%29.jpg) | ![](../.gitbook/assets/enterprise%20%2818%29%20%2816%29%20%281%29.jpg) |
+| ![](../.gitbook/assets/new_feature%20%281%29%20%281%29.jpg) | ![](../.gitbook/assets/improvement%20%2819%29%20%285%29.jpg) | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%286%29.jpg) | ![](../.gitbook/assets/enterprise%20%2818%29%20%2816%29%20%281%29%20%282%29.jpg) |
 
 ### Accounts
 
@@ -116,14 +116,14 @@
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%286%29.jpg) | Login \(user/PW\) has no rate limit/max attempts. Fixed |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%286%29.jpg) | Remove all instances of worker\_id from explorer |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%286%29.jpg) | When email link to verify my email address clicked, still see "verify your email" banner. Fixed |
-| ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%286%29.jpg) ![](../.gitbook/assets/enterprise%20%2818%29%20%2816%29%20%281%29.jpg) | API services do not function once Queue goes down and comes back up. Fixed. This makes on premise deployments more resilient to power failures. |
+| ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%286%29.jpg) ![](../.gitbook/assets/enterprise%20%2818%29%20%2816%29%20%281%29%20%282%29.jpg) | API services do not function once Queue goes down and comes back up. Fixed. This makes on premise deployments more resilient to power failures. |
 
 ### Applications
 
 | Status | Details |
 | :--- | :--- |
 | ![](../.gitbook/assets/new_feature%20%281%29%20%281%29.jpg) | Add apps and keys scopes so they can be created with personal access tokens |
-| ![](../.gitbook/assets/improvement%20%2819%29%20%285%29.jpg) ![](../.gitbook/assets/enterprise%20%2818%29%20%2816%29%20%281%29.jpg) | Copy app count and last\_inputs added in app duplication |
+| ![](../.gitbook/assets/improvement%20%2819%29%20%285%29.jpg) ![](../.gitbook/assets/enterprise%20%2818%29%20%2816%29%20%281%29%20%282%29.jpg) | Copy app count and last\_inputs added in app duplication |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%286%29.jpg) | Fixed demo font syntax |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%286%29.jpg) | Fixed details page header missing description |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%286%29.jpg) | Added favicon for Portal |
@@ -219,7 +219,7 @@
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |
 | :---: | :---: | :---: | :---: |
-| ![](../.gitbook/assets/new_feature%20%281%29%20%281%29.jpg) | ![](../.gitbook/assets/improvement%20%2819%29%20%285%29.jpg) | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%286%29.jpg) | ![](../.gitbook/assets/enterprise%20%2818%29%20%2816%29%20%281%29.jpg) |
+| ![](../.gitbook/assets/new_feature%20%281%29%20%281%29.jpg) | ![](../.gitbook/assets/improvement%20%2819%29%20%285%29.jpg) | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%286%29.jpg) | ![](../.gitbook/assets/enterprise%20%2818%29%20%2816%29%20%281%29%20%282%29.jpg) |
 
 ### Accounts
 
