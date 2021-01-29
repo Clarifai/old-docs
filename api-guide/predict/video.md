@@ -1,5 +1,5 @@
 ---
-description: Understand your videos with the power of AI.
+description: Make predictions on video inputs
 ---
 
 # Video

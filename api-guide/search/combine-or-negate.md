@@ -1,3 +1,7 @@
+---
+description: Group or separate items in your dataset.
+---
+
 # Combine or Negate
 
 You can also combine searches. Unlike our legacy search, in annotation search, `Filter` and `Rank` is a list of `Annotation` objects. Filtered annotations will be ANDed. When you combine both `Filter` and `Rank`, filter will be applied before ranking annotations. This is important because limiting the result set on large applications can speedup the overall query drastically when doing a ranking.

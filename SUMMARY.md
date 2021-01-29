@@ -72,6 +72,7 @@
 * [Armada Predict](api-guide/predict/README.md)
   * [Images](api-guide/predict/images.md)
   * [Video](api-guide/predict/video.md)
+  * [Text](api-guide/predict/text.md)
   * [Prediction Parameters](api-guide/predict/prediction-parameters.md)
   * [Multilingual Classification](api-guide/predict/multilingual-classification.md)
 * [Spacetime Search](api-guide/search/README.md)
@@ -89,6 +90,11 @@
 ## Portal Guide
 
 * [Portal Overview](portal-guide/portal-overview.md)
+* [Explorer](portal-guide/explorer/README.md)
+  * [Object Tracking](portal-guide/explorer/object-tracking.md)
+  * [Proposals](portal-guide/explorer/proposals.md)
+  * [Annotations](portal-guide/explorer/annotations.md)
+  * [Predictions](portal-guide/explorer/predictions.md)
 * [Data Mode](portal-guide/data/README.md)
   * [Supported Formats](portal-guide/data/supported-formats.md)
   * [Bulk Labeling](portal-guide/data/bulk-labeling.md)
@@ -126,6 +132,7 @@
   * [Combine or Negate](portal-guide/psearch/pcombine_or_negate.md)
   * [Saved Searches](portal-guide/psearch/psaved_searches.md)
   * [Visual Search](portal-guide/psearch/visual-search.md)
+  * [Text Search](portal-guide/psearch/text-search.md)
 
 ## Data Labeling Services
 
@@ -151,3 +158,4 @@
   * [Release 6.0](product-updates/changelog/release60.md)
   * [Release 5.11](product-updates/changelog/release511.md)
   * [Release 5.10](product-updates/changelog/release510.md)
+

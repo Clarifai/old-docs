@@ -20,13 +20,13 @@ Just [click](https://portal.clarifai.com/signup) here if you need to set up your
 
 Check your email. We will send you a link that enables you to automatically verify your email.
 
-![](../.gitbook/assets/verify_emal2%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29.gif)
+![](../.gitbook/assets/verify_emal2%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%284%29.gif)
 
 ## Step 3: Create your first application
 
 Just click "Create Application".
 
-![](../.gitbook/assets/create_application2%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29.gif)
+![](../.gitbook/assets/create_application2%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%282%29.gif)
 
 Give your application a name and select "General" as your base model.
 
@@ -42,5 +42,5 @@ Upload any pictures you would like to test out.
 
 The general model you selected can recognize over 11,000 concepts right out of the box. Just click on an image and take a look at the predictions that are generated on the right hand side of the screen.
 
-![](../.gitbook/assets/predict2%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%285%29.gif)
+![](../.gitbook/assets/predict2%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%286%29%20%286%29.gif)
 

@@ -1,3 +1,7 @@
+---
+description: Search your data based on concepts or visual similarity
+---
+
 # Rank
 
 Rank Order your search results with the intuitive insights of AI. Your model can identify concepts in your data and rank your search results by how confident it is that a given concept is present. You can even rank search results by how similar one input is to another input or region of the input model detected. The search results will return the input but also the annotation which includes the region.
@@ -8,7 +12,7 @@ Once your images are indexed, you can search for them by concept.
 
 ### By clarifai/main App Concepts
 
-When you add an input, it automatically gets predictions from the models in your default which are typically models from the clarifai/main app such as the general model. You can search by those predictions.
+When you add an input, it automatically gets predictions from the models in your base workflow which are typically models from the clarifai/main app such as the general model. You can search by those predictions.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -750,11 +754,11 @@ curl -X POST \
 {% endtab %}
 {% endtabs %}
 
-## By Image
+## Search by visual similarity
 
 You can use images to search through your collection. The API will return ranked results based on how similar the results are to the image you provided in your query.
 
-## By Image URL
+### Search by image URL
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -908,7 +912,7 @@ curl -X POST \
 {% endtab %}
 {% endtabs %}
 
-### By Image Bytes
+### Search by image Bytes
 
 You can also search for an input by URL.
 

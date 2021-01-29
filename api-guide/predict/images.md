@@ -1,5 +1,5 @@
 ---
-description: Understand your images with the power of AI.
+description: Make predictions on image inputs
 ---
 
 # Images
@@ -11,6 +11,39 @@ To get predictions for an input, you need to supply an image and the model you'd
 Below is an example of how you would send image URLs and receive back predictions from the `general` model.
 
 {% tabs %}
+{% tab title="gRPC Python" %}
+```python
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+post_model_outputs_response = stub.PostModelOutputs(
+    service_pb2.PostModelOutputsRequest(
+        model_id="{THE_MODEL_ID}",
+        version_id="{THE_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/metro-north.jpg"
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+
+# Since we have one input, one output will exist here.
+output = post_model_outputs_response.outputs[0]
+
+print("Predicted concepts:")
+for concept in output.data.concepts:
+    print("%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+
 {% tab title="gRPC Java" %}
 ```java
 import com.clarifai.grpc.api.*;
@@ -79,39 +112,6 @@ stub.PostModelOutputs(
         }
     }
 );
-```
-{% endtab %}
-
-{% tab title="gRPC Python" %}
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_model_outputs_response = stub.PostModelOutputs(
-    service_pb2.PostModelOutputsRequest(
-        model_id="{THE_MODEL_ID}",
-        version_id="{THE_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="https://samples.clarifai.com/metro-north.jpg"
-                    )
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
-
-# Since we have one input, one output will exist here.
-output = post_model_outputs_response.outputs[0]
-
-print("Predicted concepts:")
-for concept in output.data.concepts:
-    print("%s %.2f" % (concept.name, concept.value))
 ```
 {% endtab %}
 
@@ -315,6 +315,43 @@ curl -X POST
 Below is an example of how you would send the bytes of an image and receive back predictions from the `general` model.
 
 {% tabs %}
+{% tab title="gRPC Python" %}
+```python
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+with open("{YOUR_IMAGE_FILE_LOCATION}", "rb") as f:
+    file_bytes = f.read()
+
+post_model_outputs_response = stub.PostModelOutputs(
+    service_pb2.PostModelOutputsRequest(
+        model_id="{THE_MODEL_ID}",
+        version_id="{THE_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        base64=file_bytes
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+
+# Since we have one input, one output will exist here.
+output = post_model_outputs_response.outputs[0]
+
+print("Predicted concepts:")
+for concept in output.data.concepts:
+    print("%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+
 {% tab title="gRPC Java" %}
 ```java
 import com.clarifai.grpc.api.*;
@@ -392,43 +429,6 @@ stub.PostModelOutputs(
         }
     }
 );
-```
-{% endtab %}
-
-{% tab title="gRPC Python" %}
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-with open("{YOUR_IMAGE_FILE_LOCATION}", "rb") as f:
-    file_bytes = f.read()
-
-post_model_outputs_response = stub.PostModelOutputs(
-    service_pb2.PostModelOutputsRequest(
-        model_id="{THE_MODEL_ID}",
-        version_id="{THE_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        base64=file_bytes
-                    )
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
-
-# Since we have one input, one output will exist here.
-output = post_model_outputs_response.outputs[0]
-
-print("Predicted concepts:")
-for concept in output.data.concepts:
-    print("%s %.2f" % (concept.name, concept.value))
 ```
 {% endtab %}
 
