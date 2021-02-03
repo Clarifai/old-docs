@@ -2,7 +2,7 @@
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |
 | :---: | :---: | :---: | :---: |
-| ![new-feature](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%28283%29.jpg) | ![improvement](../../.gitbook/assets/improvement%20%2819%29%20%28588%29.jpg) | ![bug](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28778%29.jpg) | ![enterprise](../../.gitbook/assets/enterprise%20%2818%29%20%2816%29%20%281%29%20%2830%29.jpg) |
+| ![new-feature](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%28296%29.jpg) | ![improvement](../../.gitbook/assets/improvement%20%2819%29%20%28348%29.jpg) | ![bug](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28250%29.jpg) | ![enterprise](../../.gitbook/assets/enterprise%20%2818%29%20%2816%29%20%281%29%20%2834%29.jpg) |
 
 ## Scribe
 

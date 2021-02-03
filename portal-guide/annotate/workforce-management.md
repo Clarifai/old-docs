@@ -6,7 +6,7 @@ description: Manage your labeling workforce.
 
 Labeler provides a variety of workforce management tools that help your company to distribute and manage labeling tasks. In labeling mode, you can view all related tasks, activities and statistics for your application.
 
-![](../../.gitbook/assets/review%20%281%29%20%281%29%20%283%29%20%283%29.jpg)
+![](../../.gitbook/assets/review%20%281%29%20%281%29%20%283%29%20%283%29%20%284%29.jpg)
 
 ## All tasks
 
