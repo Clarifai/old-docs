@@ -2,7 +2,7 @@
 description: Manage the data in your app.
 ---
 
-# Create, Get, Update, Delete
+# Add, Get, Update, Delete
 
 ## Inputs
 

@@ -277,7 +277,6 @@ curl -X POST \
     ]
   }'\
   https://api.clarifai.com/v2/models/{THE_MODEL_ID}/outputs
-
 ```
 {% endtab %}
 {% endtabs %}

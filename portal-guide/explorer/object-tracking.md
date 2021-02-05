@@ -4,7 +4,7 @@ description: (Beta) Track people and objects in video
 
 # Object Tracking
 
-### Track people and objects across multiple frames 
+## Track people and objects across multiple frames
 
 ![](../../.gitbook/assets/object-tracker.jpg)
 
@@ -12,7 +12,7 @@ Videos are actually made up of a sequence of still images. Detection models can 
 
 This is where object tracking comes in. Clarifai offers convenient, pre-built object tracking workflows that help you identify and track objects and people across multiple frames of video.
 
-### Build an object tracking workflow
+## Build an object tracking workflow
 
 ![](../../.gitbook/assets/person-tracker-wkflw.jpg)
 
@@ -23,9 +23,9 @@ To build an object tracking workflow, just visit model mode and click the create
 | efficient person detector | 5750faf62ed9d514b9ee9d2d163f172e |
 | Person Tracker | c9d65bb4f86c487b848e9400725168d4 |
 
-Just add these two models to your workflow and connect the efficient person detector to the input node on the Person Tracker. 
+Just add these two models to your workflow and connect the efficient person detector to the input node on the Person Tracker.
 
-### Limitations
+## Limitations
 
-Please keep in mind that video support is in Beta. Any video of 100MBs or less that is less than 1 minute can be processed at 10 FPS for any workflow. Download is 20 second limit per job assuming 5MB/sec. 
+Please keep in mind that video support is in Beta. Any video of 100MBs or less that is less than 1 minute can be processed at 10 FPS for any workflow. Download is 20 second limit per job assuming 5MB/sec.
 

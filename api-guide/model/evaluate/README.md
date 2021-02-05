@@ -28,7 +28,7 @@ You can run the evaluation on a specific model version of your custom model in t
 
 ![](../../../.gitbook/assets/previewui-versions-new%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.png)
 
-![](../../../.gitbook/assets/preview-evaluate-new%20%282%29%20%282%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%286%29%20%281%29.png)
+![](../../../.gitbook/assets/preview-evaluate-new%20%282%29%20%282%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%286%29%20%281%29%20%281%29.png)
 
 The evaluation may take up to 30 minutes. Once it is complete, the Evaluate button will become View button. Click on the View button to see the evaluation results.
 

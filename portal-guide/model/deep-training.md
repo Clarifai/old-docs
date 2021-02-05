@@ -76,7 +76,7 @@ The process of creating concepts and labeling inputs is the same for deep traine
 
 Click the "four squares" icon on the lefthand sidebar to enter Model Mode.
 
-![](../../.gitbook/assets/model_mode%20%285%29%20%285%29%20%287%29%20%287%29%20%283%29%20%2810%29.jpg)
+![](../../.gitbook/assets/model_mode%20%285%29%20%285%29%20%287%29%20%287%29%20%283%29%20%2810%29%20%281%29.jpg)
 
 ### Create the custom models that you need
 

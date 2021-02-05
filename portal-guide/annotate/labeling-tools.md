@@ -63,5 +63,3 @@ Scribe makes it easy to label your text data. You can review text inputs in the 
 
 ![Label text data in Scribe](../../.gitbook/assets/label-text.jpg)
 
-
-

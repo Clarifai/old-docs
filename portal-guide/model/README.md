@@ -5,7 +5,7 @@ description: >-
   and ready to use.
 ---
 
-# Enlight Train
+# Creating and Training Models
 
 The Clarifai platform makes it easy for you to use AI models to power your business solution. You can create your own custom models, or get started right away by using one of our pre-optimized Clarifai Models.
 

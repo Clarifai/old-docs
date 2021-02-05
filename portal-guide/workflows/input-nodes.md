@@ -40,7 +40,7 @@ Click the "four squares" icon on the lefthand sidebar to enter Model Mode.
 
 Click the blue `Create Custom Model` button at the top righthand corner of the screen to create any custom models that you might need for your app.
 
-![](../../.gitbook/assets/create_custom_model%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%285%29.jpg)
+![](../../.gitbook/assets/create_custom_model%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%285%29%20%282%29.jpg)
 
 ### Create your workflow
 
