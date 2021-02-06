@@ -8,16 +8,74 @@ We will continue to update this page regularly, so a good way to always stay up 
 
 ## Upcoming Changes
 
-| Date | Change |
-| :--- | :--- |
-| October 16, 2020. 9:00am ET | **Deprecation of Demographics Model**  To reduce the risk of race bias in our own models, we have constructed a new approach to visual recognition of race. We've also divided age, race and gender recognition into separate models, and then packaged the models into a new public Demographics Workflow. This new approach provides much more flexibility, and makes outputs easier to parse. We will be retiring the current demographics model on October 16th, 2020. Please reference this [blog post](https://www.clarifai.com/blog/new-demographics-workflow), and our [API documentation](https://docs.clarifai.com/api-guide/api-overview) for more information about how you can update your code to take advantage of the new workflow. |
-| October 20, 2020. 9:00am ET | **Model Training Do Not Wait For Inputs To Be Processed**  Currently, when we train a context-based classifier model, we wait for all inputs to be added to your app before a model version is created and processed, with a 1 hour training timeout. In the future, we will use any available inputs and annotations that are available at the time a model version is created for training. If the input is pending or in progress, those inputs and associated annotations will not be used for training. You can use [https://api.clarifai.com/v2/inputs/status](https://api.clarifai.com/v2/inputs/status) to check input counts for each status. |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Date</th>
+      <th style="text-align:left">Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">February 22, 2021 9:00am ET</td>
+      <td style="text-align:left">
+        <p><b>What you need to know<br /></b>
+        </p>
+        <p>Due to recently escalated issues from &#x201C;delete-all-input&#x201D;
+          especially from enterprise customers with massive data input w</p>
+        <p></p>
+        <ol>
+          <li>Change DELETE/INPUT endpoint which has both batch input and delete all,
+            we will disable &#x201C;delete-all&#x201D; feature in next 2 weeks.</li>
+          <li>If you have concrete use cases of &#x201C;delete-all&#x201D; feature,
+            we will reinvent this feature to avoid Citus storm and mark it enterprise-only.</li>
+        </ol>
+        <p>
+          <img src="https://lh6.googleusercontent.com/I-_tH1j1hGgFgt275CRiNaJPdACQjLpNd-tV4tKFsJ6ENGcVKqzNeaR3rGy0qo2GJYuNMbdNp_TyW6Dx03OzcLvWSsOHf_VyrIBPBs3ORWfK5H_oNLenPL-pweAxShYc0mrPYq7m"
+          alt/>
+        </p>
+        <p></p>
+        <p>How you may be affected:
+          <br />
+        </p>
+        <p><b>Portal</b> - App Details: when users click &#x201C;DELETE ALL INPUTS&#x201D;,
+          a popup will appear &#x201C;This feature is disabled. If you are enterprise
+          customers please reach out to <a href="mailto:operating-team@clarifai.com">operating-team@clarifai.com</a>&#x201D;</p>
+        <p></p>
+        <p>
+          <img src="https://lh3.googleusercontent.com/rexpSC6p0kSFJgcx_2c6k3Km7rjUb4_ff4fNYfG-AiaFwxJvyZtC9oDEzA0AQFUvIe89PMBw3p8KvEgC6UmIxKMmNE7KigXJupeo8Q29rQYN7hXNqSIe1t6t-2gHUDdR4ilZP1W6"
+          alt/>
+        </p>
+        <p></p>
+        <p><b>API</b>: Internal status code is 11102, with http status code 400</p>
+        <p>
+          <br />
+          <img src="https://lh6.googleusercontent.com/5BeFOphU8WJqZxC-esRxHP_NO8GARR8H1X9VrX4sUpJNRDt9QrtGA0B2QlNQMVVvNb2VIR7GpCtTaNGxif-Hu4_uP2uDeUL7vYVLA_BYkzNNgAWjSn9eQBKQTab0bSgxicegvGML"
+          alt/>
+        </p>
+        <p></p>
+        <p>What you need to do:
+          <br />
+        </p>
+        <ol>
+          <li>For internal uses especially those who have been using &#x201C;app duplication
+            without input&#x201D; workaround of large input, we plan to expose in Portal
+            the existing application duplication features in the API (with options
+            to copy data, concept, model, etc. with the default option of NOT copying
+            data with unchecked box) to avoid double-citus-storm.</li>
+          <li>Post your questions and suggestions to #product-announcement channel.</li>
+        </ol>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## Completed Changes
 
 | Date | Change |
 | :--- | :--- |
-| Apr 1, 2020. 9:00am ET | **Stop returning Face object from API**   This is part of deprecation of Face object from API. Currently as transition period, we are returning both `data.face` and `data.concept`. We will stop returning `data.face` after Apr 1st 2020. The new \[response\]\[[https://github.com/Clarifai/docs/tree/master/examples/deprecate\_face\_object/new\_response.json](https://github.com/Clarifai/docs/tree/master/examples/deprecate_face_object/new_response.json)\] will only contain concepts. |
+| October 16, 2020. 9:00am ET | **Deprecation of Demographics Model**  To reduce the risk of race bias in our own models, we have constructed a new approach to visual recognition of race. We've also divided age, race and gender recognition into separate models, and then packaged the models into a new public Demographics Workflow. This new approach provides much more flexibility, and makes outputs easier to parse. We will be retiring the current demographics model on October 16th, 2020. Please reference this [blog post](https://www.clarifai.com/blog/new-demographics-workflow), and our [API documentation](https://docs.clarifai.com/api-guide/api-overview) for more information about how you can update your code to take advantage of the new workflow. |
+| October 20, 2020. 9:00am ET | **Model Training Do Not Wait For Inputs To Be Processed**  Currently, when we train a context-based classifier model, we wait for all inputs to be added to your app before a model version is created and processed, with a 1 hour training timeout. In the future, we will use any available inputs and annotations that are available at the time a model version is created for training. If the input is pending or in progress, those inputs and associated annotations will not be used for training. You can use [https://api.clarifai.com/v2/inputs/status](https://api.clarifai.com/v2/inputs/status) to check input counts for each status. |
 | Feb 27, 2020. 9:00am ET | [**Deprecation of Face object from API**](upcoming-api-changes.md#deprecation-face-from-api)  The Face object in our API responses will be deprecated in favor of a list of Concepts that other model types return. This should only effect users of the Celebrity, Demographics, or custom face recognition models where the `data.face` attributes like `data.face.identity`, `data.face.age_appearance`, `data.face.gender_appearance`, and `data.face.multicultural_appearance` will now be returned in the list of `data.concepts` Concept object. The API will return both for a while during the transition to give you time to update your code away from using the `data.face` objects altogether. We are doing this to simplify the API interface and make it more easily compatible for advanced functionality that is coming soon in workflows! The custom face recognition and celebrity models are a simple change to just access the new `data.concepts` field, but the demographics model is a more fundamental change away from having three distinct lists of concept to a single list. In order to cope with this, we have introduced a `vocab_id` field in each `data.concepts` entry that is returned by the demographics model so that you can distinguish `age_appearance`, `gender_appearance` and `multicultural_appearance`.To convert new format to old format, check python example \[here\]\[[https://github.com/Clarifai/docs/tree/master/examples/deprecate\_face\_object](https://github.com/Clarifai/docs/tree/master/examples/deprecate_face_object)\]. |
 | February 24, 2020. 9:00am ET | **\[Consolidation of Input Related Status Codes**   As we support more media types, it is impractical to have status codes for each. Thus status codes will now be prefixed `INPUT_...` rather than `INPUT_IMAGE_...` or `INPUT_VIDEO_...`. We will maintain the int value for the `INPUT_IMAGE_...` prefixed statuses, but no longer support the int values associated with statuses prefixed `INPUT_VIDEO...`. |
 | Feb 12, 2020. 9:00am ET | **Deprecation of Face model type names**  The `facedetect*` model types will be deprecated in favor of their more general `detect*` counterparts. For example these would be the changes of model type: `facedetect` -&gt; `detect` `facedetect-identity` -&gt; `detect-concept` `facedetect-demographics` -&gt; `detect-concept` `facedetect-embed` -&gt; `detect-embed` This change is to unify the APIs around face products and object detection products so that they are compatible everywhere either is used. |
