@@ -8,67 +8,9 @@ We will continue to update this page regularly, so a good way to always stay up 
 
 ## Upcoming Changes
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Date</th>
-      <th style="text-align:left">Change</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">February 22, 2021 9:00am ET</td>
-      <td style="text-align:left">
-        <p><b>What you need to know<br /></b>
-        </p>
-        <p>Due to recently escalated issues from &#x201C;delete-all-input&#x201D;
-          especially from enterprise customers with massive data input w</p>
-        <p></p>
-        <ol>
-          <li>Change DELETE/INPUT endpoint which has both batch input and delete all,
-            we will disable &#x201C;delete-all&#x201D; feature in next 2 weeks.</li>
-          <li>If you have concrete use cases of &#x201C;delete-all&#x201D; feature,
-            we will reinvent this feature to avoid Citus storm and mark it enterprise-only.</li>
-        </ol>
-        <p>
-          <img src="https://lh6.googleusercontent.com/I-_tH1j1hGgFgt275CRiNaJPdACQjLpNd-tV4tKFsJ6ENGcVKqzNeaR3rGy0qo2GJYuNMbdNp_TyW6Dx03OzcLvWSsOHf_VyrIBPBs3ORWfK5H_oNLenPL-pweAxShYc0mrPYq7m"
-          alt/>
-        </p>
-        <p></p>
-        <p>How you may be affected:
-          <br />
-        </p>
-        <p><b>Portal</b> - App Details: when users click &#x201C;DELETE ALL INPUTS&#x201D;,
-          a popup will appear &#x201C;This feature is disabled. If you are enterprise
-          customers please reach out to <a href="mailto:operating-team@clarifai.com">operating-team@clarifai.com</a>&#x201D;</p>
-        <p></p>
-        <p>
-          <img src="https://lh3.googleusercontent.com/rexpSC6p0kSFJgcx_2c6k3Km7rjUb4_ff4fNYfG-AiaFwxJvyZtC9oDEzA0AQFUvIe89PMBw3p8KvEgC6UmIxKMmNE7KigXJupeo8Q29rQYN7hXNqSIe1t6t-2gHUDdR4ilZP1W6"
-          alt/>
-        </p>
-        <p></p>
-        <p><b>API</b>: Internal status code is 11102, with http status code 400</p>
-        <p>
-          <br />
-          <img src="https://lh6.googleusercontent.com/5BeFOphU8WJqZxC-esRxHP_NO8GARR8H1X9VrX4sUpJNRDt9QrtGA0B2QlNQMVVvNb2VIR7GpCtTaNGxif-Hu4_uP2uDeUL7vYVLA_BYkzNNgAWjSn9eQBKQTab0bSgxicegvGML"
-          alt/>
-        </p>
-        <p></p>
-        <p>What you need to do:
-          <br />
-        </p>
-        <ol>
-          <li>For internal uses especially those who have been using &#x201C;app duplication
-            without input&#x201D; workaround of large input, we plan to expose in Portal
-            the existing application duplication features in the API (with options
-            to copy data, concept, model, etc. with the default option of NOT copying
-            data with unchecked box) to avoid double-citus-storm.</li>
-          <li>Post your questions and suggestions to #product-announcement channel.</li>
-        </ol>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Date | Change |
+| :--- | :--- |
+
 
 ## Completed Changes
 
