@@ -54,19 +54,8 @@ We will continue to update this page regularly, so a good way to always stay up 
           alt/>
         </p>
         <p></p>
-        <p>What you need to do:
-          <br />
-        </p>
-        <ol>
-          <li>For internal uses especially those who have been using &#x201C;app duplication
-            without input&#x201D; workaround of large input, we plan to expose in Portal
-            the existing application duplication features in the API (with options
-            to copy data, concept, model, etc. with the default option of NOT copying
-            data with unchecked box) to avoid double-citus-storm.</li>
-          <li>Post your questions and suggestions to #product-announcement channel.</li>
-        </ol>
-      </td>
-    </tr>
+      
+    
   </tbody>
 </table>
 
