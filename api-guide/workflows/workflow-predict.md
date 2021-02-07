@@ -13,7 +13,7 @@ Now that you have that all set up, you will be able to predict under a workflow 
 You can also use the Explorer in Clarifai Portal to see the results of your workflow's predictions on a given input.
 
 {% tabs %}
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -56,7 +56,7 @@ for (Output output : results.getOutputsList()) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -96,7 +96,7 @@ stub.PostWorkflowResults(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions

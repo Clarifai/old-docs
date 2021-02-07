@@ -11,7 +11,7 @@ To get predictions for an input, you need to supply an image and the model you'd
 Below is an example of how you would send image URLs and receive back predictions from the `general` model.
 
 {% tabs %}
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -44,7 +44,7 @@ for concept in output.data.concepts:
 ```
 {% endtab %}
 
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -80,7 +80,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -315,7 +315,7 @@ curl -X POST
 Below is an example of how you would send the bytes of an image and receive back predictions from the `general` model.
 
 {% tabs %}
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -352,7 +352,7 @@ for concept in output.data.concepts:
 ```
 {% endtab %}
 
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -394,7 +394,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions

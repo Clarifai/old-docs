@@ -25,7 +25,7 @@ Each annotation should contain at most one region. If it is a video, each annota
 To annotate a concept present anywhere in an image:
 
 {% tabs %}
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -53,7 +53,7 @@ if post_annotations_response.status.code != status_code_pb2.SUCCESS:
 ```
 {% endtab %}
 
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import java.util.List;
 import com.clarifai.grpc.api.*;
@@ -89,7 +89,7 @@ if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -163,7 +163,7 @@ curl -X POST \
 You can label a new bounding box by providing bounding box coordinates.
 
 {% tabs %}
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -228,7 +228,7 @@ if post_annotations_response.status.code != status_code_pb2.SUCCESS:
 ```
 {% endtab %}
 
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import java.util.List;
 import com.clarifai.grpc.api.*;
@@ -312,7 +312,7 @@ if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -464,7 +464,7 @@ curl -X POST \
 When you add an input, detection models \(such as `Face Detection` or `General Detection`\) will detect regions in your image where there appear to be relevant objects. You can check these detected regions by listing model's annotations. Your labels should be contained within `Region.Data`. Each annotation can have only 1 region. If you want to label multiple regions, it is possible to label multiple annotations in a single API call.
 
 {% tabs %}
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -515,7 +515,7 @@ if post_annotations_response.status.code != status_code_pb2.SUCCESS:
 ```
 {% endtab %}
 
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import java.util.List;
 import com.clarifai.grpc.api.*;
@@ -575,7 +575,7 @@ if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -701,7 +701,7 @@ Each annotation is tied to a user or a model in your workflow. By default, when 
 Note: only the app owner can post an annotation with other user's `user_id`, collaborators cannot.
 
 {% tabs %}
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -726,7 +726,7 @@ if post_annotations_response.status.code != status_code_pb2.SUCCESS:
 ```
 {% endtab %}
 
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import java.util.List;
 import com.clarifai.grpc.api.*;
@@ -755,7 +755,7 @@ if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -821,7 +821,7 @@ To list all your user labelled annotations.
 Note this will not show annotations by models in your worfklow. To include model created annotations, you need to set `list_all_annotations` to `true`.
 
 {% tabs %}
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -839,7 +839,7 @@ for annotation_object in list_annotations_response.annotations:
 ```
 {% endtab %}
 
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import java.util.List;
 import com.clarifai.grpc.api.*;
@@ -865,7 +865,7 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -904,7 +904,7 @@ curl -X GET \
 List all annotations, including models created.
 
 {% tabs %}
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -922,7 +922,7 @@ for annotation_object in list_annotations_response.annotations:
 ```
 {% endtab %}
 
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import java.util.List;
 import com.clarifai.grpc.api.*;
@@ -949,7 +949,7 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1075,7 +1075,7 @@ curl -X GET \
 You can list annotations by both input IDs and annotation IDs. Number of input IDs and annotation IDs should be the same. Since we are finding annotatieon by IDs this will match any user or model created annotations.
 
 {% tabs %}
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1097,7 +1097,7 @@ for annotation_object in list_annotations_response.annotations:
 ```
 {% endtab %}
 
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import java.util.List;
 import com.clarifai.grpc.api.*;
@@ -1126,7 +1126,7 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1169,7 +1169,7 @@ curl -X GET \
 An annotation is created by either a user or a model. You can list annotations created by specific user\(s\) by provider their user IDs.
 
 {% tabs %}
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1187,7 +1187,7 @@ for annotation_object in list_annotations_response.annotations:
 ```
 {% endtab %}
 
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import java.util.List;
 import com.clarifai.grpc.api.*;
@@ -1214,7 +1214,7 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1253,7 +1253,7 @@ curl -X GET \
 An annotation is created by either a user or a model. For example if your workflow has a detection model, when you add input, the model will detect objects in your input. You can see these detected objects by listing the annotations created detection model. You can also label these regions by using `Post annotation` with the region id returned from this call.
 
 {% tabs %}
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1274,7 +1274,7 @@ for annotation_object in list_annotations_response.annotations:
 ```
 {% endtab %}
 
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import java.util.List;
 import com.clarifai.grpc.api.*;
@@ -1301,7 +1301,7 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1348,7 +1348,7 @@ Update supports overwrite, merge, remove actions. You can update from 1 up to 12
 Update an annotation of a image with a new concept, or to change a concept value from true to false \(or vice versa\).
 
 {% tabs %}
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1376,7 +1376,7 @@ if patch_annotations_response.status.code != status_code_pb2.SUCCESS:
 ```
 {% endtab %}
 
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import java.util.List;
 import com.clarifai.grpc.api.*;
@@ -1410,7 +1410,7 @@ if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1481,7 +1481,7 @@ curl -X PATCH \
 When you update region data, you must nest this new data within region.data. Set the region\_id to the current region\_id if you do not want to change or remove this region.
 
 {% tabs %}
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1516,7 +1516,7 @@ if patch_annotations_response.status.code != status_code_pb2.SUCCESS:
 ```
 {% endtab %}
 
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import java.util.List;
 import com.clarifai.grpc.api.*;
@@ -1556,7 +1556,7 @@ if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1640,7 +1640,7 @@ curl -X PATCH \
 You can update region bounding boxes coordinates. When changing the region, you should use `overwrite` action. With `overwrite` action, you need to provide any data you want to keep in this annotation.
 
 {% tabs %}
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1682,7 +1682,7 @@ if patch_annotations_response.status.code != status_code_pb2.SUCCESS:
 ```
 {% endtab %}
 
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import java.util.List;
 import com.clarifai.grpc.api.*;
@@ -1734,7 +1734,7 @@ if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1826,7 +1826,7 @@ curl -X PATCH \
 You can update an annotation status.
 
 {% tabs %}
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1852,7 +1852,7 @@ if patch_annotations_response.status.code != status_code_pb2.SUCCESS:
 ```
 {% endtab %}
 
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import java.util.List;
 import com.clarifai.grpc.api.*;
@@ -1883,7 +1883,7 @@ if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1945,7 +1945,7 @@ curl -X PATCH \
 You can delete a single annotation by input ID and annotation ID.
 
 {% tabs %}
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1963,7 +1963,7 @@ if delete_annotation_response.status.code != status_code_pb2.SUCCESS:
 ```
 {% endtab %}
 
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -1984,7 +1984,7 @@ if (deleteAnnotationResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -2022,7 +2022,7 @@ curl -X DELETE \
 You can delete multiple annotations in one API call. You need to provide a list of input IDs and a list of annotation IDs. The number of input IDs has to match number of annotation IDs.
 
 {% tabs %}
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -2040,7 +2040,7 @@ if delete_annotations_response.status.code != status_code_pb2.SUCCESS:
 ```
 {% endtab %}
 
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -2063,7 +2063,7 @@ if (deleteAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -2106,7 +2106,7 @@ curl -X DELETE \
 To delete all annotations of a given input, you just need to set input ID\(s\). This will delete all annotations for these input\(s\) EXCEPT input level annotations which only get deleted if you delete the inputs themselves.
 
 {% tabs %}
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -2123,7 +2123,7 @@ if delete_annotations_response.status.code != status_code_pb2.SUCCESS:
 ```
 {% endtab %}
 
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -2144,7 +2144,7 @@ if (deleteAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions

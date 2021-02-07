@@ -159,3 +159,10 @@
   * [Release 5.11](product-updates/changelog/release511.md)
   * [Release 5.10](product-updates/changelog/release510.md)
 
+## Additional Resources
+
+* [API Status](https://status.clarifai.com/)
+* [Clarifai Blog](https://www.clarifai.com/blog)
+* [Clarifai Help](https://help.clarifai.com/hc/en-us)
+* [Clarifai Community](https://www.clarifai.com/community)
+

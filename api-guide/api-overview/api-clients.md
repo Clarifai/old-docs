@@ -10,25 +10,25 @@ To use the Clariafi API, we recommend either using HTTP+JSON directly, or one of
 
 | Available gRPC Clients |
 | :--- |
-| [Clarifai gRPC Python](https://github.com/Clarifai/clarifai-python-grpc/) |
-| [Clarifai gRPC Java](https://github.com/Clarifai/clarifai-java-grpc/) |
-| [Clarifai gRPC NodeJS](https://github.com/Clarifai/clarifai-nodejs-grpc) |
-| [Clarifai gRPC C\#](https://github.com/Clarifai/clarifai-csharp-grpc/) |
-| [Clarifai gRPC PHP](https://github.com/Clarifai/clarifai-php-grpc/) |
-| [Clarifai gRPC Swift](https://github.com/Clarifai/clarifai-swift-grpc) |
-| [Clarifai gRPC Rust](https://github.com/Clarifai/clarifai-rust-grpc) |
-| [Clarifai gRPC Go](https://github.com/Clarifai/clarifai-go-grpc) |
-| [Clarifai gRPC C++](https://github.com/Clarifai/clarifai-cpp-grpc) |
+| [Clarifai Python](https://github.com/Clarifai/clarifai-python-grpc/) |
+| [Clarifai Java](https://github.com/Clarifai/clarifai-java-grpc/) |
+| [Clarifai NodeJS](https://github.com/Clarifai/clarifai-nodejs-grpc) |
+| [Clarifai C\#](https://github.com/Clarifai/clarifai-csharp-grpc/) |
+| [Clarifai PHP](https://github.com/Clarifai/clarifai-php-grpc/) |
+| [Clarifai Swift](https://github.com/Clarifai/clarifai-swift-grpc) |
+| [Clarifai Rust](https://github.com/Clarifai/clarifai-rust-grpc) |
+| [Clarifai Go](https://github.com/Clarifai/clarifai-go-grpc) |
+| [Clarifai C++](https://github.com/Clarifai/clarifai-cpp-grpc) |
 
 ## Manually-built Clients \(deprecated\)
 
 | Available Clients |
 | :--- |
-| [Clarifai C\#](https://github.com/Clarifai/clarifai-csharp) |
-| [Clarifai Java](https://github.com/Clarifai/clarifai-java) |
-| [Clarifai JavaScript](https://github.com/Clarifai/clarifai-javascript) \([Reference Docs](https://sdk.clarifai.com/js/latest/index.html)\) |
-| [Clarifai PHP](https://github.com/Clarifai/clarifai-php) |
-| [Clarifai Python](https://github.com/Clarifai/clarifai-python) \([Reference Docs](https://clarifai-python.readthedocs.io/en/latest/index.html)\) |
+| [C\#](https://github.com/Clarifai/clarifai-csharp) |
+| [Java](https://github.com/Clarifai/clarifai-java) |
+| [JavaScript](https://github.com/Clarifai/clarifai-javascript) \([Reference Docs](https://sdk.clarifai.com/js/latest/index.html)\) |
+| [PHP](https://github.com/Clarifai/clarifai-php) |
+| [Python](https://github.com/Clarifai/clarifai-python) \([Reference Docs](https://clarifai-python.readthedocs.io/en/latest/index.html)\) |
 
 ## Client Installation Instructions
 
@@ -46,7 +46,7 @@ Since a user can own multiple applications, using a PAT is more powerful. Howeve
 With most endpoints you can freely choose whether to use an API key or a PAT. In this documentation, some code examples use one and some the other. But certain endpoints support only PAT \(e.g. creating a new application or a new API key\).
 
 {% tabs %}
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 ##############################################################################
 # Installation
@@ -74,7 +74,7 @@ metadata = (('authorization', 'Key {YOUR_CLARIFAI_API_KEY}'),)
 ```
 {% endtab %}
 
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 ///////////////////////////////////////////////////////////////////////////////
 // Installation (build.gradle)
@@ -108,7 +108,7 @@ V2Grpc.V2BlockingStub stub = V2Grpc.newBlockingStub(channel)
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 ///////////////////////////////////////////////////////////////////////////////
 // Installation
