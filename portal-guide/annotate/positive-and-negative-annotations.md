@@ -24,5 +24,5 @@ When annotating your data, you have the option of providing both positive and ne
 
 \(v\) If there are no positive or negative annotations, the example is ignored.
 
-![](../../.gitbook/assets/annotation_v%20%282%29%20%282%29%20%282%29%20%281%29%20%281%29.jpg)
+![](../../.gitbook/assets/annotation_v%20%282%29%20%282%29%20%282%29%20%281%29%20%286%29.jpg)
 

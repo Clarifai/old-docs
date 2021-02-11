@@ -2,7 +2,7 @@
 description: Dynamic AI model orchestration and inference scaling
 ---
 
-# Making Model Predictions
+# Making Predictions
 
 The Predict API analyzes your images or videos and tells you what's inside of them. The API will return a list of concepts with corresponding probabilities of how likely it is these concepts are contained within the image.
 

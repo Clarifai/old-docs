@@ -2,7 +2,7 @@
 description: Manage the data in your app.
 ---
 
-# Add, Get, Update, Delete
+# Adding and removing inputs
 
 ## Inputs
 
@@ -1799,5 +1799,4 @@ curl -X DELETE \
 ```
 {% endtab %}
 {% endtabs %}
-
 

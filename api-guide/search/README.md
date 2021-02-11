@@ -2,7 +2,7 @@
 description: 'Search for people, places, objects, and topics in your unstructured data.'
 ---
 
-# Searching, Sorting and Filtering your Data
+# Search, Sort, Filter and Save
 
 AI models can be used to power search. Our API automatically indexes your inputs so that they are ready for search from the moment they are uploaded. Once indexed, you can search for images by concept, visual similarity, or metadata.
 

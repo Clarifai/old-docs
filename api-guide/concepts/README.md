@@ -2,7 +2,7 @@
 description: Put a word to it.
 ---
 
-# Creating, Adding and Editing Concepts
+# Concepts
 
 Concepts are a known entity in the world. They are fundamental to annotating your data, for defining the vocabulary that a model should output, for relating things to each other, for receiving your predictions, searching for these concepts and more.
 

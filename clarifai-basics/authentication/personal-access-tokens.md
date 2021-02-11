@@ -12,7 +12,7 @@ To create a new PAT, navigate to the bottom left hand corner of the application 
 
 Select authentication:
 
-![authentication-screen](../../.gitbook/assets/authentication_screen%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%287%29.jpg)
+![authentication-screen](../../.gitbook/assets/authentication_screen%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%287%29%20%287%29%20%281%29%20%282%29.jpg)
 
 And click on "Create a Personal Access Token"
 

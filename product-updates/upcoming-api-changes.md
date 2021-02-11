@@ -10,7 +10,7 @@ We will continue to update this page regularly, so a good way to always stay up 
 
 | Date | Change |
 | :--- | :--- |
-| february 12, 2021. 9:00am ET | **Deprecation of delete_all option**  The `delete_all` option in DELETE /inputs request will no longer be supported and will be removed from our API after this point in time. You can delete inputs by id. Each request can have at most 128 ids. |
+| february 12, 2021. 9:00am ET | **Deprecation of delete\_all option**  The `delete_all` option in DELETE /inputs request will no longer be supported and will be removed from our API after this point in time. You can delete inputs by id. Each request can have at most 128 ids. |
 
 ## Completed Changes
 

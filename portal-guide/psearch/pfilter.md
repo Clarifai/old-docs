@@ -18,7 +18,7 @@ You can even search by metadata in the single image view in Portal. Just expand 
 
 Combine visual search with location-awareness to organize your data by place. Include latitude and longitude information when you upload your data, and then filter to find all inputs within a given radius. Or even define a region on the map and limit your results to the inputs within that region.
 
-![](../../.gitbook/assets/filter_by_geolocation%20%282%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29.jpg)
+![](../../.gitbook/assets/filter_by_geolocation%20%282%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29%20%283%29.jpg)
 
 ## Filter by annotations
 

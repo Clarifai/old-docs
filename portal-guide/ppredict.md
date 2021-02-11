@@ -2,7 +2,7 @@
 description: Dynamic AI model orchestration and inference scaling
 ---
 
-# Making Model Predictions
+# Making Predictions
 
 Portal analyzes your inputs and tells you what's inside of them. Portal will return a list of concepts with corresponding probabilities of how likely it is these concepts are contained within the image.
 

@@ -4,7 +4,7 @@ description: Clarifai makes it easy to customize and repurpose existing models.
 
 # Custom Models
 
-You do not need many images to get started. We recommend starting with 10 and adding more as needed. Before you train your first model you will have needed to [create an application](../../getting-started/applications/#create-an-application) and select a [base workflow](../../getting-started/applications/#base-workflow).
+You do not need many images to get started. We recommend starting with 10 and adding more as needed. Before you train your first model you will have needed to [create an application](../../clarifai-basics/applications/#create-an-application) and select a [base workflow](../../clarifai-basics/applications/#base-workflow).
 
 ![](../../.gitbook/assets/illustration-training%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29.png)
 
