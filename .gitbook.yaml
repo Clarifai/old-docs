@@ -22,3 +22,15 @@ redirects:
   portal-guide/collectors/collectors: ./portal-guide/data/collectors.md
   portal-guide/data/collectors/collectors: ./portal-guide/data/collectors.md
   portal-guide/walkthroughs: ./how-to/portal/pcustom-model-walkthrough.md
+  getting-started/applications: ./clarifai-basics/applications.md
+  getting-started/applications/create-an-application: ./clarifai-basics/applications/create-an-application.md
+  getting-started/applications/application-settings: ./clarifai-basics/applications/application-settings.md
+  getting-started/applications/collaboration: ./clarifai-basics/applications/collaboration.md
+  /getting-started/authentication: ./clarifai-basics/authentication.md
+  /getting-started/authentication/app-specific-api-keys: ./clarifai-basics/authentication/app-specific-api-keys.md
+  /getting-started/authentication/personal-access-tokens: ./clarifai-basics/authentication/personal-access-tokens.md
+  /getting-started/authentication/scopes: ./clarifai-basics/authentication/scopes.md
+  /getting-started/authentication/authorize: ./clarifai-basics/authentication/authorize.md
+  /getting-started/authentication/2-factor-authentication: ./clarifai-basics/authentication/2-factor-authentication.md
+  /getting-started/authentication/rbac: ./clarifai-basics/authentication/rbac.md
+  /getting-started/glossary: ./clarifai-basics/glossary.md
