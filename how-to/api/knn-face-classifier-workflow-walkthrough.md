@@ -14,7 +14,7 @@ In this walkthorugh, you'll learn how to create a KNN classifier that's going to
 
 ## Create a new application
 
-The first step is manual: in the Clarifai Portal, [create an new application](https://docs.clarifai.com/getting-started/applications/create-an-application) with **Face** selected as the Base Workflow.
+The first step is manual: in the Clarifai Portal, [create an new application](https://docs.clarifai.com/getting-started/quick-start) with **Face** selected as the Base Workflow.
 
 Afterward, copy the newly-created application's _API key_ and set it as metadata \(see the initialization code\). This variable is going to be used, for authorization purposes, by all Clarifai API calls that follow.
 
