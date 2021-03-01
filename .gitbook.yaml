@@ -34,3 +34,10 @@ redirects:
   /getting-started/authentication/2-factor-authentication: ./clarifai-basics/authentication/2-factor-authentication.md
   /getting-started/authentication/rbac: ./clarifai-basics/authentication/rbac.md
   /getting-started/glossary: ./clarifai-basics/glossary.md
+  /getting-started/authentication: ./clarifai-basics/authentication.md
+  /getting-started/applications/create-an-application: ./clarifai-basics/applications/create-an-application.md
+  /api-guide/walkthroughs/auto-annotation-walkthrough: ./api-guide/workflows/common-workflows/auto-annotation-walkthrough.md
+  /portal-guide/walkthroughs/pcustom-model-walkthrough: ./portal-guide/model/pcustom-model-walkthrough.md
+  /getting-started/authentication/personal-access-tokens: ./clarifai-basics/authentication/personal-access-tokens.md
+  /getting-started/authentication/app-specific-api-keys: ./clarifai-basics/authentication/app-specific-api-keys.md
+  /main/api-guide/model/workflow/: ./api-guide/workflows/base-workflows.md
