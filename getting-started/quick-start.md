@@ -4,13 +4,7 @@ description: >-
   platform.
 ---
 
-# Quick Start
-
-Ready to start building your own AI application? This guide will get you up and running in less than five minutes.
-
-{% hint style="info" %}
-You can get started for free. No credit card required. Just keep in mind that you will be limited to 100 API calls until you verify your email address. Once verified, you have access to the full number of API calls available with your plan.
-{% endhint %}
+# Build Your First Clarifai App
 
 ## Step 1: Set up your account or login
 
@@ -19,8 +13,6 @@ Just [click](https://portal.clarifai.com/signup) here if you need to set up your
 ## Step 2: Verify your email address
 
 Check your email. We will send you a link that enables you to automatically verify your email.
-
-![](../.gitbook/assets/verify_emal2%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%284%29%20%284%29%20%284%29%20%284%29.gif)
 
 ## Step 3: Create your first application
 

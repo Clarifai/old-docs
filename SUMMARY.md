@@ -4,7 +4,7 @@
 
 ## Getting Started
 
-* [Quick Start](getting-started/quick-start.md)
+* [Build Your First Clarifai App](getting-started/quick-start.md)
 
 ## Clarifai Basics
 

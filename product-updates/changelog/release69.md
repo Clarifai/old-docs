@@ -11,7 +11,7 @@
 | Status | Details |
 | :--- | :--- |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%28410%29.jpg) | Improve email subject for canceled order |
-| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%2826%29.jpg) | \[P0\]Cancel feature for Order owner |
+| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%2826%29%20%2818%29.jpg) | \[P0\]Cancel feature for Order owner |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%28497%29.jpg) | Task form should select "All Inputs" by default |
 | ![](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28692%29.jpg) | Create Task button is incorrectly locked due to missing inputs |
 | ![](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%2854%29.jpg) | Embed Model Version Id Missing in classification annotation requests |
@@ -37,7 +37,7 @@
 | ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%28190%29.jpg) | Search for annotation.user\_id in Explorer search bar. |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%28752%29.jpg) | Change Annotation Search To say "filter by" |
 | ![](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28921%29.jpg) | Users having the same name as a collaborator causes annotation searching to break. |
-| ![](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%2812%29.jpg) | Manually typing annotation search crashes explorer |
+| ![](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%2812%29%20%2870%29.jpg) | Manually typing annotation search crashes explorer |
 | ![](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28755%29.jpg) | Endless error if a search fails in explorer |
 | ![](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28589%29.jpg) | Search grid view in explorer gets stuck with old results |
 
@@ -84,7 +84,7 @@
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%28545%29.jpg) | Enable HTML links for mode-switching icons |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%28343%29.jpg) | Remove Upload from Explorer in favor of data mode |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%28479%29.jpg) | Memoize video thumbnail urls |
-| ![](../../.gitbook/assets/improvement%20%2819%29%20%2870%29.jpg) | Fetch Tag icon data for Explorer inputs on hover |
+| ![](../../.gitbook/assets/improvement%20%2819%29%20%2870%29%20%2853%29.jpg) | Fetch Tag icon data for Explorer inputs on hover |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%28693%29.jpg) | Toast notifications should always be on top |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%28236%29.jpg) | Refactor Data mode |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%28874%29.jpg) | Refactor Data mode \(Upload component\) |
