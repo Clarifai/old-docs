@@ -6,7 +6,6 @@ structure:
 
 redirects:
   developer/guide: getting-started.md
-  developer/guide: getting-started.md
   developer/guide/train: getting-started.md
   advanced/models: api-guide/model/clarifai-models.md
   api-guide/inputs: api-guide/data/README.md
