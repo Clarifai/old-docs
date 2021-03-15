@@ -4,14 +4,14 @@
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |
 | :---: | :---: | :---: | :---: |
-| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29.jpg) | ![](../../.gitbook/assets/improvement%20%2819%29%20%281%29.jpg) | ![](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%289%29.jpg) | ![](../../.gitbook/assets/enterprise%20%2818%29%20%2816%29%20%281%29%20%285%29.jpg) |
+| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29%20%281%29.jpg) | ![](../../.gitbook/assets/improvement%20%2819%29%20%281%29.jpg) | ![](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%289%29.jpg) | ![](../../.gitbook/assets/enterprise%20%2818%29%20%2816%29%20%281%29%20%285%29.jpg) |
 
 ### Scribe
 
 | Status | Details |
 | :--- | :--- |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%281%29.jpg) | Improve email subject for canceled order |
-| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29.jpg) | \[P0\]Cancel feature for Order owner |
+| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29%20%281%29.jpg) | \[P0\]Cancel feature for Order owner |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%281%29.jpg) | Task form should select "All Inputs" by default |
 | ![](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%289%29.jpg) | Create Task button is incorrectly locked due to missing inputs |
 | ![](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%289%29.jpg) | Embed Model Version Id Missing in classification annotation requests |
@@ -24,17 +24,17 @@
 | Status | Details |
 | :--- | :--- |
 | ![](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%289%29.jpg) | Clicking the x on search item in explorer grid view for search across apps does not properly clear the url |
-| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29.jpg) | Add Min Search Score Range Slider to Search Across Apps Tab |
-| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29.jpg) | Clicking a video search result does not seek to the corresponding timestamp |
-| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29.jpg) | Search By Region button on video thunbnails |
-| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29.jpg) | Clicking see all within image details sidebar of the visual search across apps should render all of the search results in explorer's asset grid view |
-| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29.jpg) | clicking see all from image details sidebar opens refine search search bar in explorer's asset grid view |
-| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29.jpg) | Add getSeekedVideoFrame onMouseOver to visual search results of |
-| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29.jpg) | Add video timestamps to video search results within the |
-| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29.jpg) | Add search across apps to Image View righthand sidebar |
-| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29.jpg) | Add select app in "Refine Search" righthand sidebar |
-| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29.jpg) | Search for annotation.status in Explorer search bar. |
-| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29.jpg) | Search for annotation.user\_id in Explorer search bar. |
+| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29%20%281%29.jpg) | Add Min Search Score Range Slider to Search Across Apps Tab |
+| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29%20%281%29.jpg) | Clicking a video search result does not seek to the corresponding timestamp |
+| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29%20%281%29.jpg) | Search By Region button on video thunbnails |
+| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29%20%281%29.jpg) | Clicking see all within image details sidebar of the visual search across apps should render all of the search results in explorer's asset grid view |
+| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29%20%281%29.jpg) | clicking see all from image details sidebar opens refine search search bar in explorer's asset grid view |
+| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29%20%281%29.jpg) | Add getSeekedVideoFrame onMouseOver to visual search results of |
+| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29%20%281%29.jpg) | Add video timestamps to video search results within the |
+| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29%20%281%29.jpg) | Add search across apps to Image View righthand sidebar |
+| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29%20%281%29.jpg) | Add select app in "Refine Search" righthand sidebar |
+| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29%20%281%29.jpg) | Search for annotation.status in Explorer search bar. |
+| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29%20%281%29.jpg) | Search for annotation.user\_id in Explorer search bar. |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%281%29.jpg) | Change Annotation Search To say "filter by" |
 | ![](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%289%29.jpg) | Users having the same name as a collaborator causes annotation searching to break. |
 | ![](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%289%29.jpg) | Manually typing annotation search crashes explorer |
@@ -46,7 +46,7 @@
 | Status | Details |
 | :--- | :--- |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%281%29.jpg) | Tracker evals: support for original coordinates |
-| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29.jpg) | Integrate MORSE metrics and AP to tracker eval pipeline |
+| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29%20%281%29.jpg) | Integrate MORSE metrics and AP to tracker eval pipeline |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%281%29.jpg) | Cleanup trackers' interface |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%281%29.jpg) | Platform-aware triton orchestrator |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%281%29.jpg) | Connect tracker evaluations with the servicer |
@@ -60,7 +60,7 @@
 
 | Status | Details |
 | :--- | :--- |
-| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29.jpg) | Create pubic Visual Text Recognition workflow |
+| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29%20%281%29.jpg) | Create pubic Visual Text Recognition workflow |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%281%29.jpg) | \[Portal\] Use only\_base parameter when choosing base workflow |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%281%29.jpg) | Display model name in Selected model row in workflows edit page |
 | ![](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%289%29.jpg) | Remove workflows creation discrepancy |
@@ -72,11 +72,11 @@
 | :--- | :--- |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%281%29.jpg) | Add Transform, Resize and Drag functionality to canvas rectangles |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%281%29.jpg) | Create CollabpsableBox block to provide app-wide reusable accordion boxes with menu items |
-| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29.jpg) | Create a central entities factory for app-wide entities like annotations to be shared across modules like Explorer and Labeler |
-| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29.jpg) | Mouse leave preserves the FE generated thumbnail of a video at a specific time. |
-| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29.jpg) | Set up end to end testing framework & write auth tests |
-| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29.jpg) | Create Data mode design |
-| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29.jpg) | Filter annotations by user id in explorer |
+| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29%20%281%29.jpg) | Create a central entities factory for app-wide entities like annotations to be shared across modules like Explorer and Labeler |
+| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29%20%281%29.jpg) | Mouse leave preserves the FE generated thumbnail of a video at a specific time. |
+| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29%20%281%29.jpg) | Set up end to end testing framework & write auth tests |
+| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29%20%281%29.jpg) | Create Data mode design |
+| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%287%29%20%281%29.jpg) | Filter annotations by user id in explorer |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%281%29.jpg) | re-position data-mode in sidebar |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%281%29.jpg) | Fix Development Environment Crashing on Portal |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%281%29.jpg) | Add responsiveness capability to Portal |

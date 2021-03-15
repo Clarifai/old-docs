@@ -60,7 +60,7 @@ Get started by creating your app and uploading your inputs.
 
 In general, deep trained models need more data than ones trained on top of Clarifai Models. For most applications you’ll need at least 1000 training inputs, but it could be much more than this depending on your specific use case.
 
-![](../../.gitbook/assets/create_dt_app%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29.jpg)
+![](../../.gitbook/assets/create_dt_app%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%284%29.jpg)
 
 #### Create your concepts and label your inputs
 
@@ -78,7 +78,7 @@ Click the "four squares" icon on the lefthand sidebar to enter Model Mode.
 
 Click the blue `Create Custom Model` button at the top righthand corner of the screen and select `Visual Classifier`, `Visual Embedder`, or `Visual Detector`.
 
-![](../../.gitbook/assets/create_custom_model%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%286%29.jpg)
+![](../../.gitbook/assets/create_custom_model%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%286%29%20%281%29.jpg)
 
 #### Configure your Model
 

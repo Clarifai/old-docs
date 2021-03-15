@@ -2,7 +2,7 @@
 
 The Clarifai platform makes it easy for you to use AI models to power your business solution. You can create your own custom models, or get started right away by using one of our pre-optimized Clarifai Models.
 
-![](../../.gitbook/assets/model_concepts%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.jpg)
+![](../../.gitbook/assets/model_concepts%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.jpg)
 
 {% hint style="info" %}
 A model contains a group of concepts. A model will only see the concepts it contains.

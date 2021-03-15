@@ -1,6 +1,6 @@
 # Interpreting Evaluations
 
-![](../../../.gitbook/assets/eval-results-new%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%286%29%20%287%29%20%286%29.png)
+![](../../../.gitbook/assets/eval-results-new%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%286%29%20%287%29%20%283%29%20%287%29.png)
 
 Once the Model Evaluation is complete, you’ll be able to view the evaluation results in Portal.
 
@@ -86,7 +86,7 @@ A concept-by-concept matrix is a graphic flattening of data to show what has bee
 
 Each row represents the subset of the test set that were actually labeled as a concept, e.g. “dog”. As you go across the row, each cell shows the number of times those images were predicted as each concept, noted by the column name.
 
-![](../../../.gitbook/assets/concept_by_concept%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%283%29%20%284%29%20%285%29.png)
+![](../../../.gitbook/assets/concept_by_concept%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%283%29%20%284%29%20%285%29%20%286%29.png)
 
 This matrix helps you understand:
 
