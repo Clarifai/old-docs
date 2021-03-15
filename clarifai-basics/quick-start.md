@@ -6,33 +6,33 @@ description: >-
 
 # Build your first Clarifai App
 
-## Step 1: Set up your account or login
+## Step 1: Set up your account or login <a id="step-1-set-up-your-account-or-login"></a>
 
-Just [click](https://portal.clarifai.com/signup) here if you need to set up your account for the first time. Or [click here](https://portal.clarifai.com/login) to login.
+Just [click](https://portal.clarifai.com/signup) here if you need to set up your account for the first time. Or [click here](https://portal.clarifai.com/login) to login.‌
 
-## Step 2: Verify your email address
+## Step 2: Verify your email address <a id="step-2-verify-your-email-address"></a>
 
-Check your email. We will send you a link that enables you to automatically verify your email.
+Check your email. We will send you a link that enables you to automatically verify your email.‌
 
-## Step 3: Create your first application
+## Step 3: Click "my-first-application" <a id="step-3-click-my-first-application"></a>
 
-Just click "Create Application".
+![](https://gblobscdn.gitbook.com/assets%2F-LisemUaXxC3S7Kk9xFz%2F-MVU4bg0F8UvCJXvuTU9%2F-MVUBjcglwPWRF11_kTP%2Fclick-my-first-app.jpg?alt=media&token=fbc21d93-f0f7-4de8-a430-ff28d09b3923)
 
-![](../.gitbook/assets/create_application2%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%282%29%20%281%29%20%286%29.gif)
+## Step 4: Upload an image <a id="step-4-upload-an-image"></a>
 
-Give your application a name and select "General" as your base model.
+Click "Add Inputs.‌
 
-![](../.gitbook/assets/create_application_too%20%282%29%20%282%29.gif)
+![](https://gblobscdn.gitbook.com/assets%2F-LisemUaXxC3S7Kk9xFz%2F-MVU4bg0F8UvCJXvuTU9%2F-MVUC7HqZpJxq1uyLNgZ%2Fadd-inputs-button.jpg?alt=media&token=0b43701c-ca1f-498d-9cfd-b4ee87937d94)
 
-## Step 4: Upload your data
+Click "Browse Files" and upload one of your images.‌
 
-Upload any pictures you would like to test out.
+![](https://gblobscdn.gitbook.com/assets%2F-LisemUaXxC3S7Kk9xFz%2F-MVU4bg0F8UvCJXvuTU9%2F-MVUCUEfqH_dGBETXwgx%2Fbrowse-files.jpg?alt=media&token=e5268037-eb14-437a-87e6-a705763a6375)
 
-![](../.gitbook/assets/upload_images%20%282%29%20%282%29%20%281%29.gif)
+## Step 5: Take a look at your first predictions <a id="step-5-take-a-look-at-your-first-predictions"></a>
 
-## Step 5: Take a look at your first predictions
+Click the "Eye" Icon‌
 
-The general model you selected can recognize over 11,000 concepts right out of the box. Just click on an image and take a look at the predictions that are generated on the right hand side of the screen.
+![](https://gblobscdn.gitbook.com/assets%2F-LisemUaXxC3S7Kk9xFz%2F-MVU4bg0F8UvCJXvuTU9%2F-MVUCdSjk-CT52ZX309j%2Fclick-eye.jpg?alt=media&token=3b330484-5213-4950-82b9-1e79a53d4b92)
 
-![](../.gitbook/assets/predict2%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%286%29%20%285%29%20%281%29%20%286%29.gif)
+Click on your image and take a look at your first predictions! The general model you selected can recognize over 11,000 concepts right out of the box
 
