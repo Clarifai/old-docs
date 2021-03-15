@@ -60,5 +60,5 @@ Finally you will need to connect the `Input Nodes` in your workflow. You can lin
 
 To activate your new workflow in your app, head back to the "App Overview" page, and change your `Base Workflow` to the new workflow that you have just created and click the checkbox.
 
-![](../../.gitbook/assets/change_base_workflow%20%284%29%20%284%29%20%284%29.jpg)
+![](../../.gitbook/assets/change_base_workflow%20%284%29%20%284%29%20%285%29%20%285%29.jpg)
 

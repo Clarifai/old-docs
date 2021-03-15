@@ -64,7 +64,7 @@ Get started by creating your app and uploading your inputs.
 
 In general, deep trained models need more data than ones trained on top of Clarifai Models. For most applications you’ll need at least 1000 training inputs, but it could be much more than this depending on your specific use case.
 
-![](../../.gitbook/assets/create_dt_app%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.jpg)
+![](../../.gitbook/assets/create_dt_app%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%281%29.jpg)
 
 #### Create your concepts and label your inputs
 
@@ -88,7 +88,7 @@ Click the blue `Create Custom Model` button at the top righthand corner of the s
 
 When you choose your your deep training template you will see the hyperparameters that are available within that template populated with default values. Adjust these values as desired and then click "Create Model".
 
-![](../../.gitbook/assets/create_dt_model%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.jpg)
+![](../../.gitbook/assets/create_dt_model%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%284%29.jpg)
 
 Once you have created your new model you can add it to your [workflows](https://docs.clarifai.com/portal-guide/workflows) so that you can use it in your app.
 

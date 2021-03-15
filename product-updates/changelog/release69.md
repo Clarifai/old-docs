@@ -13,7 +13,7 @@
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%28148%29.jpg) | Improve email subject for canceled order |
 | ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%28244%29.jpg) | \[P0\]Cancel feature for Order owner |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%2843%29.jpg) | Task form should select "All Inputs" by default |
-| ![](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28389%29.jpg) | Create Task button is incorrectly locked due to missing inputs |
+| ![](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28389%29%20%281%29.jpg) | Create Task button is incorrectly locked due to missing inputs |
 | ![](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28286%29.jpg) | Embed Model Version Id Missing in classification annotation requests |
 | ![](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28298%29.jpg) | Detection Annotations with Predictions display out of order |
 | ![](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28847%29.jpg) | Can only view app owner annotations when viewing an app as a collaborator |
@@ -25,7 +25,7 @@
 | :--- | :--- |
 | ![](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28614%29.jpg) | Clicking the x on search item in explorer grid view for search across apps does not properly clear the url |
 | ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%28307%29.jpg) | Add Min Search Score Range Slider to Search Across Apps Tab |
-| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%2855%29.jpg) | Clicking a video search result does not seek to the corresponding timestamp |
+| ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%2855%29%20%281%29.jpg) | Clicking a video search result does not seek to the corresponding timestamp |
 | ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%28291%29.jpg) | Search By Region button on video thunbnails |
 | ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%28332%29.jpg) | Clicking see all within image details sidebar of the visual search across apps should render all of the search results in explorer's asset grid view |
 | ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%28180%29.jpg) | clicking see all from image details sidebar opens refine search search bar in explorer's asset grid view |
@@ -45,7 +45,7 @@
 
 | Status | Details |
 | :--- | :--- |
-| ![](../../.gitbook/assets/improvement%20%2819%29%20%28279%29.jpg) | Tracker evals: support for original coordinates |
+| ![](../../.gitbook/assets/improvement%20%2819%29%20%28279%29%20%281%29.jpg) | Tracker evals: support for original coordinates |
 | ![](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%28190%29.jpg) | Integrate MORSE metrics and AP to tracker eval pipeline |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%28831%29.jpg) | Cleanup trackers' interface |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%28676%29.jpg) | Platform-aware triton orchestrator |
@@ -80,7 +80,7 @@
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%28172%29.jpg) | re-position data-mode in sidebar |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%28775%29.jpg) | Fix Development Environment Crashing on Portal |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%28846%29.jpg) | Add responsiveness capability to Portal |
-| ![](../../.gitbook/assets/improvement%20%2819%29%20%2836%29.jpg) | user can set a unique user\_id \( username \) in profile |
+| ![](../../.gitbook/assets/improvement%20%2819%29%20%2836%29%20%281%29.jpg) | user can set a unique user\_id \( username \) in profile |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%28351%29.jpg) | Enable HTML links for mode-switching icons |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%28349%29.jpg) | Remove Upload from Explorer in favor of data mode |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%28433%29.jpg) | Memoize video thumbnail urls |

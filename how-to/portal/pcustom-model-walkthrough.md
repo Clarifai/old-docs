@@ -6,15 +6,15 @@ description: Use a "Context based classifier" to quickly customize an existing m
 
 To set up a new model, you will need to head over to the [Applications page](https://portal.clarifai.com/apps) through your account. Start by creating your new application.
 
-![](../../.gitbook/assets/create_an_application%20%284%29%20%284%29%20%282%29.jpg)
+![](../../.gitbook/assets/create_an_application%20%284%29%20%284%29%20%285%29%20%282%29.jpg)
 
 Click "View in Explorer", or click the "eye" icon in the lefthand sidebar.
 
-![](../../.gitbook/assets/view_in_explorer%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%284%29%20%285%29%20%286%29.jpg)
+![](../../.gitbook/assets/view_in_explorer%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%284%29%20%285%29%20%287%29%20%287%29.jpg)
 
 Add your inputs. Just click "browse your files" or paste image URLs in the space provided.
 
-![](../../.gitbook/assets/Add_inputs%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.jpg)
+![](../../.gitbook/assets/Add_inputs%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.jpg)
 
 Click on an image. You can create new concepts and label your images in the right hand sidebar.
 
@@ -38,5 +38,5 @@ For this example we choose a context-based classifier that can use a pre-trained
 
 Finally, click the blue "Train Model" button in the upper righthand corner of the screen. Once it is trained you can put it to work by [adding it to your workflows](https://docs.clarifai.com/portal-guide/workflows).
 
-![](../../.gitbook/assets/train_model%20%284%29%20%284%29%20%281%29.jpg)
+![](../../.gitbook/assets/train_model%20%284%29%20%284%29%20%285%29%20%281%29.jpg)
 

@@ -22,7 +22,7 @@ You can create these mappings in your application with a few easy steps.
 
 1. You can link concepts as hierarchical by going to the details of either of the concepts. In the shown application, french\_toast falls under breakfast. You can link them by accessing the View Details section of either concept.
 
-![](../../.gitbook/assets/kg2%20%282%29%20%282%29%20%283%29%20%283%29%20%282%29%20%283%29.png)
+![](../../.gitbook/assets/kg2%20%282%29%20%282%29%20%283%29%20%283%29%20%282%29%20%283%29%20%281%29.png)
 
 1. Once, in the details dashboard, you can link breakfast as a hypernym to french\_toast under the Input Relations menu.
 

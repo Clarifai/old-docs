@@ -10,7 +10,7 @@ Now that you've successfully trained the model, you may want to test its perform
 
 Model Evaluation performs a K-split cross validation on data you used to train your custom model.
 
-![cross validation](../../../.gitbook/assets/cross_validation%20%282%29%20%282%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%286%29%20%286%29%20%281%29.jpg)
+![cross validation](../../../.gitbook/assets/cross_validation%20%282%29%20%282%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%286%29%20%286%29%20%281%29%20%281%29.jpg)
 
 In the cross validation process, it will: 1. Set aside a random 1/K subset of the training data and designate as a test set, 2. Train a new model with the remaining training data, 3. Pass the test set data through this new model to make predictions, 4. Compare the predictions against the test set’s actual labels, and 5. Repeat steps 1\) through 4\) across K splits to average out the evaluation results.
 

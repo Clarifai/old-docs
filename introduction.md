@@ -53,11 +53,11 @@ Workflows allow you to link multiple models together so that you can build compl
 
 ### Armada Predict
 
-![](.gitbook/assets/predictions%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%284%29%20%285%29%20%282%29.jpg)
+![](.gitbook/assets/predictions%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%284%29%20%285%29%20%282%29%20%282%29.jpg)
 
 Predictions are the basic "output" of machine learning models. Predictions are returned as a list of concepts with corresponding probabilities that tell you how confident your model is with a given prediction.
 
-[![](.gitbook/assets/api%20%284%29.jpg) Armada Predict API](api-guide/predict/) / [![](.gitbook/assets/icon_portal%20%2813%29%20%289%29%20%283%29%20%2838%29.jpg) Armada Predict in Portal](api-guide/predict/)
+[![](.gitbook/assets/api%20%284%29.jpg) Armada Predict API](api-guide/predict/) / [![](.gitbook/assets/icon_portal%20%2813%29%20%289%29%20%283%29%20%2838%29%20%281%29.jpg) Armada Predict in Portal](api-guide/predict/)
 
 ### Spacetime Search
 
@@ -65,5 +65,5 @@ Predictions are the basic "output" of machine learning models. Predictions are r
 
 Clarifai's patented technology automatically indexes your media for search. Concepts in your models can be used as search terms. You can also search with images to find similar images. We offer numerous search types that can be combined to filter and sort your data.
 
-![](.gitbook/assets/api%20%284%29.jpg) [Spacetime Search API](api-guide/search/) / [![](.gitbook/assets/icon_portal%20%2813%29%20%289%29%20%283%29%20%2812%29.jpg) Spacetime Search in Portal](introduction.md)
+![](.gitbook/assets/api%20%284%29.jpg) [Spacetime Search API](api-guide/search/) / [![](.gitbook/assets/icon_portal%20%2813%29%20%289%29%20%283%29%20%2812%29%20%281%29.jpg) Spacetime Search in Portal](introduction.md)
 
