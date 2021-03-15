@@ -40,6 +40,18 @@ Powerful zoom and panning features allow you to closely inspect specific regions
 * S - Saturation
 * I - Inversion
 
+## Polygon Labeling
+
+Many labeling tasks can be handled well with bounding box labels, but in cases where you need a more precise way to annotate object, polygon labels are an excellent option. Polygon labels allow you to identify and annotate the exact pixels of your image that represent the object that you would like to label. Polygon labels will output a sequence of x, y coordinates for every point that comprises the polygon. 
+
+First you will need to select "Polygons" as the task type when creating your labeling task.
+
+![Select &quot;Polygons&quot; as your task type when creating a new labeling task](../../.gitbook/assets/polygon-task.jpg)
+
+When labeling your images, you will be able to create multi-point shapes that can outline the precise pixels of the object that you would like to label. Just remember that you will need to "connect the dots" by connecting the last point in your polygon with the first point. 
+
+![Outline your image and be sure to connect the first and last nodes of your polygon](../../.gitbook/assets/polygon-label.gif)
+
 ## Video
 
 Scribe provides powerful tools for labeling video. When working with video, you can leverage video interpolation tools to quickly label thousands of individual frames of video. This rapid labeling technique makes video an excellent source of training data, even if you want your model to primarily analyze still images. You can QuickTrain and DeepTrain models on video data that has been labeled in Scribe.

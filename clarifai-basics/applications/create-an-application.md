@@ -1,10 +1,10 @@
 # Create an Application
 
-To create an application, head on over to the [applications page](https://portal.clarifai.com/apps) and press the 'Create a New Application' button. You have the option of using our General, Travel, Food, Face, Moderation, and Wedding models in your base workflow. More information on these, and other Clarifai Models can be found in our [model gallery](https://www.clarifai.com/models).
+To create an application, head on over to the [applications page](https://portal.clarifai.com/apps) and press the 'Create a New Application' button. 
 
 ## Create an application in Portal
 
-![Application creation window](../../.gitbook/assets/create-new-app-new%20%282%29%20%282%29%20%284%29%20%286%29%20%286%29%20%286%29%20%286%29%20%283%29%20%286%29.png)
+![Application creation window](../../.gitbook/assets/create-new-app-new%20%282%29%20%282%29%20%284%29%20%286%29%20%286%29%20%286%29%20%286%29%20%283%29%20%286%29%20%281%29.png)
 
 ### ID Validation
 

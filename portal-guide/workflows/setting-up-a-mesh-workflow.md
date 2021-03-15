@@ -2,7 +2,7 @@
 description: Learn the basics of setting up a new workflow.
 ---
 
-# Setting Up a Mesh Workflow
+# Setting Up a Workflow
 
 Workflows are a graph of computation that encompass one or more Clarifai or Custom model\(s\). Every workflow is attached to one of your applications. Under each workflow, you will see a list of the Clarifai Models and all custom models in that application when selecting models to add to your workflow. With Workflow Predict, you will be able to run your business logic on one efficient tool.
 
@@ -42,5 +42,5 @@ For Clarifai Models, you will be able to use the latest version. For your custom
 
 You can add up to 20 models to a single workflow. Once you have finished adding everything, press the "Save Workflow" button and that will save the state of your workflow. Now you are ready to predict using your brand new workflow. You can edit a workflow at any time.
 
-![Create a workflow](../../.gitbook/assets/my-workflow-new%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%285%29.png)
+![Create a workflow](../../.gitbook/assets/my-workflow-new%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%285%29%20%281%29.png)
 

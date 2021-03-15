@@ -173,7 +173,7 @@ curl -X GET \
 
 ### List concepts
 
-You can get a list of concepts within your app with a GET call. This call supports [pagination](../api-overview/pagination.md)
+You can get a list of concepts within your app with a GET call. This call supports [pagination](../advanced-topics/pagination.md)
 
 {% tabs %}
 {% tab title="Java" %}

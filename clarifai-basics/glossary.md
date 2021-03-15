@@ -1,4 +1,8 @@
-# Glossary
+---
+description: Glossary of key terminology to know when working with the Clarifai Platform
+---
+
+# Key Terminology to Know
 
 ## Application
 

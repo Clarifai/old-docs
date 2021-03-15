@@ -17,7 +17,7 @@ With saved searches you can capture your search results at a given point in time
 
 ## Name your search
 
-![](../../.gitbook/assets/name_search%20%282%29%20%282%29%20%283%29%20%282%29%20%281%29%20%285%29.jpg)
+![](../../.gitbook/assets/name_search%20%282%29%20%282%29%20%283%29%20%282%29%20%281%29%20%285%29%20%281%29.jpg)
 
 ### Preserve Search Results
 

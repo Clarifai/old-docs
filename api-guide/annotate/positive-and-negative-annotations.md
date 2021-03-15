@@ -20,7 +20,7 @@ When annotating your data, you have the option of providing both positive and ne
 
 \(iv\) If there are no positive annotations for any concept, then if any concept is tagged with a negative annotation, this is treated as a negative example for all concepts related to that image.
 
-![](../../.gitbook/assets/annotation_iv%20%282%29%20%282%29%20%283%29%20%283%29%20%281%29%20%287%29.jpg)
+![](../../.gitbook/assets/annotation_iv%20%282%29%20%282%29%20%283%29%20%283%29%20%281%29%20%287%29%20%281%29.jpg)
 
 \(v\) If there are no positive or negative annotations, the example is ignored.
 
