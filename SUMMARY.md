@@ -145,6 +145,7 @@
 
 * [Upcoming API Changes](product-updates/upcoming-api-changes.md)
 * [Changelog](product-updates/changelog/README.md)
+  * [Release 7.2](product-updates/changelog/release72.md)
   * [Release 7.1](product-updates/changelog/release71.md)
   * [Release 7.0](product-updates/changelog/release70.md)
   * [Release 6.11](product-updates/changelog/release611.md)
@@ -168,4 +169,3 @@
 * [Clarifai Blog](https://www.clarifai.com/blog)
 * [Clarifai Help](https://help.clarifai.com/hc/en-us)
 * [Clarifai Community](https://www.clarifai.com/community)
-
