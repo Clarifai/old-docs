@@ -2,7 +2,7 @@
 
 ## Interpreting Results
 
-![](../../../.gitbook/assets/eval-results-new%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%286%29%20%287%29.png) Once the Model Evaluation is complete, you’ll be able to view the evaluation results in the [Portal here](https://clarifai.com/apps)
+![](../../../.gitbook/assets/eval-results-new%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%286%29%20%287%29%20%283%29.png) Once the Model Evaluation is complete, you’ll be able to view the evaluation results in the [Portal here](https://clarifai.com/apps)
 
 We suggest that you start by looking at the Concept by Concept Probabilities Results and the Summary Table to get a sense of the overall model prediction performance and identify the high-performing and low-performing concepts. Afterwards, hone in on the Selection Details of the False Positives and False Negatives to identify any biases, if any, in how the model is predicting, and to correct any inputs that are mislabeled
 

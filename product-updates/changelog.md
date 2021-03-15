@@ -15,7 +15,7 @@
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%281044%29.jpg) | Login \(user/PW\) has no rate limit/max attempts. Fixed |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28879%29.jpg) | Remove all instances of worker\_id from explorer |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28199%29.jpg) | When email link to verify my email address clicked, still see "verify your email" banner. Fixed |
-| ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28357%29.jpg) ![](../.gitbook/assets/enterprise%20%2818%29%20%2816%29%20%281%29%20%2826%29.jpg) | API services do not function once Queue goes down and comes back up. Fixed. This makes on premise deployments more resilient to power failures. |
+| ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28357%29%20%281%29.jpg) ![](../.gitbook/assets/enterprise%20%2818%29%20%2816%29%20%281%29%20%2826%29.jpg) | API services do not function once Queue goes down and comes back up. Fixed. This makes on premise deployments more resilient to power failures. |
 
 ### Applications
 
@@ -29,7 +29,7 @@
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28533%29.jpg) | Unable to copy an app that has been shared via Collaborators. Fixed |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28578%29.jpg) | Setting useCustomConfig isn't checked at login. Fixed |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28902%29.jpg) | Collaboration apps have race condition where wrong user id is used |
-| ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%281034%29.jpg) | Stopped loading of collaborations for search demo/logged-out users |
+| ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%281034%29%20%281%29.jpg) | Stopped loading of collaborations for search demo/logged-out users |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%281055%29.jpg) | Return “All” scopes when listing available scopes so that you have that option when creating new keys. |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28148%29.jpg) | Collaborators can not see workers. Fixed |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28448%29.jpg) | Missing `Apps_Get` scope in session token auth caused creation of keys to fail temporarily. Fixed |
@@ -46,7 +46,7 @@
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%2855%29.jpg) | Allow RegionInfo from SpireDetectEmbedResponse to contain Point when saving to DB |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%281090%29.jpg) | Unable to upload same file\(s\) through browse files. Fixed |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28828%29.jpg) | ffmpeg can produce no frames for very short videos |
-| ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28331%29.jpg) | Add Inputs/View Explorer does not display in new app anymore. Fixed |
+| ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28331%29%20%281%29.jpg) | Add Inputs/View Explorer does not display in new app anymore. Fixed |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%281077%29.jpg) | Clicking video thumbs in detail view does not reload a video. Fixed |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28926%29.jpg) | Keyboard navigation in image details view highlights incorrect thumb |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28373%29.jpg) | No Prompt when uploading an image to Explorer through URL. Fixed |
@@ -62,14 +62,14 @@
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%2844%29.jpg) | Log capability added for annotation/search request/response |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28531%29.jpg) | Eliminated error if no annotation to be deleted |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28941%29.jpg) | Last concept used for bounding boxes is retained between apps. Fixed |
-| ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28224%29.jpg) | The Add Positives / Add Negatives buttons on a Concept details view breaks portal |
+| ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28224%29%20%281%29.jpg) | The Add Positives / Add Negatives buttons on a Concept details view breaks portal |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28544%29.jpg) | CFR rectangles on grid view do not correlate. Fixed |
 
 ### Model
 
 | Status | Details |
 | :--- | :--- |
-| ![](../.gitbook/assets/new_feature%20%281%29%20%281%29%20%28315%29.jpg) | Ability to keep concepts sorted by alpha in Portal |
+| ![](../.gitbook/assets/new_feature%20%281%29%20%281%29%20%28315%29%20%281%29.jpg) | Ability to keep concepts sorted by alpha in Portal |
 | ![](../.gitbook/assets/new_feature%20%281%29%20%281%29%20%28257%29.jpg) | Implement image crop model to make it possible to work in subregions of an image |
 | ![](../.gitbook/assets/new_feature%20%281%29%20%281%29%20%28355%29.jpg) | Implement random sample model type, adding to fixed function feature set |
 | ![](../.gitbook/assets/improvement%20%2819%29%20%28727%29.jpg) | Update training templates to have more straightforward names and more friendly defaults |
@@ -103,7 +103,7 @@
 | :--- | :--- |
 | ![](../.gitbook/assets/new_feature%20%281%29%20%281%29%20%2847%29.jpg) | Add click to search metadata attributes in image details sidebar |
 | ![](../.gitbook/assets/new_feature%20%281%29%20%281%29%20%28264%29.jpg) | Implement visual search in another app as a model type you can add to a workflow |
-| ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28746%29.jpg) | Search bar missing in some cases. Fixed |
+| ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28746%29%20%281%29.jpg) | Search bar missing in some cases. Fixed |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28992%29.jpg) | Region Searches within Search Bar still use crop coordinates instead of base64 bytes. Fixed |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28167%29.jpg) | Click Search button icons on Thumbs not working for localized search. Fixed |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%2899%29.jpg) | Disable all search by click handlers in Portal for Text Apps |
@@ -142,7 +142,7 @@
 | ![](../.gitbook/assets/improvement%20%2819%29%20%28149%29.jpg) | Created display to show the user who invited you to collaborate on an app |
 | ![](../.gitbook/assets/improvement%20%2819%29%20%28508%29.jpg) | Update email phrases for collaborator invitations. After successful sign-up, the user is now redirected to the app's dashboard in Portal |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28110%29.jpg) | Fixed issue with concept counts in some apps |
-| ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28555%29.jpg) | Clicking pencil icon to edit an API Key in Portal crashed apps. Fixed |
+| ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28555%29%20%281%29.jpg) | Clicking pencil icon to edit an API Key in Portal crashed apps. Fixed |
 
 ### Data Management
 
@@ -165,7 +165,7 @@
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28716%29.jpg) | Investigate why some re-hosted s3 links are no longer working |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%281046%29.jpg) | Getting input counts was broken in some apps, reporting zero, which caused Portal to add an input view to display always |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%2862%29.jpg) | Debug UnicodeErrors in URL downloading to fix URLs with Unicode characters |
-| ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28631%29.jpg) | Fix the poor handling of video too large error message |
+| ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28631%29%20%281%29.jpg) | Fix the poor handling of video too large error message |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28240%29.jpg) | Unable to batch delete inputs from time to time has been fixed |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28731%29.jpg) | Media processor video handling was having errors with decoding some videos |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28846%29.jpg) | Delete Image Button doesn't work in some scenarios |
@@ -207,7 +207,7 @@
 | :--- | :--- |
 | ![](../.gitbook/assets/new_feature%20%281%29%20%281%29%20%28206%29.jpg) | Return custom detection evaluations through the GO API |
 | ![](../.gitbook/assets/improvement%20%2819%29%20%28610%29.jpg) | Improved cluster page performance |
-| ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28590%29.jpg) | Investigate health checks killing a prediction backend service, which could affect some predictions in the API |
+| ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28590%29%20%281%29.jpg) | Investigate health checks killing a prediction backend service, which could affect some predictions in the API |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28507%29.jpg) | Workflow predict sometimes was failing with 98012 status code. Many fixes here should reduce that |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28143%29.jpg) | Workflow Predict called the wrong model sometimes. Not any more! |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28628%29.jpg) | Video playback out of sync with detections in our demos |
@@ -221,9 +221,9 @@
 | Status | Details |
 | :--- | :--- |
 | ![](../.gitbook/assets/improvement%20%2819%29%20%28136%29.jpg) | Added helper text/suggestions to improve Portal user experience |
-| ![](../.gitbook/assets/improvement%20%2819%29%20%28558%29.jpg) | Header Search return app\_owner's user info in collaboration endpoints |
+| ![](../.gitbook/assets/improvement%20%2819%29%20%28558%29%20%281%29.jpg) | Header Search return app\_owner's user info in collaboration endpoints |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28402%29.jpg) | Explorer Search Bar - Clicking the green/red circle icons didn't reliably detect click, now it does! |
 | ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28156%29.jpg) | Portal not showing the correct number of results in concept search. Fixed. |
-| ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%281069%29.jpg) | Left/right arrows in single image view don't switch between images with regions. Fixed |
-| ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%281079%29.jpg) | Fixed carousel thumbnail clicks wiping query params / trigger new search |
+| ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%281069%29%20%281%29.jpg) | Left/right arrows in single image view don't switch between images with regions. Fixed |
+| ![](../.gitbook/assets/bug%20%28196%29%20%28452%29%20%281079%29%20%281%29.jpg) | Fixed carousel thumbnail clicks wiping query params / trigger new search |
 
