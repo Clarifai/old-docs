@@ -38,7 +38,7 @@ redirects:
   getting-started/authentication/personal-access-tokens: clarifai-basics/authentication/personal-access-tokens.md
   getting-started/authentication/app-specific-api-keys: clarifai-basics/authentication/app-specific-api-keys.md
   main/api-guide/model/workflow: api-guide/workflows/README.md
-  portal-guide/model/evaluate: portal-guide/evaluate.md
+  portal-guide/model/evaluate: portal-guide/evaluate/README.md
   portal-guide/explorer: portal-guide/data/explorer/README.md
   how-to/portal: portal-guide/portal-overview/README.md
   how-to/api: api-guide/api-overview/README.md
