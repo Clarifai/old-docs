@@ -4,7 +4,7 @@ description: >-
   the users in the system.
 ---
 
-# Roll-Based Access Control
+# Role-Based Access Control
 
 Role-based access control \(RBAC\) functionality enables application admins to limit the permissions of some users within a team. It is both a security best practice \(see the principle of least privilege\) and often a compliance requirement for admins to maintain separate accounts for their user level activities.
 
