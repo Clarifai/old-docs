@@ -1,3 +1,7 @@
+---
+description: Changelog for Clarifai Release 6.5
+---
+
 # Release 6.5
 
 ## Changelog 6.5
@@ -99,4 +103,3 @@
 | Status | Details |
 | :--- | :--- |
 | ![](https://github.com/Clarifai/docs/tree/1ece1cee27874f51aa11d50a825fff02b0b5243f/product-updates/.gitbook/assets/improvement%20%2883%29.jpg) | Update docs.clarifai.com to reflect our current API clients including grpc clients. |
-

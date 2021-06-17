@@ -1,3 +1,7 @@
+---
+description: Changelog for Clarifai Release 6.1
+---
+
 # Release 6.1
 
 ## Changelog 6.1
@@ -51,4 +55,3 @@
 | :--- | :--- |
 | ![](https://github.com/Clarifai/docs/tree/1ece1cee27874f51aa11d50a825fff02b0b5243f/product-updates/.gitbook/assets/new_feature%20%2852%29.jpg) | Implement search by annotation.status in backend |
 | ![](https://github.com/Clarifai/docs/tree/1ece1cee27874f51aa11d50a825fff02b0b5243f/product-updates/.gitbook/assets/improvement%20%2883%29.jpg) | Connect saved searches and annotation status |
-

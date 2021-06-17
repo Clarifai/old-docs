@@ -1,3 +1,8 @@
+---
+description: Changelog for Clarifai Release 6.6
+---
+
+
 # Release 6.6
 
 ## Changelog 6.6
@@ -197,4 +202,3 @@
 | Status | Details |
 | :--- | :--- |
 | ![](https://github.com/Clarifai/docs/tree/1ece1cee27874f51aa11d50a825fff02b0b5243f/product-updates/.gitbook/assets/new_feature%20%2852%29.jpg) | Display workflow detection predictions on the main/large image in Portal |
-

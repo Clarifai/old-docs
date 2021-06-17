@@ -1,3 +1,7 @@
+---
+description: Changelog for Clarifai Release 6.2
+---
+
 # Release 6.2
 
 ## Changelog 6.2
@@ -95,4 +99,3 @@
 | ![](https://github.com/Clarifai/docs/tree/1ece1cee27874f51aa11d50a825fff02b0b5243f/product-updates/.gitbook/assets/new_feature%20%2852%29.jpg) | Public general v1.5 workflow |
 | ![](https://github.com/Clarifai/docs/tree/1ece1cee27874f51aa11d50a825fff02b0b5243f/product-updates/.gitbook/assets/bug%20%28248%29.jpg) | Allow Patching to existing public workflow |
 | ![](https://github.com/Clarifai/docs/tree/1ece1cee27874f51aa11d50a825fff02b0b5243f/product-updates/.gitbook/assets/bug%20%28248%29.jpg) | Can not train LOPQ if app base workflow is face. Fixed |
-

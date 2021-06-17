@@ -1,3 +1,7 @@
+---
+description: Changelog for Clarifai Release 6.4
+---
+
 # Release 6.4
 
 ## Changelog 6.4
@@ -136,4 +140,3 @@
 | :--- | :--- |
 | ![](https://github.com/Clarifai/docs/tree/1ece1cee27874f51aa11d50a825fff02b0b5243f/product-updates/.gitbook/assets/improvement%20%2883%29.jpg) | Clean up private API client repos |
 | ![](https://github.com/Clarifai/docs/tree/1ece1cee27874f51aa11d50a825fff02b0b5243f/product-updates/.gitbook/assets/bug%20%28248%29.jpg) | Remove public workflows from Python client |
-

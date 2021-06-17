@@ -1,4 +1,9 @@
+---
+description: Changelog for Clarifai Release 7.0
+---
+
 # Release 7.0
+
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |
 | :---: | :---: | :---: | :---: |
@@ -91,4 +96,3 @@
 | ![bug](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28748%29.jpg) | Fixed redis stream msg id to timestamp err |
 | ![bug](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28592%29.jpg) | Fixed video ingestion using empty workflow |
 | ![bug](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28275%29.jpg) | Fixed app description during app creation is not being saved. |
-

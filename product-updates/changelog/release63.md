@@ -1,3 +1,7 @@
+---
+description: Changelog for Clarifai Release 6.3
+---
+
 # Release 6.3
 
 ## Changelog 6.3
@@ -85,4 +89,3 @@
 | :--- | :--- |
 | ![](https://github.com/Clarifai/docs/tree/1ece1cee27874f51aa11d50a825fff02b0b5243f/product-updates/.gitbook/assets/new_feature%20%2852%29.jpg) | Added a Range Slider to filter Workflow Predictions by Value |
 | ![](https://github.com/Clarifai/docs/tree/1ece1cee27874f51aa11d50a825fff02b0b5243f/product-updates/.gitbook/assets/improvement%20%2883%29.jpg) | Updated Face workflow to include the detect faces as concepts for search |
-

@@ -1,3 +1,7 @@
+---
+description: Changelog for Clarifai Release 6.9
+---
+
 # Release 6.9
 
 ## Changelog 6.8
@@ -113,4 +117,3 @@
 | :--- | :--- |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%28493%29.jpg) | \[API Client Tests Javascript\] Fail fast when `stage` is invalid |
 | ![](../../.gitbook/assets/improvement%20%2819%29%20%28405%29.jpg) | Don’t treat StatusCode\_FEATUREFLAG\_BLOCKED errors as server errors |
-

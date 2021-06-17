@@ -1,3 +1,7 @@
+---
+description: Changelog for Clarifai Release 6.8
+---
+
 # Release 6.8
 
 ## Changelog 6.8
@@ -237,4 +241,3 @@
 | ![](https://github.com/Clarifai/docs/tree/1ece1cee27874f51aa11d50a825fff02b0b5243f/product-updates/.gitbook/assets/improvement%20%2883%29.jpg) | Modify the way users navigate to the model details page |
 | ![](https://github.com/Clarifai/docs/tree/1ece1cee27874f51aa11d50a825fff02b0b5243f/product-updates/.gitbook/assets/improvement%20%2883%29.jpg) | Fix collector mode to filter by user, then app, then models, then model versions. |
 | ![](https://github.com/Clarifai/docs/tree/1ece1cee27874f51aa11d50a825fff02b0b5243f/product-updates/.gitbook/assets/bug%20%28248%29.jpg) | Image carousel does not scroll to the currently selected text input being viewed |
-
