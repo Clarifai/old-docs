@@ -6,7 +6,7 @@ description: Changelog for Clarifai Release 7.5
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |
 | :---: | :---: | :---: | :---: |
-| ![new-feature](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%28282%29.jpg) | ![improvement](../../.gitbook/assets/improvement%20%2819%29%20%28881%29.jpg) | ![bug](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28606%29.jpg) | ![enterprise](../../.gitbook/assets/enterprise%20%2818%29%20%2816%29%20%281%29%20%2827%29.jpg) |
+| ![new-feature](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%28282%29.jpg) | ![improvement](../../.gitbook/assets/improvement%20%2819%29%20%28279%29.jpg) | ![bug](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28606%29.jpg) | ![enterprise](../../.gitbook/assets/enterprise%20%2818%29%20%2816%29%20%281%29%20%2827%29.jpg) |
 
 ## Enlight
 
@@ -21,8 +21,8 @@ description: Changelog for Clarifai Release 7.5
 
 |Status     |Details                                                       |
 |-----------|--------------------------------------------------------------|
-| ![improvement](../../.gitbook/assets/improvement%20%2819%29%20%28881%29.jpg) |Model-Example: Initial Release              |
-| ![improvement](../../.gitbook/assets/improvement%20%2819%29%20%28881%29.jpg) |Model-Link: Initial Release                 |
+| ![improvement](../../.gitbook/assets/improvement%20%2819%29%20%28279%29.jpg) |Model-Example: Initial Release              |
+| ![improvement](../../.gitbook/assets/improvement%20%2819%29%20%28279%29.jpg) |Model-Link: Initial Release                 |
 | ![new-feature](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%28282%29.jpg) |Model-Type: Added Token-To-Entity           |
 
 ## Portal
@@ -40,10 +40,10 @@ description: Changelog for Clarifai Release 7.5
 
 |Status     |Details                                                       |
 |-----------|--------------------------------------------------------------|
-| ![improvement](../../.gitbook/assets/improvement%20%2819%29%20%28881%29.jpg) |Task-Labeler: Added Input-Metadata display    |
-| ![improvement](../../.gitbook/assets/improvement%20%2819%29%20%28881%29.jpg) |Task-Labeler: Added Merge and Split operation for Tracks|
-| ![improvement](../../.gitbook/assets/improvement%20%2819%29%20%28881%29.jpg) |Task-Labeler: Added support for Video-Input-level Annotations|
+| ![improvement](../../.gitbook/assets/improvement%20%2819%29%20%28279%29.jpg) |Task-Labeler: Added Input-Metadata display    |
+| ![improvement](../../.gitbook/assets/improvement%20%2819%29%20%28279%29.jpg) |Task-Labeler: Added Merge and Split operation for Tracks|
+| ![improvement](../../.gitbook/assets/improvement%20%2819%29%20%28279%29.jpg) |Task-Labeler: Added support for Video-Input-level Annotations|
 | ![bug](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28606%29.jpg) |Task-Labeler: Fixed inability to draw b-boxes near edges of frames|
 | ![new-feature](../../.gitbook/assets/new_feature%20%281%29%20%281%29%20%28282%29.jpg) |Task-Labeler: Suggest Tracks for AI-Assist detected Objects|
 | ![bug](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28606%29.jpg) |Task-Manager: Fixed "Assigned to Me" tab so that counts/progress are individualized|
-| ![improvement](../../.gitbook/assets/improvement%20%2819%29%20%28881%29.jpg) |Task-Reviewer: Improved Annotation loading performance|
+| ![improvement](../../.gitbook/assets/improvement%20%2819%29%20%28279%29.jpg) |Task-Reviewer: Improved Annotation loading performance|
