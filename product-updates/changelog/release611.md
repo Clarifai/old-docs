@@ -1,3 +1,7 @@
+---
+description: Changelog for Clarifai Release 6.11
+---
+
 # Release 6.11
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |
@@ -97,4 +101,3 @@
 | ![bug](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%285%29.jpg) | Fix new deep training: missing platform in benchmark config + torch import affecting TF benchmarking |
 | ![improvement](../../.gitbook/assets/improvement%20%2819%29%20%2850%29.jpg) | Allow public model versions if they are used in public workflow |
 | ![bug](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%28726%29.jpg) | Deep training Bug with small amount of inputs fixed |
-

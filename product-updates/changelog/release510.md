@@ -1,3 +1,7 @@
+---
+description: Changelog for Clarifai Release 5.10
+---
+
 # Release 5.10
 
 ## Changelog 5.10
@@ -112,4 +116,3 @@
 | ![](https://github.com/Clarifai/docs/tree/1ece1cee27874f51aa11d50a825fff02b0b5243f/product-updates/.gitbook/assets/bug%20%28248%29.jpg) | Portal not showing the correct number of results in concept search. Fixed. |
 | ![](https://github.com/Clarifai/docs/tree/1ece1cee27874f51aa11d50a825fff02b0b5243f/product-updates/.gitbook/assets/bug%20%28248%29.jpg) | Left/right arrows in single image view don't switch between images with regions. Fixed |
 | ![](https://github.com/Clarifai/docs/tree/1ece1cee27874f51aa11d50a825fff02b0b5243f/product-updates/.gitbook/assets/bug%20%28248%29.jpg) | Fixed carousel thumbnail clicks wiping query params / trigger new search |
-

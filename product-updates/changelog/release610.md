@@ -1,3 +1,7 @@
+---
+description: Changelog for Clarifai Release 6.10
+---
+
 # Release 6.10
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |
@@ -205,4 +209,3 @@
 | ![improvement](../../.gitbook/assets/improvement%20%2819%29%20%2868%29.jpg) | Monitor media processor predict err rate |
 | ![improvement](../../.gitbook/assets/improvement%20%2819%29%20%2868%29.jpg) | Log spire name |
 | ![bug](../../.gitbook/assets/bug%20%28196%29%20%28452%29%20%2811%29.jpg) | Clean idle/pending asset publish video asset to pipeline separately |
-

@@ -1,3 +1,7 @@
+---
+description: Changelog for Clarifai Release 5.11
+---
+
 # Release 5.11
 
 ## Changelog 5.11
@@ -113,4 +117,3 @@
 | ![](https://github.com/Clarifai/docs/tree/1ece1cee27874f51aa11d50a825fff02b0b5243f/product-updates/.gitbook/assets/bug%20%28248%29.jpg) | Editing geo/json search items no longer work after adding the search bar tooltip. Fixed |
 | ![](https://github.com/Clarifai/docs/tree/1ece1cee27874f51aa11d50a825fff02b0b5243f/product-updates/.gitbook/assets/bug%20%28248%29.jpg) | TypeError: Cannot read 'get' of undefined when clicking image thumbnails in Explorer search bar. Fixed |
 | ![](https://github.com/Clarifai/docs/tree/1ece1cee27874f51aa11d50a825fff02b0b5243f/product-updates/.gitbook/assets/bug%20%28248%29.jpg) | Explorer Visibility in small resolution screen improved |
-
