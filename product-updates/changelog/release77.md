@@ -1,5 +1,5 @@
 ---
-description: Changelog for Clarifai Release 7.6
+description: Changelog for Clarifai Release 7.7
 ---
 
 # Release 7.6
