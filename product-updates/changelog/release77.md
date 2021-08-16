@@ -2,7 +2,7 @@
 description: Changelog for Clarifai Release 7.7
 ---
 
-# Release 7.6
+# Release 7.7
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |
 | :---: | :---: | :---: | :---: |
