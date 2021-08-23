@@ -8,7 +8,7 @@ To create an application, head on over to the [applications page](https://portal
 
 ### ID Validation
 
-Application names and other names in Portal must follow a few rules. Names must be1 to 32 letters or numbers in length, with hyphens or underscores as separators \(spaces, periods, etc are not allowed\).
+Application names and other names in Portal must follow a few rules. Names must be 1 to 32 letters or numbers in length, with hyphens or underscores as separators \(spaces, periods, etc are not allowed\).
 
 {% hint style="info" %}
 You can also set the default language so that you can create, train and search on concepts in your own language. Please keep in mind that pre-trained model concepts currently only work in English.
