@@ -44,6 +44,124 @@ for concept in output.data.concepts:
 ```
 {% endtab %}
 
+{% tab title="PHP" %}
+```php
+<?php
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+use Clarifai\Api\Data;
+use Clarifai\Api\Image;
+use Clarifai\Api\Input;
+use Clarifai\Api\PostModelOutputsRequest;
+use Clarifai\Api\UserAppIDSet;
+use Clarifai\Api\Status\StatusCode;
+
+// The Clarifai PHP Client includes an autoload.php helper file that needs to be included
+require 'vendor/autoload.php';
+
+use Clarifai\ClarifaiClient;
+
+// Construct the actual gRPC client object
+$client = ClarifaiClient::grpc();
+
+// Specify the Authorization key.  This should be changed to your Personal Access Token.
+// Example: $metadata = ['Authorization' => ['Key 123456789123456789']]; 
+$metadata = ['Authorization' => ['Key {YOUR PERSONAL ACCESS TOKEN HERE}']]; // Using the PAT in these examples
+
+//
+// A UserAppIDSet object is needed for the rpc call.  This object cotnains
+// two pieces of information: the user id and the app id.  Both of these are
+// specified as string values.
+//
+$userDataObject = new UserAppIDSet([
+    'user_id' => '{YOUR USER NAME HERE}', // This is your user id
+    'app_id' => '{YOUR APPLICATION ID HERE}' // This is the app id which contains the model of interest
+]);
+
+//
+// In the Clarifai platform an image is defined by a special Image object.
+// There are several ways in which an Image object can be populated including
+// by url and image bytes (base64).
+//
+$image = new Image([
+    'url' => 'https://samples.clarifai.com/dog2.jpeg'
+]);
+
+//
+// After an Image object is created, a Data object is constructed around it.
+// The Data object offers a container that contains additional image independent
+// metadata.  In this particular use case, no other metadata is needed to be
+// specified.
+//
+$data = new Data([
+    'image' => $image
+]);
+
+//
+// The Data object is then wrapped in an Input object in order to meet the
+// API specification.  Additional fields are available to populate in the Input
+// object, but for the purposes of this example we can send in just the
+// Data object.
+//
+$input = new Input([
+    'data' => $data
+]);
+
+//
+// Finally, the request object itself is created.  This object carries the request
+// along with the request status and other metadata related to the request itself.
+// In this example we populate:
+//    - the `user_app_id` field with the UserAppIDSet constructed above
+//    - the `model_id` field with the ID of the model we are referencing
+//    - the `inputs` field with an array of input objects constructed above 
+//
+$request = new PostModelOutputsRequest([
+    'user_app_id' => $userDataObject, // This is defined above
+    'model_id' => 'aaa03c23b3724a16a56b629203edc62c',  // This is the ID of the publicly available General model.
+    'inputs' => [$input]
+]);
+
+//
+// Once the request object is constructed, we can call the actual request to the
+// Clarifai platform.  This uses the opened gRPC client channel to communicate the
+// request and then wait for the response.
+//
+[$response, $status] = $client->PostModelOutputs(
+    $request,
+    $metadata
+)->wait();
+
+//
+// The response is returned and the first thing we do is check the status of it.
+// A successful response will have a status code of 0, otherwise there is some 
+// reported error.
+//
+if ($status->code !== 0) throw new Exception("Error: {$status->details}");
+
+//
+// In addition to the RPC response status, there is a Clarifai API status that
+// reports if the operationo was a success or failure (not just that the commuunication)
+// was successful.
+//
+if ($response->getStatus()->getCode() != StatusCode::SUCCESS) {
+    throw new Exception("Failure response: " . $response->getStatus()->getDescription() . " " .
+        $response->getStatus()->getDetails());
+}
+
+//
+// The output of a successful call can be used in many ways.  In this example,
+// we loop through all of the predicted concepts and print them out along with
+// their numerical prediction value (confidence).
+//
+echo "Predicted concepts:\n";
+foreach ($response->getOutputs()[0]->getData()->getConcepts() as $concept) {
+    echo $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
+}
+?>
+```
+{% endtab %}
+
 {% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
@@ -349,6 +467,131 @@ output = post_model_outputs_response.outputs[0]
 print("Predicted concepts:")
 for concept in output.data.concepts:
     print("%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+
+{% tab title="PHP" %}
+```php
+<?php
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+use Clarifai\Api\Data;
+use Clarifai\Api\Image;
+use Clarifai\Api\Input;
+use Clarifai\Api\PostModelOutputsRequest;
+use Clarifai\Api\UserAppIDSet;
+use Clarifai\Api\Status\StatusCode;
+
+// The Clarifai PHP Client includes an autoload.php helper file that needs to be included
+require 'vendor/autoload.php';
+
+use Clarifai\ClarifaiClient;
+
+// Construct the actual gRPC client object
+$client = ClarifaiClient::grpc();
+
+// Specify the Authorization key.  This should be changed to your Personal Access Token.
+// Example: $metadata = ['Authorization' => ['Key 123456789123456789']]; 
+$metadata = ['Authorization' => ['Key {YOUR PERSONAL ACCESS TOKEN HERE}']]; // Using the PAT in these examples
+
+//
+// For this example, the bytes of an image are needed and can be read in
+// using PHP provided functions.
+//
+$image = "https://samples.clarifai.com/dog2.jpeg";
+$imageData = file_get_contents($image); // Get the image data from the URL
+
+//
+// A UserAppIDSet object is needed for the rpc call.  This object cotnains
+// two pieces of information: the user id and the app id.  Both of these are
+// specified as string values.
+//
+$userDataObject = new UserAppIDSet([
+    'user_id' => '{YOUR USER NAME HERE}', // This is your user id
+    'app_id' => '{YOUR APPLICATION ID HERE}' // This is the app id which contains the model of interest
+]);
+
+//
+// In the Clarifai platform an image is defined by a special Image object.
+// There are several ways in which an Image object can be populated including
+// by url and image bytes (base64).
+//
+$image = new Image([
+    'base64' => $imageData
+]);
+
+//
+// After an Image object is created, a Data object is constructed around it.
+// The Data object offers a container that contains additional image independent
+// metadata.  In this particular use case, no other metadata is needed to be
+// specified.
+//
+$data = new Data([
+    'image' => $image
+]);
+
+//
+// The Data object is then wrapped in an Input object in order to meet the
+// API specification.  Additional fields are available to populate in the Input
+// object, but for the purposes of this example we can send in just the
+// Data object.
+//
+$input = new Input([
+    'data' => $data
+]);
+
+//
+// Finally, the request object itself is created.  This object carries the request
+// along with the request status and other metadata related to the request itself.
+// In this example we populate:
+//    - the `user_app_id` field with the UserAppIDSet constructed above
+//    - the `model_id` field with the ID of the model we are referencing
+//    - the `inputs` field with an array of input objects constructed above 
+//
+$request = new PostModelOutputsRequest([
+    'user_app_id' => $userDataObject, // This is defined above
+    'model_id' => 'aaa03c23b3724a16a56b629203edc62c',  // This is the ID of the publicly available General model.
+    'inputs' => [$input]
+]);
+
+//
+// Once the request object is constructed, we can call the actual request to the
+// Clarifai platform.  This uses the opened gRPC client channel to communicate the
+// request and then wait for the response.
+//
+[$response, $status] = $client->PostModelOutputs(
+    $request,
+    $metadata
+)->wait();
+
+//
+// The response is returned and the first thing we do is check the status of it.
+// A successful response will have a status code of 0, otherwise there is some 
+// reported error.
+//
+if ($status->code !== 0) throw new Exception("Error: {$status->details}");
+
+//
+// In addition to the RPC response status, there is a Clarifai API status that
+// reports if the operationo was a success or failure (not just that the commuunication)
+// was successful.
+//
+if ($response->getStatus()->getCode() != StatusCode::SUCCESS) {
+    throw new Exception("Failure response: " . $response->getStatus()->getDescription() . " " .
+        $response->getStatus()->getDetails());
+}
+
+//
+// The output of a successful call can be used in many ways.  In this example,
+// we loop through all of the predicted concepts and print them out along with
+// their numerical prediction value (confidence).
+//
+echo "Predicted concepts:\n";
+foreach ($response->getOutputs()[0]->getData()->getConcepts() as $concept) {
+    echo $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
+}
+?>
 ```
 {% endtab %}
 
