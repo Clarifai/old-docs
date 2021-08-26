@@ -50,35 +50,9 @@ for concept in output.data.concepts:
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
-use Clarifai\Api\Data;
-use Clarifai\Api\Image;
-use Clarifai\Api\Input;
-use Clarifai\Api\PostModelOutputsRequest;
-use Clarifai\Api\UserAppIDSet;
-use Clarifai\Api\Status\StatusCode;
-
-// The Clarifai PHP Client includes an autoload.php helper file that needs to be included
-require 'vendor/autoload.php';
-
-use Clarifai\ClarifaiClient;
-
-// Construct the actual gRPC client object
-$client = ClarifaiClient::grpc();
-
-// Specify the Authorization key.  This should be changed to your Personal Access Token.
-// Example: $metadata = ['Authorization' => ['Key 123456789123456789']]; 
-$metadata = ['Authorization' => ['Key {YOUR PERSONAL ACCESS TOKEN HERE}']]; // Using the PAT in these examples
-
-//
-// A UserAppIDSet object is needed for the rpc call.  This object cotnains
-// two pieces of information: the user id and the app id.  Both of these are
-// specified as string values.
-//
-$userDataObject = new UserAppIDSet([
-    'user_id' => '{YOUR USER NAME HERE}', // This is your user id
-    'app_id' => '{YOUR APPLICATION ID HERE}' // This is the app id which contains the model of interest
-]);
-
+///////////////////////////////////////////////////////////////////////////////
+// Specifying the Request Data
+///////////////////////////////////////////////////////////////////////////////
 //
 // In the Clarifai platform an image is defined by a special Image object.
 // There are several ways in which an Image object can be populated including
@@ -108,6 +82,9 @@ $input = new Input([
     'data' => $data
 ]);
 
+///////////////////////////////////////////////////////////////////////////////
+// Creating the request object 
+///////////////////////////////////////////////////////////////////////////////
 //
 // Finally, the request object itself is created.  This object carries the request
 // along with the request status and other metadata related to the request itself.
@@ -122,6 +99,9 @@ $request = new PostModelOutputsRequest([
     'inputs' => [$input]
 ]);
 
+///////////////////////////////////////////////////////////////////////////////
+// Making the RPC call
+///////////////////////////////////////////////////////////////////////////////
 //
 // Once the request object is constructed, we can call the actual request to the
 // Clarifai platform.  This uses the opened gRPC client channel to communicate the
@@ -132,6 +112,9 @@ $request = new PostModelOutputsRequest([
     $metadata
 )->wait();
 
+///////////////////////////////////////////////////////////////////////////////
+// Handling the Response
+///////////////////////////////////////////////////////////////////////////////
 //
 // The response is returned and the first thing we do is check the status of it.
 // A successful response will have a status code of 0, otherwise there is some 
@@ -476,25 +459,6 @@ for concept in output.data.concepts:
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
-use Clarifai\Api\Data;
-use Clarifai\Api\Image;
-use Clarifai\Api\Input;
-use Clarifai\Api\PostModelOutputsRequest;
-use Clarifai\Api\UserAppIDSet;
-use Clarifai\Api\Status\StatusCode;
-
-// The Clarifai PHP Client includes an autoload.php helper file that needs to be included
-require 'vendor/autoload.php';
-
-use Clarifai\ClarifaiClient;
-
-// Construct the actual gRPC client object
-$client = ClarifaiClient::grpc();
-
-// Specify the Authorization key.  This should be changed to your Personal Access Token.
-// Example: $metadata = ['Authorization' => ['Key 123456789123456789']]; 
-$metadata = ['Authorization' => ['Key {YOUR PERSONAL ACCESS TOKEN HERE}']]; // Using the PAT in these examples
-
 //
 // For this example, the bytes of an image are needed and can be read in
 // using PHP provided functions.
@@ -502,16 +466,9 @@ $metadata = ['Authorization' => ['Key {YOUR PERSONAL ACCESS TOKEN HERE}']]; // U
 $image = "https://samples.clarifai.com/dog2.jpeg";
 $imageData = file_get_contents($image); // Get the image data from the URL
 
-//
-// A UserAppIDSet object is needed for the rpc call.  This object cotnains
-// two pieces of information: the user id and the app id.  Both of these are
-// specified as string values.
-//
-$userDataObject = new UserAppIDSet([
-    'user_id' => '{YOUR USER NAME HERE}', // This is your user id
-    'app_id' => '{YOUR APPLICATION ID HERE}' // This is the app id which contains the model of interest
-]);
-
+///////////////////////////////////////////////////////////////////////////////
+// Specifying the Request Data
+///////////////////////////////////////////////////////////////////////////////
 //
 // In the Clarifai platform an image is defined by a special Image object.
 // There are several ways in which an Image object can be populated including
@@ -541,6 +498,9 @@ $input = new Input([
     'data' => $data
 ]);
 
+///////////////////////////////////////////////////////////////////////////////
+// Creating the request object 
+///////////////////////////////////////////////////////////////////////////////
 //
 // Finally, the request object itself is created.  This object carries the request
 // along with the request status and other metadata related to the request itself.
@@ -555,6 +515,9 @@ $request = new PostModelOutputsRequest([
     'inputs' => [$input]
 ]);
 
+///////////////////////////////////////////////////////////////////////////////
+// Making the RPC call
+///////////////////////////////////////////////////////////////////////////////
 //
 // Once the request object is constructed, we can call the actual request to the
 // Clarifai platform.  This uses the opened gRPC client channel to communicate the
@@ -565,6 +528,9 @@ $request = new PostModelOutputsRequest([
     $metadata
 )->wait();
 
+///////////////////////////////////////////////////////////////////////////////
+// Handling the Response
+///////////////////////////////////////////////////////////////////////////////
 //
 // The response is returned and the first thing we do is check the status of it.
 // A successful response will have a status code of 0, otherwise there is some 
