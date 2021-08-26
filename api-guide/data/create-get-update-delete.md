@@ -1125,12 +1125,12 @@ const run = async () => {
   const REQ_ADDRESS = `https://api.clarifai.com/v2/users/me/apps/${appId}/inputs/stream?per_page=5`
 
   const req1 = await streamInputs(REQ_ADDRESS)
-	
+
 	// Grab the last input_id from the first request to use it in the second request
-  const lastId = req1['inputs'][req1['inputs'].length - 1].id 
+  const lastId = req1['inputs'][req1['inputs'].length - 1].id
 
   const req2 = await streamInputs(REQ_ADDRESS + `&last_id=${lastId}`)
-	
+
 	// You're only receiving the inputs from up to the last_id onward
   console.log(req2)
 }
@@ -1325,7 +1325,7 @@ const requestOptions = {
   method: 'GET',
   headers: {
     'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_KEY}'
+    'Authorization': 'Key {YOUR_PERSONAL_ACCESS_TOKEN}'
   }
 };
 
@@ -2348,4 +2348,3 @@ fetch("https://api.clarifai.com/v2/inputs", requestOptions)
 {% endtab %}
 
 {% endtabs %}
-
