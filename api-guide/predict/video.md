@@ -153,6 +153,45 @@ curl -X POST \
 # Model version ID is optional. It defaults to the latest model version.
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "data": {
+        "video": {
+          "url": "https://samples.clarifai.com/beer.mp4"
+        }
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+// NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
+// https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
+// this will default to the latest version_id
+
+fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/versions/{MODEL_VERSION_ID}/outputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 {% tabs %}
@@ -1527,6 +1566,45 @@ curl -X POST \
 # The model version ID is optional. It defaults to the latest model version.
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "data": {
+        "video": {
+          "base64": "{YOUR_BYTES_STRING}"
+        }
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+// NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
+// https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
+// this will default to the latest version_id
+
+fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/versions/{MODEL_VERSION_ID}/outputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 {% tabs %}

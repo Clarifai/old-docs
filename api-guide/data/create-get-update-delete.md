@@ -115,6 +115,42 @@ curl -X POST \
   https://api.clarifai.com/v2/inputs
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "data": {
+        "image": {
+          "url": "https://samples.clarifai.com/metro-north.jpg",
+          "allow_duplicate_url": true
+        }
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/inputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### Add an input using bytes
@@ -226,6 +262,41 @@ curl -X POST \
   https://api.clarifai.com/v2/inputs
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "data": {
+        "image": {
+          "base64": "{YOUR_BYTES_STRING}"
+        },
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/inputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### Add multiple inputs with ids
@@ -389,6 +460,52 @@ curl -X POST \
   https://api.clarifai.com/v2/inputs
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+    "inputs": [
+        {
+        "data": {
+            "image": {
+            "url": "https://samples.clarifai.com/metro-north.jpg",
+            "allow_duplicate_url": true
+            }
+        },
+        "id": "input1"
+        },
+            {
+        "data": {
+            "image": {
+            "url": "https://samples.clarifai.com/puppy.jpeg",
+            "allow_duplicate_url": true
+            }
+        },
+        "id": "puppy1"
+        }
+    ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/inputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Add inputs with concepts
@@ -512,6 +629,49 @@ curl -X POST \
   https://api.clarifai.com/v2/inputs
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+      {
+      "data": {
+          "image": {
+            "url": "https://samples.clarifai.com/puppy.jpeg",
+            "allow_duplicate_url": true
+          },
+          // Optionally add a concept with your input
+          "concepts": [
+          {
+            "id": "charlie",
+            "value": 1
+          }
+        ]
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/inputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Add inputs with custom metadata
@@ -644,6 +804,43 @@ curl -X POST \
   https://api.clarifai.com/v2/inputs
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "data": {
+        "image": {
+          "url": "https://samples.clarifai.com/puppy.jpeg",
+          "allow_duplicate_url": true
+        },
+        "metadata": {"id": "id001", "type": "animal", "size": 100}
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/inputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### List inputs
@@ -730,6 +927,26 @@ curl -X GET \
   https://api.clarifai.com/v2/inputs?page=1&per_page=10
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/inputs?page=1&per_page=10`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### List inputs \(streaming\)
@@ -874,6 +1091,54 @@ for input_object in stream_inputs_response.inputs:
     print("\t" + input_object.id)
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+// We can implement the API call with a Promise
+const streamInputs = (reqAddress) => {
+  return new Promise(async (resolve, reject) => {
+    fetch(reqAddress, requestOptions)
+    .then(data => {
+        return data.json()
+    }).then(data => {
+        resolve(data)
+    }).catch(e => {
+        console.error('REQUEST -> ', e)
+        reject(e)
+    })
+  })
+}
+
+// Async function that will allow us to wait for the first API call
+const run = async () => {
+
+	const appId = '{YOUR_APP_ID}'
+
+  const requestOptions = {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+    }
+  };
+
+  const REQ_ADDRESS = `https://api.clarifai.com/v2/users/me/apps/${appId}/inputs/stream?per_page=5`
+
+  const req1 = await streamInputs(REQ_ADDRESS)
+	
+	// Grab the last input_id from the first request to use it in the second request
+  const lastId = req1['inputs'][req1['inputs'].length - 1].id 
+
+  const req2 = await streamInputs(REQ_ADDRESS + `&last_id=${lastId}`)
+	
+	// You're only receiving the inputs from up to the last_id onward
+  console.log(req2)
+}
+
+run()
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Get input by id
@@ -953,6 +1218,27 @@ curl -X GET \
   https://api.clarifai.com/v2/inputs/{YOUR_INPUT_ID}
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const inputId = '{YOUR_INPUT_ID}'
+const appId = '{YOUR_APP_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/inputs/${inputId}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Get inputs status
@@ -1030,6 +1316,26 @@ curl -X GET \
   https://api.clarifai.com/v2/inputs/status
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_KEY}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/inputs/status`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Update inputs
@@ -1168,6 +1474,50 @@ curl -X PATCH \
   https://api.clarifai.com/v2/inputs
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "id": "{YOUR_INPUT_ID}",
+      "data": {
+        "concepts": [
+          {
+            "id": "tree",
+						"value": 1
+          },
+          {
+            "id": "water",
+						"value": 0
+          }
+        ]
+      }
+    }
+  ],
+  "action": "merge"
+});
+
+const requestOptions = {
+  method: 'PATCH',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/inputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Bulk update inputs with concepts
@@ -1348,6 +1698,65 @@ curl -X PATCH \
   https://api.clarifai.com/v2/inputs
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "id": "{YOUR_INPUT_ID_1}",
+      "data": {
+        "concepts": [
+          {
+            "id": "tree",
+            "value": 1
+          },
+          {
+            "id": "water",
+            "value": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "{YOUR_INPUT_ID_2}",
+      "data": {
+        "concepts": [
+          {
+            "id": "animal",
+            "value": 1
+          },
+          {
+            "id": "fruit",
+            "value": 0
+          }
+        ]
+      }
+    }
+  ],
+  "action": "merge"
+});
+
+const requestOptions = {
+  method: 'PATCH',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/inputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Delete inputs
@@ -1473,6 +1882,43 @@ curl -X PATCH \
   https://api.clarifai.com/v2/inputs/
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "id":"{YOUR_INPUT_ID}",
+      "data": {
+          "concepts":[
+              {"id":"water"}
+          ]
+      }
+    }
+  ],
+  "action":"remove"
+});
+
+const requestOptions = {
+  method: 'PATCH',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/inputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Bulk delete concepts from a list of inputs
@@ -1646,6 +2092,61 @@ curl -X PATCH \
   https://api.clarifai.com/v2/inputs
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "id": "{YOUR_INPUT_ID_1}",
+      "data": {
+        "concepts":[
+          {
+            "id": "tree"
+          },
+          {
+            "id": "water"
+          }
+        ]
+      }
+    },
+    {
+      "id": "{YOUR_INPUT_ID_2}",
+      "data": {
+        "concepts":[
+          {
+            "id": "animal"
+          },
+          {
+            "id": "fruit"
+          }
+        ]
+      }
+    }
+  ],
+  "action":"remove"
+});
+
+const requestOptions = {
+  method: 'PATCH',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/inputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Delete Input By Id
@@ -1718,6 +2219,27 @@ curl -X DELETE \
   https://api.clarifai.com/v2/inputs/{YOUR_INPUT_ID}
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const inputId = '{YOUR_INPUT_ID}'
+const appId = '{YOUR_APP_ID}'
+
+const requestOptions = {
+  method: 'DELETE',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/inputs/${inputId}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Delete a list of inputs
@@ -1798,5 +2320,32 @@ curl -X DELETE \
   https://api.clarifai.com/v2/inputs
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "ids":["{YOUR_INPUT_ID_1}","{YOUR_INPUT_ID_2}"]
+});
+
+const requestOptions = {
+  method: 'DELETE',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/inputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 

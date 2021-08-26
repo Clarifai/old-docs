@@ -171,6 +171,51 @@ https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs
 # Above is model ID of the publicly available General model.
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "data": {
+        "image": {
+          "url": "https://samples.clarifai.com/metro-north.jpg"
+        }
+      }
+    }
+  ],
+  "model": {
+    "output_info": {
+      "output_config": {
+        "select_concepts": [
+          {"name": "train"},
+          {"id": "ai_6kTjGfF6"}
+        ]
+      }
+    }
+  }
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 {% tabs %}
@@ -386,6 +431,48 @@ curl -X POST \
   https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "data": {
+        "image": {
+          "url": "https://samples.clarifai.com/metro-north.jpg"
+        }
+      }
+    }
+  ],
+  "model":{
+    "output_info":{
+      "output_config":{
+        "max_concepts": 3
+      }
+    }
+  }
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 {% tabs %}
@@ -608,6 +695,48 @@ curl -X POST \
   https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "data": {
+        "image": {
+          "url": "https://samples.clarifai.com/metro-north.jpg"
+        }
+      }
+    }
+  ],
+  "model":{
+    "output_info":{
+      "output_config":{
+        "min_value": 0.95
+      }
+    }
+  }
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 {% tabs %}
@@ -847,5 +976,44 @@ curl -X POST \
 # Version ID is optional. It defaults to the latest model version.
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "data": {
+        "image": {
+          "url": "https://samples.clarifai.com/metro-north.jpg"
+        }
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+// NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
+// https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
+// this will default to the latest version_id
+
+fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/versions/{YOUR_MODEL_VERSION_ID}outputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 

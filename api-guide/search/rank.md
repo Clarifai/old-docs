@@ -179,6 +179,52 @@ curl -X POST \
   https://api.clarifai.com/v2/annnotations/searches
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "searches": [
+    {
+      "query": {
+      "ranks": [
+          {
+          "annotation": {
+              "data": {
+              "concepts": [
+                  {
+                  "id":"people",
+                  "value": 1
+                  }
+              ]
+              }
+          }
+          }
+      ]
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### By Custom Concepts
@@ -350,6 +396,52 @@ curl -X POST \
   https://api.clarifai.com/v2/annnotations/searches
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "searches": [
+    {
+      "query": {
+      "ranks": [
+          {
+          "annotation": {
+              "data": {
+              "concepts": [
+                  {
+                  "id":"people",
+                  "value": 1
+                  }
+              ]
+              }
+          }
+          }
+      ]
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### By clarifai/main and custom concepts
@@ -577,6 +669,63 @@ curl -X POST \
   https://api.clarifai.com/v2/annnotations/searches
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "searches": [
+    {
+      "query": {
+      "ranks": [
+          {
+          "annotation": {
+              "data": {
+              "concepts": [
+                  {
+                  "id":"cat",
+                  "value": 1
+                  }
+              ]
+              }
+          }
+          }, {   
+          "annotation": {
+              "data": {
+              "concepts": [
+                  {
+                  "id":"dog",
+                  "value": 0
+                  }
+              ]
+              }
+          }
+          }
+      ]
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### By concept in another language
@@ -752,6 +901,53 @@ curl -X POST \
   https://api.clarifai.com/v2/annnotations/searches
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "searches": [
+    {
+      "query": {
+      "ranks": [
+          {
+          "annotation": {
+              "data": {
+              "concepts": [
+                  {
+	                  "name":"犬",
+	                  "language": "ja",
+	                  "value": 1
+                  }
+              ]
+              }
+          }
+          }
+      ]
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Search by visual similarity
@@ -910,6 +1106,49 @@ curl -X POST \
   https://api.clarifai.com/v2/annnotations/searches
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "searches": [
+    {
+      "query": {
+      "ranks": [
+          {
+          "annotation": {
+              "data": {
+              "image": {
+                  "url": "{YOUR_IMAGE_URL}"
+              }
+              }
+          }
+          }
+      ]
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Search by image Bytes
@@ -1078,6 +1317,49 @@ curl -X POST \
   https://api.clarifai.com/v2/annnotations/searches
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "searches": [
+    {
+      "query": {
+      "ranks": [
+          {
+          "annotation": {
+              "data": {
+              "image": {
+                "base64": '"`base64 /home/user/image.jpeg`"'"
+              }
+            }
+          }
+        }
+      ]
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### By Input ID
@@ -1225,5 +1507,48 @@ curl -X POST \
   https://api.clarifai.com/v2/annnotations/searches
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "searches": [
+    {
+      "query": {
+        "ranks": [
+          {
+            "annotation": {
+              "data": {
+                "image": {
+                  "url": "{YOUR_IMAGE_URL}"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 

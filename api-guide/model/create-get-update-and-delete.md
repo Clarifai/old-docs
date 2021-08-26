@@ -116,6 +116,45 @@ curl -X POST \
   https://api.clarifai.com/v2/models
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "model": {
+    "id": "petsID",
+    "output_info": {
+      "data": {
+        "concepts": [
+          {
+            "id": "boscoe",
+            "value": 1
+          }
+        ]
+      }
+    }
+  }
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/models", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Add Concepts To A Model
@@ -233,6 +272,47 @@ curl -X PATCH \
   https://api.clarifai.com/v2/models/
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "models": [
+    {
+      "id": "petsID",
+      "output_info": {
+        "data": {
+          "concepts": [
+            {
+              "id": "charlie"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "action": "merge"
+});
+
+const requestOptions = {
+  method: 'PATCH',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/models", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Remove Concepts From A Model
@@ -351,6 +431,47 @@ curl -X PATCH \
   https://api.clarifai.com/v2/models/
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "models": [
+    {
+      "id": "petsID",
+      "output_info": {
+        "data": {
+          "concepts": [
+            {
+              "id": "charlie"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "action": "remove"
+});
+
+const requestOptions = {
+  method: 'PATCH',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/models", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Update Model Name and Configuration
@@ -488,6 +609,46 @@ curl -X PATCH \
   https://api.clarifai.com/v2/models/
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "models": [
+    {
+      "id": "petsID",
+      "name": "newname",
+      "output_info": {
+        "data": {"concepts": [{"id": "birds"}, {"id": "hurd"}]},
+        "output_config": {
+          "concepts_mutually_exclusive": true,
+          "closed_environment": true
+        }
+      }
+    }
+  ],
+  "action": "overwrite"
+});
+
+const requestOptions = {
+  method: 'PATCH',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/models", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Get
@@ -559,6 +720,26 @@ curl -X GET 'https://api.clarifai.com/v2/models/types?per_page=20&page=1' \
     -H 'Authorization: Key YOUR_API_KEY'
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/types?per_page=20&page=1`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Get Models
@@ -640,6 +821,26 @@ curl -X GET \
   https://api.clarifai.com/v2/models
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Get Model By Id
@@ -719,6 +920,27 @@ curl -X GET \
   https://api.clarifai.com/v2/models/petsID
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const modelId = '{MODEL_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Get Model Output Info By Id
@@ -798,6 +1020,27 @@ curl -X GET \
   https://api.clarifai.com/v2/models/petsID/output_info
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const modelId = '{MODEL_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}/output_info`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### List Model Versions
@@ -883,6 +1126,27 @@ curl -X GET \
   https://api.clarifai.com/v2/models/petsID/versions
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const modelId = '{MODEL_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}/versions`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Get Model Version By Id
@@ -967,6 +1231,28 @@ curl -X GET \
   https://api.clarifai.com/v2/models/petsID/versions/{YOUR_MODEL_VERSION_ID}
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const modelId = '{MODEL_ID}'
+const modelVersionId = '{MODEL_VERSION_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}/versions/${modelVersionId}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Get Model Training Inputs
@@ -1049,6 +1335,27 @@ curl -X GET \
   https://api.clarifai.com/v2/models/petsID/inputs
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const modelId = '{MODEL_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}/inputs`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Get Model Training Inputs By Version
@@ -1139,6 +1446,28 @@ curl -X GET \
   https://api.clarifai.com/v2/models/petsID/versions/{YOUR_MODEL_VERSION_ID}/inputs
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const modelId = '{MODEL_ID}'
+const modelVersionId = '{MODEL_VERSION_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}/versions/${modelVersionId}/inputs`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Delete A Model
@@ -1209,6 +1538,27 @@ curl -X DELETE \
   https://api.clarifai.com/v2/models/petsID
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const modelId = '{MODEL_ID}'
+
+const requestOptions = {
+  method: 'DELETE',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Delete A Model Version
@@ -1286,6 +1636,28 @@ curl -X DELETE \
   https://api.clarifai.com/v2/models/petsID/versions/{YOUR_MODEL_VERSION_ID}
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const modelId = '{MODEL_ID}'
+const modelVersionId = '{MODEL_VERSION_ID}'
+
+const requestOptions = {
+  method: 'DELETE',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}/versions/${modelVersionId}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Delete All Models
@@ -1356,6 +1728,26 @@ curl -X DELETE \
   https://api.clarifai.com/v2/models/
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+
+const requestOptions = {
+  method: 'DELETE',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Train A Model
@@ -1434,6 +1826,27 @@ curl -X POST \
   https://api.clarifai.com/v2/models/petsID/versions
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const modelId = '{MODEL_ID}'
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}/versions`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Predict With A Model
@@ -1568,6 +1981,45 @@ curl -X POST \
 # https://api.clarifai.com/v2/models/petsID/versions/{YOUR_MODEL_VERSION_ID}/outputs
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "data": {
+        "image": {
+          "url": "https://samples.clarifai.com/puppy.jpeg"
+        }
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+// NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
+// https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
+// this will default to the latest version_id
+
+fetch("https://api.clarifai.com/v2/models/petsID/versions/{MODEL_VERSION_ID}/outputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(JSON.parse(result, null, 2).outputs[0].data))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Search Models By Name And Type
@@ -1674,5 +2126,35 @@ curl -X POST \
   https://api.clarifai.com/v2/models/searches
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "model_query": {
+    "name": "gen*",
+    "type": "concept"
+  }
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/models/searches", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 

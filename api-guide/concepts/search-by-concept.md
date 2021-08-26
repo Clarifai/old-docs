@@ -103,6 +103,36 @@ curl -X POST \
   https://api.clarifai.com/v2/concepts/searches
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "concept_query": {
+    "name":"人",
+    "language": "ja"
+  }
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/concepts/searches", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 {% tabs %}

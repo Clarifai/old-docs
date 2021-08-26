@@ -174,6 +174,50 @@ curl -X POST \
   https://api.clarifai.com/v2/annnotations/searches
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "searches": [{
+    "query": {
+      "filters": [
+        {
+          "annotation": {
+            "data": {
+              "concepts": [
+                {
+                  "id":"people",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/annotations/searches`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## By User ID
@@ -317,6 +361,43 @@ curl -X POST \
   https://api.clarifai.com/v2/annnotations/searches
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "searches": [{
+    "query": {
+      "filters": [
+        {
+          "annotation": {
+            "user_id": "{user_id}"
+          }
+        }
+      ]
+    }
+  }]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/annotations/searches`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## By Annotation Status
@@ -468,6 +549,45 @@ curl -X POST \
   https://api.clarifai.com/v2/annnotations/searches
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "searches": [{
+    "query": {
+      "filters": [
+        {
+          "annotation": {
+            "status": {
+              "code": "ANNOTATION_SUCCESS"
+            }          
+          }
+        }
+      ]
+    }
+  }]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/annotations/searches`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## By Geo Location
@@ -618,6 +738,48 @@ curl -X POST \
   https://api.clarifai.com/v2/inputs
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "data": {
+        "image": {
+          "url": "https://samples.clarifai.com/dog.tiff",
+          "allow_duplicate_url": true
+        },
+        "geo": {
+          "geo_point": {
+            "longitude": -30,
+            "latitude": 40
+          }
+        }
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/inputs`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Perform a search with one geo point and radius in kilometers
@@ -807,6 +969,56 @@ curl -X POST \
   https://api.clarifai.com/v2/annnotations/searches
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "searches": [
+    {
+      "query": {
+        "filters": [
+          {
+          "annotation": {
+              "data": {
+              "geo": {
+                  "geo_point": {
+                  "longitude": -29.0,
+                  "latitude": 40.0
+                  },
+                  "geo_limit": {
+                  "type": "withinKilometers",
+                  "value": 150
+	              }
+              }
+            }
+          }
+        }
+      ]
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Perform a search with two geo points
@@ -1018,6 +1230,62 @@ curl -X POST \
   https://api.clarifai.com/v2/annnotations/searches
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "searches": [
+    {
+      "query": {
+      "filters": [
+          {
+          "annotation": {
+              "data": {
+              "geo": {
+                  "geo_box": [
+                  {
+                      "geo_point": {
+                      "latitude": 42,
+                      "longitude": -31
+                      }
+                  },
+                  {
+                      "geo_point": {
+                      "latitude": 39,
+                      "longitude": -29
+                      }
+                  }
+                  ]
+              }
+              }
+          }
+          }
+      ]
+      }       
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## By Custom Annotation Info
@@ -1228,6 +1496,49 @@ curl -X POST \
   https://api.clarifai.com/v2/annnotations/searches
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "searches": [
+    {
+      "query": {
+      "filters": [
+          {
+          "annotation": {
+              "data": {
+              "metadata": {
+                  "type": "animal"
+              }
+              }
+          }
+          }
+      ]
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## By Annotation Info
@@ -1383,5 +1694,46 @@ curl -X POST \
   https://api.clarifai.com/v2/annnotations/searches
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "searches": [
+    {
+      "query": {
+      "filters": [
+          {
+          "annotation": {
+              "annotation_info": {
+              "type": "animal"
+              }
+          }
+          }
+      ]
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
