@@ -182,6 +182,52 @@ curl -X POST \
 # Use image's "base64" field to upload image from your local machine.
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "data": {
+        "image": {
+          "url": "https://samples.clarifai.com/metro-north.jpg",
+          "allow_duplicate_url": true
+        }
+      }
+    },
+    {
+      "data": {
+        "image": {
+          "url": "https://samples.clarifai.com/wedding.jpg",
+          "allow_duplicate_url": true
+        }
+      }
+    }
+  ]
+});
+
+// # Use image's "base64" field to upload image from your local machine.
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/inputs`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 {% tabs %}

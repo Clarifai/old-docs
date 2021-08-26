@@ -404,6 +404,108 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
     }'
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "workflows": [
+      {
+          "id": "auto-annotation-workflow-id",
+          "nodes": [
+              {
+                  "id": "general-embed",
+                  "model": {
+                      "id": "{YOUR_GENERAL_EMBED_MODEL_ID}",
+                      "model_version": {
+                          "id": "{YOUR_GENERAL_EMBED_MODEL_VERSION_ID}"
+                      }
+                  }
+              },
+              {
+                  "id": "general-concept",
+                  "model": {
+                      "id": "{YOUR_GENERAL_CONCEPT_MODEL_ID}",
+                      "model_version": {
+                          "id": "{YOUR_GENERAL_CONCEPT_MODEL_VERSION_ID}"
+                      }
+                  }
+              },
+              {
+                  "id": "general-cluster",
+                  "model": {
+                      "id": "{YOUR_GENERAL_CLUSTER_MODEL_ID}",
+                      "model_version": {
+                          "id": "{YOUR_GENERAL_CLUSTER_MODEL_VERSION_ID}"
+                      }
+                  }
+              },
+              {
+                  "id": "mapper",
+                  "model": {
+                      "id": "synonym-model-id",
+                      "model_version": {
+                          "id": "{YOUR_MAPPER_MODEL_VERSION_ID}"
+                      }
+                  },
+                  "node_inputs": [
+                      {
+                          "node_id": "general-concept"
+                      }
+                  ]
+              },
+              {
+                  "id": "greater-than",
+                  "model": {
+                      "id": "greater-than-model-id",
+                      "model_version": {
+                          "id": "{YOUR_GREATER_THAN_MODEL_VERSION_ID}"
+                      }
+                  },
+                  "node_inputs": [
+                      {
+                          "node_id": "mapper"
+                      }
+                  ]
+              },
+              {
+                  "id": "less-than",
+                  "model": {
+                      "id": "less-than-model-id",
+                      "model_version": {
+                          "id": "{YOUR_LESS_THAN_MODEL_VERSION_ID}"
+                      }
+                  },
+                  "node_inputs": [
+                      {
+                          "node_id": "mapper"
+                      }
+                  ]
+              },
+          ]
+      }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/workflows`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Suppressing the output from nodes
@@ -605,5 +707,62 @@ Authorization: Key f897095e22b144f482b9a13a2151e5bd
 }
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "workflows": [
+    {
+      "id": "predict-cluster-only",
+      "nodes": [
+        {
+          "id": "general-embed",
+          "model": {
+            "id": "bbb5f41425b8468d9b7a554ff10f8581",
+            "model_version": {
+              "id": "bb186755eda04f9cbb6fe32e816be104"
+            }
+          },
+          "suppress_output": true
+        },
+        {
+          "id": "general-cluster",
+          "node_inputs": [
+            {
+              "node_id": "general-embed"
+            }
+          ],
+          "model": {
+            "id": "cccbe437d6e54e2bb911c6aa292fb072",
+            "model_version": {
+              "id": "cc2074cff6dc4c02b6f4e1b8606dcb54"
+            }
+          }
+        }
+      ]
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/workflows`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 

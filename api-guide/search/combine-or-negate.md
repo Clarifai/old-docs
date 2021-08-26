@@ -229,5 +229,65 @@ curl -X POST \
 https://api.clarifai.com/v2/searches
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "searches": [
+    {
+      "query": {
+        "filters": [
+          {
+            "annotation": {
+              "data": {
+                "concepts": [
+                  {
+                    "id":"people",
+                    "value": 1
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "ranks": [
+          {
+            "annotation": {
+              "data": {
+                "concepts": [
+                  {
+                    "id":"people",
+                    "value": 1
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/searches`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
