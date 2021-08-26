@@ -8,7 +8,7 @@ The Clarifai API supports [many languages in addition to English](../concepts/la
 
 ## Example Predict API Request
 
-You can predict concepts in a language other then the Application's default, by explicitly passing in the language. Here is how you predict concepts in Chinese:
+You can predict concepts in a language other than the Application's default, by explicitly passing in the language. Here is how you predict concepts in Chinese:
 
 {% tabs %}
 {% tab title="Java" %}
