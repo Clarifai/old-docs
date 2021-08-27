@@ -95,6 +95,7 @@ stub.PostModelOutputs(
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the publicly available General model.
         inputs=[
             resources_pb2.Input(
@@ -401,6 +402,7 @@ stub.PostConceptsSearches(
 
 post_concepts_searches_response = stub.PostConceptsSearches(
     service_pb2.PostConceptsSearchesRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         concept_query=resources_pb2.ConceptQuery(
             name="人",
             language="zh"

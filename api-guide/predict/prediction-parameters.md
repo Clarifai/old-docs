@@ -104,6 +104,7 @@ stub.PostModelOutputs(
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the clarifai/main General model.
         inputs=[
             resources_pb2.Input(
@@ -327,6 +328,7 @@ stub.PostModelOutputs(
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the clarifai/main General model.
         inputs=[
             resources_pb2.Input(
@@ -549,6 +551,7 @@ stub.PostModelOutputs(
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the clarifai/main General model.
         inputs=[
             resources_pb2.Input(
@@ -797,6 +800,7 @@ stub.PostModelOutputs(
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the clarifai/main General model.
         version_id="aa7f35c01e0642fda5cf400f543e7c40",  # This is optional. Defaults to the latest model version.
         inputs=[
