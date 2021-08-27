@@ -22,9 +22,7 @@ Create the concepts that we'll be using in our model. In this tutorial we'll cre
 
 post_concepts_response = stub.PostConcepts(
     service_pb2.PostConceptsRequest(
-        user_app_id=resources_pb2.UserAppIDSet(
-            app_id="{YOUR_APP_ID}"
-        ),
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         concepts=[
             resources_pb2.Concept(id="peopleID", name="people"),
             resources_pb2.Concept(id="manID", name="man"),
@@ -158,9 +156,7 @@ Your model's concept IDs are the ones you created in the previous step: `peopleI
 
 post_concept_relations_response = stub.PostConceptRelations(
     service_pb2.PostConceptRelationsRequest(
-        user_app_id=resources_pb2.UserAppIDSet(
-            app_id="{YOUR_APP_ID}"
-        ),
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         concept_id="{YOUR_MODEL_CONCEPT_ID}",
         concept_relations=[
             resources_pb2.ConceptRelation(
@@ -283,9 +279,7 @@ params.update({
 
 post_models_response = stub.PostModels(
     service_pb2.PostModelsRequest(
-        user_app_id=resources_pb2.UserAppIDSet(
-            app_id="{YOUR_APP_ID}"
-        ),
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         models=[
             resources_pb2.Model(
                 id="synonym-model-id",
@@ -411,9 +405,7 @@ params.update({
 
 post_models_response = stub.PostModels(
     service_pb2.PostModelsRequest(
-        user_app_id=resources_pb2.UserAppIDSet(
-            app_id="{YOUR_APP_ID}"
-        ),
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         models=[
             resources_pb2.Model(
                 id="greater-than-model-id",
@@ -590,9 +582,7 @@ params.update({
 
 post_models_response = stub.PostModels(
     service_pb2.PostModelsRequest(
-        user_app_id=resources_pb2.UserAppIDSet(
-            app_id="{YOUR_APP_ID}"
-        ),
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         models=[
             resources_pb2.Model(
                 id="less-than-model-id",
@@ -770,9 +760,7 @@ params.update({
 
 post_models_response = stub.PostModels(
     service_pb2.PostModelsRequest(
-        user_app_id=resources_pb2.UserAppIDSet(
-            app_id="{YOUR_APP_ID}"
-        ),
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         models=[
             resources_pb2.Model(
                 id="write-success-model-id",
@@ -907,9 +895,7 @@ params.update({
 
 post_models_response = stub.PostModels(
     service_pb2.PostModelsRequest(
-        user_app_id=resources_pb2.UserAppIDSet(
-            app_id="{YOUR_APP_ID}"
-        ),
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         models=[
             resources_pb2.Model(
                 id="write-pending-model-id",
@@ -1010,9 +996,7 @@ The model IDs and model version IDs from the public `clarifai/main` application 
 
 post_workflows_response = stub.PostWorkflows(
     service_pb2.PostWorkflowsRequest(
-        user_app_id=resources_pb2.UserAppIDSet(
-            app_id="cdd79189eb6f44049b6c5b58f14a87e6"
-        ),
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         workflows=[
             resources_pb2.Workflow(
                 id="auto-annotation-workflow-id",
@@ -1488,6 +1472,7 @@ Make this the default workflow in the app, so it will run every time we add an i
 
 patch_apps_response = stub.PatchApps(
     service_pb2.PatchAppsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         action="overwrite",
         apps=[
             resources_pb2.App(
@@ -1588,9 +1573,7 @@ Adding the image will trigger the default workflow.
 
 post_inputs_response = stub.PostInputs(
     service_pb2.PostInputsRequest(
-        user_app_id=resources_pb2.UserAppIDSet(
-            app_id="{YOUR_APP_ID}"
-        ),
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         inputs=[
             resources_pb2.Input(
                 data=resources_pb2.Data(
@@ -1706,9 +1689,7 @@ Now you can list annotations with your user id to see the annotations created by
 
 list_annotations_response = stub.ListAnnotations(
     service_pb2.ListAnnotationsRequest(
-        user_app_id=resources_pb2.UserAppIDSet(
-            app_id="{YOUR_APP_ID}"
-        ),
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         user_ids=["{YOUR_USER_ID}"],
         list_all_annotations=True,
     ),
