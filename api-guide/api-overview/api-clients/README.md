@@ -86,7 +86,7 @@ metadata = (('authorization', 'Key {YOUR_CLARIFAI_API_KEY}'),)
 ##
 ##     'user_id' : This is your user id
 ##     'app_id'  : This is the app id which contains the model of interest
-userDataObject = UserAppIDSet(user_id='{YOUR USER NAME HERE}', app_id='{YOUR APPLICATION ID HERE}')
+userDataObject = resources_pb2.UserAppIDSet(user_id='{YOUR USER NAME HERE}', app_id='{YOUR APPLICATION ID HERE}')
 ```
 {% endtab %}
 
