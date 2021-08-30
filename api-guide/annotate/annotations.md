@@ -32,6 +32,7 @@ To annotate a concept present anywhere in an image:
 
 post_annotations_response = stub.PostAnnotations(
     service_pb2.PostAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         annotations=[
             resources_pb2.Annotation(
                 input_id="{YOUR_INPUT_ID}",
@@ -170,6 +171,7 @@ You can label a new bounding box by providing bounding box coordinates.
 
 post_annotations_response = stub.PostAnnotations(
     service_pb2.PostAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         annotations=[
             resources_pb2.Annotation(
                 input_id="{YOUR_INPUT_ID}",
@@ -471,6 +473,7 @@ When you add an input, detection models \(such as `Face Detection` or `General D
 
 post_annotations_response = stub.PostAnnotations(
     service_pb2.PostAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         annotations=[
             resources_pb2.Annotation(                # label a region in this image
                 input_id="{YOUR_INPUT_ID}",
@@ -708,6 +711,7 @@ Note: only the app owner can post an annotation with other user's `user_id`, col
 
 post_annotations_response = stub.PostAnnotations(
     service_pb2.PostAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         annotations=[
             resources_pb2.Annotation(
                 input_id="{YOUR_INPUT_ID}",
@@ -827,7 +831,10 @@ Note this will not show annotations by models in your worfklow. To include model
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 list_annotations_response = stub.ListAnnotations(
-    service_pb2.ListAnnotationsRequest(per_page=10),
+    service_pb2.ListAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
+        per_page=10
+    ),
     metadata=metadata
 )
 
@@ -910,7 +917,11 @@ List all annotations, including models created.
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 list_annotations_response = stub.ListAnnotations(
-    service_pb2.ListAnnotationsRequest(per_page=10, list_all_annotations=True),
+    service_pb2.ListAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
+        per_page=10, 
+        list_all_annotations=True
+    ),
     metadata=metadata
 )
 
@@ -996,7 +1007,11 @@ Note: this will not show annotations by models in your worfklow. To include mode
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 list_annotations_response = stub.ListAnnotations(
-    service_pb2.ListAnnotationsRequest(input_ids=["{YOUR_INPUT_ID_1}". "{YOUR_INPUT_ID_2}"], per_page=10),
+    service_pb2.ListAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
+        input_ids=["{YOUR_INPUT_ID_1}". "{YOUR_INPUT_ID_2}"], 
+        per_page=10
+    ),
     metadta=metadata
 )
 
@@ -1082,7 +1097,8 @@ You can list annotations by both input IDs and annotation IDs. Number of input I
 
 list_annotations_response = stub.ListAnnotations(
     service_pb2.ListAnnotationsRequest(
-       input_ids=["{YOUR_INPUT_ID_1}". "{YOUR_INPUT_ID_2}"]
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
+        input_ids=["{YOUR_INPUT_ID_1}". "{YOUR_INPUT_ID_2}"],
         ids=["{YOUR_ANNOTATION_ID_1}", "{YOUR_ANNOTATION_ID_2}"],
         per_page=10
     ),
@@ -1175,7 +1191,11 @@ An annotation is created by either a user or a model. You can list annotations c
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 list_annotations_response = stub.ListAnnotations(
-    service_pb2.ListAnnotationsRequest(user_ids=["{USER_ID_1}", "{USER_ID_2}"], per_page=10),
+    service_pb2.ListAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
+        user_ids=["{USER_ID_1}", "{USER_ID_2}"], 
+        per_page=10
+    ),
     metadata=metadata
 )
 
@@ -1260,6 +1280,7 @@ An annotation is created by either a user or a model. For example if your workfl
 
 list_annotations_response = stub.ListAnnotations(
     service_pb2.ListAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         model_version_ids=["{MODEL_VERSION_ID_1}", "{MODEL_VERSION_ID_2}"],
         per_page=10
     ),
@@ -1355,6 +1376,7 @@ Update an annotation of a image with a new concept, or to change a concept value
 
 patch_annotations_response = stub.PatchAnnotations(
     service_pb2.PatchAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         action="merge",  # Supported actions: overwrite, merge, remove.
         annotations=[
             resources_pb2.Annotation(
@@ -1488,6 +1510,7 @@ When you update region data, you must nest this new data within region.data. Set
 
 patch_annotations_response = stub.PatcchAnnotations(
     service_pb2.PatchAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         action="merge",  # Supported actions: overwrite, merge, remove.
         annotations=[
             resources_pb2.Annotation(
@@ -1647,6 +1670,7 @@ You can update region bounding boxes coordinates. When changing the region, you 
 
 patch_annotations_response = stub.PatcchAnnotations(
     service_pb2.PatchAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         action="overwrite",
         annotations=[
             resources_pb2.Annotation(
@@ -1833,6 +1857,7 @@ You can update an annotation status.
 
 patch_annotations_response = stub.PatchAnnotations(
     service_pb2.PatchAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         action="merge",  # Supported actions: overwrite, merge, remove.
         annotations=[
             resources_pb2.Annotation(
@@ -1952,6 +1977,7 @@ You can delete a single annotation by input ID and annotation ID.
 
 delete_annotation_response = stub.DeleteAnnotation(
     service_pb2.DeleteAnnotationRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         input_id="{YOUR_INPUT_ID}",
         annotation_id="{YOUR_ANNOTATION_ID}"
     ),
@@ -2029,6 +2055,7 @@ You can delete multiple annotations in one API call. You need to provide a list 
 
 delete_annotations_response = stub.DeleteAnnotations(
     service_pb2.DeleteAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         input_ids=["{YOUR_INPUT_ID_1}", "{YOUR_INPUT_ID_2}"],
         annotation_id=["{YOUR_ANNOTATION_ID_1}", "{YOUR_ANNOTATION_ID_2}"]
     ),
@@ -2113,6 +2140,7 @@ To delete all annotations of a given input, you just need to set input ID\(s\). 
 
 delete_annotations_response = stub.DeleteAnnotations(
     service_pb2.DeleteAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         input_ids=["{YOUR_INPUT_ID_1}", "{YOUR_INPUT_ID_2}"]
     ),
     metadata=metadata
