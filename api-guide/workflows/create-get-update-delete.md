@@ -102,6 +102,7 @@ stub.PostWorkflows(
 
 post_workflows_response = stub.PostWorkflows(
     service_pb2.PostWorkflowsRequest(
+      user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
       workflows=[
         resources_pb2.Workflow(
           id="my-custom-workflow",
@@ -267,6 +268,7 @@ stub.PostWorkflowResults(
 
 post_workflow_results_response = stub.PostWorkflowResults(
     service_pb2.PostWorkflowResultsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         workflow_id="{YOUR_WORKFLOW_ID}",
         inputs=[
             resources_pb2.Input(
@@ -386,7 +388,9 @@ stub.ListWorkflows(
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 list_workflows_response = stub.ListWorkflows(
-    service_pb2.ListWorkflowsRequest(),
+    service_pb2.ListWorkflowsRequest(
+        user_app_id=userDataObject  # The userDataObject is created in the overview and is required when using a PAT
+    ),
     metadata=metadata
 )
 
@@ -482,6 +486,7 @@ stub.GetWorkflow(
 
 get_workflow_response = stub.GetWorkflow(
     service_pb2.GetWorkflowRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         workflow_id="my-custom-workflow"
     ),
     metadata=metadata
@@ -630,6 +635,7 @@ stub.PatchWorkflows(
 
 patch_workflows_response = stub.PatchWorkflows(
     service_pb2.PatchWorkflowsRequest(
+      user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
       action="overwrite",
       workflows=[
         resources_pb2.Workflow(
@@ -779,6 +785,7 @@ stub.DeleteWorkflow(
 
 delete_workflow_response = stub.DeleteWorkflow(
     service_pb2.DeleteWorkflowRequest(
+      user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
       workflow_id="my-custom-workflow"
     ),
     metadata=metadata
@@ -855,6 +862,7 @@ stub.DeleteWorkflows(
 
 delete_workflows_response = stub.DeleteWorkflows(
     service_pb2.DeleteWorkflowsRequest(
+      user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
       delete_all=True
     ),
     metadata=metadata
