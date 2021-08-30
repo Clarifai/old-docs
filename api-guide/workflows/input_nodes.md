@@ -42,9 +42,7 @@ The The following is an example of how to build a workflow with multiple connect
 
 post_workflows_response = stub.PostWorkflows(
     service_pb2.PostWorkflowsRequest(
-        user_app_id=resources_pb2.UserAppIDSet(
-            app_id="cdd79189eb6f44049b6c5b58f14a87e6"
-        ),
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         workflows=[
             resources_pb2.Workflow(
                 id="auto-annotation-workflow-id",
@@ -418,9 +416,7 @@ It is possible to turn the outputs from given nodes in your workflow on and off 
 
 post_workflows_response = stub.PostWorkflows(
     service_pb2.PostWorkflowsRequest(
-        user_app_id=resources_pb2.UserAppIDSet(
-            app_id="cdd79189eb6f44049b6c5b58f14a87e6"
-        ),
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         workflows=[
             resources_pb2.Workflow(
                 id="predict-cluster-only",
