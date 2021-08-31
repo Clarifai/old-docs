@@ -16,6 +16,7 @@ You can make predictions on passages of text hosted on the web
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         model_id="{THE_MODEL_ID}",
         version_id="{THE_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
         inputs=[
@@ -291,6 +292,7 @@ with open("{YOUR_IMAGE_FILE_LOCATION}", "rb") as f:
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         model_id="{THE_MODEL_ID}",
         version_id="{THE_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
         inputs=[

@@ -39,6 +39,7 @@ image_urls = [
 ]
 post_inputs_response = stub.PostInputs(
     service_pb2.PostInputsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         inputs=[
             resources_pb2.Input(
                 data=resources_pb2.Data(
@@ -67,7 +68,11 @@ Now we'll wait for all the images to finish uploading, and then create a diction
 ```python
 while True:
     list_inputs_response = stub.ListInputs(
-        service_pb2.ListInputsRequest(page=1, per_page=100),
+        service_pb2.ListInputsRequest(
+            user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
+            page=1, 
+            per_page=100
+        ),
         metadata=metadata
     )
 
@@ -112,7 +117,12 @@ The code below prints the annotations together with the input ID and region ID. 
 {% tab title="gRPC Python" %}
 ```python
 list_annotations_response = stub.ListAnnotations(
-    service_pb2.ListAnnotationsRequest(list_all_annotations=True, page=1, per_page=100),
+    service_pb2.ListAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
+        list_all_annotations=True, 
+        page=1, 
+        per_page=100
+    ),
     metadata=metadata
 )
 
@@ -149,6 +159,7 @@ Input below the IDs from the previous call, and choose your concept ID and name 
 ```python
 post_annotations_response = stub.PostAnnotations(
     service_pb2.PostAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         annotations=[
             resources_pb2.Annotation(
                 input_id="{MY_INPUT_ID}",
@@ -191,6 +202,7 @@ Let's now create a KNN model using the concept IDs that were added above. The mo
 ```python
 post_models_response = stub.PostModels(
     service_pb2.PostModelsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         models=[
             resources_pb2.Model(
                 id="my-knn-face-classifier-model",
@@ -224,6 +236,7 @@ One last step before being able to do predictions: create a workflow that's goin
 ```python
 post_workflows_response = stub.PostWorkflows(
     service_pb2.PostWorkflowsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         workflows=[
             resources_pb2.Workflow(
                 id="detect-knn-workflow",
@@ -268,6 +281,7 @@ We're going to run a prediction on the workflow created above.
 ```python
 post_workflow_results_response = stub.PostWorkflowResults(
     service_pb2.PostWorkflowResultsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         workflow_id="detect-knn-workflow",
         inputs=[
             resources_pb2.Input(

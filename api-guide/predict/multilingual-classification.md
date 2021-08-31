@@ -257,6 +257,49 @@ stub.PostModelOutputs(
 ```
 {% endtab %}
 
+
+{% tab title="Python" %}
+```python
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+post_model_outputs_response = stub.PostModelOutputs(
+    service_pb2.PostModelOutputsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
+        model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the publicly available General model.
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/metro-north.jpg"
+                    )
+                )
+            )
+        ],
+        model=resources_pb2.Model(
+            output_info=resources_pb2.OutputInfo(
+                output_config=resources_pb2.OutputConfig(
+                    language="zh"  # Chinese
+                )
+            )
+        )
+    ),
+    metadata=metadata
+)
+
+if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+
+# Since we have one input, one output will exist here.
+output = post_model_outputs_response.outputs[0]
+
+print("Predicted concepts:")
+for concept in output.data.concepts:
+    print("\t%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+
+
 {% tab title="cURL" %}
 ```text
 curl -X POST \
@@ -672,6 +715,32 @@ stub.PostConceptsSearches(
 );
 ```
 {% endtab %}
+
+{% tab title="Python" %}
+```python
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+post_concepts_searches_response = stub.PostConceptsSearches(
+    service_pb2.PostConceptsSearchesRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
+        concept_query=resources_pb2.ConceptQuery(
+            name="人",
+            language="zh"
+        )
+    ),
+    metadata=metadata
+)
+
+if post_concepts_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post concepts searches failed, status: " + post_concepts_searches_response.status.description)
+
+print("Found concepts:")
+for concept in post_concepts_searches_response.concepts:
+    print("\t%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+
 
 {% tab title="cURL" %}
 ```text

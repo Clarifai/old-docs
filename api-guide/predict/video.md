@@ -235,6 +235,43 @@ stub.PostModelOutputs(
 ```
 {% endtab %}
 
+{% tab title="Python" %}
+```python
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+post_model_outputs_response = stub.PostModelOutputs(
+    service_pb2.PostModelOutputsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
+        model_id="{THE_MODEL_ID}",
+        version_id="{THE_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    video=resources_pb2.Video(
+                        url="https://samples.clarifai.com/beer.mp4"
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+
+# Since we have one input, one output will exist here.
+output = post_model_outputs_response.outputs[0]
+
+# A separate prediction is available for each "frame".
+for frame in output.data.frames:
+    print("Predicted concepts on frame " + str(frame.frame_info.time) + ":")
+    for concept in frame.data.concepts:
+        print("\t%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+
+
 {% tab title="cURL" %}
 ```text
 curl -X POST \
@@ -1757,6 +1794,47 @@ stub.PostModelOutputs(
 );
 ```
 {% endtab %}
+
+
+{% tab title="Python" %}
+```python
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+with open("{YOUR_VIDEO_FILE_LOCATION}", "rb") as f:
+    file_bytes = f.read()
+
+post_model_outputs_response = stub.PostModelOutputs(
+    service_pb2.PostModelOutputsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
+        model_id="{THE_MODEL_ID}",
+        version_id="{THE_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    video=resources_pb2.Video(
+                        base64=file_bytes
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+
+# Since we have one input, one output will exist here.
+output = post_model_outputs_response.outputs[0]
+
+# A separate prediction is available for each "frame".
+for frame in output.data.frames:
+    print("Predicted concepts on frame " + str(frame.frame_info.time) + ":")
+    for concept in frame.data.concepts:
+        print("\t%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+
 
 {% tab title="cURL" %}
 ```text
