@@ -184,6 +184,49 @@ curl -X POST 'https://api.clarifai.com/v2/collectors' \
 }'
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "collectors": [
+      {
+          "id": "{YOUR_COLLECTOR_ID}",
+          "description": "{YOUR_COLLECTOR_DESCRIPTION}",
+          "pre_queue_workflow_id": "{YOUR_PRE_QUEUE_WORKFLOW_ID}",
+          "post_queue_workflow_id": "{YOUR_POST_QUEUE_WORKFLOW_ID}",
+          "collector_source": {
+              "api_post_model_outputs_collector_source": {
+                  "model_user_id": "{YOUR_MODEL_USER_ID]",
+                  "model_app_id": "{YOUR_MODEL_APP_ID}",
+                  "model_id": "{YOUR_MODEL_ID}",
+                  "model_version_id": "{YOUR_MODEL_VERSION_ID}",
+                  "post_inputs_key_id": "{YOUR_API_KEY}"
+              }
+          }
+     }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/collectors", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Update Collector
@@ -286,6 +329,40 @@ curl -X PATCH 'https://api-dev.clarifai.com/v2/collectors' \
 }'
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "action": "overwrite",
+  "collectors": [
+      {
+          "id": "{YOUR_COLLECTOR_ID}",
+          "description": "{A_NEW_DESCRIPTION}",
+          "pre_queue_workflow_id": "{A_NEW_WORKFLOW_ID}"
+     }
+  ]
+});
+
+const requestOptions = {
+  method: 'PATCH',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/collectors", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## List Collectors
@@ -367,6 +444,26 @@ curl -X GET 'https://api.clarifai.com/v2/collectors' \
   -H 'Content-Type: application/json'
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/collectors`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Get Collector
@@ -448,6 +545,27 @@ curl -X GET 'https://api.clarifai.com/v2/collectors/{YOUR_COLLECTOR_ID}' \
   -H 'Content-Type: application/json'
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const collectorId = '{YOUR_COLLECTOR_ID}'
+const appId = '{YOUR_APP_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/collectors/${collectorId}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Delete Collector
@@ -526,5 +644,34 @@ curl -X DELETE 'https://api-dev.clarifai.com/v2/collectors' \
 }'
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "ids": [
+    "collector2"
+  ]
+});
+
+var requestOptions = {
+  method: 'DELETE',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/collectors", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 

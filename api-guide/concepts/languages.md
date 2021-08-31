@@ -115,6 +115,27 @@ curl -X GET \
   https://api.clarifai.com/v2/concepts/{concept_id}/languages
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const conceptId = '{CONCEPT_ID}'
+const appId = '{YOUR_APP_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/concepts/${conceptId}/languages`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Get specific language translation for a concept
@@ -193,6 +214,28 @@ curl -X GET \
   https://api.clarifai.com/v2/concepts/{concept_id}/languages/{language}
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const conceptId = '{CONCEPT_ID}'
+const appId = '{YOUR_APP_ID}'
+const language = '{LANGUAGE}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/concepts/${conceptId}/languages/${language}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Add a language translation for a concept
@@ -279,6 +322,40 @@ curl -X GET \
   https://api.clarifai.com/v2/concepts/{concept_id}/languages/{language}
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const conceptId = '{YOUR_CONCEPT_ID}'
+
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "concept_languages": [
+    {
+      "id": "ko",
+      "name": "개"
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/concepts/${conceptId}/languages`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Update a language translation for a concept
@@ -368,5 +445,40 @@ curl -X GET \
   https://api.clarifai.com/v2/concepts/{concept_id}/languages/{language}
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const conceptId = '{YOUR_CONCEPT_ID}'
+
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "concept_languages": [
+    {
+      "id": "ko",
+      "name": "개"
+    }
+  ],
+  "action": "overwrite"
+});
+
+var requestOptions = {
+  method: 'PATCH',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/concepts/${conceptId}/languages`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 

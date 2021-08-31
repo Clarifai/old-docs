@@ -157,6 +157,50 @@ curl -X POST \
   https://api.clarifai.com/v2/annotations
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"annotations": [
+    {
+      "input_id": "{YOUR_INPUT_ID}",
+      "data": {
+        "concepts": [
+          {
+            "id": "tree",
+            "value": 1
+          },
+          {
+            "id": "water",
+            "value": 0
+          }
+        ]
+      },
+      "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/annotations", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### Annotate New Bounding Boxes in an Image
@@ -459,6 +503,89 @@ curl -X POST \
   https://api.clarifai.com/v2/annotations
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"annotations": [
+    {
+      "input_id": "{YOUR_INPUT_ID}",
+      "data": {
+        "regions": [
+          {
+            "region_info": {
+                "bounding_box": {
+                    "top_row": 0,
+                    "left_col": 0,
+                    "bottom_row": 0.5,
+                    "right_col": 0.5
+                }
+            },
+            "data": {
+              "concepts": [
+                {
+                  "id": "tree",
+                  "value": 1
+                },
+                {
+                  "id": "water",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
+    }, {
+      "input_id": "{YOUR_INPUT_ID}",
+      "data": {
+        "regions": [
+          {
+            "region_info": {
+                "bounding_box": {
+                    "top_row": 0.6,
+                    "left_col": 0.6,
+                    "bottom_row": 0.8,
+                    "right_col": 0.8
+                }
+            },
+            "data": {
+              "concepts": [
+                {
+                  "id": "bike",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/annotations", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### Annotate Existing Regions in an Image
@@ -695,6 +822,75 @@ curl -X POST \
   https://api.clarifai.com/v2/annotations
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"annotations": [
+    {
+      "input_id": "{YOUR_INPUT_ID}",
+      "data": {
+        "regions": [
+          {
+            "id": "{REGION_ID_1}",
+            "data": {
+              "concepts": [
+                {
+                  "id": "tree",
+                  "value": 1
+                },
+                {
+                  "id": "water",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
+    }, {
+      "input_id": "{YOUR_INPUT_ID}",
+      "data": {
+        "regions": [
+          {
+            "id": "{REGION_ID_2}",
+            "data": {
+              "concepts": [
+                {
+                  "id": "bike",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/annotations", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### Annotate Images with Different `user_id` and `status`.
@@ -810,6 +1006,41 @@ curl -X POST \
   https://api.clarifai.com/v2/annotations
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"annotations": [
+    {
+      "input_id": "{YOUR_INPUT_ID}",
+      "user_id": "{USER_ID}",
+      "status": {
+          "code": "ANNOTATION_PENDING"
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/annotations", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### List Annotations
@@ -904,6 +1135,26 @@ curl -X GET \
   https://api.clarifai.com/v2/annotations?page=1&per_page=10
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/annotations?page=1&per_page=10`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### List All Annotations in Your App
@@ -992,6 +1243,26 @@ curl -X GET \
   https://api.clarifai.com/v2/annotations?page=1&per_page=10&list_all_annotations=true
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/annotations?page=1&per_page=10&list_all_annotations=true`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### List User Created Annotations by Input IDs
@@ -1083,6 +1354,27 @@ curl -X GET \
   https://api.clarifai.com/v2/annotations?page=1&per_page=10&input_ids=your_input_Id
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const inputId = '{YOUR_INPUT_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/annotations?page=1&per_page=10&input_ids=${inputId}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### List Annotations by Input IDs and Annotation IDs
@@ -1178,6 +1470,30 @@ curl -X GET \
   https://api.clarifai.com/v2/annotations?page=1&per_page=10&input_ids=YOUR_INPUT_ID_1&input_ids=YOUR_INPUT_ID_2&ids=YOUR_ANNOTATION_ID_1&ids=YOUR_ANNOTATION_ID_2
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const inputId1 = '{YOUR_INPUT_ID_1}'
+const inputId2 = '{YOUR_INPUT_ID_2}'
+const annotationId1 = '{YOUR_ANNOTATION_ID_1}'
+const annotationId2 = '{YOUR_ANNOTATION_ID_2}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/annotations?page=1&per_page=10&input_ids=${inputId1}&input_ids=${inputId2}&ids=${annotationId1}&ids=${annotationId2}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### List Annotations by User IDs
@@ -1266,6 +1582,28 @@ curl -X GET \
   https://api.clarifai.com/v2/annotations?page=1&per_page=10&user_ids=USER_ID_1&user_ids=USER_ID_2
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const userId1 = '{USER_ID_1}'
+const userId2 = '{USER_ID_2}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/annotations?page=1&per_page=10&user_ids=${userId1}&user_ids=${userId2}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### List Annotations by Model Version IDs
@@ -1354,6 +1692,28 @@ curl -X GET \
   https://api.clarifai.com/v2/annotations?page=1&per_page=10&model_version_ids=MODEL_VERSION_ID_1&model_version_ids=MODEL_VERSION_ID_2
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const modelVersionId1 = '{MODEL_VERSION_ID_1}'
+const modelVersionId2 = '{MODEL_VERSION_ID_2}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/annotations?page=1&per_page=10&model_version_ids=${modelVersionId1}&model_version_ids=${modelVersionId1}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Update Annotations
@@ -1496,6 +1856,47 @@ curl -X PATCH \
   https://api.clarifai.com/v2/annotations
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"annotations": [
+    {
+      "input_id": "{YOUR_INPUT_ID}",
+      "id": "{YOUR_ANNOTATION_ID}",
+      "data": {
+        "concepts": [
+          {
+            "id": "apple",
+            "value": 1
+          }
+        ]
+      }
+    }
+  ],
+  "action":"merge"
+});
+
+const requestOptions = {
+  method: 'PATCH',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/annotations", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### Update Annotation with Concepts in a Region
@@ -1656,6 +2057,54 @@ curl -X PATCH \
   https://api.clarifai.com/v2/annotations
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"annotations": [
+    {
+      "input_id": "{YOUR_INPUT_ID}",
+      "id": "{YOUR_ANNOTATION_ID}",
+      "data": {
+        "regions": [
+          {
+            "id": "{REGION_ID}",
+            "data": {
+              "concepts": [
+                {
+                  "id": "apple",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "action":"merge"
+});
+
+const requestOptions = {
+  method: 'PATCH',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/annotations", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### Update Annotation Region Coordinates
@@ -1843,6 +2292,56 @@ curl -X PATCH \
   https://api.clarifai.com/v2/annotations
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"annotations": [
+    {
+      "data": {
+			"regions": [{
+				"region_info": {
+					"bounding_box": {
+						"top_row": 0,
+						"left_col": 0,
+						"bottom_row": 1,
+						"right_col": 1
+					}
+				},
+				"data": {
+					"concepts": [{
+						"id": "{{concept_id}}",
+						"name": "{{concept_id}}",
+						"value": 1
+					}]
+				}
+			}]
+		},
+		"input_id": "{{asset_id}}"
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'PATCH',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/annotations", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### Update Annotation Status
@@ -1961,6 +2460,42 @@ curl -X PATCH \
   https://api.clarifai.com/v2/annotations
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"annotations": [
+    {
+      "input_id": "{YOUR_INPUT_ID}",
+      "id": "{YOUR_ANNOTATION_ID}",
+      "status": {
+        "code": "ANNOTATION_SUCCESS"
+      }
+    }
+  ],
+  "action":"merge"
+});
+
+const requestOptions = {
+  method: 'PATCH',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/annotations", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Delete Annotations
@@ -2041,6 +2576,28 @@ curl -X DELETE \
   https://api.clarifai.com/v2/inputs/{YOUR_INPUT_ID}/annotations/{YOUR_ANNOTATION_ID}
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const inputId = '{YOUR_INPUT_ID}'
+const annotationId = '{YOUR_ANNOTATION_ID}'
+
+const requestOptions = {
+  method: 'DELETE',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/inputs/${inputId}/annotations/${annotationId}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### Bulk Delete Annotations by Input Ids and Annotation IDs
@@ -2126,6 +2683,34 @@ curl -X DELETE \
   https://api.clarifai.com/v2/annotations
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"input_ids":["{YOUR_INPUT_ID_1}","{YOUR_INPUT_ID_2}"],
+  "ids":["{YOUR_ANNOTATION_ID_1}", "{YOUR_ANNOTATION_ID_2}"]
+});
+
+const requestOptions = {
+  method: 'DELETE',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/annotations", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### Bulk Delete All Annotations by Input IDs
@@ -2206,5 +2791,31 @@ curl -X DELETE \
   https://api.clarifai.com/v2/annotations
 ```
 {% endtab %}
-{% endtabs %}
 
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"input_ids":["{YOUR_INPUT_ID_1}","{YOUR_INPUT_ID_2}"]
+});
+
+const requestOptions = {
+  method: 'DELETE',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/annotations", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
+{% endtabs %}

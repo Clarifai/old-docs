@@ -19,6 +19,145 @@ If your video exceeds the limits, please follow our [tutorial](https://www.clari
 Below is an example of how you would send video URLs and receive back predictions from the `general` model.
 
 {% tabs %}
+
+{% tab title="Python" %}
+```python
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+post_model_outputs_response = stub.PostModelOutputs(
+    service_pb2.PostModelOutputsRequest(
+        model_id="{THE_MODEL_ID}",
+        version_id="{THE_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    video=resources_pb2.Video(
+                        url="https://samples.clarifai.com/beer.mp4"
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+
+# Since we have one input, one output will exist here.
+output = post_model_outputs_response.outputs[0]
+
+# A separate prediction is available for each "frame".
+for frame in output.data.frames:
+    print("Predicted concepts on frame " + str(frame.frame_info.time) + ":")
+    for concept in frame.data.concepts:
+        print("\t%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+
+{% tab title="PHP" %}
+```php
+<?php
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+///////////////////////////////////////////////////////////////////////////////
+// Specifying the Request Data
+///////////////////////////////////////////////////////////////////////////////
+//
+// In the Clarifai platform a video is defined by a special Video object.
+// There are several ways in which an Video object can be populated including
+// by url and video bytes (base64).
+//
+$video = new Video([
+    'url' => 'https://samples.clarifai.com/beer.mp4'
+]);
+
+//
+// After a Video object is created, a Data object is constructed around it.
+// The Data object offers a container that contains additional video independent
+// metadata.  In this particular use case, no other metadata is needed to be
+// specified.
+//
+$data = new Data([
+    'video' => $video
+]);
+
+//
+// The Data object is then wrapped in an Input object in order to meet the
+// API specification.  Additional fields are available to populate in the Input
+// object, but for the purposes of this example we can send in just the
+// Data object.
+//
+$input = new Input([
+    'data' => $data
+]);
+
+///////////////////////////////////////////////////////////////////////////////
+// Creating the request object 
+///////////////////////////////////////////////////////////////////////////////
+//
+// Finally, the request object itself is created.  This object carries the request
+// along with the request status and other metadata related to the request itself.
+// In this example we populate:
+//    - the `user_app_id` field with the UserAppIDSet constructed above
+//    - the `model_id` field with the ID of the model we are referencing
+//    - the `inputs` field with an array of input objects constructed above 
+//
+$request = new PostModelOutputsRequest([
+    'user_app_id' => $userDataObject, // This is defined above
+    'model_id' => 'aaa03c23b3724a16a56b629203edc62c',  // This is the ID of the publicly available General model.
+    'inputs' => [$input]
+]);
+
+///////////////////////////////////////////////////////////////////////////////
+// Making the RPC call
+///////////////////////////////////////////////////////////////////////////////
+//
+// Once the request object is constructed, we can call the actual request to the
+// Clarifai platform.  This uses the opened gRPC client channel to communicate the
+// request and then wait for the response.
+//
+[$response, $status] = $client->PostModelOutputs(
+    $request,
+    $metadata
+)->wait();
+
+///////////////////////////////////////////////////////////////////////////////
+// Handling the Response
+///////////////////////////////////////////////////////////////////////////////
+//
+// The response is returned and the first thing we do is check the status of it.
+// A successful response will have a status code of 0, otherwise there is some 
+// reported error.
+//
+if ($status->code !== 0) throw new Exception("Error: {$status->details}");
+
+//
+// In addition to the RPC response status, there is a Clarifai API status that
+// reports if the operationo was a success or failure (not just that the commuunication)
+// was successful.
+//
+if ($response->getStatus()->getCode() != StatusCode::SUCCESS) {
+    throw new Exception("Failure response: " . $response->getStatus()->getDescription() . " " .
+        $response->getStatus()->getDetails());
+}
+
+//
+// The output of a successful call can be used in many ways.  In this example,
+// we loop through all of the frames of the video and print out the predicted 
+// concepts for each along with their numerical prediction value (confidence).
+//
+foreach ($output->getData()->getFrames() as $frame) {
+    echo "Predicted concepts on frame " . $frame->getFrameInfo()->getTime() . ":";
+    foreach ($frame->getData()->getConcepts() as $concept) {
+        echo "   " . $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
+    }
+}
+?>
+```
+{% endtab %}
+
 {% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
@@ -132,6 +271,7 @@ for frame in output.data.frames:
 ```
 {% endtab %}
 
+
 {% tab title="cURL" %}
 ```text
 curl -X POST \
@@ -154,6 +294,45 @@ curl -X POST \
 # Model version ID is optional. It defaults to the latest model version.
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "data": {
+        "video": {
+          "url": "https://samples.clarifai.com/beer.mp4"
+        }
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+// NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
+// https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
+// this will default to the latest version_id
+
+fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/versions/{MODEL_VERSION_ID}/outputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 {% tabs %}
@@ -1385,6 +1564,154 @@ curl -X POST \
 Below is an example of how you would send the bytes of a video and receive back predictions from the general model.
 
 {% tabs %}
+
+{% tab title="Python" %}
+```python
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+with open("{YOUR_VIDEO_FILE_LOCATION}", "rb") as f:
+    file_bytes = f.read()
+
+post_model_outputs_response = stub.PostModelOutputs(
+    service_pb2.PostModelOutputsRequest(
+        model_id="{THE_MODEL_ID}",
+        version_id="{THE_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    video=resources_pb2.Video(
+                        base64=file_bytes
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+
+# Since we have one input, one output will exist here.
+output = post_model_outputs_response.outputs[0]
+
+# A separate prediction is available for each "frame".
+for frame in output.data.frames:
+    print("Predicted concepts on frame " + str(frame.frame_info.time) + ":")
+    for concept in frame.data.concepts:
+        print("\t%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+{% tab title="PHP" %}
+```php
+<?php
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+//
+// For this example, the bytes of a video are needed and can be read in
+// using PHP provided functions.
+//
+video = "https://samples.clarifai.com/beer.mp4";
+$videoData = file_get_contents($image); // Get the video data from the URL
+
+///////////////////////////////////////////////////////////////////////////////
+// Specifying the Request Data
+///////////////////////////////////////////////////////////////////////////////
+//
+// In the Clarifai platform a video is defined by a special Video object.
+// There are several ways in which an Video object can be populated including
+// by url and video bytes (base64).
+//
+$video = new Video([
+    'base64' => $videoData
+]);
+
+//
+// After a Video object is created, a Data object is constructed around it.
+// The Data object offers a container that contains additional image independent
+// metadata.  In this particular use case, no other metadata is needed to be
+// specified.
+//
+$data = new Data([
+    'video' => $video
+]);
+
+//
+// The Data object is then wrapped in a Video object in order to meet the
+// API specification.  Additional fields are available to populate in the Input
+// object, but for the purposes of this example we can send in just the
+// Data object.
+//
+$input = new Input([
+    'data' => $data
+]);
+
+///////////////////////////////////////////////////////////////////////////////
+// Creating the request object 
+///////////////////////////////////////////////////////////////////////////////
+//
+// Finally, the request object itself is created.  This object carries the request
+// along with the request status and other metadata related to the request itself.
+// In this example we populate:
+//    - the `user_app_id` field with the UserAppIDSet constructed above
+//    - the `model_id` field with the ID of the model we are referencing
+//    - the `inputs` field with an array of input objects constructed above 
+//
+$request = new PostModelOutputsRequest([
+    'user_app_id' => $userDataObject, // This is defined above
+    'model_id' => 'aaa03c23b3724a16a56b629203edc62c',  // This is the ID of the publicly available General model.
+    'inputs' => [$input]
+]);
+
+///////////////////////////////////////////////////////////////////////////////
+// Making the RPC call
+///////////////////////////////////////////////////////////////////////////////
+//
+// Once the request object is constructed, we can call the actual request to the
+// Clarifai platform.  This uses the opened gRPC client channel to communicate the
+// request and then wait for the response.
+//
+[$response, $status] = $client->PostModelOutputs(
+    $request,
+    $metadata
+)->wait();
+
+///////////////////////////////////////////////////////////////////////////////
+// Handling the Response
+///////////////////////////////////////////////////////////////////////////////
+//
+// The response is returned and the first thing we do is check the status of it.
+// A successful response will have a status code of 0, otherwise there is some 
+// reported error.
+//
+if ($status->code !== 0) throw new Exception("Error: {$status->details}");
+
+//
+// In addition to the RPC response status, there is a Clarifai API status that
+// reports if the operationo was a success or failure (not just that the commuunication)
+// was successful.
+//
+if ($response->getStatus()->getCode() != StatusCode::SUCCESS) {
+    throw new Exception("Failure response: " . $response->getStatus()->getDescription() . " " .
+        $response->getStatus()->getDetails());
+}
+
+//
+// The output of a successful call can be used in many ways.  In this example,
+// we loop through all of the frames of the video and print out the predicted 
+// concepts for each along with their numerical prediction value (confidence).
+//
+foreach ($output->getData()->getFrames() as $frame) {
+    echo "Predicted concepts on frame " . $frame->getFrameInfo()->getTime() . ":";
+    foreach ($frame->getData()->getConcepts() as $concept) {
+        echo "   " . $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
+    }
+}
+?>
+```
+{% endtab %}
+
 {% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
@@ -1468,6 +1795,7 @@ stub.PostModelOutputs(
 ```
 {% endtab %}
 
+
 {% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
@@ -1507,6 +1835,7 @@ for frame in output.data.frames:
 ```
 {% endtab %}
 
+
 {% tab title="cURL" %}
 ```text
 curl -X POST \
@@ -1529,6 +1858,45 @@ curl -X POST \
 # The model version ID is optional. It defaults to the latest model version.
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "data": {
+        "video": {
+          "base64": "{YOUR_BYTES_STRING}"
+        }
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+// NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
+// https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
+// this will default to the latest version_id
+
+fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/versions/{MODEL_VERSION_ID}/outputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 {% tabs %}
