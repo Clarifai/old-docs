@@ -117,6 +117,10 @@ post_model_outputs_response = stub.PostModelOutputs(
 )
 
 if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_model_outputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_model_outputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_model_outputs_response.outputs[0].status.details))
     raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
 
 # Since we have one input, one output will exist here.
@@ -410,6 +414,10 @@ post_concepts_searches_response = stub.PostConceptsSearches(
 )
 
 if post_concepts_searches_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_concepts_searches_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_concepts_searches_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_concepts_searches_response.outputs[0].status.details))
     raise Exception("Post concepts searches failed, status: " + post_concepts_searches_response.status.description)
 
 print("Found concepts:")
