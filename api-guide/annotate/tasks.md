@@ -45,6 +45,51 @@ curl -X POST \
   https://api.clarifai.com/v2/tasks
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"tasks": [
+    {
+      "type": "CONCEPTS_CLASSIFICATION",
+      "name": "Annotate {{concept_id}}",
+      "worker": {
+          "strategy": "FULL"
+      },
+      "concept_ids": [
+          "{{concept_id}}"
+      ],
+      "input_source": {
+          "type": "ALL_INPUTS"
+      },
+      "sample_ms": 1000,
+      "review": {
+          "strategy": "NONE"
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/tasks", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Assigned Task
@@ -91,6 +136,60 @@ curl -X POST \
   https://api.clarifai.com/v2/tasks
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"tasks": [
+    {
+      "type": "CONCEPTS_CLASSIFICATION",
+      "name": "Annotate {{concept_id}}",
+      "worker": {
+          "strategy": "FULL",
+          "user_ids": [
+              "{{worker_user_id}}"
+          ]
+      },
+      "concept_ids": [
+          "{{concept_id}}"
+      ],
+      "input_source": {
+          "type": "ALL_INPUTS"
+      },
+      "sample_ms": 1000,
+      "review": {
+          "strategy": "MANUAL",
+          "manual_strategy_info": {
+              "sample_percentage": 0.5
+          },
+          "user_ids": [
+              "{{reviewer_user_id}}"
+          ]
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/tasks", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Task with Partitioned Worker Strategy
@@ -154,6 +253,60 @@ curl -X POST \
   https://api.clarifai.com/v2/tasks
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"tasks": [
+    {
+      "type": "CONCEPTS_CLASSIFICATION",
+      "name": "Annotate {{concept_id}}",
+      "worker": {
+          "strategy": "PARTITIONED",
+          "user_ids": ["{{user_id1}}", "{{user_id2}}"],
+          "partitioned_strategy_info": {
+              "type": "WEIGHTED",
+              "workers_per_input": 1,
+              "weights": {
+                  "{{user_id1}}": 90,
+                  "{{user_id2}}": 10
+              }
+          }
+      },
+      "concept_ids": [
+          "{{concept_id}}"
+      ],
+      "input_source": {
+          "type": "ALL_INPUTS"
+      },
+      "sample_ms": 1000,
+      "review": {
+          "strategy": "NONE"
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/tasks", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 Notes:
@@ -222,6 +375,67 @@ curl -X POST \
   https://api.clarifai.com/v2/tasks
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"tasks": [
+		{
+		  "type": "CONCEPTS_CLASSIFICATION",
+		  "name": "Annotate {{concept_id}}",
+		  "worker": {
+		      "strategy": "PARTITIONED",
+		      "user_ids": ["{{user_id1}}", "{{user_id2}}", "{{user_id3}}"],
+		      "partitioned_strategy_info": {
+		          "type": "WEIGHTED",
+		          "workers_per_input": 1,
+		          "weights": {
+		              "{{user_id1}}": 1,
+		              "{{user_id2}}": 1,
+		              "{{user_id3}}": 1
+		          }
+		      }
+		  },
+		  "concept_ids": [
+		      "{{concept_id}}"
+		  ],
+		  "input_source": {
+		      "type": "ALL_INPUTS"
+		  },
+		  "sample_ms": 1000,
+		  "review": {
+		      "strategy": "CONSENSUS",
+		      "consensus_strategy_info": {
+		          "approval_threshold": 2
+		      },
+		      "user_ids": [
+		          "{{user_id4}}"
+		      ]
+		  }
+		}
+	]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/tasks", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Get
@@ -239,6 +453,27 @@ curl -X GET \
   https://api.clarifai.com/v2/tasks/{task_id}
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const taskId = '{TASK_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/tasks/${taskId}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### List All Tasks
@@ -254,6 +489,24 @@ curl -X GET \
   https://api.clarifai.com/v2/tasks
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/tasks`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### List Tasks Assigned to User
@@ -269,6 +522,27 @@ curl -X GET \
   https://api.clarifai.com/v2/tasks?worker_user_ids={{user_id}}
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const workedUserId = '{WORKER_USER_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/tasks?worker_user_ids=${workerUserId}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### List Tasks Assigned to User for Review
@@ -284,6 +558,27 @@ curl -X GET \
   https://api.clarifai.com/v2/tasks?review_user_ids={{user_id}}
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const userId = '{USER_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/tasks?review_user_ids=${userId}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Update
@@ -343,6 +638,71 @@ curl -X PATCH \
   https://api.clarifai.com/v2/tasks
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"action": "overwrite",
+	"tasks": [
+	    {
+	        "id": "{{task_id}}",
+	        "type": "CONCEPTS_CLASSIFICATION",
+	        "name": "Annotate {{concept_id}}",
+	        "worker": {
+	            "strategy": "PARTITIONED",
+	            "user_ids": ["{{user_id1}}", "{{user_id2}}"],
+	            "partitioned_strategy_info": {
+	                "type": "WEIGHTED",
+	                "workers_per_input": 1,
+	                "weights": {
+	                    "{{user_id1}}": 1,
+	                    "{{user_id2}}": 1
+	                }
+	            }
+	        },
+	        "concept_ids": [
+	            "{{concept_id}}"
+	        ],
+	        "input_source": {
+	            "type": "ALL_INPUTS"
+	        },
+	        "sample_ms": 1000,
+	        "review": {
+	            "strategy": "CONSENSUS",
+	            "consensus_strategy_info": {
+	                "approval_threshold": 2
+	            },
+	            "user_ids": [
+	                "{{user_id3}}"
+	            ]
+	        },
+	        "status": {
+	            "code": "TASK_DONE"
+	        }
+	    }
+	]
+});
+
+const requestOptions = {
+  method: 'PATCH',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/tasks", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Delete
@@ -364,5 +724,32 @@ curl -X DELETE \
   https://api.clarifai.com/v2/tasks
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"ids":["{{task_id}}"]
+});
+
+const requestOptions = {
+  method: 'DELETE',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/tasks", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 

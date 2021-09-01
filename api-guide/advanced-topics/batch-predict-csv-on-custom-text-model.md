@@ -129,7 +129,7 @@ def main():
     # setup the gRPC channel
     channel = ClarifaiChannel.get_json_channel()
     stub = service_pb2_grpc.V2Stub(channel)
-    metadata = (('authorization', 'Key {}'.format(args.api_key)),)
+    metadata = (('authorization', f'Key {YOUR_API_KEY}'.format(args.api_key)),)
 
     texts = []
     with open(args.csv_file) as f:
@@ -196,4 +196,3 @@ The waitress was not amused when he ordered green eggs and ham.,negative,1.000,p
 ```
 {% endtab %}
 {% endtabs %}
-

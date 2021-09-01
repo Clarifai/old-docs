@@ -55,22 +55,134 @@ With most endpoints you can freely choose whether to use an API key or a PAT. In
 pip install clarifai-grpc
 
 ##############################################################################
-# Initialize client
+## Initialize client
+##     - This initializes the gRPC based client to communicate with the 
+##       Clarifai platform. 
 ##############################################################################
-
+## Import in the Clarifai gRPC based objects needed
 from clarifai_grpc.channel.clarifai_channel import ClarifaiChannel
 from clarifai_grpc.grpc.api import resources_pb2, service_pb2, service_pb2_grpc
 from clarifai_grpc.grpc.api.status import status_pb2, status_code_pb2
 
-channel = ClarifaiChannel.get_grpc_channel()
-
+## Construct the communications channel and the object stub to call requests on.
 # Note: You can also use a secure (encrypted) ClarifaiChannel.get_grpc_channel() however
 # it is currently not possible to use it with the latest gRPC version
-
+channel = ClarifaiChannel.get_grpc_channel()
 stub = service_pb2_grpc.V2Stub(channel)
 
-# This will be used by every Clarifai endpoint call.
+
+################################################################################
+## Set up Personal Access Token and Access information
+##     - This will be used by every Clarifai API call 
+################################################################################
+## Specify the Authorization key.  This should be changed to your Personal Access Token.
+## Example: metadata = (('authorization', 'Key 123457612345678'),) 
 metadata = (('authorization', 'Key {YOUR_CLARIFAI_API_KEY}'),)
+
+##
+## A UserAppIDSet object is needed for most rpc calls.  This object contains
+## two pieces of information: the user id and the app id.  Both of these are
+## specified as string values.
+##
+##     'user_id' : This is your user id
+##     'app_id'  : This is the app id which contains the model of interest
+userDataObject = resources_pb2.UserAppIDSet(user_id='{YOUR USER NAME HERE}', app_id='{YOUR APPLICATION ID HERE}')
+```
+{% endtab %}
+
+{% tab title="PHP" %}
+```php
+<?php
+//////////////////////////////////////////////////////////////////////////////
+// Installation
+//     - gRPC for PHP is required to use the Clarifai API
+//////////////////////////////////////////////////////////////////////////////
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+// Set Clarifai Namespace
+//     - A variety of standard objects are provided in the Clarifai namespace
+//       from the client library.  Which ones that are necessary depend on the
+//       specific RPC call being made.  All namespaces used in the example
+//       code are included below for reference, although you likely won't need
+//       all of these in your application. 
+//////////////////////////////////////////////////////////////////////////////
+
+// Various data structures that are used in the RPC calls to the Clarifai Platform
+// These operate as standardization wrappers for various types of data.
+
+//    Data Types
+use Clarifai\Api\Image;
+use Clarifai\Api\Text;
+use Clarifai\Api\Video;
+
+//    ML Structures
+use Clarifai\Api\Concept;
+use Clarifai\Api\Model;
+
+//    Wrapper Types
+use Clarifai\Api\Data;
+use Clarifai\Api\Input;
+
+// Various Request objects.  These specify the structure of the actual RPC request between
+// the client and the platform.
+use Clarifai\Api\PostModelOutputsRequest;
+use Clarifai\Api\PostConceptsSearchesRequest;
+
+
+use Clarifai\Api\ConceptQuery;
+
+// Output configuration objects
+use Clarifai\Api\OutputInfo;
+use Clarifai\Api\OutputConfig;
+
+// The request status code object.  This contains information on the success or failure of
+// the API operation.
+use Clarifai\Api\Status\StatusCode;
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+// Initialize client
+//     - This initializes the gRPC based client to communicate with the 
+//       Clarifai platform. 
+//////////////////////////////////////////////////////////////////////////////
+
+// The Clarifai PHP Client repository includes an autoload.php helper file that needs to be included
+require 'vendor/autoload.php';
+
+// Enable use of the ClarifaiClient object from the Clarifai namespace
+use Clarifai\ClarifaiClient;  
+
+// Construct the actual gRPC client object
+$client = ClarifaiClient::grpc();
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+// Set up Personal Access Token and Access information
+//     - This will be used by every Clarifai API call 
+//////////////////////////////////////////////////////////////////////////////
+
+// Specify the Authorization key.  This should be changed to your Personal Access Token.
+// Example: $metadata = ['Authorization' => ['Key 123456789123456789']]; 
+$metadata = ['Authorization' => ['Key {YOUR PERSONAL ACCESS TOKEN HERE}']]; // Using the PAT in these examples
+
+//
+// A UserAppIDSet object is needed for most rpc calls.  This object cotnains
+// two pieces of information: the user id and the app id.  Both of these are
+// specified as string values.
+//
+
+use Clarifai\Api\UserAppIDSet;  // Specify the namespace for the UserAppIDSet object
+
+$userDataObject = new UserAppIDSet([
+    'user_id' => '{YOUR USER NAME HERE}', // This is your user id
+    'app_id' => '{YOUR APPLICATION ID HERE}' // This is the app id which contains the model of interest
+]);
+
 ```
 {% endtab %}
 

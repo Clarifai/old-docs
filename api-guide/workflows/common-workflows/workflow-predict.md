@@ -103,6 +103,7 @@ stub.PostWorkflowResults(
 
 post_workflow_results_response = stub.PostWorkflowResults(
     service_pb2.PostWorkflowResultsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         workflow_id="{YOUR_WORKFLOW_ID}",
         inputs=[
             resources_pb2.Input(

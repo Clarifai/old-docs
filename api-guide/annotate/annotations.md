@@ -32,6 +32,7 @@ To annotate a concept present anywhere in an image:
 
 post_annotations_response = stub.PostAnnotations(
     service_pb2.PostAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         annotations=[
             resources_pb2.Annotation(
                 input_id="{YOUR_INPUT_ID}",
@@ -156,6 +157,50 @@ curl -X POST \
   https://api.clarifai.com/v2/annotations
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"annotations": [
+    {
+      "input_id": "{YOUR_INPUT_ID}",
+      "data": {
+        "concepts": [
+          {
+            "id": "tree",
+            "value": 1
+          },
+          {
+            "id": "water",
+            "value": 0
+          }
+        ]
+      },
+      "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/annotations", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### Annotate New Bounding Boxes in an Image
@@ -170,6 +215,7 @@ You can label a new bounding box by providing bounding box coordinates.
 
 post_annotations_response = stub.PostAnnotations(
     service_pb2.PostAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         annotations=[
             resources_pb2.Annotation(
                 input_id="{YOUR_INPUT_ID}",
@@ -457,6 +503,89 @@ curl -X POST \
   https://api.clarifai.com/v2/annotations
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"annotations": [
+    {
+      "input_id": "{YOUR_INPUT_ID}",
+      "data": {
+        "regions": [
+          {
+            "region_info": {
+                "bounding_box": {
+                    "top_row": 0,
+                    "left_col": 0,
+                    "bottom_row": 0.5,
+                    "right_col": 0.5
+                }
+            },
+            "data": {
+              "concepts": [
+                {
+                  "id": "tree",
+                  "value": 1
+                },
+                {
+                  "id": "water",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
+    }, {
+      "input_id": "{YOUR_INPUT_ID}",
+      "data": {
+        "regions": [
+          {
+            "region_info": {
+                "bounding_box": {
+                    "top_row": 0.6,
+                    "left_col": 0.6,
+                    "bottom_row": 0.8,
+                    "right_col": 0.8
+                }
+            },
+            "data": {
+              "concepts": [
+                {
+                  "id": "bike",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/annotations", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### Annotate Existing Regions in an Image
@@ -471,6 +600,7 @@ When you add an input, detection models \(such as `Face Detection` or `General D
 
 post_annotations_response = stub.PostAnnotations(
     service_pb2.PostAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         annotations=[
             resources_pb2.Annotation(                # label a region in this image
                 input_id="{YOUR_INPUT_ID}",
@@ -692,6 +822,75 @@ curl -X POST \
   https://api.clarifai.com/v2/annotations
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"annotations": [
+    {
+      "input_id": "{YOUR_INPUT_ID}",
+      "data": {
+        "regions": [
+          {
+            "id": "{REGION_ID_1}",
+            "data": {
+              "concepts": [
+                {
+                  "id": "tree",
+                  "value": 1
+                },
+                {
+                  "id": "water",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
+    }, {
+      "input_id": "{YOUR_INPUT_ID}",
+      "data": {
+        "regions": [
+          {
+            "id": "{REGION_ID_2}",
+            "data": {
+              "concepts": [
+                {
+                  "id": "bike",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/annotations", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### Annotate Images with Different `user_id` and `status`.
@@ -708,6 +907,7 @@ Note: only the app owner can post an annotation with other user's `user_id`, col
 
 post_annotations_response = stub.PostAnnotations(
     service_pb2.PostAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         annotations=[
             resources_pb2.Annotation(
                 input_id="{YOUR_INPUT_ID}",
@@ -806,6 +1006,41 @@ curl -X POST \
   https://api.clarifai.com/v2/annotations
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"annotations": [
+    {
+      "input_id": "{YOUR_INPUT_ID}",
+      "user_id": "{USER_ID}",
+      "status": {
+          "code": "ANNOTATION_PENDING"
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/annotations", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### List Annotations
@@ -827,7 +1062,10 @@ Note this will not show annotations by models in your worfklow. To include model
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 list_annotations_response = stub.ListAnnotations(
-    service_pb2.ListAnnotationsRequest(per_page=10),
+    service_pb2.ListAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
+        per_page=10
+    ),
     metadata=metadata
 )
 
@@ -897,6 +1135,26 @@ curl -X GET \
   https://api.clarifai.com/v2/annotations?page=1&per_page=10
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/annotations?page=1&per_page=10`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### List All Annotations in Your App
@@ -910,7 +1168,11 @@ List all annotations, including models created.
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 list_annotations_response = stub.ListAnnotations(
-    service_pb2.ListAnnotationsRequest(per_page=10, list_all_annotations=True),
+    service_pb2.ListAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
+        per_page=10, 
+        list_all_annotations=True
+    ),
     metadata=metadata
 )
 
@@ -981,6 +1243,26 @@ curl -X GET \
   https://api.clarifai.com/v2/annotations?page=1&per_page=10&list_all_annotations=true
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/annotations?page=1&per_page=10&list_all_annotations=true`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### List User Created Annotations by Input IDs
@@ -996,7 +1278,11 @@ Note: this will not show annotations by models in your worfklow. To include mode
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 list_annotations_response = stub.ListAnnotations(
-    service_pb2.ListAnnotationsRequest(input_ids=["{YOUR_INPUT_ID_1}". "{YOUR_INPUT_ID_2}"], per_page=10),
+    service_pb2.ListAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
+        input_ids=["{YOUR_INPUT_ID_1}". "{YOUR_INPUT_ID_2}"], 
+        per_page=10
+    ),
     metadta=metadata
 )
 
@@ -1068,6 +1354,27 @@ curl -X GET \
   https://api.clarifai.com/v2/annotations?page=1&per_page=10&input_ids=your_input_Id
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const inputId = '{YOUR_INPUT_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/annotations?page=1&per_page=10&input_ids=${inputId}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### List Annotations by Input IDs and Annotation IDs
@@ -1082,7 +1389,8 @@ You can list annotations by both input IDs and annotation IDs. Number of input I
 
 list_annotations_response = stub.ListAnnotations(
     service_pb2.ListAnnotationsRequest(
-       input_ids=["{YOUR_INPUT_ID_1}". "{YOUR_INPUT_ID_2}"]
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
+        input_ids=["{YOUR_INPUT_ID_1}". "{YOUR_INPUT_ID_2}"],
         ids=["{YOUR_ANNOTATION_ID_1}", "{YOUR_ANNOTATION_ID_2}"],
         per_page=10
     ),
@@ -1162,6 +1470,30 @@ curl -X GET \
   https://api.clarifai.com/v2/annotations?page=1&per_page=10&input_ids=YOUR_INPUT_ID_1&input_ids=YOUR_INPUT_ID_2&ids=YOUR_ANNOTATION_ID_1&ids=YOUR_ANNOTATION_ID_2
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const inputId1 = '{YOUR_INPUT_ID_1}'
+const inputId2 = '{YOUR_INPUT_ID_2}'
+const annotationId1 = '{YOUR_ANNOTATION_ID_1}'
+const annotationId2 = '{YOUR_ANNOTATION_ID_2}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/annotations?page=1&per_page=10&input_ids=${inputId1}&input_ids=${inputId2}&ids=${annotationId1}&ids=${annotationId2}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### List Annotations by User IDs
@@ -1175,7 +1507,11 @@ An annotation is created by either a user or a model. You can list annotations c
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 list_annotations_response = stub.ListAnnotations(
-    service_pb2.ListAnnotationsRequest(user_ids=["{USER_ID_1}", "{USER_ID_2}"], per_page=10),
+    service_pb2.ListAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
+        user_ids=["{USER_ID_1}", "{USER_ID_2}"], 
+        per_page=10
+    ),
     metadata=metadata
 )
 
@@ -1246,6 +1582,28 @@ curl -X GET \
   https://api.clarifai.com/v2/annotations?page=1&per_page=10&user_ids=USER_ID_1&user_ids=USER_ID_2
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const userId1 = '{USER_ID_1}'
+const userId2 = '{USER_ID_2}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/annotations?page=1&per_page=10&user_ids=${userId1}&user_ids=${userId2}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### List Annotations by Model Version IDs
@@ -1260,6 +1618,7 @@ An annotation is created by either a user or a model. For example if your workfl
 
 list_annotations_response = stub.ListAnnotations(
     service_pb2.ListAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         model_version_ids=["{MODEL_VERSION_ID_1}", "{MODEL_VERSION_ID_2}"],
         per_page=10
     ),
@@ -1333,6 +1692,28 @@ curl -X GET \
   https://api.clarifai.com/v2/annotations?page=1&per_page=10&model_version_ids=MODEL_VERSION_ID_1&model_version_ids=MODEL_VERSION_ID_2
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const modelVersionId1 = '{MODEL_VERSION_ID_1}'
+const modelVersionId2 = '{MODEL_VERSION_ID_2}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/annotations?page=1&per_page=10&model_version_ids=${modelVersionId1}&model_version_ids=${modelVersionId1}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Update Annotations
@@ -1355,6 +1736,7 @@ Update an annotation of a image with a new concept, or to change a concept value
 
 patch_annotations_response = stub.PatchAnnotations(
     service_pb2.PatchAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         action="merge",  # Supported actions: overwrite, merge, remove.
         annotations=[
             resources_pb2.Annotation(
@@ -1474,6 +1856,47 @@ curl -X PATCH \
   https://api.clarifai.com/v2/annotations
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"annotations": [
+    {
+      "input_id": "{YOUR_INPUT_ID}",
+      "id": "{YOUR_ANNOTATION_ID}",
+      "data": {
+        "concepts": [
+          {
+            "id": "apple",
+            "value": 1
+          }
+        ]
+      }
+    }
+  ],
+  "action":"merge"
+});
+
+const requestOptions = {
+  method: 'PATCH',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/annotations", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### Update Annotation with Concepts in a Region
@@ -1488,6 +1911,7 @@ When you update region data, you must nest this new data within region.data. Set
 
 patch_annotations_response = stub.PatcchAnnotations(
     service_pb2.PatchAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         action="merge",  # Supported actions: overwrite, merge, remove.
         annotations=[
             resources_pb2.Annotation(
@@ -1633,6 +2057,54 @@ curl -X PATCH \
   https://api.clarifai.com/v2/annotations
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"annotations": [
+    {
+      "input_id": "{YOUR_INPUT_ID}",
+      "id": "{YOUR_ANNOTATION_ID}",
+      "data": {
+        "regions": [
+          {
+            "id": "{REGION_ID}",
+            "data": {
+              "concepts": [
+                {
+                  "id": "apple",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "action":"merge"
+});
+
+const requestOptions = {
+  method: 'PATCH',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/annotations", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### Update Annotation Region Coordinates
@@ -1647,6 +2119,7 @@ You can update region bounding boxes coordinates. When changing the region, you 
 
 patch_annotations_response = stub.PatcchAnnotations(
     service_pb2.PatchAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         action="overwrite",
         annotations=[
             resources_pb2.Annotation(
@@ -1819,6 +2292,56 @@ curl -X PATCH \
   https://api.clarifai.com/v2/annotations
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"annotations": [
+    {
+      "data": {
+			"regions": [{
+				"region_info": {
+					"bounding_box": {
+						"top_row": 0,
+						"left_col": 0,
+						"bottom_row": 1,
+						"right_col": 1
+					}
+				},
+				"data": {
+					"concepts": [{
+						"id": "{{concept_id}}",
+						"name": "{{concept_id}}",
+						"value": 1
+					}]
+				}
+			}]
+		},
+		"input_id": "{{asset_id}}"
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'PATCH',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/annotations", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### Update Annotation Status
@@ -1833,6 +2356,7 @@ You can update an annotation status.
 
 patch_annotations_response = stub.PatchAnnotations(
     service_pb2.PatchAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         action="merge",  # Supported actions: overwrite, merge, remove.
         annotations=[
             resources_pb2.Annotation(
@@ -1936,6 +2460,42 @@ curl -X PATCH \
   https://api.clarifai.com/v2/annotations
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"annotations": [
+    {
+      "input_id": "{YOUR_INPUT_ID}",
+      "id": "{YOUR_ANNOTATION_ID}",
+      "status": {
+        "code": "ANNOTATION_SUCCESS"
+      }
+    }
+  ],
+  "action":"merge"
+});
+
+const requestOptions = {
+  method: 'PATCH',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/annotations", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Delete Annotations
@@ -1952,6 +2512,7 @@ You can delete a single annotation by input ID and annotation ID.
 
 delete_annotation_response = stub.DeleteAnnotation(
     service_pb2.DeleteAnnotationRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         input_id="{YOUR_INPUT_ID}",
         annotation_id="{YOUR_ANNOTATION_ID}"
     ),
@@ -2015,6 +2576,28 @@ curl -X DELETE \
   https://api.clarifai.com/v2/inputs/{YOUR_INPUT_ID}/annotations/{YOUR_ANNOTATION_ID}
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const inputId = '{YOUR_INPUT_ID}'
+const annotationId = '{YOUR_ANNOTATION_ID}'
+
+const requestOptions = {
+  method: 'DELETE',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/inputs/${inputId}/annotations/${annotationId}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### Bulk Delete Annotations by Input Ids and Annotation IDs
@@ -2029,6 +2612,7 @@ You can delete multiple annotations in one API call. You need to provide a list 
 
 delete_annotations_response = stub.DeleteAnnotations(
     service_pb2.DeleteAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         input_ids=["{YOUR_INPUT_ID_1}", "{YOUR_INPUT_ID_2}"],
         annotation_id=["{YOUR_ANNOTATION_ID_1}", "{YOUR_ANNOTATION_ID_2}"]
     ),
@@ -2099,6 +2683,34 @@ curl -X DELETE \
   https://api.clarifai.com/v2/annotations
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"input_ids":["{YOUR_INPUT_ID_1}","{YOUR_INPUT_ID_2}"],
+  "ids":["{YOUR_ANNOTATION_ID_1}", "{YOUR_ANNOTATION_ID_2}"]
+});
+
+const requestOptions = {
+  method: 'DELETE',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/annotations", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 #### Bulk Delete All Annotations by Input IDs
@@ -2113,6 +2725,7 @@ To delete all annotations of a given input, you just need to set input ID\(s\). 
 
 delete_annotations_response = stub.DeleteAnnotations(
     service_pb2.DeleteAnnotationsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         input_ids=["{YOUR_INPUT_ID_1}", "{YOUR_INPUT_ID_2}"]
     ),
     metadata=metadata
@@ -2178,5 +2791,31 @@ curl -X DELETE \
   https://api.clarifai.com/v2/annotations
 ```
 {% endtab %}
-{% endtabs %}
 
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+	"input_ids":["{YOUR_INPUT_ID_1}","{YOUR_INPUT_ID_2}"]
+});
+
+const requestOptions = {
+  method: 'DELETE',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/annotations", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
+{% endtabs %}

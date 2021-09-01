@@ -102,6 +102,7 @@ stub.PostWorkflows(
 
 post_workflows_response = stub.PostWorkflows(
     service_pb2.PostWorkflowsRequest(
+      user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
       workflows=[
         resources_pb2.Workflow(
           id="my-custom-workflow",
@@ -170,6 +171,57 @@ curl -X POST 'https://api.clarifai.com/v2/workflows' \
     }'
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+// The first model is the Clarifai's Food model, and the second the Clarifai's General model.
+
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "workflows": [{
+    "id": "my-custom-workflow",
+    "nodes": [
+      {
+        "id": "food-concepts",
+        "model": {
+          "id": "bd367be194cf45149e75f01d59f77ba7",
+          "model_version": {
+            "id": "dfebc169854e429086aceb8368662641"
+          }
+        }
+      },
+      {
+        "id": "general-concepts",
+        "model": {
+          "id": "aaa03c23b3724a16a56b629203edc62c",
+          "model_version": {
+            "id": "aa9ca48295b37401f8af92ad1af0d91d"
+          }
+        }
+      }
+    ]
+  }]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/workflows`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Workflow Predict
@@ -267,6 +319,7 @@ stub.PostWorkflowResults(
 
 post_workflow_results_response = stub.PostWorkflowResults(
     service_pb2.PostWorkflowResultsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         workflow_id="{YOUR_WORKFLOW_ID}",
         inputs=[
             resources_pb2.Input(
@@ -316,6 +369,43 @@ curl -X POST \
 https://api.clarifai.com/v2/workflows/{YOUR_WORKFLOW_ID}/results
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const workflowID = '{YOUR_WORKFLOW_ID}'
+
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+      {
+        "data": {
+          "image": {
+            "url": "https://samples.clarifai.com/metro-north.jpg"
+        }
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/workflows/${workflowID}/results`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Get
@@ -386,7 +476,9 @@ stub.ListWorkflows(
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 list_workflows_response = stub.ListWorkflows(
-    service_pb2.ListWorkflowsRequest(),
+    service_pb2.ListWorkflowsRequest(
+        user_app_id=userDataObject  # The userDataObject is created in the overview and is required when using a PAT
+    ),
     metadata=metadata
 )
 
@@ -409,6 +501,26 @@ curl -X GET 'https://api.clarifai.com/v2/workflows' \
     -H 'Authorization: Key YOUR_API_KEY'
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/workflows`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Get a workflow by a specific ID
@@ -482,6 +594,7 @@ stub.GetWorkflow(
 
 get_workflow_response = stub.GetWorkflow(
     service_pb2.GetWorkflowRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         workflow_id="my-custom-workflow"
     ),
     metadata=metadata
@@ -505,6 +618,27 @@ curl -X GET 'https://api.clarifai.com/v2/workflows/my-custom-workflow' \
     -H 'Authorization: Key YOUR_API_KEY'
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const workflowId = '{YOUR_WORKFLOW_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/workflows/${workflowId}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Update
@@ -630,6 +764,7 @@ stub.PatchWorkflows(
 
 patch_workflows_response = stub.PatchWorkflows(
     service_pb2.PatchWorkflowsRequest(
+      user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
       action="overwrite",
       workflows=[
         resources_pb2.Workflow(
@@ -720,6 +855,68 @@ curl -X PATCH 'https://api.clarifai.com/v2/workflows' \
     }'
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "action": "overwrite",
+  "workflows": [
+      {
+          "id": "my-custom-workflow",
+          "nodes": [
+              {
+                  "id": "travel-concepts",
+                  "model": {
+                      "id": "ccc28c313d69466f836ab83287a54ed9",
+                      "model_version": {
+                          "id": "cce28c313d69466f836ab83287a54ed9"
+                      }
+                  }
+              },
+              {
+                  "id": "nsfw-concepts",
+                  "model": {
+                      "id": "ccc76d86d2004ed1a38ba0cf39ecb4b1",
+                      "model_version": {
+                          "id": "cc76a92beaeb4d8495a58ba197998158"
+                      }
+                  }
+              },
+              {
+                  "id": "wedding-concepts",
+                  "model": {
+                      "id": "c386b7a870114f4a87477c0824499348",
+                      "model_version": {
+                          "id": "787cc9a002164250800598d36b072384"
+                      }
+                  }
+              }
+          ]
+      }
+  ]
+});
+
+const requestOptions = {
+  method: 'PATCH',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/workflows`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Delete
@@ -779,6 +976,7 @@ stub.DeleteWorkflow(
 
 delete_workflow_response = stub.DeleteWorkflow(
     service_pb2.DeleteWorkflowRequest(
+      user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
       workflow_id="my-custom-workflow"
     ),
     metadata=metadata
@@ -796,6 +994,27 @@ curl -X DELETE 'https://api.clarifai.com/v2/workflows/my-custom-workflow \
     -H 'Authorization: Key YOUR_API_KEY'
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const workflowId = '{YOUR_WORKFLOW_ID}'
+
+const requestOptions = {
+  method: 'DELETE',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/workflows/${workflowId}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Delete all workflows
@@ -855,6 +1074,7 @@ stub.DeleteWorkflows(
 
 delete_workflows_response = stub.DeleteWorkflows(
     service_pb2.DeleteWorkflowsRequest(
+      user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
       delete_all=True
     ),
     metadata=metadata
@@ -875,5 +1095,32 @@ curl -X DELETE 'https://api.clarifai.com/v2/workflows' \
     }'
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "delete_all": true
+});
+
+const requestOptions = {
+  method: 'DELETE',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/workflows`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
