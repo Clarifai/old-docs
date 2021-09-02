@@ -156,6 +156,10 @@ post_collectors_response = stub.PostCollectors(
 )
 
 if post_collectors_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_collectors_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_collectors_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_collectors_response.outputs[0].status.details))
     raise Exception("Post collectors failed, status: " + post_collectors_response.status.description)
 ```
 {% endtab %}
@@ -267,6 +271,10 @@ patch_collectors_response = stub.PatchCollectors(
 )
 
 if patch_collectors_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_collectors_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_collectors_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_collectors_response.outputs[0].status.details))
     raise Exception("Patch collectors failed, status: " + patch_collectors_response.status.description)
 ```
 {% endtab %}
@@ -355,6 +363,10 @@ list_collectors_response = stub.ListCollectors(
 )
 
 if list_collectors_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(list_collectors_response.outputs[0].status.code))
+    print("\tDescription: {}".format(list_collectors_response.outputs[0].status.description))
+    print("\tDetails: {}".format(list_collectors_response.outputs[0].status.details))
     raise Exception("List collectors failed, status: " + list_collectors_response.status.description)
 
 for collector in list_collectors_response.collectors:
@@ -437,6 +449,10 @@ get_collector_response = stub.GetCollector(
 )
 
 if get_collector_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(get_collector_response.outputs[0].status.code))
+    print("\tDescription: {}".format(get_collector_response.outputs[0].status.description))
+    print("\tDetails: {}".format(get_collector_response.outputs[0].status.details))
     raise Exception("Get collector failed, status: " + get_collector_response.status.description)
 
 print(get_collector_response.collector)

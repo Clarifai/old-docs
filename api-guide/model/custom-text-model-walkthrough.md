@@ -97,6 +97,10 @@ post_inputs_response = stub.PostInputs(
 # print(post_inputs_response)
 
 if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_inputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_inputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_inputs_response.outputs[0].status.details))
     raise Exception("Failed response, status: " + str(post_inputs_response.status))
 ```
 {% endtab %}
@@ -118,6 +122,10 @@ while True:
     )
 
     if list_inputs_response.status.code != status_code_pb2.SUCCESS:
+        print("There was an error with your request!")
+        print("\tCode: {}".format(list_inputs_response.outputs[0].status.code))
+        print("\tDescription: {}".format(list_inputs_response.outputs[0].status.description))
+        print("\tDetails: {}".format(list_inputs_response.outputs[0].status.details))
         raise Exception("Failed response, status: " + str(list_inputs_response.status))
 
     for the_input in list_inputs_response.inputs:
@@ -173,6 +181,10 @@ post_models_response = stub.PostModels(
 )
 
 if post_models_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_models_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_models_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_models_response.outputs[0].status.details))
     raise Exception("Failed response, status: " + str(post_models_response.status))
 ```
 {% endtab %}
@@ -191,6 +203,10 @@ post_model_versions_response = stub.PostModelVersions(
 )
 
 if post_model_versions_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_model_versions_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_model_versions_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_model_versions_response.outputs[0].status.details))
     raise Exception("Failed response, status: " + str(post_model_versions_response.status))
 ```
 {% endtab %}
@@ -214,6 +230,10 @@ while True:
     )
 
     if get_model_response.status.code != status_code_pb2.SUCCESS:
+        print("There was an error with your request!")
+        print("\tCode: {}".format(get_model_response.outputs[0].status.code))
+        print("\tDescription: {}".format(get_model_response.outputs[0].status.description))
+        print("\tDetails: {}".format(get_model_response.outputs[0].status.details))
         raise Exception("Failed response, status: " + str(get_model_response.status))
 
     version_status_code = get_model_response.model.model_version.status.code
@@ -259,6 +279,10 @@ post_model_outputs_response = stub.PostModelOutputs(
 )
 
 if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_model_outputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_model_outputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_model_outputs_response.outputs[0].status.details))
     raise Exception("Failed response, status: " + str(post_model_outputs_response.status))
 
 for output in post_model_outputs_response.outputs:
@@ -288,6 +312,10 @@ post_model_version_metrics = stub.PostModelVersionMetrics(
 )
 
 if post_model_version_metrics.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_model_version_metrics.outputs[0].status.code))
+    print("\tDescription: {}".format(post_model_version_metrics.outputs[0].status.description))
+    print("\tDetails: {}".format(post_model_version_metrics.outputs[0].status.details))
     raise Exception("Failed response, status: " + str(post_model_version_metrics.status))
 ```
 {% endtab %}
@@ -321,6 +349,10 @@ while True:
     )
 
     if get_model_version_metrics_response.status.code != status_code_pb2.SUCCESS:
+        print("There was an error with your request!")
+        print("\tCode: {}".format(get_model_version_metrics_response.outputs[0].status.code))
+        print("\tDescription: {}".format(get_model_version_metrics_response.outputs[0].status.description))
+        print("\tDetails: {}".format(get_model_version_metrics_response.outputs[0].status.details))
         raise Exception("Get model version metrics failed: " + str(get_model_version_metrics_response.status))
 
     metrics_status_code = get_model_version_metrics_response.model_version.metrics.status.code

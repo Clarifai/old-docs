@@ -88,6 +88,10 @@ post_models_response = stub.PostModels(
 )
 
 if post_models_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_models_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_models_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_models_response.outputs[0].status.details))
     raise Exception("Post models failed, status: " + post_models_response.status.description)
 ```
 {% endtab %}
@@ -242,6 +246,10 @@ patch_models_response = stub.PatchModels(
 )
 
 if patch_models_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(patch_models_response.outputs[0].status.code))
+    print("\tDescription: {}".format(patch_models_response.outputs[0].status.description))
+    print("\tDetails: {}".format(patch_models_response.outputs[0].status.details))
     raise Exception("Patch models failed, status: " + patch_models_response.status.description)
 ```
 {% endtab %}
@@ -401,6 +409,10 @@ patch_models_response = stub.PatchModels(
 )
 
 if patch_models_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(patch_models_response.outputs[0].status.code))
+    print("\tDescription: {}".format(patch_models_response.outputs[0].status.description))
+    print("\tDetails: {}".format(patch_models_response.outputs[0].status.details))
     raise Exception("Patch models failed, status: " + patch_models_response.status.description)
 ```
 {% endtab %}
@@ -580,6 +592,10 @@ patch_models_response = stub.PatchModels(
 )
 
 if patch_models_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(patch_models_response.outputs[0].status.code))
+    print("\tDescription: {}".format(patch_models_response.outputs[0].status.description))
+    print("\tDetails: {}".format(patch_models_response.outputs[0].status.details))
     raise Exception("Patch models failed, status: " + patch_models_response.status.description)
 ```
 {% endtab %}
@@ -707,7 +723,17 @@ stub.ListModelTypes(
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
-response = stub.ListModelTypes(service_pb2.ListModelTypesRequest(), metadata=metadata)
+response = stub.ListModelTypes(
+    service_pb2.ListModelTypesRequest(), 
+    metadata=metadata
+    )
+
+if response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(response.outputs[0].status.code))
+    print("\tDescription: {}".format(response.outputs[0].status.description))
+    print("\tDetails: {}".format(response.outputs[0].status.details))
+    raise Exception("Patch models failed, status: " + response.status.description)
 
 for model_type in response.model_types:
   print(model_type)
@@ -807,6 +833,10 @@ list_models_response = stub.ListModels(
 )
 
 if list_models_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(list_models_response.outputs[0].status.code))
+    print("\tDescription: {}".format(list_models_response.outputs[0].status.description))
+    print("\tDetails: {}".format(list_models_response.outputs[0].status.details))
     raise Exception("List models failed, status: " + list_models_response.status.description)
 
 for model in list_models_response.models:
@@ -906,6 +936,10 @@ get_model_response = stub.GetModel(
 )
 
 if get_model_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(get_model_response.outputs[0].status.code))
+    print("\tDescription: {}".format(get_model_response.outputs[0].status.description))
+    print("\tDetails: {}".format(get_model_response.outputs[0].status.details))
     raise Exception("Get model failed, status: " + get_model_response.status.description)
 
 model = get_model_response.model
@@ -1006,6 +1040,10 @@ get_model_response = stub.GetModelOutputInfo(
 )
 
 if get_model_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(get_model_response.outputs[0].status.code))
+    print("\tDescription: {}".format(get_model_response.outputs[0].status.description))
+    print("\tDetails: {}".format(get_model_response.outputs[0].status.details))
     raise Exception("Get model failed, status: " + get_model_response.status.description)
 
 model = get_model_response.model
@@ -1112,6 +1150,10 @@ list_model_versions_response = stub.ListModelVersions(
 )
 
 if list_model_versions_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(list_model_versions_response.outputs[0].status.code))
+    print("\tDescription: {}".format(list_model_versions_response.outputs[0].status.description))
+    print("\tDetails: {}".format(list_model_versions_response.outputs[0].status.details))
     raise Exception("List model versions failed, status: " + list_model_versions_response.status.description)
 
 for model_version in list_model_versions_response.model_versions:
@@ -1217,6 +1259,10 @@ get_model_version_response = stub.GetModelVersion(
 )
 
 if get_model_version_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(get_model_version_response.outputs[0].status.code))
+    print("\tDescription: {}".format(get_model_version_response.outputs[0].status.description))
+    print("\tDetails: {}".format(get_model_version_response.outputs[0].status.details))
     raise Exception("Get model version failed, status: " + get_model_version_response.status.description)
 
 model_version = get_model_version_response.model_version
@@ -1321,6 +1367,10 @@ list_model_inputs_response = stub.ListModelInputs(
 )
 
 if list_model_inputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(list_model_inputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(list_model_inputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(list_model_inputs_response.outputs[0].status.details))
     raise Exception("List model inputs failed, status: " + list_model_inputs_response.status.description)
 
 for input_object in list_model_inputs_response.inputs:
@@ -1432,6 +1482,10 @@ list_model_inputs_response = stub.ListModelInputs(
 )
 
 if list_model_inputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(list_model_inputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(list_model_inputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(list_model_inputs_response.outputs[0].status.details))
     raise Exception("List model inputs failed, status: " + list_model_inputs_response.status.description)
 
 for input_object in list_model_inputs_response.inputs:
@@ -1527,6 +1581,10 @@ delete_model_response = stub.DeleteModel(
 )
 
 if delete_model_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(delete_model_response.outputs[0].status.code))
+    print("\tDescription: {}".format(delete_model_response.outputs[0].status.description))
+    print("\tDetails: {}".format(delete_model_response.outputs[0].status.details))
     raise Exception("Delete model failed, status: " + delete_model_response.status.description)
 ```
 {% endtab %}
@@ -1625,6 +1683,10 @@ delete_model_version_response = stub.DeleteModelVersion(
 )
 
 if delete_model_version_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(delete_model_version_response.outputs[0].status.code))
+    print("\tDescription: {}".format(delete_model_version_response.outputs[0].status.description))
+    print("\tDetails: {}".format(delete_model_version_response.outputs[0].status.details))
     raise Exception("Delete model version failed, status: " + delete_model_version_response.status.description)
 ```
 {% endtab %}
@@ -1717,6 +1779,10 @@ delete_models_response = stub.DeleteModels(
 )
 
 if delete_models_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(delete_models_response.outputs[0].status.code))
+    print("\tDescription: {}".format(delete_models_response.outputs[0].status.description))
+    print("\tDetails: {}".format(delete_models_response.outputs[0].status.details))
     raise Exception("Delete models failed, status: " + delete_models_response.status.description)
 ```
 {% endtab %}
@@ -1814,6 +1880,10 @@ post_model_versions = stub.PostModelVersions(
 )
 
 if post_model_versions.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_model_versions.outputs[0].status.code))
+    print("\tDescription: {}".format(post_model_versions.outputs[0].status.description))
+    print("\tDetails: {}".format(post_model_versions.outputs[0].status.details))
     raise Exception("Post model versions failed, status: " + post_model_versions.status.description)
 ```
 {% endtab %}
@@ -1947,6 +2017,10 @@ post_model_outputs_response = stub.PostModelOutputs(
     metadata=metadata
 )
 if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_model_outputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_model_outputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_model_outputs_response.outputs[0].status.details))
     raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
 
 # Since we have one input, one output will exist here.
@@ -2104,6 +2178,10 @@ post_models_searches_response = stub.PostModelsSearches(
 )
 
 if post_models_searches_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_models_searches_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_models_searches_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_models_searches_response.outputs[0].status.details))
     raise Exception("Post models searches failed, status: " + post_models_searches_response.status.description)
 
 for model in post_models_searches_response.models:

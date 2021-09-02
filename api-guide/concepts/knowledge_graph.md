@@ -45,6 +45,10 @@ post_concept_relation_response = stub.PostConceptRelations(
 )
 
 if post_concept_relation_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_concept_relation_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_concept_relation_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_concept_relation_response.outputs[0].status.details))
     raise Exception("Post concept relation failed, status: " + post_concept_relation_response.status.description)
 ```
 {% endtab %}
@@ -188,6 +192,10 @@ list_concept_relation_response = stub.ListConceptRelations(
 )
 
 if list_concept_relation_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(list_concept_relation_response.outputs[0].status.code))
+    print("\tDescription: {}".format(list_concept_relation_response.outputs[0].status.description))
+    print("\tDetails: {}".format(list_concept_relation_response.outputs[0].status.details))
     raise Exception("List concept relation failed, status: " + list_concept_relation_response.status.description)
 
 for relation in list_concept_relation_response.concept_relations:
@@ -309,6 +317,10 @@ delete_concept_relation_response = stub.DeleteConceptRelations(
 )
 
 if delete_concept_relation_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(delete_concept_relation_response.outputs[0].status.code))
+    print("\tDescription: {}".format(delete_concept_relation_response.outputs[0].status.description))
+    print("\tDetails: {}".format(delete_concept_relation_response.outputs[0].status.details))
     raise Exception("Delete concept relation failed, status: " + delete_concept_relation_response.status.description)
 ```
 {% endtab %}

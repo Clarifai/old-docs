@@ -50,6 +50,10 @@ post_annotations_response = stub.PostAnnotations(
 )
 
 if post_annotations_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_annotations_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_annotations_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_annotations_response.outputs[0].status.details))
     raise Exception("Post annotations failed, status: " + post_annotations_response.status.description)
 ```
 {% endtab %}
@@ -270,6 +274,10 @@ post_annotations_response = stub.PostAnnotations(
 )
 
 if post_annotations_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_annotations_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_annotations_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_annotations_response.outputs[0].status.details))
     raise Exception("Post annotations failed, status: " + post_annotations_response.status.description)
 ```
 {% endtab %}
@@ -641,6 +649,10 @@ post_annotations_response = stub.PostAnnotations(
 )
 
 if post_annotations_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_annotations_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_annotations_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_annotations_response.outputs[0].status.details))
     raise Exception("Post annotations failed, status: " + post_annotations_response.status.description)
 ```
 {% endtab %}
@@ -922,6 +934,10 @@ post_annotations_response = stub.PostAnnotations(
 )
 
 if post_annotations_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_annotations_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_annotations_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_annotations_response.outputs[0].status.details))
     raise Exception("Post annotations failed, status: " + post_annotations_response.status.description)
 ```
 {% endtab %}
@@ -1070,6 +1086,10 @@ list_annotations_response = stub.ListAnnotations(
 )
 
 if list_annotations_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(list_annotations_response.outputs[0].status.code))
+    print("\tDescription: {}".format(list_annotations_response.outputs[0].status.description))
+    print("\tDetails: {}".format(list_annotations_response.outputs[0].status.details))
     raise Exception("List annotations failed, status: " + list_annotations_response.status.description)
 
 for annotation_object in list_annotations_response.annotations:
@@ -1177,6 +1197,10 @@ list_annotations_response = stub.ListAnnotations(
 )
 
 if list_annotations_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(list_annotations_response.outputs[0].status.code))
+    print("\tDescription: {}".format(list_annotations_response.outputs[0].status.description))
+    print("\tDetails: {}".format(list_annotations_response.outputs[0].status.details))
     raise Exception("List annotations failed, status: " + list_annotations_response.status.description)
 
 for annotation_object in list_annotations_response.annotations:
@@ -1287,6 +1311,10 @@ list_annotations_response = stub.ListAnnotations(
 )
 
 if list_annotations_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(list_annotations_response.outputs[0].status.code))
+    print("\tDescription: {}".format(list_annotations_response.outputs[0].status.description))
+    print("\tDetails: {}".format(list_annotations_response.outputs[0].status.details))
     raise Exception("List annotations failed, status: " + list_annotations_response.status.description)
 
 for annotation_object in list_annotations_response.annotations:
@@ -1398,6 +1426,10 @@ list_annotations_response = stub.ListAnnotations(
 )
 
 if list_annotations_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(list_annotations_response.outputs[0].status.code))
+    print("\tDescription: {}".format(list_annotations_response.outputs[0].status.description))
+    print("\tDetails: {}".format(list_annotations_response.outputs[0].status.details))
     raise Exception("List annotations failed, status: " + list_annotations_response.status.description)
 
 for annotation_object in list_annotations_response.annotations:
@@ -1516,6 +1548,10 @@ list_annotations_response = stub.ListAnnotations(
 )
 
 if list_annotations_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(list_annotations_response.outputs[0].status.code))
+    print("\tDescription: {}".format(list_annotations_response.outputs[0].status.description))
+    print("\tDetails: {}".format(list_annotations_response.outputs[0].status.details))
     raise Exception("List annotations failed, status: " + list_annotations_response.status.description)
 
 for annotation_object in list_annotations_response.annotations:
@@ -1626,6 +1662,10 @@ list_annotations_response = stub.ListAnnotations(
 )
 
 if list_annotations_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(list_annotations_response.outputs[0].status.code))
+    print("\tDescription: {}".format(list_annotations_response.outputs[0].status.description))
+    print("\tDetails: {}".format(list_annotations_response.outputs[0].status.details))
     raise Exception("List annotations failed, status: " + list_annotations_response.status.description)
 
 for annotation_object in list_annotations_response.annotations:
@@ -1754,6 +1794,10 @@ patch_annotations_response = stub.PatchAnnotations(
 )
 
 if patch_annotations_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(patch_annotations_response.outputs[0].status.code))
+    print("\tDescription: {}".format(patch_annotations_response.outputs[0].status.description))
+    print("\tDetails: {}".format(patch_annotations_response.outputs[0].status.details))
     raise Exception("Patch annotations failed, status: " + patch_annotations_response.status.description)
 ```
 {% endtab %}
@@ -1936,6 +1980,10 @@ patch_annotations_response = stub.PatcchAnnotations(
 )
 
 if patch_annotations_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(patch_annotations_response.outputs[0].status.code))
+    print("\tDescription: {}".format(patch_annotations_response.outputs[0].status.description))
+    print("\tDetails: {}".format(patch_annotations_response.outputs[0].status.details))
     raise Exception("Patch annotations failed, status: " + patch_annotations_response.status.description)
 ```
 {% endtab %}
@@ -2151,6 +2199,10 @@ patch_annotations_response = stub.PatcchAnnotations(
 )
 
 if patch_annotations_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(patch_annotations_response.outputs[0].status.code))
+    print("\tDescription: {}".format(patch_annotations_response.outputs[0].status.description))
+    print("\tDetails: {}".format(patch_annotations_response.outputs[0].status.details))
     raise Exception("Patch annotations failed, status: " + patch_annotations_response.status.description)
 ```
 {% endtab %}
@@ -2372,6 +2424,10 @@ patch_annotations_response = stub.PatchAnnotations(
 )
 
 if patch_annotations_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(patch_annotations_response.outputs[0].status.code))
+    print("\tDescription: {}".format(patch_annotations_response.outputs[0].status.description))
+    print("\tDetails: {}".format(patch_annotations_response.outputs[0].status.details))
     raise Exception("Patch annotations failed, status: " + patch_annotations_response.status.description)
 ```
 {% endtab %}
@@ -2520,6 +2576,10 @@ delete_annotation_response = stub.DeleteAnnotation(
 )
 
 if delete_annotation_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(delete_annotation_response.outputs[0].status.code))
+    print("\tDescription: {}".format(delete_annotation_response.outputs[0].status.description))
+    print("\tDetails: {}".format(delete_annotation_response.outputs[0].status.details))
     raise Exception("Delete annotation failed, status: " + delete_annotation_response.status.description)
 ```
 {% endtab %}
@@ -2620,6 +2680,10 @@ delete_annotations_response = stub.DeleteAnnotations(
 )
 
 if delete_annotations_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(delete_annotation_response.outputs[0].status.code))
+    print("\tDescription: {}".format(delete_annotation_response.outputs[0].status.description))
+    print("\tDetails: {}".format(delete_annotation_response.outputs[0].status.details))
     raise Exception("Delete annotations failed, status: " + delete_annotations_response.status.description)
 ```
 {% endtab %}
@@ -2732,6 +2796,10 @@ delete_annotations_response = stub.DeleteAnnotations(
 )
 
 if delete_annotations_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(delete_annotation_response.outputs[0].status.code))
+    print("\tDescription: {}".format(delete_annotation_response.outputs[0].status.description))
+    print("\tDetails: {}".format(delete_annotation_response.outputs[0].status.details))
     raise Exception("Delete annotations failed, status: " + delete_annotations_response.status.description)
 ```
 {% endtab %}

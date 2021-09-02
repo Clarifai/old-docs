@@ -144,10 +144,14 @@ post_inputs_response = stub.PostInputs(
 )
 
 if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
     for input_object in post_inputs_response.inputs:
         print("Input " + input_object.id + " status:")
         print(input_object.status)
 
+    print("\tCode: {}".format(post_inputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_inputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_inputs_response.outputs[0].status.details))
     raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 {% endtab %}
@@ -508,6 +512,10 @@ post_models_response = stub.PostModels(
 )
 
 if post_models_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_models_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_models_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_models_response.outputs[0].status.details))
     raise Exception("Post models failed, status: " + post_models_response.status.description)
 ```
 {% endtab %}
@@ -775,6 +783,10 @@ post_model_versions = stub.PostModelVersions(
 )
 
 if post_model_versions.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_model_versions.outputs[0].status.code))
+    print("\tDescription: {}".format(post_model_versions.outputs[0].status.description))
+    print("\tDetails: {}".format(post_model_versions.outputs[0].status.details))
     raise Exception("Post model versions failed, status: " + post_model_versions.status.description)
 ```
 {% endtab %}
@@ -1039,6 +1051,10 @@ post_model_outputs_response = stub.PostModelOutputs(
     metadata=metadata
 )
 if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_model_outputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_model_outputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_model_outputs_response.outputs[0].status.details))
     raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
 
 # Since we have one input, one output will exist here.

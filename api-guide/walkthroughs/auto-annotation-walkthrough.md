@@ -29,6 +29,10 @@ post_concepts_response = stub.PostConcepts(
 )
 
 if post_concepts_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_concepts_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_concepts_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_concepts_response.outputs[0].status.details))
     raise Exception("Post concepts failed, status: " + post_concepts_response.status.description)
 ```
 {% endtab %}
@@ -167,6 +171,10 @@ post_concept_relations_response = stub.PostConceptRelations(
 )
 
 if post_concept_relations_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_concept_relations_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_concept_relations_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_concept_relations_response.outputs[0].status.details))
     raise Exception("Post concept relations failed, status: " + post_concept_relations_response.status.description)
 ```
 {% endtab %}
@@ -294,6 +302,10 @@ post_models_response = stub.PostModels(
 )
 
 if post_models_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_models_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_models_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_models_response.outputs[0].status.details))
     raise Exception("Post models failed, status: " + post_models_response.status.description)
 ```
 {% endtab %}
@@ -429,6 +441,10 @@ post_models_response = stub.PostModels(
 )
 
 if post_models_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_models_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_models_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_models_response.outputs[0].status.details))
     raise Exception("Post models failed, status: " + post_models_response.status.description)
 ```
 {% endtab %}
@@ -608,6 +624,10 @@ post_models_response = stub.PostModels(
 )
 
 if post_models_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_models_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_models_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_models_response.outputs[0].status.details))
     raise Exception("Post models failed, status: " + post_models_response.status.description)
 ```
 {% endtab %}
@@ -781,6 +801,10 @@ post_models_response = stub.PostModels(
 )
 
 if post_models_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_models_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_models_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_models_response.outputs[0].status.details))
     raise Exception("Post models failed, status: " + post_models_response.status.description)
 ```
 {% endtab %}
@@ -918,6 +942,10 @@ post_models_response = stub.PostModels(
 )
 
 if post_models_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_models_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_models_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_models_response.outputs[0].status.details))
     raise Exception("Post models failed, status: " + post_models_response.status.description)
 ```
 {% endtab %}
@@ -1106,6 +1134,10 @@ post_workflows_response = stub.PostWorkflows(
 )
 
 if post_workflows_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_workflows_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_workflows_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_workflows_response.outputs[0].status.details))
     raise Exception("Post workflows failed, status: " + post_workflows_response.status.description)
 ```
 {% endtab %}
@@ -1494,6 +1526,10 @@ patch_apps_response = stub.PatchApps(
 )
 
 if patch_apps_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(patch_apps_response.outputs[0].status.code))
+    print("\tDescription: {}".format(patch_apps_response.outputs[0].status.description))
+    print("\tDetails: {}".format(patch_apps_response.outputs[0].status.details))
     raise Exception("Patch apps failed, status: " + patch_apps_response.status.description)
 ```
 {% endtab %}
@@ -1599,6 +1635,10 @@ post_inputs_response = stub.PostInputs(
 )
 
 if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_inputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_inputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_inputs_response.outputs[0].status.details))
     raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 {% endtab %}
@@ -1710,6 +1750,10 @@ list_annotations_response = stub.ListAnnotations(
 )
 
 if list_annotations_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(list_annotations_response.outputs[0].status.code))
+    print("\tDescription: {}".format(list_annotations_response.outputs[0].status.description))
+    print("\tDetails: {}".format(list_annotations_response.outputs[0].status.details))
     raise Exception("List annotations failed, status: " + list_annotations_response.status.description)
 
 for annotation in list_annotations_response.annotations:

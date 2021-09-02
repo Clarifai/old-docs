@@ -143,10 +143,14 @@ post_inputs_response = stub.PostInputs(
 )
 
 if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
     for input_response in post_inputs_response.inputs:
         print("Input " + input_response.id + " status:")
         print(input_response.status)
-
+    
+    print("\tCode: {}".format(post_inputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_inputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_inputs_response.outputs[0].status.details))
     raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 {% endtab %}
