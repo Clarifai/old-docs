@@ -4,7 +4,7 @@ import os
 def read_init_code():
   init_lines = []
 
-  with open("../api-guide/api-overview/api-clients.md") as f:
+  with open("../api-guide/api-overview/api-clients/README.md") as f:
     in_install_instructions = False
     in_python_initialize_client = False
     for line in f:

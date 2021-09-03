@@ -1,11 +1,15 @@
-# Create, Get, Update, Delete
+---
+description: Manage your Mesh Workflows.
+---
+
+# Setting Up Mesh Workflows
 
 ## Create
 
 To create a new custom workflow, specify a list of model IDs that are to be included in the workflow. Each model ID also requires a specific model version ID, since a model can have several versions.
 
 {% tabs %}
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -44,7 +48,7 @@ if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -91,13 +95,14 @@ stub.PostWorkflows(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_workflows_response = stub.PostWorkflows(
     service_pb2.PostWorkflowsRequest(
+      user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
       workflows=[
         resources_pb2.Workflow(
           id="my-custom-workflow",
@@ -166,6 +171,57 @@ curl -X POST 'https://api.clarifai.com/v2/workflows' \
     }'
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+// The first model is the Clarifai's Food model, and the second the Clarifai's General model.
+
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "workflows": [{
+    "id": "my-custom-workflow",
+    "nodes": [
+      {
+        "id": "food-concepts",
+        "model": {
+          "id": "bd367be194cf45149e75f01d59f77ba7",
+          "model_version": {
+            "id": "dfebc169854e429086aceb8368662641"
+          }
+        }
+      },
+      {
+        "id": "general-concepts",
+        "model": {
+          "id": "aaa03c23b3724a16a56b629203edc62c",
+          "model_version": {
+            "id": "aa9ca48295b37401f8af92ad1af0d91d"
+          }
+        }
+      }
+    ]
+  }]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/workflows`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Workflow Predict
@@ -173,7 +229,7 @@ curl -X POST 'https://api.clarifai.com/v2/workflows' \
 Predict using a workflow. The response will contain the predictions each model in the workflow returns for the input.
 
 {% tabs %}
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -183,51 +239,49 @@ import com.clarifai.grpc.api.status.*;
 
 PostWorkflowResultsResponse postWorkflowResultsResponse = stub.postWorkflowResults(
     PostWorkflowResultsRequest.newBuilder()
-        .setWorkflowId("my-custom-workflow")
+        .setWorkflowId("{YOUR_WORKFLOW_ID}")
         .addInputs(
             Input.newBuilder().setData(
                 Data.newBuilder().setImage(
-                    Image.newBuilder()
-                        .setUrl("https://portal.clarifai.com/cms-assets/20180320212157/food-001.jpg")
+                    Image.newBuilder().setUrl(
+                        "https://samples.clarifai.com/metro-north.jpg"
+                    )
                 )
             )
-        ).build()
+        )
+        .build()
 );
 
 if (postWorkflowResultsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post workflow results failed, status: " + postWorkflowResultsResponse.getStatus());
+  throw new RuntimeException("Post workflow results failed, status: " + postWorkflowResultsResponse.getStatus());
 }
 
-// Since we have one input, one output will exist here.
+// We'll get one WorkflowResult for each input we used above. Because of one input, we have here
+// one WorkflowResult.
 WorkflowResult results = postWorkflowResultsResponse.getResults(0);
 
-// One output is present for each model in the workflow.
+// Each model we have in the workflow will produce one output.
 for (Output output : results.getOutputsList()) {
-    System.out.println("Predicted concepts for model: " + output.getModel().getName());
+    Model model = output.getModel();
+
+    System.out.println("Predicted concepts for the model `" + model.getName() + "`:");
     for (Concept concept : output.getData().getConceptsList()) {
-        System.out.printf("%s %.2f%n", concept.getName(), concept.getValue());
+        System.out.printf("\t%s %.2f%n", concept.getName(), concept.getValue());
     }
-    System.out.println();
 }
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostWorkflowResults(
     {
-        workflow_id: "my-custom-workflow",
+        workflow_id: "{YOUR_WORKFLOW_ID}",
         inputs: [
-            {
-                data: {
-                    image: {
-                        url: "https://portal.clarifai.com/cms-assets/20180320212157/food-001.jpg"
-                    }
-                }
-            }
+            {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
         ]
     },
     metadata,
@@ -240,76 +294,118 @@ stub.PostWorkflowResults(
             throw new Error("Post workflow results failed, status: " + response.status.description);
         }
 
-        // Since we have one input, one output will exist here.
-        const result = response.results[0]
+        // We'll get one WorkflowResult for each input we used above. Because of one input, we have here
+        // one WorkflowResult.
+        const results = response.results[0];
 
-        // One output is present for each model in the workflow.
-        for (const output of result.outputs) {
-            console.log("Predicted concepts for model: " + output.model.name);
+        // Each model we have in the workflow will produce one output.
+        for (const output of results.outputs) {
+            const model = output.model;
+
+            console.log("Predicted concepts for the model `" + model.name + "`:");
             for (const concept of output.data.concepts) {
                 console.log("\t" + concept.name + " " + concept.value);
             }
-            console.log();
         }
     }
 );
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_workflow_results_response = stub.PostWorkflowResults(
     service_pb2.PostWorkflowResultsRequest(
-      workflow_id="my-custom-workflow",
-      inputs=[
-        resources_pb2.Input(
-          data=resources_pb2.Data(
-            image=resources_pb2.Image(
-              url="https://portal.clarifai.com/cms-assets/20180320212157/food-001.jpg"
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
+        workflow_id="{YOUR_WORKFLOW_ID}",
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/metro-north.jpg"
+                    )
+                )
             )
-          )
-        )
-      ]
+        ]
     ),
     metadata=metadata
 )
-
 if post_workflow_results_response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Post workflow results failed, status: " + post_workflow_results_response.status.description)
 
-# Since we have one input, one output will exist here.
-result = post_workflow_results_response.results[0]
+# We'll get one WorkflowResult for each input we used above. Because of one input, we have here
+# one WorkflowResult.
+results = post_workflow_results_response.results[0]
 
-# One output is present for each model in the workflow.
-for output in result.outputs:
-  print("Predicted concepts for model: " + output.model.name)
-  for concept in output.data.concepts:
-    print("\t%s %.2f" % (concept.name, concept.value))
-  print()
+# Each model we have in the workflow will produce one output.
+for output in results.outputs:
+    model = output.model
+
+    print("Predicted concepts for the model `%s`" % model.name)
+    for concept in output.data.concepts:
+        print("\t%s %.2f" % (concept.name, concept.value))
 ```
 {% endtab %}
 
 {% tab title="cURL" %}
 ```text
-curl -X POST 'https://api.clarifai.com/v2/workflows/my-custom-workflow/results' \
-    -H 'Content-Type: application/json' \
-    -H 'Authorization: Key YOUR_API_KEY' \
-    --data-raw '{
-        "inputs": [
-            {
-                "data": {
-                    "image": {
-                        "url": "https://portal.clarifai.com/cms-assets/20180320212157/food-001.jpg"
-                    }
-                }
-            }
-        ]
-    }'
+curl -X POST \
+  -H 'authorization: Key YOUR_API_KEY' \
+  -H 'content-type: application/json' \
+  -d '{
+    "inputs": [
+        {
+          "data": {
+            "image": {
+              "url": "https://samples.clarifai.com/metro-north.jpg"
+          }
+        }
+      }
+    ]
+}'\
+https://api.clarifai.com/v2/workflows/{YOUR_WORKFLOW_ID}/results
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const workflowID = '{YOUR_WORKFLOW_ID}'
+
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+      {
+        "data": {
+          "image": {
+            "url": "https://samples.clarifai.com/metro-north.jpg"
+        }
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/workflows/${workflowID}/results`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Get
@@ -319,7 +415,7 @@ curl -X POST 'https://api.clarifai.com/v2/workflows/my-custom-workflow/results' 
 Return all custom workflows in your app.
 
 {% tabs %}
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -344,7 +440,7 @@ for (Workflow workflow : listWorkflowsResponse.getWorkflowsList()) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -374,13 +470,15 @@ stub.ListWorkflows(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 list_workflows_response = stub.ListWorkflows(
-    service_pb2.ListWorkflowsRequest(),
+    service_pb2.ListWorkflowsRequest(
+        user_app_id=userDataObject  # The userDataObject is created in the overview and is required when using a PAT
+    ),
     metadata=metadata
 )
 
@@ -403,6 +501,26 @@ curl -X GET 'https://api.clarifai.com/v2/workflows' \
     -H 'Authorization: Key YOUR_API_KEY'
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/workflows`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Get a workflow by a specific ID
@@ -410,7 +528,7 @@ curl -X GET 'https://api.clarifai.com/v2/workflows' \
 Returns information about a specific workflow.
 
 {% tabs %}
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -438,7 +556,7 @@ for (WorkflowNode workflowNode : workflow.getNodesList()) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -469,13 +587,14 @@ stub.GetWorkflow(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 get_workflow_response = stub.GetWorkflow(
     service_pb2.GetWorkflowRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         workflow_id="my-custom-workflow"
     ),
     metadata=metadata
@@ -499,6 +618,27 @@ curl -X GET 'https://api.clarifai.com/v2/workflows/my-custom-workflow' \
     -H 'Authorization: Key YOUR_API_KEY'
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const workflowId = '{YOUR_WORKFLOW_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/workflows/${workflowId}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Update
@@ -510,7 +650,7 @@ Ability to change the workflow, that is to change the models of which the workfl
 Possible actions are "overwrite", "merge" and "remove".
 
 {% tabs %}
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -560,7 +700,7 @@ if (patchWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -617,13 +757,14 @@ stub.PatchWorkflows(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 patch_workflows_response = stub.PatchWorkflows(
     service_pb2.PatchWorkflowsRequest(
+      user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
       action="overwrite",
       workflows=[
         resources_pb2.Workflow(
@@ -714,6 +855,68 @@ curl -X PATCH 'https://api.clarifai.com/v2/workflows' \
     }'
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "action": "overwrite",
+  "workflows": [
+      {
+          "id": "my-custom-workflow",
+          "nodes": [
+              {
+                  "id": "travel-concepts",
+                  "model": {
+                      "id": "ccc28c313d69466f836ab83287a54ed9",
+                      "model_version": {
+                          "id": "cce28c313d69466f836ab83287a54ed9"
+                      }
+                  }
+              },
+              {
+                  "id": "nsfw-concepts",
+                  "model": {
+                      "id": "ccc76d86d2004ed1a38ba0cf39ecb4b1",
+                      "model_version": {
+                          "id": "cc76a92beaeb4d8495a58ba197998158"
+                      }
+                  }
+              },
+              {
+                  "id": "wedding-concepts",
+                  "model": {
+                      "id": "c386b7a870114f4a87477c0824499348",
+                      "model_version": {
+                          "id": "787cc9a002164250800598d36b072384"
+                      }
+                  }
+              }
+          ]
+      }
+  ]
+});
+
+const requestOptions = {
+  method: 'PATCH',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/workflows`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Delete
@@ -723,7 +926,7 @@ curl -X PATCH 'https://api.clarifai.com/v2/workflows' \
 Delete a specific workflow.
 
 {% tabs %}
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -743,7 +946,7 @@ if (deleteWorkflowResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -766,13 +969,14 @@ stub.DeleteWorkflow(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 delete_workflow_response = stub.DeleteWorkflow(
     service_pb2.DeleteWorkflowRequest(
+      user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
       workflow_id="my-custom-workflow"
     ),
     metadata=metadata
@@ -790,6 +994,27 @@ curl -X DELETE 'https://api.clarifai.com/v2/workflows/my-custom-workflow \
     -H 'Authorization: Key YOUR_API_KEY'
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const workflowId = '{YOUR_WORKFLOW_ID}'
+
+const requestOptions = {
+  method: 'DELETE',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/workflows/${workflowId}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ### Delete all workflows
@@ -799,7 +1024,7 @@ Deletes all custom workflows.
 > Note: instead of "delete\_all" it's possible to specify a list of workflow IDs to be deleted, using the `ids` field.
 
 {% tabs %}
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -819,7 +1044,7 @@ if (deleteWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -842,13 +1067,14 @@ stub.DeleteWorkflows(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 delete_workflows_response = stub.DeleteWorkflows(
     service_pb2.DeleteWorkflowsRequest(
+      user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
       delete_all=True
     ),
     metadata=metadata
@@ -869,5 +1095,32 @@ curl -X DELETE 'https://api.clarifai.com/v2/workflows' \
     }'
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "delete_all": true
+});
+
+const requestOptions = {
+  method: 'DELETE',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/workflows`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 

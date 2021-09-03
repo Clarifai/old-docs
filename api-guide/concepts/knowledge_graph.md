@@ -1,6 +1,12 @@
+---
+description: Connect the knowledge gained by different models.
+---
+
 # Knowledge Graph
 
-The Clarifai Knowledge Graph lets you map your custom concepts to a common set of concepts understood by all applications on the Clarifai platform. The knowledge graph makes it possible to link data across multiple custom and pre-built models in a meaningful way.
+
+
+![](../../.gitbook/assets/kg6%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%286%29%20%286%29.png)
 
 The Knowledge Graph uses Clarifai's concept mapping model to establish a hierarchical relationship between your concepts. and to uses three different _predicates_ to organize your concepts: hypernyms, hyponyms, and synonyms.
 
@@ -17,7 +23,37 @@ To create a relation between two concepts, you first have to create them in your
 Each relation has to have specified a predicate, which can be _hyponym_, _hypernym_, or _synonym_.
 
 {% tabs %}
-{% tab title="gRPC Java" %}
+{% tab title="Python" %}
+```python
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+post_concept_relation_response = stub.PostConceptRelations(
+    service_pb2.PostConceptRelationsRequest(
+        user_app_id=resources_pb2.UserAppIDSet(
+            app_id="{YOUR_APP_ID}"
+        ),
+        concept_id="{YOUR_SUBJECT_CONCEPT_ID}",
+        concept_relations=[
+            resources_pb2.ConceptRelation(
+                object_concept=resources_pb2.Concept(id="{YOUR_OBJECT_CONCEPT_ID}"),
+                predicate="hypernym" # This can be hypernym, hyponym, or synonym.
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_concept_relation_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_concept_relation_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_concept_relation_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_concept_relation_response.outputs[0].status.details))
+    raise Exception("Post concept relation failed, status: " + post_concept_relation_response.status.description)
+```
+{% endtab %}
+
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -46,7 +82,7 @@ if (postConceptRelationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -80,32 +116,6 @@ stub.PostConceptRelations(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_concept_relation_response = stub.PostConceptRelations(
-    service_pb2.PostConceptRelationsRequest(
-        user_app_id=resources_pb2.UserAppIDSet(
-            app_id="{YOUR_APP_ID}"
-        ),
-        concept_id="{YOUR_SUBJECT_CONCEPT_ID}",
-        concept_relations=[
-            resources_pb2.ConceptRelation(
-                object_concept=resources_pb2.Concept(id="{YOUR_OBJECT_CONCEPT_ID}"),
-                predicate="hypernym" # This can be hypernym, hyponym, or synonym.
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_concept_relation_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post concept relation failed, status: " + post_concept_relation_response.status.description)
-```
-{% endtab %}
-
 {% tab title="cURL" %}
 ```text
 curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{YOUR_APP_ID}/concepts/{YOUR_SUBJECT_CONCEPT_ID}/relations' \
@@ -123,12 +133,77 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{YOUR_APP_ID}/concepts/{
     }'
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const subjectConceptId = '{YOUR_SUBJECT_CONCEPT_ID}'
+
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "concept_relations": [
+      {
+          "object_concept": {
+              "id": "{YOUR_OBJECT_CONCEPT_ID}"
+          },
+          "predicate": "hypernym"
+      }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/concepts/${subjectConceptId}/relations`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## List existing relations
 
 {% tabs %}
-{% tab title="gRPC Java" %}
+{% tab title="Python" %}
+```python
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+list_concept_relation_response = stub.ListConceptRelations(
+    service_pb2.ListConceptRelationsRequest(
+        user_app_id=resources_pb2.UserAppIDSet(
+            app_id="{YOUR_APP_ID}"
+        ),
+        concept_id="{YOUR_CONCEPT_ID}",
+        predicate="hypernym"  # This is optional. If skipped, all concept's relations will be returned.
+    ),
+    metadata=metadata
+)
+
+if list_concept_relation_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(list_concept_relation_response.outputs[0].status.code))
+    print("\tDescription: {}".format(list_concept_relation_response.outputs[0].status.description))
+    print("\tDetails: {}".format(list_concept_relation_response.outputs[0].status.details))
+    raise Exception("List concept relation failed, status: " + list_concept_relation_response.status.description)
+
+for relation in list_concept_relation_response.concept_relations:
+    print(relation)
+```
+{% endtab %}
+
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -159,7 +234,7 @@ for (ConceptRelation relation : listConceptRelationsResponse.getConceptRelations
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -190,30 +265,6 @@ stub.ListConceptRelations(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-list_concept_relation_response = stub.ListConceptRelations(
-    service_pb2.ListConceptRelationsRequest(
-        user_app_id=resources_pb2.UserAppIDSet(
-            app_id="{YOUR_APP_ID}"
-        ),
-        concept_id="{YOUR_CONCEPT_ID}",
-        predicate="hypernym"  # This is optional. If skipped, all concept's relations will be returned.
-    ),
-    metadata=metadata
-)
-
-if list_concept_relation_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("List concept relation failed, status: " + list_concept_relation_response.status.description)
-
-for relation in list_concept_relation_response.concept_relations:
-    print(relation)
-```
-{% endtab %}
-
 {% tab title="cURL" %}
 ```text
 # Setting the predicate GET parameter is optional. If skipped, all concept's relations will be returned.
@@ -222,12 +273,59 @@ curl -X GET 'https://api.clarifai.com/v2/users/me/apps/{YOUR_APP_ID}/concepts/{Y
     -H 'Content-Type: application/json'
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const conceptId = '{YOUR_CONCEPT_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+// Setting the predicate GET parameter is optional. If skipped, all concept's relations will be returned
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/concepts/${conceptId}/relations?predicate=hypernym`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Delete
 
 {% tabs %}
-{% tab title="gRPC Java" %}
+{% tab title="Python" %}
+```python
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+delete_concept_relation_response = stub.DeleteConceptRelations(
+    service_pb2.DeleteConceptRelationsRequest(
+        user_app_id=resources_pb2.UserAppIDSet(
+            app_id="{YOUR_APP_ID}"
+        ),
+        concept_id="{YOUR_OBJECT_CONCEPT_ID}",
+        ids=["{YOUR_CONCEPT_RELATION_ID}"]
+    ),
+    metadata=metadata
+)
+
+if delete_concept_relation_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(delete_concept_relation_response.outputs[0].status.code))
+    print("\tDescription: {}".format(delete_concept_relation_response.outputs[0].status.description))
+    print("\tDetails: {}".format(delete_concept_relation_response.outputs[0].status.details))
+    raise Exception("Delete concept relation failed, status: " + delete_concept_relation_response.status.description)
+```
+{% endtab %}
+
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -251,7 +349,7 @@ if (deleteConceptRelationsResponse.getStatus().getCode() != StatusCode.SUCCESS) 
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -280,27 +378,6 @@ stub.DeleteConceptRelations(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-delete_concept_relation_response = stub.DeleteConceptRelations(
-    service_pb2.DeleteConceptRelationsRequest(
-        user_app_id=resources_pb2.UserAppIDSet(
-            app_id="{YOUR_APP_ID}"
-        ),
-        concept_id="{YOUR_OBJECT_CONCEPT_ID}",
-        ids=["{YOUR_CONCEPT_RELATION_ID}"]
-    ),
-    metadata=metadata
-)
-
-if delete_concept_relation_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Delete concept relation failed, status: " + delete_concept_relation_response.status.description)
-```
-{% endtab %}
-
 {% tab title="cURL" %}
 ```text
 curl -X DELETE 'https://api.clarifai.com/v2/users/me/apps/{YOUR_APP_ID}/concepts/{YOUR_OBJECT_CONCEPT_ID}/relations' \
@@ -313,31 +390,32 @@ curl -X DELETE 'https://api.clarifai.com/v2/users/me/apps/{YOUR_APP_ID}/concepts
     }'
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const appId = '{YOUR_APP_ID}'
+const conceptId = '{YOUR_CONCEPT_ID}'
+
+const raw = JSON.stringify({
+	"ids": [
+	  "{YOUR_CONCEPT_RELATION_ID}"
+  ]
+})
+
+const requestOptions = {
+  method: 'DELETE',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/concepts/${conceptId}/relations`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
-
-You can create these mappings in your application with a few easy steps.
-
-1. Consider the following application that has four concepts: beverages, smoothie, breakfast, and french\_toast. You can use the Knowledge Graph to create hierarchical relationships between the concepts.
-
-![](../../.gitbook/assets/kg1%20%281%29.png)
-
-1. You can link concepts as hierarchical by going to the details of either of the concepts. In the shown application, french\_toast falls under breakfast. You can link them by accessing the View Details section of either concept.
-
-![](../../.gitbook/assets/kg2%20%281%29.png)
-
-1. Once, in the details dashboard, you can link breakfast as a hypernym to french\_toast under the Input Relations menu.
-
-![](../../.gitbook/assets/kg3%20%281%29.png)
-
-1. Once you list breakfast as a hypernym to french\_toast, it will set french\_toast as a hyponym to breakfast automatically.
-
-![](../../.gitbook/assets/kg4%20%281%29.png)
-
-1. This process can be used to create similar relationships between beverages and smoothie. Beverages will be listed as a hypernym to smoothie.
-
-![](../../.gitbook/assets/kg5%20%281%29.png)
-
-1. By doing this, smoothie will be listed as a hyponym to beverages automatically.
-
-![](../../.gitbook/assets/kg6%20%281%29.png)
 

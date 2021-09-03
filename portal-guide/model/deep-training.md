@@ -1,3 +1,7 @@
+---
+description: (Beta) Train the entire graph for your custom model.
+---
+
 # Deep Training
 
 Clarifai offers a variety of prebuilt models that are designed to help you build AI solutions quickly and efficiently. Clarifai Models are the recommended starting point for many users because they offer incredibly fast training times when you customize them using the "Context-Based Classifier" type in Portal's Model Mode.
@@ -40,7 +44,7 @@ Deep training gives you the power to tune the hyperparameters that affect “how
 * **detection\_score\_threshold** Only bounding boxes with a detection score above this threshold will be returned.
 * **image\_size** The size of images used for training. Images are scaled for efficient processing, and a lower number will take up less memory and run faster. A higher number will have more pixel information to train on and will increase accuracy.
 * **init\_epochs** The initial number of epochs before the first step/change in the **lrate**.
-* **logreg** Choose either "Logistic Regression" or "Softmax" as the activation function of the output layer. The default setting, 1, corresponds to Logistic Regression and will allow for multiple True concepts (i.e. P > 0.5) to be predicted for a given input. Conversely, specify a value of 0 to implement Softmax if your concepts should be treated as "mutually exclusive" (i.e. only one concept could be correctly assigned to a given input). This will result in each prediction output representing a discrete probability distribution (i.e. all predicted values sum to 1).
+* **logreg** Choose either "Logistic Regression" or "Softmax" as the activation function of the output layer. The default setting, 1, corresponds to Logistic Regression and will allow for multiple True concepts \(i.e. P &gt; 0.5\) to be predicted for a given input. Conversely, specify a value of 0 to implement Softmax if your concepts should be treated as "mutually exclusive" \(i.e. only one concept could be correctly assigned to a given input\). This will result in each prediction output representing a discrete probability distribution \(i.e. all predicted values sum to 1\).
 * **lrate** The learning rate is a tuning parameter in an optimization algorithm that determines the step size at each iteration while moving toward a minimum of a loss function.
 * **num\_epochs** An epoch is defined as one-pass over the entire dataset. If you increase it, it will take longer to train but it could make the model more robust.
 * **num\_items\_per\_epoch** The number of training examples per "epoch". An epoch would be defined as one-pass over this amount of examples.
@@ -60,30 +64,41 @@ Get started by creating your app and uploading your inputs.
 
 In general, deep trained models need more data than ones trained on top of Clarifai Models. For most applications you’ll need at least 1000 training inputs, but it could be much more than this depending on your specific use case.
 
-![](../../.gitbook/assets/create_dt_app.jpg)
+![](../../.gitbook/assets/create_dt_app%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%283%29.jpg)
 
 #### Create your concepts and label your inputs
 
 The process of creating concepts and labeling inputs is the same for deep trained models and Clarifai Models.
 
-![](../../.gitbook/assets/label_inputs_dt.jpg)
+![](../../.gitbook/assets/label_inputs_dt%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.jpg)
 
 ### Model Mode
 
 Click the "four squares" icon on the lefthand sidebar to enter Model Mode.
 
-![](../../.gitbook/assets/model_mode.jpg)
+![](../../.gitbook/assets/model_mode%20%285%29%20%285%29%20%287%29%20%287%29%20%283%29%20%2819%29.jpg)
 
 ### Create the custom models that you need
 
 Click the blue `Create Custom Model` button at the top righthand corner of the screen and select `Visual Classifier`, `Visual Embedder`, or `Visual Detector`.
 
-![](../../.gitbook/assets/create_custom_model.jpg)
+![](../../.gitbook/assets/create_custom_model%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29.jpg)
 
 #### Configure your Model
 
 When you choose your your deep training template you will see the hyperparameters that are available within that template populated with default values. Adjust these values as desired and then click "Create Model".
 
-![](../../.gitbook/assets/create_dt_model.jpg)
+![](../../.gitbook/assets/create_dt_model%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.jpg)
 
 Once you have created your new model you can add it to your [workflows](https://docs.clarifai.com/portal-guide/workflows) so that you can use it in your app.
+
+## Progress bar and processing time
+
+![Progress bar for monitoring training](../../.gitbook/assets/deep-training-progress%20%281%29%20%281%29.jpg)
+
+Deep training can take much longer than custom training a model. Many hours are required to deep train models with large numbers of inputs and complex taxonomies. You can view the progress bar in the model details view to monitor your model training as it progresses.
+
+#### Job cancellation
+
+You can cancel a deep training job at any time by deleting the model that you are training. Deep training is billed at an hourly rate and for cancelled jobs, you will charged for the time that you have used to train your model. [Learn more about deep training pricing here. ](https://www.clarifai.com/pricing)
+

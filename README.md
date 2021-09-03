@@ -9,9 +9,9 @@ This repository is a collection of our public documentation for our APIs and SDK
 ## Contributing to our Docs
 
 In order to contribute simply follow these steps:
-* [fork](https://help.github.com/en/articles/fork-a-repo) this repository to your account on github
-* make your changes there in a branch
-* create a pull request back for us to review
+* [Fork](https://help.github.com/en/articles/fork-a-repo) this repository to your account on Github
+* Make your changes there in a branch.
+* Create a pull request back for us to review.
 
 As soon as the pull request gets reviewed and merged, your contributions will automatically show up at [docs.clarifai.com](https://docs.clarifai.com) within seconds.
 
@@ -20,5 +20,7 @@ As soon as the pull request gets reviewed and merged, your contributions will au
 If you have landed here by mistake, here are a few other helpful resources for Clarifai:
 
 * [Clarifai Home Page](https://www.clarifai.com)
-* [Predict Demo](https://www.clarifai.com/demo)
+* [Clarifai Help](https://help.clarifai.com/hc/en-us)
+* [Clarifai API Reference](https://api.clarifai.com/api-doc/)
+* [Clarifai Community](https://www.clarifai.com/developers/community) 
 * [Portal](https://portal.clarifai.com)

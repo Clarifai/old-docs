@@ -1,9 +1,13 @@
+---
+description: Search based on specific words.
+---
+
 # Search by Concept
 
 You can search for concepts by `name`, even in a different `language` using the concept searches endpoint:
 
 {% tabs %}
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -32,7 +36,7 @@ for (Concept concept : postConceptsSearchesResponse.getConceptsList()) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -60,7 +64,7 @@ stub.PostConceptsSearches(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -76,105 +80,15 @@ post_concepts_searches_response = stub.PostConceptsSearches(
 )
 
 if post_concepts_searches_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_concepts_searches_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_concepts_searches_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_concepts_searches_response.outputs[0].status.details))
     raise Exception("Post concepts searches failed, status: " + post_concepts_searches_response.status.description)
 
 print("Found concepts:")
 for concept in post_concepts_searches_response.concepts:
     print("\t%s %.2f" % (concept.name, concept.value))
-```
-{% endtab %}
-
-{% tab title="js" %}
-```javascript
-app.concepts.search('人*', 'zh').then(
-  function(response) {
-    // do something with response
-  },
-  function(err) {
-    // there was an error
-  }
-);
-```
-{% endtab %}
-
-{% tab title="python" %}
-```python
-from clarifai.rest import ClarifaiApp
-
-app = ClarifaiApp(api_key='YOUR_API_KEY')
-app.concepts.search(u'人*', lang='zh')
-```
-{% endtab %}
-
-{% tab title="java" %}
-```java
-client.searchConcepts("人*")
-    .withLanguage("zh")
-    .getPage(1)
-    .executeSync();
-```
-{% endtab %}
-
-{% tab title="csharp" %}
-```csharp
-using System.Threading.Tasks;
-using Clarifai.API;
-
-namespace YourNamespace
-{
-    public class YourClassName
-    {
-        public static async Task Main()
-        {
-            var client = new ClarifaiClient("YOUR_API_KEY");
-
-            await client.SearchConcepts(
-                    "人*",
-                    language: "zh")
-                .Page(1)
-                .ExecuteAsync();
-        }
-    }
-}
-```
-{% endtab %}
-
-{% tab title="objective-c" %}
-```text
-// Search for all concept names in chinese, beginning with "人".
-[_app searchForConceptsByName:@"人*" andLanguage:@"zh" completion:^(NSArray<ClarifaiConcept *> *concepts, NSError *error) {
-  for (ClarifaiConcept *concept in concepts) {
-    NSLog(@"tag name: %@", concept.conceptName);
-  }
-}];
-```
-{% endtab %}
-
-{% tab title="php" %}
-```php
-use Clarifai\API\ClarifaiClient;
-use Clarifai\DTOs\Predictions\Concept;
-
-$client = new ClarifaiClient();
-
-$response = $client->searchConcepts('人*')
-    ->withLanguage('zh')
-    ->executeSync();
-
-if ($response->isSuccessful()) {
-    echo "Response is successful.\n";
-
-    $concepts = $response->get();
-
-    foreach ($concepts as $concept) {
-        echo $concept->name() . ' ' . $concept->value() . "\n";
-    }
-} else {
-    echo "Response is not successful. Reason: \n";
-    echo $response->status()->description() . "\n";
-    echo $response->status()->errorDetails() . "\n";
-    echo "Status code: " . $response->status()->statusCode();
-}
 ```
 {% endtab %}
 
@@ -193,6 +107,36 @@ curl -X POST \
   https://api.clarifai.com/v2/concepts/searches
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "concept_query": {
+    "name":"人",
+    "language": "ja"
+  }
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/concepts/searches", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 {% tabs %}

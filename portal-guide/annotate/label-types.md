@@ -1,12 +1,16 @@
+---
+description: Learn about the different types of labels that are possible with Scribe.
+---
+
 # Label Types
 
-Labeler provides three basic label types for your images and videos. These label types provide increasing levels of granularity to support the needs of your specific use case.
+Scribe provides three basic label types for your images and videos. These label types provide increasing levels of granularity to support the needs of your specific use case.
 
 ## Classification
 
 Provide annotation for an entire image, or single frame of video. To classify an image just create your concepts, click on the concepts in the right-hand sidebar and click submit.
 
-![](../../images/classification_label.jpg)
+![](../../.gitbook/assets/classification_label.jpg)
 
 ## Bounding Box Detection
 
@@ -14,14 +18,15 @@ Provide annotation within a single box-shaped region of an image or video. To us
 
 ### Detection for Still Images
 
-![Bounding box detection for still image](../../images/detector_label.jpg)
+![Bounding box detection for still image](../../.gitbook/assets/detector_label%20%284%29%20%284%29%20%285%29%20%283%29.jpg)
 
 ### Detection for Video
 
-![Bounding box detection for video](../../images/video_detector.jpg)
+![Bounding box detection for video](../../.gitbook/assets/video_detector.jpg)
 
 ## Polygon Detection
 
 Provide annotation within any polygon-shaped region of an image or video.
 
-![](../../images/polygon.jpg)
+![](../../.gitbook/assets/polygon.jpg)
+

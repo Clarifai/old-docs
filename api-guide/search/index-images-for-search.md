@@ -1,9 +1,13 @@
+---
+description: Use AI to index your images based on semantic similarity.
+---
+
 # Index Images for Search
 
 To get started with search, you must first add images to the search index. You can add one or more images to the index at a time. You can supply an image either with a publicly accessible URL or by directly sending image bytes. You can send up to 128 images in one API call.
 
 {% tabs %}
-{% tab title="gRPC Java" %}
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -58,7 +62,7 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -99,7 +103,7 @@ stub.PostInputs(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -139,113 +143,15 @@ post_inputs_response = stub.PostInputs(
 )
 
 if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
     for input_response in post_inputs_response.inputs:
         print("Input " + input_response.id + " status:")
         print(input_response.status)
-
+    
+    print("\tCode: {}".format(post_inputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_inputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_inputs_response.outputs[0].status.details))
     raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
-```
-{% endtab %}
-
-{% tab title="js" %}
-```javascript
-app.inputs.create([
-  {url: "https://samples.clarifai.com/metro-north.jpg"},
-  {url: "https://samples.clarifai.com/wedding.jpg"},
-  {base64: "G7p3m95uAl..."}
-]).then(
-
-  function(response) {
-    // do something with response
-  },
-  function(err) {
-    // there was an error
-  }
-);
-```
-{% endtab %}
-
-{% tab title="python" %}
-```python
-from clarifai.rest import ClarifaiApp
-from clarifai.rest import Image as ClImage
-
-app = ClarifaiApp(api_key='YOUR_API_KEY')
-
-img1 = ClImage(url="https://samples.clarifai.com/metro-north.jpg")
-img2 = ClImage(url="https://samples.clarifai.com/puppy.jpeg")
-img3 = ClImage(file_obj=open('/home/user/image.jpeg', 'rb'))
-
-app.inputs.bulk_create_images([img1, img2, img3])
-```
-{% endtab %}
-
-{% tab title="java" %}
-```java
-client.addInputs()
-    .plus(
-        ClarifaiInput.forImage("https://samples.clarifai.com/metro-north.jpg"),
-        ClarifaiInput.forImage("https://samples.clarifai.com/wedding.jpg")
-    )
-    .executeSync();
-```
-{% endtab %}
-
-{% tab title="csharp" %}
-```csharp
-using System.Threading.Tasks;
-using Clarifai.API;
-using Clarifai.DTOs.Inputs;
-
-namespace YourNamespace
-{
-    public class YourClassName
-    {
-        public static async Task Main()
-        {
-            var client = new ClarifaiClient("YOUR_API_KEY");
-
-            await client.AddInputs(
-                new ClarifaiURLImage("https://samples.clarifai.com/metro-north.jpg"),
-                new ClarifaiURLImage("https://samples.clarifai.com/wedding.jpg")
-            ).ExecuteAsync();
-        }
-    }
-}
-```
-{% endtab %}
-
-{% tab title="objective-c" %}
-```text
-ClarifaiImage *image1 = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/metro-north.jpg"];
-ClarifaiImage *image2 = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/wedding.jpg"];
-
-[app addInputs:@[image1, image2] completion:^(NSArray<ClarifaiInput *> *inputs, NSError *error) {
-    NSLog(@"inputs: %@", inputs);
-}];
-```
-{% endtab %}
-
-{% tab title="php" %}
-```php
-use Clarifai\API\ClarifaiClient;
-use Clarifai\DTOs\Inputs\ClarifaiURLImage;
-
-$client = new ClarifaiClient('YOUR_API_KEY');
-
-$response = $client->addInputs([
-    new ClarifaiURLImage('https://samples.clarifai.com/metro-north.jpg'),
-    new ClarifaiURLImage('https://samples.clarifai.com/wedding.jpg'),
-])->executeSync();
-
-if ($response-> isSuccessful()) {
-    echo "Response is successful.\n";
-} else {
-    echo "Response is not successful. Reason: \n";
-    echo $response->status()->description() . "\n";
-    echo $response->status()->errorDetails() . "\n";
-    echo "Status code: " . $response->status()->statusCode();
-}
 ```
 {% endtab %}
 
@@ -280,6 +186,52 @@ curl -X POST \
 # Use image's "base64" field to upload image from your local machine.
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "data": {
+        "image": {
+          "url": "https://samples.clarifai.com/metro-north.jpg",
+          "allow_duplicate_url": true
+        }
+      }
+    },
+    {
+      "data": {
+        "image": {
+          "url": "https://samples.clarifai.com/wedding.jpg",
+          "allow_duplicate_url": true
+        }
+      }
+    }
+  ]
+});
+
+// # Use image's "base64" field to upload image from your local machine.
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+	body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/inputs`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 {% tabs %}

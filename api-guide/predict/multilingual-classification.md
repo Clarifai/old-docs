@@ -1,13 +1,186 @@
+---
+description: Multilingual predictions.
+---
+
 # Multilingual Classification
 
 The Clarifai API supports [many languages in addition to English](../concepts/languages.md). When making a [predict api request](./), you can pass in the language you would like the concepts returned in. When you create a new Application, you must specify a default language which will be the language of the returned concepts if not specified in the predict request.
 
 ## Example Predict API Request
 
-You can predict concepts in a language other then the Application's default, by explicitly passing in the language. Here is how you predict concepts in Chinese:
+You can predict concepts in a language other than the Application's default, by explicitly passing in the language. Here is how you predict concepts in Chinese:
 
 {% tabs %}
-{% tab title="gRPC Java" %}
+
+{% tab title="Python" %}
+```python
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+post_model_outputs_response = stub.PostModelOutputs(
+    service_pb2.PostModelOutputsRequest(
+        model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the publicly available General model.
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/metro-north.jpg"
+                    )
+                )
+            )
+        ],
+        model=resources_pb2.Model(
+            output_info=resources_pb2.OutputInfo(
+                output_config=resources_pb2.OutputConfig(
+                    language="zh"  # Chinese
+                )
+            )
+        )
+    ),
+    metadata=metadata
+)
+
+if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+
+# Since we have one input, one output will exist here.
+output = post_model_outputs_response.outputs[0]
+
+print("Predicted concepts:")
+for concept in output.data.concepts:
+    print("\t%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+
+{% tab title="PHP" %}
+```php
+<?php
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+///////////////////////////////////////////////////////////////////////////////
+// Specifying the Request Data
+///////////////////////////////////////////////////////////////////////////////
+//
+// In the Clarifai platform an image is defined by a special Image object.
+// There are several ways in which an Image object can be populated including
+// by url and image bytes (base64).
+//
+$image = new Image([
+    'url' => 'https://samples.clarifai.com/dog2.jpeg'
+]);
+
+//
+// After an Image object is created, a Data object is constructed around it.
+// The Data object offers a container that contains additional image independent
+// metadata.  In this particular use case, no other metadata is needed to be
+// specified.
+//
+$data = new Data([
+    'image' => $image
+]);
+
+//
+// The Data object is then wrapped in an Input object in order to meet the
+// API specification.  Additional fields are available to populate in the Input
+// object, but for the purposes of this example we can send in just the
+// Data object.
+//
+$input = new Input([
+    'data' => $data
+]);
+
+///////////////////////////////////////////////////////////////////////////////
+// Specifying Output Configuration 
+///////////////////////////////////////////////////////////////////////////////
+//
+// Output configuration can be specified by the OutputConfig object.
+//
+$outputConfig = new OutputConfig([
+    'language' => 'zh' // Chinese
+])
+
+//
+// The OutputInfo object is a wrapper around the OutputConfig object
+// 
+$outputInfo = new OutputInfo([
+    'output_config' => $outputConfig
+])
+
+//
+// The model object is a wrapper around the OutputInfo object.  This is the
+// final part needed to define an output configuration.
+//
+$model = new Model([
+    'output_info' => $outputInfo
+]);
+
+///////////////////////////////////////////////////////////////////////////////
+// Creating the request object 
+///////////////////////////////////////////////////////////////////////////////
+//
+// Finally, the request object itself is created.  This object carries the request
+// along with the request status and other metadata related to the request itself.
+// In this example we populate:
+//    - the `user_app_id` field with the UserAppIDSet constructed above
+//    - the `model_id` field with the ID of the model we are referencing
+//    - the `inputs` field with an array of input objects constructed above 
+//    - the `model` field with the output configuration specified above
+//
+$request = new PostModelOutputsRequest([
+    'user_app_id' => $userDataObject, // This is defined above
+    'model_id' => 'aaa03c23b3724a16a56b629203edc62c',  // This is the ID of the publicly available General model.
+    'inputs' => [$input],
+    'model' => $model
+]);
+
+///////////////////////////////////////////////////////////////////////////////
+// Making the RPC Call
+///////////////////////////////////////////////////////////////////////////////
+//
+// Once the request object is constructed, we can call the actual request to the
+// Clarifai platform.  This uses the opened gRPC client channel to communicate the
+// request and then wait for the response.
+//
+[$response, $status] = $client->PostModelOutputs(
+    $request,
+    $metadata
+)->wait();
+
+///////////////////////////////////////////////////////////////////////////////
+// Handling the Response
+///////////////////////////////////////////////////////////////////////////////
+//
+// The response is returned and the first thing we do is check the status of it.
+// A successful response will have a status code of 0, otherwise there is some 
+// reported error.
+//
+if ($status->code !== 0) throw new Exception("Error: {$status->details}");
+
+//
+// In addition to the RPC response status, there is a Clarifai API status that
+// reports if the operationo was a success or failure (not just that the commuunication)
+// was successful.
+//
+if ($response->getStatus()->getCode() != StatusCode::SUCCESS) {
+    throw new Exception("Failure response: " . $response->getStatus()->getDescription() . " " .
+        $response->getStatus()->getDetails());
+}
+
+//
+// The output of a successful call can be used in many ways.  In this example,
+// we loop through all of the predicted concepts and print them out along with
+// their numerical prediction value (confidence).
+//
+echo "Predicted concepts:\n";
+foreach ($response->getOutputs()[0]->getData()->getConcepts() as $concept) {
+    echo $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
+}
+?>
+```
+{% endtab %}
+
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -49,7 +222,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -84,13 +257,15 @@ stub.PostModelOutputs(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
+
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the publicly available General model.
         inputs=[
             resources_pb2.Input(
@@ -113,6 +288,10 @@ post_model_outputs_response = stub.PostModelOutputs(
 )
 
 if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_model_outputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_model_outputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_model_outputs_response.outputs[0].status.details))
     raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
 
 # Since we have one input, one output will exist here.
@@ -124,119 +303,6 @@ for concept in output.data.concepts:
 ```
 {% endtab %}
 
-{% tab title="js" %}
-```javascript
-app.models.predict(Clarifai.GENERAL_MODEL, "https://samples.clarifai.com/metro-north.jpg", {language: 'zh'}).then(
-  function(response) {
-    // do something with response
-  },
-  function(err) {
-    // there was an error
-  }
-);
-```
-{% endtab %}
-
-{% tab title="python" %}
-```python
-from clarifai.rest import ClarifaiApp
-app = ClarifaiApp(api_key='YOUR_API_KEY')
-
-m = app.models.get('general-v1.3')
-
-# predict labels in simplified Chinese
-m.predict_by_url('https://samples.clarifai.com/metro-north.jpg', lang='zh')
-
-# predict labels in Japanese
-m.predict_by_url('https://samples.clarifai.com/metro-north.jpg', lang='ja')
-```
-{% endtab %}
-
-{% tab title="java" %}
-```java
-client.predict(client.getDefaultModels().generalModel().id())
-    .withInputs(ClarifaiInput.forImage("https://samples.clarifai.com/metro-north.jpg"))
-    .withLanguage("zh")
-    .executeSync();
-```
-{% endtab %}
-
-{% tab title="csharp" %}
-```csharp
-using System.Threading.Tasks;
-using Clarifai.API;
-using Clarifai.DTOs.Inputs;
-using Clarifai.DTOs.Predictions;
-
-namespace YourNamespace
-{
-    public class YourClassName
-    {
-        public static async Task Main()
-        {
-            var client = new ClarifaiClient("YOUR_API_KEY");
-
-            await client.Predict<Concept>(
-                    client.PublicModels.GeneralModel.ModelID,
-                    input: new ClarifaiURLImage("https://samples.clarifai.com/metro-north.jpg"),
-                    language: "zh")
-                .ExecuteAsync();
-        }
-    }
-}
-```
-{% endtab %}
-
-{% tab title="objective-c" %}
-```text
-// first get the general model.
-[app getModelByName:@"general-v1.3" completion:^(ClarifaiModel *model, NSError *error) {
-  // create input to predict on.
-  ClarifaiImage *input = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/metro-north.jpg"];
-
-  // predict with the general model in Chinese.
-  [model predictOnImages:@[input] withLanguage:@"zh" completion:^(NSArray<ClarifaiOutput *> *outputs, NSError *error) {
-    for (ClarifaiConcept *concept in outputs[0].concepts) {
-      NSLog(@"tag: %@", concept.conceptName);
-      NSLog(@"probability: %f", concept.score);
-    }
-  }];
-}];
-```
-{% endtab %}
-
-{% tab title="php" %}
-```php
-use Clarifai\API\ClarifaiClient;
-use Clarifai\DTOs\Inputs\ClarifaiURLImage;
-use Clarifai\DTOs\Models\ModelType;
-use Clarifai\DTOs\Outputs\ClarifaiOutput;
-use Clarifai\DTOs\Predictions\Concept;
-
-$client = new ClarifaiClient();
-
-$response = $client->predict(ModelType::concept(),
-        $client->publicModels()->generalModel()->modelID(),
-        new ClarifaiURLImage('https://samples.clarifai.com/metro-north.jpg'))
-    ->withLanguage('zh')
-    ->executeSync();
-
-if ($response-> isSuccessful()) {
-    $output = $response->get();
-
-    echo "Predicted concepts:\n";
-
-    foreach ($output->data() as $concept) {
-        echo $concept->name() . ': ' . $concept->value() . "\n";
-    }
-} else {
-    echo "Response is not successful. Reason: \n";
-    echo $response->status()->description() . "\n";
-    echo $response->status()->errorDetails() . "\n";
-    echo "Status code: " . $response->status()->statusCode();
-}
-```
-{% endtab %}
 
 {% tab title="cURL" %}
 ```text
@@ -267,6 +333,52 @@ curl -X POST \
 # Above is model ID of the publicly available General model.
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "data": {
+        "image": {
+          "url": "https://samples.clarifai.com/metro-north.jpg"
+        }
+      }
+    }
+  ],
+  "model":{
+    "output_info":{
+      "output_config":{
+        "language":"zh"
+      }
+    }
+  }
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+// NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
+// https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
+// this will default to the latest version_id
+
+fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/versions/{MODEL_VERSION_ID}/outputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 {% tabs %}
@@ -447,7 +559,111 @@ curl -X POST \
 You can search for concepts in other languages even if the default language of your application is English. When you add inputs to your application, concepts are predicted for every language. Here is an example of searching for '人' which is simplified Chinese for 'people'.
 
 {% tabs %}
-{% tab title="gRPC Java" %}
+
+{% tab title="Python" %}
+```python
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+post_concepts_searches_response = stub.PostConceptsSearches(
+    service_pb2.PostConceptsSearchesRequest(
+        concept_query=resources_pb2.ConceptQuery(
+            name="人",
+            language="zh"
+        )
+    ),
+    metadata=metadata
+)
+
+if post_concepts_searches_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post concepts searches failed, status: " + post_concepts_searches_response.status.description)
+
+print("Found concepts:")
+for concept in post_concepts_searches_response.concepts:
+    print("\t%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+
+{% tab title="PHP" %}
+```php
+<?php
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+
+///////////////////////////////////////////////////////////////////////////////
+// Specifying Concept Search Parameters 
+///////////////////////////////////////////////////////////////////////////////
+//
+// The ConceptQuery object contains the concept restrictions for the search. 
+//
+$conceptQuery = new ConceptQuery([
+    'name' => "人",
+    'language' => "zh"
+])
+
+///////////////////////////////////////////////////////////////////////////////
+// Creating the request object 
+///////////////////////////////////////////////////////////////////////////////
+//
+// Finally, the request object itself is created.  This object carries the request
+// along with the request status and other metadata related to the request itself.
+// In this example we populate:
+//    - the `user_app_id` field with the UserAppIDSet constructed above
+//    - the `concept_query` field contains the search restrictions above
+//
+$request = new PostConceptsSearches([
+    'user_app_id' => $userDataObject, // This is defined above
+    'concept_query' => $conceptQuery
+]);
+
+///////////////////////////////////////////////////////////////////////////////
+// Making the RPC Call
+///////////////////////////////////////////////////////////////////////////////
+//
+// Once the request object is constructed, we can call the actual request to the
+// Clarifai platform.  This uses the opened gRPC client channel to communicate the
+// request and then wait for the response.
+//
+[$response, $status] = $client->PostConceptsSearches(
+    $request,
+    $metadata
+)->wait();
+
+///////////////////////////////////////////////////////////////////////////////
+// Handling the Response
+///////////////////////////////////////////////////////////////////////////////
+//
+// The response is returned and the first thing we do is check the status of it.
+// A successful response will have a status code of 0, otherwise there is some 
+// reported error.
+//
+if ($status->code !== 0) throw new Exception("Error: {$status->details}");
+
+//
+// In addition to the RPC response status, there is a Clarifai API status that
+// reports if the operationo was a success or failure (not just that the commuunication)
+// was successful.
+//
+if ($response->getStatus()->getCode() != StatusCode::SUCCESS) {
+    throw new Exception("Failure response: " . $response->getStatus()->getDescription() . " " .
+        $response->getStatus()->getDetails());
+}
+
+//
+// The output of a successful call can be used in many ways.  In this example,
+// we loop through all of the predicted concepts and print them out along with
+// their numerical prediction value (confidence).
+//
+echo "Predicted concepts:\n";
+foreach ($response->getConcepts() as $concept) {
+    echo $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
+}
+?>
+```
+{% endtab %}
+
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -476,7 +692,7 @@ for (Concept concept : postConceptsSearchesResponse.getConceptsList()) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -504,13 +720,14 @@ stub.PostConceptsSearches(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_concepts_searches_response = stub.PostConceptsSearches(
     service_pb2.PostConceptsSearchesRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         concept_query=resources_pb2.ConceptQuery(
             name="人",
             language="zh"
@@ -520,6 +737,10 @@ post_concepts_searches_response = stub.PostConceptsSearches(
 )
 
 if post_concepts_searches_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_concepts_searches_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_concepts_searches_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_concepts_searches_response.outputs[0].status.details))
     raise Exception("Post concepts searches failed, status: " + post_concepts_searches_response.status.description)
 
 print("Found concepts:")
@@ -528,119 +749,6 @@ for concept in post_concepts_searches_response.concepts:
 ```
 {% endtab %}
 
-{% tab title="js" %}
-```javascript
-app.inputs.search({
-  concept: {
-    name: '人'
-  },
-  language: 'ja'
-}).then(
-  function(response) {
-    // do something with response
-  },
-  function(err) {
-    // there was an error
-  }
-);
-```
-{% endtab %}
-
-{% tab title="python" %}
-```python
-from clarifai.rest import ClarifaiApp
-
-app = ClarifaiApp(api_key='YOUR_API_KEY')
-
-# search '人' in simplified Chinese
-app.inputs.search_by_predicted_concepts(u'人', lang='zh')
-```
-{% endtab %}
-
-{% tab title="java" %}
-```java
-client.searchInputs(
-    SearchClause.matchImageURL(ClarifaiImage.of("https://samples.clarifai.com/metro-north.jpg")))
-    .withLanguage("zh")
-    .getPage(1)
-    .executeSync();
-```
-{% endtab %}
-
-{% tab title="csharp" %}
-```csharp
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Clarifai.API;
-using Clarifai.DTOs.Searches;
-
-namespace YourNamespace
-{
-    public class YourClassName
-    {
-        public static async Task Main()
-        {
-            var client = new ClarifaiClient("YOUR_API_KEY");
-
-            await client.SearchInputs(
-                    new List<SearchBy>
-                    {
-                        SearchBy.ImageURL("https://samples.clarifai.com/metro-north.jpg")
-                    },
-                    language: "zh")
-                .Page(1)
-                .ExecuteAsync();
-        }
-    }
-}
-```
-{% endtab %}
-
-{% tab title="objective-c" %}
-```text
-// create search term with concept you want to search predicted inputs with.
-ClarifaiConcept *concept1 = [[ClarifaiConcept alloc] initWithConceptName:@"人"];
-ClarifaiSearchTerm *searchTerm = [[ClarifaiSearchTerm alloc] initWithSearchItem:concept1 isInput:NO];
-
-// search will find inputs predicted to be associated with the given concept.
-[_app search:@[searchTerm] page:@1 perPage:@20 language:@"zh" completion:^(NSArray<ClarifaiSearchResult *> *results, NSError *error) {
-  for (ClarifaiSearchResult *result in results) {
-    NSLog(@"image url: %@", result.mediaURL);
-    NSLog(@"probability: %f", [result.score floatValue]);
-  }
-}];
-```
-{% endtab %}
-
-{% tab title="php" %}
-```php
-use Clarifai\API\ClarifaiClient;
-use Clarifai\DTOs\Searches\SearchBy;
-use Clarifai\DTOs\Searches\SearchInputsResult;
-
-$client = new ClarifaiClient();
-
-$response = $client->searchInputs(
-        SearchBy::imageURL('https://samples.clarifai.com/metro-north.jpg'))
-    ->withLanguage('zh')
-    ->executeSync();
-
-if ($response-> isSuccessful()) {
-    echo "Response is successful.\n";
-
-    /** @var SearchInputsResult $result */
-    $result = $response->get();
-    foreach ($result->searchHits() as $searchHit) {
-        echo $searchHit->input()->id() . ' ' . $searchHit->score() . "\n";
-    }
-} else {
-    echo "Response is not successful. Reason: \n";
-    echo $response->status()->description() . "\n";
-    echo $response->status()->errorDetails() . "\n";
-    echo "Status code: " . $response->status()->statusCode();
-}
-```
-{% endtab %}
 
 {% tab title="cURL" %}
 ```text
@@ -669,5 +777,47 @@ curl -X POST \
   https://api.clarifai.com/v2/searches
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "query": {
+    "ands": [
+      {
+        "output": {
+          "data": {
+            "concepts": [
+              {
+                "name": "人"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "language": "zh"
+  }
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch("https://api.clarifai.com/v2/searches", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 

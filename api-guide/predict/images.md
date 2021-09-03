@@ -1,3 +1,7 @@
+---
+description: Make predictions on image inputs
+---
+
 # Images
 
 ## Via URL
@@ -6,10 +10,147 @@ To get predictions for an input, you need to supply an image and the model you'd
 
 Below is an example of how you would send image URLs and receive back predictions from the `general` model.
 
-You can learn all about the different [Clarifai Models](images.md) available later in the guide.
-
 {% tabs %}
-{% tab title="gRPC Java" %}
+{% tab title="Python" %}
+```python
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+post_model_outputs_response = stub.PostModelOutputs(
+    service_pb2.PostModelOutputsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
+        model_id="{THE_MODEL_ID}",
+        version_id="{THE_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/metro-north.jpg"
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_model_outputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_model_outputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_model_outputs_response.outputs[0].status.details))
+    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+
+# Since we have one input, one output will exist here.
+output = post_model_outputs_response.outputs[0]
+
+print("Predicted concepts:")
+for concept in output.data.concepts:
+    print("%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+
+{% tab title="PHP" %}
+```php
+<?php
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+///////////////////////////////////////////////////////////////////////////////
+// Specifying the Request Data
+///////////////////////////////////////////////////////////////////////////////
+//
+// In the Clarifai platform an image is defined by a special Image object.
+// There are several ways in which an Image object can be populated including
+// by url and image bytes (base64).
+//
+$image = new Image([
+    'url' => 'https://samples.clarifai.com/dog2.jpeg'
+]);
+
+//
+// After an Image object is created, a Data object is constructed around it.
+// The Data object offers a container that contains additional image independent
+// metadata.  In this particular use case, no other metadata is needed to be
+// specified.
+//
+$data = new Data([
+    'image' => $image
+]);
+
+//
+// The Data object is then wrapped in an Input object in order to meet the
+// API specification.  Additional fields are available to populate in the Input
+// object, but for the purposes of this example we can send in just the
+// Data object.
+//
+$input = new Input([
+    'data' => $data
+]);
+
+///////////////////////////////////////////////////////////////////////////////
+// Creating the request object 
+///////////////////////////////////////////////////////////////////////////////
+//
+// Finally, the request object itself is created.  This object carries the request
+// along with the request status and other metadata related to the request itself.
+// In this example we populate:
+//    - the `user_app_id` field with the UserAppIDSet constructed above
+//    - the `model_id` field with the ID of the model we are referencing
+//    - the `inputs` field with an array of input objects constructed above 
+//
+$request = new PostModelOutputsRequest([
+    'user_app_id' => $userDataObject, // This is defined above
+    'model_id' => 'aaa03c23b3724a16a56b629203edc62c',  // This is the ID of the publicly available General model.
+    'inputs' => [$input]
+]);
+
+///////////////////////////////////////////////////////////////////////////////
+// Making the RPC call
+///////////////////////////////////////////////////////////////////////////////
+//
+// Once the request object is constructed, we can call the actual request to the
+// Clarifai platform.  This uses the opened gRPC client channel to communicate the
+// request and then wait for the response.
+//
+[$response, $status] = $client->PostModelOutputs(
+    $request,
+    $metadata
+)->wait();
+
+///////////////////////////////////////////////////////////////////////////////
+// Handling the Response
+///////////////////////////////////////////////////////////////////////////////
+//
+// The response is returned and the first thing we do is check the status of it.
+// A successful response will have a status code of 0, otherwise there is some 
+// reported error.
+//
+if ($status->code !== 0) throw new Exception("Error: {$status->details}");
+
+//
+// In addition to the RPC response status, there is a Clarifai API status that
+// reports if the operationo was a success or failure (not just that the commuunication)
+// was successful.
+//
+if ($response->getStatus()->getCode() != StatusCode::SUCCESS) {
+    throw new Exception("Failure response: " . $response->getStatus()->getDescription() . " " .
+        $response->getStatus()->getDetails());
+}
+
+//
+// The output of a successful call can be used in many ways.  In this example,
+// we loop through all of the predicted concepts and print them out along with
+// their numerical prediction value (confidence).
+//
+echo "Predicted concepts:\n";
+foreach ($response->getOutputs()[0]->getData()->getConcepts() as $concept) {
+    echo $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
+}
+?>
+```
+{% endtab %}
+
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -45,7 +186,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -80,148 +221,6 @@ stub.PostModelOutputs(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_model_outputs_response = stub.PostModelOutputs(
-    service_pb2.PostModelOutputsRequest(
-        model_id="{THE_MODEL_ID}",
-        version_id="{THE_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="https://samples.clarifai.com/metro-north.jpg"
-                    )
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
-
-# Since we have one input, one output will exist here.
-output = post_model_outputs_response.outputs[0]
-
-print("Predicted concepts:")
-for concept in output.data.concepts:
-    print("%s %.2f" % (concept.name, concept.value))
-```
-{% endtab %}
-
-{% tab title="js" %}
-```javascript
-app.models.initModel({id: Clarifai.GENERAL_MODEL, version: "aa7f35c01e0642fda5cf400f543e7c40"})
-      .then(generalModel => {
-        return generalModel.predict("@@sampleTrain");
-      })
-      .then(response => {
-        var concepts = response['outputs'][0]['data']['concepts']
-      })
-```
-{% endtab %}
-
-{% tab title="python" %}
-```python
-from clarifai.rest import ClarifaiApp
-
-app = ClarifaiApp(api_key='YOUR_API_KEY')
-model = app.public_models.general_model
-response = model.predict_by_url('@@sampleTrain')
-```
-{% endtab %}
-
-{% tab title="java" %}
-```java
-ConceptModel model = client.getDefaultModels().generalModel();
-    ModelVersion modelVersion = model.getVersionByID("the-version").executeSync().get();
-
-    ClarifaiResponse<List<ClarifaiOutput<Prediction>>> response = client.predict(model.id())
-        .withInputs(ClarifaiInput.forImage("@@sampleTrain"))
-        .withVersion("aa7f35c01e0642fda5cf400f543e7c40")
-        .executeSync();
-```
-{% endtab %}
-
-{% tab title="csharp" %}
-```csharp
-using System.Threading.Tasks;
-using Clarifai.API;
-using Clarifai.DTOs.Inputs;
-
-namespace YourNamespace
-{
-    public class YourClassName
-    {
-        public static async Task Main()
-        {
-            var Client = new ClarifaiClient("YOUR_API_KEY");
-
-             var response = await Client.Predict<Concept>(
-                    Client.PublicModels.GeneralModel.ModelID,
-                    new List<IClarifaiInput>
-                    {
-                        new ClarifaiURLImage("@@sampleTrain"),
-                        new ClarifaiURLImage("the-url-2")
-                    },
-                    "aa7f35c01e0642fda5cf400f543e7c40")
-                .ExecuteAsync();
-        }
-    }
-}
-```
-{% endtab %}
-
-{% tab title="objective-c" %}
-```text
-ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"@@sampleTrain"];
-[_app getModelByName:@"general-v1.3" completion:^(ClarifaiModel *model, NSError *error) {
-    [model predictOnImages:@[image]
-                completion:^(NSArray<ClarifaiSearchResult *> *outputs, NSError *error) {
-                    NSLog(@"outputs: %@", outputs);
-                }];
-}];
-```
-{% endtab %}
-
-{% tab title="php" %}
-```php
-use Clarifai\API\ClarifaiClient;
-use Clarifai\DTOs\Inputs\ClarifaiURLImage;
-use Clarifai\DTOs\Outputs\ClarifaiOutput;
-use Clarifai\DTOs\Predictions\Concept;
-
-$client = new ClarifaiClient('YOUR_API_KEY');
-
-$model = $client->publicModels()->generalModel();
-
-$input = new ClarifaiURLImage("@@sampleTrain");
-$response = $model->predict($input)
-    ->withModelVersionID("aa7f35c01e0642fda5cf400f543e7c40")
-    ->executeSync();
-
-if ($response->isSuccessful()) {
-    /** @var ClarifaiOutput $output */
-    $output = $response->get();
-
-    echo "Predicted concepts:\n";
-    /** @var Concept $concept */
-    foreach ($output->data() as $concept) {
-        echo $concept->name() . ': ' . $concept->value() . "\n";
-    }
-} else {
-    echo "Response is not successful. Reason: \n";
-    echo $response->status()->description() . "\n";
-    echo $response->status()->errorDetails() . "\n";
-    echo "Status code: " . $response->status()->statusCode();
-}
-```
-{% endtab %}
-
 {% tab title="cURL" %}
 ```text
 curl -X POST
@@ -242,6 +241,45 @@ curl -X POST
     https://api.clarifai.com/v2/models/{THE_MODEL_ID}/versions/{THE_MODEL_VERSION_ID}/outputs
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+  "user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "data": {
+        "image": {
+          "url": "https://samples.clarifai.com/metro-north.jpg"
+        }
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+// NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
+// https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
+// this will default to the latest version_id
+
+fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/versions/{MODEL_VERSION_ID}/outputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(JSON.parse(result, null, 2).outputs[0].data))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 {% tabs %}
@@ -422,7 +460,157 @@ curl -X POST
 Below is an example of how you would send the bytes of an image and receive back predictions from the `general` model.
 
 {% tabs %}
-{% tab title="gRPC Java" %}
+{% tab title="Python" %}
+```python
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+with open("{YOUR_IMAGE_FILE_LOCATION}", "rb") as f:
+    file_bytes = f.read()
+
+post_model_outputs_response = stub.PostModelOutputs(
+    service_pb2.PostModelOutputsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
+        model_id="{THE_MODEL_ID}",
+        version_id="{THE_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        base64=file_bytes
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_model_outputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_model_outputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_model_outputs_response.outputs[0].status.details))
+    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+
+# Since we have one input, one output will exist here.
+output = post_model_outputs_response.outputs[0]
+
+print("Predicted concepts:")
+for concept in output.data.concepts:
+    print("%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+
+{% tab title="PHP" %}
+```php
+<?php
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+//
+// For this example, the bytes of an image are needed and can be read in
+// using PHP provided functions.
+//
+$image = "https://samples.clarifai.com/dog2.jpeg";
+$imageData = file_get_contents($image); // Get the image data from the URL
+
+///////////////////////////////////////////////////////////////////////////////
+// Specifying the Request Data
+///////////////////////////////////////////////////////////////////////////////
+//
+// In the Clarifai platform an image is defined by a special Image object.
+// There are several ways in which an Image object can be populated including
+// by url and image bytes (base64).
+//
+$image = new Image([
+    'base64' => $imageData
+]);
+
+//
+// After an Image object is created, a Data object is constructed around it.
+// The Data object offers a container that contains additional image independent
+// metadata.  In this particular use case, no other metadata is needed to be
+// specified.
+//
+$data = new Data([
+    'image' => $image
+]);
+
+//
+// The Data object is then wrapped in an Input object in order to meet the
+// API specification.  Additional fields are available to populate in the Input
+// object, but for the purposes of this example we can send in just the
+// Data object.
+//
+$input = new Input([
+    'data' => $data
+]);
+
+///////////////////////////////////////////////////////////////////////////////
+// Creating the request object 
+///////////////////////////////////////////////////////////////////////////////
+//
+// Finally, the request object itself is created.  This object carries the request
+// along with the request status and other metadata related to the request itself.
+// In this example we populate:
+//    - the `user_app_id` field with the UserAppIDSet constructed above
+//    - the `model_id` field with the ID of the model we are referencing
+//    - the `inputs` field with an array of input objects constructed above 
+//
+$request = new PostModelOutputsRequest([
+    'user_app_id' => $userDataObject, // This is defined above
+    'model_id' => 'aaa03c23b3724a16a56b629203edc62c',  // This is the ID of the publicly available General model.
+    'inputs' => [$input]
+]);
+
+///////////////////////////////////////////////////////////////////////////////
+// Making the RPC call
+///////////////////////////////////////////////////////////////////////////////
+//
+// Once the request object is constructed, we can call the actual request to the
+// Clarifai platform.  This uses the opened gRPC client channel to communicate the
+// request and then wait for the response.
+//
+[$response, $status] = $client->PostModelOutputs(
+    $request,
+    $metadata
+)->wait();
+
+///////////////////////////////////////////////////////////////////////////////
+// Handling the Response
+///////////////////////////////////////////////////////////////////////////////
+//
+// The response is returned and the first thing we do is check the status of it.
+// A successful response will have a status code of 0, otherwise there is some 
+// reported error.
+//
+if ($status->code !== 0) throw new Exception("Error: {$status->details}");
+
+//
+// In addition to the RPC response status, there is a Clarifai API status that
+// reports if the operationo was a success or failure (not just that the commuunication)
+// was successful.
+//
+if ($response->getStatus()->getCode() != StatusCode::SUCCESS) {
+    throw new Exception("Failure response: " . $response->getStatus()->getDescription() . " " .
+        $response->getStatus()->getDetails());
+}
+
+//
+// The output of a successful call can be used in many ways.  In this example,
+// we loop through all of the predicted concepts and print them out along with
+// their numerical prediction value (confidence).
+//
+echo "Predicted concepts:\n";
+foreach ($response->getOutputs()[0]->getData()->getConcepts() as $concept) {
+    echo $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
+}
+?>
+```
+{% endtab %}
+
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -464,7 +652,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -499,144 +687,6 @@ stub.PostModelOutputs(
         }
     }
 );
-```
-{% endtab %}
-
-{% tab title="gRPC Python" %}
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-with open("{YOUR_IMAGE_FILE_LOCATION}", "rb") as f:
-    file_bytes = f.read()
-
-post_model_outputs_response = stub.PostModelOutputs(
-    service_pb2.PostModelOutputsRequest(
-        model_id="{THE_MODEL_ID}",
-        version_id="{THE_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        base64=file_bytes
-                    )
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
-
-# Since we have one input, one output will exist here.
-output = post_model_outputs_response.outputs[0]
-
-print("Predicted concepts:")
-for concept in output.data.concepts:
-    print("%s %.2f" % (concept.name, concept.value))
-```
-{% endtab %}
-
-{% tab title="js" %}
-```javascript
-app.models.predict(Clarifai.GENERAL_MODEL, {base64: "G7p3m95uAl..."}).then(
-  function(response) {
-    // do something with response
-  },
-  function(err) {
-    // there was an error
-  }
-);
-```
-{% endtab %}
-
-{% tab title="python" %}
-```python
-from clarifai.rest import ClarifaiApp
-
-app = ClarifaiApp(api_key='YOUR_API_KEY')
-
-model = app.public_models.general_model
-response = model.predict_by_filename('/home/user/image.jpeg')
-# You could also use model.predict_by_bytes or model.predict_by_base64
-```
-{% endtab %}
-
-{% tab title="java" %}
-```java
-client.getDefaultModels().generalModel().predict()
-    .withInputs(ClarifaiInput.forImage(new File("/home/user/image.jpeg")))
-    .executeSync();
-```
-{% endtab %}
-
-{% tab title="csharp" %}
-```csharp
-using System.IO;
-using System.Threading.Tasks;
-using Clarifai.API;
-using Clarifai.DTOs.Inputs;
-
-namespace YourNamespace
-{
-    public class YourClassName
-    {
-        public static async Task Main()
-        {
-            var client = new ClarifaiClient("YOUR_API_KEY");
-
-            await client.PublicModels.GeneralModel.Predict(
-                    new ClarifaiFileImage(File.ReadAllBytes("/home/user/image.jpeg")))
-                .ExecuteAsync();
-        }
-    }
-}
-```
-{% endtab %}
-
-{% tab title="obj-c" %}
-```text
-UIImage *image = [UIImage imageNamed:@"dress.jpg"];
-ClarifaiImage *clarifaiImage = [[ClarifaiImage alloc] initWithImage:image];
-[_app getModelByName:@"general-v1.3" completion:^(ClarifaiModel *model, NSError *error) {
-    [model predictOnImages:@[clarifaiImage]
-                completion:^(NSArray<ClarifaiSearchResult *> *outputs, NSError *error) {
-                    NSLog(@"outputs: %@", outputs);
-                }];
-}];
-```
-{% endtab %}
-
-{% tab title="php" %}
-```php
-use Clarifai\API\ClarifaiClient;
-use Clarifai\DTOs\Inputs\ClarifaiFileImage;
-use Clarifai\DTOs\Outputs\ClarifaiOutput;
-use Clarifai\DTOs\Predictions\Concept;
-
-$client = new ClarifaiClient('YOUR_API_KEY');
-
-$response = $client->publicModels()->generalModel()->predict(
-        new ClarifaiFileImage(file_get_contents('/home/user/image.jpeg')))
-    ->executeSync();
-
-if ($response->isSuccessful()) {
-    /** @var ClarifaiOutput $output */
-    $output = $response->get();
-
-    echo "Predicted concepts:\n";
-    /** @var Concept $concept */
-    foreach ($output->data() as $concept) {
-        echo $concept->name() . ': ' . $concept->value() . "\n";
-    }
-} else {
-    echo "Response is not successful. Reason: \n";
-    echo $response->status()->description() . "\n";
-    echo $response->status()->errorDetails() . "\n";
-    echo "Status code: " . $response->status()->statusCode();
-}
 ```
 {% endtab %}
 
@@ -681,6 +731,45 @@ curl -X POST \
 FILEIN
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "data": {
+        "image": {
+          "base64": "{BYTES_STRING}"
+        }
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+// NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
+// https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
+// this will default to the latest version_id
+
+fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/versions/{MODEL_VERSION_ID}/outputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 {% tabs %}

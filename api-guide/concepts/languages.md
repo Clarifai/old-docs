@@ -1,8 +1,8 @@
+---
+description: Multilingual support in Clarifai
+---
+
 # Languages
-
-represented\# Languages
-
-## Multilingual support in Clarifai
 
 The Clarifai API supports many languages in addition to English. These are represented as translations of the names of concepts so that when you search by concept name or get predictions from a model's concepts you can utilize the language of your choice.
 
@@ -40,11 +40,11 @@ The currently supported languages are listed below.
 
 When you create a new Application, you must specify a default language. This will be the default language concepts are returned in when you do not explicitly set a language in an API request. You cannot change the default language. You can however change languages per request.
 
-![create new app](../../.gitbook/assets/create-new-app-new%20%282%29.png)
+![create new app](../../.gitbook/assets/create-new-app-new%20%282%29%20%282%29%20%284%29%20%286%29%20%286%29%20%286%29%20%286%29%20%283%29%20%2816%29%20%281%29.png)
 
 ## List language translations by concept ID
 
-You can see all the language translations for a given concept ID with a GET call. This call supports [pagination](../api-overview/pagination.md).
+You can see all the language translations for a given concept ID with a GET call. This call supports [pagination](../advanced-topics/pagination.md).
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -103,6 +103,10 @@ list_concept_languages_response = stub.ListConceptLanguages(
 )
 
 if list_concept_languages_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(list_concept_languages_response.outputs[0].status.code))
+    print("\tDescription: {}".format(list_concept_languages_response.outputs[0].status.description))
+    print("\tDetails: {}".format(list_concept_languages_response.outputs[0].status.details))
     raise Exception("List concept failed, status: " + list_concept_languages_response.status.description)
 ```
 {% endtab %}
@@ -115,6 +119,27 @@ curl -X GET \
   https://api.clarifai.com/v2/concepts/{concept_id}/languages
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const conceptId = '{CONCEPT_ID}'
+const appId = '{YOUR_APP_ID}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/concepts/${conceptId}/languages`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Get specific language translation for a concept
@@ -181,6 +206,10 @@ get_concept_language_response = stub.GetConceptLanguage(
 )
 
 if get_concept_langauge_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(get_concept_language_response.outputs[0].status.code))
+    print("\tDescription: {}".format(get_concept_language_response.outputs[0].status.description))
+    print("\tDetails: {}".format(get_concept_language_response.outputs[0].status.details))
     raise Exception("Get concept failed, status: " + get_concept_language_response.status.description)
 ```
 {% endtab %}
@@ -193,6 +222,28 @@ curl -X GET \
   https://api.clarifai.com/v2/concepts/{concept_id}/languages/{language}
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const conceptId = '{CONCEPT_ID}'
+const appId = '{YOUR_APP_ID}'
+const language = '{LANGUAGE}'
+
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  }
+};
+
+fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/concepts/${conceptId}/languages/${language}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Add a language translation for a concept
@@ -267,6 +318,10 @@ get_concept_language_response = stub.PostConceptLanguage(
 )
 
 if get_concept_langauge_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(get_concept_language_response.outputs[0].status.code))
+    print("\tDescription: {}".format(get_concept_language_response.outputs[0].status.description))
+    print("\tDetails: {}".format(get_concept_language_response.outputs[0].status.details))
     raise Exception("Get concept failed, status: " + get_concept_language_response.status.description)
 ```
 {% endtab %}
@@ -279,6 +334,40 @@ curl -X GET \
   https://api.clarifai.com/v2/concepts/{concept_id}/languages/{language}
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const conceptId = '{YOUR_CONCEPT_ID}'
+
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "concept_languages": [
+    {
+      "id": "ko",
+      "name": "개"
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/concepts/${conceptId}/languages`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 ## Update a language translation for a concept
@@ -356,6 +445,10 @@ get_concept_language_response = stub.PatchConceptLanguage(
 )
 
 if get_concept_langauge_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(get_concept_language_response.outputs[0].status.code))
+    print("\tDescription: {}".format(get_concept_language_response.outputs[0].status.description))
+    print("\tDetails: {}".format(get_concept_language_response.outputs[0].status.details))
     raise Exception("Get concept failed, status: " + get_concept_language_response.status.description)
 ```
 {% endtab %}
@@ -368,5 +461,40 @@ curl -X GET \
   https://api.clarifai.com/v2/concepts/{concept_id}/languages/{language}
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const conceptId = '{YOUR_CONCEPT_ID}'
+
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "concept_languages": [
+    {
+      "id": "ko",
+      "name": "개"
+    }
+  ],
+  "action": "overwrite"
+});
+
+var requestOptions = {
+  method: 'PATCH',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+fetch(`https://api.clarifai.com/v2/concepts/${conceptId}/languages`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 

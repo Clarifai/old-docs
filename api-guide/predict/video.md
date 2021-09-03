@@ -1,3 +1,7 @@
+---
+description: Make predictions on video inputs
+---
+
 # Video
 
 With a video input, the Predict API response will return a list of predicted concepts for every frame of a video. By default, video is processed at 1 frame per second \(but this is configurable in the predict request\). This means you will receive a list of concepts for every second of your video.
@@ -15,7 +19,146 @@ If your video exceeds the limits, please follow our [tutorial](https://www.clari
 Below is an example of how you would send video URLs and receive back predictions from the `general` model.
 
 {% tabs %}
-{% tab title="gRPC Java" %}
+
+{% tab title="Python" %}
+```python
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+post_model_outputs_response = stub.PostModelOutputs(
+    service_pb2.PostModelOutputsRequest(
+        model_id="{THE_MODEL_ID}",
+        version_id="{THE_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    video=resources_pb2.Video(
+                        url="https://samples.clarifai.com/beer.mp4"
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+
+# Since we have one input, one output will exist here.
+output = post_model_outputs_response.outputs[0]
+
+# A separate prediction is available for each "frame".
+for frame in output.data.frames:
+    print("Predicted concepts on frame " + str(frame.frame_info.time) + ":")
+    for concept in frame.data.concepts:
+        print("\t%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+
+{% tab title="PHP" %}
+```php
+<?php
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+///////////////////////////////////////////////////////////////////////////////
+// Specifying the Request Data
+///////////////////////////////////////////////////////////////////////////////
+//
+// In the Clarifai platform a video is defined by a special Video object.
+// There are several ways in which an Video object can be populated including
+// by url and video bytes (base64).
+//
+$video = new Video([
+    'url' => 'https://samples.clarifai.com/beer.mp4'
+]);
+
+//
+// After a Video object is created, a Data object is constructed around it.
+// The Data object offers a container that contains additional video independent
+// metadata.  In this particular use case, no other metadata is needed to be
+// specified.
+//
+$data = new Data([
+    'video' => $video
+]);
+
+//
+// The Data object is then wrapped in an Input object in order to meet the
+// API specification.  Additional fields are available to populate in the Input
+// object, but for the purposes of this example we can send in just the
+// Data object.
+//
+$input = new Input([
+    'data' => $data
+]);
+
+///////////////////////////////////////////////////////////////////////////////
+// Creating the request object 
+///////////////////////////////////////////////////////////////////////////////
+//
+// Finally, the request object itself is created.  This object carries the request
+// along with the request status and other metadata related to the request itself.
+// In this example we populate:
+//    - the `user_app_id` field with the UserAppIDSet constructed above
+//    - the `model_id` field with the ID of the model we are referencing
+//    - the `inputs` field with an array of input objects constructed above 
+//
+$request = new PostModelOutputsRequest([
+    'user_app_id' => $userDataObject, // This is defined above
+    'model_id' => 'aaa03c23b3724a16a56b629203edc62c',  // This is the ID of the publicly available General model.
+    'inputs' => [$input]
+]);
+
+///////////////////////////////////////////////////////////////////////////////
+// Making the RPC call
+///////////////////////////////////////////////////////////////////////////////
+//
+// Once the request object is constructed, we can call the actual request to the
+// Clarifai platform.  This uses the opened gRPC client channel to communicate the
+// request and then wait for the response.
+//
+[$response, $status] = $client->PostModelOutputs(
+    $request,
+    $metadata
+)->wait();
+
+///////////////////////////////////////////////////////////////////////////////
+// Handling the Response
+///////////////////////////////////////////////////////////////////////////////
+//
+// The response is returned and the first thing we do is check the status of it.
+// A successful response will have a status code of 0, otherwise there is some 
+// reported error.
+//
+if ($status->code !== 0) throw new Exception("Error: {$status->details}");
+
+//
+// In addition to the RPC response status, there is a Clarifai API status that
+// reports if the operationo was a success or failure (not just that the commuunication)
+// was successful.
+//
+if ($response->getStatus()->getCode() != StatusCode::SUCCESS) {
+    throw new Exception("Failure response: " . $response->getStatus()->getDescription() . " " .
+        $response->getStatus()->getDetails());
+}
+
+//
+// The output of a successful call can be used in many ways.  In this example,
+// we loop through all of the frames of the video and print out the predicted 
+// concepts for each along with their numerical prediction value (confidence).
+//
+foreach ($output->getData()->getFrames() as $frame) {
+    echo "Predicted concepts on frame " . $frame->getFrameInfo()->getTime() . ":";
+    foreach ($frame->getData()->getConcepts() as $concept) {
+        echo "   " . $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
+    }
+}
+?>
+```
+{% endtab %}
+
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -54,7 +197,7 @@ for (Frame frame : output.getData().getFramesList()) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -92,13 +235,14 @@ stub.PostModelOutputs(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         model_id="{THE_MODEL_ID}",
         version_id="{THE_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
         inputs=[
@@ -114,6 +258,10 @@ post_model_outputs_response = stub.PostModelOutputs(
     metadata=metadata
 )
 if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_model_outputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_model_outputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(respopost_model_outputs_responsense.outputs[0].status.details))
     raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
 
 # Since we have one input, one output will exist here.
@@ -127,213 +275,6 @@ for frame in output.data.frames:
 ```
 {% endtab %}
 
-{% tab title="js" %}
-```javascript
-const Clarifai = require('clarifai');
-
-const app = new Clarifai.App({apiKey: 'YOUR_API_KEY'});
-
-app.models.predict(
-    Clarifai.GENERAL_MODEL,
-    'https://samples.clarifai.com/beer.mp4',
-    {video: true, sampleMs: 1000})
-  .then(response => {
-    let frames = response['outputs'][0]['data']['frames'];
-    frames.forEach(frame => {
-      console.log('Concepts in frame at time: ' + frame['frame_info']['time'] + 'ms');
-      frame['data']['concepts'].forEach(concept => {
-        console.log(' ' + concept['name'] + ' ' + concept['value']);
-      });
-    });
-  })
-  .catch(error => {
-    console.log('Error status code: ' + error.data['status']['code']);
-    console.log('Error description: ' + error.data['status']['description']);
-    if (error.data['status']['details'])
-    {
-      console.log('Error details: ' + error.data['status']['details']);
-    }
-  });
-```
-{% endtab %}
-
-{% tab title="python" %}
-```python
-from clarifai.errors import ApiError
-from clarifai.rest import ClarifaiApp
-
-app = ClarifaiApp(api_key='YOUR_API_KEY')
-
-m = app.public_models.general_model
-
-try:
-    response = m.predict_by_url('https://samples.clarifai.com/beer.mp4',
-                                is_video=True,
-                                sample_ms=1000)
-except ApiError as e:
-    print('Error status code: %d' % e.error_code)
-    print('Error description: %s' % e.error_desc)
-    if e.error_details:
-        print('Error details: %s' % e.error_details)
-    exit(1)
-
-frames = response['outputs'][0]['data']['frames']
-for frame in frames:
-    print('Concepts in frame at time: %d ms' % frame['frame_info']['time'])
-    for concept in frame['data']['concepts']:
-        print(' %s %f' % (concept['name'], concept['value']))
-```
-{% endtab %}
-
-{% tab title="java" %}
-```java
-import clarifai2.api.ClarifaiBuilder;
-import clarifai2.api.ClarifaiClient;
-import clarifai2.api.ClarifaiResponse;
-import clarifai2.dto.input.ClarifaiInput;
-import clarifai2.dto.model.VideoModel;
-import clarifai2.dto.model.output.ClarifaiOutput;
-import clarifai2.dto.prediction.Concept;
-import clarifai2.dto.prediction.Frame;
-
-import java.util.List;
-
-public class YourClassName {
-    public static void main(String[] args) {
-
-        ClarifaiClient client = new ClarifaiBuilder("YOUR_API_KEY")
-                .buildSync();
-
-        VideoModel model = client .getDefaultModels().generalVideoModel();
-        ClarifaiResponse<List<ClarifaiOutput<Frame>>> response = model.predict()
-                .withInputs(ClarifaiInput.forVideo("https://samples.clarifai.com/beer.mp4"))
-                .withSampleMs(1000)
-                .executeSync();
-
-        if (response.isSuccessful()) {
-            List<Frame> frames = response.get().get(0).data();
-            for (Frame frame : frames) {
-                System.out.println("Concepts in frame at time: " + frame.time() + " ms");
-                for (Concept concept : frame.concepts()) {
-                    System.out.println(" " + concept.name() + " " + concept.value());
-                }
-            }
-
-        } else {
-            System.out.println("Error status code: " + response.getStatus().statusCode());
-            System.out.println("Error description: " + response.getStatus().description());
-            if (response.getStatus().errorDetails() != null) {
-                System.out.println("Error details: " + response.getStatus().errorDetails());
-            }
-        }
-    }
-}
-```
-{% endtab %}
-
-{% tab title="csharp" %}
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Clarifai.API;
-using Clarifai.API.Responses;
-using Clarifai.DTOs.Inputs;
-using Clarifai.DTOs.Models;
-using Clarifai.DTOs.Models.Outputs;
-using Clarifai.DTOs.Predictions;
-
-namespace YourPackageName
-{
-    public class YourClassName
-    {
-        public static async Task Main()
-        {
-            var client = new ClarifaiClient("YOUR_API_KEY");
-
-            VideoModel model = client.PublicModels.GeneralVideoModel;
-
-            ClarifaiResponse<ClarifaiOutput<Frame>> response = await model
-                .Predict(
-                    input: new ClarifaiURLVideo("https://samples.clarifai.com/beer.mp4"),
-                    sampleMs: 1000
-                )
-                .ExecuteAsync();
-
-            if (response.IsSuccessful)
-            {
-                List<Frame> frames = response.Get().Data;
-                foreach (Frame frame in frames)
-                {
-                    Console.WriteLine($"Concepts in frame at time {frame.Time}:");
-                    foreach (Concept concept in frame.Concepts)
-                    {
-                        Console.WriteLine($" {concept.Name} {concept.Value}");
-                    }
-                }
-            }
-            else
-            {
-                Console.WriteLine($"Error status code: {response.Status.StatusCode}");
-                Console.WriteLine($"Error description: {response.Status.Description}");
-                if (response.Status.ErrorDetails != null)
-                {
-                    Console.WriteLine($"Error details: {response.Status.ErrorDetails}");
-                }
-            }
-        }
-    }
-}
-```
-{% endtab %}
-
-{% tab title="objective-c" %}
-```text
-Objective-C client details coming soon
-```
-{% endtab %}
-
-{% tab title="php" %}
-```php
-use Clarifai\API\ClarifaiClient;
-use Clarifai\DTOs\Inputs\ClarifaiURLVideo;
-use Clarifai\DTOs\Models\VideoModel;
-use Clarifai\DTOs\Outputs\ClarifaiOutput;
-use Clarifai\DTOs\Predictions\Concept;
-use Clarifai\DTOs\Predictions\Frame;
-
-$client = new ClarifaiClient('YOUR_API_KEY');
-
-/** @var VideoModel $model */
-$model = $client->publicModels()->generalVideoModel();
-
-$response = $model->predict(
-        new ClarifaiURLVideo('https://samples.clarifai.com/beer.mp4'))
-    ->withSampleMs(1000)
-    ->executeSync();
-
-if ($response->isSuccessful()) {
-    /** @var ClarifaiOutput $output */
-    $output = $response->get();
-    /** @var Frame[] $frames */
-    $frames = $output->data();
-
-    foreach ($frames as $frame) {
-        echo "Concepts in frame at time: {$frame->time()}\n";
-        /** @var Concept $concept */
-        foreach ($frame->concepts() as $concept) {
-            echo " {$concept->name()} {$concept->value()}\n";
-        }
-    }
-} else {
-    echo "Error status code: {$response->status()->statusCode()}";
-    echo "Error description: {$response->status()->description()}";
-    if ($response->status()->errorDetails()) {
-        echo "Error details: {$response->status()->errorDetails()}";
-    }
-}
-```
-{% endtab %}
 
 {% tab title="cURL" %}
 ```text
@@ -357,6 +298,45 @@ curl -X POST \
 # Model version ID is optional. It defaults to the latest model version.
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "data": {
+        "video": {
+          "url": "https://samples.clarifai.com/beer.mp4"
+        }
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+// NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
+// https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
+// this will default to the latest version_id
+
+fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/versions/{MODEL_VERSION_ID}/outputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 {% tabs %}
@@ -1588,7 +1568,155 @@ curl -X POST \
 Below is an example of how you would send the bytes of a video and receive back predictions from the general model.
 
 {% tabs %}
-{% tab title="gRPC Java" %}
+
+{% tab title="Python" %}
+```python
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+with open("{YOUR_VIDEO_FILE_LOCATION}", "rb") as f:
+    file_bytes = f.read()
+
+post_model_outputs_response = stub.PostModelOutputs(
+    service_pb2.PostModelOutputsRequest(
+        model_id="{THE_MODEL_ID}",
+        version_id="{THE_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    video=resources_pb2.Video(
+                        base64=file_bytes
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+
+# Since we have one input, one output will exist here.
+output = post_model_outputs_response.outputs[0]
+
+# A separate prediction is available for each "frame".
+for frame in output.data.frames:
+    print("Predicted concepts on frame " + str(frame.frame_info.time) + ":")
+    for concept in frame.data.concepts:
+        print("\t%s %.2f" % (concept.name, concept.value))
+```
+{% endtab %}
+{% tab title="PHP" %}
+```php
+<?php
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+//
+// For this example, the bytes of a video are needed and can be read in
+// using PHP provided functions.
+//
+video = "https://samples.clarifai.com/beer.mp4";
+$videoData = file_get_contents($image); // Get the video data from the URL
+
+///////////////////////////////////////////////////////////////////////////////
+// Specifying the Request Data
+///////////////////////////////////////////////////////////////////////////////
+//
+// In the Clarifai platform a video is defined by a special Video object.
+// There are several ways in which an Video object can be populated including
+// by url and video bytes (base64).
+//
+$video = new Video([
+    'base64' => $videoData
+]);
+
+//
+// After a Video object is created, a Data object is constructed around it.
+// The Data object offers a container that contains additional image independent
+// metadata.  In this particular use case, no other metadata is needed to be
+// specified.
+//
+$data = new Data([
+    'video' => $video
+]);
+
+//
+// The Data object is then wrapped in a Video object in order to meet the
+// API specification.  Additional fields are available to populate in the Input
+// object, but for the purposes of this example we can send in just the
+// Data object.
+//
+$input = new Input([
+    'data' => $data
+]);
+
+///////////////////////////////////////////////////////////////////////////////
+// Creating the request object 
+///////////////////////////////////////////////////////////////////////////////
+//
+// Finally, the request object itself is created.  This object carries the request
+// along with the request status and other metadata related to the request itself.
+// In this example we populate:
+//    - the `user_app_id` field with the UserAppIDSet constructed above
+//    - the `model_id` field with the ID of the model we are referencing
+//    - the `inputs` field with an array of input objects constructed above 
+//
+$request = new PostModelOutputsRequest([
+    'user_app_id' => $userDataObject, // This is defined above
+    'model_id' => 'aaa03c23b3724a16a56b629203edc62c',  // This is the ID of the publicly available General model.
+    'inputs' => [$input]
+]);
+
+///////////////////////////////////////////////////////////////////////////////
+// Making the RPC call
+///////////////////////////////////////////////////////////////////////////////
+//
+// Once the request object is constructed, we can call the actual request to the
+// Clarifai platform.  This uses the opened gRPC client channel to communicate the
+// request and then wait for the response.
+//
+[$response, $status] = $client->PostModelOutputs(
+    $request,
+    $metadata
+)->wait();
+
+///////////////////////////////////////////////////////////////////////////////
+// Handling the Response
+///////////////////////////////////////////////////////////////////////////////
+//
+// The response is returned and the first thing we do is check the status of it.
+// A successful response will have a status code of 0, otherwise there is some 
+// reported error.
+//
+if ($status->code !== 0) throw new Exception("Error: {$status->details}");
+
+//
+// In addition to the RPC response status, there is a Clarifai API status that
+// reports if the operationo was a success or failure (not just that the commuunication)
+// was successful.
+//
+if ($response->getStatus()->getCode() != StatusCode::SUCCESS) {
+    throw new Exception("Failure response: " . $response->getStatus()->getDescription() . " " .
+        $response->getStatus()->getDetails());
+}
+
+//
+// The output of a successful call can be used in many ways.  In this example,
+// we loop through all of the frames of the video and print out the predicted 
+// concepts for each along with their numerical prediction value (confidence).
+//
+foreach ($output->getData()->getFrames() as $frame) {
+    echo "Predicted concepts on frame " . $frame->getFrameInfo()->getTime() . ":";
+    foreach ($frame->getData()->getConcepts() as $concept) {
+        echo "   " . $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
+    }
+}
+?>
+```
+{% endtab %}
+
+{% tab title="Java" %}
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -1630,7 +1758,7 @@ for (Frame frame : output.getData().getFramesList()) {
 ```
 {% endtab %}
 
-{% tab title="gRPC NodeJS" %}
+{% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1671,7 +1799,8 @@ stub.PostModelOutputs(
 ```
 {% endtab %}
 
-{% tab title="gRPC Python" %}
+
+{% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1681,6 +1810,7 @@ with open("{YOUR_VIDEO_FILE_LOCATION}", "rb") as f:
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         model_id="{THE_MODEL_ID}",
         version_id="{THE_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
         inputs=[
@@ -1696,6 +1826,10 @@ post_model_outputs_response = stub.PostModelOutputs(
     metadata=metadata
 )
 if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_model_outputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_model_outputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(respopost_model_outputs_responsense.outputs[0].status.details))
     raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
 
 # Since we have one input, one output will exist here.
@@ -1709,215 +1843,6 @@ for frame in output.data.frames:
 ```
 {% endtab %}
 
-{% tab title="js" %}
-```javascript
-const Clarifai = require('clarifai');
-
-const app = new Clarifai.App({apiKey: 'YOUR_API_KEY'});
-
-app.models.predict(
-    Clarifai.GENERAL_MODEL,
-    {base64: 'AAAAIGZ...'},
-    {video: true, sampleMs: 1000})
-  .then(response => {
-    let frames = response['outputs'][0]['data']['frames'];
-    frames.forEach(frame => {
-      console.log('Concepts in frame at time: ' + frame['frame_info']['time'] + 'ms');
-      frame['data']['concepts'].forEach(concept => {
-        console.log(' ' + concept['name'] + ' ' + concept['value']);
-      });
-    });
-  })
-  .catch(error => {
-    console.log('Error status code: ' + error.data['status']['code']);
-    console.log('Error description: ' + error.data['status']['description']);
-    if (error.data['status']['details']) {
-      console.log('Error details: ' + error.data['status']['details']);
-    }
-  });
-```
-{% endtab %}
-
-{% tab title="python" %}
-```python
-from clarifai.errors import ApiError
-from clarifai.rest import ClarifaiApp
-
-app = ClarifaiApp(api_key='YOUR_API_KEY')
-
-m = app.public_models.general_model
-
-try:
-    # There are also methods m.predict_by_base64 and m.predict_by_bytes
-    response = m.predict_by_filename('video_file_path.mp4',
-                                     is_video=True,
-                                     sample_ms=1000)
-except ApiError as e:
-    print('Error status code: %d' % e.error_code)
-    print('Error description: %s' % e.error_desc)
-    if e.error_details:
-        print('Error details: %s' % e.error_details)
-    exit(1)
-
-frames = response['outputs'][0]['data']['frames']
-for frame in frames:
-    print('Concepts in frame at time: %d ms' % frame['frame_info']['time'])
-    for concept in frame['data']['concepts']:
-        print(' %s %f' % (concept['name'], concept['value']))
-```
-{% endtab %}
-
-{% tab title="java" %}
-```java
-import clarifai2.api.ClarifaiBuilder;
-import clarifai2.api.ClarifaiClient;
-import clarifai2.api.ClarifaiResponse;
-import clarifai2.dto.input.ClarifaiInput;
-import clarifai2.dto.model.VideoModel;
-import clarifai2.dto.model.output.ClarifaiOutput;
-import clarifai2.dto.prediction.Concept;
-import clarifai2.dto.prediction.Frame;
-
-import java.io.File;
-import java.util.List;
-
-public class YourClassName {
-    public static void main(String[] args) {
-
-        ClarifaiClient client = new ClarifaiBuilder("YOUR_API_KEY")
-                .buildSync();
-
-        VideoModel model = client .getDefaultModels().generalVideoModel();
-        ClarifaiResponse<List<ClarifaiOutput<Frame>>> response = model.predict()
-                .withInputs(ClarifaiInput.forVideo(new File("video_file_path.mp4")))
-                .withSampleMs(1000)
-                .executeSync();
-
-        if (response.isSuccessful()) {
-            List<Frame> frames = response.get().get(0).data();
-            for (Frame frame : frames) {
-                System.out.println("Concepts in frame at time: " + frame.time() + " ms");
-                for (Concept concept : frame.concepts()) {
-                    System.out.println(" " + concept.name() + " " + concept.value());
-                }
-            }
-
-        } else {
-            System.out.println("Error status code: " + response.getStatus().statusCode());
-            System.out.println("Error description: " + response.getStatus().description());
-            if (response.getStatus().errorDetails() != null) {
-                System.out.println("Error details: " + response.getStatus().errorDetails());
-            }
-        }
-    }
-}
-```
-{% endtab %}
-
-{% tab title="csharp" %}
-```csharp
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
-using Clarifai.API;
-using Clarifai.API.Responses;
-using Clarifai.DTOs.Inputs;
-using Clarifai.DTOs.Models;
-using Clarifai.DTOs.Models.Outputs;
-using Clarifai.DTOs.Predictions;
-
-namespace YourPackageName
-{
-    public class YourClassName
-    {
-        public static async Task Main()
-        {
-            var client = new ClarifaiClient("YOUR_API_KEY");
-
-            VideoModel model = client.PublicModels.GeneralVideoModel;
-
-            ClarifaiResponse<ClarifaiOutput<Frame>> response = await model
-                .Predict(
-                    input: new ClarifaiFileVideo(File.ReadAllBytes("video_file_path.mp4")),
-                    sampleMs: 1000
-                )
-                .ExecuteAsync();
-
-            if (response.IsSuccessful)
-            {
-                List<Frame> frames = response.Get().Data;
-                foreach (Frame frame in frames)
-                {
-                    Console.WriteLine($"Concepts in frame at time {frame.Time}:");
-                    foreach (Concept concept in frame.Concepts)
-                    {
-                        Console.WriteLine($" {concept.Name} {concept.Value}");
-                    }
-                }
-            }
-            else
-            {
-                Console.WriteLine($"Error status code: {response.Status.StatusCode}");
-                Console.WriteLine($"Error description: {response.Status.Description}");
-                if (response.Status.ErrorDetails != null)
-                {
-                    Console.WriteLine($"Error details: {response.Status.ErrorDetails}");
-                }
-            }
-        }
-    }
-}
-```
-{% endtab %}
-
-{% tab title="objective-c" %}
-```text
-Objective-C client details coming soon
-```
-{% endtab %}
-
-{% tab title="php" %}
-```php
-use Clarifai\API\ClarifaiClient;
-use Clarifai\DTOs\Inputs\ClarifaiFileVideo;
-use Clarifai\DTOs\Models\VideoModel;
-use Clarifai\DTOs\Outputs\ClarifaiOutput;
-use Clarifai\DTOs\Predictions\Concept;
-use Clarifai\DTOs\Predictions\Frame;
-
-$client = new ClarifaiClient('YOUR_API_KEY');
-
-/** @var VideoModel $model */
-$model = $client->publicModels()->generalVideoModel();
-
-$response = $model->predict(
-        new ClarifaiFileVideo(file_get_contents('video_file_path.mp4')))
-    ->withSampleMs(1000)
-    ->executeSync();
-
-if ($response->isSuccessful()) {
-    /** @var ClarifaiOutput $output */
-    $output = $response->get();
-    /** @var Frame[] $frames */
-    $frames = $output->data();
-
-    foreach ($frames as $frame) {
-        echo "Concepts in frame at time: {$frame->time()}\n";
-        /** @var Concept $concept */
-        foreach ($frame->concepts() as $concept) {
-            echo " {$concept->name()} {$concept->value()}\n";
-        }
-    }
-} else {
-    echo "Error status code: {$response->status()->statusCode()}\n";
-    echo "Error description: {$response->status()->description()}\n";
-    if ($response->status()->errorDetails()) {
-        echo "Error details: {$response->status()->errorDetails()}\n";
-    }
-}
-```
-{% endtab %}
 
 {% tab title="cURL" %}
 ```text
@@ -1941,6 +1866,45 @@ curl -X POST \
 # The model version ID is optional. It defaults to the latest model version.
 ```
 {% endtab %}
+
+{% tab title="Javascript (REST)" %}
+```javascript
+const raw = JSON.stringify({
+	"user_app_id": {
+		"user_id": "{YOUR_USER_ID}",
+		"app_id": "{YOUR_APP_ID}"
+	},
+  "inputs": [
+    {
+      "data": {
+        "video": {
+          "base64": "{YOUR_BYTES_STRING}"
+        }
+      }
+    }
+  ]
+});
+
+const requestOptions = {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
+  },
+  body: raw
+};
+
+// NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
+// https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
+// this will default to the latest version_id
+
+fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/versions/{MODEL_VERSION_ID}/outputs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+{% endtab %}
+
 {% endtabs %}
 
 {% tabs %}
