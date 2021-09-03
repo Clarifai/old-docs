@@ -6,6 +6,7 @@ description: >-
 ---
 
 # Welcome
+Clarifai offers an end-to-end platform for the complete AI lifecycle. Whether you have one input or billions, you are only steps away from using artificial intelligence to power your business applications.
 
 ## Get started with a few clicks, or a few lines of code.
 
@@ -65,5 +66,6 @@ Predictions are the basic "output" of machine learning models. Predictions are r
 
 Clarifai's patented technology automatically indexes your media for search. Concepts in your models can be used as search terms. You can also search with images to find similar images. We offer numerous search types that can be combined to filter and sort your data.
 
+[![](/images/api.jpg) Search API](../api-guide/predict) /
+[![](/images/icon_portal.jpg) Search with Portal](../portal-guide/psearch)
 ![](.gitbook/assets/api%20%284%29.jpg) [Spacetime Search API](api-guide/search/) / [![](.gitbook/assets/icon_portal%20%2813%29%20%289%29%20%283%29%20%2812%29.jpg) Spacetime Search in Portal](introduction.md)
-
