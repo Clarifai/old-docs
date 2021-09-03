@@ -16,23 +16,73 @@ Below is an example of how you would send image URLs and receive back prediction
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
+
+###############################################################################
+# Specifying the Request Data
+###############################################################################
+#
+# In the Clarifai platform an image is defined by a special Image object.
+# There are several ways in which an Image object can be populated including
+# by url and image bytes (base64).
+#
+image = resources_pb2.Image(url="https://samples.clarifai.com/metro-north.jpg")
+
+#
+# After an Image object is created, a Data object is constructed around it.
+# The Data object offers a container that contains additional image independent
+# metadata.  In this particular use case, no other metadata is needed to be
+# specified.
+#
+data = resources_pb2.Data(image=image)
+
+#
+# The Data object is then wrapped in an Input object in order to meet the
+# API specification.  Additional fields are available to populate in the Input
+# object, but for the purposes of this example we can send in just the
+# Data object.
+#
+input = resources_pb2.Input(data=data)
+
+###############################################################################
+# Creating the request object 
+###############################################################################
+#
+# Finally, the request object itself is created.  This object carries the request
+# along with the request status and other metadata related to the request itself.
+# In this example we populate:
+#    - the `user_app_id` field with the UserAppIDSet constructed above
+#    - the `model_id` field with the ID of the model we are referencing
+#    - the `version_id` field is optional with the version of the model. By default it will be the latest model version of the model specified in model_id.
+#    - the `inputs` field with an array of input objects constructed above. In this case there is only a single input, but it should still be specified as an array of 1.
+#
+model_request = service_pb2.PostModelOutputsRequest(
+        user_app_id=userDataObject,  
+        model_id="aaa03c23b3724a16a56b629203edc62c",  # This is the general model ID
+        # version_id="{THE_MODEL_VERSION_ID}",  # This is optional. 
+        inputs=[input] 
+    )
+
+###############################################################################
+# Making the RPC call
+###############################################################################
+#
+# Once the request object is constructed, we can call the actual request to the
+# Clarifai platform.  This uses the opened gRPC client channel to communicate the
+# request and then wait for the response.
+#
 post_model_outputs_response = stub.PostModelOutputs(
-    service_pb2.PostModelOutputsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        model_id="{THE_MODEL_ID}",
-        version_id="{THE_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="https://samples.clarifai.com/metro-north.jpg"
-                    )
-                )
-            )
-        ]
-    ),
-    metadata=metadata
+  model_request, # The constructed request
+  metadata=metadata # Metadata containing the PAT, constructed in the overview.
 )
+
+###############################################################################
+# Handling the Response
+###############################################################################
+#
+# The response is returned and the first thing we do is check the status of it.
+# A successful response will have a status code of 0, otherwise there is some 
+# reported error.
+#
 if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
     print("There was an error with your request!")
     print("\tCode: {}".format(post_model_outputs_response.outputs[0].status.code))
@@ -43,6 +93,11 @@ if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
 # Since we have one input, one output will exist here.
 output = post_model_outputs_response.outputs[0]
 
+#
+# The output of a successful call can be used in many ways.  In this example,
+# we loop through all of the predicted concepts and print them out along with
+# their numerical prediction value (confidence).
+#
 print("Predicted concepts:")
 for concept in output.data.concepts:
     print("%s %.2f" % (concept.name, concept.value))
