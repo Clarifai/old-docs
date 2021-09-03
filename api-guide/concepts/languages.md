@@ -103,6 +103,10 @@ list_concept_languages_response = stub.ListConceptLanguages(
 )
 
 if list_concept_languages_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(list_concept_languages_response.outputs[0].status.code))
+    print("\tDescription: {}".format(list_concept_languages_response.outputs[0].status.description))
+    print("\tDetails: {}".format(list_concept_languages_response.outputs[0].status.details))
     raise Exception("List concept failed, status: " + list_concept_languages_response.status.description)
 ```
 {% endtab %}
@@ -202,6 +206,10 @@ get_concept_language_response = stub.GetConceptLanguage(
 )
 
 if get_concept_langauge_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(get_concept_language_response.outputs[0].status.code))
+    print("\tDescription: {}".format(get_concept_language_response.outputs[0].status.description))
+    print("\tDetails: {}".format(get_concept_language_response.outputs[0].status.details))
     raise Exception("Get concept failed, status: " + get_concept_language_response.status.description)
 ```
 {% endtab %}
@@ -310,6 +318,10 @@ get_concept_language_response = stub.PostConceptLanguage(
 )
 
 if get_concept_langauge_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(get_concept_language_response.outputs[0].status.code))
+    print("\tDescription: {}".format(get_concept_language_response.outputs[0].status.description))
+    print("\tDetails: {}".format(get_concept_language_response.outputs[0].status.details))
     raise Exception("Get concept failed, status: " + get_concept_language_response.status.description)
 ```
 {% endtab %}
@@ -433,6 +445,10 @@ get_concept_language_response = stub.PatchConceptLanguage(
 )
 
 if get_concept_langauge_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(get_concept_language_response.outputs[0].status.code))
+    print("\tDescription: {}".format(get_concept_language_response.outputs[0].status.description))
+    print("\tDetails: {}".format(get_concept_language_response.outputs[0].status.details))
     raise Exception("Get concept failed, status: " + get_concept_language_response.status.description)
 ```
 {% endtab %}

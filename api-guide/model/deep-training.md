@@ -195,7 +195,11 @@ metadata=metadata
 )
 
 if post_models_response.status.code != status_code_pb2.SUCCESS:
-raise Exception("Post models failed, status: " + post_models_response.status.description)
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_models_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_models_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_models_response.outputs[0].status.details))
+    raise Exception("Post models failed, status: " + post_models_response.status.description)
 ```
 {% endtab %}
 
@@ -365,7 +369,11 @@ post_models_response = stub.PostModels(
 )
 
 if post_models_response.status.code != status_code_pb2.SUCCESS:
-  raise Exception("Post models failed, status: " + post_models_response.status.description)
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_models_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_models_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_models_response.outputs[0].status.details))
+    raise Exception("Post models failed, status: " + post_models_response.status.description)
 ```
 {% endtab %}
 
@@ -535,6 +543,10 @@ post_models_response = stub.PostModels(
 )
 
 if post_models_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_models_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_models_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_models_response.outputs[0].status.details))
     raise Exception("Post models failed, status: " + post_models_response.status.description)
 ```
 {% endtab %}
@@ -715,6 +727,10 @@ post_workflows_response = stub.PostWorkflows(
 )
 
 if post_workflows_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_workflows_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_workflows_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_workflows_response.outputs[0].status.details))
     raise Exception("Post workflows failed, status: " + post_workflows_response.status.description)
 ```
 {% endtab %}
@@ -838,6 +854,10 @@ patch_apps_response = stub.PatchApps(
 )
 
 if patch_apps_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(patch_apps_response.outputs[0].status.code))
+    print("\tDescription: {}".format(patch_apps_response.outputs[0].status.description))
+    print("\tDetails: {}".format(patch_apps_response.outputs[0].status.details))
     raise Exception("Patch apps failed, status: " + patch_apps_response.status.description)
 ```
 {% endtab %}

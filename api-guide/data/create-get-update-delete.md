@@ -90,6 +90,10 @@ post_inputs_response = stub.PostInputs(
 )
 
 if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_inputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_inputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_inputs_response.outputs[0].status.details))
     raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 {% endtab %}
@@ -238,6 +242,10 @@ post_inputs_response = stub.PostInputs(
 )
 
 if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_inputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_inputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_inputs_response.outputs[0].status.details))
     raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 {% endtab %}
@@ -421,10 +429,13 @@ post_inputs_response = stub.PostInputs(
 )
 
 if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
     for input_object in post_inputs_response.inputs:
         print("Input " + input_object.id + " status:")
         print(input_object.status)
-
+    print("\tCode: {}".format(post_inputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_inputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_inputs_response.outputs[0].status.details))
     raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 {% endtab %}
@@ -598,6 +609,10 @@ post_inputs_response = stub.PostInputs(
 )
 
 if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_inputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_inputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_inputs_response.outputs[0].status.details))
     raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 {% endtab %}
@@ -778,6 +793,10 @@ post_inputs_response = stub.PostInputs(
 )
 
 if post_inputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_inputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_inputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_inputs_response.outputs[0].status.details))
     raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 {% endtab %}
@@ -913,6 +932,10 @@ list_inputs_response = stub.ListInputs(
 )
 
 if list_inputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(list_inputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(list_inputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(list_inputs_response.outputs[0].status.details))
     raise Exception("List inputs failed, status: " + list_inputs_response.status.description)
 
 for input_object in list_inputs_response.inputs:
@@ -1072,6 +1095,10 @@ stream_inputs_response = stub.StreamInputs(
 )
 
 if stream_inputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(stream_inputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(stream_inputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(stream_inputs_response.outputs[0].status.details))
     raise Exception("Stream inputs failed, status: " + stream_inputs_response.status.description)
 
 print("First response (starting from the first input):")
@@ -1204,6 +1231,10 @@ get_input_response = stub.GetInput(
 )
 
 if get_input_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(get_input_response.outputs[0].status.code))
+    print("\tDescription: {}".format(get_input_response.outputs[0].status.description))
+    print("\tDetails: {}".format(get_input_response.outputs[0].status.details))
     raise Exception("Get input failed, status: " + get_input_response.status.description)
 
 input_object = get_input_response.input
@@ -1302,6 +1333,10 @@ get_input_count_response = stub.GetInputCount(
 )
 
 if get_input_count_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(get_input_count_response.outputs[0].status.code))
+    print("\tDescription: {}".format(get_input_count_response.outputs[0].status.description))
+    print("\tDetails: {}".format(get_input_count_response.outputs[0].status.details))
     raise Exception("Get input count failed, status: " + get_input_count_response.status.description)
 
 counts = get_input_count_response.counts
@@ -1438,6 +1473,10 @@ patch_inputs_response = stub.PatchInputs(
 )
 
 if patch_inputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(patch_inputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(patch_inputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(patch_inputs_response.outputs[0].status.details))
     raise Exception("Patch inputs failed, status: " + patch_inputs_response.status.description)
 ```
 {% endtab %}
@@ -1647,6 +1686,10 @@ patch_inputs_response = stub.PatchInputs(
 )
 
 if patch_inputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(patch_inputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(patch_inputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(patch_inputs_response.outputs[0].status.details))
     raise Exception("Patch inputs failed, status: " + patch_inputs_response.status.description)
 ```
 {% endtab %}
@@ -1854,6 +1897,10 @@ patch_inputs_response = stub.PatchInputs(
 )
 
 if patch_inputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(patch_inputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(patch_inputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(patch_inputs_response.outputs[0].status.details))
     raise Exception("Patch inputs failed, status: " + patch_inputs_response.status.description)
 ```
 {% endtab %}
@@ -2046,6 +2093,10 @@ patch_inputs_response = stub.PatchInputs(
 )
 
 if patch_inputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(patch_inputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(patch_inputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(patch_inputs_response.outputs[0].status.details))
     raise Exception("Patch inputs failed, status: " + patch_inputs_response.status.description)
 ```
 {% endtab %}
@@ -2208,6 +2259,10 @@ delete_input_response = stub.DeleteInput(
 )
 
 if delete_input_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(delete_input_response.outputs[0].status.code))
+    print("\tDescription: {}".format(delete_input_response.outputs[0].status.description))
+    print("\tDetails: {}".format(delete_input_response.outputs[0].status.details))
     raise Exception("Delete input failed, status: " + delete_input_response.status.description)
 ```
 {% endtab %}
@@ -2304,6 +2359,10 @@ delete_inputs_response = stub.DeleteInputs(
 )
 
 if delete_inputs_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(delete_inputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(delete_inputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(delete_inputs_response.outputs[0].status.details))
     raise Exception("Delete inputs failed, status: " + delete_inputs_response.status.description)
 ```
 {% endtab %}

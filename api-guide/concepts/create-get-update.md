@@ -71,6 +71,10 @@ post_concepts_response = stub.PostConcepts(
 )
 
 if post_concepts_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_concepts_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_concepts_response.outputs[0].status.description))
+    print("\tDetails: {}".format(post_concepts_response.outputs[0].status.details))
     raise Exception("Post concept failed, status: " + post_concepts_response.status.description)
 ```
 {% endtab %}
@@ -189,6 +193,10 @@ get_concepts_response = stub.GetConcept(
 )
 
 if get_concepts_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(get_concepts_response.outputs[0].status.code))
+    print("\tDescription: {}".format(get_concepts_response.outputs[0].status.description))
+    print("\tDetails: {}".format(get_concepts_response.outputs[0].status.details))
     raise Exception("Get concept failed, status: " + get_concepts_response.status.description)
 ```
 {% endtab %}
@@ -280,6 +288,10 @@ list_concepts_response = stub.ListConcepts(
 )
 
 if list_concepts_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(list_concepts_response.outputs[0].status.code))
+    print("\tDescription: {}".format(list_concepts_response.outputs[0].status.description))
+    print("\tDetails: {}".format(list_concepts_response.outputs[0].status.details))
     raise Exception("List concept failed, status: " + list_concepts_response.status.description)
 ```
 {% endtab %}
@@ -380,6 +392,10 @@ patch_concepts_response = stub.PatchConcepts(
 )
 
 if patch_concepts_response.status.code != status_code_pb2.SUCCESS:
+    print("There was an error with your request!")
+    print("\tCode: {}".format(patch_concepts_response.outputs[0].status.code))
+    print("\tDescription: {}".format(patch_concepts_response.outputs[0].status.description))
+    print("\tDetails: {}".format(patch_concepts_response.outputs[0].status.details))
     raise Exception("Patch concept failed, status: " + patch_concepts_response.status.description)
 ```
 {% endtab %}
