@@ -32,7 +32,7 @@ Data Type  | Meaning
 ---------- | -------------
 text  | This is freeform plain text which can either be uploaded or specified with a URI.
 image | This is an image in an accepted format, which currently includes JPG, PNG, TIFF, BMP, WEBP, CSV, and TSV. It can either be uploaded or specified with a URI.
-video | This is video in an accepted format, which currently includes [NEED VIDEO FORMATS]. It can either be uploaded or specified with a URI.
+video | This is video in an accepted format, which currently includes AVI, MP4, WMV, MOV, GIF, and 3GPP. It can either be uploaded or specified with a URI.
 audio | This is audio in an accepted format, which currently includes [NEED AUDIO FORMATS]. It can either be uploaded or specified with a URI.
 
  
