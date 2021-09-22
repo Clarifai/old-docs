@@ -143,6 +143,8 @@
 
 * [Upcoming API Changes](product-updates/upcoming-api-changes.md)
 * [Changelog](product-updates/changelog/README.md)
+  * [Release 7.8](product-updates/changelog/release78.md)
+  * [Release 7.7](product-updates/changelog/release77.md)
   * [Release 7.6](product-updates/changelog/release76.md)
   * [Release 7.5](product-updates/changelog/release75.md)
   * [Release 7.4](product-updates/changelog/release74.md)
