@@ -1307,7 +1307,7 @@ list_annotations_response = stub.ListAnnotations(
         input_ids=["{YOUR_INPUT_ID_1}". "{YOUR_INPUT_ID_2}"], 
         per_page=10
     ),
-    metadta=metadata
+    metadata=metadata
 )
 
 if list_annotations_response.status.code != status_code_pb2.SUCCESS:
