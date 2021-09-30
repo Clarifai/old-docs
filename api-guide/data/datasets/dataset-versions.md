@@ -25,6 +25,8 @@ curl --location -g --request POST 'api.clarifai.com/v2/datasets/{{dataset_id}}/v
 }'
 ```
 {% endtab %}
+{% endtabs %}
+
 ## List dataset versions
 {% tabs %}
 {% tab title="cURL" %}
