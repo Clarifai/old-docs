@@ -44,8 +44,6 @@ Powerful zoom and panning features allow you to inspect specific regions of an i
 
 You can easily resize, move, or relabel existing bounding boxes. Just click on the bounding box that you would like to change and drag to move or resize. You can relabel bounding boxes by clicking the "edit" icon next to the existing label in the right-hand sidebar.
 
-![Edit labels](../../.gitbook/assets/edit-bounding-box.jpg)
-
 ## Bounding Box and Polygon Labeling
 
 You can handle many labeling tasks well with bounding box labels, but in cases where you need a more precise way to annotate objects. Polygon labels allow you to identify and annotate the exact pixels of your image that represent the object you would like to label. Polygon labels will output a sequence of x, y coordinates for every point that comprises the polygon.
