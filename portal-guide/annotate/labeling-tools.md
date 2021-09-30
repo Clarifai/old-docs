@@ -60,8 +60,6 @@ When labeling your images, you can create multi-point shapes that can outline th
 
 The quick mask tool makes it easy to select image masks when creating polygon annotations. Just be sure to choose the "Polygon" Task Type when creating your labeling task. The Quick-mask tool allows you to select a region of an image and then automatically generate an images mask for the detected object in the image. You can also fine-tune the selection once a mask has been created.
 
-![Semantic segmentation with Quick-Mask](../../.gitbook/assets/quick-image-mask.gif)
-
 ## Video
 
 Scribe provides powerful tools for labeling videos. When working with video, you can leverage video interpolation tools to label thousands of individual frames of video quickly. This rapid labeling technique makes video an excellent source of training data, even if you want your model to primarily analyze still images. You can use QuickTrain and DeepTrain models on video data that has been labeled in Scribe.
