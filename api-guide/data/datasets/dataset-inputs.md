@@ -24,6 +24,7 @@ curl --location -g --request POST 'api.clarifai.com/v2/datasets/{{dataset_id}}/i
 }'
 ```
 {% endtab %}
+{% endtabs %}
 
 ## List inputs in a datasets
 {% tabs %}
@@ -34,6 +35,7 @@ curl --location -g --request GET 'api.clarifai.com/v2/datasets/{{dataset_id}}/in
 --header 'Content-Type: application/json'
 ```
 {% endtab %}
+{% endtabs %}
 
 ## Get a dataset inputs
 {% tabs %}
@@ -44,6 +46,7 @@ curl --location -g --request GET 'api.clarifai.com/v2/datasets/{{dataset_id}}/in
 --header 'Content-Type: application/json'
 ```
 {% endtab %}
+{% endtabs %}
 
 ## Delete Inputs
 {% tabs %}

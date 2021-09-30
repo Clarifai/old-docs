@@ -25,6 +25,8 @@ curl --location -g --request POST 'api.clarifai.com/v2/datasets/{{dataset_id}}/f
 }'
 ```
 {% endtab %}
+{% endtabs %}
+
 ## List dataset Filters
 {% tabs %}
 {% tab title="cURL" %}
@@ -34,6 +36,7 @@ curl --location -g --request GET 'api.clarifai.com/v2/datasets/{{dataset_id}}/fi
 --header 'Content-Type: application/json'
 ```
 {% endtab %}
+{% endtabs %}
 
 ## Get a dataset filter
 {% tabs %}
@@ -44,6 +47,7 @@ curl --location -g --request GET 'api.clarifai.com/v2/datasets/{{dataset_id}}/fi
 --header 'Content-Type: application/json'
 ```
 {% endtab %}
+{% endtabs %}
 
 ## Change a dataset filter
 
@@ -65,6 +69,8 @@ curl --location -g --request PATCH 'api.clarifai.com/v2/datasets/{{dataset_id}}/
 }'
 ```
 {% endtab %}
+{% endtabs %}
+
 ## Delete a dataset filter
 {% tabs %}
 {% tab title="cURL" %}

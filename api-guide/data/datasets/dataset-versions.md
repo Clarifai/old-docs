@@ -34,6 +34,8 @@ curl --location -g --request GET 'api.clarifai.com/v2/datasets/{{dataset_id}}/ve
 --header 'Content-Type: application/json'
 ```
 {% endtab %}
+{% endtabs %}
+
 ## Get a dataset versions
 {% tabs %}
 {% tab title="cURL" %}
@@ -43,6 +45,8 @@ curl --location -g --request GET 'api.clarifai.com/v2/datasets/{{dataset_id}}/ve
 --header 'Content-Type: application/json'
 ```
 {% endtab %}
+{% endtabs %}
+
 ## Change a dataset version
 {% tabs %}
 {% tab title="cURL" %}
@@ -61,6 +65,8 @@ curl --location -g --request PATCH 'api.clarifai.com/v2/datasets/{{dataset_id}}/
 }'
 ```
 {% endtab %}
+{% endtabs %}
+
 ## Delete a dataset version
 {% tabs %}
 {% tab title="cURL" %}

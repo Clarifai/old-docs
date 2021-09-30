@@ -28,6 +28,7 @@ curl --location --request POST 'api.clarifai.com/v2/datasets' \
 ```
 
 {% endtab %}
+{% endtabs %}
 
 ## List datasets
 {% tabs %}
@@ -38,6 +39,7 @@ curl --location --request GET 'api.clarifai.com/v2/datasets?page=1&per_page=100'
 --header 'Content-Type: application/json'
 ```
 {% endtab %}
+{% endtabs %}
 
 
 ## Get datasets
@@ -49,6 +51,7 @@ curl --location -g --request GET 'api.clarifai.com/v2/datasets/{{dataset_id}}' \
 --header 'Content-Type: application/json'
 ```
 {% endtab %}
+{% endtabs %}
 
 
 ## Update datasets
@@ -73,6 +76,7 @@ curl --location --request PATCH 'api.clarifai.com/v2/datasets' \
 }'
 ```
 {% endtab %}
+{% endtabs %}
 
 ## Update datasets with default filter
 {% tabs %}
@@ -97,6 +101,7 @@ curl --location --request PATCH 'api.clarifai.com/v2/datasets' \
 }'
 ```
 {% endtab %}
+{% endtabs %}
 
 ## Delete datasets
 {% tabs %}
