@@ -33,9 +33,8 @@ Data Type  | Meaning
 text  | This is freeform plain text which can be uploaded via raw text or specified with a URI.
 image | This is an image in an accepted format, which currently includes JPG, PNG, TIFF, BMP, WEBP, CSV, and TSV. It can be uploaded via base64 bytes or specified with a URI.
 video | This is video in an accepted format, which currently includes AVI, MP4, WMV, MOV, GIF, and 3GPP. It can be uploaded via base64 bytes or specified with a URI.
-audio | This is audio in an accepted format, which currently includes [NEED AUDIO FORMATS]. It can be uploaded via base64 bytes or specified with a URI.
 
- 
+
 All these data formats are read in as raw bytes in base64 format.
 
 ### Table of single data types passed between models:
@@ -68,4 +67,3 @@ Data Type     | Meaning
 frames[...].data.regions[...].region\_info.bounding\_box | These are the four corners of a bounding box in a specific region of a specific frame of video.
 frames[...].data.regions[...].data.concepts | This is the matrix of frames and regions containing the  concepts used in a model. For the general model, these would be the top 20 concepts with classified with the highest confidence in a specific region of a specific frame of video.
 frames[...].data.regions[...].track_id |  This is the matrix of frames and regions containing a tracking ids used to track objects across frames of a video.
-
