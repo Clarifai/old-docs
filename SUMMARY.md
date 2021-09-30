@@ -4,7 +4,10 @@
 
 ## Clarifai Basics
 
-* [Build your first Clarifai App](clarifai-basics/quick-start.md)
+* [Start Here (5 mins or less!)](clarifai-basics/quick-start.md)
+  * [Your First AI Predictions (~1 min)](clarifai-basics/quick-start/your-first-custom-model.md)
+  * [Your First Visual Search App (~1 min)](clarifai-basics/quick-start/your-first-visual-search-app.md)
+  * [Your First Custom Model (~5 mins)](clarifai-basics/quick-start/your-first-custom-model.md)
 * [Key Terminology to Know](clarifai-basics/glossary.md)
 * [Applications](clarifai-basics/applications/README.md)
   * [Create an Application](clarifai-basics/applications/create-an-application.md)
@@ -26,6 +29,11 @@
   * [Helpful API Resources](api-guide/api-overview/helpful-api-resources/README.md)
     * [Using Postman with Clarifai APIs](api-guide/api-overview/helpful-api-resources/using-postman-with-clarifai-apis.md)
 * [Your Data](api-guide/data/README.md)
+  * [Datasets](api-guide/data/datasets/README.md)
+    * [Dataset Basics](api-guide/data/datasets/dataset-basics.md)
+    * [Dataset Filters](api-guide/data/datasets/dataset-filters.md)
+    * [Dataset Inputs](api-guide/data/datasets/dataset-inputs.md)
+    * [Dataset Versions](api-guide/data/datasets/dataset-versions.md)
   * [Supported Formats](api-guide/data/supported-formats.md)
   * [Adding and Removing Data](api-guide/data/create-get-update-delete.md)
   * [Collectors](api-guide/data/collectors.md)
