@@ -119,6 +119,7 @@
   * [Improving Your Model](portal-guide/evaluate/improving-your-model.md)
 * [Creating Workflows](portal-guide/workflows/README.md)
   * [Input Nodes](portal-guide/workflows/input-nodes.md)
+  * [Workflow Builder](portal-guide/workflows/workflow-builder.md)
   * [Base Workflows](portal-guide/workflows/base-workflows.md)
   * [Setting Up a Workflow](portal-guide/workflows/setting-up-a-mesh-workflow.md)
   * [Common Workflows](portal-guide/workflows/common-workflows/README.md)
@@ -143,6 +144,7 @@
 
 * [Upcoming API Changes](product-updates/upcoming-api-changes.md)
 * [Changelog](product-updates/changelog/README.md)
+  * [Release 7.9](product-updates/changelog/release79.md)
   * [Release 7.8](product-updates/changelog/release78.md)
   * [Release 7.7](product-updates/changelog/release77.md)
   * [Release 7.6](product-updates/changelog/release76.md)

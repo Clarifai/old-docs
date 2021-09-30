@@ -1,7 +1,7 @@
 # Authorize
 
 After creating your `API Key`, you are ready to make API calls. Most
-clients set up authentication when initilizing the client, it can be
+clients set up authentication when initializing the client, it can be
 changed for particular requests if needed. If you are using the REST
 API, you will need to add the `Authorization` header as described in
 the cURL example.
@@ -9,7 +9,7 @@ the cURL example.
 {% tabs %}
 {% tab title="js" %}
 ```javascript
-// Authentication done at grpc stub initialization time see:
+// Authentication done at gRPC stub initialization time see:
 //
 https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 metadata.set("authorization", "Key YOUR_CLARIFAI_API_KEY");
@@ -82,4 +82,3 @@ scopes and/or endpoints that your key needs to execute this
 request. An invalid key may be reported as 'API key not
 found'. Failure to include a required key may result simple in
 'Invalid request'.
-

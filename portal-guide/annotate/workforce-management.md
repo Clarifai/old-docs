@@ -36,3 +36,8 @@ Stats provide performance metrics for your team.
 
 **Time per label** - Time per label
 
+## Metrics V2
+
+Click the Metrics V2 tab under the Labeler tab to view worker performance for each of your tasks. You can  review task inputs that are approved, awaiting review or rejected, and you can review performance trends for each of your labelers over time. 
+
+![Metrics V2](../../.gitbook/assets/task-reporter.jpg)
