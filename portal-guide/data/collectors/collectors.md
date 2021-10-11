@@ -1,12 +1,15 @@
 # Collectors
 
-## Collectors
+## What are Collectors and why are they useful
 
 > Collectors are available with Professional and Enterprise plans to help you manage data ingestion at scale.
 
-Collectors capture input data for your app. They enable you to pipe in data from production models automatically, and are the key to unlocking many platform training capabilities like active learning. 
+An AI model is only as good as the data that it is trained on. However, it is not always possible to have enough data, or data with proper rights to train such a good model. It is here that Collectors become extraodinarily useful.
 
-You can create app-level collectors to monitor specific models and specify sampling rules for triggering data ingestion. Collectors can only collect data from apps where you are the app owner.
+Collectors capture input data for your app. They enable you to pipe in data from production models automatically, and you can use this data to further refine your models. You can create app-level collectors to monitor specific models and specify sampling rules for triggering data ingestion. Collectors can only collect data from apps where you are the app owner.
+
+Collectors are available with Essential and Enterprise plans
+
 
 ### Creating a new collector
 
@@ -54,4 +57,3 @@ This workflow uses the original input to the model as input to the workflow so t
 Select the model that you would like to collect from, and the collector will automatically post the new inputs to your app. Simply enter your model name, or model ID number. You can select the model that you would like to collect from in the drop down menu. When the user predicts an input against this model, the input is going to be collected.
 
 The app ID and user ID where the model is located. If using a publicly available model, the model user and app ID should be `clarifai` and `main`, respectively. Otherwise the IDs should belong to the user who created the model. An API key ID using which the inputs are is going to be added.
-
