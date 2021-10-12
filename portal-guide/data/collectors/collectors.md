@@ -29,7 +29,7 @@ Creating the model in Model would the involve
 1. Picking the Random Sampler Model Type.
 2. Giving it the percentage of images to collect.
 
-![](../../../.images/random_sampler_model_mode.png)
+![](images/random_sampler_model_mode.png)
 
 ![](../../../.images/random_sample_args.png)
 
