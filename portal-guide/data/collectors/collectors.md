@@ -15,13 +15,6 @@ Collectors are available with Essential and Enterprise plans
 
 Collectors help you to feed your models with real-world training data. This data can be taken from models that you have already deployed to production. Just create a collector within your app and set it up to ingest data from another model when new inputs are "posted" to this model.
 
-Creating the model in Model would the involve
-1. Picking the Random Sampler Model Type.
-2. Giving it the percentage of images to collect.
-
-![](../../../.images/random_sampler_model_mode.png)
-
-![](../../../.images/random_sample_args.png)
 
 ![](../../../.gitbook/assets/create_new_collector.jpg)
 
@@ -31,6 +24,15 @@ we set. This would be a custom model and you can find it under **Create Custom M
 
 Give this model a name and choose what percentage (fraction) of data you want to collect. The range runs from 0 to 1.0. 0 means that no data will be collected
 and 1.0 means that any images sent for prediction to your custom model in production will be collected.
+
+Creating the model in Model would the involve
+1. Picking the Random Sampler Model Type.
+2. Giving it the percentage of images to collect.
+
+![](../../../.images/random_sampler_model_mode.png)
+
+![](../../../.images/random_sample_args.png)
+
 
 #### Collector ID
 
