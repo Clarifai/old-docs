@@ -4,7 +4,7 @@
 
 > Collectors are available with Professional and Enterprise plans to help you manage data ingestion at scale.
 
-An AI model is only as good as the data that it is trained on. However, it is not always possible to have enough data, or data with proper rights to train such a good model. It is here that Collectors become extraodinarily useful.
+An AI model is only as good as the data that it is trained on. However, it is not always possible to have enough data, or data with proper rights to train such a good model. It is here that Collectors become extremely useful.
 
 Collectors capture input data for your app. They enable you to pipe in data from production models automatically, and you can use this data to further refine your models. You can create app-level collectors to monitor specific models and specify sampling rules for triggering data ingestion. Collectors can only collect data from apps where you are the app owner.
 
@@ -15,15 +15,22 @@ Collectors are available with Essential and Enterprise plans
 
 Collectors help you to feed your models with real-world training data. This data can be taken from models that you have already deployed to production. Just create a collector within your app and set it up to ingest data from another model when new inputs are "posted" to this model.
 
+Creating the model in Model would the involve
+1. Picking the Random Sampler Model Type.
+2. Giving it the percentage of images to collect.
+
+![](../../../.images/random_sampler_model_mode.png)
+
+![](../../../.images/random_sample_args.png)
+
 ![](../../../.gitbook/assets/create_new_collector.jpg)
 
-## Collectors
+### Step 1 Create a sampler model and put it in a workflow
+The first thing to do here is to create a Random sampler. The purpose of this model is to collect (sample) data based on the fraction or proportion that
+we set. This would be a custom model and you can find it under **Create Custom Model** tab of Model Mode. The model type for this would be **Random Sampler**
 
-Collectors capture input data for your app. They enable you to pipe in data from production models automatically, and are the key to unlocking many platform training capabilities like active learning. Collectors are available with Essential and Enterprise plans to help you manage data ingestion at scale.
-
-You can create app-level collectors to monitor specific models and specify sampling rules for triggering data ingestion.
-
-### Collector Parameters
+Give this model a name and choose what percentage (fraction) of data you want to collect. The range runs from 0 to 1.0. 0 means that no data will be collected
+and 1.0 means that any images sent for prediction to your custom model in production will be collected.
 
 #### Collector ID
 
