@@ -16,9 +16,7 @@ Collectors are available with Essential and Enterprise plans
 Collectors help you to feed your models with real-world training data. This data can be taken from models that you have already deployed to production. Just create a collector within your app and set it up to ingest data from another model when new inputs are "posted" to this model.
 
 
-![](../../../.gitbook/assets/create_new_collector.jpg)
-
-### Step 1 Create a sampler model and put it in a workflow
+### Step 1: Create a sampler model and put it in a workflow
 The first thing to do here is to create a Random sampler. The purpose of this model is to collect (sample) data based on the fraction or proportion that
 we set. This would be a custom model and you can find it under **Create Custom Model** tab of Model Mode. The model type for this would be **Random Sampler**
 
@@ -29,9 +27,19 @@ Creating the model in Model would the involve
 1. Picking the Random Sampler Model Type.
 2. Giving it the percentage of images to collect.
 
-![](images/random_sampler_model_mode.png)
+![model model screen showing random sampler](images/random_sampler_model_mode.png)
 
-![](../../../.images/random_sample_args.png)
+![creating a random sampler with args](../../images/random_sample_args.png)
+
+### Step 2: Put the sampler in a workflow
+
+Once the model is created you will just put that model in a workflow. In the Model Mode screen, use the Create Workflow tab. Under your user you should be able to see the sampler model you created. Add that model to the workflow, give the workflow a descriptive name and hit **Create Workflow**
+
+![image showing a pre-queue workflow being created](images/random_sampler_preQ.png)
+
+### Step 3: Create a Collector
+Under Data Mode, at the bottom you should see the option to create new collectors. When you are creating a new screen you will see a screen like this
+![](../../../.gitbook/assets/create_new_collector.jpg)
 
 
 #### Collector ID
@@ -44,22 +52,16 @@ Provide additional details about your collector.
 
 #### Pre-queue workflow
 
-In many scenarios, you will only want to ingest a sample, or subset of a given data source into your app. Pre-queue workflows allow you to pre-process your inputs so that you can sample and filter your new data before it is ever added to your app. Pre-queue workflows allow you to specify sampling rules for triggering data ingestion. Common pre-queue workflows are designed to:
-
-* Randomly sample inputs
-* Filter inputs by metadata
-* Filter inputs with a maximum probability below a given threshold
-* Filter inputs with a minimum probability above a given threshold
-* Filter specific concept probabilities above a given threshold
-* Knowledge graph mapping from public General model concepts to a custom model
-
-At least one \(pre-queue or post-queue\) workflow ID is required. The input to this workflow is going to be the OUTPUT of the model. We recommend that you use fast and light-weight models in it as it will effect the speed of the predictions being made.
+We will use the workflow we created in step 2 as the pre-queue workflow
 
 #### Post Inputs key
 
 Select the API key that you would like to use to allow new inputs to be posted to your app. This is the post-queue workflow ID of the workflow to run to after the collector is processing the queued input. This API key must have the PostInputs scope, since it grants the collector the authority to POST inputs to your app.
 
 This workflow uses the original input to the model as input to the workflow so that you can run additional models as well on that input to decide whether to queue the model or not. If the workflow output has any field that is non-empty then it will be passed on to POST /inputs to the destination app. At least one \(pre-queue or post-queue\) workflow ID is required.
+
+#### Caller
+**Any Caller** means that any API call from any user made to your model will get collected. You could also specify a specific user id you want to collect against.
 
 #### Source
 
