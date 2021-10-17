@@ -1,9 +1,7 @@
 Workflow Builder
 
 The workflow builder is designed to make it easy for you to create, modify and experiment with AI workflows.
-You can create the skeleton of a workflow by connecting one or more models, and then configuring each model-type as a node in your workflow.  non-trainable models (also known as "model operators") can be added to workflows on-the-fly, without the need to pre-configure these models ahead of time. You can even view and edit the output settings of any model in a workflow, directly in the graph editor.
-
-![A basic workflow in workflow builder](../../.gitbook/assets/basic-workflow.jpg)
+You can create the skeleton of a workflow by connecting one or more models, and then configuring each model-type as a node in your workflow.  Non-trainable models (also known as "model operators") can be added to workflows on-the-fly, without the need to pre-configure these models ahead of time. You can even view and edit the output settings of any model in a workflow, directly in the graph editor.
 
 Model Types
 Filter
