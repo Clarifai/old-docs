@@ -20,6 +20,7 @@
   * [Scopes](clarifai-basics/authentication/scopes.md)
   * [2FA](clarifai-basics/authentication/2-factor-authentication.md)
   * [Roll-Based Access Control](clarifai-basics/authentication/rbac.md)
+* [Clarifai Community Quick Start](clarifai-basics/community.md)
 
 ## API Guide
 
