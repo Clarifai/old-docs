@@ -27,19 +27,19 @@ Creating the model in Model would the involve
 1. Picking the Random Sampler Model Type.
 2. Giving it the percentage of images to collect.
 
-![model model screen showing random sampler](images/random_sampler_model_mode.png)
+![model model screen showing random sampler](https://solutions-demos-data.s3.amazonaws.com/random_sampler_model_mode.png)
 
-![creating a random sampler with args](../../images/random_sample_args.png)
+![creating a random sampler with args](https://solutions-demos-data.s3.amazonaws.com/random_sample_args.png)
 
 ### Step 2: Put the sampler in a workflow
 
 Once the model is created you will just put that model in a workflow. In the Model Mode screen, use the Create Workflow tab. Under your user you should be able to see the sampler model you created. Add that model to the workflow, give the workflow a descriptive name and hit **Create Workflow**
 
-![image showing a pre-queue workflow being created](images/random_sampler_preQ.png)
+![image showing a pre-queue workflow being created](https://solutions-demos-data.s3.amazonaws.com/random_sampler_preQ.png)
 
 ### Step 3: Create a Collector
 Under Data Mode, at the bottom you should see the option to create new collectors. When you are creating a new screen you will see a screen like this
-![](../../../.gitbook/assets/create_new_collector.jpg)
+![](https://solutions-demos-data.s3.amazonaws.com/create_new_collector.jpg)
 
 
 #### Collector ID
