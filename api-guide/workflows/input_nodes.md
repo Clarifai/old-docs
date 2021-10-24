@@ -545,7 +545,7 @@ post_workflows_response = stub.PostWorkflows(
                             )
                         ),
                         node_inputs=[
-                            resources_pb2.NodeInput(node_id="general-concept")
+                            resources_pb2.NodeInput(node_id="general-embed")
                         ]
                     ),
                 ]
