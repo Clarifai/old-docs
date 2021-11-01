@@ -73,11 +73,14 @@ post_workflows_response = stub.PostWorkflows(
                                 id="cc2074cff6dc4c02b6f4e1b8606dcb54"
                             )
                         ),
+                        node_inputs=[
+                            resources_pb2.NodeInput(node_id="general-embed")
+                        ]
                     ),
                     resources_pb2.WorkflowNode(
                         id="mapper",
                         model=resources_pb2.Model(
-                            id="synonym-model-id",
+                            id="{YOUR_SYNONYM_MODEL_ID}",
                             model_version=resources_pb2.ModelVersion(
                                 id="{YOUR_SYNONYM_MODEL_VERSION_ID}"
                             )
@@ -89,7 +92,7 @@ post_workflows_response = stub.PostWorkflows(
                     resources_pb2.WorkflowNode(
                         id="greater-than",
                         model=resources_pb2.Model(
-                            id="greater-than-model-id",
+                            id="{YOUR_GREATER_THAN_MODEL_ID}",
                             model_version=resources_pb2.ModelVersion(
                                 id="{YOUR_GREATER_THAN_MODEL_VERSION_ID}"
                             )
@@ -101,7 +104,7 @@ post_workflows_response = stub.PostWorkflows(
                     resources_pb2.WorkflowNode(
                         id="less-than",
                         model=resources_pb2.Model(
-                            id="less-than-model-id",
+                            id="{YOUR_LESS_THAN_MODEL_ID},
                             model_version=resources_pb2.ModelVersion(
                                 id="{YOUR_LESS_THAN_MODEL_VERSION_ID}"
                             )
@@ -542,7 +545,7 @@ post_workflows_response = stub.PostWorkflows(
                             )
                         ),
                         node_inputs=[
-                            resources_pb2.NodeInput(node_id="general-concept")
+                            resources_pb2.NodeInput(node_id="general-embed")
                         ]
                     ),
                 ]
