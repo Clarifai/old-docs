@@ -8,9 +8,9 @@ description: >-
 
 Role-based access control \(RBAC\) functionality enables application admins to limit the permissions of some users within a team. It is both a security best practice \(see the principle of least privilege\) and often a compliance requirement for admins to maintain separate accounts for their user level activities.
 
-{% hint style="info" %}
+
 Currently RBAC is available to our on-premise enterprise customers only. RBAC is coming to cloud customers soon, stay tuned.
-{% endhint %}
+
 
 ## User Management
 

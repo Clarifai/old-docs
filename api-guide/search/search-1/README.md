@@ -14,9 +14,9 @@ Trim down the amount of data returned in search. For example, you may only want 
 
 Combine multiple search parameters. For example, you can find all the inputs within a geographical region with a "weapon" in them, or all annotations assigned to user "Joe", or visually similar product images that are assigned the word "XL" in metadata.
 
-{% hint style="info" %}
-Search currently is only available for images.
-{% endhint %}
 
-![Image illustrating how to search by images using Clarifai&apos;s concepts](../../../.gitbook/assets/illustration-search%20%282%29%20%282%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%286%29%20%282%29%20%283%29.png)
+Search currently is only available for images.
+
+
+![Image illustrating how to search by images using Clarifai&apos;s concepts](../../../.gitbook/assets/illustration-search.png)
 

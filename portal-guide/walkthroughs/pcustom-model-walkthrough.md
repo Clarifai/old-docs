@@ -10,7 +10,7 @@ Click "View in Explorer", or click the "eye" icon in the lefthand sidebar.
 
 Add your inputs. Just click "browse your files" or paste image URLs in the space provided.
 
-![](../../.gitbook/assets/Add_inputs%20%281%29.jpg)
+![](../../.gitbook/assets/Add_inputs.jpg)
 
 Click on an image. You can create new concepts and label your images in the right hand sidebar.
 

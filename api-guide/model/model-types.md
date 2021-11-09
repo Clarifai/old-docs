@@ -33,9 +33,9 @@ _A roofing company wants to provide insurance companies and customers with a con
 
 Embedding models don't answer a specific question. Instead, they help you work with something that is a little more abstract: the underlying _structure_ of a classification or detection model. In fact, you can think of an embedding model as a classification or detection model with the concepts removed, because in many cases this is exactly what an embedding model is. Embedding models are important because they help you transfer the learnings from existing models to your own custom models. This means that you can come up with your own set of custom concepts and quickly train a new model with relatively few training samples.
 
-{% hint style="info" %}
+
 Embeddings also can be combined with cluster models to provide a fast and efficient way to search your data based on _visual similarity_.
-{% endhint %}
+
 
 _Example use case:_
 

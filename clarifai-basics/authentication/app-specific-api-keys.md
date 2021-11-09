@@ -8,7 +8,7 @@ You have fine-grained control over the data exposed through your app. You can co
 
 Just navigate to the app management page and click "Create an API Key"
 
-![](../../.gitbook/assets/apikey-screen%20%282%29%20%282%29%20%283%29%20%282%29.png)
+![](../../.gitbook/assets/apikey-screen.png)
 
 ## Create an API Key programmatically
 
@@ -40,7 +40,7 @@ curl --location --request POST 'https://api.clarifai.com/v2/users/{{user_id}}/ke
 {% endtab %}
 {% endtabs %}
 
-{% hint style="info" %}
+
 API Keys do not expire. In case your API Key gets compromised, you should delete that key, and create a new one with the same scopes. We recommend that you do **not** share your API Key with other users.
-{% endhint %}
+
 

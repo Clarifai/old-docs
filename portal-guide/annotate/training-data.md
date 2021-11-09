@@ -35,7 +35,7 @@ Models that tend to perform poorly:
 * Subject matter is subtle. Keep in mind, the model has no concept of language, so in essence, “what you see is what you get”.
 * Training set is cast too wide. If you train a concept of too many different kinds of images, and they are all visually different, the training set will become noisy. This will make it difficult for the model to find the visually distinct qualities to learn from, resulting in high levels of "variance".
 
-{% hint style="info" %}
+
 ### Cautionary Tale: The importance of representative data when working with User-Generated Content\(USG\)
 
 An international beer company wanted to build a “Perfect Pint” model as part of a promotional campaign. The model was meant to analyze a photo of a pint of beer, and judge how well it had been poured and presented \(this particular brand puts a strong emphasis on the importance of pouring beer with the ideal amount of "head", or foam, on top\).
@@ -47,18 +47,18 @@ The initial version of their model struggled to perform effectively in productio
 They needed to provide training data that captured: 1\) The breadth of real world scenarios 2\) The quality of user generated images
 
 After applying these changes, the model performance improved.
-{% endhint %}
+
 
 ### Semantic Clarity \(The importance of "of" vs "in"\)
 
 When labeling an image, try to avoid labeling what is "in" the image, instead you will get better results if you label what the photo is "of". In cases where there are multiple objects in a scene, use a detector model, and label the detected regions separately.
 
-{% hint style="info" %}
+
 ### Cautionary Tale: False positive in wedding imagery
 
 Here is an example of an image of a married couple, which had a false positive prediction for a person holding a bouquet of flowers, even though there is no bouquet in the photo. What’s going on here?
 
-![](../../.gitbook/assets/false_positive%20%289%29%20%2810%29%20%287%29%20%281%29.png)
+![](../../.gitbook/assets/false_positive.png)
 
 All of these images were labeled with ‘Bouquet-floral\_Holding’:
 
@@ -74,5 +74,5 @@ In this instance, the image in question has:
 The model sees the combination all of these individual things in lots of photos labeled ‘Bouquet\_Floral\_Holding’, and thus, that is the top result.
 
 One way to fix this is to narrow the training data for ‘Bouquet\_Floral\_Holding’ to images in which the bouquet is focal point, rather than any instance of the bouquet being held. This way, the model can focus on the anchoring theme/object within the dataset more easily.
-{% endhint %}
+
 

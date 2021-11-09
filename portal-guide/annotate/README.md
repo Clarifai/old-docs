@@ -10,9 +10,9 @@ Clarifai Labeler offers custom tools for labeling image and video datasets, and 
 
 ![](../../.gitbook/assets/scribe.svg)
 
-{% hint style="info" %}
+
 ## Data Labeling Services
 
 Clarifai offers fully managed data annotation services for creating high-quality training datasets. Scale your AI initiatives quickly with high-quality, human-annotated data. You can find out more [here](https://www.clarifai.com/data-annotation-services).
-{% endhint %}
+
 
