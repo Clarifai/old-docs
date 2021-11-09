@@ -16,9 +16,9 @@ You might consider deep training if you have:
 * **Accurate labels**
 * **Expertise and time to fine tune models**
 
-{% hint style="info" %}
+
 Deep training is in early access preview. To request access, [contact us](https://www.clarifai.com/contact).
-{% endhint %}
+
 
 ## Template types
 

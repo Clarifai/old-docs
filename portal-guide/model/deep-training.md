@@ -14,9 +14,9 @@ You might consider deep training if you have:
 * **Accurate labels**
 * **Expertise and time to fine tune models**
 
-{% hint style="info" %}
+
 Deep training is in early access preview. To request access, [contact us](https://www.clarifai.com/contact).
-{% endhint %}
+
 
 ## Template types
 
@@ -64,37 +64,37 @@ Get started by creating your app and uploading your inputs.
 
 In general, deep trained models need more data than ones trained on top of Clarifai Models. For most applications you’ll need at least 1000 training inputs, but it could be much more than this depending on your specific use case.
 
-![](../../.gitbook/assets/create_dt_app%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%283%29.jpg)
+![](../../.gitbook/assets/create_dt_app.jpg)
 
 #### Create your concepts and label your inputs
 
 The process of creating concepts and labeling inputs is the same for deep trained models and Clarifai Models.
 
-![](../../.gitbook/assets/label_inputs_dt%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.jpg)
+![](../../.gitbook/assets/label_inputs_dt.jpg)
 
 ### Model Mode
 
 Click the "four squares" icon on the lefthand sidebar to enter Model Mode.
 
-![](../../.gitbook/assets/model_mode%20%285%29%20%285%29%20%287%29%20%287%29%20%283%29%20%2819%29.jpg)
+![](../../.gitbook/assets/model_mode.jpg)
 
 ### Create the custom models that you need
 
 Click the blue `Create Custom Model` button at the top righthand corner of the screen and select `Visual Classifier`, `Visual Embedder`, or `Visual Detector`.
 
-![](../../.gitbook/assets/create_custom_model%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29.jpg)
+![](../../.gitbook/assets/create_custom_model.jpg)
 
 #### Configure your Model
 
 When you choose your your deep training template you will see the hyperparameters that are available within that template populated with default values. Adjust these values as desired and then click "Create Model".
 
-![](../../.gitbook/assets/create_dt_model%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.jpg)
+![](../../.gitbook/assets/create_dt_model.jpg)
 
 Once you have created your new model you can add it to your [workflows](https://docs.clarifai.com/portal-guide/workflows) so that you can use it in your app.
 
 ## Progress bar and processing time
 
-![Progress bar for monitoring training](../../.gitbook/assets/deep-training-progress%20%281%29%20%281%29.jpg)
+![Progress bar for monitoring training](../../.gitbook/assets/deep-training-progress.jpg)
 
 Deep training can take much longer than custom training a model. Many hours are required to deep train models with large numbers of inputs and complex taxonomies. You can view the progress bar in the model details view to monitor your model training as it progresses.
 

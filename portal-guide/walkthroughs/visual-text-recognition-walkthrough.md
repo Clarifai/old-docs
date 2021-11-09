@@ -4,9 +4,9 @@ Visual text recognition helps you convert printed text in images and videos into
 
 ![](../../.gitbook/assets/vtr.jpg)
 
-{% hint style="info" %}
+
 Please note: The current version of our VTR model is not designed for use with handwritten text, or documents with tightly-packed text \(like you might see on the page of a novel, for example\).
-{% endhint %}
+
 
 ## How VTR works
 
@@ -22,7 +22,7 @@ Start by creating an app with General-Detection as the base workflow.
 
 Next, navigate to Model Mode and click "Create Workflow".
 
-![](../../.gitbook/assets/model_gallery%20%281%29.jpg)
+![](../../.gitbook/assets/model_gallery.jpg)
 
 Under "User" select Clarifai to access Clarifai Models.
 

@@ -309,9 +309,9 @@ fetch("https://api.clarifai.com/v2/inputs", requestOptions)
 
 #### Add multiple inputs with ids
 
-{% hint style="info" %}
+
 In cases where you have your own `id` and you only have one item per image, you are encouraged to send inputs with your own `id`. This will help you later match the input to your own database. If you do not send an `id`, one will be created for you. If you have more than one item per image, it is recommended that you put the product id in metadata.
-{% endhint %}
+
 
 {% tabs %}
 {% tab title="Java" %}
@@ -693,7 +693,7 @@ fetch("https://api.clarifai.com/v2/inputs", requestOptions)
 
 In addition to adding an input with concepts, you can also add an input with custom metadata. This metadata will then be [searchable](https://github.com/Clarifai/docs/tree/5882f46bd17affcd85ed3e2ec98f4d6f355b58a9/advanced-searches.md#by-custom-metadata). Metadata can be any arbitrary JSON.
 
-{% hint style="info" %}
+
 If you have more than one item per image it is recommended to put the id in metadata like:
 
 ```text
@@ -701,7 +701,7 @@ If you have more than one item per image it is recommended to put the id in meta
   "product_id": "xyz"
 }
 ```
-{% endhint %}
+
 
 {% tabs %}
 {% tab title="Java" %}

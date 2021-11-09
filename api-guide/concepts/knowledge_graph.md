@@ -6,7 +6,7 @@ description: Connect the knowledge gained by different models.
 
 
 
-![](../../.gitbook/assets/kg6%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%286%29%20%286%29.png)
+![](../../.gitbook/assets/kg6.png)
 
 The Knowledge Graph uses Clarifai's concept mapping model to establish a hierarchical relationship between your concepts. and to uses three different _predicates_ to organize your concepts: hypernyms, hyponyms, and synonyms.
 

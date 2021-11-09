@@ -17,9 +17,9 @@ When you create a new task, you can chose between two review strategies:
 
 Manual review lets you either spot check your labeler work, or review each individual input that a labeler has worked on. Just select "Manual" under Review Strategy. You will also need to select a reviewer for your task, this can be you or another one of your collaborators.
 
-{% hint style="info" %}
+
 Adjusting the sample size will give you a subset of the total labeled dataset for review. This is so that you can get an impression of your labeler's work, and then approve or reject their entire labeling task based on this impression. Please note that if you select a sample size that is less than 100%, you will not be able to approve or reject individual labels.
-{% endhint %}
+
 
 ![manual review strategy](../../.gitbook/assets/manual-review-strategy.jpg)
 

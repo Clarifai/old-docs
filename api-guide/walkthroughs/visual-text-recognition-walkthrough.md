@@ -4,9 +4,9 @@ Visual text recognition helps you convert printed text in images and videos into
 
 ![](../../.gitbook/assets/vtr.jpg)
 
-{% hint style="info" %}
+
 Please note: The current version of our VTR model is not designed for use with handwritten text, or documents with tightly-packed text \(like you might see on the page of a novel, for example\).
-{% endhint %}
+
 
 ## How VTR works
 

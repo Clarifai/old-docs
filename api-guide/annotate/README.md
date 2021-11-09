@@ -10,9 +10,9 @@ Annotations \(sometimes called "labels"\) are how we "teach" machines to recogni
 
 ![](../../.gitbook/assets/scribe.svg)
 
-{% hint style="info" %}
+
 ## Data Labeling Services
 
 Clarifai offers fully managed data annotation services for creating high-quality training datasets. Scale your AI initiatives quickly with high-quality, human-annotated data. You can find out more [here](https://www.clarifai.com/data-annotation-services).
-{% endhint %}
+
 
