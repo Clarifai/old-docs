@@ -11,6 +11,7 @@ We will continue to update this page regularly, so a good way to always stay up 
 | Date | Change |
 | :--- | :--- |
 | february 12, 2021. 9:00am ET | **Deprecation of delete\_all option**  The `delete_all` option in DELETE /inputs request will no longer be supported and will be removed from our API after this point in time. You can delete inputs by id. Each request can have at most 128 ids. |
+| Novemeber 24, 2021. 9:00am ET | **Deprecation of type option** The `type` option in POST /models and /models/searches reuest will no longer be supported and will be removed from our API after this point in time. `model_type_id` is in use for model type references.
 
 ## Completed Changes
 
