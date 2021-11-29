@@ -350,6 +350,51 @@ for output in results.outputs:
 ```
 {% endtab %}
 
+{% tab title="C#" %}
+```csharp
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+var response = client.PostModelOutputs(
+    new PostModelOutputsRequest()
+    {
+        UserAppId = new UserAppIDSet()
+        { 
+            UserId = "excaliburne",
+            AppId = "moderation-test"
+        },
+        ModelId = "aaa03c23b3724a16a56b629203edc62c", // <- This is the general model_id
+        Inputs =
+        {
+            new List<Input>()
+            {
+                new Input()
+                {
+                    Data = new Data()
+                    {
+                        Image = new Image()
+                        {
+                            Url = "https://samples.clarifai.com/dog2.jpeg"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    metadata
+);
+
+if (response.Status.Code != StatusCode.Success)
+    throw new Exception("Request failed, response: " + response);
+
+Console.WriteLine("Predicted concepts:");
+foreach (var concept in response.Outputs[0].Data.Concepts)
+{
+    Console.WriteLine($"{concept.Name, 15} {concept.Value:0.00}");
+}
+```
+{% endtab %}
+
 {% tab title="cURL" %}
 ```text
 curl -X POST \

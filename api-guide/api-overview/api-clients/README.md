@@ -241,5 +241,33 @@ const metadata = new grpc.Metadata();
 metadata.set("authorization", "Key {YOUR_CLARIFAI_API_KEY}");
 ```
 {% endtab %}
+
+{% tab title="C#" %}
+```csharp
+
+///////////////////////////////////////////////////////////////////////////////
+// Installation
+///////////////////////////////////////////////////////////////////////////////
+dotnet add package ClarifaiGrpc
+
+///////////////////////////////////////////////////////////////////////////////
+// Initialize client
+///////////////////////////////////////////////////////////////////////////////
+using System;
+using System.Collections.Generic;
+using Clarifai.Api;
+using Clarifai.Channels;
+using Grpc.Core;
+using StatusCode = Clarifai.Api.Status.StatusCode;
+
+var client = new V2.V2Client(ClarifaiChannel.Grpc());
+
+var metadata = new Metadata
+{
+    {"Authorization", "Key {YOUR_PERSONAL_TOKEN}"}
+};
+```
+{% endtab %}
+
 {% endtabs %}
 

@@ -98,6 +98,42 @@ if post_inputs_response.status.code != status_code_pb2.SUCCESS:
 ```
 {% endtab %}
 
+{% tab title="C#" %}
+```csharp
+var response = client.PostInputs(
+    new PostInputsRequest()
+    {
+        UserAppId = new UserAppIDSet()
+        { 
+            UserId = "{YOUR_USER_ID}",
+            AppId = "{YOUR_APP_ID}"
+        },
+				Inputs =
+        {
+            new List<Input>()
+            {
+                new Input()
+                {
+                    Data = new Data()
+                    {
+                        Image = new Image()
+                        {
+                            Url = "https://samples.clarifai.com/metro-north.jpg",
+														AllowDuplicateUrl = true // optional
+                        }
+                    }
+                }
+            }
+        }
+    },
+    metadata
+);
+
+if (response.Status.Code != StatusCode.Success)
+    throw new Exception("Request failed, response: " + response);
+```
+{% endtab %}
+
 {% tab title="cURL" %}
 ```text
 curl -X POST \
@@ -247,6 +283,42 @@ if post_inputs_response.status.code != status_code_pb2.SUCCESS:
     print("\tDescription: {}".format(post_inputs_response.outputs[0].status.description))
     print("\tDetails: {}".format(post_inputs_response.outputs[0].status.details))
     raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
+```
+{% endtab %}
+
+{% tab title="C#" %}
+```csharp
+var response = client.PostInputs(
+    new PostInputsRequest()
+    {
+        UserAppId = new UserAppIDSet()
+        { 
+            UserId = "{YOUR_USER_ID}",
+            AppId = "{YOUR_APP_ID}"
+        },
+				Inputs =
+        {
+            new List<Input>()
+            {
+                new Input()
+                {
+                    Data = new Data()
+                    {
+                        Image = new Image()
+                        {
+                            Base64 = "{YOUR_IMAGE_BYTES_STRING}",
+														AllowDuplicateUrl = true // optional
+                        }
+                    }
+                }
+            }
+        }
+    },
+    metadata
+);
+
+if (response.Status.Code != StatusCode.Success)
+    throw new Exception("Request failed, response: " + response);
 ```
 {% endtab %}
 
@@ -440,6 +512,57 @@ if post_inputs_response.status.code != status_code_pb2.SUCCESS:
 ```
 {% endtab %}
 
+{% tab title="C#" %}
+```csharp
+var response = client.PostInputs(
+    new PostInputsRequest()
+    {
+        UserAppId = new UserAppIDSet()
+        { 
+            UserId = "{YOUR_USER_ID}",
+            AppId = "{YOUR_APP_ID}"
+        },
+				Inputs =
+        {
+            new List<Input>()
+            {
+                new Input()
+                {
+										Id = "train1"
+                    Data = new Data()
+                    {
+                        Image = new Image()
+                        {
+                            Url = "https://samples.clarifai.com/metro-north.jpg",
+														AllowDuplicateUrl = true // optional
+                        }
+                    }
+                }
+            },
+						{
+                new Input()
+                {
+										Id = "puppy1"
+                    Data = new Data()
+                    {
+                        Image = new Image()
+                        {
+                            Url = "https://samples.clarifai.com/puppy.jpeg",
+														AllowDuplicateUrl = true // optional
+                        }
+                    }
+                }
+            }
+        }
+    },
+    metadata
+);
+
+if (response.Status.Code != StatusCode.Success)
+    throw new Exception("Request failed, response: " + response);
+```
+{% endtab %}
+
 {% tab title="cURL" %}
 ```text
 curl -X POST \
@@ -614,6 +737,53 @@ if post_inputs_response.status.code != status_code_pb2.SUCCESS:
     print("\tDescription: {}".format(post_inputs_response.outputs[0].status.description))
     print("\tDetails: {}".format(post_inputs_response.outputs[0].status.details))
     raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
+```
+{% endtab %}
+
+{% tab title="C#" %}
+```csharp
+var response = client.PostInputs(
+    new PostInputsRequest()
+    {
+        UserAppId = new UserAppIDSet()
+        { 
+            UserId = "{YOUR_USER_ID}",
+            AppId = "{YOUR_APP_ID}"
+        },
+				Inputs =
+        {
+            new List<Input>()
+            {
+                new Input()
+                {
+                    Data = new Data()
+                    {
+                        Image = new Image()
+                        {
+                            Url = "https://samples.clarifai.com/puppy.jpeg",
+														AllowDuplicateUrl = true // optional
+                        },
+												Concepts = 
+												{
+                            new List<Concept>
+                            {
+                                new Concept
+                                {
+                                    Id = "charlie",
+																		Value = 1
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    metadata
+);
+
+if (response.Status.Code != StatusCode.Success)
+    throw new Exception("Request failed, response: " + response);
 ```
 {% endtab %}
 
@@ -943,6 +1113,27 @@ for input_object in list_inputs_response.inputs:
 ```
 {% endtab %}
 
+{% tab title="C#" %}
+```csharp
+var response = client.ListInputs(
+    new ListInputsRequest()
+    {
+        UserAppId = new UserAppIDSet()
+        { 
+            UserId = "{YOUR_USER_ID}",
+            AppId = "{YOUR_APP_ID}"
+        },
+				Page = 1,
+				PerPage = 10
+    },
+    metadata
+);
+
+if (response.Status.Code != StatusCode.Success)
+    throw new Exception("Request failed, response: " + response);
+```
+{% endtab %}
+
 {% tab title="cURL" %}
 ```text
 curl -X GET \
@@ -1242,6 +1433,26 @@ print(input_object)
 ```
 {% endtab %}
 
+{% tab title="C#" %}
+```csharp
+var response = client.ListInputs(
+    new ListInputsRequest()
+    {
+        UserAppId = new UserAppIDSet()
+        { 
+            UserId = "{YOUR_USER_ID}",
+            AppId = "{YOUR_APP_ID}"
+        },
+				InputId = "{YOUR_INPUT_ID}"
+    },
+    metadata
+);
+
+if (response.Status.Code != StatusCode.Success)
+    throw new Exception("Request failed, response: " + response);
+```
+{% endtab %}
+
 {% tab title="cURL" %}
 ```text
 curl -X GET \
@@ -1341,6 +1552,27 @@ if get_input_count_response.status.code != status_code_pb2.SUCCESS:
 
 counts = get_input_count_response.counts
 print(counts)
+```
+{% endtab %}
+
+{% tab title="C#" %}
+```csharp
+var response = client.GetInputCount(
+    new GetInputCountRequest()
+    {
+        UserAppId = new UserAppIDSet()
+        { 
+            UserId = "{YOUR_USER_ID}",
+            AppId = "{YOUR_APP_ID}"
+        }
+    },
+    metadata
+);
+
+if (response.Status.Code != StatusCode.Success)
+    throw new Exception("Request failed, response: " + response);
+
+Console.WriteLine(response.Counts);
 ```
 {% endtab %}
 
@@ -1478,6 +1710,55 @@ if patch_inputs_response.status.code != status_code_pb2.SUCCESS:
     print("\tDescription: {}".format(patch_inputs_response.outputs[0].status.description))
     print("\tDetails: {}".format(patch_inputs_response.outputs[0].status.details))
     raise Exception("Patch inputs failed, status: " + patch_inputs_response.status.description)
+```
+{% endtab %}
+
+{% tab title="C#" %}
+```csharp
+var response = client.PatchInputs(
+    new PatchInputsRequest()
+    {
+        UserAppId = new UserAppIDSet()
+        { 
+            UserId = "{YOUR_USER_ID}",
+            AppId = "{YOUR_APP_ID}"
+        }
+				Action = "merge",
+				Inputs =
+        {
+            new List<Input>()
+            {
+                new Input()
+                {
+										InputId = "{YOUR_INPUT_ID}",
+                    Data = new Data()
+                    {
+												Concepts = 
+												{
+                            new List<Concept>
+                            {
+                                new Concept
+                                {
+                                    Id = "tree",
+																		Value = 1
+                                }
+                            },
+																new Concept
+                                {
+                                    Id = "water",
+																		Value = O
+                                }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    metadata
+);
+
+if (response.Status.Code != StatusCode.Success)
+    throw new Exception("Request failed, response: " + response);
 ```
 {% endtab %}
 
@@ -1694,6 +1975,80 @@ if patch_inputs_response.status.code != status_code_pb2.SUCCESS:
 ```
 {% endtab %}
 
+{% tab title="C#" %}
+```csharp
+var response = client.PatchInputs(
+    new PatchInputsRequest()
+    {
+        UserAppId = new UserAppIDSet()
+        { 
+            UserId = "{YOUR_USER_ID}",
+            AppId = "{YOUR_APP_ID}"
+        }
+				Action = "merge",
+				Inputs =
+        {
+            new List<Input>()
+            {
+                new Input()
+                {
+										InputId = "{YOUR_INPUT_ID_1}",
+                    Data = new Data()
+                    {
+												Concepts = 
+												{
+                            new List<Concept>
+                            {
+                                new Concept
+                                {
+                                    Id = "tree",
+																		Value = 1
+                                }
+                            },
+																new Concept
+                                {
+                                    Id = "water",
+																		Value = O
+                                }
+                        }
+                    }
+                }
+            },
+						{
+                new Input()
+                {
+										InputId = "{YOUR_INPUT_ID_2}",
+                    Data = new Data()
+                    {
+												Concepts = 
+												{
+                            new List<Concept>
+                            {
+                                new Concept
+                                {
+                                    Id = "animal",
+																		Value = 1
+                                }
+                            },
+																new Concept
+                                {
+                                    Id = "fruit",
+																		Value = O
+                                }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    metadata
+);
+
+if (response.Status.Code != StatusCode.Success)
+    throw new Exception("Request failed, response: " + response);
+```
+{% endtab %}
+
 {% tab title="cURL" %}
 ```text
 # Value of 1 means true, this concept is present.
@@ -1905,6 +2260,49 @@ if patch_inputs_response.status.code != status_code_pb2.SUCCESS:
 ```
 {% endtab %}
 
+{% tab title="C#" %}
+```csharp
+var response = client.PatchInputs(
+    new PatchInputsRequest()
+    {
+        UserAppId = new UserAppIDSet()
+        { 
+            UserId = "{YOUR_USER_ID}",
+            AppId = "{YOUR_APP_ID}"
+        }
+				Action = "remove",
+				Inputs =
+        {
+            new List<Input>()
+            {
+                new Input()
+                {
+										InputId = "{YOUR_INPUT_ID}",
+                    Data = new Data()
+                    {
+												Concepts = 
+												{
+                            new List<Concept>
+                            {
+                                new Concept
+                                {
+                                    Id = "tree"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    metadata
+);
+
+if (response.Status.Code != StatusCode.Success)
+    throw new Exception("Request failed, response: " + response);
+```
+{% endtab %}
+
 {% tab title="cURL" %}
 ```text
 # We're removing the concept, so there's no need to specify
@@ -2101,6 +2499,80 @@ if patch_inputs_response.status.code != status_code_pb2.SUCCESS:
 ```
 {% endtab %}
 
+{% tab title="C#" %}
+```csharp
+var response = client.DeleteInput(
+    new DeleteInputRequest()
+    {
+        UserAppId = new UserAppIDSet()
+        { 
+            UserId = "{YOUR_USER_ID}",
+            AppId = "{YOUR_APP_ID}"
+        }
+				Action = "remove",
+				Inputs =
+        {
+            new List<Input>()
+            {
+                new Input()
+                {
+										InputId = "{YOUR_INPUT_ID_1}",
+                    Data = new Data()
+                    {
+												Concepts = 
+												{
+                            new List<Concept>
+                            {
+                                new Concept
+                                {
+                                    Id = "tree"
+                                }
+                            },
+														{
+                                new Concept
+                                {
+                                    Id = "water"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+						{
+                new Input()
+                {
+										InputId = "{YOUR_INPUT_ID_2}",
+                    Data = new Data()
+                    {
+												Concepts = 
+												{
+                            new List<Concept>
+                            {
+                                new Concept
+                                {
+                                    Id = "animal"
+                                }
+                            },
+														{
+                                new Concept
+                                {
+                                    Id = "fruit"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    metadata
+);
+
+if (response.Status.Code != StatusCode.Success)
+    throw new Exception("Request failed, response: " + response);
+```
+{% endtab %}
+
 {% tab title="cURL" %}
 ```text
 # We're removing the concept, so there's no need to specify
@@ -2267,6 +2739,26 @@ if delete_input_response.status.code != status_code_pb2.SUCCESS:
 ```
 {% endtab %}
 
+{% tab title="C#" %}
+```csharp
+var response = client.DeleteInput(
+    new DeleteInputRequest()
+    {
+        UserAppId = new UserAppIDSet()
+        { 
+            UserId = "{YOUR_USER_ID}",
+            AppId = "{YOUR_APP_ID}"
+        },
+				inputId = "{YOUR_INPUT_ID}"
+    },
+    metadata
+);
+
+if (response.Status.Code != StatusCode.Success)
+    throw new Exception("Request failed, response: " + response);
+```
+{% endtab %}
+
 {% tab title="cURL" %}
 ```text
 curl -X DELETE \
@@ -2364,6 +2856,32 @@ if delete_inputs_response.status.code != status_code_pb2.SUCCESS:
     print("\tDescription: {}".format(delete_inputs_response.outputs[0].status.description))
     print("\tDetails: {}".format(delete_inputs_response.outputs[0].status.details))
     raise Exception("Delete inputs failed, status: " + delete_inputs_response.status.description)
+```
+{% endtab %}
+
+{% tab title="C#" %}
+```csharp
+var response = client.DeleteInput(
+    new DeleteInputRequest()
+    {
+        UserAppId = new UserAppIDSet()
+        { 
+            UserId = "{YOUR_USER_ID}",
+            AppId = "{YOUR_APP_ID}"
+        },
+				Ids = {
+            new List<string>()
+            {
+                "{YOUR_INPUT_ID_1}", 
+								"{YOUR_INPUT_ID_2}"
+            }
+        }
+    },
+    metadata
+);
+
+if (response.Status.Code != StatusCode.Success)
+    throw new Exception("Request failed, response: " + response);
 ```
 {% endtab %}
 
