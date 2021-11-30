@@ -90,7 +90,7 @@
   * [Patching](api-guide/advanced-topics/patching.md)
   * [Pagination](api-guide/advanced-topics/pagination.md)
   * [Batch Predict CSV on Custom Text Model](api-guide/advanced-topics/batch-predict-csv-on-custom-text-model.md)
-  * [Document Processing](api-guide/advanced-topics/intelligent_document_processing.md)
+  * [Document Processing](api-guide/advanced-topics/intelligent-document-processing.md)
 
 
 ## Portal Guide
