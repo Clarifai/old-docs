@@ -155,6 +155,7 @@
 
 * [Upcoming API Changes](product-updates/upcoming-api-changes.md)
 * [Changelog](product-updates/changelog/README.md)
+  * [Release 7.10](product-updates/changelog/release710.md)
   * [Release 7.9](product-updates/changelog/release79.md)
   * [Release 7.8](product-updates/changelog/release78.md)
   * [Release 7.7](product-updates/changelog/release77.md)
