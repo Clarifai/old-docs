@@ -43,6 +43,7 @@ if response.status.code != status_code_pb2.SUCCESS:
     raise Exception("Request failed, status code: " + str(response.status.code))
 
 for concept in response.outputs[0].data.concepts:
-    print('%12s: %.2f' % (concept.name, concept.value))```
+    print('%12s: %.2f' % (concept.name, concept.value))
+    ```
 {% endtab %}
 
