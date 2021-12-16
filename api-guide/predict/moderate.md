@@ -44,6 +44,7 @@ if response.status.code != status_code_pb2.SUCCESS:
 
 for concept in response.outputs[0].data.concepts:
     print('%12s: %.2f' % (concept.name, concept.value))
-    ```
+ 
+```
 {% endtab %}
 
