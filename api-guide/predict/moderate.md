@@ -31,7 +31,7 @@ request = service_pb2.PostModelOutputsRequest(
     # This is the model ID of a publicly available General model. You may use any other public or custom model ID.
     model_id='{Your_Model_ID}',
     inputs=[
-      resources_pb2.Input(data=resources_pb2.Data(text=resources_pb2.Text(raw='burninhellyounarcissistsonofabitchmotherfuckeriatiredofyourshit')))
+      resources_pb2.Input(data=resources_pb2.Data(text=resources_pb2.Text(raw='{Your_RAW_Text}')))
     ])
 response = stub.PostModelOutputs(request, metadata=metadata)
 
