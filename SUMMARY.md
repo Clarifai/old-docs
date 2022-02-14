@@ -21,6 +21,7 @@
   * [2FA](clarifai-basics/authentication/2-factor-authentication.md)
   * [Roll-Based Access Control](clarifai-basics/authentication/rbac.md)
 * [Clarifai Community Quick Start](clarifai-basics/community.md)
+* <a href="https://help.clarifai.com/hc/en-us/articles/4411157493783" target="_blank">Clarifai Community Quick Start</a>
 
 ## API Guide
 
