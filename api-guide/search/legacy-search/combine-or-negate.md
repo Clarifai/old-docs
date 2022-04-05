@@ -9,7 +9,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+// https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 // Here we search for images which we labeled with "cat" and for which the General prediction model does not find
 // a "dog" concept.
@@ -58,7 +58,7 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 {% tab title="gRPC NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+// https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 // Here we search for images which we labeled with "cat" and for which the General prediction model does not find
 // a "dog" concept.
@@ -117,7 +117,7 @@ stub.PostSearches(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+# https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 # Here we search for images which we labeled with "cat" and for which the General prediction model does not find
 # a "dog" concept.

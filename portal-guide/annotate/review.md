@@ -11,7 +11,7 @@ When you create a new task, you can chose between two review strategies:
 * **Manual Review** - Review and approve each labeled input individually.
 * **Consensus Review** - If you have multiple labelers who are each labeling the same inputs, you can use consensus review to help automate the process of reviewing your labelers work. Consensus review will automatically identify cases where your reviewers agree on a given label, so that you can quickly approve labels where multiple labelers agree.
 
-![tasks for review](https://github.com/Clarifai/docs/tree/7e99cb3b97df935e4b39bee27cb9ae0ecb3c8c67/.gitbook/assets/tasks-for-review.jpg)
+![tasks for review](https://github.com/Clarifai/old-docs/tree/7e99cb3b97df935e4b39bee27cb9ae0ecb3c8c67/.gitbook/assets/tasks-for-review.jpg)
 
 ## Manual Review
 

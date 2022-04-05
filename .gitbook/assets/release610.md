@@ -196,7 +196,7 @@
 | :--- | :--- |
 | ![improvement](../../.gitbook/assets/improvement.jpg) | Overwrite user annotation info with annotation writer model info |
 | ![bug](../../.gitbook/assets/bug.jpg) | Unable to add polygon annotation with embed\_model\_version\_id |
-| ![improvement](../../.gitbook/assets/improvement.jpg) | Experiment with docs.clarifai.com using API versions |
+| ![improvement](../../.gitbook/assets/improvement.jpg) | Experiment with old-docs.clarifai.com using API versions |
 | ![new-feature](../../.gitbook/assets/new_feature.jpg) | Make gRPC Swift client |
 | ![bug](../../.gitbook/assets/bug.jpg) | Can't assign a task to myself if I have a custom user\_id |
 | ![bug](../../.gitbook/assets/bug.jpg) | Annotation writer model & concept thresholder create incorrect additional annotations |

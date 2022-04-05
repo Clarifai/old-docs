@@ -15,7 +15,7 @@ You can predict concepts in a language other than the Application's default, by 
 {% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+# https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
@@ -56,7 +56,7 @@ for concept in output.data.concepts:
 ```php
 <?php
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+# https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 ///////////////////////////////////////////////////////////////////////////////
 // Specifying the Request Data
@@ -186,7 +186,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+// https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
     PostModelOutputsRequest.newBuilder()
@@ -225,7 +225,7 @@ for (Concept concept : output.getData().getConceptsList()) {
 {% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+// https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostModelOutputs(
     {
@@ -261,7 +261,7 @@ stub.PostModelOutputs(
 {% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+# https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
@@ -563,7 +563,7 @@ You can search for concepts in other languages even if the default language of y
 {% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+# https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_concepts_searches_response = stub.PostConceptsSearches(
     service_pb2.PostConceptsSearchesRequest(
@@ -588,7 +588,7 @@ for concept in post_concepts_searches_response.concepts:
 ```php
 <?php
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+# https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -669,7 +669,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+// https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiConceptResponse postConceptsSearchesResponse = stub.postConceptsSearches(
     PostConceptsSearchesRequest.newBuilder()
@@ -695,7 +695,7 @@ for (Concept concept : postConceptsSearchesResponse.getConceptsList()) {
 {% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+// https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostConceptsSearches(
     {
@@ -723,7 +723,7 @@ stub.PostConceptsSearches(
 {% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+# https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_concepts_searches_response = stub.PostConceptsSearches(
     service_pb2.PostConceptsSearchesRequest(

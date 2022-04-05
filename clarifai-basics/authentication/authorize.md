@@ -11,7 +11,7 @@ the cURL example.
 ```javascript
 // Authentication done at gRPC stub initialization time see:
 //
-https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 metadata.set("authorization", "Key YOUR_CLARIFAI_API_KEY");
 ```
 {% endtab %}
@@ -28,7 +28,7 @@ metadata = (('authorization', 'Key YOUR_API_KEY'),)
 ```java
 // Authentication done at grpc stub initialization time see:
 //
-https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 V2Grpc.V2BlockingStub stub = V2Grpc.newBlockingStub(ClarifaiChannel.INSTANCE.getGrpcChannel())
     .withCallCredentials(new ClarifaiCallCredentials("YOUR_CLARIFAI_API_KEY"));
 ```

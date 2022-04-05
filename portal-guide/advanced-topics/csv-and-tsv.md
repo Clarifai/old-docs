@@ -10,7 +10,7 @@ You can upload your text directly from a `.csv` \([comma separated values](https
 
 To help you get started, you can download `.csv` templates for images and text uploads here:
 
-[Image Upload Template](https://github.com/Clarifai/docs/tree/2b88c8e0d79fe52bd541c980599dec1c787beafa/.gitbook/assets/ClarifaiImageUploadTemplate.csv) [Text Upload Template](https://github.com/Clarifai/docs/tree/2b88c8e0d79fe52bd541c980599dec1c787beafa/.gitbook/assets/ClarifaiTextUploadTemplate.csv)
+[Image Upload Template](https://github.com/Clarifai/old-docs/tree/2b88c8e0d79fe52bd541c980599dec1c787beafa/.gitbook/assets/ClarifaiImageUploadTemplate.csv) [Text Upload Template](https://github.com/Clarifai/old-docs/tree/2b88c8e0d79fe52bd541c980599dec1c787beafa/.gitbook/assets/ClarifaiTextUploadTemplate.csv)
 
 ### Working with your CSV file
 

@@ -41,7 +41,7 @@ Select the model that you would like to collect from, and the collector will aut
 
 The app ID and user ID where the model is located. If using a publicly available model, the model user and app ID should be `clarifai` and `main`, respectively. Otherwise the IDs should belong to the user who created the model. An API key ID using which the inputs are is going to be added.
 
-See also the [Auto Annotation walkthrough](https://docs.clarifai.com/api-guide/walkthroughs/auto-annotation-walkthrough).
+See also the [Auto Annotation walkthrough](https://old-docs.clarifai.com/api-guide/walkthroughs/auto-annotation-walkthrough).
 
 ## Add Collector
 
@@ -54,7 +54,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 MultiCollectorResponse postCollectorsResponse = stub.postCollectors(
     PostCollectorsRequest.newBuilder()
@@ -88,7 +88,7 @@ if (postCollectorsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 stub.PostCollectors(
     {
@@ -128,7 +128,7 @@ stub.PostCollectors(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://old-docs.clarifai.com/api-guide/api-overview
 
 post_collectors_response = stub.PostCollectors(
     service_pb2.PostCollectorsRequest(
@@ -244,7 +244,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 MultiCollectorResponse patchCollectorsResponse = stub.patchCollectors(
     PatchCollectorsRequest.newBuilder()
@@ -266,7 +266,7 @@ if (patchCollectorsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 stub.PatchCollectors(
     {
@@ -296,7 +296,7 @@ stub.PatchCollectors(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://old-docs.clarifai.com/api-guide/api-overview
 
 patch_collectors_response = stub.PatchCollectors(
     service_pb2.PatchCollectorsRequest(
@@ -375,7 +375,7 @@ fetch("https://api.clarifai.com/v2/collectors", requestOptions)
 
 ## List Collectors
 
-List all the collectors. See [Pagination](https://docs.clarifai.com/api-guide/api-overview/pagination) on how to control which page gets displayed.
+List all the collectors. See [Pagination](https://old-docs.clarifai.com/api-guide/api-overview/pagination) on how to control which page gets displayed.
 
 {% tabs %}
 {% tab title="gRPC Java" %}
@@ -384,7 +384,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 MultiCollectorResponse listCollectorsResponse = stub.listCollectors(
     ListCollectorsRequest.newBuilder()
@@ -404,7 +404,7 @@ for (Collector collector : listCollectorsResponse.getCollectorsList()) {
 {% tab title="gRPC NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 stub.ListCollectors(
     {},
@@ -430,7 +430,7 @@ stub.ListCollectors(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://old-docs.clarifai.com/api-guide/api-overview
 
 list_collectors_response = stub.ListCollectors(
     service_pb2.ListCollectorsRequest(),
@@ -489,7 +489,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 SingleCollectorResponse getCollectorResponse = stub.getCollector(
     GetCollectorRequest.newBuilder()
@@ -508,7 +508,7 @@ System.out.println(getCollectorResponse.getCollector());
 {% tab title="gRPC NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 stub.GetCollector(
     {
@@ -534,7 +534,7 @@ stub.GetCollector(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://old-docs.clarifai.com/api-guide/api-overview
 
 get_collector_response = stub.GetCollector(
     service_pb2.GetCollectorRequest(
@@ -595,7 +595,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 BaseResponse deleteCollectorsResponse = stub.deleteCollectors(
     DeleteCollectorsRequest.newBuilder()
@@ -612,7 +612,7 @@ if (deleteCollectorsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="gRPC NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 stub.DeleteCollectors(
     {
@@ -636,7 +636,7 @@ stub.DeleteCollectors(
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://old-docs.clarifai.com/api-guide/api-overview
 
 delete_collectors_response = stub.DeleteCollectors(
     service_pb2.DeleteCollectorsRequest(

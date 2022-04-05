@@ -12,7 +12,7 @@ This page describes some important model types that you should know when working
 
 ### Visual-Classifier
 
-Classification models help you answer the question "What" or "Who" is in your data. Classification models understand the world in terms of [concepts](https://docs.clarifai.com/api-guide/concepts). Models can come pre-trained to recognize concepts, or you can create your own custom models to recognize custom concepts.
+Classification models help you answer the question "What" or "Who" is in your data. Classification models understand the world in terms of [concepts](https://old-docs.clarifai.com/api-guide/concepts). Models can come pre-trained to recognize concepts, or you can create your own custom models to recognize custom concepts.
 
 \_Example use case:
 

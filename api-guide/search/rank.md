@@ -21,7 +21,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
     PostAnnotationsSearchesRequest.newBuilder().addSearches(
@@ -56,7 +56,7 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 {% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 stub.PostAnnotationsSearches(
     {
@@ -106,7 +106,7 @@ from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://old-docs.clarifai.com/api-guide/api-overview
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
@@ -233,7 +233,7 @@ fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
 
 ### By Custom Concepts
 
-After you have [added inputs](https://github.com/Clarifai/docs/tree/1c1d25cdd43190c38a2edb313297c0d566b3a0e3/api-guide/search/data-management/inputs.md#add-inputs-with-concepts), [annotation the inputs](https://github.com/Clarifai/docs/tree/1c1d25cdd43190c38a2edb313297c0d566b3a0e3/api-guide/search/data-management/annotations.md#add-annotations), and try a custom model, you can search by those concepts.
+After you have [added inputs](https://github.com/Clarifai/old-docs/tree/1c1d25cdd43190c38a2edb313297c0d566b3a0e3/api-guide/search/data-management/inputs.md#add-inputs-with-concepts), [annotation the inputs](https://github.com/Clarifai/old-docs/tree/1c1d25cdd43190c38a2edb313297c0d566b3a0e3/api-guide/search/data-management/annotations.md#add-annotations), and try a custom model, you can search by those concepts.
 
 {% tabs %}
 {% tab title="Java" %}
@@ -242,7 +242,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
     PostAnnotationsSearchesRequest.newBuilder().addSearches(
@@ -277,7 +277,7 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 {% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 stub.PostAnnotationsSearches(
     {
@@ -327,7 +327,7 @@ from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://old-docs.clarifai.com/api-guide/api-overview
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
@@ -463,7 +463,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 // Here we search for images which we labeled with "cat" and for which the General prediction model does not find
 // a "dog" concept.
@@ -511,7 +511,7 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 {% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 // Here we search for images which we labeled with "cat" and for which the General prediction model does not find
 // a "dog" concept.
@@ -575,7 +575,7 @@ from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://old-docs.clarifai.com/api-guide/api-overview
 
 # Here we search for images which we labeled with "cat" and for which the General prediction model does not find
 # a "dog" concept.
@@ -751,7 +751,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
     PostAnnotationsSearchesRequest.newBuilder().addSearches(
@@ -787,7 +787,7 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 {% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 stub.PostAnnotationsSearches(
     {
@@ -838,7 +838,7 @@ from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://old-docs.clarifai.com/api-guide/api-overview
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
@@ -979,7 +979,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
     PostAnnotationsSearchesRequest.newBuilder().addSearches(
@@ -1013,7 +1013,7 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 {% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 stub.PostAnnotationsSearches(
     {
@@ -1060,7 +1060,7 @@ from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://old-docs.clarifai.com/api-guide/api-overview
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
@@ -1185,7 +1185,7 @@ import java.io.File;
 import java.nio.file.Files;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
     PostAnnotationsSearchesRequest.newBuilder().addSearches(
@@ -1222,7 +1222,7 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 {% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 const fs = require("fs");
 const imageBytes = fs.readFileSync("{YOUR_IMAGE_LOCATION}");
@@ -1272,7 +1272,7 @@ from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://old-docs.clarifai.com/api-guide/api-overview
 
 with open("{YOUR_IMAGE_LOCATION}", "rb") as f:
     file_bytes = f.read()
@@ -1397,7 +1397,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
     PostAnnotationsSearchesRequest.newBuilder().addSearches(
@@ -1426,7 +1426,7 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 {% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 stub.PostAnnotationsSearches(
     {
@@ -1469,7 +1469,7 @@ from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://old-docs.clarifai.com/api-guide/api-overview
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(

@@ -14,7 +14,7 @@ In this walkthorugh, you'll learn how to create a KNN classifier that's going to
 
 ## Create a new application
 
-The first step is manual: in the Clarifai Portal, [create an new application](https://docs.clarifai.com/clarifai-basics/applications/create-an-application#create-an-application-in-portal) with **Face** selected as the Base Workflow.
+The first step is manual: in the Clarifai Portal, [create an new application](https://old-docs.clarifai.com/clarifai-basics/applications/create-an-application#create-an-application-in-portal) with **Face** selected as the Base Workflow.
 
 Afterward, copy the newly-created application's _API key_ and set it as metadata \(see the initialization code\). This variable is going to be used, for authorization purposes, by all Clarifai API calls that follow.
 
@@ -30,7 +30,7 @@ Since the application's base model is Face, after adding an image, faces are aut
 import time
 
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+# https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 # Insert here the URLs of the images
 image_urls = [

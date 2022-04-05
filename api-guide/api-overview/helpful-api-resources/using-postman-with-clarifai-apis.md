@@ -13,7 +13,7 @@ This page explains how to use [Postman](https://www.postman.com/) to perform API
 You have:
 
 * An active Clarifai account.
-* Access to your [Clarifai API key](https://docs.clarifai.com/getting-started/authentication/app-specific-api-keys) and user login credentials.
+* Access to your [Clarifai API key](https://old-docs.clarifai.com/getting-started/authentication/app-specific-api-keys) and user login credentials.
 * Basic knowledge of API structure and JSON formatting.
 
 ### Setup <a id="setup"></a>
@@ -30,7 +30,7 @@ After the Postman collection is imported, a full list of available Clarifai API 
 
 **AUTHENTICATION**
 
-The collection includes a [Postman environment](https://learning.postman.com/docs/postman/variables-and-environments/variables/#environments-in-postman) called `Clarifai Authentication`, where you can add your username, password and [Clarifai API key](https://docs.clarifai.com/getting-started/authentication/app-specific-api-keys) or [Personal Access Token](https://docs.clarifai.com/getting-started/authentication/personal-access-tokens) for authentication.
+The collection includes a [Postman environment](https://learning.postman.com/docs/postman/variables-and-environments/variables/#environments-in-postman) called `Clarifai Authentication`, where you can add your username, password and [Clarifai API key](https://old-docs.clarifai.com/getting-started/authentication/app-specific-api-keys) or [Personal Access Token](https://old-docs.clarifai.com/getting-started/authentication/personal-access-tokens) for authentication.
 
 Follow these steps to set up your environment:
 
@@ -53,7 +53,7 @@ When you click on the Endpoint name a description of the endpoint and all requir
 
 #### Params <a id="params"></a>
 
-The **Params** tab shows all parameters and values that are currently on the API call. Here, you are able to add parameters and values. View the available arguments in the corresponding section of the [Clarifai API documentation](https://docs.clarifai.com/api-guide/api-overview).
+The **Params** tab shows all parameters and values that are currently on the API call. Here, you are able to add parameters and values. View the available arguments in the corresponding section of the [Clarifai API documentation](https://old-docs.clarifai.com/api-guide/api-overview).
 
 This tab is an alternative to viewing the `param1:value1¶m2:value2` structure of the API call.
 
