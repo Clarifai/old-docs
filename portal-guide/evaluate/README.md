@@ -36,5 +36,5 @@ The evaluation may take up to 30 minutes. Once it is complete, the Evaluate butt
 
 Note that the evaluation may result in an error if the model version doesn’t satisfy the requirements above.
 
-For more information on how to interpret the evaluation results and to improve your model, check out the [Evaluation](https://github.com/Clarifai/docs/tree/5882f46bd17affcd85ed3e2ec98f4d6f355b58a9/advanced-model-eval-2.md) corner under the “Advanced” section below.
+For more information on how to interpret the evaluation results and to improve your model, check out the [Evaluation](https://github.com/Clarifai/old-docs/tree/5882f46bd17affcd85ed3e2ec98f4d6f355b58a9/advanced-model-eval-2.md) corner under the “Advanced” section below.
 

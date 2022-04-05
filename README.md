@@ -4,7 +4,7 @@
 
 The Clarifai API offers image recognition as a service. Whether you have one image or billions, you are only steps away from using artificial intelligence to recognize your visual content.
 
-This repository is a collection of our public documentation for our APIs and SDKs. The markdown here gets rendered over at [docs.clarifai.com](https://docs.clarifai.com). We welcome you to improve our docs!
+This repository is a collection of our public documentation for our APIs and SDKs. The markdown here gets rendered over at [old-docs.clarifai.com](https://old-docs.clarifai.com). We welcome you to improve our docs!
 
 ## Contributing to our Docs
 
@@ -13,7 +13,7 @@ In order to contribute simply follow these steps:
 * Make your changes there in a branch.
 * Create a pull request back for us to review.
 
-As soon as the pull request gets reviewed and merged, your contributions will automatically show up at [docs.clarifai.com](https://docs.clarifai.com) within seconds.
+As soon as the pull request gets reviewed and merged, your contributions will automatically show up at [old-docs.clarifai.com](https://old-docs.clarifai.com) within seconds.
 
 ## Other Resources
 

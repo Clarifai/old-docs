@@ -9,8 +9,8 @@ You don't need to hire, train and manage your own labeling team. With Clarifai's
 ## 3 Easy Steps to Placing an Order for Scribe LabelForce
 
 1. A Clarifai platform account is required to submit Labeling orders. If you’ve never used our platform before, you can sign up for a [free Community account here.](https://portal.clarifai.com/signup)
-2. An Application will need to be created to contain the data you’ll want to have labeled. After electing to Create a New Application from the [Applications Gallery](https://portal.clarifai.com/apps), you’ll be asked to configure your application—including specifying a name and [Base Workflow.](https://docs.clarifai.com/api-guide/workflows/base-workflows)
-3. Go to the [Data](../portal-guide/data/) tab on the lefthand side of the screen and upload your inputs, or programmatically via the [AddInputs API-endpoint](https://docs.clarifai.com/api-guide/data/create-get-update-delete#add-inputs). Currently we provide labeling services for image and video data. You can find out more about supported data types [here](https://docs.clarifai.com/api-guide/data/supported-formats).
+2. An Application will need to be created to contain the data you’ll want to have labeled. After electing to Create a New Application from the [Applications Gallery](https://portal.clarifai.com/apps), you’ll be asked to configure your application—including specifying a name and [Base Workflow.](https://old-docs.clarifai.com/api-guide/workflows/base-workflows)
+3. Go to the [Data](../portal-guide/data/) tab on the lefthand side of the screen and upload your inputs, or programmatically via the [AddInputs API-endpoint](https://old-docs.clarifai.com/api-guide/data/create-get-update-delete#add-inputs). Currently we provide labeling services for image and video data. You can find out more about supported data types [here](https://old-docs.clarifai.com/api-guide/data/supported-formats).
 4. Go to the Labeler tab on the lefthand side of the screen and click Create Order in the upper righthand corner of the screen.
 
 ![Create an order for Scribe LabelForce](../.gitbook/assets/create-order.jpg)

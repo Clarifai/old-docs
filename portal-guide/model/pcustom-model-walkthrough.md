@@ -36,7 +36,7 @@ For this example we choose a context-based classifier that can use a pre-trained
 
 ![](../../.gitbook/assets/create_context_based_classifier.jpg)
 
-Finally, click the blue "Train Model" button in the upper righthand corner of the screen. Once it is trained you can put it to work by [adding it to your workflows](https://docs.clarifai.com/portal-guide/workflows).
+Finally, click the blue "Train Model" button in the upper righthand corner of the screen. Once it is trained you can put it to work by [adding it to your workflows](https://old-docs.clarifai.com/portal-guide/workflows).
 
 ![](../../.gitbook/assets/train_model.jpg)
 

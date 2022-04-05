@@ -8,7 +8,7 @@ You can filter and customize your search results to find exactly what you want. 
 
 ## By Custom Concepts
 
-After you [annotate inputs with custom concepts](https://github.com/Clarifai/docs/tree/1c1d25cdd43190c38a2edb313297c0d566b3a0e3/api-guide/search/data-management/annotations.md#annotate-images-with-concepts), you can filter by concepts.
+After you [annotate inputs with custom concepts](https://github.com/Clarifai/old-docs/tree/1c1d25cdd43190c38a2edb313297c0d566b3a0e3/api-guide/search/data-management/annotations.md#annotate-images-with-concepts), you can filter by concepts.
 
 {% tabs %}
 {% tab title="Java" %}
@@ -17,7 +17,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
     PostAnnotationsSearchesRequest.newBuilder().addSearches(
@@ -52,7 +52,7 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 {% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 stub.PostAnnotationsSearches(
     {
@@ -102,7 +102,7 @@ from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://old-docs.clarifai.com/api-guide/api-overview
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
@@ -231,7 +231,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
     PostAnnotationsSearchesRequest.newBuilder().addSearches(
@@ -260,7 +260,7 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 {% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 stub.PostAnnotationsSearches(
     {
@@ -304,7 +304,7 @@ from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://old-docs.clarifai.com/api-guide/api-overview
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
@@ -413,7 +413,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
     PostAnnotationsSearchesRequest.newBuilder().addSearches(
@@ -447,7 +447,7 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 {% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 stub.PostAnnotationsSearches(
     {
@@ -492,7 +492,7 @@ from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://old-docs.clarifai.com/api-guide/api-overview
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
@@ -621,7 +621,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 MultiInputResponse postInputsResponse = stub.postInputs(
     PostInputsRequest.newBuilder().addInputs(
@@ -652,7 +652,7 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 stub.PostInputs(
     {
@@ -690,7 +690,7 @@ from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://old-docs.clarifai.com/api-guide/api-overview
 
 post_inputs_response = stub.PostInputs(
     service_pb2.PostInputsRequest(
@@ -803,7 +803,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
     PostAnnotationsSearchesRequest.newBuilder().addSearches(
@@ -846,7 +846,7 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 {% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 stub.PostAnnotationsSearches(
     {
@@ -900,7 +900,7 @@ from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://old-docs.clarifai.com/api-guide/api-overview
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
@@ -1046,7 +1046,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
     PostAnnotationsSearchesRequest.newBuilder().addSearches(
@@ -1093,7 +1093,7 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 {% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 stub.PostAnnotationsSearches(
     {
@@ -1153,7 +1153,7 @@ from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://old-docs.clarifai.com/api-guide/api-overview
 
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
@@ -1310,7 +1310,7 @@ fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
 
 ## By Custom Annotation Info
 
-After you have [added inputs with custom metadata](https://github.com/Clarifai/docs/tree/1c1d25cdd43190c38a2edb313297c0d566b3a0e3/api-guide/search/data-management/inputs.md#add-inputs-with-custom-metadata), you can search by that metadata.
+After you have [added inputs with custom metadata](https://github.com/Clarifai/old-docs/tree/1c1d25cdd43190c38a2edb313297c0d566b3a0e3/api-guide/search/data-management/inputs.md#add-inputs-with-custom-metadata), you can search by that metadata.
 
 Below is an example of searching over custom metadata. You can exact match any `key`: `value` pair no matter how nested it is. For example, if the metadata on an input is:
 
@@ -1366,7 +1366,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
     PostAnnotationsSearchesRequest.newBuilder().addSearches(
@@ -1400,7 +1400,7 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 {% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 stub.PostAnnotationsSearches(
     {
@@ -1448,7 +1448,7 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 from google.protobuf.struct_pb2 import Struct
 
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://old-docs.clarifai.com/api-guide/api-overview
 
 search_metadata = Struct()
 search_metadata.update({"type": "animal"})
@@ -1576,7 +1576,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
     PostAnnotationsSearchesRequest.newBuilder().addSearches(
@@ -1608,7 +1608,7 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 {% tab title="gRPC NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
+// https://old-docs.clarifai.com/api-guide/api-overview
 
 stub.PostAnnotationsSearches(
     {
@@ -1654,7 +1654,7 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 from google.protobuf.struct_pb2 import Struct
 
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
+# https://old-docs.clarifai.com/api-guide/api-overview
 
 search_annotation_info = Struct()
 search_annotation_info.update({"type": "animal"})

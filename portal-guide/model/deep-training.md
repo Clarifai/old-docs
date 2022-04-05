@@ -90,7 +90,7 @@ When you choose your your deep training template you will see the hyperparameter
 
 ![](../../.gitbook/assets/create_dt_model.jpg)
 
-Once you have created your new model you can add it to your [workflows](https://docs.clarifai.com/portal-guide/workflows) so that you can use it in your app.
+Once you have created your new model you can add it to your [workflows](https://old-docs.clarifai.com/portal-guide/workflows) so that you can use it in your app.
 
 ## Progress bar and processing time
 

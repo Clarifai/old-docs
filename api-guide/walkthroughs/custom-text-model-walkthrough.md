@@ -8,13 +8,13 @@ The steps below can all be done via [the Clarifai's portal](https://portal.clari
 
 The examples below map directly to any of our other gRPC clients.
 
-The walkthrough assumes you have already created your Clarifai's user account and the [Personal Access Token](https://portal.clarifai.com/settings/authentication). Also, first set up the gRPC Python client together with the initial code, see [Client Installation Instructions](https://github.com/Clarifai/docs/tree/1c1d25cdd43190c38a2edb313297c0d566b3a0e3/api-guide/api-overview/api-clients/README.md#client-installation-instructions).
+The walkthrough assumes you have already created your Clarifai's user account and the [Personal Access Token](https://portal.clarifai.com/settings/authentication). Also, first set up the gRPC Python client together with the initial code, see [Client Installation Instructions](https://github.com/Clarifai/old-docs/tree/1c1d25cdd43190c38a2edb313297c0d566b3a0e3/api-guide/api-overview/api-clients/README.md#client-installation-instructions).
 
 For debugging purposes, each response returned by a method call can be printed to the console, and its entire data and structure will be shown verbosely.
 
 ## Create a new application
 
-The first step is manual: in the Clarifai Portal, [create an new application](https://docs.clarifai.com/getting-started/applications/create-an-application) with **Text** selected as the Base Workflow.
+The first step is manual: in the Clarifai Portal, [create an new application](https://old-docs.clarifai.com/getting-started/applications/create-an-application) with **Text** selected as the Base Workflow.
 
 Afterward, copy the newly-created application's _API key_ and set it in the variable below. This variable is going to be used, for authorization purposes, by all Clarifai API calls that follow.
 
@@ -22,7 +22,7 @@ Afterward, copy the newly-created application's _API key_ and set it in the vari
 {% tab title="gRPC Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+# https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 api_key_metadata = (('authorization', 'Key ' + post_keys_response.keys[0].id),)
 ```
@@ -270,7 +270,7 @@ for output in post_model_outputs_response.outputs:
 
 ## Start model evaluation
 
-Let's now test the performance of the model by using model evaluation. See the [the Model Evaluation page](https://docs.clarifai.com/portal-guide/model/evaluate) to learn more.
+Let's now test the performance of the model by using model evaluation. See the [the Model Evaluation page](https://old-docs.clarifai.com/portal-guide/model/evaluate) to learn more.
 
 {% tabs %}
 {% tab title="gRPC Python" %}

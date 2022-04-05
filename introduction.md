@@ -40,7 +40,7 @@ Annotations \(sometimes called "labels"\) are how we "teach" machines to learn n
 
 ![](.gitbook/assets/model_mode.jpg)
 
-Models are where the "thinking" happens in your AI application. Clarifai supports a variety of different [types of models,](https://docs.clarifai.com/portal-guide/model/model-types) including "machine learning" models that can learn new things from your training data and fixed-function model operators that help you control the way that your models interact.
+Models are where the "thinking" happens in your AI application. Clarifai supports a variety of different [types of models,](https://old-docs.clarifai.com/portal-guide/model/model-types) including "machine learning" models that can learn new things from your training data and fixed-function model operators that help you control the way that your models interact.
 
 [![](.gitbook/assets/api.jpg) Enlight Train API](api-guide/model/) / [![](.gitbook/assets/icon_portal.jpg) Enlight Train in Portal](portal-guide/model/)
 

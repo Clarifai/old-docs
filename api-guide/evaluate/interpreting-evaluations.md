@@ -141,7 +141,7 @@ Concepts that co-occur, or are similar, may appear as cluster on the matrix. In 
 
 #### Noise
 
-![](https://github.com/Clarifai/docs/tree/8313400f6e12fb76e8c47c70350059e1d4bf56e1/images/noise.png)
+![](https://github.com/Clarifai/old-docs/tree/8313400f6e12fb76e8c47c70350059e1d4bf56e1/images/noise.png)
 
 **1-2 Concept model \(left\)** : Hair Volume is graded as it appears from root to tip, either voluminous, or not voluminous **1-4 Concept model \(right\)** : Hair Volume is tiered depending on where it exists from the root, ends of the hair and hair length. Level 4 is the most distinct because it is dependent on the shortest hair length.
 

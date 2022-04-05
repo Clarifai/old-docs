@@ -18,7 +18,7 @@ The Knowledge Graph uses Clarifai's concept mapping model to establish a hierarc
 
 ## Create
 
-To create a relation between two concepts, you first have to create them in your custom model. See [the Concepts page](https://docs.clarifai.com/api-guide/concepts/concepts) on how to do that programatically.
+To create a relation between two concepts, you first have to create them in your custom model. See [the Concepts page](https://old-docs.clarifai.com/api-guide/concepts/concepts) on how to do that programatically.
 
 Each relation has to have specified a predicate, which can be _hyponym_, _hypernym_, or _synonym_.
 
@@ -26,7 +26,7 @@ Each relation has to have specified a predicate, which can be _hyponym_, _hypern
 {% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+# https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 post_concept_relation_response = stub.PostConceptRelations(
     service_pb2.PostConceptRelationsRequest(
@@ -59,7 +59,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+// https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiConceptRelationResponse postConceptRelationsResponse = stub.postConceptRelations(
     PostConceptRelationsRequest.newBuilder()
@@ -85,7 +85,7 @@ if (postConceptRelationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 {% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+// https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.PostConceptRelations(
     {
@@ -178,7 +178,7 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/concepts/${subjectConc
 {% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+# https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 list_concept_relation_response = stub.ListConceptRelations(
     service_pb2.ListConceptRelationsRequest(
@@ -209,7 +209,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+// https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 MultiConceptRelationResponse listConceptRelationsResponse = stub.listConceptRelations(
     ListConceptRelationsRequest.newBuilder()
@@ -237,7 +237,7 @@ for (ConceptRelation relation : listConceptRelationsResponse.getConceptRelations
 {% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+// https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.ListConceptRelations(
     {
@@ -303,7 +303,7 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/concepts/${conceptId}/
 {% tab title="Python" %}
 ```python
 # Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+# https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 delete_concept_relation_response = stub.DeleteConceptRelations(
     service_pb2.DeleteConceptRelationsRequest(
@@ -331,7 +331,7 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+// https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 BaseResponse deleteConceptRelationsResponse = stub.deleteConceptRelations(
     DeleteConceptRelationsRequest.newBuilder()
@@ -352,7 +352,7 @@ if (deleteConceptRelationsResponse.getStatus().getCode() != StatusCode.SUCCESS) 
 {% tab title="NodeJS" %}
 ```javascript
 // Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+// https://old-docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
 stub.DeleteConceptRelations(
     {

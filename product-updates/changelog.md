@@ -682,7 +682,7 @@
 
 | Status | Details |
 | :--- | :--- |
-| ![](../.gitbook/assets/improvement.jpg) | Update docs.clarifai.com to reflect our current API clients including grpc clients. |
+| ![](../.gitbook/assets/improvement.jpg) | Update old-docs.clarifai.com to reflect our current API clients including grpc clients. |
 
 ## Changelog 6.4
 
@@ -1072,8 +1072,8 @@
 
 | Status | Details |
 | :--- | :--- |
-| ![](../.gitbook/assets/new_feature.jpg) | Introduce new [Python gRPC API client](https://docs.clarifai.com/api-guide/api-overview), enabling new features and performance enhancements across API |
-| ![](../.gitbook/assets/new_feature.jpg) | Introduce new [Java gRPC API client](https://docs.clarifai.com/api-guide/api-overview), enabling new features and performance enhancements across API |
+| ![](../.gitbook/assets/new_feature.jpg) | Introduce new [Python gRPC API client](https://old-docs.clarifai.com/api-guide/api-overview), enabling new features and performance enhancements across API |
+| ![](../.gitbook/assets/new_feature.jpg) | Introduce new [Java gRPC API client](https://old-docs.clarifai.com/api-guide/api-overview), enabling new features and performance enhancements across API |
 | ![](../.gitbook/assets/improvement.jpg) | Update API key type for "app\_specific" for app-specific keys to be more clear to users |
 
 ### Applications

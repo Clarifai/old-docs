@@ -14,7 +14,7 @@ Organizing models and concepts hierarchically can be very useful when working wi
 
 ### Concept hierarchies
 
-By establishing concept hierarchies you can build applications that can account for the fact that child concepts \(like table\) are related to parent concepts \(like furniture\). Learn more about working with concept relationships with the [Clarifai Knowledge Graph. ](https://docs.clarifai.com/portal-guide/concept/knowledge_graph)
+By establishing concept hierarchies you can build applications that can account for the fact that child concepts \(like table\) are related to parent concepts \(like furniture\). Learn more about working with concept relationships with the [Clarifai Knowledge Graph. ](https://old-docs.clarifai.com/portal-guide/concept/knowledge_graph)
 
 ![Choose your concept relationships](../../../.gitbook/assets/concept-relations.jpg)
 
